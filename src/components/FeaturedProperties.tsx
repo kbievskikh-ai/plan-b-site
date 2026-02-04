@@ -1,55 +1,57 @@
-const properties = [
-  {
-    id: 1,
-    title: "Penthouse Vista Mar",
-    location: "Balneário Camboriú",
-    price: "R$ 4.200.000",
-    priceUsd: "$820,000",
-    beds: 4,
-    baths: 3,
-    area: "248 m²",
-    tag: "Investment",
-    gradient: "from-[#1a3a4a] to-[#0d2030]",
-  },
-  {
-    id: 2,
-    title: "Villa Jurerê Internacional",
-    location: "Florianópolis",
-    price: "R$ 6.800.000",
-    priceUsd: "$1,330,000",
-    beds: 5,
-    baths: 4,
-    area: "420 m²",
-    tag: "Premium",
-    gradient: "from-[#2a4a3a] to-[#0d2018]",
-  },
-  {
-    id: 3,
-    title: "Apartamento Frente Mar",
-    location: "Itapema",
-    price: "R$ 1.950.000",
-    priceUsd: "$380,000",
-    beds: 3,
-    baths: 2,
-    area: "156 m²",
-    tag: "New",
-    gradient: "from-[#3a2a4a] to-[#1a0d30]",
-  },
-  {
-    id: 4,
-    title: "Casa de Campo Luxo",
-    location: "Rancho Queimado",
-    price: "R$ 2.400.000",
-    priceUsd: "$470,000",
-    beds: 4,
-    baths: 3,
-    area: "380 m²",
-    tag: "Exclusive",
-    gradient: "from-[#4a3a1a] to-[#302010]",
-  },
-];
+'use client';
+
+import { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
+import { properties, Property } from '@/data/properties';
+import PropertyModal from './PropertyModal';
+import PropertyFilters, { FilterState } from './PropertyFilters';
 
 export default function FeaturedProperties() {
+  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
+  const [filters, setFilters] = useState<FilterState>({
+    priceRange: '',
+    type: '',
+    region: '',
+  });
+
+  // Filter properties based on selected filters
+  const filteredProperties = useMemo(() => {
+    return properties.filter(property => {
+      // Price range filter
+      if (filters.priceRange) {
+        if (filters.priceRange === '2000000+') {
+          if (property.priceUsdNum <= 2000000) return false;
+        } else {
+          const [min, max] = filters.priceRange.split('-').map(Number);
+          if (property.priceUsdNum < min || (max && property.priceUsdNum > max)) return false;
+        }
+      }
+
+      // Type filter
+      if (filters.type && property.type !== filters.type) return false;
+
+      // Region filter
+      if (filters.region && property.region !== filters.region) return false;
+
+      return true;
+    });
+  }, [filters]);
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
     <section id="properties" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto">
@@ -69,31 +71,34 @@ export default function FeaturedProperties() {
           </p>
         </div>
 
-        {/* Filter tabs */}
-        <div className="flex justify-center gap-2 mb-12">
-          {["All", "Sale", "Rent", "Investment"].map((tab, i) => (
-            <button
-              key={tab}
-              className={`px-6 py-2 text-sm tracking-wider uppercase transition-all duration-300 ${
-                i === 0
-                  ? "bg-navy-900 text-white"
-                  : "bg-transparent text-navy-900/50 hover:text-navy-900 border border-navy-900/10"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+        {/* Filters */}
+        <PropertyFilters filters={filters} onFilterChange={setFilters} />
+
+        {/* Results count */}
+        <div className="mb-8">
+          <p className="text-navy-900/60 text-sm">
+            Showing {filteredProperties.length} of {properties.length} properties
+          </p>
         </div>
 
         {/* Property Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {properties.map((property) => (
-            <div
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          {filteredProperties.map((property) => (
+            <motion.div
               key={property.id}
+              variants={item}
               className="group cursor-pointer"
+              onClick={() => setSelectedProperty(property)}
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
             >
               {/* Image placeholder */}
-              <div className="relative aspect-[4/3] overflow-hidden mb-4">
+              <div className="relative aspect-[4/3] overflow-hidden mb-4 rounded-lg">
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${property.gradient} group-hover:scale-110 transition-transform duration-700`}
                 />
@@ -101,6 +106,12 @@ export default function FeaturedProperties() {
                 <div className="absolute top-4 left-4 z-10">
                   <span className="bg-gold-500 text-white text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 font-medium">
                     {property.tag}
+                  </span>
+                </div>
+                {/* Type badge */}
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="bg-navy-900/80 text-white text-[10px] tracking-[0.2em] uppercase px-2 py-1 font-medium capitalize">
+                    {property.type}
                   </span>
                 </div>
                 {/* Hover overlay */}
@@ -132,23 +143,62 @@ export default function FeaturedProperties() {
                   <span>{property.area}</span>
                 </div>
 
+                {/* Expected ROI */}
+                {property.expectedROI && (
+                  <div className="mb-3">
+                    <span className="text-gold-600 text-xs font-medium">
+                      Expected ROI: {property.expectedROI}
+                    </span>
+                  </div>
+                )}
+
                 {/* Price */}
                 <div className="pt-3 border-t border-navy-900/10 flex items-baseline justify-between">
                   <span className="text-navy-900 font-heading text-xl">{property.price}</span>
                   <span className="text-navy-900/30 text-sm">{property.priceUsd}</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* View All */}
-        <div className="text-center mt-12">
-          <a href="#" className="btn-outline inline-block">
-            View All 60+ Properties
-          </a>
-        </div>
+        {/* No results */}
+        {filteredProperties.length === 0 && (
+          <div className="text-center py-16">
+            <h3 className="font-heading text-xl text-navy-900 mb-2">No properties found</h3>
+            <p className="text-navy-900/50 mb-6">Try adjusting your filters to see more options.</p>
+            <button 
+              onClick={() => setFilters({ priceRange: '', type: '', region: '' })}
+              className="btn-outline"
+            >
+              Clear All Filters
+            </button>
+          </div>
+        )}
+
+        {/* View All CTA */}
+        {filteredProperties.length > 0 && filteredProperties.length === properties.length && (
+          <div className="text-center mt-12">
+            <motion.a 
+              href="#contact" 
+              className="btn-outline inline-block"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              View All {properties.length}+ Properties
+            </motion.a>
+          </div>
+        )}
       </div>
+
+      {/* Property Modal */}
+      {selectedProperty && (
+        <PropertyModal
+          property={selectedProperty}
+          isOpen={true}
+          onClose={() => setSelectedProperty(null)}
+        />
+      )}
     </section>
   );
 }

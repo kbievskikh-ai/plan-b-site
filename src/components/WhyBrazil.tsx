@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import ScrollAnimation from "./ScrollAnimation";
+
 const reasons = [
   {
     icon: (
@@ -51,76 +56,98 @@ export default function WhyBrazil() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Content */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-[1px] bg-gold-400" />
-              <span className="text-gold-400 text-sm tracking-[0.3em] uppercase">Why Brazil</span>
-            </div>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6 leading-tight">
-              The Smart Money is Moving to{" "}
-              <span className="text-gold-400">Santa Catarina</span>
-            </h2>
-            <p className="text-white/50 text-lg mb-12 leading-relaxed">
-              Santa Catarina has been ranked as Brazil&apos;s #1 state for quality of life
-              for 5 consecutive years. With booming infrastructure, international
-              airports, and a thriving expat community.
-            </p>
+            <ScrollAnimation>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-[1px] bg-gold-400" />
+                <span className="text-gold-400 text-sm tracking-[0.3em] uppercase">Why Brazil</span>
+              </div>
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6 leading-tight">
+                The Smart Money is Moving to{" "}
+                <span className="text-gold-400">Santa Catarina</span>
+              </h2>
+              <p className="text-white/50 text-lg mb-12 leading-relaxed">
+                Santa Catarina has been ranked as Brazil&apos;s #1 state for quality of life
+                for 5 consecutive years. With booming infrastructure, international
+                airports, and a thriving expat community.
+              </p>
+            </ScrollAnimation>
 
             <div className="grid sm:grid-cols-2 gap-8">
               {reasons.map((reason, i) => (
-                <div key={i} className="group">
-                  <div className="text-gold-400 mb-3 group-hover:scale-110 transition-transform duration-300 inline-block">
-                    {reason.icon}
-                  </div>
-                  <h3 className="text-white font-medium mb-2 text-lg">{reason.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{reason.desc}</p>
-                </div>
+                <ScrollAnimation key={i} delay={i * 0.1}>
+                  <motion.div 
+                    className="group"
+                    whileHover={{ x: 5 }}
+                  >
+                    <div className="text-gold-400 mb-3 group-hover:scale-110 transition-transform duration-300 inline-block">
+                      {reason.icon}
+                    </div>
+                    <h3 className="text-white font-medium mb-2 text-lg">{reason.title}</h3>
+                    <p className="text-white/40 text-sm leading-relaxed">{reason.desc}</p>
+                  </motion.div>
+                </ScrollAnimation>
               ))}
             </div>
           </div>
 
           {/* Right - Image placeholder / Stats */}
-          <div className="relative">
-            <div className="aspect-[4/5] bg-gradient-to-br from-navy-700 to-navy-800 relative overflow-hidden">
-              {/* Decorative overlay simulating a luxury building photo */}
-              <div className="absolute inset-0" style={{
-                background: "linear-gradient(160deg, #1a2a3a 0%, #0d1a2a 40%, #1a3a4a 70%, #0d2a3a 100%)",
-              }} />
-              {/* Gold accent border */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 gold-gradient" />
-              {/* Floating stats card */}
-              <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md p-6 border border-white/10">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <div className="text-gold-400 font-heading text-2xl">35%</div>
-                    <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
-                      5-Year Price Growth
+          <ScrollAnimation direction="right">
+            <div className="relative">
+              <div className="aspect-[4/5] bg-gradient-to-br from-navy-700 to-navy-800 relative overflow-hidden">
+                {/* Decorative overlay simulating a luxury building photo */}
+                <div className="absolute inset-0" style={{
+                  background: "linear-gradient(160deg, #1a2a3a 0%, #0d1a2a 40%, #1a3a4a 70%, #0d2a3a 100%)",
+                }} />
+                {/* Gold accent border */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 gold-gradient" />
+                {/* Floating stats card */}
+                <motion.div 
+                  className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md p-6 border border-white/10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <div className="text-gold-400 font-heading text-2xl">35%</div>
+                      <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
+                        5-Year Price Growth
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-gold-400 font-heading text-2xl">#1</div>
+                      <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
+                        Quality of Life
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-gold-400 font-heading text-2xl">8.2%</div>
+                      <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
+                        Rental Yield
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-gold-400 font-heading text-2xl">$200K</div>
+                      <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
+                        Min. Investment
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    <div className="text-gold-400 font-heading text-2xl">#1</div>
-                    <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
-                      Quality of Life
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-gold-400 font-heading text-2xl">8.2%</div>
-                    <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
-                      Rental Yield
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-gold-400 font-heading text-2xl">$200K</div>
-                    <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
-                      Min. Investment
-                    </div>
-                  </div>
-                </div>
+                </motion.div>
               </div>
+              {/* Decorative gold corner */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-gold-400/30" />
             </div>
-            {/* Decorative gold corner */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-gold-400/30" />
-          </div>
+          </ScrollAnimation>
         </div>
+
+        {/* CTA */}
+        <ScrollAnimation className="text-center mt-16">
+          <a href="#contact" className="btn-gold inline-block">
+            Get Investment Proposal
+          </a>
+        </ScrollAnimation>
       </div>
     </section>
   );

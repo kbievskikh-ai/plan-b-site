@@ -9,22 +9,37 @@
   body {
     @apply bg-white text-navy-900 antialiased;
   }
+  /* Better font rendering */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 @layer components {
   .btn-gold {
     @apply bg-gold-500 hover:bg-gold-600 text-white font-medium px-8 py-3 
-           transition-all duration-300 tracking-wider uppercase text-sm;
+           transition-all duration-300 tracking-wider uppercase text-sm
+           hover:shadow-lg hover:shadow-gold-500/20;
   }
   .btn-outline {
     @apply border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-white 
            font-medium px-8 py-3 transition-all duration-300 tracking-wider uppercase text-sm;
   }
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-28;
+    @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-32;
   }
   .gold-gradient {
     @apply bg-gradient-to-r from-gold-400 to-gold-600;
+  }
+  
+  /* Section divider */
+  .section-divider {
+    @apply relative;
+  }
+  .section-divider::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent;
   }
 }
 
@@ -38,4 +53,46 @@
 ::-webkit-scrollbar-thumb {
   background: #c9963c;
   border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a853;
+}
+
+/* Selection color */
+::selection {
+  background: #c9963c;
+  color: white;
+}
+
+/* Smooth scroll anchor offset for fixed header */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Chart tooltip styles */
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+/* Better focus styles */
+:focus-visible {
+  outline: 2px solid #c9963c;
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
