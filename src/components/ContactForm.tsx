@@ -405,14 +405,14 @@ export default function ContactForm() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-8 mt-16"
         >
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg text-center flex flex-col">
             <div className="text-gold-600 mb-4 flex justify-center">
               <CalendarIcon />
             </div>
             <h3 className="font-heading text-xl text-navy-900 mb-3">
               {t('contact.scheduleVideo')}
             </h3>
-            <p className="text-navy-900/60 mb-6 text-sm">
+            <p className="text-navy-900/60 mb-6 text-sm flex-1">
               {t('contact.scheduleVideoDesc')}
             </p>
             <button className="btn-outline w-full">
@@ -420,14 +420,14 @@ export default function ContactForm() {
             </button>
           </div>
 
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg text-center flex flex-col">
             <div className="text-gold-600 mb-4 flex justify-center">
               <DocumentIcon />
             </div>
             <h3 className="font-heading text-xl text-navy-900 mb-3">
               {t('contact.downloadGuide')}
             </h3>
-            <p className="text-navy-900/60 mb-6 text-sm">
+            <p className="text-navy-900/60 mb-6 text-sm flex-1">
               {t('contact.downloadGuideDesc')}
             </p>
             <button className="btn-outline w-full">
