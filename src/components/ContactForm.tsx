@@ -250,7 +250,7 @@ export default function ContactForm() {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors"
+                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors placeholder:text-navy-900/40"
                         placeholder="John Smith"
                       />
                     </div>
@@ -264,7 +264,7 @@ export default function ContactForm() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors"
+                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors placeholder:text-navy-900/40"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -281,7 +281,7 @@ export default function ContactForm() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors"
+                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors placeholder:text-navy-900/40"
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
@@ -295,7 +295,7 @@ export default function ContactForm() {
                         value={formData.country}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors"
+                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors placeholder:text-navy-900/40"
                         placeholder="United States"
                       />
                     </div>
@@ -312,7 +312,7 @@ export default function ContactForm() {
                         value={formData.goal}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors"
+                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors placeholder:text-navy-900/40"
                       >
                         {investmentGoals.map(option => (
                           <option key={option.value} value={option.value}>
@@ -330,7 +330,7 @@ export default function ContactForm() {
                         value={formData.budget}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors"
+                        className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors placeholder:text-navy-900/40"
                       >
                         {budgetRanges.map(option => (
                           <option key={option.value} value={option.value}>
@@ -351,7 +351,7 @@ export default function ContactForm() {
                       value={formData.message}
                       onChange={handleInputChange}
                       rows={4}
-                      className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition-colors placeholder:text-navy-900/40 resize-none"
                       placeholder={t('contact.messagePlaceholder')}
                     />
                   </div>

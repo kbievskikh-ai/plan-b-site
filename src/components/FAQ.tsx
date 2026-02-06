@@ -171,7 +171,7 @@ export default function FAQ() {
                     {category.questions.map((faq, questionIndex) => {
                       const globalIndex = categoryIndex * 100 + questionIndex;
                       return (
-                        <div key={questionIndex} className="border-b border-navy-900/5 last:border-b-0">
+                        <div key={questionIndex} className="border-b border-navy-900/10 last:border-b-0">
                           <button
                             onClick={() => toggleQuestion(globalIndex)}
                             className="w-full px-6 py-4 text-left hover:bg-gray-25 transition-colors duration-200 flex items-center justify-between"
