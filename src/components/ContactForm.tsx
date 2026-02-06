@@ -128,7 +128,7 @@ export default function ContactForm() {
             <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('contact.sectionLabel')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6 [text-wrap:balance]">
             {t('contact.title')}
           </h2>
           <p className="text-navy-900/60 max-w-3xl mx-auto text-lg">
@@ -140,7 +140,7 @@ export default function ContactForm() {
           {/* Contact Information */}
           <div className="lg:col-span-2">
             <div className="bg-navy-900 p-8 rounded-lg text-white">
-              <h3 className="font-heading text-2xl mb-6">
+              <h3 className="font-heading text-xl lg:text-2xl mb-6">
                 {t('contact.discussGoals')}
               </h3>
               

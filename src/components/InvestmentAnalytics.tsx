@@ -108,7 +108,7 @@ export default function InvestmentAnalytics() {
             <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('analytics.sectionLabel')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6 [text-wrap:balance]">
             {t('analytics.title')}
           </h2>
           <p className="text-white/60 max-w-3xl mx-auto text-lg">
@@ -354,7 +354,7 @@ export default function InvestmentAnalytics() {
                 {t('analytics.centralBank')}
               </div>
             </div>
-            <p className="text-white/40 text-xs mt-6">
+            <p className="text-white/50 text-xs mt-6">
               {t('analytics.disclaimer')}
             </p>
           </div>

@@ -68,7 +68,7 @@ export default function AboutMigronis() {
                 <div className="w-8 h-[1px] bg-gold-400" />
                 <span className="text-gold-400 text-sm tracking-[0.3em] uppercase">{t('about.sectionLabel')}</span>
               </div>
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6 leading-tight">
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6 leading-tight [text-wrap:balance]">
                 {t('about.title')}
                 <br />
                 <span className="text-gold-400">{t('about.titleHighlight')}</span>
@@ -76,7 +76,7 @@ export default function AboutMigronis() {
               <p className="text-white/60 text-lg mb-8 leading-relaxed">
                 {t('about.description1')}
               </p>
-              <p className="text-white/40 mb-10 leading-relaxed">
+              <p className="text-white/50 mb-10 leading-relaxed">
                 {t('about.description2')}
               </p>
             </ScrollAnimation>
@@ -96,7 +96,7 @@ export default function AboutMigronis() {
                     <div className="text-3xl md:text-4xl font-heading text-gold-400 mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-white/40 text-xs tracking-wider uppercase">
+                    <div className="text-white/50 text-xs tracking-wider uppercase">
                       {stat.label}
                     </div>
                   </motion.div>
@@ -120,7 +120,7 @@ export default function AboutMigronis() {
                     <h3 className="font-heading text-lg text-white mb-2 group-hover:text-gold-400 transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-white/40 text-sm leading-relaxed">
+                    <p className="text-white/50 text-sm leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

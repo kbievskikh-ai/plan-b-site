@@ -86,7 +86,7 @@ export default function Hero({ videoUrl }: HeroProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-heading text-4xl sm:text-5xl lg:text-7xl text-white leading-[1.1] mb-6"
+            className="font-heading text-4xl sm:text-5xl lg:text-7xl text-white leading-[1.1] mb-6 [text-wrap:balance]"
           >
             {t('hero.title1')}
             <br />
@@ -147,7 +147,7 @@ export default function Hero({ videoUrl }: HeroProps) {
                 <div className="text-gold-400 font-heading text-2xl lg:text-3xl">
                   {stat.value}
                 </div>
-                <div className="text-white/40 text-xs mt-1 tracking-wider uppercase">
+                <div className="text-white/50 text-xs mt-1 tracking-wider uppercase">
                   {stat.label}
                 </div>
               </motion.div>
