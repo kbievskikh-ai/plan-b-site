@@ -55,7 +55,7 @@ export default function PropertyFilters({ filters, onFilterChange }: PropertyFil
           <select
             value={filters.priceRange}
             onChange={(e) => handleFilterChange('priceRange', e.target.value)}
-            className="w-full px-3 sm:px-4 py-2 border border-navy-900/20 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 text-navy-900 text-sm"
+            className="w-full px-3 sm:px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 text-navy-900 text-sm h-12"
           >
             {priceRanges.map(range => (
               <option key={range.value} value={range.value}>
@@ -73,7 +73,7 @@ export default function PropertyFilters({ filters, onFilterChange }: PropertyFil
           <select
             value={filters.type}
             onChange={(e) => handleFilterChange('type', e.target.value)}
-            className="w-full px-3 sm:px-4 py-2 border border-navy-900/20 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 text-navy-900 text-sm"
+            className="w-full px-3 sm:px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 text-navy-900 text-sm h-12"
           >
             {propertyTypes.map(type => (
               <option key={type.value} value={type.value}>
@@ -91,7 +91,7 @@ export default function PropertyFilters({ filters, onFilterChange }: PropertyFil
           <select
             value={filters.region}
             onChange={(e) => handleFilterChange('region', e.target.value)}
-            className="w-full px-3 sm:px-4 py-2 border border-navy-900/20 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 text-navy-900 text-sm"
+            className="w-full px-3 sm:px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 text-navy-900 text-sm h-12"
           >
             {regionOptions.map(region => (
               <option key={region.value} value={region.value}>
@@ -105,7 +105,7 @@ export default function PropertyFilters({ filters, onFilterChange }: PropertyFil
         <div className="w-full sm:w-auto">
           <button
             onClick={() => onFilterChange({ priceRange: '', type: '', region: '' })}
-            className="w-full sm:w-auto px-4 py-2 text-gold-600 hover:text-gold-800 transition-colors border border-gold-600 hover:border-gold-800 rounded-md text-sm whitespace-nowrap"
+            className="btn-outline w-full sm:w-auto h-10 text-xs"
           >
             {t('properties.clearFilters')}
           </button>

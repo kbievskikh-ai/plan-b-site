@@ -112,7 +112,7 @@ export default function CaseStudies() {
             <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">Success Stories</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6 [text-wrap:balance]">
             Investment Case Studies
           </h2>
           <p className="text-navy-900/60 max-w-3xl mx-auto text-lg">
@@ -130,7 +130,7 @@ export default function CaseStudies() {
                 className={`p-4 rounded-lg cursor-pointer transition-all duration-300 border ${
                   activeCaseStudy === index
                     ? 'border-gold-500 bg-white shadow-lg'
-                    : 'border-navy-900/10 bg-white hover:border-gold-300 hover:shadow-md'
+                    : 'border-navy-900/10 bg-white hover:border-gold-400/50 hover:shadow-md'
                 }`}
                 onClick={() => setActiveCaseStudy(index)}
                 whileHover={{ scale: 1.02 }}
@@ -229,7 +229,7 @@ export default function CaseStudies() {
 
                   {/* Strategy & Client */}
                   <div className="mb-8">
-                    <h4 className="font-heading text-xl text-navy-900 mb-4">Investment Strategy</h4>
+                    <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">Investment Strategy</h4>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <div className="text-navy-900/60 text-sm uppercase tracking-wider mb-2">Client Profile</div>
@@ -247,7 +247,7 @@ export default function CaseStudies() {
                   {/* Challenges & Solutions */}
                   <div className="grid md:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h4 className="font-heading text-lg text-navy-900 mb-4">Challenges</h4>
+                      <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">Challenges</h4>
                       <ul className="space-y-2">
                         {caseStudies[activeCaseStudy].challenges.map((challenge, index) => (
                           <li key={index} className="flex items-start gap-2">
@@ -258,7 +258,7 @@ export default function CaseStudies() {
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-heading text-lg text-navy-900 mb-4">Our Solutions</h4>
+                      <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">Our Solutions</h4>
                       <ul className="space-y-2">
                         {caseStudies[activeCaseStudy].solutions.map((solution, index) => (
                           <li key={index} className="flex items-start gap-2">
@@ -272,7 +272,7 @@ export default function CaseStudies() {
 
                   {/* Results */}
                   <div>
-                    <h4 className="font-heading text-lg text-navy-900 mb-4">Key Results</h4>
+                    <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">Key Results</h4>
                     <div className="grid md:grid-cols-2 gap-4">
                       {caseStudies[activeCaseStudy].results.map((result, index) => (
                         <div key={index} className="flex items-start gap-3 p-4 bg-gold-50 rounded-lg">
@@ -296,7 +296,7 @@ export default function CaseStudies() {
           viewport={{ once: true }}
           className="text-center mt-16 p-8 bg-navy-900 rounded-lg"
         >
-          <h3 className="font-heading text-2xl text-white mb-4">
+          <h3 className="font-heading text-xl lg:text-2xl text-white mb-4">
             Ready to Create Your Success Story?
           </h3>
           <p className="text-white/70 mb-6 max-w-2xl mx-auto">
@@ -304,7 +304,7 @@ export default function CaseStudies() {
             to similar success.
           </p>
           <a href="#contact" className="btn-gold">
-            Discuss Your Investment Goals
+            Schedule Consultation
           </a>
         </motion.div>
       </div>

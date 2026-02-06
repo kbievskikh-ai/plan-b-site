@@ -60,12 +60,13 @@ export default function WhyBrazil() {
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-[1px] bg-gold-400" />
                 <span className="text-gold-400 text-sm tracking-[0.3em] uppercase">Why Brazil</span>
+                <div className="w-8 h-[1px] bg-gold-400" />
               </div>
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6 leading-tight">
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6 leading-tight [text-wrap:balance]">
                 The Smart Money is Moving to{" "}
                 <span className="text-gold-400">Santa Catarina</span>
               </h2>
-              <p className="text-white/50 text-lg mb-12 leading-relaxed">
+              <p className="text-white/60 text-lg mb-12 leading-relaxed">
                 Santa Catarina has been ranked as Brazil&apos;s #1 state for quality of life
                 for 5 consecutive years. With booming infrastructure, international
                 airports, and a thriving expat community.
@@ -83,7 +84,7 @@ export default function WhyBrazil() {
                       {reason.icon}
                     </div>
                     <h3 className="text-white font-medium mb-2 text-lg">{reason.title}</h3>
-                    <p className="text-white/40 text-sm leading-relaxed">{reason.desc}</p>
+                    <p className="text-white/50 text-sm leading-relaxed">{reason.desc}</p>
                   </motion.div>
                 </ScrollAnimation>
               ))}
@@ -111,25 +112,25 @@ export default function WhyBrazil() {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-gold-400 font-heading text-2xl">35%</div>
-                      <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
+                      <div className="text-white/60 text-xs tracking-wider uppercase mt-1">
                         5-Year Price Growth
                       </div>
                     </div>
                     <div>
                       <div className="text-gold-400 font-heading text-2xl">#1</div>
-                      <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
+                      <div className="text-white/60 text-xs tracking-wider uppercase mt-1">
                         Quality of Life
                       </div>
                     </div>
                     <div>
                       <div className="text-gold-400 font-heading text-2xl">8.2%</div>
-                      <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
+                      <div className="text-white/60 text-xs tracking-wider uppercase mt-1">
                         Rental Yield
                       </div>
                     </div>
                     <div>
                       <div className="text-gold-400 font-heading text-2xl">$200K</div>
-                      <div className="text-white/50 text-xs tracking-wider uppercase mt-1">
+                      <div className="text-white/60 text-xs tracking-wider uppercase mt-1">
                         Min. Investment
                       </div>
                     </div>
@@ -145,7 +146,7 @@ export default function WhyBrazil() {
         {/* CTA */}
         <ScrollAnimation className="text-center mt-16">
           <a href="#contact" className="btn-gold inline-block">
-            Get Investment Proposal
+            Get Consultation
           </a>
         </ScrollAnimation>
       </div>

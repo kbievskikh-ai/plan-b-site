@@ -64,7 +64,7 @@ export default function FeaturedProperties() {
             <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('properties.portfolio')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-4">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-4 [text-wrap:balance]">
             {t('properties.title')}
           </h2>
           <p className="text-navy-900/50 max-w-2xl mx-auto text-lg">
@@ -93,7 +93,7 @@ export default function FeaturedProperties() {
             <motion.div
               key={property.id}
               variants={item}
-              className="group cursor-pointer"
+              className="group cursor-pointer flex flex-col"
               onClick={() => setSelectedProperty(property)}
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
@@ -124,7 +124,7 @@ export default function FeaturedProperties() {
               </div>
 
               {/* Info */}
-              <div>
+              <div className="flex flex-col flex-1">
                 <div className="flex items-center gap-1.5 mb-2">
                   <svg className="w-3.5 h-3.5 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -155,7 +155,7 @@ export default function FeaturedProperties() {
                 )}
 
                 {/* Price */}
-                <div className="pt-3 border-t border-navy-900/10 flex items-baseline justify-between">
+                <div className="pt-3 border-t border-navy-900/10 flex items-baseline justify-between mt-auto">
                   <span className="text-navy-900 font-heading text-xl">{property.price}</span>
                   <span className="text-navy-900/30 text-sm">{property.priceUsd}</span>
                 </div>

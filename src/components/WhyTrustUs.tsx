@@ -95,7 +95,7 @@ export default function WhyTrustUs() {
             <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('trust.sectionLabel')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6 [text-wrap:balance]">
             {t('trust.title')}
           </h2>
           <p className="text-navy-900/60 max-w-3xl mx-auto text-lg">
@@ -106,7 +106,7 @@ export default function WhyTrustUs() {
         {/* Credentials */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <h3 className="font-heading text-2xl lg:text-3xl text-navy-900 mb-4">
+            <h3 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">
               {t('trust.credentials')}
             </h3>
             <p className="text-navy-900/60 max-w-2xl mx-auto">
@@ -122,7 +122,7 @@ export default function WhyTrustUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded-lg border border-navy-900/5 hover:border-gold-300 transition-colors group"
+                className="bg-white p-8 rounded-lg border border-navy-900/10 hover:border-gold-300 transition-colors group"
               >
                 <div className="text-center">
                   <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold-200 transition-colors">
@@ -146,7 +146,7 @@ export default function WhyTrustUs() {
         {/* Partners */}
         <div className="mb-20">
           <div className="text-center mb-12">
-            <h3 className="font-heading text-2xl lg:text-3xl text-navy-900 mb-4">
+            <h3 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">
               {t('trust.partners')}
             </h3>
             <p className="text-navy-900/60 max-w-2xl mx-auto">
@@ -162,7 +162,7 @@ export default function WhyTrustUs() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="bg-white p-4 rounded-lg border border-navy-900/5 hover:border-gold-300 transition-colors text-center group"
+                className="bg-white p-4 rounded-lg border border-navy-900/10 hover:border-gold-300 transition-colors text-center group"
               >
                 <div className="w-12 h-12 bg-gray-100 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-gold-100 transition-colors">
                   <span className="text-gray-600 group-hover:text-gold-600"><HandshakeIcon /></span>
@@ -170,7 +170,7 @@ export default function WhyTrustUs() {
                 <h4 className="font-medium text-navy-900 text-sm mb-1">
                   {partner.name}
                 </h4>
-                <p className="text-navy-900/40 text-xs">
+                <p className="text-navy-900/50 text-xs">
                   {partner.type}
                 </p>
               </motion.div>
@@ -181,7 +181,7 @@ export default function WhyTrustUs() {
         {/* International Experience */}
         <div>
           <div className="text-center mb-12">
-            <h3 className="font-heading text-2xl lg:text-3xl text-navy-900 mb-4">
+            <h3 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">
               {t('trust.internationalExperience')}
             </h3>
             <p className="text-navy-900/60 max-w-2xl mx-auto">
@@ -197,7 +197,7 @@ export default function WhyTrustUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-lg border border-navy-900/5 hover:border-gold-300 transition-colors group"
+                className="bg-white p-6 rounded-lg border border-navy-900/10 hover:border-gold-300 transition-colors group"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-2xl">{exp.flag}</span>

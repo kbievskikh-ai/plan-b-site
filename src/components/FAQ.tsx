@@ -123,7 +123,7 @@ export default function FAQ() {
             <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('faq.sectionLabel')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6 [text-wrap:balance]">
             {t('faq.title')}
           </h2>
           <p className="text-navy-900/60 max-w-3xl mx-auto text-lg">
@@ -219,7 +219,7 @@ export default function FAQ() {
           viewport={{ once: true }}
           className="mt-16 p-8 bg-gray-50 rounded-lg text-center"
         >
-          <h3 className="font-heading text-xl text-navy-900 mb-4">
+          <h3 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">
             Still Have Questions?
           </h3>
           <p className="text-navy-900/60 mb-6 max-w-2xl mx-auto">
@@ -228,7 +228,7 @@ export default function FAQ() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#contact" className="btn-gold">
-              Schedule Free Consultation
+              Get Consultation
             </a>
             <a href="mailto:info@migronis-brazil.com" className="btn-outline">
               Email Your Questions
@@ -238,7 +238,7 @@ export default function FAQ() {
 
         {/* Risk Disclaimer */}
         <div className="mt-12 p-6 bg-navy-900 rounded-lg">
-          <h4 className="font-heading text-lg text-white mb-3">
+          <h4 className="font-heading text-xl lg:text-2xl text-white mb-3">
             ⚠️ Important Investment Disclaimer
           </h4>
           <p className="text-white/70 text-sm leading-relaxed">

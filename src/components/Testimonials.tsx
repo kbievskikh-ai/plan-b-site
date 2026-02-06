@@ -63,10 +63,10 @@ export default function Testimonials() {
             <span className="text-gold-400 text-sm tracking-[0.3em] uppercase">Testimonials</span>
             <div className="w-8 h-[1px] bg-gold-400" />
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-4 [text-wrap:balance]">
             Client Success Stories
           </h2>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg">
+          <p className="text-white/60 max-w-2xl mx-auto text-lg">
             Hear from international investors who trusted Migronis with their Brazilian property journey.
           </p>
         </ScrollAnimation>
@@ -93,14 +93,14 @@ export default function Testimonials() {
 
               <div className="flex items-center gap-4">
                 {/* Avatar placeholder */}
-                <div className="w-14 h-14 bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-navy-900 font-heading text-xl">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-navy-900 font-heading text-xl">
                   {testimonials[activeIndex].name.split(' ').map(n => n[0]).join('')}
                 </div>
                 <div>
                   <div className="text-white font-medium text-lg">
                     {testimonials[activeIndex].name}
                   </div>
-                  <div className="text-white/40 text-sm">
+                  <div className="text-white/50 text-sm">
                     {testimonials[activeIndex].country} · {testimonials[activeIndex].investmentType}
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export default function Testimonials() {
         {/* CTA */}
         <ScrollAnimation className="text-center mt-16">
           <a href="#contact" className="btn-gold inline-block">
-            Join Our Success Stories
+            Get Consultation
           </a>
         </ScrollAnimation>
       </div>
