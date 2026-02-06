@@ -184,7 +184,7 @@ export default function RegionsMap() {
                     ? 'border-gold-500 bg-gold-50'
                     : hoveredRegion === region.name
                     ? 'border-gold-300 bg-gold-25'
-                    : 'border-navy-900/5 hover:border-gold-500/30 hover:bg-gold-400/5'
+                    : 'border-navy-900/10 hover:border-gold-500/30 hover:bg-gold-400/5'
                 }`}
                 onClick={() => handleRegionClick(region.name)}
                 onMouseEnter={() => setHoveredRegion(region.name)}
