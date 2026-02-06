@@ -2,7 +2,14 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { useLanguage } from '@/lib/i18n';
+
+// Chevron icon component to avoid heroicons dependency issues
+const ChevronDownIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+  </svg>
+);
 
 const faqData = [
   {
@@ -93,6 +100,7 @@ const faqData = [
 ];
 
 export default function FAQ() {
+  const { t } = useLanguage();
   const [openCategory, setOpenCategory] = useState<string | null>('Foreign Ownership');
   const [openQuestion, setOpenQuestion] = useState<number | null>(0);
 
@@ -106,21 +114,20 @@ export default function FAQ() {
   };
 
   return (
-    <section className="section-padding bg-white">
+    <section id="faq" className="section-padding bg-white">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-500" />
-            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">Questions & Answers</span>
+            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('faq.sectionLabel')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6">
-            Frequently Asked Questions
+            {t('faq.title')}
           </h2>
           <p className="text-navy-900/60 max-w-3xl mx-auto text-lg">
-            Everything you need to know about investing in Brazilian real estate. 
-            Get clear answers to the most common questions from international investors.
+            {t('faq.subtitle')}
           </p>
         </div>
 

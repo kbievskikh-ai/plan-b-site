@@ -1,0 +1,496 @@
+'use client';
+
+import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+
+export type Language = 'en' | 'ru';
+
+interface Translations {
+  [key: string]: string | Translations;
+}
+
+const translations: Record<Language, Translations> = {
+  en: {
+    // Header
+    nav: {
+      properties: 'Properties',
+      regions: 'Regions',
+      whyBrazil: 'Why Brazil',
+      about: 'About',
+      caseStudies: 'Case Studies',
+      faq: 'FAQ',
+      getConsultation: 'Get Consultation',
+    },
+    // Hero
+    hero: {
+      location: 'Santa Catarina, Brazil',
+      title1: 'Premium Real Estate',
+      title2: 'Investment Platform',
+      title3: 'in Brazil',
+      subtitle: "Data-driven investment opportunities in Florianópolis, Balneário Camboriú, and Southern Brazil's most sought-after coastal destinations. Trusted by international investors.",
+      exploreProperties: 'Explore Properties',
+      requestConsultation: 'Request Consultation',
+      properties: 'Properties',
+      regions: 'Regions',
+      avgRoi: 'Avg. ROI',
+      countries: 'Countries',
+      scroll: 'Scroll',
+    },
+    // Properties
+    properties: {
+      title: 'Featured Properties',
+      subtitle: "Hand-picked investment opportunities across Santa Catarina's most prestigious coastal destinations.",
+      portfolio: 'Portfolio',
+      priceRange: 'Price Range',
+      propertyType: 'Property Type',
+      region: 'Region',
+      allPrices: 'All Prices',
+      allTypes: 'All Types',
+      allRegions: 'All Regions',
+      clearFilters: 'Clear Filters',
+      showing: 'Showing',
+      of: 'of',
+      propertiesCount: 'properties',
+      beds: 'Beds',
+      baths: 'Baths',
+      expectedRoi: 'Expected ROI',
+      annual: 'annual',
+      viewAll: 'View All',
+      apartment: 'Apartment',
+      house: 'House',
+      penthouse: 'Penthouse',
+      villa: 'Villa',
+      hiddenGem: 'Hidden Gem',
+      investment: 'Investment',
+      peninsula: 'Peninsula',
+      vacation: 'Vacation',
+      surfCulture: 'Surf Culture',
+      residential: 'Residential',
+      techHub: 'Tech Hub',
+    },
+    // Regions/Cities
+    regions: {
+      title: 'Investment Regions',
+      subtitle: 'Explore Santa Catarina\'s most promising real estate markets',
+      florianopolis: 'Florianópolis',
+      balnearioCamboriu: 'Balneário Camboriú',
+      itapema: 'Itapema',
+      portoBelo: 'Porto Belo',
+      bombinhas: 'Bombinhas',
+      imbituba: 'Imbituba',
+      ranchoQueimado: 'Rancho Queimado',
+    },
+    // About
+    about: {
+      sectionLabel: 'About Us',
+      title: 'Your Trusted Partner in',
+      titleHighlight: 'Brazilian Real Estate',
+      description1: 'Migronis Brazil is a specialized division of Migronis International, combining global investment expertise with deep local knowledge of the Brazilian real estate market. We help international investors navigate the opportunities in Santa Catarina\'s booming property sector.',
+      description2: 'Founded by a team of international real estate professionals with firsthand experience in Brazilian property investment, we understand both the opportunities and challenges that foreign investors face. Our mission is to make Brazilian real estate investment accessible, transparent, and profitable for our clients worldwide.',
+      yearsExperience: 'Years Experience',
+      propertiesSold: 'Properties Sold',
+      countriesServed: 'Countries Served',
+      transactionVolume: 'Transaction Volume',
+      internationalExpertise: 'International Expertise',
+      internationalExpertiseDesc: 'Multilingual team experienced in cross-border transactions, understanding the unique needs of foreign investors.',
+      endToEndService: 'End-to-End Service',
+      endToEndServiceDesc: 'From property selection to post-purchase management, we handle every aspect of your investment journey.',
+      dataDrivenApproach: 'Data-Driven Approach',
+      dataDrivenApproachDesc: 'Investment recommendations backed by market analytics, rental yield data, and appreciation forecasts.',
+      localPartnerships: 'Local Partnerships',
+      localPartnershipsDesc: 'Strong network of developers, lawyers, and property managers ensuring smooth transactions and ongoing support.',
+      requestConsultation: 'Request Consultation',
+    },
+    // Trust
+    trust: {
+      sectionLabel: 'Trust & Credibility',
+      title: 'Why Trust Migronis Brazil',
+      subtitle: 'Your investment deserves professional expertise backed by credentials, partnerships, and proven international experience.',
+      credentials: 'Professional Credentials',
+      credentialsSubtitle: 'Fully licensed and certified to handle international real estate investments in Brazil.',
+      creciLicensed: 'CRECI Licensed',
+      creciDesc: 'Fully licensed real estate professionals under Brazilian regulatory body CRECI-SC',
+      ibcCertified: 'International Bar Certified',
+      ibcDesc: 'Certified in international property law and cross-border transactions',
+      fisSpecialist: 'Foreign Investment Specialist',
+      fisDesc: 'Certified specialist in foreign real estate investment regulations',
+      partners: 'Trusted Partners',
+      partnersSubtitle: "We work with Brazil's leading financial institutions and legal firms to ensure secure, compliant transactions.",
+      internationalExperience: 'International Client Experience',
+      internationalExperienceSubtitle: "We've successfully guided investors from 45+ countries through Brazilian real estate investments.",
+      clientsServed: 'Clients Served',
+      readyToWork: 'Ready to Work with Trusted Professionals?',
+      readyToWorkSubtitle: "Join hundreds of international investors who've trusted us with their Brazilian real estate investments.",
+      scheduleConsultation: 'Schedule Your Consultation',
+    },
+    // Analytics
+    analytics: {
+      sectionLabel: 'Market Data',
+      title: 'Investment Analytics',
+      subtitle: "Real market data and trends across Santa Catarina's investment regions. Make informed decisions with comprehensive analytics and insights.",
+      priceGrowth: 'Price Growth',
+      rentalYields: 'Rental Yields',
+      marketMix: 'Market Mix',
+      investmentFlows: 'Investment Flows',
+      priceGrowthTitle: 'Property Price Growth Trends',
+      priceGrowthSubtitle: 'Average property values by region (USD)',
+      fiveYearGrowth: '5-Year Growth',
+      avgPrice: 'Avg. Price',
+      annualGrowth: 'Annual Growth',
+      trendDirection: 'Trend Direction',
+      rentalYieldTitle: 'Rental Yield Analysis',
+      rentalYieldSubtitle: 'Annual rental yields by region and property type (%)',
+      avgResidential: 'Avg Residential',
+      avgVacationRental: 'Avg Vacation Rental',
+      avgInvestment: 'Avg Investment',
+      marketCompositionTitle: 'Market Composition',
+      marketCompositionSubtitle: 'Investment distribution by property type',
+      residential: 'Residential',
+      vacationRental: 'Vacation Rental',
+      commercial: 'Commercial',
+      investmentFlowTitle: 'Investment Flow Trends',
+      investmentFlowSubtitle: 'Monthly investment volume (millions USD)',
+      avgForeignMonthly: 'Avg Foreign Monthly',
+      avgDomesticMonthly: 'Avg Domestic Monthly',
+      foreignInvestmentShare: 'Foreign Investment Share',
+      dataSources: 'Data Sources & Methodology',
+      ibge: 'Brazilian Institute of Geography and Statistics - Official property price indices and demographic data',
+      secoviSc: 'Santa Catarina Real Estate Union - Market transactions, rental yields, and regional analysis',
+      centralBank: 'Foreign investment flows, currency data, and economic indicators',
+      disclaimer: 'Data updated monthly. Investment returns are historical and do not guarantee future performance.',
+    },
+    // Contact
+    contact: {
+      sectionLabel: 'Get Started',
+      title: 'Start Your Investment Journey',
+      subtitle: "Ready to explore Brazilian real estate opportunities? Tell us about your goals and we'll provide personalized guidance for your investment journey.",
+      discussGoals: "Let's Discuss Your Investment Goals",
+      phoneConsultation: 'Phone Consultation',
+      scheduleCall: 'Schedule a call at your convenience',
+      email: 'Email',
+      detailedResponses: 'Detailed responses within 24 hours',
+      office: 'Office',
+      byAppointment: 'Brazil (by appointment)',
+      languages: 'Languages',
+      responseTime: 'Typical Response Time',
+      responseTimeDesc: 'We respond to all inquiries within 24 hours. Urgent requests are handled within 4 business hours during São Paulo business hours (UTC-3).',
+      fullName: 'Full Name',
+      emailAddress: 'Email Address',
+      phoneNumber: 'Phone Number',
+      countryOfResidence: 'Country of Residence',
+      investmentGoal: 'Investment Goal',
+      budgetRange: 'Budget Range',
+      message: 'Message / Specific Requirements',
+      messagePlaceholder: 'Tell us about your investment timeline, preferred regions, specific requirements, or any questions you have...',
+      sendMessage: 'Send Message',
+      sendingMessage: 'Sending Message...',
+      thankYou: 'Thank You!',
+      thankYouMessage: "We've received your inquiry and will contact you within 24 hours to discuss your Brazilian real estate investment goals.",
+      sendAnother: 'Send Another Message',
+      errorMessage: 'There was an error sending your message. Please try again or contact us directly.',
+      privacyNotice: 'By submitting this form, you agree to our privacy policy. We will never share your information with third parties and will only use it to provide you with relevant investment opportunities and updates.',
+      scheduleVideo: 'Schedule Video Consultation',
+      scheduleVideoDesc: 'Book a 30-minute video call to discuss your investment goals and explore opportunities.',
+      bookVideoCall: 'Book Video Call',
+      downloadGuide: 'Download Investment Guide',
+      downloadGuideDesc: 'Get our comprehensive guide to Brazilian real estate investment for foreign buyers.',
+      downloadGuidePdf: 'Download Guide (PDF)',
+      selectGoal: 'Select your goal...',
+      investmentRental: 'Investment / Rental Income',
+      personalResidence: 'Personal Residence',
+      vacationHome: 'Vacation Home',
+      businessCommercial: 'Business / Commercial',
+      other: 'Other',
+      selectBudget: 'Select budget range...',
+      budget200k500k: '$200k - $500k',
+      budget500k1m: '$500k - $1M',
+      budget1m2m: '$1M - $2M',
+      budget2mPlus: '$2M+',
+      budgetFlexible: 'Flexible / Discuss',
+    },
+    // FAQ
+    faq: {
+      sectionLabel: 'FAQ',
+      title: 'Frequently Asked Questions',
+      subtitle: 'Everything you need to know about investing in Brazilian real estate as a foreign buyer.',
+    },
+    // Footer
+    footer: {
+      description: 'Premium real estate investment opportunities in Santa Catarina, Brazil. Trusted by international investors worldwide.',
+      quickLinks: 'Quick Links',
+      contactUs: 'Contact Us',
+      allRightsReserved: 'All rights reserved.',
+      telegram: 'Telegram',
+    },
+    // Common
+    common: {
+      learnMore: 'Learn More',
+      viewDetails: 'View Details',
+      close: 'Close',
+    },
+  },
+  ru: {
+    // Header
+    nav: {
+      properties: 'Недвижимость',
+      regions: 'Регионы',
+      whyBrazil: 'Почему Бразилия',
+      about: 'О компании',
+      caseStudies: 'Кейсы',
+      faq: 'Вопросы',
+      getConsultation: 'Консультация',
+    },
+    // Hero
+    hero: {
+      location: 'Санта-Катарина, Бразилия',
+      title1: 'Премиум недвижимость',
+      title2: 'для инвестиций',
+      title3: 'в Бразилии',
+      subtitle: 'Выгодные инвестиции в недвижимость Флорианополиса, Балнеариу-Камбориу и лучших курортов южной Бразилии. Работаем с инвесторами из 45+ стран.',
+      exploreProperties: 'Смотреть объекты',
+      requestConsultation: 'Получить консультацию',
+      properties: 'объектов',
+      regions: 'регионов',
+      avgRoi: 'доходность',
+      countries: 'стран',
+      scroll: 'Листать',
+    },
+    // Properties
+    properties: {
+      title: 'Объекты недвижимости',
+      subtitle: 'Лучшие предложения для инвестиций на побережье Санта-Катарины',
+      portfolio: 'Каталог',
+      priceRange: 'Цена',
+      propertyType: 'Тип',
+      region: 'Регион',
+      allPrices: 'Любая цена',
+      allTypes: 'Все типы',
+      allRegions: 'Все регионы',
+      clearFilters: 'Сбросить',
+      showing: 'Показано',
+      of: 'из',
+      propertiesCount: 'объектов',
+      beds: 'спален',
+      baths: 'санузлов',
+      expectedRoi: 'Доходность',
+      annual: 'в год',
+      viewAll: 'Все объекты',
+      apartment: 'Квартира',
+      house: 'Дом',
+      penthouse: 'Пентхаус',
+      villa: 'Вилла',
+      hiddenGem: 'Выгодно',
+      investment: 'Инвестиции',
+      peninsula: 'Полуостров',
+      vacation: 'Для отдыха',
+      surfCulture: 'Сёрфинг',
+      residential: 'Жильё',
+      techHub: 'IT-центр',
+    },
+    // Regions/Cities
+    regions: {
+      title: 'Регионы для инвестиций',
+      subtitle: 'Семь локаций с разным характером и потенциалом',
+      florianopolis: 'Флорианополис',
+      balnearioCamboriu: 'Балнеариу-Камбориу',
+      itapema: 'Итапема',
+      portoBelo: 'Порту-Белу',
+      bombinhas: 'Бомбиньяс',
+      imbituba: 'Имбитуба',
+      ranchoQueimado: 'Ранчо-Кеймаду',
+    },
+    // About
+    about: {
+      sectionLabel: 'О компании',
+      title: 'Надёжный партнёр для',
+      titleHighlight: 'инвестиций в Бразилии',
+      description1: 'Migronis Brazil — это подразделение международной компании Migronis. Мы объединяем глобальный опыт инвестирования с глубоким знанием бразильского рынка. Помогаем иностранным инвесторам находить лучшие объекты в Санта-Катарине.',
+      description2: 'Наша команда — это профессионалы с реальным опытом покупки недвижимости в Бразилии. Мы знаем все нюансы: от юридических тонкостей до выбора управляющей компании. Наша цель — сделать ваши инвестиции простыми, прозрачными и прибыльными.',
+      yearsExperience: 'лет опыта',
+      propertiesSold: 'сделок',
+      countriesServed: 'стран',
+      transactionVolume: 'объём сделок',
+      internationalExpertise: 'Международный опыт',
+      internationalExpertiseDesc: 'Говорим на вашем языке. Понимаем специфику работы с иностранными инвесторами.',
+      endToEndService: 'Полное сопровождение',
+      endToEndServiceDesc: 'От подбора объекта до управления после покупки — берём на себя всё.',
+      dataDrivenApproach: 'Аналитический подход',
+      dataDrivenApproachDesc: 'Рекомендуем объекты на основе данных: доходность, динамика цен, перспективы роста.',
+      localPartnerships: 'Партнёры на месте',
+      localPartnershipsDesc: 'Застройщики, юристы, управляющие — надёжная сеть контактов для решения любых вопросов.',
+      requestConsultation: 'Получить консультацию',
+    },
+    // Trust
+    trust: {
+      sectionLabel: 'Почему мы',
+      title: 'Почему выбирают Migronis',
+      subtitle: 'Лицензии, партнёрства и сотни успешных сделок с клиентами из разных стран.',
+      credentials: 'Лицензии и сертификаты',
+      credentialsSubtitle: 'Официально работаем с иностранными инвестициями в недвижимость Бразилии',
+      creciLicensed: 'Лицензия CRECI',
+      creciDesc: 'Лицензированные риелторы под контролем регулятора CRECI-SC',
+      ibcCertified: 'Международная сертификация',
+      ibcDesc: 'Сертификат в области международного права недвижимости',
+      fisSpecialist: 'Специалист по инвестициям',
+      fisDesc: 'Сертификат по работе с иностранными инвестициями',
+      partners: 'Партнёры',
+      partnersSubtitle: 'Работаем с ведущими банками и юридическими фирмами Бразилии',
+      internationalExperience: 'Клиенты из разных стран',
+      internationalExperienceSubtitle: 'Провели инвесторов из 45+ стран через покупку недвижимости в Бразилии',
+      clientsServed: 'клиентов',
+      readyToWork: 'Готовы начать?',
+      readyToWorkSubtitle: 'Присоединяйтесь к сотням инвесторов, которые уже купили недвижимость с нашей помощью.',
+      scheduleConsultation: 'Записаться на консультацию',
+    },
+    // Analytics
+    analytics: {
+      sectionLabel: 'Аналитика',
+      title: 'Рынок в цифрах',
+      subtitle: 'Актуальные данные по рынку недвижимости Санта-Катарины для принятия взвешенных решений.',
+      priceGrowth: 'Динамика цен',
+      rentalYields: 'Доходность',
+      marketMix: 'Структура рынка',
+      investmentFlows: 'Потоки инвестиций',
+      priceGrowthTitle: 'Рост цен на недвижимость',
+      priceGrowthSubtitle: 'Средняя стоимость по регионам (USD)',
+      fiveYearGrowth: 'рост за 5 лет',
+      avgPrice: 'средняя цена',
+      annualGrowth: 'рост в год',
+      trendDirection: 'тренд',
+      rentalYieldTitle: 'Доходность аренды',
+      rentalYieldSubtitle: 'Годовая доходность по регионам и типам (%)',
+      avgResidential: 'долгосрочная',
+      avgVacationRental: 'краткосрочная',
+      avgInvestment: 'инвестиционная',
+      marketCompositionTitle: 'Структура рынка',
+      marketCompositionSubtitle: 'Распределение инвестиций по типам',
+      residential: 'Жилая',
+      vacationRental: 'Посуточная',
+      commercial: 'Коммерческая',
+      investmentFlowTitle: 'Инвестиционные потоки',
+      investmentFlowSubtitle: 'Объём инвестиций в месяц (млн USD)',
+      avgForeignMonthly: 'иностранные',
+      avgDomesticMonthly: 'внутренние',
+      foreignInvestmentShare: 'доля иностранных',
+      dataSources: 'Источники данных',
+      ibge: 'IBGE — официальные индексы цен и демографические данные',
+      secoviSc: 'SECOVI-SC — рыночные сделки и региональная аналитика',
+      centralBank: 'ЦБ Бразилии — валютные данные и инвестиционные потоки',
+      disclaimer: 'Данные обновляются ежемесячно. Прошлая доходность не гарантирует будущих результатов.',
+    },
+    // Contact
+    contact: {
+      sectionLabel: 'Контакты',
+      title: 'Начните с консультации',
+      subtitle: 'Расскажите о ваших целях — подберём подходящие варианты и ответим на вопросы.',
+      discussGoals: 'Обсудим ваши цели',
+      phoneConsultation: 'Телефон',
+      scheduleCall: 'Звоните в удобное время',
+      email: 'Email',
+      detailedResponses: 'Ответим в течение 24 часов',
+      office: 'Офис',
+      byAppointment: 'Бразилия (по записи)',
+      languages: 'Языки',
+      responseTime: 'Время ответа',
+      responseTimeDesc: 'Отвечаем на все заявки в течение 24 часов. Срочные вопросы — в течение 4 часов в рабочее время (UTC-3).',
+      fullName: 'Имя',
+      emailAddress: 'Email',
+      phoneNumber: 'Телефон',
+      countryOfResidence: 'Страна проживания',
+      investmentGoal: 'Цель',
+      budgetRange: 'Бюджет',
+      message: 'Сообщение',
+      messagePlaceholder: 'Расскажите о сроках, предпочтениях по региону, особых требованиях или задайте вопросы...',
+      sendMessage: 'Отправить',
+      sendingMessage: 'Отправляем...',
+      thankYou: 'Спасибо!',
+      thankYouMessage: 'Мы получили вашу заявку и свяжемся с вами в течение 24 часов.',
+      sendAnother: 'Отправить ещё',
+      errorMessage: 'Ошибка отправки. Попробуйте ещё раз или напишите нам напрямую.',
+      privacyNotice: 'Отправляя форму, вы соглашаетесь с политикой конфиденциальности. Мы не передаём данные третьим лицам.',
+      scheduleVideo: 'Видеозвонок',
+      scheduleVideoDesc: '30-минутная консультация для обсуждения ваших целей.',
+      bookVideoCall: 'Записаться',
+      downloadGuide: 'Гайд инвестора',
+      downloadGuideDesc: 'Полное руководство по покупке недвижимости в Бразилии для иностранцев.',
+      downloadGuidePdf: 'Скачать PDF',
+      selectGoal: 'Выберите цель...',
+      investmentRental: 'Инвестиции / Сдача в аренду',
+      personalResidence: 'Для себя',
+      vacationHome: 'Дом для отпуска',
+      businessCommercial: 'Бизнес / Коммерция',
+      other: 'Другое',
+      selectBudget: 'Выберите бюджет...',
+      budget200k500k: '$200–500 тыс.',
+      budget500k1m: '$500 тыс. – $1 млн',
+      budget1m2m: '$1–2 млн',
+      budget2mPlus: 'Более $2 млн',
+      budgetFlexible: 'Обсудим',
+    },
+    // FAQ
+    faq: {
+      sectionLabel: 'Вопросы и ответы',
+      title: 'Частые вопросы',
+      subtitle: 'Всё, что нужно знать о покупке недвижимости в Бразилии иностранцам.',
+    },
+    // Footer
+    footer: {
+      description: 'Премиальная недвижимость для инвестиций в Санта-Катарине, Бразилия. Работаем с клиентами по всему миру.',
+      quickLinks: 'Навигация',
+      contactUs: 'Контакты',
+      allRightsReserved: 'Все права защищены.',
+      telegram: 'Телеграм',
+    },
+    // Common
+    common: {
+      learnMore: 'Подробнее',
+      viewDetails: 'Подробнее',
+      close: 'Закрыть',
+    },
+  },
+};
+
+interface LanguageContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
+}
+
+export const LanguageContext = createContext<LanguageContextType | null>(null);
+
+export function useLanguage() {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+}
+
+// Helper to get nested translation
+function getNestedTranslation(obj: Translations, path: string): string {
+  const keys = path.split('.');
+  let current: string | Translations = obj;
+  
+  for (const key of keys) {
+    if (typeof current === 'object' && current !== null && key in current) {
+      current = current[key];
+    } else {
+      return path; // Return key if not found
+    }
+  }
+  
+  return typeof current === 'string' ? current : path;
+}
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguage] = useState<Language>('en');
+
+  const t = useCallback((key: string): string => {
+    return getNestedTranslation(translations[language], key);
+  }, [language]);
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}

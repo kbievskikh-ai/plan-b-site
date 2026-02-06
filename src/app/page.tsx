@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import FeaturedProperties from "@/components/FeaturedProperties";
 import AboutMigronis from "@/components/AboutMigronis";
 import WhyTrustUs from "@/components/WhyTrustUs";
-import RegionsMap from "@/components/RegionsMap";
+import InteractiveMap from "@/components/InteractiveMap";
 import InvestmentAnalytics from "@/components/InvestmentAnalytics";
 import CaseStudies from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
@@ -20,7 +20,7 @@ export default function Home() {
       <FeaturedProperties />
       <AboutMigronis />
       <WhyTrustUs />
-      <RegionsMap />
+      <InteractiveMap />
       <InvestmentAnalytics />
       <CaseStudies />
       <Testimonials />

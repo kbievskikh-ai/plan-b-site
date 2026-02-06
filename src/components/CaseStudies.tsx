@@ -103,7 +103,7 @@ export default function CaseStudies() {
   const [activeCaseStudy, setActiveCaseStudy] = useState(0);
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section id="case-studies" className="section-padding bg-gray-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">

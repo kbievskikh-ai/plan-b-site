@@ -1,4 +1,38 @@
+'use client';
+
+import { useLanguage } from '@/lib/i18n';
+
 export default function Footer() {
+  const { t, language } = useLanguage();
+
+  const properties = language === 'ru' 
+    ? ["Продажа", "Аренда", "Инвестиции", "Новостройки", "Виллы"]
+    : ["For Sale", "For Rent", "Investment", "New Developments", "Luxury Villas"];
+
+  const regions = language === 'ru'
+    ? [
+        t('regions.florianopolis'),
+        t('regions.balnearioCamboriu'),
+        t('regions.itapema'),
+        t('regions.portoBelo'),
+        t('regions.bombinhas'),
+        t('regions.imbituba'),
+        t('regions.ranchoQueimado'),
+      ]
+    : [
+        "Florianópolis",
+        "Balneário Camboriú",
+        "Itapema",
+        "Porto Belo",
+        "Bombinhas",
+        "Imbituba",
+        "Rancho Queimado",
+      ];
+
+  const company = language === 'ru'
+    ? ["О Migronis", "Наша команда", "Гайд инвестора", "Блог", "Политика конфиденциальности", "Контакты"]
+    : ["About Migronis", "Our Team", "Investment Guide", "Blog", "Privacy Policy", "Contact"];
+
   return (
     <footer className="bg-navy-900 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -17,46 +51,35 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/30 text-sm leading-relaxed mt-4">
-              Premium real estate solutions for international investors seeking
-              opportunities in Brazil&apos;s most exclusive coastal destinations.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Properties */}
           <div>
             <h4 className="text-white font-medium mb-4 tracking-wider uppercase text-sm">
-              Properties
+              {t('nav.properties')}
             </h4>
             <ul className="space-y-3">
-              {["For Sale", "For Rent", "Investment", "New Developments", "Luxury Villas"].map(
-                (item) => (
-                  <li key={item}>
-                    <a href="#" className="text-white/30 hover:text-gold-400 text-sm transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {properties.map((item) => (
+                <li key={item}>
+                  <a href="#properties" className="text-white/30 hover:text-gold-400 text-sm transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Regions */}
           <div>
             <h4 className="text-white font-medium mb-4 tracking-wider uppercase text-sm">
-              Regions
+              {t('nav.regions')}
             </h4>
             <ul className="space-y-3">
-              {[
-                "Florianópolis",
-                "Balneário Camboriú",
-                "Itapema",
-                "Porto Belo",
-                "Bombinhas",
-                "Imbituba",
-                "Rancho Queimado",
-              ].map((item) => (
+              {regions.map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-white/30 hover:text-gold-400 text-sm transition-colors">
+                  <a href="#regions" className="text-white/30 hover:text-gold-400 text-sm transition-colors">
                     {item}
                   </a>
                 </li>
@@ -67,18 +90,16 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h4 className="text-white font-medium mb-4 tracking-wider uppercase text-sm">
-              Company
+              {language === 'ru' ? 'Компания' : 'Company'}
             </h4>
             <ul className="space-y-3">
-              {["About Migronis", "Our Team", "Investment Guide", "Blog", "Privacy Policy", "Contact"].map(
-                (item) => (
-                  <li key={item}>
-                    <a href="#" className="text-white/30 hover:text-gold-400 text-sm transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {company.map((item) => (
+                <li key={item}>
+                  <a href="#about" className="text-white/30 hover:text-gold-400 text-sm transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -86,17 +107,22 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-sm">
-            © 2026 Migronis Real Estate. All rights reserved.
+            © 2026 Migronis Real Estate. {t('footer.allRightsReserved')}
           </p>
           <div className="flex items-center gap-6">
             {/* Social icons */}
-            {["Instagram", "LinkedIn", "YouTube", "Telegram"].map((social) => (
+            {[
+              { name: "Instagram", href: "#" },
+              { name: "LinkedIn", href: "#" },
+              { name: "YouTube", href: "#" },
+              { name: t('footer.telegram'), href: "#" },
+            ].map((social) => (
               <a
-                key={social}
-                href="#"
+                key={social.name}
+                href={social.href}
                 className="text-white/20 hover:text-gold-400 text-xs tracking-wider uppercase transition-colors"
               >
-                {social}
+                {social.name}
               </a>
             ))}
           </div>

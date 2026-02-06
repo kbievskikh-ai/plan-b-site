@@ -5,8 +5,10 @@ import { motion } from 'framer-motion';
 import { properties, Property } from '@/data/properties';
 import PropertyModal from './PropertyModal';
 import PropertyFilters, { FilterState } from './PropertyFilters';
+import { useLanguage } from '@/lib/i18n';
 
 export default function FeaturedProperties() {
+  const { t } = useLanguage();
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
   const [filters, setFilters] = useState<FilterState>({
     priceRange: '',
@@ -59,15 +61,14 @@ export default function FeaturedProperties() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-500" />
-            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">Portfolio</span>
+            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('properties.portfolio')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-4">
-            Featured Properties
+            {t('properties.title')}
           </h2>
           <p className="text-navy-900/50 max-w-2xl mx-auto text-lg">
-            Hand-picked investment opportunities across Santa Catarina&apos;s most
-            prestigious coastal destinations.
+            {t('properties.subtitle')}
           </p>
         </div>
 
@@ -77,7 +78,7 @@ export default function FeaturedProperties() {
         {/* Results count */}
         <div className="mb-8">
           <p className="text-navy-900/60 text-sm">
-            Showing {filteredProperties.length} of {properties.length} properties
+            {t('properties.showing')} {filteredProperties.length} {t('properties.of')} {properties.length} {t('properties.propertiesCount')}
           </p>
         </div>
 
@@ -117,7 +118,7 @@ export default function FeaturedProperties() {
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/30 transition-colors duration-500 flex items-center justify-center">
                   <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm tracking-widest uppercase">
-                    View Details
+                    {t('common.viewDetails')}
                   </span>
                 </div>
               </div>
@@ -125,8 +126,9 @@ export default function FeaturedProperties() {
               {/* Info */}
               <div>
                 <div className="flex items-center gap-1.5 mb-2">
-                  <svg className="w-3.5 h-3.5 text-gold-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <svg className="w-3.5 h-3.5 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                   </svg>
                   <span className="text-navy-900/40 text-xs tracking-wider uppercase">
                     {property.location}
@@ -138,8 +140,8 @@ export default function FeaturedProperties() {
 
                 {/* Details */}
                 <div className="flex gap-4 text-navy-900/40 text-xs mb-3">
-                  <span>{property.beds} Beds</span>
-                  <span>{property.baths} Baths</span>
+                  <span>{property.beds} {t('properties.beds')}</span>
+                  <span>{property.baths} {t('properties.baths')}</span>
                   <span>{property.area}</span>
                 </div>
 
@@ -147,7 +149,7 @@ export default function FeaturedProperties() {
                 {property.expectedROI && (
                   <div className="mb-3">
                     <span className="text-gold-600 text-xs font-medium">
-                      Expected ROI: {property.expectedROI}
+                      {t('properties.expectedRoi')}: {property.expectedROI}
                     </span>
                   </div>
                 )}
@@ -171,7 +173,7 @@ export default function FeaturedProperties() {
               onClick={() => setFilters({ priceRange: '', type: '', region: '' })}
               className="btn-outline"
             >
-              Clear All Filters
+              {t('properties.clearFilters')}
             </button>
           </div>
         )}
@@ -185,7 +187,7 @@ export default function FeaturedProperties() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              View All {properties.length}+ Properties
+              {t('properties.viewAll')} {properties.length}+
             </motion.a>
           </div>
         )}

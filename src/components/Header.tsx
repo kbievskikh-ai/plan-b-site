@@ -2,19 +2,21 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navItems = [
-  { label: "Properties", href: "#properties" },
-  { label: "Regions", href: "#regions" },
-  { label: "Why Brazil", href: "#investment" },
-  { label: "About", href: "#about" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "FAQ", href: "#faq" },
-];
+import { useLanguage } from "@/lib/i18n";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+
+  const navItems = [
+    { label: t('nav.properties'), href: "#properties" },
+    { label: t('nav.regions'), href: "#regions" },
+    { label: t('nav.whyBrazil'), href: "#investment" },
+    { label: t('nav.about'), href: "#about" },
+    { label: t('nav.caseStudies'), href: "#case-studies" },
+    { label: t('nav.faq'), href: "#faq" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,10 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'ru' : 'en');
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -31,8 +37,8 @@ export default function Header() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-navy-900/98 backdrop-blur-md border-b border-white/5 shadow-lg"
-          : "bg-transparent"
+          ? "bg-navy-900 backdrop-blur-md border-b border-white/5 shadow-lg"
+          : "bg-navy-900/90 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,7 +64,7 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <motion.a
-                key={item.label}
+                key={item.href}
                 href={item.href}
                 className="text-white/70 hover:text-gold-400 text-sm tracking-wider uppercase transition-colors duration-300 relative group"
                 whileHover={{ y: -2 }}
@@ -67,36 +73,57 @@ export default function Header() {
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold-400 group-hover:w-full transition-all duration-300" />
               </motion.a>
             ))}
+            
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-3 py-1.5 border border-white/20 rounded text-white/70 hover:text-gold-400 hover:border-gold-400/50 text-sm tracking-wider uppercase transition-all duration-300"
+            >
+              <span className="text-base">{language === 'en' ? '🇬🇧' : '🇷🇺'}</span>
+              <span>{language.toUpperCase()}</span>
+            </button>
+
             <motion.a
               href="#contact"
-              className="btn-gold ml-4"
+              className="btn-gold ml-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get Consultation
+              {t('nav.getConsultation')}
             </motion.a>
           </nav>
 
           {/* Mobile menu button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden text-white/80 hover:text-gold-400 relative w-10 h-10 flex items-center justify-center"
-          >
-            <motion.div
-              animate={menuOpen ? { rotate: 180 } : { rotate: 0 }}
-              transition={{ duration: 0.3 }}
+          <div className="lg:hidden flex items-center gap-3">
+            {/* Mobile Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-2 py-1 border border-white/20 rounded text-white/70 hover:text-gold-400 text-xs tracking-wider uppercase transition-colors"
             >
-              {menuOpen ? (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </motion.div>
-          </button>
+              <span>{language === 'en' ? '🇬🇧' : '🇷🇺'}</span>
+              <span>{language.toUpperCase()}</span>
+            </button>
+            
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-white/80 hover:text-gold-400 relative w-10 h-10 flex items-center justify-center"
+            >
+              <motion.div
+                animate={menuOpen ? { rotate: 180 } : { rotate: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {menuOpen ? (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </motion.div>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Nav */}
@@ -112,7 +139,7 @@ export default function Header() {
               <div className="pb-6 border-t border-white/5 pt-4">
                 {navItems.map((item, index) => (
                   <motion.a
-                    key={item.label}
+                    key={item.href}
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     initial={{ opacity: 0, x: -20 }}
@@ -131,7 +158,7 @@ export default function Header() {
                   transition={{ delay: navItems.length * 0.1 }}
                   className="btn-gold inline-block mt-4"
                 >
-                  Get Consultation
+                  {t('nav.getConsultation')}
                 </motion.a>
               </div>
             </motion.nav>

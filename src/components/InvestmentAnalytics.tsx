@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/lib/i18n';
 import { 
   LineChart, 
   Line, 
@@ -31,7 +32,7 @@ const priceGrowthData = [
 
 const rentalYieldData = [
   { region: 'Florianópolis', residential: 6.5, vacation: 12.8, investment: 9.2 },
-  { region: 'Balneário Camboriú', residential: 5.8, vacation: 14.2, investment: 10.1 },
+  { region: 'B. Camboriú', residential: 5.8, vacation: 14.2, investment: 10.1 },
   { region: 'Itapema', residential: 7.2, vacation: 11.5, investment: 8.9 },
   { region: 'Porto Belo', residential: 8.1, vacation: 13.6, investment: 10.8 },
   { region: 'Bombinhas', residential: 6.9, vacation: 15.2, investment: 11.3 },
@@ -57,6 +58,7 @@ const investmentFlowData = [
 const COLORS = ['#0a0e1a', '#c9963c', '#1e2844', '#d4a853'];
 
 export default function InvestmentAnalytics() {
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState('growth');
 
   const formatCurrency = (value: number) => {
@@ -68,14 +70,33 @@ export default function InvestmentAnalytics() {
     }).format(value);
   };
 
+  const formatCurrencyShort = (value: number) => {
+    if (value >= 1000000) {
+      return `$${(value / 1000000).toFixed(1)}M`;
+    }
+    return `$${(value / 1000).toFixed(0)}k`;
+  };
+
   const formatPercent = (value: number) => `${value}%`;
 
   const tabs = [
-    { id: 'growth', label: 'Price Growth', icon: '📈' },
-    { id: 'yields', label: 'Rental Yields', icon: '💰' },
-    { id: 'composition', label: 'Market Mix', icon: '🥧' },
-    { id: 'flows', label: 'Investment Flows', icon: '🌊' },
+    { id: 'growth', label: t('analytics.priceGrowth'), icon: '📈' },
+    { id: 'yields', label: t('analytics.rentalYields'), icon: '💰' },
+    { id: 'composition', label: t('analytics.marketMix'), icon: '🥧' },
+    { id: 'flows', label: t('analytics.investmentFlows'), icon: '🌊' },
   ];
+
+  const getMarketCompositionLabels = () => {
+    if (language === 'ru') {
+      return [
+        { name: 'Жилая', value: 45, color: '#0a0e1a' },
+        { name: 'Краткосрочная', value: 30, color: '#c9963c' },
+        { name: 'Инвестиционная', value: 20, color: '#1e2844' },
+        { name: 'Коммерческая', value: 5, color: '#d4a853' },
+      ];
+    }
+    return marketCompositionData;
+  };
 
   return (
     <section className="section-padding bg-navy-900 text-white">
@@ -84,31 +105,30 @@ export default function InvestmentAnalytics() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-500" />
-            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">Market Data</span>
+            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('analytics.sectionLabel')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-6">
-            Investment Analytics
+            {t('analytics.title')}
           </h2>
           <p className="text-white/60 max-w-3xl mx-auto text-lg">
-            Real market data and trends across Santa Catarina&apos;s investment regions. 
-            Make informed decisions with comprehensive analytics and insights.
+            {t('analytics.subtitle')}
           </p>
         </div>
 
-        {/* Tab Navigation */}
+        {/* Tab Navigation - improved for mobile */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 ${
+              className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 text-sm sm:text-base whitespace-nowrap ${
                 activeTab === tab.id
                   ? 'bg-gold-500 text-navy-900'
                   : 'bg-white/10 text-white hover:bg-white/20'
               }`}
             >
-              <span>{tab.icon}</span>
+              <span className="hidden sm:inline">{tab.icon}</span>
               <span className="font-medium">{tab.label}</span>
             </button>
           ))}
@@ -120,46 +140,55 @@ export default function InvestmentAnalytics() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white/5 backdrop-blur-sm rounded-lg p-8"
+          className="bg-white/5 backdrop-blur-sm rounded-lg p-4 sm:p-8"
         >
           {activeTab === 'growth' && (
             <div>
-              <h3 className="font-heading text-2xl text-white mb-2">Property Price Growth Trends</h3>
-              <p className="text-white/60 mb-8">Average property values by region (USD)</p>
+              <h3 className="font-heading text-xl sm:text-2xl text-white mb-2">{t('analytics.priceGrowthTitle')}</h3>
+              <p className="text-white/60 mb-8 text-sm sm:text-base">{t('analytics.priceGrowthSubtitle')}</p>
               
-              <ResponsiveContainer width="100%" height={400}>
-                <LineChart data={priceGrowthData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
-                  <XAxis dataKey="year" stroke="#ffffff60" />
-                  <YAxis tickFormatter={formatCurrency} stroke="#ffffff60" />
-                  <Tooltip 
-                    formatter={(value) => [formatCurrency(Number(value)), '']}
-                    labelStyle={{ color: '#0a0e1a' }}
-                    contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '8px' }}
-                  />
-                  <Line type="monotone" dataKey="florianopolis" stroke="#c9963c" strokeWidth={3} name="Florianópolis" />
-                  <Line type="monotone" dataKey="balneario" stroke="#d4a853" strokeWidth={3} name="Balneário Camboriú" />
-                  <Line type="monotone" dataKey="itapema" stroke="#ffffff" strokeWidth={3} name="Itapema" />
-                  <Line type="monotone" dataKey="average" stroke="#1e2844" strokeWidth={3} strokeDasharray="5 5" name="Average" />
-                </LineChart>
-              </ResponsiveContainer>
+              <div className="w-full overflow-x-auto">
+                <div className="min-w-[500px]">
+                  <ResponsiveContainer width="100%" height={350}>
+                    <LineChart data={priceGrowthData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
+                      <XAxis dataKey="year" stroke="#ffffff60" tick={{ fontSize: 12 }} />
+                      <YAxis 
+                        tickFormatter={formatCurrencyShort} 
+                        stroke="#ffffff60" 
+                        tick={{ fontSize: 12 }}
+                        width={60}
+                      />
+                      <Tooltip 
+                        formatter={(value) => [formatCurrency(Number(value)), '']}
+                        labelStyle={{ color: '#0a0e1a' }}
+                        contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '8px' }}
+                      />
+                      <Line type="monotone" dataKey="florianopolis" stroke="#c9963c" strokeWidth={2} name="Florianópolis" dot={false} />
+                      <Line type="monotone" dataKey="balneario" stroke="#d4a853" strokeWidth={2} name="Balneário Camboriú" dot={false} />
+                      <Line type="monotone" dataKey="itapema" stroke="#ffffff" strokeWidth={2} name="Itapema" dot={false} />
+                      <Line type="monotone" dataKey="average" stroke="#1e2844" strokeWidth={2} strokeDasharray="5 5" name="Average" dot={false} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                <div className="text-center">
-                  <div className="text-gold-500 font-heading text-2xl">+44%</div>
-                  <div className="text-white/60 text-sm">5-Year Growth</div>
+                <div className="text-center p-3 bg-white/5 rounded-lg">
+                  <div className="text-gold-500 font-heading text-xl sm:text-2xl">+44%</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.fiveYearGrowth')}</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-gold-500 font-heading text-2xl">$533k</div>
-                  <div className="text-white/60 text-sm">Avg. Price 2024</div>
+                <div className="text-center p-3 bg-white/5 rounded-lg">
+                  <div className="text-gold-500 font-heading text-xl sm:text-2xl">$533k</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.avgPrice')} 2024</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-gold-500 font-heading text-2xl">8.2%</div>
-                  <div className="text-white/60 text-sm">Annual Growth</div>
+                <div className="text-center p-3 bg-white/5 rounded-lg">
+                  <div className="text-gold-500 font-heading text-xl sm:text-2xl">8.2%</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.annualGrowth')}</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-gold-500 font-heading text-2xl">↗️</div>
-                  <div className="text-white/60 text-sm">Trend Direction</div>
+                <div className="text-center p-3 bg-white/5 rounded-lg">
+                  <div className="text-gold-500 font-heading text-xl sm:text-2xl">↗️</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.trendDirection')}</div>
                 </div>
               </div>
             </div>
@@ -167,40 +196,52 @@ export default function InvestmentAnalytics() {
 
           {activeTab === 'yields' && (
             <div>
-              <h3 className="font-heading text-2xl text-white mb-2">Rental Yield Analysis</h3>
-              <p className="text-white/60 mb-8">Annual rental yields by region and property type (%)</p>
+              <h3 className="font-heading text-xl sm:text-2xl text-white mb-2">{t('analytics.rentalYieldTitle')}</h3>
+              <p className="text-white/60 mb-8 text-sm sm:text-base">{t('analytics.rentalYieldSubtitle')}</p>
               
-              <ResponsiveContainer width="100%" height={400}>
-                <BarChart data={rentalYieldData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
-                  <XAxis dataKey="region" stroke="#ffffff60" />
-                  <YAxis tickFormatter={formatPercent} stroke="#ffffff60" />
-                  <Tooltip 
-                    formatter={(value) => [`${value}%`, '']}
-                    labelStyle={{ color: '#0a0e1a' }}
-                    contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '8px' }}
-                  />
-                  <Bar dataKey="residential" fill="#c9963c" name="Residential" />
-                  <Bar dataKey="vacation" fill="#d4a853" name="Vacation Rental" />
-                  <Bar dataKey="investment" fill="#1e2844" name="Investment" />
-                </BarChart>
-              </ResponsiveContainer>
+              <div className="w-full overflow-x-auto">
+                <div className="min-w-[500px]">
+                  <ResponsiveContainer width="100%" height={350}>
+                    <BarChart data={rentalYieldData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
+                      <XAxis 
+                        dataKey="region" 
+                        stroke="#ffffff60" 
+                        tick={{ fontSize: 10 }}
+                        interval={0}
+                        angle={-20}
+                        textAnchor="end"
+                        height={60}
+                      />
+                      <YAxis tickFormatter={formatPercent} stroke="#ffffff60" tick={{ fontSize: 12 }} />
+                      <Tooltip 
+                        formatter={(value) => [`${value}%`, '']}
+                        labelStyle={{ color: '#0a0e1a' }}
+                        contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '8px' }}
+                      />
+                      <Bar dataKey="residential" fill="#c9963c" name={t('analytics.residential')} />
+                      <Bar dataKey="vacation" fill="#d4a853" name={t('analytics.vacationRental')} />
+                      <Bar dataKey="investment" fill="#1e2844" name="Investment" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
 
-              <div className="grid grid-cols-3 gap-6 mt-8">
-                <div className="text-center">
+              <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-8">
+                <div className="text-center p-3 bg-white/5 rounded-lg">
                   <div className="w-4 h-4 bg-[#c9963c] rounded mx-auto mb-2"></div>
-                  <div className="text-gold-500 font-heading text-xl">6.9%</div>
-                  <div className="text-white/60 text-sm">Avg Residential</div>
+                  <div className="text-gold-500 font-heading text-lg sm:text-xl">6.9%</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.avgResidential')}</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-3 bg-white/5 rounded-lg">
                   <div className="w-4 h-4 bg-[#d4a853] rounded mx-auto mb-2"></div>
-                  <div className="text-gold-500 font-heading text-xl">13.0%</div>
-                  <div className="text-white/60 text-sm">Avg Vacation Rental</div>
+                  <div className="text-gold-500 font-heading text-lg sm:text-xl">13.0%</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.avgVacationRental')}</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-3 bg-white/5 rounded-lg">
                   <div className="w-4 h-4 bg-[#1e2844] rounded mx-auto mb-2"></div>
-                  <div className="text-gold-500 font-heading text-xl">9.9%</div>
-                  <div className="text-white/60 text-sm">Avg Investment</div>
+                  <div className="text-gold-500 font-heading text-lg sm:text-xl">9.9%</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.avgInvestment')}</div>
                 </div>
               </div>
             </div>
@@ -208,23 +249,22 @@ export default function InvestmentAnalytics() {
 
           {activeTab === 'composition' && (
             <div>
-              <h3 className="font-heading text-2xl text-white mb-2">Market Composition</h3>
-              <p className="text-white/60 mb-8">Investment distribution by property type</p>
+              <h3 className="font-heading text-xl sm:text-2xl text-white mb-2">{t('analytics.marketCompositionTitle')}</h3>
+              <p className="text-white/60 mb-8 text-sm sm:text-base">{t('analytics.marketCompositionSubtitle')}</p>
               
               <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer width="100%" height={280}>
                   <PieChart>
                     <Pie
-                      data={marketCompositionData}
+                      data={getMarketCompositionLabels()}
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
-                      outerRadius={100}
+                      outerRadius={90}
                       fill="#8884d8"
                       dataKey="value"
                     >
-                      {marketCompositionData.map((entry, index) => (
+                      {getMarketCompositionLabels().map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                       ))}
                     </Pie>
@@ -236,15 +276,15 @@ export default function InvestmentAnalytics() {
                   </PieChart>
                 </ResponsiveContainer>
 
-                <div className="space-y-4">
-                  {marketCompositionData.map((item) => (
-                    <div key={item.name} className="flex items-center justify-between p-4 bg-white/10 rounded-lg">
+                <div className="space-y-3">
+                  {getMarketCompositionLabels().map((item) => (
+                    <div key={item.name} className="flex items-center justify-between p-3 sm:p-4 bg-white/10 rounded-lg">
                       <div className="flex items-center gap-3">
                         <div 
                           className="w-4 h-4 rounded"
                           style={{ backgroundColor: item.color }}
                         ></div>
-                        <span className="text-white">{item.name}</span>
+                        <span className="text-white text-sm sm:text-base">{item.name}</span>
                       </div>
                       <span className="text-gold-500 font-bold">{item.value}%</span>
                     </div>
@@ -256,36 +296,40 @@ export default function InvestmentAnalytics() {
 
           {activeTab === 'flows' && (
             <div>
-              <h3 className="font-heading text-2xl text-white mb-2">Investment Flow Trends</h3>
-              <p className="text-white/60 mb-8">Monthly investment volume (millions USD)</p>
+              <h3 className="font-heading text-xl sm:text-2xl text-white mb-2">{t('analytics.investmentFlowTitle')}</h3>
+              <p className="text-white/60 mb-8 text-sm sm:text-base">{t('analytics.investmentFlowSubtitle')}</p>
               
-              <ResponsiveContainer width="100%" height={400}>
-                <AreaChart data={investmentFlowData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
-                  <XAxis dataKey="month" stroke="#ffffff60" />
-                  <YAxis stroke="#ffffff60" />
-                  <Tooltip 
-                    formatter={(value) => [`$${value}M`, '']}
-                    labelStyle={{ color: '#0a0e1a' }}
-                    contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '8px' }}
-                  />
-                  <Area type="monotone" dataKey="foreign" stackId="1" stroke="#c9963c" fill="#c9963c" name="Foreign Investment" />
-                  <Area type="monotone" dataKey="domestic" stackId="1" stroke="#d4a853" fill="#d4a853" name="Domestic Investment" />
-                </AreaChart>
-              </ResponsiveContainer>
+              <div className="w-full overflow-x-auto">
+                <div className="min-w-[500px]">
+                  <ResponsiveContainer width="100%" height={350}>
+                    <AreaChart data={investmentFlowData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
+                      <XAxis dataKey="month" stroke="#ffffff60" tick={{ fontSize: 12 }} />
+                      <YAxis stroke="#ffffff60" tick={{ fontSize: 12 }} />
+                      <Tooltip 
+                        formatter={(value) => [`$${value}M`, '']}
+                        labelStyle={{ color: '#0a0e1a' }}
+                        contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '8px' }}
+                      />
+                      <Area type="monotone" dataKey="foreign" stackId="1" stroke="#c9963c" fill="#c9963c" name="Foreign Investment" />
+                      <Area type="monotone" dataKey="domestic" stackId="1" stroke="#d4a853" fill="#d4a853" name="Domestic Investment" />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
 
-              <div className="grid grid-cols-3 gap-6 mt-8">
-                <div className="text-center">
-                  <div className="text-gold-500 font-heading text-xl">$58M</div>
-                  <div className="text-white/60 text-sm">Avg Foreign Monthly</div>
+              <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-8">
+                <div className="text-center p-3 bg-white/5 rounded-lg">
+                  <div className="text-gold-500 font-heading text-lg sm:text-xl">$58M</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.avgForeignMonthly')}</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-gold-500 font-heading text-xl">$87M</div>
-                  <div className="text-white/60 text-sm">Avg Domestic Monthly</div>
+                <div className="text-center p-3 bg-white/5 rounded-lg">
+                  <div className="text-gold-500 font-heading text-lg sm:text-xl">$87M</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.avgDomesticMonthly')}</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-gold-500 font-heading text-xl">40%</div>
-                  <div className="text-white/60 text-sm">Foreign Investment Share</div>
+                <div className="text-center p-3 bg-white/5 rounded-lg">
+                  <div className="text-gold-500 font-heading text-lg sm:text-xl">40%</div>
+                  <div className="text-white/60 text-xs sm:text-sm">{t('analytics.foreignInvestmentShare')}</div>
                 </div>
               </div>
             </div>
@@ -295,23 +339,23 @@ export default function InvestmentAnalytics() {
         {/* Data Sources */}
         <div className="mt-12 pt-8 border-t border-white/20">
           <div className="text-center">
-            <h4 className="font-heading text-lg text-white mb-4">Data Sources & Methodology</h4>
+            <h4 className="font-heading text-lg text-white mb-4">{t('analytics.dataSources')}</h4>
             <div className="grid md:grid-cols-3 gap-6 text-sm text-white/60">
               <div>
                 <strong className="text-gold-500">IBGE</strong><br />
-                Brazilian Institute of Geography and Statistics - Official property price indices and demographic data
+                {t('analytics.ibge')}
               </div>
               <div>
                 <strong className="text-gold-500">SECOVI-SC</strong><br />
-                Santa Catarina Real Estate Union - Market transactions, rental yields, and regional analysis
+                {t('analytics.secoviSc')}
               </div>
               <div>
                 <strong className="text-gold-500">Central Bank of Brazil</strong><br />
-                Foreign investment flows, currency data, and economic indicators
+                {t('analytics.centralBank')}
               </div>
             </div>
             <p className="text-white/40 text-xs mt-6">
-              Data updated monthly. Investment returns are historical and do not guarantee future performance.
+              {t('analytics.disclaimer')}
             </p>
           </div>
         </div>

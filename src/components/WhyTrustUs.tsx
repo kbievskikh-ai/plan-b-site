@@ -1,74 +1,90 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/lib/i18n';
 
-const credentials = [
-  {
-    title: 'CRECI Licensed',
-    description: 'Fully licensed real estate professionals under Brazilian regulatory body CRECI-SC',
-    number: 'License #SC-12345'
-  },
-  {
-    title: 'International Bar Certified',
-    description: 'Certified in international property law and cross-border transactions',
-    number: 'IBC #2024-BR'
-  },
-  {
-    title: 'Foreign Investment Specialist',
-    description: 'Certified specialist in foreign real estate investment regulations',
-    number: 'FIS #BR-2023'
-  },
-];
+// SVG Icons
+const BuildingIcon = () => (
+  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+  </svg>
+);
 
-const partners = [
-  { name: 'Banco do Brasil', type: 'Banking Partner' },
-  { name: 'Caixa Econômica Federal', type: 'Mortgage Provider' },
-  { name: 'Brazil Legal Group', type: 'Legal Partners' },
-  { name: 'Santa Catarina Tourism Board', type: 'Tourism Partnership' },
-  { name: 'Receita Federal', type: 'Tax Compliance' },
-  { name: 'International Property Network', type: 'Global Reach' },
-];
-
-const experiences = [
-  {
-    flag: '🇺🇸',
-    country: 'United States',
-    clients: '150+',
-    description: 'American investors seeking vacation homes and rental properties'
-  },
-  {
-    flag: '🇩🇪',
-    country: 'Germany',
-    clients: '80+',
-    description: 'European investors attracted to Brazil\'s growing economy'
-  },
-  {
-    flag: '🇦🇷',
-    country: 'Argentina',
-    clients: '120+',
-    description: 'Regional investors leveraging currency advantages'
-  },
-  {
-    flag: '🇫🇷',
-    country: 'France',
-    clients: '45+',
-    description: 'French investors in luxury coastal developments'
-  },
-  {
-    flag: '🇨🇦',
-    country: 'Canada',
-    clients: '60+',
-    description: 'Canadian retirees and winter residence seekers'
-  },
-  {
-    flag: '🇬🇧',
-    country: 'United Kingdom',
-    clients: '35+',
-    description: 'UK investors in Brazilian real estate opportunities'
-  },
-];
+const HandshakeIcon = () => (
+  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+  </svg>
+);
 
 export default function WhyTrustUs() {
+  const { t } = useLanguage();
+
+  const credentials = [
+    {
+      title: t('trust.creciLicensed'),
+      description: t('trust.creciDesc'),
+      number: 'License #SC-12345'
+    },
+    {
+      title: t('trust.ibcCertified'),
+      description: t('trust.ibcDesc'),
+      number: 'IBC #2024-BR'
+    },
+    {
+      title: t('trust.fisSpecialist'),
+      description: t('trust.fisDesc'),
+      number: 'FIS #BR-2023'
+    },
+  ];
+
+  const partners = [
+    { name: 'Banco do Brasil', type: 'Banking Partner' },
+    { name: 'Caixa Econômica Federal', type: 'Mortgage Provider' },
+    { name: 'Brazil Legal Group', type: 'Legal Partners' },
+    { name: 'Santa Catarina Tourism Board', type: 'Tourism Partnership' },
+    { name: 'Receita Federal', type: 'Tax Compliance' },
+    { name: 'International Property Network', type: 'Global Reach' },
+  ];
+
+  const experiences = [
+    {
+      flag: '🇺🇸',
+      country: 'United States',
+      clients: '150+',
+      description: 'American investors seeking vacation homes and rental properties'
+    },
+    {
+      flag: '🇩🇪',
+      country: 'Germany',
+      clients: '80+',
+      description: 'European investors attracted to Brazil\'s growing economy'
+    },
+    {
+      flag: '🇦🇷',
+      country: 'Argentina',
+      clients: '120+',
+      description: 'Regional investors leveraging currency advantages'
+    },
+    {
+      flag: '🇫🇷',
+      country: 'France',
+      clients: '45+',
+      description: 'French investors in luxury coastal developments'
+    },
+    {
+      flag: '🇨🇦',
+      country: 'Canada',
+      clients: '60+',
+      description: 'Canadian retirees and winter residence seekers'
+    },
+    {
+      flag: '🇬🇧',
+      country: 'United Kingdom',
+      clients: '35+',
+      description: 'UK investors in Brazilian real estate opportunities'
+    },
+  ];
+
   return (
     <section className="section-padding bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -76,15 +92,14 @@ export default function WhyTrustUs() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-500" />
-            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">Trust & Credibility</span>
+            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('trust.sectionLabel')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6">
-            Why Trust Migronis Brazil
+            {t('trust.title')}
           </h2>
           <p className="text-navy-900/60 max-w-3xl mx-auto text-lg">
-            Your investment deserves professional expertise backed by credentials, 
-            partnerships, and proven international experience.
+            {t('trust.subtitle')}
           </p>
         </div>
 
@@ -92,10 +107,10 @@ export default function WhyTrustUs() {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3 className="font-heading text-2xl lg:text-3xl text-navy-900 mb-4">
-              Professional Credentials
+              {t('trust.credentials')}
             </h3>
             <p className="text-navy-900/60 max-w-2xl mx-auto">
-              Fully licensed and certified to handle international real estate investments in Brazil.
+              {t('trust.credentialsSubtitle')}
             </p>
           </div>
 
@@ -111,7 +126,7 @@ export default function WhyTrustUs() {
               >
                 <div className="text-center">
                   <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold-200 transition-colors">
-                    <span className="text-gold-600 text-2xl">🏛️</span>
+                    <span className="text-gold-600"><BuildingIcon /></span>
                   </div>
                   <h4 className="font-heading text-lg text-navy-900 mb-2">
                     {credential.title}
@@ -132,11 +147,10 @@ export default function WhyTrustUs() {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3 className="font-heading text-2xl lg:text-3xl text-navy-900 mb-4">
-              Trusted Partners
+              {t('trust.partners')}
             </h3>
             <p className="text-navy-900/60 max-w-2xl mx-auto">
-              We work with Brazil&apos;s leading financial institutions and legal firms 
-              to ensure secure, compliant transactions.
+              {t('trust.partnersSubtitle')}
             </p>
           </div>
 
@@ -151,7 +165,7 @@ export default function WhyTrustUs() {
                 className="bg-white p-4 rounded-lg border border-navy-900/5 hover:border-gold-300 transition-colors text-center group"
               >
                 <div className="w-12 h-12 bg-gray-100 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-gold-100 transition-colors">
-                  <span className="text-gray-600 group-hover:text-gold-600 text-lg">🤝</span>
+                  <span className="text-gray-600 group-hover:text-gold-600"><HandshakeIcon /></span>
                 </div>
                 <h4 className="font-medium text-navy-900 text-sm mb-1">
                   {partner.name}
@@ -168,11 +182,10 @@ export default function WhyTrustUs() {
         <div>
           <div className="text-center mb-12">
             <h3 className="font-heading text-2xl lg:text-3xl text-navy-900 mb-4">
-              International Client Experience
+              {t('trust.internationalExperience')}
             </h3>
             <p className="text-navy-900/60 max-w-2xl mx-auto">
-              We&apos;ve successfully guided investors from 45+ countries through 
-              Brazilian real estate investments.
+              {t('trust.internationalExperienceSubtitle')}
             </p>
           </div>
 
@@ -193,7 +206,7 @@ export default function WhyTrustUs() {
                       {exp.country}
                     </h4>
                     <div className="text-gold-600 font-medium text-sm">
-                      {exp.clients} Clients Served
+                      {exp.clients} {t('trust.clientsServed')}
                     </div>
                   </div>
                 </div>
@@ -214,14 +227,13 @@ export default function WhyTrustUs() {
           className="text-center mt-16 p-8 bg-navy-900 rounded-lg"
         >
           <h3 className="font-heading text-2xl text-white mb-4">
-            Ready to Work with Trusted Professionals?
+            {t('trust.readyToWork')}
           </h3>
           <p className="text-white/70 mb-6 max-w-2xl mx-auto">
-            Join hundreds of international investors who&apos;ve trusted us with their 
-            Brazilian real estate investments.
+            {t('trust.readyToWorkSubtitle')}
           </p>
           <a href="#contact" className="btn-gold">
-            Schedule Your Consultation
+            {t('trust.scheduleConsultation')}
           </a>
         </motion.div>
       </div>

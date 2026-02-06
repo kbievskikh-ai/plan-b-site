@@ -1,208 +1,287 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { regions } from "@/data/properties";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { regions, properties } from "@/data/properties";
 import ScrollAnimation from "./ScrollAnimation";
+import PropertyModal from "./PropertyModal";
+import { useLanguage } from "@/lib/i18n";
+
+// Google Maps API key from environment
+const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
+
+// Map container style
+const containerStyle = {
+  width: "100%",
+  height: "100%",
+};
+
+// Center on Santa Catarina coast
+const center = {
+  lat: -27.1,
+  lng: -48.55,
+};
+
+// Dark premium map style
+const mapStyles = [
+  { elementType: "geometry", stylers: [{ color: "#0a0e1a" }] },
+  { elementType: "labels.text.stroke", stylers: [{ color: "#0a0e1a" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+  {
+    featureType: "administrative.locality",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#c9963c" }],
+  },
+  {
+    featureType: "poi",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#93817c" }],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [{ color: "#1a2e1a" }],
+  },
+  {
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [{ color: "#1e2844" }],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry",
+    stylers: [{ color: "#2c3e50" }],
+  },
+  {
+    featureType: "water",
+    elementType: "geometry",
+    stylers: [{ color: "#0d2137" }],
+  },
+];
+
+// Region coordinates
+const regionCoordinates: Record<string, { lat: number; lng: number }> = {
+  "Balneário Camboriú": { lat: -26.9906, lng: -48.6348 },
+  "Florianópolis": { lat: -27.5954, lng: -48.5480 },
+  "Itapema": { lat: -27.0903, lng: -48.6115 },
+  "Porto Belo": { lat: -27.1586, lng: -48.5469 },
+  "Bombinhas": { lat: -27.1420, lng: -48.5145 },
+  "Imbituba": { lat: -28.2400, lng: -48.6700 },
+  "Rancho Queimado": { lat: -27.6714, lng: -49.0178 },
+};
+
+// Region details - bilingual
+const regionDetailsEN: Record<string, {
+  highlights: string[];
+  avgPrice: string;
+  rentalYield: string;
+}> = {
+  "Balneário Camboriú": {
+    highlights: ['Beachfront towers', 'Luxury segment', 'High demand'],
+    avgPrice: "$450K – $2M+",
+    rentalYield: "8-14%",
+  },
+  "Florianópolis": {
+    highlights: ['Island paradise', 'Tech hub', '42 beaches'],
+    avgPrice: "$350K – $1.5M",
+    rentalYield: "6-12%",
+  },
+  "Itapema": {
+    highlights: ['Fast growth', 'Family-friendly', 'Good value'],
+    avgPrice: "$250K – $800K",
+    rentalYield: "7-11%",
+  },
+  "Porto Belo": {
+    highlights: ['Historic charm', 'Marina access', 'Quiet pace'],
+    avgPrice: "$300K – $1M",
+    rentalYield: "9-13%",
+  },
+  "Bombinhas": {
+    highlights: ['Best beaches', 'Diving paradise', 'Seasonal hotspot'],
+    avgPrice: "$280K – $900K",
+    rentalYield: "8-15%",
+  },
+  "Imbituba": {
+    highlights: ['Surfing capital', 'Whale watching', 'Emerging market'],
+    avgPrice: "$200K – $600K",
+    rentalYield: "6-10%",
+  },
+  "Rancho Queimado": {
+    highlights: ['Mountain retreat', 'Cool climate', 'Nature escape'],
+    avgPrice: "$350K – $800K",
+    rentalYield: "5-8%",
+  },
+};
+
+const regionDetailsRU: Record<string, {
+  highlights: string[];
+  avgPrice: string;
+  rentalYield: string;
+}> = {
+  "Balneário Camboriú": {
+    highlights: ['Небоскрёбы на берегу', 'Люкс сегмент', 'Высокий спрос'],
+    avgPrice: "$450K – $2M+",
+    rentalYield: "8-14%",
+  },
+  "Florianópolis": {
+    highlights: ['Остров', 'IT-центр', '42 пляжа'],
+    avgPrice: "$350K – $1.5M",
+    rentalYield: "6-12%",
+  },
+  "Itapema": {
+    highlights: ['Быстрый рост', 'Для семей', 'Выгодные цены'],
+    avgPrice: "$250K – $800K",
+    rentalYield: "7-11%",
+  },
+  "Porto Belo": {
+    highlights: ['Историческое место', 'Марина', 'Спокойно'],
+    avgPrice: "$300K – $1M",
+    rentalYield: "9-13%",
+  },
+  "Bombinhas": {
+    highlights: ['Лучшие пляжи', 'Дайвинг', 'Сезонный хит'],
+    avgPrice: "$280K – $900K",
+    rentalYield: "8-15%",
+  },
+  "Imbituba": {
+    highlights: ['Сёрфинг', 'Киты', 'Растущий рынок'],
+    avgPrice: "$200K – $600K",
+    rentalYield: "6-10%",
+  },
+  "Rancho Queimado": {
+    highlights: ['Горы', 'Прохладный климат', 'Природа'],
+    avgPrice: "$350K – $800K",
+    rentalYield: "5-8%",
+  },
+};
+
+// Icons as SVG components
+const MapPinIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+  </svg>
+);
+
+const XMarkIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);
+
+const BuildingIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+  </svg>
+);
 
 interface RegionInfo {
   name: string;
   properties: number;
   desc: string;
-  lat: number;
-  lng: number;
-}
-
-// Custom SVG map of Santa Catarina coast
-function SantaCatarinaMap({ 
-  activeRegion, 
-  onRegionHover, 
-  onRegionClick 
-}: { 
-  activeRegion: string | null;
-  onRegionHover: (name: string | null) => void;
-  onRegionClick: (name: string) => void;
-}) {
-  // Simplified coordinates for visualization (relative positions on the SVG)
-  const regionPositions: Record<string, { x: number; y: number }> = {
-    "Balneário Camboriú": { x: 320, y: 80 },
-    "Itapema": { x: 300, y: 120 },
-    "Porto Belo": { x: 280, y: 155 },
-    "Bombinhas": { x: 310, y: 175 },
-    "Florianópolis": { x: 340, y: 260 },
-    "Imbituba": { x: 300, y: 360 },
-    "Rancho Queimado": { x: 200, y: 280 },
-  };
-
-  return (
-    <svg viewBox="0 0 400 450" className="w-full h-full">
-      {/* Background gradient */}
-      <defs>
-        <linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#0a0e1a" />
-          <stop offset="50%" stopColor="#141f35" />
-          <stop offset="100%" stopColor="#0a0e1a" />
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-
-      {/* Ocean */}
-      <rect width="400" height="450" fill="url(#mapGradient)" />
-
-      {/* Stylized coastline */}
-      <path
-        d="M380 30 Q350 60 360 100 Q370 140 355 180 Q340 220 350 260 Q360 300 345 340 Q330 380 340 420 L400 420 L400 30 Z"
-        fill="#0f1929"
-        stroke="#c9963c"
-        strokeWidth="1"
-        opacity="0.3"
-      />
-
-      {/* Coastline detail */}
-      <path
-        d="M380 30 Q350 60 360 100 Q370 140 355 180 Q340 220 350 260 Q360 300 345 340 Q330 380 340 420"
-        fill="none"
-        stroke="#c9963c"
-        strokeWidth="2"
-        strokeDasharray="8 4"
-        opacity="0.5"
-      />
-
-      {/* Land mass shape */}
-      <path
-        d="M50 20 L300 20 Q340 60 330 100 Q350 150 320 200 Q340 250 310 300 Q330 350 290 400 L50 400 Z"
-        fill="#0f1929"
-        stroke="#c9963c"
-        strokeWidth="0.5"
-        opacity="0.2"
-      />
-
-      {/* Connection lines between regions */}
-      {Object.entries(regionPositions).map(([name, pos], index, arr) => {
-        if (index === arr.length - 1) return null;
-        const nextName = Object.keys(regionPositions)[index + 1];
-        if (nextName === "Rancho Queimado") return null;
-        const nextPos = regionPositions[nextName];
-        return (
-          <line
-            key={`line-${name}`}
-            x1={pos.x}
-            y1={pos.y}
-            x2={nextPos.x}
-            y2={nextPos.y}
-            stroke="#c9963c"
-            strokeWidth="1"
-            strokeDasharray="4 4"
-            opacity="0.2"
-          />
-        );
-      })}
-
-      {/* Region markers */}
-      {Object.entries(regionPositions).map(([name, pos]) => {
-        const isActive = activeRegion === name;
-        const region = regions.find(r => r.name === name);
-        
-        return (
-          <g
-            key={name}
-            transform={`translate(${pos.x}, ${pos.y})`}
-            className="cursor-pointer"
-            onMouseEnter={() => onRegionHover(name)}
-            onMouseLeave={() => onRegionHover(null)}
-            onClick={() => onRegionClick(name)}
-          >
-            {/* Pulse animation for active */}
-            {isActive && (
-              <>
-                <circle r="20" fill="#c9963c" opacity="0.2">
-                  <animate attributeName="r" from="8" to="25" dur="1.5s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" from="0.4" to="0" dur="1.5s" repeatCount="indefinite" />
-                </circle>
-              </>
-            )}
-            
-            {/* Outer glow */}
-            <circle
-              r={isActive ? 12 : 8}
-              fill="#c9963c"
-              opacity={isActive ? 0.3 : 0.15}
-              style={{ transition: "all 0.3s ease" }}
-            />
-            
-            {/* Inner dot */}
-            <circle
-              r={isActive ? 6 : 4}
-              fill="#c9963c"
-              filter={isActive ? "url(#glow)" : undefined}
-              style={{ transition: "all 0.3s ease" }}
-            />
-
-            {/* Label */}
-            <text
-              x="15"
-              y="4"
-              fill={isActive ? "#c9963c" : "#ffffff"}
-              fontSize="11"
-              fontWeight={isActive ? "600" : "400"}
-              opacity={isActive ? 1 : 0.6}
-              style={{ transition: "all 0.3s ease" }}
-            >
-              {name}
-            </text>
-
-            {/* Property count badge */}
-            {region && isActive && (
-              <g transform="translate(15, 15)">
-                <rect x="0" y="0" width="60" height="18" fill="#c9963c" rx="2" />
-                <text x="30" y="13" fill="white" fontSize="10" textAnchor="middle">
-                  {region.properties} properties
-                </text>
-              </g>
-            )}
-          </g>
-        );
-      })}
-
-      {/* Map labels */}
-      <text x="20" y="430" fill="white" opacity="0.15" fontSize="12" letterSpacing="2">
-        SANTA CATARINA, BRAZIL
-      </text>
-      
-      {/* Compass */}
-      <g transform="translate(50, 50)">
-        <circle r="20" fill="none" stroke="#c9963c" strokeWidth="0.5" opacity="0.3" />
-        <text x="0" y="-8" fill="#c9963c" fontSize="10" textAnchor="middle" opacity="0.5">N</text>
-        <line x1="0" y1="-5" x2="0" y2="5" stroke="#c9963c" strokeWidth="1" opacity="0.3" />
-        <line x1="-5" y1="0" x2="5" y2="0" stroke="#c9963c" strokeWidth="1" opacity="0.3" />
-      </g>
-    </svg>
-  );
 }
 
 export default function InteractiveMap() {
-  const [activeRegion, setActiveRegion] = useState<string | null>(null);
+  const { language } = useLanguage();
   const [selectedRegion, setSelectedRegion] = useState<RegionInfo | null>(null);
+  const [activeMarker, setActiveMarker] = useState<string | null>(null);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
+  const [selectedProperty, setSelectedProperty] = useState<typeof properties[0] | null>(null);
 
-  const handleRegionClick = (name: string) => {
+  // Select region details based on language
+  const regionDetails = language === 'ru' ? regionDetailsRU : regionDetailsEN;
+
+  const { isLoaded, loadError } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+  });
+
+  const onLoad = useCallback((map: google.maps.Map) => {
+    setMap(map);
+  }, []);
+
+  const onUnmount = useCallback(() => {
+    setMap(null);
+  }, []);
+
+  const handleMarkerClick = (name: string) => {
     const region = regions.find(r => r.name === name);
     if (region) {
       setSelectedRegion(region);
+      setActiveMarker(name);
+      
+      if (map && regionCoordinates[name]) {
+        map.panTo(regionCoordinates[name]);
+        map.setZoom(12);
+      }
     }
   };
 
-  const scrollToProperties = () => {
-    const element = document.getElementById('properties');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleCardClick = (name: string) => {
+    handleMarkerClick(name);
+  };
+
+  const openFirstPropertyInRegion = () => {
+    if (!selectedRegion) return;
+    
+    // Find first property in this region
+    const regionProperty = properties.find(p => 
+      p.region === selectedRegion.name || p.location === selectedRegion.name
+    );
+    
+    if (regionProperty) {
+      setSelectedProperty(regionProperty);
     }
   };
+
+  const resetMapView = () => {
+    if (map) {
+      map.panTo(center);
+      map.setZoom(9);
+    }
+    setSelectedRegion(null);
+    setActiveMarker(null);
+  };
+
+  // Labels based on language
+  const labels = {
+    explore: language === 'ru' ? 'Регионы' : 'Explore',
+    title: language === 'ru' ? 'Регионы Санта-Катарины' : 'Regions of Santa Catarina',
+    subtitle: language === 'ru' 
+      ? 'Семь локаций с уникальным характером и инвестиционным потенциалом' 
+      : 'Seven distinct destinations, each offering unique lifestyle and investment opportunities.',
+    resetView: language === 'ru' ? 'Сбросить' : 'Reset View',
+    properties: language === 'ru' ? 'объектов' : 'Properties',
+    avgPrice: language === 'ru' ? 'Цена' : 'Avg. Price',
+    rentalYield: language === 'ru' ? 'Доходность' : 'Rental Yield',
+    highlights: language === 'ru' ? 'Особенности' : 'Highlights',
+    viewProperties: language === 'ru' ? 'Смотреть объекты' : 'View Properties',
+    getGuide: language === 'ru' ? 'Получить гайд по регионам' : 'Get Regional Investment Guide',
+  };
+
+  // Fallback if no API key
+  if (!GOOGLE_MAPS_API_KEY) {
+    return (
+      <section id="regions" className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto text-center py-20">
+          <div className="text-navy-900/50 mb-4">
+            ⚠️ Google Maps API key not configured
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <section id="regions" className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto text-center py-20">
+          <p className="text-red-500">Error loading Google Maps</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="regions" className="section-padding bg-white">
@@ -211,62 +290,152 @@ export default function InteractiveMap() {
         <ScrollAnimation className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-500" />
-            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">Explore</span>
+            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{labels.explore}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-4">
-            Regions of Santa Catarina
+            {labels.title}
           </h2>
           <p className="text-navy-900/50 max-w-2xl mx-auto text-lg">
-            Seven distinct destinations, each offering unique lifestyle and investment opportunities.
+            {labels.subtitle}
           </p>
         </ScrollAnimation>
 
         <div className="grid lg:grid-cols-5 gap-8">
-          {/* Map */}
-          <ScrollAnimation className="lg:col-span-3 relative aspect-[4/3] bg-navy-900 rounded-sm overflow-hidden" direction="left">
-            <SantaCatarinaMap
-              activeRegion={activeRegion}
-              onRegionHover={setActiveRegion}
-              onRegionClick={handleRegionClick}
-            />
+          {/* Google Map */}
+          <ScrollAnimation className="lg:col-span-3 relative aspect-[4/3] bg-navy-900 rounded-lg overflow-hidden shadow-xl" direction="left">
+            {isLoaded ? (
+              <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={9}
+                onLoad={onLoad}
+                onUnmount={onUnmount}
+                options={{
+                  styles: mapStyles,
+                  disableDefaultUI: false,
+                  zoomControl: true,
+                  mapTypeControl: false,
+                  scaleControl: true,
+                  streetViewControl: false,
+                  rotateControl: false,
+                  fullscreenControl: true,
+                }}
+              >
+                {/* Region Markers - NO InfoWindow */}
+                {regions.map((region) => {
+                  const coords = regionCoordinates[region.name];
+                  if (!coords) return null;
+                  
+                  return (
+                    <Marker
+                      key={region.name}
+                      position={coords}
+                      onClick={() => handleMarkerClick(region.name)}
+                      icon={{
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: activeMarker === region.name ? 12 : 8,
+                        fillColor: "#c9963c",
+                        fillOpacity: activeMarker === region.name ? 1 : 0.8,
+                        strokeColor: "#ffffff",
+                        strokeWeight: 2,
+                      }}
+                      animation={activeMarker === region.name ? google.maps.Animation.BOUNCE : undefined}
+                    />
+                  );
+                })}
+              </GoogleMap>
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-navy-900">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-500"></div>
+              </div>
+            )}
             
-            {/* Selected region overlay */}
+            {/* Reset button */}
+            {selectedRegion && (
+              <button
+                onClick={resetMapView}
+                className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg text-sm text-navy-900 hover:bg-white transition-colors flex items-center gap-2 z-10"
+              >
+                <XMarkIcon className="w-4 h-4" />
+                {labels.resetView}
+              </button>
+            )}
+
+            {/* Single detail card - appears at bottom when region selected */}
             <AnimatePresence>
               {selectedRegion && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
-                  className="absolute bottom-4 left-4 right-4 bg-white p-4 shadow-xl"
+                  className="absolute bottom-4 left-4 right-4 bg-white rounded-lg shadow-2xl overflow-hidden z-10"
                 >
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-heading text-xl text-navy-900 mb-1">
-                        {selectedRegion.name}
-                      </h3>
-                      <p className="text-navy-900/50 text-sm mb-3">{selectedRegion.desc}</p>
-                      <div className="flex gap-4">
-                        <span className="text-gold-500 font-medium">
-                          {selectedRegion.properties} properties available
-                        </span>
+                  {/* Header */}
+                  <div className="bg-navy-900 p-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <MapPinIcon className="w-5 h-5 text-gold-400" />
+                      <div>
+                        <h3 className="font-heading text-lg text-white">{selectedRegion.name}</h3>
+                        <p className="text-white/60 text-sm">{selectedRegion.desc}</p>
                       </div>
                     </div>
                     <button
-                      onClick={() => setSelectedRegion(null)}
-                      className="text-navy-900/30 hover:text-navy-900 transition-colors"
+                      onClick={() => {
+                        setSelectedRegion(null);
+                        setActiveMarker(null);
+                      }}
+                      className="text-white/50 hover:text-white p-1"
                     >
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
+                      <XMarkIcon className="w-5 h-5" />
                     </button>
                   </div>
-                  <button
-                    onClick={scrollToProperties}
-                    className="btn-gold w-full text-center mt-4"
-                  >
-                    View Properties in {selectedRegion.name}
-                  </button>
+                  
+                  {/* Body */}
+                  <div className="p-4">
+                    {/* Stats */}
+                    <div className="grid grid-cols-3 gap-3 mb-4">
+                      <div className="text-center p-2 bg-gray-50 rounded">
+                        <BuildingIcon className="w-5 h-5 text-gold-500 mx-auto mb-1" />
+                        <div className="text-lg font-bold text-navy-900">{selectedRegion.properties}</div>
+                        <div className="text-xs text-navy-900/50">{labels.properties}</div>
+                      </div>
+                      <div className="text-center p-2 bg-gray-50 rounded">
+                        <div className="text-xs text-navy-900/50 mb-1">{labels.avgPrice}</div>
+                        <div className="text-sm font-semibold text-navy-900">
+                          {regionDetails[selectedRegion.name]?.avgPrice || 'N/A'}
+                        </div>
+                      </div>
+                      <div className="text-center p-2 bg-gray-50 rounded">
+                        <div className="text-xs text-navy-900/50 mb-1">{labels.rentalYield}</div>
+                        <div className="text-sm font-semibold text-gold-600">
+                          {regionDetails[selectedRegion.name]?.rentalYield || 'N/A'}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Highlights */}
+                    {regionDetails[selectedRegion.name]?.highlights && (
+                      <div className="mb-4">
+                        <div className="text-xs text-navy-900/50 mb-2">{labels.highlights}</div>
+                        <div className="flex flex-wrap gap-2">
+                          {regionDetails[selectedRegion.name].highlights.map((h, i) => (
+                            <span key={i} className="text-xs bg-gold-400/10 text-gold-700 px-2 py-1 rounded">
+                              {h}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* CTA - opens property modal */}
+                    <button
+                      onClick={openFirstPropertyInRegion}
+                      className="btn-gold w-full text-center"
+                    >
+                      {labels.viewProperties} →
+                    </button>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -277,25 +446,28 @@ export default function InteractiveMap() {
             {regions.map((region, index) => (
               <ScrollAnimation key={region.name} delay={index * 0.05} direction="right">
                 <motion.div
-                  className={`group cursor-pointer p-4 border transition-all duration-300 ${
-                    activeRegion === region.name
+                  className={`group cursor-pointer p-4 border rounded-lg transition-all duration-300 h-[88px] flex flex-col justify-center ${
+                    activeMarker === region.name
                       ? "border-gold-500/50 bg-gold-400/10"
-                      : "border-navy-900/5 hover:border-gold-500/30 hover:bg-gold-400/5"
+                      : "border-navy-900/10 hover:border-gold-500/30 hover:bg-gold-400/5"
                   }`}
-                  onMouseEnter={() => setActiveRegion(region.name)}
-                  onMouseLeave={() => setActiveRegion(null)}
-                  onClick={() => handleRegionClick(region.name)}
+                  onClick={() => handleCardClick(region.name)}
                   whileHover={{ x: 5 }}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className={`font-heading text-lg transition-colors ${
-                      activeRegion === region.name ? "text-gold-600" : "text-navy-900 group-hover:text-gold-600"
-                    }`}>
-                      {region.name}
-                    </h3>
-                    <span className="text-gold-500 text-sm font-medium">{region.properties}</span>
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
+                      <MapPinIcon className={`w-4 h-4 flex-shrink-0 ${activeMarker === region.name ? 'text-gold-500' : 'text-navy-900/30'}`} />
+                      <h3 className={`font-heading text-lg transition-colors truncate ${
+                        activeMarker === region.name ? "text-gold-600" : "text-navy-900 group-hover:text-gold-600"
+                      }`}>
+                        {region.name}
+                      </h3>
+                    </div>
+                    <span className="text-gold-500 text-sm font-semibold bg-gold-400/10 px-2 py-0.5 rounded flex-shrink-0 ml-2">
+                      {region.properties}
+                    </span>
                   </div>
-                  <p className="text-navy-900/40 text-sm">{region.desc}</p>
+                  <p className="text-navy-900/50 text-sm pl-6 line-clamp-1">{region.desc}</p>
                 </motion.div>
               </ScrollAnimation>
             ))}
@@ -305,10 +477,19 @@ export default function InteractiveMap() {
         {/* CTA */}
         <ScrollAnimation className="text-center mt-16">
           <a href="#contact" className="btn-outline inline-block">
-            Get Regional Investment Guide
+            {labels.getGuide}
           </a>
         </ScrollAnimation>
       </div>
+
+      {/* Property Modal */}
+      {selectedProperty && (
+        <PropertyModal
+          property={selectedProperty}
+          isOpen={true}
+          onClose={() => setSelectedProperty(null)}
+        />
+      )}
     </section>
   );
 }
