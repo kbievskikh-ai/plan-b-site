@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/lib/i18n';
 
 const caseStudies = [
   {
@@ -100,6 +101,7 @@ const caseStudies = [
 ];
 
 export default function CaseStudies() {
+  const { t } = useLanguage();
   const [activeCaseStudy, setActiveCaseStudy] = useState(0);
 
   return (
@@ -109,15 +111,14 @@ export default function CaseStudies() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-500" />
-            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">Success Stories</span>
+            <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('caseStudies.sectionLabel')}</span>
             <div className="w-8 h-[1px] bg-gold-500" />
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-6 [text-wrap:balance]">
-            Investment Case Studies
+            {t('caseStudies.title')}
           </h2>
           <p className="text-navy-900/60 max-w-3xl mx-auto text-lg">
-            Real investment outcomes from our clients&apos; Brazilian real estate ventures. 
-            See the strategies, challenges, and results that define successful investments.
+            {t('caseStudies.subtitle')}
           </p>
         </div>
 
@@ -229,16 +230,16 @@ export default function CaseStudies() {
 
                   {/* Strategy & Client */}
                   <div className="mb-8">
-                    <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">Investment Strategy</h4>
+                    <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">{t('caseStudies.investmentStrategy')}</h4>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <div className="text-navy-900/60 text-sm uppercase tracking-wider mb-2">Client Profile</div>
+                        <div className="text-navy-900/60 text-sm uppercase tracking-wider mb-2">{t('caseStudies.clientProfile')}</div>
                         <p className="text-navy-900 mb-4">{caseStudies[activeCaseStudy].clientProfile}</p>
-                        <div className="text-navy-900/60 text-sm uppercase tracking-wider mb-2">Strategy</div>
+                        <div className="text-navy-900/60 text-sm uppercase tracking-wider mb-2">{t('caseStudies.strategy')}</div>
                         <p className="text-navy-900/70">{caseStudies[activeCaseStudy].strategy}</p>
                       </div>
                       <div>
-                        <div className="text-navy-900/60 text-sm uppercase tracking-wider mb-2">Annual Income</div>
+                        <div className="text-navy-900/60 text-sm uppercase tracking-wider mb-2">{t('caseStudies.annualIncome')}</div>
                         <p className="text-gold-600 font-heading text-xl mb-4">{caseStudies[activeCaseStudy].annualIncome}</p>
                       </div>
                     </div>
@@ -247,7 +248,7 @@ export default function CaseStudies() {
                   {/* Challenges & Solutions */}
                   <div className="grid md:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">Challenges</h4>
+                      <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">{t('caseStudies.challenges')}</h4>
                       <ul className="space-y-2">
                         {caseStudies[activeCaseStudy].challenges.map((challenge, index) => (
                           <li key={index} className="flex items-start gap-2">
@@ -258,7 +259,7 @@ export default function CaseStudies() {
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">Our Solutions</h4>
+                      <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">{t('caseStudies.solutions')}</h4>
                       <ul className="space-y-2">
                         {caseStudies[activeCaseStudy].solutions.map((solution, index) => (
                           <li key={index} className="flex items-start gap-2">
@@ -272,7 +273,7 @@ export default function CaseStudies() {
 
                   {/* Results */}
                   <div>
-                    <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">Key Results</h4>
+                    <h4 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">{t('caseStudies.keyResults')}</h4>
                     <div className="grid md:grid-cols-2 gap-4">
                       {caseStudies[activeCaseStudy].results.map((result, index) => (
                         <div key={index} className="flex items-start gap-3 p-4 bg-gold-50 rounded-lg">
@@ -297,14 +298,13 @@ export default function CaseStudies() {
           className="text-center mt-16 p-8 bg-navy-900 rounded-lg"
         >
           <h3 className="font-heading text-xl lg:text-2xl text-white mb-4">
-            Ready to Create Your Success Story?
+            {t('caseStudies.ctaTitle')}
           </h3>
           <p className="text-white/70 mb-6 max-w-2xl mx-auto">
-            Let our proven strategies and local expertise guide your Brazilian real estate investment 
-            to similar success.
+            {t('caseStudies.ctaSubtitle')}
           </p>
           <a href="#contact" className="btn-gold">
-            Schedule Consultation
+            {t('caseStudies.cta')}
           </a>
         </motion.div>
       </div>

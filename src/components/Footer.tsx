@@ -3,35 +3,34 @@
 import { useLanguage } from '@/lib/i18n';
 
 export default function Footer() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
-  const properties = language === 'ru' 
-    ? ["Продажа", "Аренда", "Инвестиции", "Новостройки", "Виллы"]
-    : ["For Sale", "For Rent", "Investment", "New Developments", "Luxury Villas"];
+  const properties = [
+    t('footer.forSale'),
+    t('footer.forRent'),
+    t('footer.investment'),
+    t('footer.newDevelopments'),
+    t('footer.luxuryVillas'),
+  ];
 
-  const regions = language === 'ru'
-    ? [
-        t('regions.florianopolis'),
-        t('regions.balnearioCamboriu'),
-        t('regions.itapema'),
-        t('regions.portoBelo'),
-        t('regions.bombinhas'),
-        t('regions.imbituba'),
-        t('regions.ranchoQueimado'),
-      ]
-    : [
-        "Florianópolis",
-        "Balneário Camboriú",
-        "Itapema",
-        "Porto Belo",
-        "Bombinhas",
-        "Imbituba",
-        "Rancho Queimado",
-      ];
+  const regions = [
+    t('regions.florianopolis'),
+    t('regions.balnearioCamboriu'),
+    t('regions.itapema'),
+    t('regions.portoBelo'),
+    t('regions.bombinhas'),
+    t('regions.imbituba'),
+    t('regions.ranchoQueimado'),
+  ];
 
-  const company = language === 'ru'
-    ? ["О Migronis", "Наша команда", "Гайд инвестора", "Блог", "Политика конфиденциальности", "Контакты"]
-    : ["About Migronis", "Our Team", "Investment Guide", "Blog", "Privacy Policy", "Contact"];
+  const company = [
+    t('footer.aboutMigronis'),
+    t('footer.ourTeam'),
+    t('footer.investmentGuide'),
+    t('footer.blog'),
+    t('footer.privacyPolicy'),
+    t('footer.contactLink'),
+  ];
 
   return (
     <footer className="bg-navy-900 border-t border-white/5">
@@ -90,7 +89,7 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h4 className="text-white font-medium mb-4 tracking-wider uppercase text-sm">
-              {language === 'ru' ? 'Компания' : 'Company'}
+              {t('footer.company')}
             </h4>
             <ul className="space-y-3">
               {company.map((item) => (
@@ -110,7 +109,6 @@ export default function Footer() {
             © 2026 Migronis Real Estate. {t('footer.allRightsReserved')}
           </p>
           <div className="flex items-center gap-6">
-            {/* Social icons */}
             {[
               { name: "Instagram", href: "#" },
               { name: "LinkedIn", href: "#" },

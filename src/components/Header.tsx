@@ -26,9 +26,15 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'ru' : 'en');
-  };
+  const [langOpen, setLangOpen] = useState(false);
+  const languages: { code: 'en' | 'ru' | 'es' | 'pt' | 'de'; flag: string; label: string }[] = [
+    { code: 'en', flag: '🇬🇧', label: 'EN' },
+    { code: 'ru', flag: '🇷🇺', label: 'RU' },
+    { code: 'es', flag: '🇪🇸', label: 'ES' },
+    { code: 'pt', flag: '🇧🇷', label: 'PT' },
+    { code: 'de', flag: '🇩🇪', label: 'DE' },
+  ];
+  const currentLang = languages.find(l => l.code === language) || languages[0];
 
   return (
     <motion.header
@@ -75,13 +81,36 @@ export default function Header() {
             ))}
             
             {/* Language Switcher */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-1 px-3 py-1.5 border border-white/20 rounded text-white/70 hover:text-gold-400 hover:border-gold-400/50 text-sm tracking-wider uppercase transition-all duration-300"
-            >
-              <span className="text-base">{language === 'en' ? '🇬🇧' : '🇷🇺'}</span>
-              <span>{language.toUpperCase()}</span>
-            </button>
+            <div className="relative">
+              <button
+                onClick={() => setLangOpen(!langOpen)}
+                className="flex items-center gap-1 px-3 py-1.5 border border-white/20 rounded text-white/70 hover:text-gold-400 hover:border-gold-400/50 text-sm tracking-wider uppercase transition-all duration-300"
+              >
+                <span className="text-base">{currentLang.flag}</span>
+                <span>{currentLang.label}</span>
+                <svg className={`w-3 h-3 ml-1 transition-transform ${langOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {langOpen && (
+                <div className="absolute top-full mt-1 right-0 bg-navy-900 border border-white/10 rounded shadow-lg overflow-hidden z-50">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                      className={`flex items-center gap-2 w-full px-4 py-2 text-sm transition-colors ${
+                        language === lang.code
+                          ? 'bg-gold-500/20 text-gold-400'
+                          : 'text-white/70 hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <motion.a
               href="#contact"
@@ -96,13 +125,33 @@ export default function Header() {
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center gap-3">
             {/* Mobile Language Switcher */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-1 px-2 py-1 border border-white/20 rounded text-white/70 hover:text-gold-400 text-xs tracking-wider uppercase transition-colors"
-            >
-              <span>{language === 'en' ? '🇬🇧' : '🇷🇺'}</span>
-              <span>{language.toUpperCase()}</span>
-            </button>
+            <div className="relative">
+              <button
+                onClick={() => setLangOpen(!langOpen)}
+                className="flex items-center gap-1 px-2 py-1 border border-white/20 rounded text-white/70 hover:text-gold-400 text-xs tracking-wider uppercase transition-colors"
+              >
+                <span>{currentLang.flag}</span>
+                <span>{currentLang.label}</span>
+              </button>
+              {langOpen && (
+                <div className="absolute top-full mt-1 right-0 bg-navy-900 border border-white/10 rounded shadow-lg overflow-hidden z-50">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                      className={`flex items-center gap-2 w-full px-3 py-1.5 text-xs transition-colors ${
+                        language === lang.code
+                          ? 'bg-gold-500/20 text-gold-400'
+                          : 'text-white/70 hover:bg-white/10'
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             
             <button
               onClick={() => setMenuOpen(!menuOpen)}

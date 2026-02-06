@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ScrollAnimation from "./ScrollAnimation";
+import { useLanguage } from "@/lib/i18n";
 
 const testimonials = [
   {
@@ -40,6 +41,7 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -60,14 +62,14 @@ export default function Testimonials() {
         <ScrollAnimation className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-400" />
-            <span className="text-gold-400 text-sm tracking-[0.3em] uppercase">Testimonials</span>
+            <span className="text-gold-400 text-sm tracking-[0.3em] uppercase">{t('testimonials.sectionLabel')}</span>
             <div className="w-8 h-[1px] bg-gold-400" />
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-4 [text-wrap:balance]">
-            Client Success Stories
+            {t('testimonials.title')}
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto text-lg">
-            Hear from international investors who trusted Migronis with their Brazilian property journey.
+            {t('testimonials.subtitle')}
           </p>
         </ScrollAnimation>
 
@@ -147,7 +149,7 @@ export default function Testimonials() {
         {/* CTA */}
         <ScrollAnimation className="text-center mt-16">
           <a href="#contact" className="btn-gold inline-block">
-            Get Consultation
+            {t('testimonials.cta')}
           </a>
         </ScrollAnimation>
       </div>
