@@ -1,14 +1,16 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { properties, Property } from '@/data/properties';
+import { properties as fallbackProperties, Property } from '@/data/properties';
+import { fetchProperties } from '@/lib/api';
 import PropertyModal from './PropertyModal';
 import PropertyFilters, { FilterState } from './PropertyFilters';
 import { useLanguage } from '@/lib/i18n';
 
 export default function FeaturedProperties() {
   const { t } = useLanguage();
+  const [allProperties, setAllProperties] = useState<Property[]>(fallbackProperties);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
   const [filters, setFilters] = useState<FilterState>({
     priceRange: '',
@@ -16,9 +18,14 @@ export default function FeaturedProperties() {
     region: '',
   });
 
+  // Fetch properties from API on mount
+  useEffect(() => {
+    fetchProperties().then(setAllProperties);
+  }, []);
+
   // Filter properties based on selected filters
   const filteredProperties = useMemo(() => {
-    return properties.filter(property => {
+    return allProperties.filter(property => {
       // Price range filter
       if (filters.priceRange) {
         if (filters.priceRange === '2000000+') {
@@ -78,7 +85,7 @@ export default function FeaturedProperties() {
         {/* Results count */}
         <div className="mb-8">
           <p className="text-navy-900/60 text-sm">
-            {t('properties.showing')} {filteredProperties.length} {t('properties.of')} {properties.length} {t('properties.propertiesCount')}
+            {t('properties.showing')} {filteredProperties.length} {t('properties.of')} {allProperties.length} {t('properties.propertiesCount')}
           </p>
         </div>
 
@@ -98,11 +105,19 @@ export default function FeaturedProperties() {
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Image placeholder */}
+              {/* Image */}
               <div className="relative aspect-[4/3] overflow-hidden mb-4 rounded-lg">
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${property.gradient} group-hover:scale-110 transition-transform duration-700`}
-                />
+                {property.images?.[0]?.startsWith('http') ? (
+                  <img
+                    src={property.images[0]}
+                    alt={property.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                ) : (
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${property.gradient} group-hover:scale-110 transition-transform duration-700`}
+                  />
+                )}
                 {/* Tag */}
                 <div className="absolute top-4 left-4 z-10">
                   <span className="bg-gold-500 text-white text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 font-medium">
@@ -179,7 +194,7 @@ export default function FeaturedProperties() {
         )}
 
         {/* View All CTA */}
-        {filteredProperties.length > 0 && filteredProperties.length === properties.length && (
+        {filteredProperties.length > 0 && filteredProperties.length === allProperties.length && (
           <div className="text-center mt-12">
             <motion.a 
               href="#contact" 
@@ -187,7 +202,7 @@ export default function FeaturedProperties() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              {t('properties.viewAll')} {properties.length}+
+              {t('properties.viewAll')} {allProperties.length}+
             </motion.a>
           </div>
         )}
