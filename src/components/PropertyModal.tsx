@@ -39,11 +39,20 @@ export default function PropertyModal({ property, isOpen, onClose }: PropertyMod
 
           {/* Image gallery */}
           <div className="relative aspect-[16/9] bg-gray-100">
-            {/* Placeholder for images */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${property.gradient}`} />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-white/60 text-lg">Property Image {currentImageIndex + 1}</span>
-            </div>
+            {property.images?.[currentImageIndex]?.startsWith('http') ? (
+              <img
+                src={property.images[currentImageIndex]}
+                alt={`${property.title} - ${currentImageIndex + 1}`}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <>
+                <div className={`absolute inset-0 bg-gradient-to-br ${property.gradient}`} />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-white/60 text-lg">Property Image {currentImageIndex + 1}</span>
+                </div>
+              </>
+            )}
             
             {/* Navigation */}
             {property.images.length > 1 && (
