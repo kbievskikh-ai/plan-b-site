@@ -10,7 +10,8 @@ import { useLanguage } from '@/lib/i18n';
 
 export default function FeaturedProperties() {
   const { t } = useLanguage();
-  const [allProperties, setAllProperties] = useState<Property[]>(fallbackProperties);
+  const [allProperties, setAllProperties] = useState<Property[]>([])
+  const [loaded, setLoaded] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
   const [filters, setFilters] = useState<FilterState>({
     priceRange: '',
@@ -20,7 +21,14 @@ export default function FeaturedProperties() {
 
   // Fetch properties from API on mount
   useEffect(() => {
-    fetchProperties().then(setAllProperties);
+    fetchProperties().then(props => {
+      console.log('[Migronis] Fetched properties:', props.length, props.map(p => p.title));
+      setAllProperties(props);
+      setLoaded(true);
+    }).catch(() => {
+      setAllProperties(fallbackProperties);
+      setLoaded(true);
+    });
   }, []);
 
   // Filter properties based on selected filters
@@ -80,7 +88,7 @@ export default function FeaturedProperties() {
         </div>
 
         {/* Filters */}
-        <PropertyFilters filters={filters} onFilterChange={setFilters} />
+        {loaded && <PropertyFilters filters={filters} onFilterChange={setFilters} />}
 
         {/* Results count */}
         <div className="mb-8">
