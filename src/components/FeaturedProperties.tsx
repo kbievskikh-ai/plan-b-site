@@ -52,7 +52,7 @@ export default function FeaturedProperties() {
 
       return true;
     });
-  }, [filters]);
+  }, [filters, allProperties]);
 
   const container = {
     hidden: { opacity: 0 },
