@@ -94,10 +94,14 @@ function mapApiProperty(p: ApiProperty, index: number): Property {
 
 export async function fetchProperties(): Promise<Property[]> {
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    
     const res = await fetch(`${API_URL}/api/properties?limit=50`, {
-      next: { revalidate: 60 }, // ISR: revalidate every 60s
-      signal: AbortSignal.timeout(5000),
+      signal: controller.signal,
+      cache: 'no-store',
     });
+    clearTimeout(timeout);
     
     if (!res.ok) throw new Error(`API ${res.status}`);
     
@@ -118,10 +122,14 @@ export async function fetchProperties(): Promise<Property[]> {
 
 export async function fetchSettings(): Promise<Record<string, string>> {
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    
     const res = await fetch(`${API_URL}/api/settings`, {
-      next: { revalidate: 60 },
-      signal: AbortSignal.timeout(5000),
+      signal: controller.signal,
+      cache: 'no-store',
     });
+    clearTimeout(timeout);
     
     if (!res.ok) throw new Error(`API ${res.status}`);
     return res.json();
