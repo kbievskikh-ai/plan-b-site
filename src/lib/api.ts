@@ -48,13 +48,14 @@ const gradients = [
 ];
 
 // Parse BRL price string to number (e.g. "1250000" → 1250000)
-function parsePriceBrl(price: string | number): number {
+function parsePriceBrl(price: string | number | null | undefined): number {
+  if (!price && price !== 0) return 0;
   if (typeof price === 'number') return price;
-  return Number(price.replace(/[^0-9.]/g, '')) || 0;
+  return Number(String(price).replace(/[^0-9.]/g, '')) || 0;
 }
 
 // Parse USD display string to number (e.g. "From $250,000" → 250000)
-function parseUsdNum(priceUsd: string): number {
+function parseUsdNum(priceUsd: string | null | undefined): number {
   if (!priceUsd) return 0;
   const match = priceUsd.replace(/,/g, '').match(/(\d+)/);
   return match ? Number(match[1]) : 0;
