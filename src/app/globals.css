@@ -5,9 +5,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   body {
     @apply bg-white text-navy-900 antialiased;
+    overflow-x: hidden;
   }
   /* Better font rendering */
   * {
