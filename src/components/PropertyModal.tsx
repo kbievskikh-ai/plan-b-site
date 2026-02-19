@@ -139,20 +139,61 @@ export default function PropertyModal({ property, isOpen, onClose }: PropertyMod
               <p className="text-navy-900/70 leading-relaxed">{property.description}</p>
             </div>
 
-            {/* Features */}
-            <div className="mb-8">
-              <h3 className="font-heading text-xl text-navy-900 mb-4">Features</h3>
-              <div className="flex flex-wrap gap-2">
-                {property.features.map((feature, index) => (
-                  <span
-                    key={index}
-                    className="bg-gold-100 text-gold-800 px-3 py-1 rounded-full text-sm"
-                  >
-                    {feature}
-                  </span>
-                ))}
+            {/* Features - grouped by category */}
+            {property.featuresGrouped && (property.featuresGrouped.imovel.length > 0 || property.featuresGrouped.infraestrutura.length > 0) ? (
+              <div className="mb-8">
+                {property.featuresGrouped.imovel.length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="font-heading text-lg text-navy-900 mb-3 flex items-center gap-2">
+                      <span className="w-6 h-[2px] bg-gold-500" />
+                      Características do Imóvel
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                      {property.featuresGrouped.imovel.map((f, i) => (
+                        <div key={i} className="flex items-center gap-2 text-navy-900/70 text-sm">
+                          <svg className="w-4 h-4 text-gold-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                          {f.name}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {property.featuresGrouped.infraestrutura.length > 0 && (
+                  <div>
+                    <h3 className="font-heading text-lg text-navy-900 mb-3 flex items-center gap-2">
+                      <span className="w-6 h-[2px] bg-gold-500" />
+                      Infraestrutura
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                      {property.featuresGrouped.infraestrutura.map((f, i) => (
+                        <div key={i} className="flex items-center gap-2 text-navy-900/70 text-sm">
+                          <svg className="w-4 h-4 text-gold-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                          {f.name}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
+            ) : property.features.length > 0 ? (
+              <div className="mb-8">
+                <h3 className="font-heading text-xl text-navy-900 mb-4">Features</h3>
+                <div className="flex flex-wrap gap-2">
+                  {property.features.map((feature, index) => (
+                    <span
+                      key={index}
+                      className="bg-gold-100 text-gold-800 px-3 py-1 rounded-full text-sm"
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
 
             {/* Action buttons */}
             <div className="flex gap-4 pt-6 border-t border-gray-200">

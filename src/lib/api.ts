@@ -2,6 +2,14 @@ import { Property, properties as fallbackProperties } from '@/data/properties';
 
 const API_URL = 'https://migronis-admin-api-production.up.railway.app';
 
+interface ApiFeature {
+  id: number;
+  name: string;
+  name_ru: string;
+  name_en: string;
+  category: 'imovel' | 'infraestrutura';
+}
+
 interface ApiProperty {
   id: number;
   title: string;
@@ -20,6 +28,7 @@ interface ApiProperty {
   tag: string;
   featured: boolean;
   sort_order: number;
+  features?: ApiFeature[];
 }
 
 // Map type strings from API to landing page types
@@ -89,7 +98,11 @@ function mapApiProperty(p: ApiProperty, index: number): Property {
     description: p.description || '',
     expectedROI: p.expected_roi || '',
     images: p.images?.length ? p.images.map(img => img.url) : [],
-    features: [],
+    features: (p.features || []).map(f => f.name),
+    featuresGrouped: {
+      imovel: (p.features || []).filter(f => f.category === 'imovel').map(f => ({ name: f.name, name_ru: f.name_ru, name_en: f.name_en })),
+      infraestrutura: (p.features || []).filter(f => f.category === 'infraestrutura').map(f => ({ name: f.name, name_ru: f.name_ru, name_en: f.name_en })),
+    },
   };
 }
 

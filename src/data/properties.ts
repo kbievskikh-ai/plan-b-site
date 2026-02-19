@@ -18,6 +18,10 @@ export interface Property {
   expectedROI?: string;
   images: string[];
   features: string[];
+  featuresGrouped?: {
+    imovel: Array<{ name: string; name_ru: string; name_en: string }>;
+    infraestrutura: Array<{ name: string; name_ru: string; name_en: string }>;
+  };
   coordinates?: { lat: number; lng: number };
 }
 
