@@ -260,14 +260,123 @@ export default function InteractiveMap() {
     getGuide: language === 'ru' ? 'Получить гайд по регионам' : 'Get Regional Investment Guide',
   };
 
-  // Fallback if no API key
+  // Fallback if no API key — show beautiful SVG map
   if (!GOOGLE_MAPS_API_KEY) {
     return (
       <section id="regions" className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto text-center py-20">
-          <div className="text-navy-900/50 mb-4">
-            ⚠️ Google Maps API key not configured
+        <div className="max-w-7xl mx-auto">
+          <ScrollAnimation className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-[1px] bg-gold-500" />
+              <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{labels.explore}</span>
+              <div className="w-8 h-[1px] bg-gold-500" />
+            </div>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-4">
+              {labels.title}
+            </h2>
+            <p className="text-navy-900/50 max-w-2xl mx-auto text-lg">
+              {labels.subtitle}
+            </p>
+          </ScrollAnimation>
+
+          <div className="grid lg:grid-cols-5 gap-8">
+            {/* SVG Map */}
+            <div className="lg:col-span-3 relative">
+              <div className="aspect-[4/3] bg-navy-900 rounded-lg overflow-hidden relative shadow-xl">
+                <svg
+                  viewBox="0 0 400 300"
+                  className="w-full h-full"
+                  style={{
+                    background: "linear-gradient(145deg, #0a0e1a 0%, #0f1929 30%, #141f35 50%, #0f1929 70%, #0a0e1a 100%)",
+                  }}
+                >
+                  {/* Ocean texture */}
+                  <defs>
+                    <pattern id="oceanGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0d2137" strokeWidth="0.5" opacity="0.4" />
+                    </pattern>
+                  </defs>
+                  <rect width="400" height="300" fill="url(#oceanGrid)" opacity="0.3" />
+
+                  {/* State outline */}
+                  <path
+                    d="M80,50 L320,50 L340,70 L360,120 L350,180 L330,220 L300,250 L250,270 L200,280 L150,275 L100,260 L70,240 L50,200 L60,160 L70,120 L80,80 Z"
+                    fill="#0f1929"
+                    stroke="#c9963c"
+                    strokeWidth="1"
+                    opacity="0.6"
+                    strokeDasharray="3 3"
+                  />
+
+                  {/* Coastline */}
+                  <path
+                    d="M280,20 Q320,60 300,100 Q280,140 290,180 Q300,220 270,260 Q250,290 240,300"
+                    fill="none"
+                    stroke="#c9963c"
+                    strokeWidth="1.5"
+                    opacity="0.5"
+                    strokeDasharray="4 3"
+                  />
+
+                  {/* Atlantic label */}
+                  <text x="355" y="150" textAnchor="middle" fill="#c9963c" opacity="0.25" fontSize="8" transform="rotate(90, 355, 150)" letterSpacing="2">ATLANTIC OCEAN</text>
+
+                  {/* Region pins */}
+                  {[
+                    { x: 220, y: 120, name: "Florianópolis" },
+                    { x: 155, y: 80, name: "Balneário Camboriú" },
+                    { x: 140, y: 98, name: "Itapema" },
+                    { x: 122, y: 115, name: "Porto Belo" },
+                    { x: 105, y: 128, name: "Bombinhas" },
+                    { x: 240, y: 165, name: "Imbituba" },
+                    { x: 180, y: 148, name: "Rancho Queimado" },
+                  ].map((pin) => (
+                    <g key={pin.name}>
+                      <circle cx={pin.x} cy={pin.y} r="10" fill="#c9963c" opacity="0.12" className="animate-pulse" />
+                      <circle cx={pin.x} cy={pin.y} r="5" fill="#c9963c" opacity="0.9" />
+                      <circle cx={pin.x} cy={pin.y} r="2" fill="#ffffff" opacity="0.8" />
+                    </g>
+                  ))}
+
+                  {/* Legend */}
+                  <rect x="10" y="265" width="120" height="28" rx="4" fill="#ffffff" opacity="0.08" />
+                  <circle cx="22" cy="279" r="4" fill="#c9963c" opacity="0.9" />
+                  <text x="30" y="283" fill="#ffffff" opacity="0.5" fontSize="8" letterSpacing="1">INVESTMENT REGIONS</text>
+
+                  {/* Map watermark */}
+                  <text x="390" y="290" textAnchor="end" fill="#ffffff" opacity="0.12" fontSize="7" letterSpacing="1">SANTA CATARINA, BRAZIL</text>
+                </svg>
+              </div>
+            </div>
+
+            {/* Region list */}
+            <div className="lg:col-span-2 space-y-2">
+              {regions.map((region, index) => (
+                <ScrollAnimation key={region.name} delay={index * 0.05} direction="right">
+                  <div className="group cursor-pointer p-4 border border-navy-900/10 rounded-lg hover:border-gold-500/30 hover:bg-gold-400/5 transition-all duration-300 h-[88px] flex flex-col justify-center">
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-2 min-w-0 flex-1">
+                        <MapPinIcon className="w-4 h-4 flex-shrink-0 text-navy-900/30" />
+                        <h3 className="font-heading text-lg text-navy-900 group-hover:text-gold-600 transition-colors truncate">
+                          {region.name}
+                        </h3>
+                      </div>
+                      <span className="text-gold-500 text-sm font-semibold bg-gold-400/10 px-2 py-0.5 rounded flex-shrink-0 ml-2">
+                        {region.properties}
+                      </span>
+                    </div>
+                    <p className="text-navy-900/50 text-sm pl-6 line-clamp-1">{region.desc}</p>
+                  </div>
+                </ScrollAnimation>
+              ))}
+            </div>
           </div>
+
+          <ScrollAnimation className="text-center mt-16">
+            <a href="#contact" className="btn-outline inline-block">
+              {labels.getGuide}
+            </a>
+          </ScrollAnimation>
         </div>
       </section>
     );

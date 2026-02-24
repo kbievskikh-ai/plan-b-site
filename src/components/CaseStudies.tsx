@@ -7,6 +7,7 @@ import { useLanguage } from '@/lib/i18n';
 const caseStudies = [
   {
     id: 1,
+    titleKey: 'cs1Title' as const,
     title: "Luxury Penthouse Investment",
     location: "Balneário Camboriú",
     type: "Short-term Rental",
@@ -34,10 +35,11 @@ const caseStudies = [
       "Generated $94k net rental income annually",
       "Client secured Brazilian investor visa"
     ],
-    gradient: "from-blue-600 to-blue-800"
+    gradient: "from-navy-900 to-navy-600"
   },
   {
     id: 2,
+    titleKey: 'cs2Title' as const,
     title: "Coastal Development Portfolio",
     location: "Porto Belo & Bombinhas",
     type: "Development Investment",
@@ -65,10 +67,12 @@ const caseStudies = [
       "Generated consistent rental income during construction",
       "Established strong local development network"
     ],
-    gradient: "from-green-600 to-green-800"
+    gradient: "from-gold-500 to-gold-400",
+    darkText: true,
   },
   {
     id: 3,
+    titleKey: 'cs3Title' as const,
     title: "Wine Country Retreat Investment",
     location: "Rancho Queimado",
     type: "Eco-Tourism Property",
@@ -96,7 +100,7 @@ const caseStudies = [
       "Generated $35k net income in first year",
       "Established wine tourism partnership program"
     ],
-    gradient: "from-purple-600 to-purple-800"
+    gradient: "from-navy-900 to-gold-500"
   }
 ];
 
@@ -139,7 +143,7 @@ export default function CaseStudies() {
               >
                 <div className="mb-3">
                   <h4 className="font-heading text-lg text-navy-900 mb-1">
-                    {caseStudy.title}
+                    {t(`caseStudies.${caseStudy.titleKey}`)}
                   </h4>
                   <p className="text-navy-900/60 text-sm">
                     {caseStudy.location} • {caseStudy.type}
@@ -169,26 +173,32 @@ export default function CaseStudies() {
                 className="bg-white rounded-lg shadow-lg overflow-hidden"
               >
                 {/* Header */}
-                <div className={`bg-gradient-to-r ${caseStudies[activeCaseStudy].gradient} p-6 text-white`}>
-                  <div className="flex flex-wrap justify-between items-start gap-4">
-                    <div>
-                      <h3 className="font-heading text-2xl mb-2">
-                        {caseStudies[activeCaseStudy].title}
-                      </h3>
-                      <p className="text-white/80">
-                        {caseStudies[activeCaseStudy].location} • {caseStudies[activeCaseStudy].type}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-heading mb-1">
-                        {caseStudies[activeCaseStudy].roi}
+                {(() => {
+                  const cs = caseStudies[activeCaseStudy];
+                  const isDark = cs.darkText;
+                  return (
+                    <div className={`bg-gradient-to-r ${cs.gradient} p-6 ${isDark ? 'text-navy-900' : 'text-white'}`}>
+                      <div className="flex flex-wrap justify-between items-start gap-4">
+                        <div>
+                          <h3 className="font-heading text-2xl mb-2">
+                            {t(`caseStudies.${cs.titleKey}`)}
+                          </h3>
+                          <p className={isDark ? 'text-navy-900/70' : 'text-white/80'}>
+                            {cs.location} • {cs.type}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-3xl font-heading mb-1">
+                            {cs.roi}
+                          </div>
+                          <div className={`text-sm ${isDark ? 'text-navy-900/70' : 'text-white/80'}`}>
+                            Total Return
+                          </div>
+                        </div>
                       </div>
-                      <div className="text-white/80 text-sm">
-                        Total Return
-                      </div>
                     </div>
-                  </div>
-                </div>
+                  );
+                })()}
 
                 {/* Content */}
                 <div className="p-6">
