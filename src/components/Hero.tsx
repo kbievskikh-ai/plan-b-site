@@ -135,7 +135,7 @@ export default function Hero({ videoUrl }: HeroProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="mt-16 grid grid-cols-4 gap-6 max-w-xl"
+            className="mt-12 mb-20 grid grid-cols-4 gap-6 max-w-xl pb-2"
           >
             {stats.map((stat, index) => (
               <motion.div

@@ -10,11 +10,6 @@ const BuildingIcon = () => (
   </svg>
 );
 
-const HandshakeIcon = () => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-  </svg>
-);
 
 export default function WhyTrustUs() {
   const { t } = useLanguage();
@@ -23,27 +18,47 @@ export default function WhyTrustUs() {
     {
       title: t('trust.creciLicensed'),
       description: t('trust.creciDesc'),
-      number: 'License #SC-12345'
-    },
-    {
-      title: t('trust.ibcCertified'),
-      description: t('trust.ibcDesc'),
-      number: 'IBC #2024-BR'
-    },
-    {
-      title: t('trust.fisSpecialist'),
-      description: t('trust.fisDesc'),
-      number: 'FIS #BR-2023'
+      number: 'CRECI #11410-J'
     },
   ];
 
   const partners = [
-    { name: 'Banco do Brasil', type: 'Banking Partner' },
-    { name: 'Caixa Econômica Federal', type: 'Mortgage Provider' },
-    { name: 'Brazil Legal Group', type: 'Legal Partners' },
-    { name: 'Santa Catarina Tourism Board', type: 'Tourism Partnership' },
-    { name: 'Receita Federal', type: 'Tax Compliance' },
-    { name: 'International Property Network', type: 'Global Reach' },
+    {
+      name: 'Caixa Econômica Federal',
+      type: 'Mortgage Provider',
+      url: 'https://www.caixa.gov.br/',
+      abbr: 'CEF',
+    },
+    {
+      name: 'Receita Federal',
+      type: 'Tax Compliance',
+      url: 'https://www.gov.br/receitafederal/',
+      abbr: 'RF',
+    },
+    {
+      name: 'Banco do Brasil',
+      type: 'Banking Partner',
+      url: 'https://www.bb.com.br/',
+      abbr: 'BB',
+    },
+    {
+      name: 'Brazil Legal Group',
+      type: 'Legal Partners',
+      url: 'https://brazillegalgroup.com/',
+      abbr: 'BLG',
+    },
+    {
+      name: 'Santa Catarina Tourism Board',
+      type: 'Tourism Partnership',
+      url: 'https://www.santur.sc.gov.br/',
+      abbr: 'SANTUR',
+    },
+    {
+      name: 'International Property Network',
+      type: 'Global Reach',
+      url: 'https://www.ipn.org/',
+      abbr: 'IPN',
+    },
   ];
 
   const experiences = [
@@ -114,7 +129,7 @@ export default function WhyTrustUs() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="flex justify-center">
             {credentials.map((credential, index) => (
               <motion.div
                 key={credential.title}
@@ -122,7 +137,7 @@ export default function WhyTrustUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded-lg border border-navy-900/10 hover:border-gold-300 transition-colors group"
+                className="bg-white p-8 rounded-lg border border-navy-900/10 hover:border-gold-300 transition-colors group max-w-sm w-full"
               >
                 <div className="text-center">
                   <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold-200 transition-colors">
@@ -156,24 +171,30 @@ export default function WhyTrustUs() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {partners.map((partner, index) => (
-              <motion.div
+              <motion.a
                 key={partner.name}
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="bg-white p-4 rounded-lg border border-navy-900/10 hover:border-gold-300 transition-colors text-center group"
+                className="bg-white p-4 rounded-lg border border-navy-900/10 hover:border-gold-300 transition-colors text-center group cursor-pointer no-underline"
               >
-                <div className="w-12 h-12 bg-gray-100 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-gold-100 transition-colors">
-                  <span className="text-gray-600 group-hover:text-gold-600"><HandshakeIcon /></span>
+                {/* Logo-like block */}
+                <div className="w-full h-12 bg-gray-50 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-gold-50 transition-colors border border-gray-100 group-hover:border-gold-200">
+                  <span className="text-navy-900/60 group-hover:text-gold-700 font-bold text-xs tracking-widest uppercase px-2 text-center">
+                    {partner.abbr}
+                  </span>
                 </div>
-                <h4 className="font-medium text-navy-900 text-sm mb-1">
+                <h4 className="font-medium text-navy-900 text-xs mb-1 leading-tight">
                   {partner.name}
                 </h4>
-                <p className="text-navy-900/50 text-xs">
+                <p className="text-navy-900/50 text-[10px]">
                   {partner.type}
                 </p>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>

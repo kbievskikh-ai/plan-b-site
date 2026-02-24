@@ -72,6 +72,9 @@
 [id] {
   scroll-margin-top: 80px;
 }
+section[id] {
+  scroll-margin-top: 5rem;
+}
 
 /* Chart tooltip styles */
 .recharts-tooltip-wrapper {

@@ -8,8 +8,12 @@ import PropertyModal from './PropertyModal';
 import PropertyFilters, { FilterState } from './PropertyFilters';
 import { useLanguage } from '@/lib/i18n';
 
+type CategoryTab = 'all' | 'residential' | 'investment' | 'vacation';
+
+const PROPERTIES_PER_TAB = 8;
+
 export default function FeaturedProperties() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [allProperties, setAllProperties] = useState<Property[]>([])
   const [loaded, setLoaded] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
@@ -18,11 +22,25 @@ export default function FeaturedProperties() {
     type: '',
     region: '',
   });
+  const [activeTab, setActiveTab] = useState<CategoryTab>('all');
+  const [showAll, setShowAll] = useState(false);
+
+  // Reset showAll when tab changes
+  const handleTabChange = (tab: CategoryTab) => {
+    setActiveTab(tab);
+    setShowAll(false);
+  };
+
+  const tabs: { id: CategoryTab; label: string; labelRu: string }[] = [
+    { id: 'all',         label: 'All',           labelRu: 'Все' },
+    { id: 'residential', label: 'For Sale',       labelRu: 'Продажа' },
+    { id: 'investment',  label: 'For Investment', labelRu: 'Инвестиции' },
+    { id: 'vacation',    label: 'For Rent',       labelRu: 'Аренда' },
+  ];
 
   // Fetch properties from API on mount
   useEffect(() => {
     fetchProperties().then(props => {
-      console.log('[Migronis] Fetched properties:', props.length, props.map(p => p.title));
       setAllProperties(props);
       setLoaded(true);
     }).catch(() => {
@@ -31,9 +49,12 @@ export default function FeaturedProperties() {
     });
   }, []);
 
-  // Filter properties based on selected filters
+  // Filter properties based on selected filters + active tab
   const filteredProperties = useMemo(() => {
     return allProperties.filter(property => {
+      // Tab filter
+      if (activeTab !== 'all' && property.type !== activeTab) return false;
+
       // Price range filter
       if (filters.priceRange) {
         if (filters.priceRange === '2000000+') {
@@ -44,7 +65,7 @@ export default function FeaturedProperties() {
         }
       }
 
-      // Type filter
+      // Type filter (from PropertyFilters)
       if (filters.type && property.type !== filters.type) return false;
 
       // Region filter
@@ -52,15 +73,21 @@ export default function FeaturedProperties() {
 
       return true;
     });
-  }, [filters, allProperties]);
+  }, [filters, allProperties, activeTab]);
+
+  // Visible properties: cap at 8 unless showAll
+  const visibleProperties = useMemo(() => {
+    if (showAll) return filteredProperties;
+    return filteredProperties.slice(0, PROPERTIES_PER_TAB);
+  }, [filteredProperties, showAll]);
+
+  const hasMore = filteredProperties.length > PROPERTIES_PER_TAB && !showAll;
 
   const container = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
@@ -69,11 +96,13 @@ export default function FeaturedProperties() {
     show: { opacity: 1, y: 0 }
   };
 
+  const isRu = language === 'ru';
+
   return (
     <section id="properties" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-500" />
             <span className="text-gold-500 text-sm tracking-[0.3em] uppercase">{t('properties.portfolio')}</span>
@@ -87,13 +116,30 @@ export default function FeaturedProperties() {
           </p>
         </div>
 
+        {/* Category Tabs */}
+        <div className="flex items-center justify-center gap-2 mb-8 flex-wrap">
+          {tabs.map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => handleTabChange(tab.id)}
+              className={`px-5 py-2 text-sm font-medium tracking-wider uppercase transition-all duration-200 rounded-full border ${
+                activeTab === tab.id
+                  ? 'bg-gold-500 border-gold-500 text-white shadow-md shadow-gold-500/20'
+                  : 'border-navy-900/20 text-navy-900/60 hover:border-gold-400 hover:text-gold-600'
+              }`}
+            >
+              {isRu ? tab.labelRu : tab.label}
+            </button>
+          ))}
+        </div>
+
         {/* Filters */}
         {loaded && <PropertyFilters filters={filters} onFilterChange={setFilters} />}
 
         {/* Results count */}
         <div className="mb-8">
           <p className="text-navy-900/60 text-sm">
-            {t('properties.showing')} {filteredProperties.length} {t('properties.of')} {allProperties.length} {t('properties.propertiesCount')}
+            {t('properties.showing')} {visibleProperties.length} {t('properties.of')} {filteredProperties.length} {t('properties.propertiesCount')}
           </p>
         </div>
 
@@ -103,8 +149,9 @@ export default function FeaturedProperties() {
           variants={container}
           initial="hidden"
           animate="show"
+          key={activeTab}
         >
-          {filteredProperties.map((property) => (
+          {visibleProperties.map((property) => (
             <motion.div
               key={property.id}
               variants={item}
@@ -190,10 +237,12 @@ export default function FeaturedProperties() {
         {/* No results */}
         {filteredProperties.length === 0 && (
           <div className="text-center py-16">
-            <h3 className="font-heading text-xl text-navy-900 mb-2">No properties found</h3>
-            <p className="text-navy-900/50 mb-6">Try adjusting your filters to see more options.</p>
+            <h3 className="font-heading text-xl text-navy-900 mb-2">
+              {t('properties.noResults')}
+            </h3>
+            <p className="text-navy-900/50 mb-6">{t('properties.noResultsDesc')}</p>
             <button 
-              onClick={() => setFilters({ priceRange: '', type: '', region: '' })}
+              onClick={() => { setFilters({ priceRange: '', type: '', region: '' }); setActiveTab('all'); }}
               className="btn-outline"
             >
               {t('properties.clearFilters')}
@@ -201,16 +250,36 @@ export default function FeaturedProperties() {
           </div>
         )}
 
-        {/* View All CTA */}
-        {filteredProperties.length > 0 && filteredProperties.length === allProperties.length && (
-          <div className="text-center mt-12">
+        {/* View All / Show Less CTAs */}
+        {filteredProperties.length > 0 && (
+          <div className="text-center mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+            {hasMore && (
+              <motion.button
+                onClick={() => setShowAll(true)}
+                className="btn-gold"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isRu ? 'Посмотреть все объекты' : 'View All Properties'}
+              </motion.button>
+            )}
+            {showAll && filteredProperties.length > PROPERTIES_PER_TAB && (
+              <motion.button
+                onClick={() => setShowAll(false)}
+                className="btn-outline"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isRu ? 'Свернуть' : 'Show Less'}
+              </motion.button>
+            )}
             <motion.a 
               href="#contact" 
               className="btn-outline inline-block"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              {t('properties.viewAll')} {allProperties.length}+
+              {isRu ? 'Запросить консультацию' : 'Request Consultation'}
             </motion.a>
           </div>
         )}

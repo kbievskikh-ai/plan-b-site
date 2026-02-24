@@ -11,12 +11,22 @@ import WhyBrazil from "@/components/WhyBrazil";
 import FAQ from "@/components/FAQ";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import { fetchSettings } from "@/lib/api";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch admin settings for video URL (and any other config)
+  let videoUrl: string | undefined;
+  try {
+    const settings = await fetchSettings();
+    videoUrl = settings.video_url || undefined;
+  } catch {
+    // fallback: no video
+  }
+
   return (
     <main className="min-h-screen">
       <Header />
-      <Hero />
+      <Hero videoUrl={videoUrl} />
       <FeaturedProperties />
       <AboutMigronis />
       <WhyTrustUs />

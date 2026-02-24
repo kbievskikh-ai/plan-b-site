@@ -8,10 +8,10 @@ export default function AboutMigronis() {
   const { t } = useLanguage();
 
   const stats = [
-    { value: "10+", label: t('about.yearsExperience') },
-    { value: "500+", label: t('about.propertiesSold') },
+    { value: "15+", label: t('about.yearsExperience') },
+    { value: "1500+", label: t('about.propertiesSold') },
     { value: "25+", label: t('about.countriesServed') },
-    { value: "$150M+", label: t('about.transactionVolume') },
+    { value: "$350M+", label: t('about.transactionVolume') },
   ];
 
   const differentiators = [
