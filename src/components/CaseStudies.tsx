@@ -273,7 +273,11 @@ export default function CaseStudies() {
                       <ul className="space-y-2">
                         {caseStudies[activeCaseStudy].solutions.map((solution, index) => (
                           <li key={index} className="flex items-start gap-2">
-                            <span className="text-green-500 text-sm mt-1">✅</span>
+                            <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#c9963c]/10 flex items-center justify-center mt-0.5">
+                              <svg className="w-3 h-3 text-[#c9963c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                            </span>
                             <span className="text-navy-900/70 text-sm">{solution}</span>
                           </li>
                         ))}
@@ -316,6 +320,22 @@ export default function CaseStudies() {
           <a href="#contact" className="btn-gold">
             {t('caseStudies.cta')}
           </a>
+        </motion.div>
+
+        {/* Disclaimer — moved here after case studies */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-8 p-6 bg-navy-900 rounded-lg border border-white/10"
+        >
+          <h4 className="font-heading text-xl lg:text-2xl text-white mb-3">
+            {t('faq.disclaimerTitle')}
+          </h4>
+          <p className="text-white/70 text-sm leading-relaxed">
+            {t('faq.disclaimerText')}
+          </p>
         </motion.div>
       </div>
     </section>

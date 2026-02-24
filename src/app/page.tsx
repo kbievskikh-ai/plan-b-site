@@ -6,6 +6,7 @@ import WhyTrustUs from "@/components/WhyTrustUs";
 import InteractiveMap from "@/components/InteractiveMap";
 import InvestmentAnalytics from "@/components/InvestmentAnalytics";
 import CaseStudies from "@/components/CaseStudies";
+import InvestorGuide from "@/components/InvestorGuide";
 import Testimonials from "@/components/Testimonials";
 import WhyBrazil from "@/components/WhyBrazil";
 import FAQ from "@/components/FAQ";
@@ -32,6 +33,7 @@ export default async function Home() {
       <WhyTrustUs />
       <InteractiveMap />
       <InvestmentAnalytics />
+      <InvestorGuide />
       <CaseStudies />
       <Testimonials />
       <WhyBrazil />

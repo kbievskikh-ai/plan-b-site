@@ -27,12 +27,10 @@ export default function Header() {
   }, []);
 
   const [langOpen, setLangOpen] = useState(false);
-  const languages: { code: 'en' | 'ru' | 'es' | 'pt' | 'de'; flag: string; label: string }[] = [
+  const languages: { code: 'en' | 'ru' | 'pt'; flag: string; label: string }[] = [
     { code: 'en', flag: '🇬🇧', label: 'EN' },
     { code: 'ru', flag: '🇷🇺', label: 'RU' },
-    { code: 'es', flag: '🇪🇸', label: 'ES' },
     { code: 'pt', flag: '🇧🇷', label: 'PT' },
-    { code: 'de', flag: '🇩🇪', label: 'DE' },
   ];
   const currentLang = languages.find(l => l.code === language) || languages[0];
 

@@ -184,14 +184,6 @@ export default function FAQ() {
           </div>
         </motion.div>
 
-        <div className="mt-12 p-6 bg-navy-900 rounded-lg">
-          <h4 className="font-heading text-xl lg:text-2xl text-white mb-3">
-            {t('faq.disclaimerTitle')}
-          </h4>
-          <p className="text-white/70 text-sm leading-relaxed">
-            {t('faq.disclaimerText')}
-          </p>
-        </div>
       </div>
     </section>
   );

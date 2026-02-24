@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
 
-export type Language = 'en' | 'ru' | 'es' | 'pt' | 'de';
+export type Language = 'en' | 'ru' | 'pt' | 'es' | 'de'; // es/de kept for compatibility but not shown in UI
 
 interface Translations {
   [key: string]: string | Translations;
