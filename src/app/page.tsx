@@ -7,6 +7,7 @@ import InteractiveMap from "@/components/InteractiveMap";
 import InvestmentAnalytics from "@/components/InvestmentAnalytics";
 import PropertyManagement from "@/components/PropertyManagement";
 import InvestmentPackages from "@/components/InvestmentPackages";
+import InvestmentIntelligence from "@/components/InvestmentIntelligence";
 import CaseStudies from "@/components/CaseStudies";
 import InvestorGuide from "@/components/InvestorGuide";
 import Testimonials from "@/components/Testimonials";
@@ -37,6 +38,7 @@ export default async function Home() {
       <InvestmentAnalytics />
       <PropertyManagement />
       <InvestmentPackages />
+      <InvestmentIntelligence />
       <InvestorGuide />
       <CaseStudies />
       <Testimonials />
