@@ -5,6 +5,7 @@ import AboutMigronis from "@/components/AboutMigronis";
 import WhyTrustUs from "@/components/WhyTrustUs";
 import InteractiveMap from "@/components/InteractiveMap";
 import InvestmentAnalytics from "@/components/InvestmentAnalytics";
+import PropertyManagement from "@/components/PropertyManagement";
 import CaseStudies from "@/components/CaseStudies";
 import InvestorGuide from "@/components/InvestorGuide";
 import Testimonials from "@/components/Testimonials";
@@ -33,6 +34,7 @@ export default async function Home() {
       <WhyTrustUs />
       <InteractiveMap />
       <InvestmentAnalytics />
+      <PropertyManagement />
       <InvestorGuide />
       <CaseStudies />
       <Testimonials />
