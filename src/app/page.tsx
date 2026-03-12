@@ -1,50 +1,12 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import FeaturedProperties from "@/components/FeaturedProperties";
-import AboutMigronis from "@/components/AboutMigronis";
-import WhyTrustUs from "@/components/WhyTrustUs";
-import InteractiveMap from "@/components/InteractiveMap";
-import InvestmentAnalytics from "@/components/InvestmentAnalytics";
-import PropertyManagement from "@/components/PropertyManagement";
-import InvestmentPackages from "@/components/InvestmentPackages";
-import InvestmentIntelligence from "@/components/InvestmentIntelligence";
-import CaseStudies from "@/components/CaseStudies";
-import InvestorGuide from "@/components/InvestorGuide";
-import Testimonials from "@/components/Testimonials";
-import WhyBrazil from "@/components/WhyBrazil";
-import FAQ from "@/components/FAQ";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import { fetchSettings } from "@/lib/api";
+import SectionManager from "@/components/SectionManager";
 
-export default async function Home() {
-  // Fetch admin settings for video URL (and any other config)
-  let videoUrl: string | undefined;
-  try {
-    const settings = await fetchSettings();
-    videoUrl = settings.video_url || undefined;
-  } catch {
-    // fallback: no video
-  }
-
+export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
-      <Hero videoUrl={videoUrl} />
-      <FeaturedProperties />
-      <AboutMigronis />
-      <WhyTrustUs />
-      <InteractiveMap />
-      <InvestmentAnalytics />
-      <PropertyManagement />
-      <InvestmentPackages />
-      <InvestmentIntelligence />
-      <InvestorGuide />
-      <CaseStudies />
-      <Testimonials />
-      <WhyBrazil />
-      <FAQ />
-      <ContactForm />
+      <SectionManager />
       <Footer />
     </main>
   );
