@@ -104,11 +104,37 @@ export default function Hero({ videoUrl }: HeroProps) {
             {t('hero.subtitle')}
           </motion.p>
 
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="mb-8"
+          >
+            <div className="flex flex-row items-center gap-0 sm:bg-white/5 sm:backdrop-blur-sm sm:border sm:border-white/10 sm:rounded-2xl sm:px-2 sm:py-3">
+              {stats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 ${
+                    index < stats.length - 1 ? 'border-r border-white/10' : ''
+                  }`}
+                >
+                  <span className="text-gold-400 font-heading text-lg sm:text-xl lg:text-2xl font-bold whitespace-nowrap">
+                    {stat.value}
+                  </span>
+                  <span className="text-white/40 text-[9px] sm:text-[10px] leading-tight tracking-wider uppercase max-w-[55px] sm:max-w-[70px]">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <motion.a
@@ -127,35 +153,6 @@ export default function Hero({ videoUrl }: HeroProps) {
             >
               {t('hero.requestConsultation')}
             </motion.a>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="mt-12 mb-20"
-          >
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-0 sm:bg-white/5 sm:backdrop-blur-sm sm:border sm:border-white/10 sm:rounded-2xl sm:px-2 sm:py-3">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                  className={`flex items-center gap-2 sm:px-5 ${
-                    index < stats.length - 1 ? 'sm:border-r sm:border-white/10' : ''
-                  }`}
-                >
-                  <span className="text-gold-400 font-heading text-xl lg:text-2xl font-bold whitespace-nowrap">
-                    {stat.value}
-                  </span>
-                  <span className="text-white/40 text-[10px] leading-tight tracking-wider uppercase">
-                    {stat.label}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>
