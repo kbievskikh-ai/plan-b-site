@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedProperties from '@/components/FeaturedProperties';
 import CalculatorTeaser from '@/components/CalculatorTeaser';
@@ -17,24 +16,10 @@ import Testimonials from '@/components/Testimonials';
 import WhyBrazil from '@/components/WhyBrazil';
 import FAQ from '@/components/FAQ';
 import ContactForm from '@/components/ContactForm';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.gronisbrazil.com';
+import { useSettings } from '@/lib/settings';
 
 export default function SectionManager() {
-  const [settings, setSettings] = useState<Record<string, string>>({});
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch(`${API_URL}/api/settings`)
-      .then(res => res.json())
-      .then(data => {
-        setSettings(data);
-        setLoaded(true);
-      })
-      .catch(() => setLoaded(true));
-  }, []);
-
-  const show = (key: string) => settings[key] !== 'false';
+  const { settings, show, loaded } = useSettings();
 
   if (!loaded) {
     return (

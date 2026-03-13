@@ -3,20 +3,24 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/i18n";
+import { useSettings } from "@/lib/settings";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const { show } = useSettings();
 
-  const navItems = [
-    { label: t('nav.properties'), href: "#properties" },
-    { label: t('nav.regions'), href: "#regions" },
-    { label: t('nav.whyBrazil'), href: "#investment" },
-    { label: t('nav.about'), href: "#about" },
-    { label: t('nav.caseStudies'), href: "#case-studies" },
-    { label: t('nav.faq'), href: "#faq" },
+  const allNavItems = [
+    { label: t('nav.properties'), href: "#properties", section: 'section_featured_properties' },
+    { label: t('nav.regions'), href: "#regions", section: 'section_map' },
+    { label: t('nav.whyBrazil'), href: "#investment", section: 'section_why_brazil' },
+    { label: t('nav.about'), href: "#about", section: 'section_about' },
+    { label: t('nav.caseStudies'), href: "#case-studies", section: 'section_case_studies' },
+    { label: t('nav.faq'), href: "#faq", section: 'section_faq' },
   ];
+
+  const navItems = allNavItems.filter(item => show(item.section));
 
   useEffect(() => {
     const handleScroll = () => {
