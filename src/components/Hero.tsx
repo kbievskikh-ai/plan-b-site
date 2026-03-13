@@ -135,23 +135,28 @@ export default function Hero({ videoUrl }: HeroProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="mt-12 mb-20 grid grid-cols-4 gap-6 max-w-xl pb-2"
+            className="mt-12 mb-20"
           >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-              >
-                <div className="text-gold-400 font-heading text-2xl lg:text-3xl">
-                  {stat.value}
-                </div>
-                <div className="text-white/50 text-xs mt-1 tracking-wider uppercase">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            <div className="inline-flex items-center gap-0 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-2 py-3">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                  className={`flex items-center gap-2 px-5 ${
+                    index < stats.length - 1 ? 'border-r border-white/10' : ''
+                  }`}
+                >
+                  <span className="text-gold-400 font-heading text-xl lg:text-2xl font-bold whitespace-nowrap">
+                    {stat.value}
+                  </span>
+                  <span className="text-white/40 text-[10px] leading-tight tracking-wider uppercase max-w-[70px]">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
