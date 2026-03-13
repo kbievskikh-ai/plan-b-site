@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birth Abroad Calculator — Compare Countries for Your Baby's Citizenship</title>
+<meta name="description" content="Compare costs, passport strength, and citizenship benefits of giving birth abroad. Brazil, USA, Canada, Argentina, Chile, Mexico — find the best country for your family.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
+
+:root {
+  --navy: #1B2951;
+  --gold: #D4AF37;
+  --gold-light: #f5e6b8;
+  --cream: #F8F6F0;
+  --dark: #0D1B3E;
+  --green: #2a9d5c;
+  --red: #d44;
+  --gray: #666;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--cream); color: var(--navy); }
+
+/* LANGUAGE SWITCHER */
+.lang-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--navy); padding: 8px 0; text-align: center; }
+.lang-btn { background: transparent; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.5); padding: 4px 14px; margin: 0 4px; border-radius: 20px; cursor: pointer; font-size: 12px; font-family: 'Inter', sans-serif; transition: all .2s; }
+.lang-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 600; }
+
+/* HEADER */
+.header { background: linear-gradient(135deg, var(--navy), var(--dark)); padding: 80px 20px 50px; text-align: center; color: #fff; }
+.header .logo { width: 56px; height: 56px; background: linear-gradient(135deg, var(--gold), #b8862d); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+.header h1 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 5vw, 38px); font-weight: 700; margin-bottom: 10px; }
+.header h1 span { color: var(--gold); }
+.header p { color: rgba(255,255,255,.5); font-size: 14px; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+/* MAIN */
+.container { max-width: 1100px; margin: 0 auto; padding: 30px 16px; }
+
+/* INPUT SECTION */
+.input-section { background: #fff; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 20px rgba(0,0,0,.06); }
+.input-section h2 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 20px; }
+.input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.input-group label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: var(--gray); margin-bottom: 6px; }
+.input-group select, .input-group input { width: 100%; padding: 12px 16px; border: 2px solid #e8e4dc; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 14px; background: var(--cream); color: var(--navy); transition: border .2s; }
+.input-group select:focus, .input-group input:focus { border-color: var(--gold); outline: none; }
+.input-group .hint { font-size: 11px; color: #aaa; margin-top: 4px; }
+
+/* TOGGLE SWITCH */
+.toggle-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+.toggle-label { font-size: 13px; font-weight: 500; }
+.toggle { position: relative; width: 44px; height: 24px; background: #ddd; border-radius: 12px; cursor: pointer; transition: background .2s; }
+.toggle.on { background: var(--gold); }
+.toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform .2s; }
+.toggle.on::after { transform: translateX(20px); }
+
+/* RESULTS */
+.results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+.results-header h2 { font-family: 'Playfair Display', serif; font-size: 22px; }
+.sort-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.sort-btn { padding: 6px 14px; border: 1px solid #e8e4dc; border-radius: 20px; background: #fff; font-family: 'Inter', sans-serif; font-size: 11px; cursor: pointer; color: var(--gray); transition: all .2s; }
+.sort-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 600; }
+
+/* COUNTRY CARDS */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.country-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 20px rgba(0,0,0,.06); transition: transform .2s, box-shadow .2s; position: relative; }
+.country-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+.country-card.highlight { border: 2px solid var(--gold); }
+.country-card.highlight::before { content: attr(data-badge); position: absolute; top: 12px; right: 12px; background: var(--gold); color: var(--navy); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 8px; text-transform: uppercase; letter-spacing: .5px; z-index: 2; }
+.card-header { padding: 20px 24px 16px; display: flex; align-items: center; gap: 14px; }
+.card-flag { font-size: 36px; }
+.card-title h3 { font-family: 'Playfair Display', serif; font-size: 18px; }
+.card-title .passport-score { font-size: 12px; color: var(--gold); font-weight: 600; }
+.card-body { padding: 0 24px 20px; }
+
+.cost-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0ede4; font-size: 13px; }
+.cost-row:last-child { border: none; }
+.cost-row .label { color: var(--gray); }
+.cost-row .value { font-weight: 600; }
+.cost-total { display: flex; justify-content: space-between; padding: 12px 0; margin-top: 4px; border-top: 2px solid var(--gold-light); font-size: 15px; font-weight: 700; }
+.cost-total .value { color: var(--gold); font-size: 18px; }
+
+.card-features { padding: 0 24px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.feature { font-size: 11px; display: flex; align-items: center; gap: 6px; }
+.feature .yes { color: var(--green); font-weight: 700; }
+.feature .no { color: var(--red); font-weight: 700; }
+.feature .partial { color: #e8a317; font-weight: 700; }
+
+.card-footer { background: var(--cream); padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+.card-footer .timeline { font-size: 11px; color: var(--gray); }
+.card-footer .timeline strong { color: var(--navy); }
+
+/* EXPANDED DETAILS */
+.card-details { padding: 0 24px 20px; }
+.details-toggle { display: block; width: 100%; padding: 8px; background: var(--cream); border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 12px; color: var(--gold); font-weight: 600; cursor: pointer; transition: background .2s; margin-bottom: 12px; }
+.details-toggle:hover { background: var(--gold-light); }
+.details-content { display: none; }
+.details-content.open { display: block; }
+.detail-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #f0ede4; font-size: 12px; }
+.detail-row:last-child { border: none; }
+.detail-row .dlabel { color: var(--gray); }
+.detail-row .dvalue { font-weight: 600; text-align: right; max-width: 60%; }
+.rating-bar { display: inline-flex; gap: 2px; }
+.rating-dot { width: 8px; height: 8px; border-radius: 50%; background: #e8e4dc; }
+.rating-dot.filled { background: var(--gold); }
+.warning-box { background: #fef3e2; border-left: 3px solid #e8a317; padding: 10px 12px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 11px; color: #8a6d1b; line-height: 1.5; }
+.docs-list { margin: 8px 0; padding-left: 16px; font-size: 11px; color: var(--gray); line-height: 1.6; }
+.docs-list li { margin-bottom: 2px; }
+.pros-cons { margin: 8px 0; }
+.pros-cons .pro { font-size: 11px; color: var(--green); margin-bottom: 3px; }
+.pros-cons .con { font-size: 11px; color: var(--red); margin-bottom: 3px; }
+
+/* PASSPORT BAR */
+.passport-bar { height: 6px; background: #eee; border-radius: 3px; margin: 8px 0; overflow: hidden; }
+.passport-fill { height: 100%; background: linear-gradient(90deg, var(--gold), #b8862d); border-radius: 3px; transition: width .6s ease; }
+
+/* COMPARISON TABLE (mobile alt) */
+.comparison-section { margin-top: 30px; }
+.comparison-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 20px rgba(0,0,0,.06); }
+.comparison-table th { background: var(--navy); color: var(--gold); padding: 12px 16px; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; text-align: left; white-space: nowrap; }
+.comparison-table td { padding: 10px 16px; font-size: 13px; border-bottom: 1px solid #f0ede4; }
+.comparison-table tr:hover { background: #fdf9f0; }
+.comparison-table .flag-cell { font-size: 20px; text-align: center; }
+.comparison-table .total-cell { font-weight: 700; color: var(--gold); }
+
+/* CTA */
+.cta-section { background: linear-gradient(135deg, var(--navy), var(--dark)); border-radius: 20px; padding: 40px 30px; text-align: center; color: #fff; margin-top: 30px; }
+.cta-section h2 { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 10px; }
+.cta-section h2 span { color: var(--gold); }
+.cta-section p { color: rgba(255,255,255,.5); font-size: 13px; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.cta-btn { display: inline-block; background: var(--gold); color: var(--navy); padding: 14px 36px; border-radius: 30px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform .2s; }
+.cta-btn:hover { transform: scale(1.05); }
+.cta-contact { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,.3); }
+
+/* DISCLAIMER */
+.disclaimer { text-align: center; font-size: 10px; color: #bbb; padding: 30px 20px; line-height: 1.6; max-width: 700px; margin: 0 auto; }
+
+/* RESPONSIVE */
+@media (max-width: 680px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .header h1 { font-size: 24px; }
+  .input-grid { grid-template-columns: 1fr; }
+  .comparison-table { font-size: 11px; }
+  .comparison-table th, .comparison-table td { padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
+  <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">G</div>
+  <h1 data-i18n="title">Birth Abroad <span>Calculator</span></h1>
+  <p data-i18n="subtitle">Compare costs, passport strength, and citizenship benefits across 6 countries. Find the best destination for your family.</p>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- INPUTS -->
+  <div class="input-section">
+    <h2 data-i18n="your_situation">🔧 Your Situation</h2>
+    <div class="input-grid">
+      <div class="input-group">
+        <label data-i18n="from_country_label">Where are you from?</label>
+        <select id="fromCountry" onchange="recalc()">
+          <option value="ru">🇷🇺 Russia</option>
+          <option value="ua">🇺🇦 Ukraine</option>
+          <option value="by">🇧🇾 Belarus</option>
+          <option value="kz">🇰🇿 Kazakhstan</option>
+          <option value="eu">🇪🇺 EU Country</option>
+          <option value="other">🌍 Other</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label data-i18n="delivery_label">Delivery type</label>
+        <select id="deliveryType" onchange="recalc()">
+          <option value="natural">Natural birth</option>
+          <option value="csection">C-section</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label data-i18n="stay_label">Planned stay (months)</label>
+        <select id="stayMonths" onchange="recalc()">
+          <option value="2">2 months</option>
+          <option value="3" selected>3 months</option>
+          <option value="4">4 months</option>
+          <option value="6">6 months</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label data-i18n="hospital_label">Hospital preference</label>
+        <select id="hospitalType" onchange="recalc()">
+          <option value="private">Private hospital</option>
+          <option value="premium">Premium / VIP</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-top: 16px;">
+      <div class="toggle-row">
+        <div class="toggle" id="toggleCompanion" onclick="toggleSwitch(this); recalc()"></div>
+        <span class="toggle-label" data-i18n="companion_label">Traveling with partner</span>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle on" id="toggleVisa" onclick="toggleSwitch(this); recalc()"></div>
+        <span class="toggle-label" data-i18n="visa_label">Include visa & flight costs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SORT -->
+  <div class="results-header">
+    <h2 data-i18n="results_title">📊 Results</h2>
+    <div class="sort-btns">
+      <button class="sort-btn active" data-sort="cost" onclick="sortBy('cost', this)" data-i18n="sort_cost">💰 Cheapest</button>
+      <button class="sort-btn" data-sort="passport" onclick="sortBy('passport', this)" data-i18n="sort_passport">🛂 Passport</button>
+      <button class="sort-btn" data-sort="parent" onclick="sortBy('parent', this)" data-i18n="sort_parent">👨‍👩‍👧 Parent Path</button>
+      <button class="sort-btn" data-sort="overall" onclick="sortBy('overall', this)" data-i18n="sort_overall">⭐ Best Value</button>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards-grid" id="cardsGrid"></div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="comparison-section">
+    <h2 style="font-family:'Playfair Display',serif; font-size:22px; margin-bottom:16px;" data-i18n="table_title">📋 Side-by-Side Comparison</h2>
+    <div style="overflow-x: auto;">
+      <table class="comparison-table" id="compTable"></table>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2 data-i18n="cta_title">Considering <span>Brazil</span>?</h2>
+    <p data-i18n="cta_text">GRONIS International Real Estate helps families relocating to Brazil — from finding the perfect home to navigating residency, healthcare, and schooling. We're based in Florianópolis, one of Brazil's safest and most livable cities.</p>
+    <a href="https://wa.me/5548988752300?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20relocating%20to%20Brazil%20for%20my%20family" class="cta-btn" data-i18n="cta_button">💬 Chat on WhatsApp</a>
+    <div class="cta-contact">+55 (48) 98875-2300 · gronisbrazil.com · @GRONIS_Brazil</div>
+  </div>
+</div>
+
+<div class="disclaimer" data-i18n="disclaimer">
+  DISCLAIMER: This calculator provides estimates based on publicly available data and is for informational purposes only. Actual costs may vary significantly based on hospital, location, complications, exchange rates, and individual circumstances. This is not legal, medical, or immigration advice. Always consult qualified professionals before making decisions. GRONIS International Real Estate · CRECI-J 11410 · 2026
+</div>
+
+<script>
+// ============ DATA ============
+const countries = {
+  brazil: {
+    flag: '🇧🇷',
+    name: { en: 'Brazil', ru: 'Бразилия', pt: 'Brasil' },
+    city: { en: 'Florianópolis', ru: 'Флорианополис', pt: 'Florianópolis' },
+    passportScore: 168,
+    passportMax: 195,
+    euAccess: true,
+    deliveryCost: { natural: [3000, 5000], csection: [5000, 7000], premium: 1.6 },
+    monthlyLiving: { single: 1200, couple: 1800 },
+    flights: { ru: 1800, ua: 1800, by: 1800, kz: 2200, eu: 1200, other: 1500 },
+    visa: { ru: 0, ua: 0, by: 0, kz: 0, eu: 0, other: 0 },
+    visaNote: { en: 'Visa-free 90 days (extendable)', ru: 'Без визы 90 дней (с продлением)', pt: 'Sem visto 90 dias (extensível)' },
+    citizenship: { en: 'Automatic (jus soli)', ru: 'Автоматическое (jus soli)', pt: 'Automático (jus soli)' },
+    parentPath: { en: 'ВНЖ → Citizenship in ~1 year', ru: 'ВНЖ → Гражданство через ~1 год', pt: 'Residência → Cidadania em ~1 ano' },
+    parentScore: 10,
+    dualCitizenship: true,
+    docs: 150,
+    language: { en: 'Portuguese', ru: 'Португальский', pt: 'Português' },
+    safety: { en: 'Florianópolis — safest capital in Brazil', ru: 'Флорианополис — самая безопасная столица Бразилии', pt: 'Florianópolis — capital mais segura do Brasil' },
+    climate: { en: 'Subtropical, 18-30°C year-round', ru: 'Субтропики, 18-30°C круглый год', pt: 'Subtropical, 18-30°C o ano todo' },
+    pros: {
+      en: ['Fastest parent citizenship path (~1 year)', 'No visa required (RU/UA/BY)', 'Affordable healthcare', 'Dual citizenship allowed', 'EU visa-free access', 'Excellent quality of life'],
+      ru: ['Самый быстрый путь к гражданству для родителей (~1 год)', 'Без визы (РФ/УА/РБ)', 'Доступная медицина', 'Двойное гражданство разрешено', 'Безвизовый ЕС', 'Высокое качество жизни'],
+      pt: ['Caminho mais rápido para cidadania dos pais (~1 ano)', 'Sem visto (RU/UA/BY)', 'Saúde acessível', 'Dupla cidadania permitida', 'Acesso sem visto à UE', 'Excelente qualidade de vida']
+    },
+    cons: {
+      en: ['Portuguese language barrier', 'Long flights from Europe/Asia'],
+      ru: ['Языковой барьер (португальский)', 'Длинный перелёт из Европы/Азии'],
+      pt: ['Barreira linguística para estrangeiros', 'Voos longos da Europa/Ásia']
+    },
+    healthcareRating: 7.5,
+    safetyRating: 8,
+    infantMortality: 11.9,
+    flightTime: { ru: '22-25h', ua: '22-25h', by: '24-27h', kz: '28-30h', eu: '12-14h' },
+    avgTemp: '22°C',
+    russianCommunity: { en: 'Growing — especially in Florianópolis & SP', ru: 'Растущая — особенно во Флорипе и СП' },
+    englishLevel: { en: 'Low — Portuguese essential', ru: 'Низкий — нужен португальский' },
+    topHospitals: { en: 'Hospital Baía Sul, Hospital Imperial (Florianópolis)', ru: 'Hospital Baía Sul, Hospital Imperial (Флорианополис)' },
+    warnings: { en: 'Use PRIVATE hospital to avoid child protection issues. Public hospitals may trigger social services investigation for foreign mothers.', ru: 'Рожайте в ЧАСТНОЙ клинике. В гос. больницах бывали случаи проверки органами опеки для иностранок.' },
+    docsNeeded: { en: ['Valid passport', 'CPF (tax ID — $1.5, get on arrival)', 'Medical records translated to Portuguese', 'Travel insurance (recommended)'], ru: ['Загранпаспорт', 'CPF (налоговый ID — $1.5, оформить по прилёту)', 'Мед. документы с переводом на португальский', 'Страховка (рекомендуется)'] },
+    highlight: true,
+    badge: { en: 'Best Value', ru: 'Лучшее соотношение' }
+  },
+  usa: {
+    flag: '🇺🇸',
+    name: { en: 'USA', ru: 'США', pt: 'EUA' },
+    city: { en: 'Miami, FL', ru: 'Майами, Флорида', pt: 'Miami, FL' },
+    passportScore: 179,
+    passportMax: 195,
+    euAccess: true,
+    deliveryCost: { natural: [10000, 15000], csection: [15000, 25000], premium: 1.4 },
+    monthlyLiving: { single: 3500, couple: 5000 },
+    flights: { ru: 1500, ua: 1200, by: 1500, kz: 1800, eu: 800, other: 1200 },
+    visa: { ru: 160, ua: 160, by: 160, kz: 160, eu: 0, other: 160 },
+    visaNote: { en: 'B1/B2 visa required (hard to get while pregnant)', ru: 'Нужна виза B1/B2 (сложно получить беременной)', pt: 'Visto B1/B2 necessário (difícil para grávidas)' },
+    citizenship: { en: 'Automatic (jus soli)', ru: 'Автоматическое (jus soli)', pt: 'Automático (jus soli)' },
+    parentPath: { en: 'No direct path — child sponsors at 21', ru: 'Нет прямого пути — ребёнок спонсирует в 21 год', pt: 'Sem caminho direto — filho patrocina aos 21' },
+    parentScore: 2,
+    dualCitizenship: true,
+    docs: 200,
+    language: { en: 'English', ru: 'Английский', pt: 'Inglês' },
+    safety: { en: 'Varies by city — Miami relatively safe', ru: 'Зависит от города — Майами относительно безопасен', pt: 'Varia por cidade — Miami relativamente seguro' },
+    climate: { en: 'Tropical/subtropical, warm year-round', ru: 'Тропики/субтропики, тепло круглый год', pt: 'Tropical/subtropical, quente o ano todo' },
+    pros: {
+      en: ['Strongest passport (179 countries)', 'World-class hospitals', 'English-speaking', 'Dual citizenship OK'],
+      ru: ['Самый сильный паспорт (179 стран)', 'Лучшие больницы', 'Английский язык', 'Двойное гражданство ОК'],
+      pt: ['Passaporte mais forte (179 países)', 'Hospitais de classe mundial', 'Inglês', 'Dupla cidadania OK']
+    },
+    cons: {
+      en: ['Very expensive ($25-50K+ total)', 'Visa difficult for pregnant women', 'No parent residency path', 'Child can sponsor parents only at 21'],
+      ru: ['Очень дорого ($25-50K+ итого)', 'Виза сложно для беременных', 'Нет пути к ВНЖ для родителей', 'Ребёнок спонсирует только в 21 год']
+    },
+    healthcareRating: 9.5,
+    safetyRating: 7,
+    infantMortality: 5.4,
+    flightTime: { ru: '12-14h', ua: '11-13h', by: '12-14h', kz: '16-18h', eu: '9-11h' },
+    avgTemp: '25°C',
+    russianCommunity: { en: 'Large — especially in Miami, NYC, LA', ru: 'Большая — особенно Майами, Нью-Йорк, ЛА' },
+    englishLevel: { en: 'English-speaking country', ru: 'Англоязычная страна' },
+    topHospitals: { en: 'Mount Sinai, Jackson Memorial (Miami), Cedars-Sinai (LA)', ru: 'Mount Sinai, Jackson Memorial (Майами), Cedars-Sinai (ЛА)' },
+    warnings: { en: 'CBP may deny entry if they suspect birth tourism. Do NOT mention childbirth at border. Very high unexpected medical bills possible.', ru: 'Погранслужба может отказать во въезде при подозрении на роды. НЕ упоминайте роды на границе. Возможны неожиданно высокие мед. счета.' },
+    docsNeeded: { en: ['B1/B2 visa (apply 3-6 months ahead)', 'Proof of ties to home country', 'Health insurance (highly recommended)', 'Proof of funds ($30K+)'], ru: ['Виза B1/B2 (подавать за 3-6 месяцев)', 'Доказательство связей с родиной', 'Мед. страховка (обязательно)', 'Подтверждение средств ($30K+)'] }
+  },
+  canada: {
+    flag: '🇨🇦',
+    name: { en: 'Canada', ru: 'Канада', pt: 'Canadá' },
+    city: { en: 'Vancouver, BC', ru: 'Ванкувер, Британская Колумбия', pt: 'Vancouver, BC' },
+    passportScore: 182,
+    passportMax: 195,
+    euAccess: true,
+    deliveryCost: { natural: [10000, 15000], csection: [15000, 25000], premium: 1.3 },
+    monthlyLiving: { single: 3000, couple: 4500 },
+    flights: { ru: 1400, ua: 1200, by: 1400, kz: 1600, eu: 700, other: 1000 },
+    visa: { ru: 185, ua: 185, by: 185, kz: 185, eu: 0, other: 185 },
+    visaNote: { en: 'Visitor visa required', ru: 'Нужна гостевая виза', pt: 'Visto de visitante necessário' },
+    citizenship: { en: 'Automatic (jus soli)', ru: 'Автоматическое (jus soli)', pt: 'Automático (jus soli)' },
+    parentPath: { en: 'No automatic path for parents', ru: 'Нет автоматического пути для родителей', pt: 'Sem caminho automático para pais' },
+    parentScore: 2,
+    dualCitizenship: true,
+    docs: 200,
+    language: { en: 'English / French', ru: 'Английский / Французский', pt: 'Inglês / Francês' },
+    safety: { en: 'Very safe — one of the safest countries', ru: 'Очень безопасно — одна из самых безопасных стран', pt: 'Muito seguro — um dos países mais seguros' },
+    climate: { en: 'Cold winters (Vancouver milder)', ru: 'Холодные зимы (Ванкувер мягче)', pt: 'Invernos frios (Vancouver mais ameno)' },
+    pros: {
+      en: ['Strong passport (182 countries)', 'Excellent healthcare', 'English-speaking', 'Safe country'],
+      ru: ['Сильный паспорт (182 страны)', 'Отличная медицина', 'Английский язык', 'Безопасная страна'],
+      pt: ['Passaporte forte (182 países)', 'Excelente saúde', 'Inglês', 'País seguro']
+    },
+    cons: {
+      en: ['Very expensive for non-residents', 'Visa required', 'No parent path to residency', 'Cold climate', 'Government reviewing birth tourism rules'],
+      ru: ['Очень дорого для нерезидентов', 'Нужна виза', 'Нет пути к ВНЖ для родителей', 'Холодный климат', 'Власти пересматривают правила']
+    },
+    healthcareRating: 9,
+    safetyRating: 9,
+    infantMortality: 4.3,
+    flightTime: { ru: '13-15h', ua: '12-14h', by: '13-15h', kz: '17-19h', eu: '9-11h' },
+    avgTemp: '11°C',
+    russianCommunity: { en: 'Large — especially in Vancouver, Toronto', ru: 'Большая — особенно Ванкувер, Торонто' },
+    englishLevel: { en: 'English-speaking country', ru: 'Англоязычная страна' },
+    topHospitals: { en: 'BC Women\'s Hospital (Vancouver), Mount Sinai (Toronto)', ru: 'BC Women\'s Hospital (Ванкувер), Mount Sinai (Торонто)' },
+    warnings: { en: 'Government actively reviewing birth tourism policies. Some provinces charge deposits ($10-20K) upfront for non-residents. May change rules in future.', ru: 'Правительство активно пересматривает правила. Некоторые провинции берут депозит ($10-20K) вперёд с нерезидентов. Правила могут измениться.' },
+    docsNeeded: { en: ['Visitor visa (TRV)', 'Proof of funds', 'Return flight ticket', 'Health insurance (mandatory)'], ru: ['Гостевая виза (TRV)', 'Подтверждение средств', 'Обратный билет', 'Мед. страховка (обязательна)'] }
+  },
+  argentina: {
+    flag: '🇦🇷',
+    name: { en: 'Argentina', ru: 'Аргентина', pt: 'Argentina' },
+    city: { en: 'Buenos Aires', ru: 'Буэнос-Айрес', pt: 'Buenos Aires' },
+    passportScore: 168,
+    passportMax: 195,
+    euAccess: true,
+    deliveryCost: { natural: [2000, 3500], csection: [3000, 5000], premium: 1.5 },
+    monthlyLiving: { single: 1000, couple: 1500 },
+    flights: { ru: 1700, ua: 1700, by: 1700, kz: 2100, eu: 1100, other: 1400 },
+    visa: { ru: 0, ua: 0, by: 0, kz: 0, eu: 0, other: 0 },
+    visaNote: { en: 'Visa-free 90 days', ru: 'Без визы 90 дней', pt: 'Sem visto 90 dias' },
+    citizenship: { en: 'Automatic (jus soli)', ru: 'Автоматическое (jus soli)', pt: 'Automático (jus soli)' },
+    parentPath: { en: 'ВНЖ → Citizenship in ~2 years', ru: 'ВНЖ → Гражданство через ~2 года', pt: 'Residência → Cidadania em ~2 anos' },
+    parentScore: 8,
+    dualCitizenship: true,
+    docs: 100,
+    language: { en: 'Spanish', ru: 'Испанский', pt: 'Espanhol' },
+    safety: { en: 'Buenos Aires — moderate safety', ru: 'Буэнос-Айрес — умеренная безопасность', pt: 'Buenos Aires — segurança moderada' },
+    climate: { en: 'Temperate, four seasons', ru: 'Умеренный климат, 4 сезона', pt: 'Temperado, quatro estações' },
+    pros: {
+      en: ['Very affordable', 'No visa required', 'EU visa-free access', 'Good parent path (~2 years)', 'Dual citizenship allowed'],
+      ru: ['Очень доступно', 'Без визы', 'Безвизовый ЕС', 'Хороший путь для родителей (~2 года)', 'Двойное гражданство ОК'],
+      pt: ['Muito acessível', 'Sem visto', 'Acesso sem visto à UE', 'Bom caminho para pais (~2 anos)', 'Dupla cidadania OK']
+    },
+    cons: {
+      en: ['Economic instability / high inflation', 'Quality of public healthcare varies', 'Currency risk'],
+      ru: ['Экономическая нестабильность / высокая инфляция', 'Качество гос. медицины разное', 'Валютные риски']
+    },
+    healthcareRating: 7,
+    safetyRating: 5.5,
+    infantMortality: 8.4,
+    flightTime: { ru: '20-23h', ua: '20-23h', by: '22-25h', kz: '26-28h', eu: '14-16h' },
+    avgTemp: '18°C',
+    russianCommunity: { en: 'Small but growing in Buenos Aires', ru: 'Небольшая, но растущая в Буэнос-Айресе' },
+    englishLevel: { en: 'Low — Spanish essential', ru: 'Низкий — нужен испанский' },
+    topHospitals: { en: 'Hospital Italiano, Sanatorio Otamendi (Buenos Aires)', ru: 'Hospital Italiano, Sanatorio Otamendi (Буэнос-Айрес)' },
+    warnings: { en: 'High inflation — prices change rapidly. Pay in USD when possible. Verify hospital prices right before admission.', ru: 'Высокая инфляция — цены быстро меняются. Платите в долларах. Проверяйте цены клиники перед госпитализацией.' },
+    docsNeeded: { en: ['Valid passport', 'DNI (local ID — get on arrival)', 'Medical records in Spanish', 'No visa needed'], ru: ['Загранпаспорт', 'DNI (местный ID — оформить по прилёту)', 'Мед. документы на испанском', 'Виза не нужна'] }
+  },
+  chile: {
+    flag: '🇨🇱',
+    name: { en: 'Chile', ru: 'Чили', pt: 'Chile' },
+    city: { en: 'Santiago', ru: 'Сантьяго', pt: 'Santiago' },
+    passportScore: 174,
+    passportMax: 195,
+    euAccess: true,
+    deliveryCost: { natural: [3500, 5000], csection: [5000, 7000], premium: 1.4 },
+    monthlyLiving: { single: 1500, couple: 2200 },
+    flights: { ru: 1900, ua: 1900, by: 1900, kz: 2300, eu: 1300, other: 1500 },
+    visa: { ru: 0, ua: 0, by: 0, kz: 0, eu: 0, other: 0 },
+    visaNote: { en: 'Visa-free 90 days', ru: 'Без визы 90 дней', pt: 'Sem visto 90 dias' },
+    citizenship: { en: 'Automatic (jus soli)', ru: 'Автоматическое (jus soli)', pt: 'Automático (jus soli)' },
+    parentPath: { en: 'ВНЖ → Citizenship in ~5 years', ru: 'ВНЖ → Гражданство через ~5 лет', pt: 'Residência → Cidadania em ~5 anos' },
+    parentScore: 5,
+    dualCitizenship: true,
+    docs: 150,
+    language: { en: 'Spanish', ru: 'Испанский', pt: 'Espanhol' },
+    safety: { en: 'One of the safest in Latin America', ru: 'Одна из самых безопасных в Лат. Америке', pt: 'Um dos mais seguros da América Latina' },
+    climate: { en: 'Mediterranean in Santiago', ru: 'Средиземноморский в Сантьяго', pt: 'Mediterrâneo em Santiago' },
+    pros: {
+      en: ['Strong passport (174 countries)', 'Stable economy', 'Good healthcare', 'Safe country', 'No visa required'],
+      ru: ['Сильный паспорт (174 страны)', 'Стабильная экономика', 'Хорошая медицина', 'Безопасная страна', 'Без визы'],
+      pt: ['Passaporte forte (174 países)', 'Economia estável', 'Boa saúde', 'País seguro', 'Sem visto']
+    },
+    cons: {
+      en: ['Longer citizenship path for parents (5 years)', 'Higher cost than Argentina/Brazil', 'Earthquake zone'],
+      ru: ['Долгий путь к гражданству для родителей (5 лет)', 'Дороже Аргентины/Бразилии', 'Сейсмозона']
+    },
+    healthcareRating: 8,
+    safetyRating: 8.5,
+    infantMortality: 5.9,
+    flightTime: { ru: '22-25h', ua: '22-25h', by: '24-27h', kz: '28-30h', eu: '14-16h' },
+    avgTemp: '15°C',
+    russianCommunity: { en: 'Very small', ru: 'Очень маленькая' },
+    englishLevel: { en: 'Low — Spanish essential', ru: 'Низкий — нужен испанский' },
+    topHospitals: { en: 'Clínica Alemana, Clínica Las Condes (Santiago)', ru: 'Clínica Alemana, Clínica Las Condes (Сантьяго)' },
+    warnings: { en: 'Earthquake zone — choose hospital with modern seismic standards. 5-year wait for parent citizenship is the longest among jus soli countries.', ru: 'Сейсмозона — выбирайте клинику с современными сейсмостандартами. 5 лет ожидания гражданства для родителей — самый долгий срок.' },
+    docsNeeded: { en: ['Valid passport', 'RUT (tax ID)', 'Medical records in Spanish', 'No visa needed'], ru: ['Загранпаспорт', 'RUT (налоговый ID)', 'Мед. документы на испанском', 'Виза не нужна'] }
+  },
+  mexico: {
+    flag: '🇲🇽',
+    name: { en: 'Mexico', ru: 'Мексика', pt: 'México' },
+    city: { en: 'Cancún / CDMX', ru: 'Канкун / Мехико', pt: 'Cancún / Cidade do México' },
+    passportScore: 157,
+    passportMax: 195,
+    euAccess: false,
+    deliveryCost: { natural: [2000, 4000], csection: [3500, 6000], premium: 1.5 },
+    monthlyLiving: { single: 1200, couple: 1800 },
+    flights: { ru: 1300, ua: 1200, by: 1300, kz: 1700, eu: 700, other: 900 },
+    visa: { ru: 0, ua: 36, by: 36, kz: 36, eu: 0, other: 36 },
+    visaNote: { en: 'Visa-free for RU (180 days)', ru: 'Без визы для РФ (180 дней)', pt: 'Sem visto para RU (180 dias)' },
+    citizenship: { en: 'Automatic (jus soli)', ru: 'Автоматическое (jus soli)', pt: 'Automático (jus soli)' },
+    parentPath: { en: 'ВНЖ → Citizenship in ~2-5 years', ru: 'ВНЖ → Гражданство через ~2-5 лет', pt: 'Residência → Cidadania em ~2-5 anos' },
+    parentScore: 6,
+    dualCitizenship: true,
+    docs: 120,
+    language: { en: 'Spanish', ru: 'Испанский', pt: 'Espanhol' },
+    safety: { en: 'Varies — resort areas safer', ru: 'Зависит от региона — курорты безопаснее', pt: 'Varia — áreas turísticas mais seguras' },
+    climate: { en: 'Tropical to arid, warm year-round', ru: 'Тропический, тепло круглый год', pt: 'Tropical a árido, quente o ano todo' },
+    pros: {
+      en: ['Affordable', 'Close to USA', 'No visa for Russians', 'Warm climate', 'Dual citizenship OK'],
+      ru: ['Доступно', 'Близко к США', 'Без визы для россиян', 'Тёплый климат', 'Двойное гражданство ОК'],
+      pt: ['Acessível', 'Perto dos EUA', 'Sem visto para russos', 'Clima quente', 'Dupla cidadania OK']
+    },
+    cons: {
+      en: ['Weaker passport (157 — no EU visa-free)', 'Safety concerns in some regions', 'Healthcare quality varies'],
+      ru: ['Слабый паспорт (157 — нет безвиза в ЕС)', 'Вопросы безопасности в некоторых регионах', 'Качество медицины различается']
+    },
+    healthcareRating: 7,
+    safetyRating: 5,
+    infantMortality: 12.7,
+    flightTime: { ru: '14-16h', ua: '14-16h', by: '15-17h', kz: '18-20h', eu: '11-13h' },
+    avgTemp: '24°C',
+    russianCommunity: { en: 'Small — mainly in Cancún and CDMX', ru: 'Небольшая — в основном Канкун и Мехико' },
+    englishLevel: { en: 'Moderate in tourist areas', ru: 'Средний в туристических зонах' },
+    topHospitals: { en: 'Hospital Galenia (Cancún), Hospital ABC (CDMX)', ru: 'Hospital Galenia (Канкун), Hospital ABC (Мехико)' },
+    warnings: { en: 'Safety varies greatly by region. Stick to tourist areas (Cancún, Playa del Carmen, CDMX nice neighborhoods). No EU visa-free access with Mexican passport.', ru: 'Безопасность сильно зависит от региона. Оставайтесь в туристических зонах (Канкун, Плая-дель-Кармен, хорошие районы Мехико). Нет безвиза в ЕС с мексиканским паспортом.' },
+    docsNeeded: { en: ['Valid passport', 'CURP (local ID)', 'FMM tourist card (at border)', 'No visa for Russians'], ru: ['Загранпаспорт', 'CURP (местный ID)', 'FMM туристическая карта (на границе)', 'Виза для россиян не нужна'] }
+  }
+};
+
+// ============ I18N ============
+const i18n = {
+  en: {
+    title: 'Birth Abroad <span>Calculator</span>',
+    subtitle: 'Compare costs, passport strength, and citizenship benefits across 6 countries. Find the best destination for your family.',
+    your_situation: '🔧 Your Situation',
+    from_country_label: 'Where are you from?',
+    delivery_label: 'Delivery type',
+    stay_label: 'Planned stay (months)',
+    hospital_label: 'Hospital preference',
+    companion_label: 'Traveling with partner',
+    visa_label: 'Include visa & flight costs',
+    results_title: '📊 Results',
+    sort_cost: '💰 Cheapest',
+    sort_passport: '🛂 Passport',
+    sort_parent: '👨‍👩‍👧 Parent Path',
+    sort_overall: '⭐ Best Value',
+    table_title: '📋 Side-by-Side Comparison',
+    cta_title: 'Considering <span>Brazil</span>?',
+    cta_text: 'GRONIS International Real Estate helps families relocating to Brazil — from finding the perfect home to navigating residency, healthcare, and schooling. We\'re based in Florianópolis, one of Brazil\'s safest and most livable cities.',
+    cta_button: '💬 Chat on WhatsApp',
+    disclaimer: 'DISCLAIMER: This calculator provides estimates based on publicly available data and is for informational purposes only. Actual costs may vary. This is not legal, medical, or immigration advice. Always consult qualified professionals. GRONIS International Real Estate · CRECI-J 11410 · 2026',
+    delivery_cost: 'Hospital & delivery',
+    living_cost: 'Living expenses',
+    flights_cost: 'Flights (round trip)',
+    visa_cost: 'Visa fees',
+    docs_cost: 'Documents & registration',
+    total: 'ESTIMATED TOTAL',
+    passport_label: 'Passport strength',
+    countries_label: 'countries visa-free',
+    eu_yes: '✓ EU visa-free',
+    eu_no: '✗ No EU access',
+    dual_yes: '✓ Dual citizenship',
+    dual_no: '✗ No dual citizenship',
+    parent_path: 'Parent path',
+    visa_info: 'Visa',
+    language: 'Language',
+    natural: 'Natural birth',
+    csection: 'C-section',
+    month_2: '2 months',
+    month_3: '3 months',
+    month_4: '4 months',
+    month_6: '6 months',
+    private: 'Private hospital',
+    premium: 'Premium / VIP',
+    pros: 'Advantages',
+    cons: 'Disadvantages',
+    th_country: 'Country',
+    th_delivery: 'Delivery',
+    th_living: 'Living',
+    th_flights: 'Flights',
+    th_total: 'Total',
+    th_passport: 'Passport',
+    th_parent: 'Parent Path',
+    th_eu: 'EU Access'
+  },
+  ru: {
+    title: 'Калькулятор родов <span>за рубежом</span>',
+    subtitle: 'Сравните стоимость, силу паспорта и пути к гражданству в 6 странах. Найдите лучшее направление для вашей семьи.',
+    your_situation: '🔧 Ваша ситуация',
+    from_country_label: 'Откуда вы?',
+    delivery_label: 'Тип родов',
+    stay_label: 'Планируемый срок (месяцы)',
+    hospital_label: 'Тип клиники',
+    companion_label: 'Едете с партнёром',
+    visa_label: 'Включить визу и перелёт',
+    results_title: '📊 Результаты',
+    sort_cost: '💰 Дешевле',
+    sort_passport: '🛂 Паспорт',
+    sort_parent: '👨‍👩‍👧 Путь для родителей',
+    sort_overall: '⭐ Лучшее соотношение',
+    table_title: '📋 Сравнительная таблица',
+    cta_title: 'Рассматриваете <span>Бразилию</span>?',
+    cta_text: 'GRONIS International Real Estate помогает семьям с переездом в Бразилию — от поиска жилья до оформления резидентства, медицины и школ. Мы находимся во Флорианополисе — самом безопасном и комфортном городе Бразилии.',
+    cta_button: '💬 Написать в WhatsApp',
+    disclaimer: 'ДИСКЛЕЙМЕР: Калькулятор даёт оценочные данные на основе открытых источников и предназначен только для ознакомления. Фактические расходы могут отличаться. Это не юридическая, медицинская или иммиграционная консультация. Всегда консультируйтесь со специалистами. GRONIS International Real Estate · CRECI-J 11410 · 2026',
+    delivery_cost: 'Клиника и роды',
+    living_cost: 'Проживание',
+    flights_cost: 'Перелёт (туда-обратно)',
+    visa_cost: 'Виза',
+    docs_cost: 'Документы и регистрация',
+    total: 'ИТОГО (ОЦЕНКА)',
+    passport_label: 'Сила паспорта',
+    countries_label: 'стран без визы',
+    eu_yes: '✓ Безвиз в ЕС',
+    eu_no: '✗ Нет доступа в ЕС',
+    dual_yes: '✓ Двойное гражданство',
+    dual_no: '✗ Нет двойного гражданства',
+    parent_path: 'Путь для родителей',
+    visa_info: 'Виза',
+    language: 'Язык',
+    natural: 'Естественные роды',
+    csection: 'Кесарево сечение',
+    month_2: '2 месяца',
+    month_3: '3 месяца',
+    month_4: '4 месяца',
+    month_6: '6 месяцев',
+    private: 'Частная клиника',
+    premium: 'Премиум / VIP',
+    pros: 'Преимущества',
+    cons: 'Недостатки',
+    th_country: 'Страна',
+    th_delivery: 'Роды',
+    th_living: 'Проживание',
+    th_flights: 'Перелёт',
+    th_total: 'Итого',
+    th_passport: 'Паспорт',
+    th_parent: 'Путь для родителей',
+    th_eu: 'Доступ в ЕС'
+  },
+  pt: {
+    title: 'Calculadora de Parto <span>no Exterior</span>',
+    subtitle: 'Compare custos, força do passaporte e benefícios de cidadania em 6 países. Encontre o melhor destino para sua família.',
+    your_situation: '🔧 Sua Situação',
+    from_country_label: 'De onde você é?',
+    delivery_label: 'Tipo de parto',
+    stay_label: 'Tempo planejado (meses)',
+    hospital_label: 'Preferência hospitalar',
+    companion_label: 'Viajando com parceiro(a)',
+    visa_label: 'Incluir visto e passagens',
+    results_title: '📊 Resultados',
+    sort_cost: '💰 Mais barato',
+    sort_passport: '🛂 Passaporte',
+    sort_parent: '👨‍👩‍👧 Caminho para pais',
+    sort_overall: '⭐ Melhor custo-benefício',
+    table_title: '📋 Comparação Lado a Lado',
+    cta_title: 'Considerando o <span>Brasil</span>?',
+    cta_text: 'A GRONIS International Real Estate ajuda famílias a se mudarem para o Brasil — desde encontrar o lar perfeito até navegar pela residência, saúde e educação. Estamos em Florianópolis, uma das cidades mais seguras e habitáveis do Brasil.',
+    cta_button: '💬 Fale no WhatsApp',
+    disclaimer: 'AVISO: Esta calculadora fornece estimativas baseadas em dados públicos e é apenas informativa. Os custos reais podem variar. Isto não é aconselhamento jurídico, médico ou imigratório. Sempre consulte profissionais qualificados. GRONIS International Real Estate · CRECI-J 11410 · 2026',
+    delivery_cost: 'Hospital e parto',
+    living_cost: 'Custo de vida',
+    flights_cost: 'Passagens (ida e volta)',
+    visa_cost: 'Taxa de visto',
+    docs_cost: 'Documentos e registro',
+    total: 'TOTAL ESTIMADO',
+    passport_label: 'Força do passaporte',
+    countries_label: 'países sem visto',
+    eu_yes: '✓ Acesso livre à UE',
+    eu_no: '✗ Sem acesso à UE',
+    dual_yes: '✓ Dupla cidadania',
+    dual_no: '✗ Sem dupla cidadania',
+    parent_path: 'Caminho para pais',
+    visa_info: 'Visto',
+    language: 'Idioma',
+    natural: 'Parto normal',
+    csection: 'Cesárea',
+    month_2: '2 meses',
+    month_3: '3 meses',
+    month_4: '4 meses',
+    month_6: '6 meses',
+    private: 'Hospital privado',
+    premium: 'Premium / VIP',
+    pros: 'Vantagens',
+    cons: 'Desvantagens',
+    th_country: 'País',
+    th_delivery: 'Parto',
+    th_living: 'Moradia',
+    th_flights: 'Passagens',
+    th_total: 'Total',
+    th_passport: 'Passaporte',
+    th_parent: 'Caminho para pais',
+    th_eu: 'Acesso UE'
+  }
+};
+
+let currentLang = 'en';
+let currentSort = 'cost';
+
+function t(key) { return i18n[currentLang][key] || i18n.en[key] || key; }
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => { if (b.textContent.includes(lang === 'en' ? 'EN' : lang === 'ru' ? 'RU' : 'PT')) b.classList.add('active'); });
+  
+  // Update static i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
+  });
+  
+  // Update select options
+  const dt = document.getElementById('deliveryType');
+  dt.options[0].text = t('natural');
+  dt.options[1].text = t('csection');
+  const sm = document.getElementById('stayMonths');
+  sm.options[0].text = t('month_2');
+  sm.options[1].text = t('month_3');
+  sm.options[2].text = t('month_4');
+  sm.options[3].text = t('month_6');
+  const ht = document.getElementById('hospitalType');
+  ht.options[0].text = t('private');
+  ht.options[1].text = t('premium');
+  
+  recalc();
+}
+
+function toggleSwitch(el) { el.classList.toggle('on'); }
+
+function calcCost(key) {
+  const c = countries[key];
+  const from = document.getElementById('fromCountry').value;
+  const delivery = document.getElementById('deliveryType').value;
+  const months = parseInt(document.getElementById('stayMonths').value);
+  const hospital = document.getElementById('hospitalType').value;
+  const companion = document.getElementById('toggleCompanion').classList.contains('on');
+  const includeTravel = document.getElementById('toggleVisa').classList.contains('on');
+  
+  const dRange = c.deliveryCost[delivery];
+  let deliveryCost = Math.round((dRange[0] + dRange[1]) / 2);
+  if (hospital === 'premium') deliveryCost = Math.round(deliveryCost * c.deliveryCost.premium);
+  
+  const monthlyRate = companion ? c.monthlyLiving.couple : c.monthlyLiving.single;
+  const livingCost = monthlyRate * months;
+  
+  const flightCost = includeTravel ? (c.flights[from] || c.flights.other) * (companion ? 2 : 1) : 0;
+  const visaCost = includeTravel ? (c.visa[from] || 0) * (companion ? 2 : 1) : 0;
+  
+  return {
+    delivery: deliveryCost,
+    living: livingCost,
+    flights: flightCost,
+    visa: visaCost,
+    docs: c.docs,
+    total: deliveryCost + livingCost + flightCost + visaCost + c.docs
+  };
+}
+
+function sortBy(mode, btn) {
+  currentSort = mode;
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  recalc();
+}
+
+function getSortedKeys() {
+  const keys = Object.keys(countries);
+  const costs = {};
+  keys.forEach(k => costs[k] = calcCost(k));
+  
+  switch (currentSort) {
+    case 'cost': return keys.sort((a, b) => costs[a].total - costs[b].total);
+    case 'passport': return keys.sort((a, b) => countries[b].passportScore - countries[a].passportScore);
+    case 'parent': return keys.sort((a, b) => countries[b].parentScore - countries[a].parentScore);
+    case 'overall': return keys.sort((a, b) => {
+      const scoreA = (countries[a].passportScore / 195 * 30) + (countries[a].parentScore * 3) + ((50000 - costs[a].total) / 50000 * 40);
+      const scoreB = (countries[b].passportScore / 195 * 30) + (countries[b].parentScore * 3) + ((50000 - costs[b].total) / 50000 * 40);
+      return scoreB - scoreA;
+    });
+    default: return keys;
+  }
+}
+
+function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+
+function renderRating(score) {
+  const full = Math.round(score);
+  let dots = '';
+  for (let i = 1; i <= 10; i++) {
+    dots += `<span class="rating-dot${i <= full ? ' filled' : ''}"></span>`;
+  }
+  return `<span class="rating-bar">${dots}</span>`;
+}
+
+function recalc() {
+  const sorted = getSortedKeys();
+  const grid = document.getElementById('cardsGrid');
+  grid.innerHTML = '';
+  
+  sorted.forEach(key => {
+    const c = countries[key];
+    const cost = calcCost(key);
+    const pctPassport = Math.round(c.passportScore / c.passportMax * 100);
+    
+    const card = document.createElement('div');
+    card.className = 'country-card' + (c.highlight ? ' highlight' : '');
+    if (c.highlight && c.badge) card.dataset.badge = c.badge[currentLang];
+    
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-flag">${c.flag}</div>
+        <div class="card-title">
+          <h3>${c.name[currentLang]}</h3>
+          <div class="passport-score">🛂 ${c.passportScore} ${t('countries_label')}</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="passport-bar"><div class="passport-fill" style="width:${pctPassport}%"></div></div>
+        <div class="cost-row"><span class="label">${t('delivery_cost')}</span><span class="value">${fmt(cost.delivery)}</span></div>
+        <div class="cost-row"><span class="label">${t('living_cost')}</span><span class="value">${fmt(cost.living)}</span></div>
+        ${cost.flights ? `<div class="cost-row"><span class="label">${t('flights_cost')}</span><span class="value">${fmt(cost.flights)}</span></div>` : ''}
+        ${cost.visa ? `<div class="cost-row"><span class="label">${t('visa_cost')}</span><span class="value">${fmt(cost.visa)}</span></div>` : ''}
+        <div class="cost-row"><span class="label">${t('docs_cost')}</span><span class="value">${fmt(cost.docs)}</span></div>
+        <div class="cost-total"><span>${t('total')}</span><span class="value">${fmt(cost.total)}</span></div>
+      </div>
+      <div class="card-features">
+        <div class="feature"><span class="${c.euAccess ? 'yes' : 'no'}">${c.euAccess ? t('eu_yes') : t('eu_no')}</span></div>
+        <div class="feature"><span class="${c.dualCitizenship ? 'yes' : 'no'}">${c.dualCitizenship ? t('dual_yes') : t('dual_no')}</span></div>
+        <div class="feature"><span class="partial">🗣 ${c.language[currentLang]}</span></div>
+        <div class="feature"><span class="partial">📍 ${c.city[currentLang]}</span></div>
+      </div>
+      <div class="card-details">
+        <button class="details-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? (currentLang==='ru'?'▲ Скрыть детали':'▲ Hide details') : (currentLang==='ru'?'▼ Подробнее':'▼ More details')">
+          ${currentLang === 'ru' ? '▼ Подробнее' : '▼ More details'}
+        </button>
+        <div class="details-content">
+          <div class="detail-row">
+            <span class="dlabel">🏥 ${currentLang === 'ru' ? 'Качество медицины' : 'Healthcare quality'}</span>
+            <span class="dvalue">${renderRating(c.healthcareRating)} ${c.healthcareRating}/10</span>
+          </div>
+          <div class="detail-row">
+            <span class="dlabel">🛡️ ${currentLang === 'ru' ? 'Безопасность' : 'Safety'}</span>
+            <span class="dvalue">${renderRating(c.safetyRating)} ${c.safetyRating}/10</span>
+          </div>
+          <div class="detail-row">
+            <span class="dlabel">👶 ${currentLang === 'ru' ? 'Детская смертность' : 'Infant mortality'}</span>
+            <span class="dvalue">${c.infantMortality}‰</span>
+          </div>
+          <div class="detail-row">
+            <span class="dlabel">✈️ ${currentLang === 'ru' ? 'Время перелёта' : 'Flight time'}</span>
+            <span class="dvalue">${c.flightTime[document.getElementById('fromCountry').value] || c.flightTime.ru}</span>
+          </div>
+          <div class="detail-row">
+            <span class="dlabel">🌡️ ${currentLang === 'ru' ? 'Средняя температура' : 'Avg. temperature'}</span>
+            <span class="dvalue">${c.avgTemp}</span>
+          </div>
+          <div class="detail-row">
+            <span class="dlabel">🗣️ ${currentLang === 'ru' ? 'Английский' : 'English level'}</span>
+            <span class="dvalue">${c.englishLevel[currentLang] || c.englishLevel.en}</span>
+          </div>
+          <div class="detail-row">
+            <span class="dlabel">🇷🇺 ${currentLang === 'ru' ? 'Русская община' : 'Russian community'}</span>
+            <span class="dvalue">${c.russianCommunity[currentLang] || c.russianCommunity.en}</span>
+          </div>
+          <div class="detail-row">
+            <span class="dlabel">🏥 ${currentLang === 'ru' ? 'Рекомендуемые клиники' : 'Top hospitals'}</span>
+            <span class="dvalue" style="font-size:10px;">${c.topHospitals[currentLang] || c.topHospitals.en}</span>
+          </div>
+          <div class="warning-box">⚠️ ${c.warnings[currentLang] || c.warnings.en}</div>
+          <div style="font-size:12px;font-weight:600;margin-top:10px;color:var(--navy);">${currentLang === 'ru' ? '📋 Необходимые документы:' : '📋 Required documents:'}</div>
+          <ul class="docs-list">${(c.docsNeeded[currentLang] || c.docsNeeded.en).map(d => '<li>' + d + '</li>').join('')}</ul>
+          <div style="font-size:12px;font-weight:600;margin-top:8px;color:var(--green);">${currentLang === 'ru' ? '✅ Плюсы:' : '✅ Pros:'}</div>
+          <div class="pros-cons">${(c.pros[currentLang] || c.pros.en).map(p => '<div class="pro">+ ' + p + '</div>').join('')}</div>
+          <div style="font-size:12px;font-weight:600;margin-top:6px;color:var(--red);">${currentLang === 'ru' ? '❌ Минусы:' : '❌ Cons:'}</div>
+          <div class="pros-cons">${(c.cons[currentLang] || c.cons.en).map(p => '<div class="con">− ' + p + '</div>').join('')}</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="timeline"><strong>${t('parent_path')}:</strong> ${c.parentPath[currentLang]}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  
+  // Comparison table
+  const table = document.getElementById('compTable');
+  table.innerHTML = `
+    <tr>
+      <th>${t('th_country')}</th>
+      <th>${t('th_delivery')}</th>
+      <th>${t('th_living')}</th>
+      <th>${t('th_flights')}</th>
+      <th>${t('th_total')}</th>
+      <th>${t('th_passport')}</th>
+      <th>${t('th_parent')}</th>
+      <th>${t('th_eu')}</th>
+    </tr>
+  ` + sorted.map(key => {
+    const c = countries[key];
+    const cost = calcCost(key);
+    return `<tr>
+      <td><span class="flag-cell">${c.flag}</span> <strong>${c.name[currentLang]}</strong></td>
+      <td>${fmt(cost.delivery)}</td>
+      <td>${fmt(cost.living)}</td>
+      <td>${cost.flights ? fmt(cost.flights) : '—'}</td>
+      <td class="total-cell">${fmt(cost.total)}</td>
+      <td>${c.passportScore} 🌍</td>
+      <td>${c.parentPath[currentLang]}</td>
+      <td>${c.euAccess ? '<span class="check">✓</span>' : '<span class="cross">✗</span>'}</td>
+    </tr>`;
+  }).join('');
+}
+
+// Init
+recalc();
+</script>
+</body>
+</html>
