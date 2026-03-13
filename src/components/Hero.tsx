@@ -18,7 +18,7 @@ export default function Hero({ videoUrl }: HeroProps) {
   ];
 
   return (
-    <section className="relative h-screen min-h-[700px] flex items-center pt-20 bg-navy-900 overflow-hidden">
+    <section className="relative h-screen min-h-[700px] flex items-center pt-32 bg-navy-900 overflow-hidden">
       {/* Video/placeholder background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-navy-900/60 via-navy-900/40 to-navy-900 z-10" />
