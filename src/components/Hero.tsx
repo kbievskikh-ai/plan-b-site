@@ -11,10 +11,10 @@ export default function Hero({ videoUrl }: HeroProps) {
   const { t } = useLanguage();
   
   const stats = [
-    { value: "60+", label: t('hero.properties') },
-    { value: "7", label: t('hero.regions') },
-    { value: "12%", label: t('hero.avgRoi') },
-    { value: "25+", label: t('hero.countries') },
+    { value: "$60M+", label: t('hero.portfolioValue') },
+    { value: "12.5%", label: t('hero.avgRoi') },
+    { value: "8", label: t('hero.regions') },
+    { value: "Multi-City", label: t('hero.multiCity') },
   ];
 
   return (
