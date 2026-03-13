@@ -65,7 +65,7 @@ export default function SectionManager() {
       {show('section_featured_properties') && <FeaturedProperties />}
       {show('section_calculator') && <CalculatorTeaser />}
       {show('section_about') && <AboutMigronis />}
-      {show('section_why_trust') && <WhyTrustUs showClientExperience={show('section_client_experience')} />}
+      {show('section_why_trust') && <WhyTrustUs showClientExperience={show('section_international_experience')} />}
       {show('section_map') && <InteractiveMap />}
       {show('section_analytics') && <InvestmentAnalytics />}
       {show('section_property_management') && <PropertyManagement />}
