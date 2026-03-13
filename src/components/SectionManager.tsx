@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedProperties from '@/components/FeaturedProperties';
+import CalculatorTeaser from '@/components/CalculatorTeaser';
 import AboutMigronis from '@/components/AboutMigronis';
 import WhyTrustUs from '@/components/WhyTrustUs';
 import InteractiveMap from '@/components/InteractiveMap';
@@ -40,6 +41,7 @@ export default function SectionManager() {
       <>
         <Hero />
         <FeaturedProperties />
+        <CalculatorTeaser />
         <AboutMigronis />
         <WhyTrustUs />
         <InteractiveMap />
@@ -61,6 +63,7 @@ export default function SectionManager() {
     <>
       {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
       {show('section_featured_properties') && <FeaturedProperties />}
+      {show('section_calculator') && <CalculatorTeaser />}
       {show('section_about') && <AboutMigronis />}
       {show('section_why_trust') && <WhyTrustUs />}
       {show('section_map') && <InteractiveMap />}
