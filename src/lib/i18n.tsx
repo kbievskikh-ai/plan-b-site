@@ -1765,7 +1765,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('en');
 
   const t = useCallback((key: string): string => {
-    return getNestedTranslation(translations[language], key);
+    const result = getNestedTranslation(translations[language], key);
+    // Fallback to English if key not found in current language
+    if (result === key && language !== 'en') {
+      return getNestedTranslation(translations['en'], key);
+    }
+    return result;
   }, [language]);
 
   return (
