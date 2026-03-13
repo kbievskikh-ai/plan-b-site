@@ -13,7 +13,6 @@ export default function Hero({ videoUrl }: HeroProps) {
   const stats = [
     { value: "$60M+", label: t('hero.portfolioValue') },
     { value: "12.5%", label: t('hero.avgRoi') },
-    { value: "8", label: t('hero.regions') },
     { value: "Multi-City", label: t('hero.multiCity') },
   ];
 
