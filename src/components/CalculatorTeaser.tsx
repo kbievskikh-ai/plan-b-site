@@ -34,12 +34,12 @@ export default function CalculatorTeaser() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <span className="text-[#c9963c] text-sm font-semibold tracking-widest uppercase">
+                <span className="text-gold-500 text-sm font-semibold tracking-widest uppercase">
                   {t('calc.sectionLabel')}
                 </span>
-                <h2 className="mt-3 text-2xl sm:text-3xl font-bold text-white leading-tight">
+                <h2 className="mt-3 font-heading text-2xl sm:text-3xl font-bold text-white leading-tight">
                   {t('calc.title1')}{' '}
-                  <span className="text-[#c9963c]">{t('calc.titleHighlight')}</span>
+                  <span className="text-gold-500">{t('calc.titleHighlight')}</span>
                 </h2>
                 <p className="mt-3 text-gray-400 text-sm">
                   {t('calc.subtitle')}
@@ -60,7 +60,7 @@ export default function CalculatorTeaser() {
                     <label className="text-gray-400 text-sm font-medium">
                       {t('calc.investmentAmount')}
                     </label>
-                    <span className="text-[#c9963c] font-bold text-xl font-serif">
+                    <span className="text-gold-500 font-bold text-xl font-serif">
                       {formatCurrency(investment)}
                     </span>
                   </div>
@@ -88,7 +88,7 @@ export default function CalculatorTeaser() {
                     <label className="text-gray-400 text-sm font-medium">
                       {t('calc.holdingPeriod')}
                     </label>
-                    <span className="text-[#c9963c] font-bold text-xl font-serif">
+                    <span className="text-gold-500 font-bold text-xl font-serif">
                       {years} {t('calc.years')}
                     </span>
                   </div>
@@ -113,7 +113,7 @@ export default function CalculatorTeaser() {
             </div>
 
             {/* Right: Results Preview */}
-            <div className="bg-[#0d1225] p-8 lg:p-12 flex flex-col justify-center">
+            <div className="bg-navy-950 p-8 lg:p-12 flex flex-col justify-center">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -126,32 +126,32 @@ export default function CalculatorTeaser() {
                   <div className="text-gray-500 text-xs uppercase tracking-wider mb-1">
                     {t('calc.estimatedReturn')}
                   </div>
-                  <div className="text-[#c9963c] text-4xl sm:text-5xl font-bold font-serif">
+                  <div className="text-gold-500 text-4xl sm:text-5xl font-bold font-serif">
                     {formatCurrency(totalReturn)}
                   </div>
                 </div>
 
                 {/* Stats Grid */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-[#1e2844]/50 rounded-xl p-4 border border-[#2a3456]">
+                  <div className="bg-navy-600/50 rounded-xl p-4 border border-[#2a3456]">
                     <div className="text-white text-2xl font-bold font-serif">
                       {formatCurrency(totalValue)}
                     </div>
                     <div className="text-gray-500 text-xs mt-1">{t('calc.totalValue')}</div>
                   </div>
-                  <div className="bg-[#1e2844]/50 rounded-xl p-4 border border-[#2a3456]">
+                  <div className="bg-navy-600/50 rounded-xl p-4 border border-[#2a3456]">
                     <div className="text-green-400 text-2xl font-bold font-serif">
                       +{roi}%
                     </div>
                     <div className="text-gray-500 text-xs mt-1">{t('calc.totalROI')}</div>
                   </div>
-                  <div className="bg-[#1e2844]/50 rounded-xl p-4 border border-[#2a3456]">
+                  <div className="bg-navy-600/50 rounded-xl p-4 border border-[#2a3456]">
                     <div className="text-white text-2xl font-bold font-serif">
                       8%
                     </div>
                     <div className="text-gray-500 text-xs mt-1">{t('calc.appreciation')}</div>
                   </div>
-                  <div className="bg-[#1e2844]/50 rounded-xl p-4 border border-[#2a3456]">
+                  <div className="bg-navy-600/50 rounded-xl p-4 border border-[#2a3456]">
                     <div className="text-white text-2xl font-bold font-serif">
                       6.5%
                     </div>
@@ -165,7 +165,7 @@ export default function CalculatorTeaser() {
                     href="/calculator.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full text-center bg-[#c9963c] hover:bg-[#b8872e] text-white py-4 rounded-xl font-semibold transition-colors duration-300 text-lg"
+                    className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white py-4 rounded-xl font-semibold transition-colors duration-300 text-lg"
                   >
                     {t('calc.openFull')}
                     <span className="ml-2">→</span>

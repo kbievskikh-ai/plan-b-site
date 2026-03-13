@@ -11,7 +11,7 @@ const BuildingIcon = () => (
 );
 
 
-export default function WhyTrustUs() {
+export default function WhyTrustUs({ showClientExperience = true }: { showClientExperience?: boolean }) {
   const { t } = useLanguage();
 
   const credentials = [
@@ -200,7 +200,7 @@ export default function WhyTrustUs() {
         </div>
 
         {/* International Experience */}
-        <div>
+        {showClientExperience && <div>
           <div className="text-center mb-12">
             <h3 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">
               {t('trust.internationalExperience')}
@@ -237,7 +237,7 @@ export default function WhyTrustUs() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </div>}
 
         {/* Trust CTA */}
         <motion.div

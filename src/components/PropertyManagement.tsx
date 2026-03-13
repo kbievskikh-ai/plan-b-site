@@ -51,12 +51,12 @@ export default function PropertyManagement() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-[#c9963c] text-sm font-semibold tracking-widest uppercase">
+          <span className="text-gold-500 text-sm font-semibold tracking-widest uppercase">
             {t('pm.sectionLabel')}
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-[#0a0e1a]">
+          <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-bold text-navy-900">
             {t('pm.title1')}{' '}
-            <span className="text-[#c9963c]">{t('pm.titleHighlight')}</span>
+            <span className="text-gold-500">{t('pm.titleHighlight')}</span>
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
             {t('pm.subtitle')}
@@ -76,13 +76,13 @@ export default function PropertyManagement() {
                 transition={{ delay: index * 0.15 }}
                 className="relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg hover:shadow-gold-500/10 border-gold-500/0 hover:border-gold-500/20 transition-all duration-300 border border-cream-200"
               >
-                <div className="absolute -top-4 left-8 w-8 h-8 bg-[#c9963c] text-white rounded-full flex items-center justify-center font-bold text-sm">
+                <div className="absolute -top-4 left-8 w-8 h-8 bg-gold-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
                   {index + 1}
                 </div>
-                <div className="text-[#c9963c] mb-4 mt-2">
+                <div className="text-gold-500 mb-4 mt-2">
                   <Icon />
                 </div>
-                <h3 className="text-xl font-bold text-[#0a0e1a] mb-2">
+                <h3 className="font-heading text-xl font-bold text-navy-900 mb-2">
                   {t(`pm.step${index + 1}Title`)}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
@@ -98,12 +98,12 @@ export default function PropertyManagement() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-[#0a0e1a] rounded-2xl p-8 mb-16"
+          className="bg-navy-900 rounded-2xl p-8 mb-16"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.key} className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-[#c9963c] mb-1">
+                <div className="text-3xl sm:text-4xl font-bold text-gold-500 mb-1">
                   {stat.value}
                 </div>
                 <div className="text-gray-400 text-sm">
@@ -120,7 +120,7 @@ export default function PropertyManagement() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-[#0a0e1a] text-center mb-8">
+          <h3 className="font-heading text-2xl font-bold text-navy-900 text-center mb-8">
             {t('pm.servicesTitle')}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -129,7 +129,7 @@ export default function PropertyManagement() {
                 key={service}
                 className="flex items-center gap-3 bg-white rounded-xl p-4 border border-cream-200"
               >
-                <div className="w-2 h-2 bg-[#c9963c] rounded-full flex-shrink-0" />
+                <div className="w-2 h-2 bg-gold-500 rounded-full flex-shrink-0" />
                 <span className="text-sm text-gray-700">{t(`pm.svc_${service}`)}</span>
               </div>
             ))}
@@ -145,7 +145,7 @@ export default function PropertyManagement() {
         >
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 bg-[#c9963c] hover:bg-[#b8872e] text-white px-8 py-4 rounded-xl font-semibold transition-colors duration-300"
+            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-xl font-semibold transition-colors duration-300"
           >
             {t('pm.cta')}
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

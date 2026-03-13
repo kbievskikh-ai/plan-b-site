@@ -53,7 +53,7 @@ export default function InvestmentIntelligence() {
   const [hoveredReport, setHoveredReport] = useState<string | null>(null);
 
   return (
-    <section id="intelligence" className="py-20 bg-[#0a0e1a]">
+    <section id="intelligence" className="py-20 bg-cream-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -62,14 +62,14 @@ export default function InvestmentIntelligence() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-[#c9963c] text-sm font-semibold tracking-widest uppercase">
+          <span className="text-gold-500 text-sm font-semibold tracking-widest uppercase">
             {t('intel.sectionLabel')}
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white">
+          <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-bold text-navy-900">
             {t('intel.title1')}{' '}
-            <span className="text-[#c9963c]">{t('intel.titleHighlight')}</span>
+            <span className="text-gold-500">{t('intel.titleHighlight')}</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-navy-900/60 max-w-3xl mx-auto">
             {t('intel.subtitle')}
           </p>
         </motion.div>
@@ -85,13 +85,13 @@ export default function InvestmentIntelligence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-[#1e2844] rounded-2xl p-6 border border-[#2a3456] hover:border-[#c9963c] transition-colors duration-300"
+                className="bg-white rounded-2xl p-6 border border-cream-200 hover:border-gold-500 shadow-sm transition-colors duration-300"
               >
-                <div className="text-[#c9963c] mb-3">
+                <div className="text-gold-500 mb-3">
                   <Icon />
                 </div>
-                <h3 className="text-white font-bold mb-2">{t(`intel.cat_${cat.key}Title`)}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{t(`intel.cat_${cat.key}Desc`)}</p>
+                <h3 className="text-navy-900 font-heading font-bold mb-2">{t(`intel.cat_${cat.key}Title`)}</h3>
+                <p className="text-navy-900/50 text-sm leading-relaxed">{t(`intel.cat_${cat.key}Desc`)}</p>
               </motion.div>
             );
           })}
@@ -103,7 +103,7 @@ export default function InvestmentIntelligence() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-bold text-white text-center mb-8">
+          <h3 className="font-heading text-xl font-bold text-navy-900 text-center mb-8">
             {t('intel.availableReports')}
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -114,26 +114,26 @@ export default function InvestmentIntelligence() {
                 onMouseLeave={() => setHoveredReport(null)}
                 className={`relative rounded-xl p-5 border transition-all duration-300 cursor-pointer ${
                   report.free
-                    ? 'bg-[#1e2844] border-[#c9963c]/30 hover:border-[#c9963c]'
-                    : 'bg-[#1e2844] border-[#2a3456] hover:border-[#c9963c]/50'
+                    ? 'bg-white border border-gold-500/30 hover:border-gold-500 shadow-sm'
+                    : 'bg-white border border-cream-200 hover:border-gold-500/50 shadow-sm'
                 }`}
               >
                 {report.free && (
-                  <span className="absolute -top-2 right-4 bg-[#c9963c] text-[#0a0e1a] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+                  <span className="absolute -top-2 right-4 bg-gold-500 text-[#0a0e1a] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
                     {t('intel.free')}
                   </span>
                 )}
                 {!report.free && (
-                  <div className={`absolute inset-0 rounded-xl bg-[#0a0e1a]/60 backdrop-blur-[2px] flex items-center justify-center transition-opacity duration-300 ${
+                  <div className={`absolute inset-0 rounded-xl bg-cream-200/80 backdrop-blur-[2px] flex items-center justify-center transition-opacity duration-300 ${
                     hoveredReport === report.key ? 'opacity-100' : 'opacity-0'
                   }`}>
-                    <span className="bg-[#c9963c] text-white text-sm font-semibold px-4 py-2 rounded-lg">
+                    <span className="bg-gold-500 text-white text-sm font-semibold px-4 py-2 rounded-lg">
                       {t('intel.unlock')}
                     </span>
                   </div>
                 )}
                 <div className="flex items-start justify-between mb-2">
-                  <h4 className="text-white font-semibold text-sm pr-4">
+                  <h4 className="text-navy-900 font-heading font-semibold text-sm pr-4">
                     {t(`intel.report_${report.key}`)}
                   </h4>
                 </div>
@@ -153,12 +153,12 @@ export default function InvestmentIntelligence() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <blockquote className="text-gray-400 text-base italic max-w-3xl mx-auto leading-relaxed border-l-4 border-[#c9963c] pl-6 text-left">
+          <blockquote className="text-navy-900/60 text-base italic max-w-3xl mx-auto leading-relaxed border-l-4 border-gold-500 pl-6 text-left">
             {t('intel.quote')}
           </blockquote>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 mt-8 bg-[#c9963c] hover:bg-[#b8872e] text-white px-8 py-4 rounded-xl font-semibold transition-colors duration-300"
+            className="inline-flex items-center gap-2 mt-8 bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-xl font-semibold transition-colors duration-300"
           >
             {t('intel.cta')}
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
