@@ -42,10 +42,10 @@ export const properties: Property[] = [
     type: "investment",
     tag: "Investment",
     gradient: "from-[#1a3a4a] to-[#0d2030]",
-    description: "Luxurious penthouse with panoramic ocean views in the heart of Brazil's Dubai. This stunning property features high-end finishes, floor-to-ceiling windows, and access to premium amenities including infinity pool, spa, and 24/7 concierge.",
+    description: "Luxurious penthouse with panoramic ocean views in the heart of Brazil's Dubai. This stunning property features high-end finishes, floor-to-ceiling windows, and access to top-tier amenities including infinity pool, spa, and 24/7 concierge.",
     expectedROI: "8-12% annual",
     images: ["/images/property1-1.jpg", "/images/property1-2.jpg", "/images/property1-3.jpg"],
-    features: ["Ocean View", "Infinity Pool", "24/7 Concierge", "Premium Location", "High-end Finishes"],
+    features: ["Ocean View", "Infinity Pool", "24/7 Concierge", "Prime Location", "High-end Finishes"],
     coordinates: { lat: -26.9924, lng: -48.6339 }
   },
   {
@@ -62,12 +62,12 @@ export const properties: Property[] = [
     area: "420 m²",
     areaNum: 420,
     type: "vacation",
-    tag: "Premium",
+    tag: "Exclusive",
     gradient: "from-[#2a4a3a] to-[#0d2018]",
     description: "Exclusive villa in Jurerê Internacional, Florianópolis' most prestigious neighborhood. Perfect for luxury vacation rentals with private beach access, landscaped gardens, and sophisticated architectural design.",
     expectedROI: "6-10% annual",
     images: ["/images/property2-1.jpg", "/images/property2-2.jpg", "/images/property2-3.jpg"],
-    features: ["Private Beach Access", "Landscaped Gardens", "Premium Neighborhood", "Vacation Rental Ready"],
+    features: ["Private Beach Access", "Landscaped Gardens", "Prime Neighborhood", "Vacation Rental Ready"],
     coordinates: { lat: -27.4206, lng: -48.4981 }
   },
   {

@@ -15,11 +15,11 @@ const ARTICLE = {
     de: "Warum globale Investoren Brasilien wählen",
   },
   excerpt: {
-    en: "Brazil's real estate market surged 15%+ in 2024, outpacing most emerging markets as foreign capital poured into premium coastal destinations. Santa Catarina has emerged as the #1 region for international buyers, driven by world-class infrastructure, high rental yields, and a favorable exchange rate. Analysts forecast continued double-digit growth through 2027 as Brazil's middle class expands and tourism hits record highs.",
+    en: "Brazil's real estate market surged 15%+ in 2024, outpacing most emerging markets as foreign capital poured into coastal destinations. Santa Catarina has emerged as the #1 region for international buyers, driven by world-class infrastructure, high rental yields, and a favorable exchange rate. Analysts forecast continued double-digit growth through 2027 as Brazil's middle class expands and tourism hits record highs.",
     ru: "Рынок недвижимости Бразилии вырос более чем на 15% в 2024 году, опережая большинство развивающихся рынков — иностранный капитал устремился в премиальные прибрежные направления. Санта-Катарина стала регионом №1 для международных покупателей благодаря развитой инфраструктуре, высокой арендной доходности и выгодному обменному курсу. Аналитики прогнозируют продолжение двузначного роста до 2027 года по мере расширения среднего класса Бразилии и рекордных показателей туризма.",
-    pt: "O mercado imobiliário do Brasil cresceu 15%+ em 2024, superando a maioria dos mercados emergentes enquanto capital estrangeiro afluía para destinos costeiros premium. Santa Catarina emergiu como a região #1 para compradores internacionais, impulsionada por infraestrutura de classe mundial, altos rendimentos de aluguel e taxa de câmbio favorável.",
+    pt: "O mercado imobiliário do Brasil cresceu 15%+ em 2024, superando a maioria dos mercados emergentes enquanto capital estrangeiro afluía para destinos costeiros. Santa Catarina emergiu como a região #1 para compradores internacionais, impulsionada por infraestrutura de classe mundial, altos rendimentos de aluguel e taxa de câmbio favorável.",
     es: "El mercado inmobiliario de Brasil creció más de un 15% en 2024, superando a la mayoría de los mercados emergentes. Santa Catarina se ha convertido en la región #1 para compradores internacionales.",
-    de: "Brasiliens Immobilienmarkt wuchs 2024 um mehr als 15%, da ausländisches Kapital in Premium-Küstenziele floss. Santa Catarina ist die #1-Region für internationale Käufer.",
+    de: "Brasiliens Immobilienmarkt wuchs 2024 um mehr als 15%, da ausländisches Kapital in Küstenziele floss. Santa Catarina ist die #1-Region für internationale Käufer.",
   },
   readMore: {
     en: "Read Full Article",

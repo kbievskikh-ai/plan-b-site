@@ -23,7 +23,7 @@ const center = {
   lng: -48.55,
 };
 
-// Dark premium map style
+// Dark map style
 const mapStyles = [
   { elementType: "geometry", stylers: [{ color: "#0a0e1a" }] },
   { elementType: "labels.text.stroke", stylers: [{ color: "#0a0e1a" }] },

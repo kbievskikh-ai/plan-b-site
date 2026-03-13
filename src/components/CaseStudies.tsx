@@ -18,7 +18,7 @@ const caseStudies = [
     annualIncome: "R$ 480k ($94k)",
     yieldRate: "11.4%",
     clientProfile: "American tech entrepreneur",
-    strategy: "Premium beachfront vacation rental targeting international tourists",
+    strategy: "Beachfront vacation rental targeting international tourists",
     challenges: [
       "Foreign buyer regulations",
       "Property management from overseas", 

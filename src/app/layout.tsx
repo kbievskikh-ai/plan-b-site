@@ -15,9 +15,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "GRONIS — Premium Real Estate Investment Platform in Brazil",
+  title: "GRONIS — Real Estate Investment in Brazil",
   description:
-    "Discover exclusive investment properties in Florianópolis, Balneário Camboriú, and coastal Brazil. Premium real estate for discerning investors.",
+    "Discover investment properties in Florianópolis, Balneário Camboriú, and coastal Brazil. Real estate for international investors.",
 };
 
 export default function RootLayout({
