@@ -69,7 +69,7 @@ interface FormData {
 }
 
 export default function ContactForm() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [contact, setContact] = useState<ContactSettings>(DEFAULT_CONTACT);
 
   useEffect(() => {
@@ -476,9 +476,13 @@ export default function ContactForm() {
             <p className="text-navy-900/60 mb-6 text-sm flex-1">
               {t('contact.downloadGuideDesc')}
             </p>
-            <button className="btn-outline w-full">
+            <a 
+              href={language === 'ru' ? '/GRONIS_Investment_Guide_RU.pdf' : language === 'pt' ? '/GRONIS_Investment_Guide_PT.pdf' : '/GRONIS_Investment_Guide_EN.pdf'}
+              download
+              className="btn-outline w-full"
+            >
               {t('contact.downloadGuidePdf')}
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>
