@@ -11,7 +11,7 @@ const testimonials = [
     name: "Michael Chen",
     country: "Singapore",
     investmentType: "Investment Property",
-    quote: "Migronis made our first international property investment seamless. Their team guided us through every step, from property selection to legal documentation. Our Balneário Camboriú apartment has exceeded ROI expectations.",
+    quote: "GRONIS made our first international property investment seamless. Their team guided us through every step, from property selection to legal documentation. Our Balneário Camboriú apartment has exceeded ROI expectations.",
     image: null, // Placeholder
   },
   {
@@ -19,7 +19,7 @@ const testimonials = [
     name: "Sarah & James Wilson",
     country: "United Kingdom",
     investmentType: "Vacation Home",
-    quote: "We dreamed of a vacation home in Brazil for years. The Migronis team understood our vision and found us the perfect villa in Florianópolis. The process was transparent and their ongoing property management service is excellent.",
+    quote: "We dreamed of a vacation home in Brazil for years. The GRONIS team understood our vision and found us the perfect villa in Florianópolis. The process was transparent and their ongoing property management service is excellent.",
     image: null,
   },
   {
@@ -27,7 +27,7 @@ const testimonials = [
     name: "Alexander Petrov",
     country: "Germany",
     investmentType: "Portfolio Investment",
-    quote: "As a portfolio investor, I needed a partner who understood both the Brazilian market and international tax implications. Migronis delivered comprehensive analysis and helped me build a diversified Brazilian property portfolio.",
+    quote: "As a portfolio investor, I needed a partner who understood both the Brazilian market and international tax implications. GRONIS delivered comprehensive analysis and helped me build a diversified Brazilian property portfolio.",
     image: null,
   },
   {
@@ -35,7 +35,7 @@ const testimonials = [
     name: "Maria González",
     country: "Spain",
     investmentType: "Residential Relocation",
-    quote: "Moving to Brazil was a big decision. Migronis not only found us the ideal home in Itapema but also connected us with relocation services, banking, and local community. True end-to-end support.",
+    quote: "Moving to Brazil was a big decision. GRONIS not only found us the ideal home in Itapema but also connected us with relocation services, banking, and local community. True end-to-end support.",
     image: null,
   },
 ];

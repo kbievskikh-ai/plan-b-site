@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Migronis Real Estate — Premium Properties in Santa Catarina, Brazil",
+  title: "GRONIS — Premium Real Estate Investment Platform in Brazil",
   description:
     "Discover exclusive investment properties in Florianópolis, Balneário Camboriú, and coastal Brazil. Premium real estate for discerning investors.",
 };

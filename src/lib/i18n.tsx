@@ -81,7 +81,7 @@ const translations: Record<Language, Translations> = {
       sectionLabel: 'About Us',
       title: 'Your Trusted Partner in',
       titleHighlight: 'Brazilian Real Estate',
-      description1: "Migronis Brazil is a specialized division of Migronis International, combining global investment expertise with deep local knowledge of the Brazilian real estate market. We help international investors navigate the opportunities in Santa Catarina's booming property sector.",
+      description1: "GRONIS International Real Estate is a specialized division of the Migronis Global network, combining global investment expertise with deep local knowledge of the Brazilian real estate market. We help international investors navigate the opportunities in Santa Catarina's booming property sector.",
       description2: 'Founded by a team of international real estate professionals with firsthand experience in Brazilian property investment, we understand both the opportunities and challenges that foreign investors face. Our mission is to make Brazilian real estate investment accessible, transparent, and profitable for our clients worldwide.',
       yearsExperience: 'Years Experience',
       propertiesSold: 'Properties Sold',
@@ -99,7 +99,7 @@ const translations: Record<Language, Translations> = {
     },
     trust: {
       sectionLabel: 'Trust & Credibility',
-      title: 'Why Trust Migronis Brazil',
+      title: 'Why Trust GRONIS',
       subtitle: 'Your investment deserves professional expertise backed by credentials, partnerships, and proven international experience.',
       credentials: 'Professional Credentials',
       credentialsSubtitle: 'Fully licensed and certified to handle international real estate investments in Brazil.',
@@ -201,7 +201,7 @@ const translations: Record<Language, Translations> = {
     testimonials: {
       sectionLabel: 'Testimonials',
       title: 'Client Success Stories',
-      subtitle: 'Hear from international investors who trusted Migronis with their Brazilian property journey.',
+      subtitle: 'Hear from international investors who trusted GRONIS with their Brazilian property journey.',
       cta: 'Get Consultation',
     },
     // FAQ
@@ -311,7 +311,7 @@ const translations: Record<Language, Translations> = {
       investment: 'Investment',
       newDevelopments: 'New Developments',
       luxuryVillas: 'Luxury Villas',
-      aboutMigronis: 'About Migronis',
+      aboutMigronis: 'About GRONIS',
       ourTeam: 'Our Team',
       investmentGuide: 'Investment Guide',
       blog: 'Blog',
@@ -476,7 +476,7 @@ const translations: Record<Language, Translations> = {
       sectionLabel: 'О компании',
       title: 'Надёжный партнёр для',
       titleHighlight: 'инвестиций в Бразилии',
-      description1: 'Migronis Brazil — это подразделение международной компании Migronis. Мы объединяем глобальный опыт инвестирования с глубоким знанием бразильского рынка. Помогаем иностранным инвесторам находить лучшие объекты в Санта-Катарине.',
+      description1: 'GRONIS International Real Estate — подразделение международной сети Migronis. Мы объединяем глобальный опыт инвестирования с глубоким знанием бразильского рынка. Помогаем иностранным инвесторам находить лучшие объекты в Санта-Катарине.',
       description2: 'Наша команда — это профессионалы с реальным опытом покупки недвижимости в Бразилии. Мы знаем все нюансы: от юридических тонкостей до выбора управляющей компании. Наша цель — сделать ваши инвестиции простыми, прозрачными и прибыльными.',
       yearsExperience: 'лет опыта',
       propertiesSold: 'сделок',
@@ -494,7 +494,7 @@ const translations: Record<Language, Translations> = {
     },
     trust: {
       sectionLabel: 'Почему мы',
-      title: 'Почему выбирают Migronis',
+      title: 'Почему выбирают GRONIS',
       subtitle: 'Лицензии, партнёрства и сотни успешных сделок с клиентами из разных стран.',
       credentials: 'Лицензии и сертификаты',
       credentialsSubtitle: 'Официально работаем с иностранными инвестициями в недвижимость Бразилии',
@@ -593,7 +593,7 @@ const translations: Record<Language, Translations> = {
     testimonials: {
       sectionLabel: 'Отзывы',
       title: 'Отзывы клиентов',
-      subtitle: 'Инвесторы из разных стран, которые доверили Migronis покупку недвижимости в Бразилии.',
+      subtitle: 'Инвесторы из разных стран, которые доверили GRONIS покупку недвижимости в Бразилии.',
       cta: 'Получить консультацию',
     },
     faq: {
@@ -702,7 +702,7 @@ const translations: Record<Language, Translations> = {
       investment: 'Инвестиции',
       newDevelopments: 'Новостройки',
       luxuryVillas: 'Виллы',
-      aboutMigronis: 'О Migronis',
+      aboutMigronis: 'О GRONIS',
       ourTeam: 'Наша команда',
       investmentGuide: 'Гайд инвестора',
       blog: 'Блог',
@@ -885,7 +885,7 @@ const translations: Record<Language, Translations> = {
     },
     trust: {
       sectionLabel: 'Confianza',
-      title: 'Por Qué Confiar en Migronis',
+      title: 'Por Qué Confiar en GRONIS',
       subtitle: 'Su inversión merece experiencia profesional respaldada por credenciales y alianzas comprobadas.',
       credentials: 'Credenciales Profesionales',
       credentialsSubtitle: 'Licenciados y certificados para manejar inversiones inmobiliarias internacionales en Brasil.',
@@ -984,7 +984,7 @@ const translations: Record<Language, Translations> = {
     testimonials: {
       sectionLabel: 'Testimonios',
       title: 'Historias de Éxito',
-      subtitle: 'Escuche a inversores internacionales que confiaron en Migronis para su inversión en Brasil.',
+      subtitle: 'Escuche a inversores internacionales que confiaron en GRONIS para su inversión en Brasil.',
       cta: 'Solicitar Consulta',
     },
     faq: {
@@ -1093,7 +1093,7 @@ const translations: Record<Language, Translations> = {
       investment: 'Inversión',
       newDevelopments: 'Nuevos Desarrollos',
       luxuryVillas: 'Villas de Lujo',
-      aboutMigronis: 'Sobre Migronis',
+      aboutMigronis: 'Sobre GRONIS',
       ourTeam: 'Nuestro Equipo',
       investmentGuide: 'Guía de Inversión',
       blog: 'Blog',
@@ -1196,7 +1196,7 @@ const translations: Record<Language, Translations> = {
     },
     trust: {
       sectionLabel: 'Confiança',
-      title: 'Por Que Confiar na Migronis',
+      title: 'Por Que Confiar na GRONIS',
       subtitle: 'Seu investimento merece profissionalismo com credenciais e parcerias comprovadas.',
       credentials: 'Credenciais Profissionais',
       credentialsSubtitle: 'Licenciados para lidar com investimentos imobiliários internacionais no Brasil.',
@@ -1295,7 +1295,7 @@ const translations: Record<Language, Translations> = {
     testimonials: {
       sectionLabel: 'Depoimentos',
       title: 'Histórias de Sucesso',
-      subtitle: 'Ouça investidores internacionais que confiaram na Migronis para investir no Brasil.',
+      subtitle: 'Ouça investidores internacionais que confiaram na GRONIS para investir no Brasil.',
       cta: 'Solicitar Consultoria',
     },
     faq: {
@@ -1404,7 +1404,7 @@ const translations: Record<Language, Translations> = {
       investment: 'Investimento',
       newDevelopments: 'Lançamentos',
       luxuryVillas: 'Villas de Luxo',
-      aboutMigronis: 'Sobre Migronis',
+      aboutMigronis: 'Sobre GRONIS',
       ourTeam: 'Nossa Equipe',
       investmentGuide: 'Guia de Investimento',
       blog: 'Blog',
@@ -1587,7 +1587,7 @@ const translations: Record<Language, Translations> = {
     },
     trust: {
       sectionLabel: 'Vertrauen',
-      title: 'Warum Migronis vertrauen',
+      title: 'Warum GRONIS vertrauen',
       subtitle: 'Ihr Investment verdient professionelle Expertise mit bewährten Referenzen und Partnerschaften.',
       credentials: 'Professionelle Referenzen',
       credentialsSubtitle: 'Lizenziert für internationale Immobilieninvestments in Brasilien.',
@@ -1686,7 +1686,7 @@ const translations: Record<Language, Translations> = {
     testimonials: {
       sectionLabel: 'Kundenstimmen',
       title: 'Erfolgsgeschichten unserer Kunden',
-      subtitle: 'Internationale Investoren, die Migronis ihr brasilianisches Immobilieninvestment anvertraut haben.',
+      subtitle: 'Internationale Investoren, die GRONIS ihr brasilianisches Immobilieninvestment anvertraut haben.',
       cta: 'Beratung anfragen',
     },
     faq: {
@@ -1795,7 +1795,7 @@ const translations: Record<Language, Translations> = {
       investment: 'Investment',
       newDevelopments: 'Neubauprojekte',
       luxuryVillas: 'Luxusvillen',
-      aboutMigronis: 'Über Migronis',
+      aboutMigronis: 'Über GRONIS',
       ourTeam: 'Unser Team',
       investmentGuide: 'Investmentleitfaden',
       blog: 'Blog',

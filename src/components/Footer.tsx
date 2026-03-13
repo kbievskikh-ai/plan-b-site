@@ -40,12 +40,12 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 gold-gradient rounded-sm flex items-center justify-center">
-                <span className="text-white font-heading font-bold text-lg">M</span>
+                <span className="text-white font-heading font-bold text-lg">G</span>
               </div>
               <div>
-                <span className="text-white font-heading text-xl tracking-wide">MIGRONIS</span>
+                <span className="text-white font-heading text-xl tracking-wide">GRONIS</span>
                 <span className="block text-gold-400 text-[10px] tracking-[0.3em] uppercase">
-                  Real Estate Brazil
+                  International Real Estate
                 </span>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-sm">
-            © 2026 Migronis Real Estate. {t('footer.allRightsReserved')}
+            © 2026 GRONIS International Real Estate. {t('footer.allRightsReserved')}
           </p>
           <div className="flex items-center gap-6">
             {[
