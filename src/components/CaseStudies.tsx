@@ -109,7 +109,7 @@ export default function CaseStudies() {
   const [activeCaseStudy, setActiveCaseStudy] = useState(0);
 
   return (
-    <section id="case-studies" className="section-padding bg-gray-50">
+    <section id="case-studies" className="section-padding bg-cream-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -204,7 +204,7 @@ export default function CaseStudies() {
                 <div className="p-6">
                   {/* Key Metrics */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                    <div className="text-center p-4 bg-gray-50 rounded-lg">
+                    <div className="text-center p-4 bg-cream-50 rounded-lg">
                       <div className="text-lg font-heading text-navy-900 mb-1">
                         {caseStudies[activeCaseStudy].timeline}
                       </div>
@@ -212,7 +212,7 @@ export default function CaseStudies() {
                         Timeline
                       </div>
                     </div>
-                    <div className="text-center p-4 bg-gray-50 rounded-lg">
+                    <div className="text-center p-4 bg-cream-50 rounded-lg">
                       <div className="text-lg font-heading text-navy-900 mb-1">
                         {caseStudies[activeCaseStudy].yieldRate}
                       </div>
@@ -220,7 +220,7 @@ export default function CaseStudies() {
                         Annual Yield
                       </div>
                     </div>
-                    <div className="text-center p-4 bg-gray-50 rounded-lg">
+                    <div className="text-center p-4 bg-cream-50 rounded-lg">
                       <div className="text-lg font-heading text-navy-900 mb-1">
                         {caseStudies[activeCaseStudy].initialInvestment}
                       </div>
@@ -228,7 +228,7 @@ export default function CaseStudies() {
                         Initial Investment
                       </div>
                     </div>
-                    <div className="text-center p-4 bg-gray-50 rounded-lg">
+                    <div className="text-center p-4 bg-cream-50 rounded-lg">
                       <div className="text-lg font-heading text-navy-900 mb-1">
                         {caseStudies[activeCaseStudy].currentValue}
                       </div>

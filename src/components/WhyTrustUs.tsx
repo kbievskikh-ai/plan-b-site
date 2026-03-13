@@ -101,7 +101,7 @@ export default function WhyTrustUs() {
   ];
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-cream-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -183,7 +183,7 @@ export default function WhyTrustUs() {
                 className="bg-white p-4 rounded-lg border border-navy-900/10 hover:border-gold-300 transition-colors text-center group cursor-pointer no-underline"
               >
                 {/* Logo-like block */}
-                <div className="w-full h-12 bg-gray-50 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-gold-50 transition-colors border border-gray-100 group-hover:border-gold-200">
+                <div className="w-full h-12 bg-cream-50 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-gold-50 transition-colors border border-gray-100 group-hover:border-gold-200">
                   <span className="text-navy-900/60 group-hover:text-gold-700 font-bold text-xs tracking-widest uppercase px-2 text-center">
                     {partner.abbr}
                   </span>

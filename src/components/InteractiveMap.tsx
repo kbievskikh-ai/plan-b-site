@@ -504,18 +504,18 @@ export default function InteractiveMap() {
                   <div className="p-4">
                     {/* Stats */}
                     <div className="grid grid-cols-3 gap-3 mb-4">
-                      <div className="text-center p-2 bg-gray-50 rounded">
+                      <div className="text-center p-2 bg-cream-50 rounded">
                         <BuildingIcon className="w-5 h-5 text-gold-500 mx-auto mb-1" />
                         <div className="text-lg font-bold text-navy-900">{selectedRegion.properties}</div>
                         <div className="text-xs text-navy-900/50">{labels.properties}</div>
                       </div>
-                      <div className="text-center p-2 bg-gray-50 rounded">
+                      <div className="text-center p-2 bg-cream-50 rounded">
                         <div className="text-xs text-navy-900/50 mb-1">{labels.avgPrice}</div>
                         <div className="text-sm font-semibold text-navy-900">
                           {regionDetails[selectedRegion.name]?.avgPrice || 'N/A'}
                         </div>
                       </div>
-                      <div className="text-center p-2 bg-gray-50 rounded">
+                      <div className="text-center p-2 bg-cream-50 rounded">
                         <div className="text-xs text-navy-900/50 mb-1">{labels.rentalYield}</div>
                         <div className="text-sm font-semibold text-gold-600">
                           {regionDetails[selectedRegion.name]?.rentalYield || 'N/A'}

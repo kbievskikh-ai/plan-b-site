@@ -73,7 +73,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="section-padding bg-white">
+    <section id="faq" className="section-padding bg-cream-50">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -103,7 +103,7 @@ export default function FAQ() {
                 className={`w-full px-6 py-4 text-left transition-all duration-300 flex items-center justify-between ${
                   openCategory === category.id
                     ? 'bg-gold-50 text-gold-800'
-                    : 'bg-white hover:bg-gray-50 text-navy-900'
+                    : 'bg-white hover:bg-cream-50 text-navy-900'
                 }`}
               >
                 <span className="font-heading text-lg">{category.category}</span>
@@ -129,7 +129,7 @@ export default function FAQ() {
                         <div key={questionIndex} className="border-b border-navy-900/10 last:border-b-0">
                           <button
                             onClick={() => toggleQuestion(globalIndex)}
-                            className="w-full px-6 py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
+                            className="w-full px-6 py-4 text-left hover:bg-cream-50 transition-colors duration-200 flex items-center justify-between"
                           >
                             <span className="text-navy-900 font-medium pr-4">{faq.question}</span>
                             <ChevronDownIcon 
@@ -166,7 +166,7 @@ export default function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-16 p-8 bg-gray-50 rounded-lg text-center"
+          className="mt-16 p-8 bg-cream-50 rounded-lg text-center"
         >
           <h3 className="font-heading text-xl lg:text-2xl text-navy-900 mb-4">
             {t('faq.stillHaveQuestions')}

@@ -42,7 +42,7 @@ export default function PropertyManagement() {
   const { t } = useLanguage();
 
   return (
-    <section id="property-management" className="py-20 bg-[#f8f9fc]">
+    <section id="property-management" className="py-20 bg-cream-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -74,7 +74,7 @@ export default function PropertyManagement() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
-                className="relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
+                className="relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg hover:shadow-gold-500/10 border-gold-500/0 hover:border-gold-500/20 transition-all duration-300 border border-cream-200"
               >
                 <div className="absolute -top-4 left-8 w-8 h-8 bg-[#c9963c] text-white rounded-full flex items-center justify-center font-bold text-sm">
                   {index + 1}
@@ -127,7 +127,7 @@ export default function PropertyManagement() {
             {services.map((service) => (
               <div
                 key={service}
-                className="flex items-center gap-3 bg-white rounded-xl p-4 border border-gray-100"
+                className="flex items-center gap-3 bg-white rounded-xl p-4 border border-cream-200"
               >
                 <div className="w-2 h-2 bg-[#c9963c] rounded-full flex-shrink-0" />
                 <span className="text-sm text-gray-700">{t(`pm.svc_${service}`)}</span>

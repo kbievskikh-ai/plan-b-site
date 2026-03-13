@@ -118,7 +118,7 @@ export default function PropertyModal({ property, isOpen, onClose }: PropertyMod
             </div>
 
             {/* Property details grid */}
-            <div className="grid grid-cols-3 gap-6 mb-8 p-6 bg-gray-50 rounded-lg">
+            <div className="grid grid-cols-3 gap-6 mb-8 p-6 bg-cream-50 rounded-lg">
               <div className="text-center">
                 <div className="text-navy-900 font-heading text-2xl mb-1">{property.beds}</div>
                 <div className="text-navy-900/60 text-sm uppercase tracking-wider">Bedrooms</div>

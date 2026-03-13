@@ -99,7 +99,7 @@ export default function FeaturedProperties() {
   const isRu = language === 'ru';
 
   return (
-    <section id="properties" className="section-padding bg-white">
+    <section id="properties" className="section-padding bg-cream-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-10">
