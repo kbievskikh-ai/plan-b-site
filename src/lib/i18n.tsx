@@ -21,8 +21,8 @@ const translations: Record<Language, Translations> = {
     },
     hero: {
       location: 'Santa Catarina, Brazil',
-      title1: 'Real Estate',
-      title2: 'Investment Platform',
+      title1: 'Your Gateway to',
+      title2: 'Real Estate Investment',
       title3: 'in Brazil',
       subtitle: "Data-driven investment opportunities in Florianópolis, Balneário Camboriú, and Southern Brazil's most sought-after coastal destinations. Trusted by international investors.",
       exploreProperties: 'Explore Properties',
@@ -432,8 +432,8 @@ const translations: Record<Language, Translations> = {
     },
     hero: {
       location: 'Санта-Катарина, Бразилия',
-      title1: 'Премиум недвижимость',
-      title2: 'Платформа инвестиций',
+      title1: 'Ваш путь к',
+      title2: 'инвестициям в недвижимость',
       title3: 'в Бразилии',
       subtitle: 'Выгодные инвестиции в недвижимость Флорианополиса, Балнеариу-Камбориу и лучших курортов южной Бразилии. Работаем с инвесторами из 45+ стран.',
       exploreProperties: 'Смотреть объекты',
@@ -839,8 +839,8 @@ const translations: Record<Language, Translations> = {
     },
     hero: {
       location: 'Santa Catarina, Brasil',
-      title1: 'Imóveis',
-      title2: 'Plataforma de Investimento',
+      title1: 'Seu Caminho para',
+      title2: 'Investimentos Imobiliários',
       title3: 'no Brasil',
       subtitle: 'Oportunidades de investimento em Florianópolis, Balneário Camboriú e os destinos costeiros mais exclusivos do sul do Brasil. Confiança de investidores internacionais.',
       exploreProperties: 'Ver Imóveis',
