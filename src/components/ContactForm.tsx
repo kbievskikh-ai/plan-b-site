@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
 
-const API_URL = 'https://migronis-admin-api-production.up.railway.app';
+const API_URL = 'https://api.gronisbrazil.com';
 
 interface ContactSettings {
   phone: string;
@@ -15,7 +15,7 @@ interface ContactSettings {
 
 const DEFAULT_CONTACT: ContactSettings = {
   phone: '+55 48 988117424',
-  email: 'info@migronisbrazil.com',
+  email: 'konstantin.bievskikh@migronis.com',
   whatsapp: '+55 48 98875-2300',
   address: 'Florianópolis, Santa Catarina',
 };
