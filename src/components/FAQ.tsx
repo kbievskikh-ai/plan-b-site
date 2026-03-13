@@ -178,7 +178,7 @@ export default function FAQ() {
             <a href="#contact" className="btn-gold">
               {t('faq.cta')}
             </a>
-            <a href="mailto:info@migronis-brazil.com" className="btn-outline">
+            <a href="mailto:konstantin.bievskikh@migronis.com" className="btn-outline">
               {t('faq.emailQuestions')}
             </a>
           </div>

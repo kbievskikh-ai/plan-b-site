@@ -16,7 +16,7 @@ interface ContactSettings {
 const DEFAULT_CONTACT: ContactSettings = {
   phone: '+55 48 988117424',
   email: 'info@migronisbrazil.com',
-  whatsapp: '+55 48 99999-0000',
+  whatsapp: '+55 48 98875-2300',
   address: 'Florianópolis, Santa Catarina',
 };
 
@@ -461,9 +461,14 @@ export default function ContactForm() {
             <p className="text-navy-900/60 mb-6 text-sm flex-1">
               {t('contact.scheduleVideoDesc')}
             </p>
-            <button className="btn-outline w-full">
+            <a 
+              href="https://wa.me/5548988752300?text=Hello!%20I%27d%20like%20to%20schedule%20a%20video%20consultation."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline w-full inline-block text-center"
+            >
               {t('contact.bookVideoCall')}
-            </button>
+            </a>
           </div>
 
           <div className="bg-white p-8 rounded-lg shadow-lg text-center flex flex-col">

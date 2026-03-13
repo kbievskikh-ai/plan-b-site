@@ -197,12 +197,22 @@ export default function PropertyModal({ property, isOpen, onClose }: PropertyMod
 
             {/* Action buttons */}
             <div className="flex gap-4 pt-6 border-t border-gray-200">
-              <button className="btn-gold flex-1">
+              <a 
+                href="https://wa.me/5548988752300?text=Hello!%20I%27m%20interested%20in%20this%20property.%20Could%20you%20send%20me%20more%20details?"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold flex-1 text-center"
+              >
                 Request Details
-              </button>
-              <button className="btn-outline flex-1">
+              </a>
+              <a 
+                href="https://wa.me/5548988752300?text=Hello!%20I%27d%20like%20to%20schedule%20a%20call%20to%20discuss%20investment%20opportunities."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline flex-1 text-center"
+              >
                 Schedule Call
-              </button>
+              </a>
             </div>
           </div>
         </div>
