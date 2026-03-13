@@ -17,7 +17,7 @@ export default function Hero({ videoUrl }: HeroProps) {
   ];
 
   return (
-    <section className="relative h-screen min-h-[700px] flex items-center pt-32 bg-navy-900 overflow-hidden">
+    <section className="relative h-screen min-h-[700px] flex items-center pt-24 sm:pt-32 bg-navy-900 overflow-hidden">
       {/* Video/placeholder background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-navy-900/60 via-navy-900/40 to-navy-900 z-10" />
@@ -85,7 +85,7 @@ export default function Hero({ videoUrl }: HeroProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-heading text-4xl sm:text-5xl lg:text-7xl text-white leading-[1.1] mb-6 [text-wrap:balance]"
+            className="font-heading text-3xl sm:text-5xl lg:text-7xl text-white leading-[1.1] mb-4 sm:mb-6 [text-wrap:balance]"
           >
             {t('hero.title1')}
             <br />
@@ -99,7 +99,7 @@ export default function Hero({ videoUrl }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-white/60 text-lg sm:text-xl max-w-xl mb-10 leading-relaxed"
+            className="text-white/60 text-sm sm:text-xl max-w-xl mb-6 sm:mb-10 leading-relaxed"
           >
             {t('hero.subtitle')}
           </motion.p>
@@ -162,7 +162,7 @@ export default function Hero({ videoUrl }: HeroProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 hidden sm:flex flex-col items-center gap-2"
       >
         <span className="text-white/30 text-xs tracking-widest uppercase">{t('hero.scroll')}</span>
         <motion.div
