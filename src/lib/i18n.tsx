@@ -30,7 +30,7 @@ const translations: Record<Language, Translations> = {
       portfolioValue: 'Portfolio Value',
       avgRoi: 'Avg. ROI',
       regions: 'Regions in SC',
-      multiCity: 'Across Brazil',
+      multiCity: 'Cities',
       scroll: 'Scroll',
     },
     properties: {
@@ -441,7 +441,7 @@ const translations: Record<Language, Translations> = {
       portfolioValue: 'Портфель',
       avgRoi: 'доходность',
       regions: 'регионов в SC',
-      multiCity: 'по всей Бразилии',
+      multiCity: 'городов',
       scroll: 'Листать',
     },
     properties: {
@@ -848,7 +848,7 @@ const translations: Record<Language, Translations> = {
       portfolioValue: 'Portfólio',
       avgRoi: 'ROI Médio',
       regions: 'Regiões em SC',
-      multiCity: 'Em todo o Brasil',
+      multiCity: 'Cidades',
       scroll: 'Rolar',
     },
     properties: {
