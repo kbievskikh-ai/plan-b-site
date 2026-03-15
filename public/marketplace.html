@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRONIS Marketplace — Florianópolis Real Estate</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body { 
+    font-family: 'Inter', -apple-system, sans-serif; 
+    background: #F8F6F0; 
+    color: #1B2951; 
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #1B2951 0%, #0F1A33 100%);
+    color: white;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo-icon {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, #D4AF37, #F0D060);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 700; color: white;
+  }
+  
+  .logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  
+  .logo-sub {
+    font-size: 11px;
+    color: #D4AF37;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  
+  .stats-bar {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+  
+  .stats-bar span { color: #D4AF37; font-weight: 600; }
+  
+  .filters {
+    background: white;
+    padding: 16px 40px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .filter-group { display: flex; align-items: center; gap: 6px; }
+  
+  .filter-label { 
+    font-size: 12px; 
+    color: #888; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+  }
+  
+  select, input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #f9f9f9;
+    color: #1B2951;
+    cursor: pointer;
+  }
+  
+  select:hover, input:hover { border-color: #D4AF37; }
+  
+  .btn-search {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #D4AF37, #B8941E);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .btn-search:hover { background: #B8941E; }
+  
+  .lang-switch {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+  }
+  
+  .lang-btn {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    background: white;
+  }
+  
+  .lang-btn.active {
+    background: #1B2951;
+    color: white;
+    border-color: #1B2951;
+  }
+  
+  .content {
+    padding: 24px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .results-count {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .results-count strong { color: #1B2951; }
+  
+  .sort-by {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #888;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  
+  .card-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-color: #eee;
+    position: relative;
+  }
+  
+  .card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .badge-sale {
+    background: #1B2951;
+    color: white;
+  }
+  
+  .badge-rental {
+    background: #D4AF37;
+    color: white;
+  }
+  
+  .card-source {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 3px 8px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 10px;
+    border-radius: 4px;
+  }
+  
+  .card-body {
+    padding: 16px;
+  }
+  
+  .card-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1B2951;
+    margin-bottom: 6px;
+  }
+  
+  .card-price-usd {
+    font-size: 13px;
+    color: #888;
+    font-weight: 400;
+  }
+  
+  .card-title {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .card-features {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: #666;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .feature-icon { font-size: 16px; }
+  
+  .card-location {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-size: 13px;
+  }
+  
+  .footer a { color: #D4AF37; text-decoration: none; }
+  
+  .no-img {
+    height: 200px;
+    background: linear-gradient(135deg, #1B2951 0%, #2A3F6E 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 48px;
+  }
+  
+  @media (max-width: 768px) {
+    .header { padding: 16px 20px; flex-direction: column; gap: 12px; }
+    .filters { padding: 12px 20px; }
+    .content { padding: 16px 20px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">G</div>
+    <div>
+      <div class="logo-text">GRONIS</div>
+      <div class="logo-sub">Marketplace</div>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div><span id="total-count">55</span> properties</div>
+    <div><span>3</span> sources</div>
+    <div>Updated: <span id="update-date">Mar 15, 2026</span></div>
+  </div>
+</div>
+
+<div class="filters">
+  <div class="filter-group">
+    <select id="filter-type">
+      <option value="all">All Types</option>
+      <option value="sale">For Sale</option>
+      <option value="rental_seasonal">Seasonal Rental</option>
+      <option value="rental_annual">Annual Rental</option>
+    </select>
+  </div>
+  
+  <div class="filter-group">
+    <select id="filter-location">
+      <option value="all">All Locations</option>
+    </select>
+  </div>
+  
+  <div class="filter-group">
+    <select id="filter-source">
+      <option value="all">All Sources</option>
+    </select>
+  </div>
+  
+  <div class="filter-group">
+    <select id="filter-beds">
+      <option value="all">Beds</option>
+      <option value="1">1+</option>
+      <option value="2">2+</option>
+      <option value="3">3+</option>
+      <option value="4">4+</option>
+    </select>
+  </div>
+  
+  <div class="filter-group">
+    <select id="filter-price">
+      <option value="all">Price Range</option>
+      <option value="500000">Up to R$ 500K</option>
+      <option value="1000000">Up to R$ 1M</option>
+      <option value="1500000">Up to R$ 1.5M</option>
+      <option value="2000000">Up to R$ 2M</option>
+    </select>
+  </div>
+  
+  <div class="filter-group">
+    <select id="sort-by">
+      <option value="price-asc">Price ↑</option>
+      <option value="price-desc">Price ↓</option>
+      <option value="area-desc">Area ↓</option>
+    </select>
+  </div>
+  
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
+    <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
+  </div>
+</div>
+
+<div class="content">
+  <div class="results-header">
+    <div class="results-count">Showing <strong id="showing-count">55</strong> properties in Florianópolis</div>
+  </div>
+  <div class="grid" id="listings-grid"></div>
+</div>
+
+<div class="footer">
+  <p>GRONIS Marketplace — Aggregated from local Florianópolis agencies</p>
+  <p>Sources: Floripa Houses • Santa Cruz Imóveis • Mar de Jurerê</p>
+  <p style="margin-top: 8px;">© 2026 <a href="https://gronisbrazil.com">GRONIS International Real Estate</a></p>
+</div>
+
+<script>
+// LISTINGS DATA - INJECTED
+const LISTINGS = [{"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "3039", "location": "Ingleses", "price": "729.000,00", "bedrooms": 2, "bathrooms": 2, "parking": 1, "area": 97, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-09-26-at-17.46.33--3-1664226069.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-09-26-at-17.46.33--3-1664226069.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-09-26-at-17.46.351664226070.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-09-26-at-17.46.321664226069.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=3039", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV126 | Venda, APARTAMENTO 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV126 | Venda, APARTAMENTO 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n1 / 20\n\nVer todas as fotos\nshare\nprint\n\nApartamento com 02 dormitórios (sendo um deles uma suíte), com área privativa de 82 m2 e ótimo acabamento construtivo: esquadrias em PVC, portas laqueadas, piso em porcelanato fosco (", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2628", "location": "Ingleses", "price": "1.030.000,00", "bedrooms": 2, "bathrooms": 2, "parking": 2, "area": 220, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/HOGAR_BELVEDERE_CHURRASQUEIRA1567451105.jpg", "https://www.floripahouses.com.br/imagens/HOGAR_BELVEDERE_CHURRASQUEIRA1567451105.jpg", "https://www.floripahouses.com.br/imagens/HOGAR_BELVEDERE_FACHADA_RUA1567451111.jpg", "https://www.floripahouses.com.br/imagens/HOGAR_BELVEDERE_AEREA_DJI_01391567451099.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2628", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV111 | Venda, COBERTURA 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV111 | Venda, COBERTURA 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n1 / 13\n\nVer todas as fotos\nshare\nprint\n\nCONHEÇA AS CARACTERÍSTICAS: - Port Cochére - Espaço para Concierge - Praça Interna - Espaço Gourmet - Guarita de Segurança - Monitoramento por Câmeras - Torneiras temporizadas na área com", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "1589", "location": "Santinho", "price": "800,00", "bedrooms": null, "bathrooms": 1, "parking": 3, "area": 530, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/1589-1-1-001--640x480-.jpg", "https://www.floripahouses.com.br/imagens/1589-1-1-001--640x480-.jpg", "https://www.floripahouses.com.br/imagens/1589-2-1-002--640x480-.jpg", "https://www.floripahouses.com.br/imagens/1589-3-1-003--640x480-.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=1589", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  SLV011 | Venda, SALA COMERCIAL SANTINHO - FLORIANÓPOLIS\n Fazer uma nova busca\nSLV011 | Venda, SALA COMERCIAL SANTINHO - FLORIANÓPOLIS\n1 / 7\n\nVer todas as fotos\nshare\nprint\n\nEDIFÍCIO COMERCIAL COM SALA COMERCIAL DE 182,72 METROS SENDO 120 METROS DE ÁREA COBERTA NAIS TERRAÇO PARA FINS COMERCIAL\nNO SUBSOLO DUAS VAGAS DE GARAGEM, COM ÁREA TOTAL DE 35,62 METROS E UM APARTAMENTO DE 70 MET", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2674", "location": "Centro", "price": "2.600.000,00", "bedrooms": 3, "bathrooms": 2, "parking": 2, "area": 20181, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/PHOTO-2020-03-09-11-06-30-1-1585595790.jpg", "https://www.floripahouses.com.br/imagens/PHOTO-2020-03-09-11-06-34-2-1585595803.jpg", "https://www.floripahouses.com.br/imagens/PHOTO-2020-03-09-11-06-34-2-1585595803.jpg", "https://www.floripahouses.com.br/imagens/PHOTO-2020-03-09-11-06-30-1-1585595790.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2674", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV164 | Venda, APARTAMENTO PIONEIROS - BALNEARIO CAMBORIU\n Fazer uma nova busca\nAV164 | Venda, APARTAMENTO PIONEIROS - BALNEARIO CAMBORIU\n2 / 35\n\nVer todas as fotos\nshare\nprint\n\nLINDO apartamento, na melhor região de Balneario Camboriu, condomínio fica localizado em área nobre com lindo paisagismo, O apto oferece amplo espaço interno, com 117;44m2 de area privativa e207,53 de area t", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2989", "location": "Ingleses", "price": "900.000,00", "bedrooms": 3, "bathrooms": 2, "parking": 2, "area": 130, "type": "sale", "seasonPrices": {"reveillon": "1.200,00", "january": "1.100,00", "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-01-05-at-16.19.531673028373.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-06-29-at-17.49.29--14-1656536704.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-06-29-at-17.49.29--14-1656536704.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-01-05-at-16.19.531673028373.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2989", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AL046 | Venda, Temporada, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAL046 | Venda, Temporada, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n2 / 20\n\nVer todas as fotos\nshare\nprint\n\nCobertura com 03 dormitórios sendo 01 suíte, terraço com churrasqueira, cozinha, sala de estar/jantar, 02 vagas de garagens, 02 banheiros. Residencial com elevad", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "3029", "location": "Ingleses", "price": "670.000,00", "bedrooms": 2, "bathrooms": 2, "parking": 2, "area": 100, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-09-08-at-17.17.07--1-1662669950.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-09-08-at-17.17.12--1-1662669952.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-09-08-at-17.17.12--1-1662669952.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-09-08-at-17.17.07--1-1662669950.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=3029", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV097 | Venda, APARTAMENTO 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV097 | Venda, APARTAMENTO 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n2 / 20\n\nVer todas as fotos\nshare\nprint\n\nApartamento de 02 dormitórios sendo uma suíte, sala de estar/jantar, cozinha, sacada com churrasqueira, área de serviço, garagem. O condomínio possui piscina, salão de festas, estacio", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2837", "location": "Ingleses", "price": "2.800.000,00", "bedrooms": 2, "bathrooms": 3, "parking": 1, "area": 170, "type": "sale", "seasonPrices": {"reveillon": "2.200,00", "january": "2.000,00", "february": "1.700,00", "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/9fc22b43-dc6b-4b9c-8f0e-e7321342775a1623178602.jpeg", "https://www.floripahouses.com.br/imagens/3945d144-9a61-4761-ae62-460b0e9b87da1623178654.jpeg", "https://www.floripahouses.com.br/imagens/3945d144-9a61-4761-ae62-460b0e9b87da1623178654.jpeg", "https://www.floripahouses.com.br/imagens/9fc22b43-dc6b-4b9c-8f0e-e7321342775a1623178602.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2837", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV057 | Venda, Temporada, APARTAMENTO INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV057 | Venda, Temporada, APARTAMENTO INGLESES - FLORIANÓPOLIS\n2 / 27\n\nVer todas as fotos\nshare\nprint\n\nFiníssimo apartamento de três suítes, com acabamento de primeira, todo mobiliado, com vista para o mar, e três vaga de garagem. Condomínio com piscina com borda infinita, piscina com hidromassagem,", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2971", "location": "Ingleses", "price": "1.700.000,00", "bedrooms": 3, "bathrooms": 2, "parking": 2, "area": 600, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-01-11-at-11.55.59--3-1652193672.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-01-29-at-11.34.42--2----Copia1652194393.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-01-29-at-11.34.42--2----Copia1652194393.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-01-11-at-11.55.59--3-1652193672.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2971", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV063 | Venda, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV063 | Venda, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n2 / 33\n\nVer todas as fotos\nshare\nprint\n\nApartamento vista total para o mar, semi mobiliado cozinha e quartos com móveis embutidos. Com 3 dormitórios sendo 1 suíte , sala de jantar e sala de estar integradas, lavabo, sacada ", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2133", "location": "Jurerê", "price": "931.000,00", "bedrooms": 3, "bathrooms": 3, "parking": 2, "area": 133, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/2133-1-1-labellevue2.jpg", "https://www.floripahouses.com.br/imagens/2133-1-1-labellevue2.jpg", "https://www.floripahouses.com.br/imagens/2133-2-1-629527009915968.jpg", "https://www.floripahouses.com.br/imagens/2133-3-1-TR-3D-Tross-Jurere---CAM-02-EXT-DIA.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2133", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV217 | Venda, COBERTURA 3 dormitório(s) - CANAS_JURE - FLORIANÓPOLIS\n Fazer uma nova busca\nAV217 | Venda, COBERTURA 3 dormitório(s) - CANAS_JURE - FLORIANÓPOLIS\n1 / 8\n\nVer todas as fotos\nshare\nprint\n\nO La Belle Vue é um empreendimento de alto padrão, localizado em Canajurê (entre Jurerê e Canasvieiras), região nobre do norte da ilha de Florianópolis.\n\nA região é conhecida pelas exu", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2753", "location": "Ingleses", "price": "539.000,00", "bedrooms": 2, "bathrooms": 2, "parking": 1, "area": 77, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/20200828_1117331599139964.jpg", "https://www.floripahouses.com.br/imagens/20200828_1123401599140086.jpg", "https://www.floripahouses.com.br/imagens/20200828_1123401599140086.jpg", "https://www.floripahouses.com.br/imagens/20200828_1117331599139964.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2753", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV045 | Venda, APARTAMENTO INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV045 | Venda, APARTAMENTO INGLESES - FLORIANÓPOLIS\n2 / 34\n\nVer todas as fotos\nshare\nprint\nVenda\na consultar\nMais informações\nEnviar\nImóveis Semelhantes\nR$539.000,00\nCód: AV073\nAPARTAMENTO\nINGLESES - FLORIANÓPOLIS\n2\ndorm. bathtub2\nbanheiros 1\nVagas 77 m²\nÁrea total\nPreview\npreview\nR$540.000,00\nCód: AV470\nAP", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2976", "location": "Ingleses", "price": "1.890.000,00", "bedrooms": 4, "bathrooms": 4, "parking": 2, "area": 291, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-05-20-at-15.35.111653075210.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-05-20-at-15.35.121653075211.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-05-20-at-15.35.121653075211.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-05-20-at-15.35.111653075210.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2976", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  CV068 | Venda, CASA CONDOMINIO 4 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nCV068 | Venda, CASA CONDOMINIO 4 dormitório(s) - INGLESES - FLORIANÓPOLIS\n2 / 19\n\nVer todas as fotos\nshare\nprint\n\nCasa 04 dormitórios sendo 03 suítes e 01 máster, sala de estar/jantar, cozinha, lavabo, amplo jardim. Acabamento de alto padrão, com espera para água quente e captação de água", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "3022", "location": "Ingleses", "price": "1.200.000,00", "bedrooms": 9, "bathrooms": 6, "parking": 1, "area": 297, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-08-29-at-15.29.381661800459.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-08-29-at-15.29.381661800459.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-08-29-at-15.29.39--2-1661800459.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-08-29-at-15.29.391661800460.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=3022", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  PV006 | Venda, POUSADA / RESIDENCIAL 9 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nPV006 | Venda, POUSADA / RESIDENCIAL 9 dormitório(s) - INGLESES - FLORIANÓPOLIS\n1 / 5\n\nVer todas as fotos\nshare\nprint\n\nPropriedade nos Ingleses | Santinho, com terreno de 228 m2, 297,74 m2 edificados, composta de 6 apartamentos, sendo 3 de 01 dormitório com 40 m2 privativos e 3 de 0", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2807", "location": "Vargem", "price": "305.000,00", "bedrooms": 3, "bathrooms": 2, "parking": 4, "area": 120, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2021-03-12-at-17.23.12--9-1615835951.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2021-03-12-at-17.23.12--7-1615835951.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2021-03-12-at-17.23.12--7-1615835951.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2021-03-12-at-17.23.12--9-1615835951.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2807", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  CV001 | Venda, CASA 3 dormitório(s) - VARGEM DO BOM JESUS - FLORIANÓPOLIS\n Fazer uma nova busca\nCV001 | Venda, CASA 3 dormitório(s) - VARGEM DO BOM JESUS - FLORIANÓPOLIS\n2 / 18\n\nVer todas as fotos\nshare\nprint\n\nCASA ALVENARIA COM ESCRITURA PUBLICA PROPIO PARA FINANCIAR. 03 dormitórios sendo uma suíte com banheiro hidromassagem, área de serviço, garagem para dois carros e jardim, venh", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2931", "location": "Ingleses", "price": "797.000,00", "bedrooms": 2, "bathrooms": 2, "parking": 1, "area": 97, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/Fachada--2-_Easy-Resize.com1681241889.jpg", "https://www.floripahouses.com.br/imagens/Fachada_Easy-Resize.com1681241890.jpg", "https://www.floripahouses.com.br/imagens/Fachada_Easy-Resize.com1681241890.jpg", "https://www.floripahouses.com.br/imagens/Fachada--2-_Easy-Resize.com1681241889.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2931", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV077 | Venda, APARTAMENTO 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV077 | Venda, APARTAMENTO 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n2 / 24\n\nVer todas as fotos\nshare\nprint\n\nOPORTUNIDADE APTO. NOVO MOBILIADO E DECORADO 200 metros da Praia Dois dormitórios sendo uma suíte, BWC social, sala de estar/jantar, cozinha, área de serviço e sacada com churrasqueir", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2331", "location": "Centro", "price": "1.500.000,00", "bedrooms": 3, "bathrooms": 4, "parking": 2, "area": 260, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://a.tile.openstreetmap.org/17/47880/75933.png", "https://b.tile.openstreetmap.org/17/47881/75933.png", "https://b.tile.openstreetmap.org/17/47880/75934.png", "https://c.tile.openstreetmap.org/17/47881/75934.png"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2331", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  CBV002 | Venda, COBERTURA 3 dormitório(s) - JURERE INTERNACIONAL - FLORIANÓPOLIS\n Fazer uma nova busca\nCBV002 | Venda, COBERTURA 3 dormitório(s) - JURERE INTERNACIONAL - FLORIANÓPOLIS\n2 / 35\n\nVer todas as fotos\nshare\nprint\n\n3 Dormitórios\n\n3 Sendo Suites\n4 Banheiros\n\n2 Garage/ns\n\n260 m² Área total\n\n200 m² Área privativa\n5) UTILIDADES - Cozinha\nCozinha\n1) INFORMAÇOES DO IMOVEL\nM²", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2330", "location": "Canasvieiras", "price": "1.600.000,00", "bedrooms": 2, "bathrooms": 1, "parking": 2, "area": 253, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/IMG_72291538419983.jpg", "https://www.floripahouses.com.br/imagens/IMG_72271538419980.jpg", "https://www.floripahouses.com.br/imagens/IMG_72271538419980.jpg", "https://www.floripahouses.com.br/imagens/IMG_72291538419983.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2330", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  CBV014 | Venda, COBERTURA JURERE INTERNACIONAL - FLORIANÓPOLIS\n Fazer uma nova busca\nCBV014 | Venda, COBERTURA JURERE INTERNACIONAL - FLORIANÓPOLIS\n2 / 27\n\nVer todas as fotos\nshare\nprint\nVenda\na consultar\nMais informações\nEnviar\nImóveis Semelhantes\nCód: AV302\nCOBERTURA\nCANASVIEIRAS - FLORIANÓPOLIS\n2\ndorm. bathtub1\nbanheiros 2\nVagas 253 m²\nÁrea total\nPreview\npreview\nR$1.600.000,00", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2400", "location": "Ingleses", "price": "1.730.000,00", "bedrooms": 3, "bathrooms": 3, "parking": 4, "area": 250, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-01-06-at-10.34.36--3-1641476810.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-01-06-at-10.34.36--1-1641476810.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-01-06-at-10.34.36--1-1641476810.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-01-06-at-10.34.36--3-1641476810.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2400", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  CV035 | Venda, CASA 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nCV035 | Venda, CASA 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n2 / 32\n\nVer todas as fotos\nshare\nprint\n\nLinda casa de 02 pavimentos com 03 dormitorios distribuidos nas seguintes situaçoes: Piso terreo -  Sala de ampla de TV bem esolarada, copa, cozinha, escada, lavabo e bwc social.  Piso superior com", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "3086", "location": "Ingleses", "price": "1.050.000,00", "bedrooms": 2, "bathrooms": 2, "parking": 1, "area": 124, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-11-25-at-16.18.061680028648.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-11-25-at-16.18.061680028648.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-11-25-at-16.18.071680028648.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-11-25-at-16.18.07--2-1680028648.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=3086", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV037 | Venda, APARTAMENTO 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV037 | Venda, APARTAMENTO 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n1 / 24\n\nVer todas as fotos\nshare\nprint\n\nApartamento com 02 dormitórios sendo 02 suítes, lavabo, sala de estar e jantar, ampla sacada gourmet com churrasqueira + hobby box, garagem para 02 carros. Condomínio possui 03 salões", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2636", "location": "Rio Vermelho", "price": "330.000,00", "bedrooms": 2, "bathrooms": 2, "parking": 4, "area": 140, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/IMG_32181588173127.jpg", "https://www.floripahouses.com.br/imagens/IMG_32201588173129.jpg", "https://www.floripahouses.com.br/imagens/IMG_32201588173129.jpg", "https://www.floripahouses.com.br/imagens/IMG_32181588173127.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2636", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  CV024 | Venda, CASA 2 dormitório(s) - RIO VERMELHO - FLORIANÓPOLIS\n Fazer uma nova busca\nCV024 | Venda, CASA 2 dormitório(s) - RIO VERMELHO - FLORIANÓPOLIS\n2 / 22\n\nVer todas as fotos\nshare\nprint\n\nOportunidade Casa de alvenaria de 140 m2 com 02 dormitorios sendo uma suite, sala cozinha sob medida, banheiro social com moveis sob medida, area com churrasqueira, dormitorios sala e cozin", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2683", "location": "Cachoeira", "price": "1.800.000,00", "bedrooms": 3, "bathrooms": 5, "parking": null, "area": 4200, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/PHOTO-2019-03-25-12-38-141586438773.jpg", "https://www.floripahouses.com.br/imagens/PHOTO-2019-03-25-12-38-13-3-1586438758.jpg", "https://www.floripahouses.com.br/imagens/PHOTO-2019-03-25-12-38-13-3-1586438758.jpg", "https://www.floripahouses.com.br/imagens/PHOTO-2019-03-25-12-38-141586438773.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2683", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  STV002 | Venda, SITIO 3 dormitório(s) - TRES RIACHOS - BIGUAÇU\n Fazer uma nova busca\nSTV002 | Venda, SITIO 3 dormitório(s) - TRES RIACHOS - BIGUAÇU\n2 / 26\n\nVer todas as fotos\nshare\nprint\n\nBelíssimo Sítio em Três Riachos, na àrea rural de Biguaçu/SC, com estrutura e mobílias completas: Varandão com vista para o jardim e lago com carpas, que dá acesso a sala e cozinha conjugada, com p", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2178", "location": "Ingleses", "price": "2.850.000,00", "bedrooms": 3, "bathrooms": 4, "parking": 4, "area": 420, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/2178-2-1-IMG_20150729_103937985.jpg", "https://www.floripahouses.com.br/imagens/2178-1-1-IMG_20150729_103917109.jpg", "https://www.floripahouses.com.br/imagens/2178-1-1-IMG_20150729_103917109.jpg", "https://www.floripahouses.com.br/imagens/2178-2-1-IMG_20150729_103937985.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2178", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV472 | Venda, COBERTURA 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV472 | Venda, COBERTURA 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n2 / 37\n\nVer todas as fotos\nshare\nprint\n\nLINDA COBERTURA FRENTE AO MAR NA PRAIA DOS INGLESES, COM 03 DORMITÓRIOS SENDO 03 SUÍTES MAIS BANHEIRO SOCIAL,  NA MELHOR LOCALIZAÇÃO DA PRAIA, MELHOR LOCALIZAÇÃO NO BAIRRO, EXCELENTE INFR", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "3088", "location": "Ingleses", "price": "950.000,00", "bedrooms": 3, "bathrooms": 2, "parking": 2, "area": 120, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-03-20-at-17.28.53--1-1681155461.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-03-20-at-17.28.511681155461.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-03-20-at-17.28.511681155461.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-03-20-at-17.28.53--1-1681155461.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=3088", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV047 | Venda, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV047 | Venda, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n2 / 23\n\nVer todas as fotos\nshare\nprint\n\nApartamento com 3 dormitórios sendo uma suíte, sala de estar/jantar, cozinha, banheiro social, hobby box, sacada com churrasqueira, 2 vagas de garagem. O condomínio está localizado a ", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "3045", "location": "Santinho", "price": "715.000,00", "bedrooms": 2, "bathrooms": 2, "parking": 2, "area": 110, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-10-20-at-16.19.201666296070.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-10-20-at-16.19.141666296070.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-10-20-at-16.19.141666296070.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2022-10-20-at-16.19.201666296070.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=3045", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  CV076 | Venda, CASA 2 dormitório(s) - SANTINHO - FLORIANÓPOLIS\n Fazer uma nova busca\nCV076 | Venda, CASA 2 dormitório(s) - SANTINHO - FLORIANÓPOLIS\n2 / 14\n\nVer todas as fotos\nshare\nprint\n\nCasa com 02 suítes, sala de estar/jantar, lavabo, varanda, duas vagas de garagens, área de serviço, Construção super moderna , finamente mobiliada , e decorado com extremo bom gosto, somente abrir ", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2507", "location": "Canasvieiras", "price": "1.350.000,00", "bedrooms": 3, "bathrooms": 2, "parking": 1, "area": 260, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/84f9baf7-bac8-4c11-af0d-75716a0f935d1524252726.jpg", "https://www.floripahouses.com.br/imagens/0cbc3c16-f820-4807-ba23-a4a7564981da1613396937.jpg", "https://www.floripahouses.com.br/imagens/0cbc3c16-f820-4807-ba23-a4a7564981da1613396937.jpg", "https://www.floripahouses.com.br/imagens/84f9baf7-bac8-4c11-af0d-75716a0f935d1524252726.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2507", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV087 | Venda, APARTAMENTO 3 dormitório(s) - CANASVIEIRAS - FLORIANÓPOLIS\n Fazer uma nova busca\nAV087 | Venda, APARTAMENTO 3 dormitório(s) - CANASVIEIRAS - FLORIANÓPOLIS\n2 / 15\n\nVer todas as fotos\nshare\nprint\n\nAPARTAMENTOS FRENTE MAR - PÉ NA AREIA! Na melhor região, entre CANASVIEIRAS & JURERE. Maravilhosa vista para o mar e a Ilha do Francês. Apartamentos de cobertura duplex com 03", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2213", "location": "Ingleses", "price": "2.600,00", "bedrooms": 4, "bathrooms": 3, "parking": 1, "area": 280, "type": "sale", "seasonPrices": {"reveillon": "2.600,00", "january": "2.600,00", "february": "2.300,00", "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/2213-2-1-IMG_20150925_103231440_HDR.jpg", "https://www.floripahouses.com.br/imagens/2213-2-1-IMG_20150925_103231440_HDR.jpg", "https://www.floripahouses.com.br/imagens/2213-3-1-IMG_20150925_103452949_HDR.jpg", "https://www.floripahouses.com.br/imagens/2213-4-1-IMG_20150925_103442390.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2213", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  CL016 | Venda, Temporada, CASA FRENTE MAR 4 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nCL016 | Venda, Temporada, CASA FRENTE MAR 4 dormitório(s) - INGLESES - FLORIANÓPOLIS\n1 / 25\n\nVer todas as fotos\nshare\nprint\n\n\">LINDA CASA FRENTE AO MAR COM PISCINA COM 04 DORMITÓRIOS SENDO DUAS SÚITES, NA MELHOR LOCALIZAÇÃO DA PRAIA DOS INGLESES PARA 15 PESSOAS.\n\n\n4 Dormitório", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2694", "location": "Centro", "price": "3.600.000,00", "bedrooms": 2, "bathrooms": 5, "parking": 2, "area": 550, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/PHOTO-2020-04-13-20-35-47-3-1586961601.jpg", "https://www.floripahouses.com.br/imagens/PHOTO-2020-04-13-20-35-47-2-1586961600.jpg", "https://www.floripahouses.com.br/imagens/PHOTO-2020-04-13-20-35-47-2-1586961600.jpg", "https://www.floripahouses.com.br/imagens/PHOTO-2020-04-13-20-35-47-3-1586961601.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2694", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV159 | Venda, COBERTURA 2 dormitório(s) - Centro Av Brasil - BALNEARIO CAMBORIU\n Fazer uma nova busca\nAV159 | Venda, COBERTURA 2 dormitório(s) - Centro Av Brasil - BALNEARIO CAMBORIU\n2 / 27\n\nVer todas as fotos\nshare\nprint\n\nBELISSIMO apartamento COBERTURA, na Quadra do Mar e melhor região de Balneario Camboriu, condomínio fica localizado em área nobre com lindo paisagismo, O apto of", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "1060", "location": "Ingleses", "price": "780.000,00", "bedrooms": 3, "bathrooms": 1, "parking": 1, "area": 108, "type": "sale", "seasonPrices": {"reveillon": "1.000,00", "january": "900,00", "february": "800,00", "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/1060-23-1-IMG_20151224_110223265_HDR.jpg", "https://www.floripahouses.com.br/imagens/1060-24-1-IMG_20151224_110235765.jpg", "https://www.floripahouses.com.br/imagens/1060-25-1-IMG_20151224_110422029.jpg", "https://www.floripahouses.com.br/imagens/1060-26-1-IMG_20151224_110330667_HDR.jpg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=1060", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AL264 | Venda, Temporada, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAL264 | Venda, Temporada, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n1 / 25\n\nVer todas as fotos\nshare\nprint\n\nLINDO APTO COM 03 DORMITORIOS SENDO UMA SUITE, EM PREDIO DE FRENTE AO MAR, RUA DAS GAIVOTAS, COM PISCINA, AR CONDICIONADO E GARAGEM PARA 02 CARROS.\n\n\n6 Capacida", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "2861", "location": "Ingleses", "price": "650.000,00", "bedrooms": 3, "bathrooms": 2, "parking": 1, "area": 78, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2021-10-21-at-16.51.20--26-1634850011.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2021-10-21-at-16.51.20--26-1634850011.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2021-10-21-at-16.51.20--27-1634850011.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2021-10-21-at-16.51.20--23-1634850012.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=2861", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  AV016 | Venda, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nAV016 | Venda, APARTAMENTO 3 dormitório(s) - INGLESES - FLORIANÓPOLIS\n1 / 25\n\nVer todas as fotos\nshare\nprint\n\nBelíssima cobertura na área nobre dos Ingleses a apenas 180m da praia com vista para o mar possui 3 dormitórios sendo 1 suíte mobiliada e acabamento de alto padrão tendo persianas int", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "\n\t\t\t  Floripa Houses - Venda e aluguel de temporada de imóveis em Florianópolis. Ingleses, Cachoeira de Bom Jesus, Canasvieiras, Jurerê\n\t\t\t", "code": "3096", "location": "Ingleses", "price": "435.000,00", "bedrooms": 2, "bathrooms": 3, "parking": 1, "area": 148, "type": "sale", "seasonPrices": {"reveillon": null, "january": null, "february": null, "lowSeason": null}, "images": ["https://www.floripahouses.com.br/img-trans.png", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-04-20-at-17.02.291682022648.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-04-20-at-17.02.291682022648.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-04-20-at-17.02.29--1-1682022647.jpeg", "https://www.floripahouses.com.br/imagens/WhatsApp-Image-2023-04-20-at-17.02.321682022647.jpeg"], "link": "https://www.floripahouses.com.br/novo/detalhe-imovel.php?cod=3096", "raw": " + 55 48 3269-1905 |  CRECI/SC 3106J |  \nHOME\nVENDA \nTEMPORADA \nLANÇAMENTOS\nCONDOMINIOS\n SEUS FAVORITOS\nCONTATO\n  CV081 | Venda, CASA 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n Fazer uma nova busca\nCV081 | Venda, CASA 2 dormitório(s) - INGLESES - FLORIANÓPOLIS\n1 / 18\n\nVer todas as fotos\nshare\nprint\n\nLinda casa nunca habitada com 2 suítes , sendo uma com sacada, sala de jantar, cozinha, sala de estar, área com churrasqueira, lavabo, lavanderia, uma vaga de garagem, opões com ou sem piscina e ja", "source": "Floripa Houses", "sourceUrl": "floripahouses.com.br"}, {"title": "Apartamento Garden 3 dormitórios com 91,72m² Praia dos Ingleses, Florianópolis\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "3301", "location": "Ingleses", "price": "1.575.000", "bedrooms": 3, "bathrooms": 2, "parking": 2, "area": 72, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/25256408008707832/jdbbxxi2njkxmzdmyme5zduy_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/25256418553184749/5gjwvwi2njkxmzgwnjniyty3_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-3-quartos-ingleses-do-rio-vermelho-florianopolis-sc-91m2-id-3301", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n3 Quartos\nApartamento em Ingleses do Rio Vermelho, Florianópolis-SC a partir de R$ 1.575.000\n<\n>\nCódigo 3301\nApartamento Garden 3 dormitórios com 91,72m² Praia dos Ingleses, Florianópolis\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sa", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Cobertura com 3 suítes na Praia dos Ingleses, Florianópolis - SC\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "1808", "location": "Ingleses", "price": "1.561.636", "bedrooms": 3, "bathrooms": 3, "parking": 2, "area": 37, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/dpobz4w2ntjmyzljogq2mtdm_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/4z0eppu2ntjmyzljotmwmdgy_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-3-quartos-ingleses-do-rio-vermelho-florianopolis-sc-188m2-id-1808", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n3 Quartos\nApartamento em Ingleses do Rio Vermelho, Florianópolis-SC a partir de R$ 1.561.636\n<\n>\nCódigo 1808\nCobertura com 3 suítes na Praia dos Ingleses, Florianópolis - SC\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n3 Suítes\nTotal de ", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Prédio contendo 8 lofts mobiliados no bairro Trindade, Florianópolis/SC\n Trindade, Florianópolis-SC", "code": "4291", "location": "Trindade", "price": "1.500.000", "bedrooms": 4, "bathrooms": 8, "parking": null, "area": 0, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/r9aicei2ntjmzwzmztk3njhl_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/ksjnrcg2ntjmzwzmzju2mmu5_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-8-quartos-trindade-florianopolis-sc-id-4291", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nTrindade\n4 Quartos ou mais\nApartamento em Trindade, Florianópolis-SC por R$ 1.500.000\n<\n>\nCódigo 4291\nPrédio contendo 8 lofts mobiliados no bairro Trindade, Florianópolis/SC\n Trindade, Florianópolis-SC\nCômodos e espaços\n8 Quartos\nTotal de dormitórios, incluindo as suítes\n8 Banheiros\nInclui banheiros, lavabos, suítes e demi-suítes", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Simplesmente Apaixonante!Usufrua do melhor da Vida e conheça esse empreendimento\n João Paulo, Florianópolis-SC", "code": "5780", "location": "Centro", "price": "1.466.659", "bedrooms": 3, "bathrooms": 3, "parking": 1, "area": 34, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/6262132209371230/ogiifvs2ntzmnjm5n2rizgnm_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/6262133331510495/gebxncm2ntzmnjm5ota1ogu2_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-3-quartos-joao-paulo-florianopolis-sc-91m2-id-5780", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nJoão Paulo\n3 Quartos\nApartamento em João Paulo, Florianópolis-SC a partir de R$ 1.466.659\n<\n>\nCódigo 5780\nSimplesmente Apaixonante!Usufrua do melhor da Vida e conheça esse empreendimento\n João Paulo, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nConsidera-se todos os tipos de sala\n2", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Apartamento duplex com 3 suítes (sendo 1 master) 120 metros do mar\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "5728", "location": "Ingleses", "price": "1.445.611", "bedrooms": 3, "bathrooms": 4, "parking": 1, "area": 1, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2800618083988723/m62rlnw2ntnhotiwzgjkmjll_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2800619751324375/olgmn4u2ntnhotiwzjzjmgfm_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-3-quartos-ingleses-do-rio-vermelho-florianopolis-sc-108m2-id-5728", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n3 Quartos\nApartamento em Ingleses do Rio Vermelho, Florianópolis-SC a partir de R$ 1.445.611\n<\n>\nCódigo 5728\nApartamento duplex com 3 suítes (sendo 1 master) 120 metros do mar\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nConsidera", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Simplesmente Apaixonante!Usufrua do melhor da Vida e conheça esse empreendimento\n João Paulo, Florianópolis-SC", "code": "5781", "location": "Centro", "price": "1.444.993", "bedrooms": 2, "bathrooms": 3, "parking": 1, "area": 91, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/6262205975276359/dq6eyv02ntzmnjnlmweyytll_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/6262207275407725/5zrhxw2ntzmnjnlmmvizmi2_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-2-quartos-joao-paulo-florianopolis-sc-109m2-id-5781", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nJoão Paulo\n2 Quartos\nApartamento em João Paulo, Florianópolis-SC a partir de R$ 1.444.993\n<\n>\nCódigo 5781\nSimplesmente Apaixonante!Usufrua do melhor da Vida e conheça esse empreendimento\n João Paulo, Florianópolis-SC\nCômodos e espaços\n2 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nConsidera-se todos os tipos de sala\n2", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Apartamento a 120 metros do mar, 2 dormitórios à venda Ingleses Norte\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "1201", "location": "Ingleses", "price": "1.420.000", "bedrooms": 2, "bathrooms": 3, "parking": 1, "area": 61, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2797068039525138/z6euyuk2ntnhodqyzmiynjrk_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2797072626920151/hjtayzu2ntnhodqzndrkywm5_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-2-quartos-ingleses-do-rio-vermelho-florianopolis-sc-93m2-id-1201", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n2 Quartos\nApartamento em Ingleses do Rio Vermelho, Florianópolis-SC a partir de R$ 1.420.000\n<\n>\nCódigo 1201\nApartamento a 120 metros do mar, 2 dormitórios à venda Ingleses Norte\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n2 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nConsid", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Apartamento à Venda em Ingleses do Rio Vermelho, Florianópolis - SC\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "2743", "location": "Ingleses", "price": "1.400.000", "bedrooms": 3, "bathrooms": 4, "parking": 2, "area": 95, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/ateeeuw2ntjmzdviotfmytdl_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/wblrlpi2ntjmzdviotiyyjgy_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-3-quartos-ingleses-do-rio-vermelho-florianopolis-sc-108m2-id-2743", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n3 Quartos\nApartamento em Ingleses do Rio Vermelho, Florianópolis-SC por R$ 1.400.000\n<\n>\nCódigo 2743\nApartamento à Venda em Ingleses do Rio Vermelho, Florianópolis - SC\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n3 Suítes\nTotal de suíte", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Apartamento 4 dormitórios, 1 suíte 133,43m² Cachoeira do Bom Jesus Florianópolis\n Cachoeira do Bom Jesus, Florianópolis-SC", "code": "5889", "location": "Centro", "price": "1.400.000", "bedrooms": 4, "bathrooms": 3, "parking": 2, "area": 43, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2876260819137687/dp7rkzw2ntniyjk4oddjn2e2_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2876258338272692/aerj3xu2ntniyjk4nja3mmq3_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-4-quartos-cachoeira-do-bom-jesus-florianopolis-sc-133m2-id-5889", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nCachoeira do Bom Jesus\n4 Quartos ou mais\nApartamento em Cachoeira do Bom Jesus, Florianópolis-SC a partir de R$ 1.400.000\n<\n>\nCódigo 5889\nApartamento 4 dormitórios, 1 suíte 133,43m² Cachoeira do Bom Jesus Florianópolis\n Cachoeira do Bom Jesus, Florianópolis-SC\nCômodos e espaços\n4 Quartos\nTotal de dormitórios, incluindo as suítes\n", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Apartamento com duas suítes a 120 metros do mar - Ingleses- Florianópolis/SC\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "5660", "location": "Ingleses", "price": "1.379.400", "bedrooms": 2, "bathrooms": 3, "parking": 1, "area": 70, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2539690670207225/tcjquji2ntm2otzjztu4ndyy_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2539692479127950/wx8qbqg2ntm2otzkmdi5owrj_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-2-quartos-ingleses-do-rio-vermelho-florianopolis-sc-74m2-id-5660", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n2 Quartos\nApartamento em Ingleses do Rio Vermelho, Florianópolis-SC a partir de R$ 1.379.400\n<\n>\nCódigo 5660\nApartamento com duas suítes a 120 metros do mar - Ingleses- Florianópolis/SC\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n2 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Apartamento duplex à Venda em Ingleses do Rio Vermelho, Florianópolis - SC\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "5717", "location": "Ingleses", "price": "1.379.400", "bedrooms": 3, "bathrooms": 4, "parking": 1, "area": 43, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2800480014528766/8ulm4g2ntnhote4m2fjngu3_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2800485636071171/twjeza2ntnhote4otrmzta4_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-3-quartos-ingleses-do-rio-vermelho-florianopolis-sc-102m2-id-5717", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n3 Quartos\nApartamento em Ingleses do Rio Vermelho, Florianópolis-SC a partir de R$ 1.379.400\n<\n>\nCódigo 5717\nApartamento duplex à Venda em Ingleses do Rio Vermelho, Florianópolis - SC\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nC", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Cobertura mobiliada com 3 quartos a 380m da Praia dos Ingleses Florianópolis/SC\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "5769", "location": "Ingleses", "price": "1.350.000", "bedrooms": 3, "bathrooms": 3, "parking": 2, "area": 0, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/3328153398633942/v2ojfq2ntqyowvizde1zwmy_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/3328188573622804/1jap4a82ntqyowvlmdqwyty3_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/cobertura-duplex-a-venda-3-quartos-ingleses-do-rio-vermelho-florianopolis-sc-182m2-id-5769", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nCoberturas Duplex à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n3 Quartos\nCobertura Duplex em Ingleses do Rio Vermelho, Florianópolis-SC por R$ 1.350.000\n<\n>\nCódigo 5769\nCobertura mobiliada com 3 quartos a 380m da Praia dos Ingleses Florianópolis/SC\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n1", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Vista Mar Exclusiva, Design Sofisticado e Conforto à Beira-Mar em Florianópolis!\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "6109", "location": "Ingleses", "price": "1.350.000", "bedrooms": 2, "bathrooms": 2, "parking": 2, "area": 0, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/11611587783059821/pzxqfw82nwmxmdnlnzczyjcz_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/11611589156255266/uarlzka2nwmxmdnlognlyjc4_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-2-quartos-ingleses-do-rio-vermelho-florianopolis-sc-108m2-id-6109", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n2 Quartos\nApartamento em Ingleses do Rio Vermelho, Florianópolis-SC por R$ 1.350.000\n<\n>\nCódigo 6109\nVista Mar Exclusiva, Design Sofisticado e Conforto à Beira-Mar em Florianópolis!\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n2 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nCon", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Excelente oportunidade\n Canasvieiras, Florianópolis-SC", "code": "6985", "location": "Canasvieiras", "price": "1.348.909", "bedrooms": 3, "bathrooms": 1, "parking": 1, "area": 5, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/188019087641910/fb1vytu2otq5otm4mzmxodfl_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/129043297039837/lrkvjp42otq5otm4ndy3oguz_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-3-quartos-canasvieiras-florianopolis-sc-105m2-id-6985", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nCanasvieiras\n3 Quartos\nApartamento em Canasvieiras, Florianópolis-SC a partir de R$ 1.348.909\n<\n>\nCódigo 6985\nExcelente oportunidade\n Canasvieiras, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Banheiro\nInclui banheiros, lavabos, suítes e demi-suítes\n1 Vaga de garagem\nDeixa o seguro do c", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Apartamento 2 suítes, 112,31m² - bairro Jurerê - Florianópolis - SC\n Jurere Leste, Florianópolis-SC", "code": "6557", "location": "Jurerê", "price": "1.346.578", "bedrooms": 2, "bathrooms": 2, "parking": 1, "area": 31, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/34868176754021716/pyz1ooc2nzizztfmndzjowq5_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/34868165168920231/wtxn8bc2nzizztflogqxzte0_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-2-quartos-jurere-leste-florianopolis-sc-88m2-id-6557", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nJurere Leste\n2 Quartos\nApartamento em Jurere Leste, Florianópolis-SC a partir de R$ 1.346.578\n<\n>\nCódigo 6557\nApartamento 2 suítes, 112,31m² - bairro Jurerê - Florianópolis - SC\n Jurere Leste, Florianópolis-SC\nCômodos e espaços\n2 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nConsidera-se todos os tipos de sala\n2 Suítes", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Conquiste sua cobertura no Ingleses 2 dormitórios\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "6950", "location": "Ingleses", "price": "1.329.000", "bedrooms": 3, "bathrooms": 2, "parking": 2, "area": 11, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/1778128970844303/tl6bsk42otfimmizzje4yzrm_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/1027916607423959/ssbsluu2otfimmi0ngi2nwzk_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/cobertura-a-venda-3-quartos-ingleses-do-rio-vermelho-florianopolis-sc-80m2-id-6950", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nCoberturas à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n3 Quartos\nCobertura em Ingleses do Rio Vermelho, Florianópolis-SC a partir de R$ 1.329.000\n<\n>\nCódigo 6950\nConquiste sua cobertura no Ingleses 2 dormitórios\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nConsidera-se todos os tipos de", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Linda cobertura com 3 dormitórios e terraço espaçoso PRONTA PARA MORAR!\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "6942", "location": "Ingleses", "price": "1.325.625", "bedrooms": 3, "bathrooms": 2, "parking": 2, "area": 50, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/1026460021339971/69hjw82otfimju5ndi3ndu4_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/1026461654967569/xk9i2lq2otfimju5nwmxzjhl_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/cobertura-a-venda-3-quartos-ingleses-do-rio-vermelho-florianopolis-sc-71m2-id-6942", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nCoberturas à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n3 Quartos\nCobertura em Ingleses do Rio Vermelho, Florianópolis-SC a partir de R$ 1.325.625\n<\n>\nCódigo 6942\nLinda cobertura com 3 dormitórios e terraço espaçoso PRONTA PARA MORAR!\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Suíte\nTotal d", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Amplo apartamento de 3 dormitórios sendo 1 suíte com 94,37m², Florianópolis/SC\n Saco Grande, Florianópolis-SC", "code": "5562", "location": "Ingleses", "price": "1.325.442", "bedrooms": 3, "bathrooms": 2, "parking": 2, "area": 37, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2726962592214786/tfqh7iu2ntm5nzi1njq1mtvj_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2726963660758885/lkhjpom2ntm5nzi1nzu1zwmz_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-3-quartos-saco-grande-florianopolis-sc-94m2-id-5562", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nSaco Grande\n3 Quartos\nApartamento em Saco Grande, Florianópolis-SC a partir de R$ 1.325.442\n<\n>\nCódigo 5562\nAmplo apartamento de 3 dormitórios sendo 1 suíte com 94,37m², Florianópolis/SC\n Saco Grande, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nConsidera-se todos os tipos de sala\n", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Cobertura em condomínio à Venda em Florianópolis - SC\n Ingleses do Rio Vermelho, Florianópolis-SC", "code": "5424", "location": "Ingleses", "price": "1.325.000", "bedrooms": 4, "bathrooms": 3, "parking": 1, "area": 0, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2wyuyem2ntmwmtixzdyxytm5_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/hqzvpwk2ntmwmtixy2i3nzhl_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/cobertura-a-venda-4-quartos-ingleses-do-rio-vermelho-florianopolis-sc-177m2-id-5424", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nCoberturas à venda\nFlorianópolis/SC\nIngleses do Rio Vermelho\n4 Quartos ou mais\nCobertura em Ingleses do Rio Vermelho, Florianópolis-SC por R$ 1.325.000\n<\n>\nCódigo 5424\nCobertura em condomínio à Venda em Florianópolis - SC\n Ingleses do Rio Vermelho, Florianópolis-SC\nCômodos e espaços\n4 Quartos\nTotal de dormitórios, incluindo as suítes\n1 Sala\nConsidera-se todos os tipo", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Apartamento com 3 dormitórios à venda, 95 m² -Itacorubi - Florianópolis/SC\n Itacorubi, Florianópolis-SC", "code": "1173", "location": "Itacorubi", "price": "1.299.500", "bedrooms": 3, "bathrooms": 2, "parking": 2, "area": 95, "type": "sale", "images": ["https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.png", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/2360788191153124/1_md.webp", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/5561270249235147/z5dzlhg2nty0yjfkowu1owm4_sm.jpg", "https://cdn3.praedium.com.br/3565Wcgo7Gjw9y1zvP9/5561273544948965/cjp9zno2nty0yjfkzdm5ytg1_sm.jpg"], "link": "https://www.santacruzimoveis.com/imovel/apartamento-a-venda-3-quartos-itacorubi-florianopolis-sc-96m2-id-1173", "raw": " (48) 99111-7670\n (48) 3207-8305\nPágina inicial\nInício\nBusca\nSobre\nDepoimentos\nImóveis Preciosos \nAvaliação Imobiliária\nFAQ\nInício\nApartamentos à venda\nFlorianópolis/SC\nItacorubi\n3 Quartos\nApartamento em Itacorubi, Florianópolis-SC a partir de R$ 1.299.500\n<\n>\nCódigo 1173\nApartamento com 3 dormitórios à venda, 95 m² -Itacorubi - Florianópolis/SC\n Itacorubi, Florianópolis-SC\nCômodos e espaços\n3 Quartos\nTotal de dormitórios, incluindo as suítes\n2 Salas\nConsidera-se todos os tipos de sala\n1 Suíte\nT", "source": "Santa Cruz Imoveis", "sourceUrl": "santacruzimoveis.com"}, {"title": "Mar de Jurerê Imóveis", "code": "H0001-E", "location": "Jurerê", "price": "7.000,00", "bedrooms": null, "bathrooms": null, "parking": null, "area": null, "type": "rental_seasonal", "images": ["https://images.mardejurere.com/foto_do_imovel/07893/001/4.jpg?1773588675", "https://images.mardejurere.com/foto_do_imovel/07893/002/4.jpg?1773588675", "https://images.mardejurere.com/foto_do_imovel/07893/003/4.jpg?1773588675", "https://images.mardejurere.com/foto_do_imovel/07893/004/4.jpg?1773588675", "https://images.mardejurere.com/foto_do_imovel/07893/005/4.jpg?1773588675", "https://images.mardejurere.com/foto_do_imovel/07893/006/4.jpg?1773588675", "https://images.mardejurere.com/foto_do_imovel/07893/007/4.jpg?1773588675", "https://images.mardejurere.com/foto_do_imovel/07893/008/4.jpg?1773588675"], "link": "https://www.mardejurere.com/imovel-H0001-E/", "source": "Mar de Jurerê", "sourceUrl": "mardejurere.com", "raw": "Mar de Jurerê Imóveis\nContact us\nMenu\nVACATION RENTALS\nID: H0001-E\nClick here to see all the photos\n\n\nDAILY VALUE\n\nR$ 7.000,00 Reveillon\n\nR$ 4.000,00 January\n\nR$ 3.000,00 February\n\nR$ 6.000,00 Carnival\n\nReservation Request\nMAIN DETAILS\n\nCapacity for 4 people\n\n1 suite\n\n100 meters from the beach\n\nPool\n\nADDITIONAL DETAILS\n\nPosição solar: leste\n\nElevador: Sim\n\nCama de casal: 1\n\nSofá-cama de casal: 1\n\n"}, {"title": "Mar de Jurerê Imóveis", "code": "H0001-F", "location": "Jurerê", "price": "1.950,00", "bedrooms": null, "bathrooms": null, "parking": null, "area": null, "type": "rental_seasonal", "images": ["https://images.mardejurere.com/foto_do_imovel/08667/001/4.jpg?1773588684", "https://images.mardejurere.com/foto_do_imovel/08667/002/4.jpg?1773588684", "https://images.mardejurere.com/foto_do_imovel/08667/003/4.jpg?1773588684", "https://images.mardejurere.com/foto_do_imovel/08667/004/4.jpg?1773588684", "https://images.mardejurere.com/foto_do_imovel/08667/005/4.jpg?1773588684", "https://images.mardejurere.com/foto_do_imovel/08667/006/4.jpg?1773588684", "https://images.mardejurere.com/foto_do_imovel/08667/007/4.jpg?1773588684", "https://images.mardejurere.com/foto_do_imovel/08667/008/4.jpg?1773588684"], "link": "https://www.mardejurere.com/imovel-H0001-F/", "source": "Mar de Jurerê", "sourceUrl": "mardejurere.com", "raw": "Mar de Jurerê Imóveis\nContact us\nMenu\nVACATION RENTALS\nID: H0001-F\nClick here to see all the photos\n\n\nDAILY VALUE\n\nR$ 1.950,00 Reveillon\n\nR$ 1.350,00 January\n\nR$ 1.250,00 February\n\nR$ 1.700,00 Carnival\n\nReservation Request\nMAIN DETAILS\n\nCapacity for 2 people\n\n1 suite\n\n100 meters from the beach\n\nPool\n\nADDITIONAL DETAILS\n\nPosição solar: leste\n\nElevador: Sim\n\nPortão eletrônico: Sim\n\nCama de casal: 1\n"}, {"title": "Mar de Jurerê Imóveis", "code": "H0001-D", "location": "Jurerê", "price": "3.500,00", "bedrooms": null, "bathrooms": null, "parking": 1, "area": null, "type": "rental_seasonal", "images": ["https://images.mardejurere.com/foto_do_imovel/07372/001/4.jpg?1773588692", "https://images.mardejurere.com/foto_do_imovel/07372/002/4.jpg?1773588692", "https://images.mardejurere.com/foto_do_imovel/07372/003/4.jpg?1773588692", "https://images.mardejurere.com/foto_do_imovel/07372/004/4.jpg?1773588692", "https://images.mardejurere.com/foto_do_imovel/07372/005/4.jpg?1773588692", "https://images.mardejurere.com/foto_do_imovel/07372/006/4.jpg?1773588692", "https://images.mardejurere.com/foto_do_imovel/07372/007/4.jpg?1773588692", "https://images.mardejurere.com/foto_do_imovel/07372/008/4.jpg?1773588692"], "link": "https://www.mardejurere.com/imovel-H0001-D/", "source": "Mar de Jurerê", "sourceUrl": "mardejurere.com", "raw": "Mar de Jurerê Imóveis\nContact us\nMenu\nVACATION RENTALS\nID: H0001-D\nClick here to see all the photos\n\n\nDAILY VALUE\n\nR$ 3.500,00 Reveillon\n\nR$ 2.300,00 January\n\nR$ 1.800,00 February\n\nR$ 3.000,00 Carnival\n\nReservation Request\nMAIN DETAILS\n\nCapacity for 4 people\n\n1 suite\n\n100 meters from the beach\n\nPool\n\nADDITIONAL DETAILS\n\nElevador: Sim\n\nGaragem: Sim (1 vaga)\n\nCama de casal: 1\n\nSala conjugada com coz"}, {"title": "Mar de Jurerê Imóveis", "code": "AAI0020-A", "location": "Jurerê", "price": "1.500,00", "bedrooms": null, "bathrooms": null, "parking": 2, "area": null, "type": "sale", "images": ["https://images.mardejurere.com/foto_do_imovel/02375/001/4.jpg?1773588704", "https://images.mardejurere.com/foto_do_imovel/02375/002/4.jpg?1773588704", "https://images.mardejurere.com/foto_do_imovel/02375/003/4.jpg?1773588704", "https://images.mardejurere.com/foto_do_imovel/02375/004/4.jpg?1773588704", "https://images.mardejurere.com/foto_do_imovel/02375/005/4.jpg?1773588704", "https://images.mardejurere.com/foto_do_imovel/02375/006/4.jpg?1773588704", "https://images.mardejurere.com/foto_do_imovel/02375/007/4.jpg?1773588704", "https://images.mardejurere.com/foto_do_imovel/02375/008/4.jpg?1773588704"], "link": "https://www.mardejurere.com/imovel-AAI0020-A/", "source": "Mar de Jurerê", "sourceUrl": "mardejurere.com", "raw": "Mar de Jurerê Imóveis\nContact us\nMenu\nVACATION RENTALS\nID: AAI0020-A\nClick here to see all the photos\n\n\nDAILY VALUE\n\nR$ 1.500,00 Reveillon\n\nR$ 1.100,00 January\n\nR$ 950,00 February\n\nR$ 1.500,00 Carnival\n\nRESERVED DATES:\n28/05/2026 a 02/06/2026\nReservation Request\nMAIN DETAILS\n\nJurerê Internacional\n\nCapacity for 6 people\n\n2 bedrooms + 1 suite\n\n270 meters from the beach\n\nADDITIONAL DETAILS\n\nElevador:"}, {"title": "Mar de Jurerê Imóveis", "code": "AAI0025-A", "location": "Jurerê", "price": "900,00", "bedrooms": null, "bathrooms": null, "parking": 1, "area": null, "type": "sale", "images": ["https://images.mardejurere.com/foto_do_imovel/06142/001/4.jpg?1773588712", "https://images.mardejurere.com/foto_do_imovel/06142/002/4.jpg?1773588712", "https://images.mardejurere.com/foto_do_imovel/06142/003/4.jpg?1773588712", "https://images.mardejurere.com/foto_do_imovel/06142/004/4.jpg?1773588712", "https://images.mardejurere.com/foto_do_imovel/06142/005/4.jpg?1773588712", "https://images.mardejurere.com/foto_do_imovel/06142/006/4.jpg?1773588712", "https://images.mardejurere.com/foto_do_imovel/06142/007/4.jpg?1773588712", "https://images.mardejurere.com/foto_do_imovel/06142/008/4.jpg?1773588712"], "link": "https://www.mardejurere.com/imovel-AAI0025-A/", "source": "Mar de Jurerê", "sourceUrl": "mardejurere.com", "raw": "Mar de Jurerê Imóveis\nContact us\nMenu\nVACATION RENTALS\nID: AAI0025-A\nClick here to see all the photos\n\n\nDAILY VALUE\n\nR$ 900,00 Reveillon\n\nR$ 700,00 January\n\nR$ 650,00 February\n\nR$ 850,00 Carnival\n\nRESERVED DATES:\n02/02/2026 a 12/02/2026\nReservation Request\nMAIN DETAILS\n\nJurerê Internacional\n\nCapacity for 6 people\n\n1 bedroom + 1 suite\n\n500 meters from the beach\n\nADDITIONAL DETAILS\n\nElevador: Sim\n\nP"}, {"title": "Mar de Jurerê Imóveis", "code": "AAI0004-C", "location": "Jurerê", "price": "950,00", "bedrooms": null, "bathrooms": null, "parking": 1, "area": null, "type": "sale", "images": ["https://images.mardejurere.com/foto_do_imovel/01619/001/4.jpg?1773588718", "https://images.mardejurere.com/foto_do_imovel/01619/003/4.jpg?1773588718", "https://images.mardejurere.com/foto_do_imovel/01619/004/4.jpg?1773588718", "https://images.mardejurere.com/foto_do_imovel/01619/005/4.jpg?1773588718", "https://images.mardejurere.com/foto_do_imovel/01619/006/4.jpg?1773588718", "https://images.mardejurere.com/foto_do_imovel/01619/008/4.jpg?1773588718", "https://images.mardejurere.com/foto_do_imovel/01619/009/4.jpg?1773588718", "https://images.mardejurere.com/foto_do_imovel/01619/010/4.jpg?1773588718"], "link": "https://www.mardejurere.com/imovel-AAI0004-C/", "source": "Mar de Jurerê", "sourceUrl": "mardejurere.com", "raw": "Mar de Jurerê Imóveis\nContact us\nMenu\nVACATION RENTALS\nID: AAI0004-C\nClick here to see all the photos\n\n\nDAILY VALUE\n\nR$ 950,00 Reveillon\n\nR$ 800,00 January\n\nR$ 650,00 February\n\nR$ 900,00 Carnival\n\nRESERVED DATES:\n01/02/2026 a 17/02/2026\nReservation Request\nMAIN DETAILS\n\nJurerê Internacional\n\nCapacity for 5 people\n\n1 bedroom + 1 suite\n\n560 meters from the beach\n\nADDITIONAL DETAILS\n\nElevador: Sim\n\nG"}];
+
+const USD_RATE = 5.20;
+
+function parsePrice(priceStr) {
+  if (!priceStr || priceStr === 'Consultar') return 0;
+  return parseFloat(priceStr.replace(/\./g, '').replace(',', '.')) || 0;
+}
+
+function formatPrice(value) {
+  if (!value) return 'Consultar';
+  return 'R$ ' + value.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
+}
+
+function formatPriceUSD(brl) {
+  if (!brl || brl < 1000) return '';
+  return '≈ $' + Math.round(brl / USD_RATE).toLocaleString('en-US');
+}
+
+function normalizeLocation(loc) {
+  if (!loc) return 'Unknown';
+  return loc.charAt(0).toUpperCase() + loc.slice(1).toLowerCase();
+}
+
+function getTypeLabel(type) {
+  const labels = {
+    'sale': 'For Sale',
+    'rental_seasonal': 'Seasonal',
+    'rental_annual': 'Annual Rental',
+    'unknown': 'Unknown'
+  };
+  return labels[type] || type;
+}
+
+function getBadgeClass(type) {
+  return type === 'sale' ? 'badge-sale' : 'badge-rental';
+}
+
+// Populate filter options
+function populateFilters() {
+  const locations = new Set();
+  const sources = new Set();
+  
+  LISTINGS.forEach(l => {
+    if (l.location) locations.add(normalizeLocation(l.location));
+    if (l.source) sources.add(l.source);
+  });
+  
+  const locSelect = document.getElementById('filter-location');
+  [...locations].sort().forEach(loc => {
+    const opt = document.createElement('option');
+    opt.value = loc.toLowerCase();
+    opt.textContent = loc;
+    locSelect.appendChild(opt);
+  });
+  
+  const srcSelect = document.getElementById('filter-source');
+  [...sources].sort().forEach(src => {
+    const opt = document.createElement('option');
+    opt.value = src;
+    opt.textContent = src;
+    srcSelect.appendChild(opt);
+  });
+}
+
+function filterAndRender() {
+  const typeFilter = document.getElementById('filter-type').value;
+  const locFilter = document.getElementById('filter-location').value;
+  const srcFilter = document.getElementById('filter-source').value;
+  const bedsFilter = document.getElementById('filter-beds').value;
+  const priceFilter = document.getElementById('filter-price').value;
+  const sortBy = document.getElementById('sort-by').value;
+  
+  let filtered = LISTINGS.filter(l => {
+    if (typeFilter !== 'all' && l.type !== typeFilter) return false;
+    if (locFilter !== 'all' && normalizeLocation(l.location).toLowerCase() !== locFilter) return false;
+    if (srcFilter !== 'all' && l.source !== srcFilter) return false;
+    if (bedsFilter !== 'all' && (!l.bedrooms || l.bedrooms < parseInt(bedsFilter))) return false;
+    if (priceFilter !== 'all') {
+      const price = parsePrice(l.price);
+      if (price === 0 || price > parseInt(priceFilter)) return false;
+    }
+    return true;
+  });
+  
+  // Sort
+  filtered.sort((a, b) => {
+    const pa = parsePrice(a.price);
+    const pb = parsePrice(b.price);
+    if (sortBy === 'price-asc') return pa - pb;
+    if (sortBy === 'price-desc') return pb - pa;
+    if (sortBy === 'area-desc') return (b.area || 0) - (a.area || 0);
+    return 0;
+  });
+  
+  renderListings(filtered);
+  document.getElementById('showing-count').textContent = filtered.length;
+}
+
+function renderListings(listings) {
+  const grid = document.getElementById('listings-grid');
+  grid.innerHTML = '';
+  
+  listings.forEach(l => {
+    const price = parsePrice(l.price);
+    const imgUrl = l.images && l.images.length > 0 ? l.images[0] : '';
+    
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.onclick = () => { if (l.link) window.open(l.link, '_blank'); };
+    
+    card.innerHTML = `
+      ${imgUrl ? 
+        `<div class="card-img" style="background-image: url('${imgUrl}')">` :
+        `<div class="no-img">🏠`
+      }
+        <div class="card-badge ${getBadgeClass(l.type)}">${getTypeLabel(l.type)}</div>
+        <div class="card-source">${l.source}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">
+          ${price > 0 ? formatPrice(price) : 'Preço sob consulta'}
+          ${price > 1000 ? `<span class="card-price-usd">${formatPriceUSD(price)}</span>` : ''}
+        </div>
+        <div class="card-title">${l.title || l.propType || 'Property'} ${l.code ? `• Cód: ${l.code}` : ''}</div>
+        <div class="card-features">
+          ${l.bedrooms ? `<div class="feature"><span class="feature-icon">🛏</span> ${l.bedrooms} bed</div>` : ''}
+          ${l.bathrooms ? `<div class="feature"><span class="feature-icon">🚿</span> ${l.bathrooms} bath</div>` : ''}
+          ${l.area ? `<div class="feature"><span class="feature-icon">📐</span> ${l.area} m²</div>` : ''}
+          ${l.parking ? `<div class="feature"><span class="feature-icon">🚗</span> ${l.parking}</div>` : ''}
+        </div>
+        <div class="card-location">📍 ${normalizeLocation(l.location) || 'Florianópolis'}</div>
+      </div>
+    `;
+    
+    grid.appendChild(card);
+  });
+}
+
+// Init
+populateFilters();
+filterAndRender();
+
+// Filter listeners
+['filter-type', 'filter-location', 'filter-source', 'filter-beds', 'filter-price', 'sort-by'].forEach(id => {
+  document.getElementById(id).addEventListener('change', filterAndRender);
+});
+</script>
+</body>
+</html>
