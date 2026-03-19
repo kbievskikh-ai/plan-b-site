@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Толя, Куда Дальше?! — Migronis Calculator</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--burg:#6B1D3A;--burg-dark:#4A1228;--gold:#C9A94E;--gold-light:#D4B85A}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#faf9f7;color:#2c2c2c;min-height:100vh}
+.header{background:linear-gradient(135deg,var(--burg),var(--burg-dark));color:#fff;padding:18px 0;text-align:center;position:relative}
+.lang-switch{position:absolute;top:12px;right:20px;display:flex;gap:4px}
+.lang-btn{padding:5px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.5);font-size:11px;cursor:pointer;font-weight:600;transition:all .2s}
+.lang-btn.active{background:rgba(255,255,255,0.15);color:#fff;border-color:var(--gold)}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;margin:8px 0 4px}
+.header p{font-size:12px;color:rgba(255,255,255,0.4)}
+.container{max-width:700px;margin:25px auto;padding:0 20px;position:relative;z-index:1}
+.watermark{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;opacity:.04;pointer-events:none;z-index:0;color:var(--burg)}
+.progress-bar{background:#e8e8e8;border-radius:20px;height:8px;margin-bottom:20px;overflow:hidden}
+.progress-fill{background:linear-gradient(90deg,var(--burg),var(--gold));height:100%;border-radius:20px;transition:width .5s}
+.step-info{text-align:center;font-size:11px;color:#999;margin-bottom:12px}
+.question-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 20px rgba(0,0,0,.06);margin-bottom:18px;animation:fadeIn .4s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.question-card h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--burg);margin-bottom:5px}
+.question-card .hint{font-size:11px;color:#999;margin-bottom:15px}
+.options{display:flex;flex-direction:column;gap:8px}
+.option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:2px solid #eee;border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.option:hover{border-color:var(--gold);background:rgba(201,169,78,.04)}
+.option.selected{border-color:var(--burg);background:rgba(107,29,58,.04)}
+.option .icon{font-size:20px;flex-shrink:0}
+.option .text{flex:1}
+.option .text .label{font-weight:600;font-size:13px}
+.option .text .desc{font-size:10px;color:#888;margin-top:1px}
+.option .check{width:20px;height:20px;border-radius:50%;border:2px solid #ddd;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.option.selected .check{background:var(--burg);border-color:var(--burg)}
+.option.selected .check::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
+.multi-hint{font-size:10px;color:var(--gold);margin-bottom:8px;font-weight:600}
+.options-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.option-chip{padding:9px 10px;border:2px solid #eee;border-radius:10px;cursor:pointer;text-align:center;transition:all .2s;font-size:12px}
+.option-chip:hover{border-color:var(--gold)}
+.option-chip.selected{border-color:var(--burg);background:rgba(107,29,58,.06);font-weight:600}
+.option-chip .chip-icon{font-size:18px;display:block;margin-bottom:3px}
+.nav-buttons{display:flex;justify-content:space-between;margin-top:18px}
+.btn{padding:11px 28px;border-radius:10px;border:none;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-back{background:#f0f0f0;color:#666}
+.btn-back:hover{background:#e0e0e0}
+.btn-next{background:linear-gradient(135deg,var(--burg),var(--burg-dark));color:#fff}
+.btn-next:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(107,29,58,.3)}
+.btn-next:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.hidden{display:none}
+/* Results */
+.results-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 20px rgba(0,0,0,.06);animation:fadeIn .5s}
+.results-card h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--burg);margin-bottom:12px;text-align:center}
+.result-item{border:2px solid #eee;border-radius:14px;padding:18px;margin:12px 0;transition:all .3s}
+.result-item.top{border-color:var(--gold);background:linear-gradient(135deg,rgba(201,169,78,.03),rgba(107,29,58,.03))}
+.result-item .rank{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.result-item .rank .medal{font-size:28px}
+.result-item .rank .country-name{font-family:'Playfair Display',serif;font-size:18px;color:var(--burg)}
+.result-item .rank .score{font-size:14px;color:var(--gold);font-weight:700;margin-left:auto;background:rgba(201,169,78,.1);padding:3px 10px;border-radius:8px}
+.result-item .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.result-item .tag{font-size:9px;padding:3px 7px;border-radius:6px;background:rgba(107,29,58,.06);color:var(--burg)}
+.result-item .desc-text{font-size:11px;color:#666;line-height:1.5;margin-bottom:12px}
+/* Infographic charts */
+.charts-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.chart-item{text-align:center}
+.chart-item .donut{width:60px;height:60px;margin:0 auto;position:relative}
+.chart-item .donut svg{width:60px;height:60px;transform:rotate(-90deg)}
+.chart-item .donut .center-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:11px;font-weight:700;color:var(--burg)}
+.chart-item .chart-label{font-size:8px;color:#888;margin-top:3px;line-height:1.2}
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.info-pill{background:#f8f8f8;border-radius:8px;padding:8px 10px;font-size:10px;display:flex;align-items:center;gap:6px}
+.info-pill .pill-icon{font-size:14px;flex-shrink:0}
+.info-pill .pill-text{color:#555;line-height:1.3}
+.info-pill strong{color:#333}
+.cta-box{background:linear-gradient(135deg,var(--burg),var(--burg-dark));color:#fff;border-radius:14px;padding:20px;margin-top:20px;text-align:center}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold);margin-bottom:6px}
+.cta-box p{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:10px}
+.cta-box .btn-cta{background:var(--gold);color:var(--burg-dark);padding:11px 28px;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
+.cta-box .btn-cta:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(201,169,78,.4)}
+.disclaimer{text-align:center;font-size:9px;color:#bbb;margin:18px 0;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+  <div style="font-family:'Playfair Display',serif;font-size:13px;letter-spacing:4px;color:var(--gold)">✦ MIGRONIS ✦</div>
+  <h1 id="headerTitle">Куда тебе переехать?</h1>
+  <p id="headerSub">Интерактивный калькулятор · Подарок к 15-летию Migronis</p>
+</div>
+
+<svg class="watermark" viewBox="0 0 90 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M63.07 39.52C66.49 37.6 70.27 36.41 74.17 36.04C78.07 35.67 82.01 36.12 85.73 37.36C86.8 35.47 87.61 33.45 88.15 31.34C80.69 27.56 71.82 27.7 64.73 31.77C60.16 34.39 55.52 35.73 50.95 35.73C47.21 35.69 43.53 34.86 40.15 33.28C41.32 36.66 43.21 39.75 45.68 42.33C51.51 43.79 57.24 42.86 63.07 39.52Z" fill="currentColor"/>
+<path d="M63.07 28.74C66.97 26.54 71.35 25.3 75.83 25.14C80.3 24.98 84.76 25.9 88.81 27.81C88.91 26.9 88.97 25.98 88.97 25.06C88.97 23.63 88.85 22.21 88.61 20.8C81.09 16.8 71.98 16.86 64.8 21C60.23 23.62 55.59 24.97 51.02 24.97C47.08 24.97 43.07 23.94 39.06 21.96C38.9 22.99 38.83 24.03 38.83 25.07C38.83 26.34 38.93 27.62 39.13 28.88C47.17 33.42 55.02 33.37 63.07 28.74Z" fill="currentColor"/>
+<path d="M64.76 10.22C60.19 12.84 55.55 14.19 50.98 14.19C47.96 14.17 44.96 13.61 42.14 12.54C41.06 14.38 40.24 16.35 39.69 18.4C47.54 22.63 55.19 22.46 63.04 17.95C66.73 15.88 70.84 14.67 75.06 14.41C79.28 14.14 83.5 14.84 87.42 16.43C86.2 13.11 84.29 10.08 81.82 7.55C75.99 6.35 69.94 7.3 64.76 10.22Z" fill="currentColor"/>
+<path d="M63.04 7.22C67.27 4.83 72.07 3.59 76.93 3.64C71.68 .46 65.46-.7 59.42 .4C53.38 1.5 47.96 4.77 44.17 9.6C50.48 11.66 56.71 10.86 63.04 7.22Z" fill="currentColor"/>
+<path d="M64.76 42.53C60.19 45.15 55.55 46.5 50.98 46.5H50.85C56.13 49.71 62.4 50.85 68.47 49.71C74.54 48.58 79.98 45.24 83.74 40.34C80.59 39.41 77.29 39.12 74.03 39.5C70.76 39.87 67.61 40.91 64.76 42.53Z" fill="currentColor"/>
+</svg>
+
+<div class="container">
+  <div id="quiz">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="step-info" id="stepInfo"></div>
+    <div id="questionContainer"></div>
+    <div class="nav-buttons">
+      <button class="btn btn-back hidden" id="btnBack" onclick="prevQuestion()">← Назад</button>
+      <button class="btn btn-next" id="btnNext" onclick="nextQuestion()" disabled>Далее →</button>
+    </div>
+  </div>
+  <div id="results" class="hidden"></div>
+</div>
+
+<script>
+let lang = 'ru';
+const t = {
+  ru: {
+    headerTitle: 'Толя, Куда Дальше?!',
+    headerSub: 'Интерактивный калькулятор · Подарок к 15-летию Migronis',
+    stepOf: 'из', next: 'Далее →', back: '← Назад', showResult: 'Показать результат 🎯',
+    question: 'Вопрос', top3: '🎯 Твои топ-3 страны для переезда', top3sub: 'На основе твоих ответов',
+    ctaTitle: '🏠 Хочешь узнать больше?', ctaSub: 'Наши эксперты помогут с переездом и инвестициями в недвижимость.', ctaBtn: 'Получить консультацию →',
+    disclaimer: 'Калькулятор предоставляет общие рекомендации. © Migronis · 15 лет помогаем строить жизнь в новых странах.',
+    match: 'совпадение', residency: 'ВНЖ', passport: 'Паспорт', tax: 'Налоги', reGrowth: 'Рост недвиж.', birth: 'Роды',
+    safety: 'Безопасность', costLiving: 'Стоимость жизни', rental: 'Аренда', lifestyle: 'Лайфстайл'
+  },
+  en: {
+    headerTitle: 'Tolya, What\'s Next?!',
+    headerSub: 'Interactive Calculator · Gift for Migronis 15th Anniversary',
+    stepOf: 'of', next: 'Next →', back: '← Back', showResult: 'Show Results 🎯',
+    question: 'Question', top3: '🎯 Your Top 3 Countries', top3sub: 'Based on your answers',
+    ctaTitle: '🏠 Want to Learn More?', ctaSub: 'Our experts help with relocation and real estate investment.', ctaBtn: 'Get Free Consultation →',
+    disclaimer: 'Calculator provides general recommendations. © Migronis · 15 years helping people build lives abroad.',
+    match: 'match', residency: 'Residency', passport: 'Passport', tax: 'Taxes', reGrowth: 'RE Growth', birth: 'Birth Program',
+    safety: 'Safety', costLiving: 'Cost of Living', rental: 'Rental', lifestyle: 'Lifestyle'
+  }
+};
+
+const Q = {
+  ru: [
+    { id:'citizenship', title:'🌍 Какое у тебя гражданство?', hint:'', type:'single', options:[
+      {value:'RU',icon:'🇷🇺',label:'Россия'},{value:'UA',icon:'🇺🇦',label:'Украина'},{value:'BY',icon:'🇧🇾',label:'Беларусь'},
+      {value:'KZ',icon:'🇰🇿',label:'Казахстан'},{value:'IL',icon:'🇮🇱',label:'Израиль'},{value:'EU',icon:'🇪🇺',label:'Страна ЕС'},{value:'OTHER',icon:'🌐',label:'Другое'}
+    ]},
+    { id:'occupation', title:'💼 Чем занимаешься?', hint:'', type:'single', options:[
+      {value:'EMPLOYEE',icon:'👔',label:'Наёмный работник',desc:'Работа в компании'},
+      {value:'FREELANCE',icon:'💻',label:'Фрилансер',desc:'Удалённая работа'},
+      {value:'BUSINESS',icon:'🏢',label:'Предприниматель',desc:'Свой бизнес'},
+      {value:'NOMAD',icon:'🌍',label:'Digital Nomad',desc:'Без привязки к месту'},
+      {value:'INVESTOR',icon:'📈',label:'Инвестор',desc:'Живу с инвестиций'},
+      {value:'RETIRED',icon:'🏖️',label:'Пенсионер / Рантье',desc:'Пассивный доход'}
+    ]},
+    { id:'budget', title:'💰 Бюджет на переезд?', hint:'Включая недвижимость и первый год', type:'single', options:[
+      {value:'LOW',icon:'💵',label:'До $100,000',desc:'Бюджетный'},
+      {value:'MEDIUM',icon:'💰',label:'$100K — $300K',desc:'Комфортный'},
+      {value:'HIGH',icon:'💎',label:'$300K — $500K',desc:'Премиальный'},
+      {value:'PREMIUM',icon:'💎',label:'$500K — $1M',desc:'VIP'},
+      {value:'ULTRA',icon:'👑',label:'Более $1M',desc:'Без ограничений'}
+    ]},
+    { id:'climate', title:'☀️ Какой климат?', hint:'', type:'single', options:[
+      {value:'TROPICAL',icon:'🌴',label:'Тропический',desc:'Жарко, пляжи, океан'},
+      {value:'SUBTROPICAL',icon:'🌊',label:'Субтропический',desc:'Тёплое лето, мягкая зима'},
+      {value:'MEDITERRANEAN',icon:'🫒',label:'Средиземноморский',desc:'Жаркое лето, прохладная зима'},
+      {value:'TEMPERATE',icon:'🍂',label:'Умеренный',desc:'4 сезона'},
+      {value:'ANY',icon:'🌈',label:'Без разницы'}
+    ]},
+    { id:'priorities', title:'🎯 Что важнее всего?', hint:'Выбери до 3', type:'multi', max:3, options:[
+      {value:'SAFETY',icon:'🛡️',label:'Безопасность'},{value:'TAXES',icon:'💰',label:'Низкие налоги'},
+      {value:'EDUCATION',icon:'🎓',label:'Образование'},{value:'HEALTHCARE',icon:'🏥',label:'Медицина'},
+      {value:'BUSINESS',icon:'💼',label:'Бизнес-среда'},{value:'NATURE',icon:'🌿',label:'Природа'},
+      {value:'BEACH',icon:'🏖️',label:'Пляж/Океан'},{value:'CULTURE',icon:'🎭',label:'Культура'},
+      {value:'COMMUNITY',icon:'👥',label:'Комьюнити'},{value:'COST',icon:'🏷️',label:'Низкая стоимость жизни'},
+      {value:'PASSPORT',icon:'🛂',label:'Сильный паспорт'},{value:'INVESTMENT',icon:'📈',label:'Инвестиции'},
+      {value:'BIRTH',icon:'👶',label:'Родовые программы'}
+    ]},
+    { id:'family', title:'👨‍👩‍👧‍👦 Состав семьи?', hint:'', type:'single', options:[
+      {value:'SINGLE',icon:'🧑',label:'Один/Одна'},{value:'COUPLE',icon:'👫',label:'Пара'},
+      {value:'FAMILY_SMALL',icon:'👨‍👩‍👦',label:'С детьми (1-2)'},{value:'FAMILY_BIG',icon:'👨‍👩‍👧‍👦',label:'Большая семья (3+)'},
+      {value:'PREGNANT',icon:'🤰',label:'Ожидаем ребёнка',desc:'Планируем роды за рубежом'}
+    ]},
+    { id:'goal', title:'🏁 Главная цель?', hint:'', type:'single', options:[
+      {value:'RELOCATE',icon:'🏠',label:'Переехать навсегда'},{value:'BACKUP',icon:'🛡️',label:'Запасной аэродром'},
+      {value:'INVEST',icon:'📈',label:'Инвестиция'},{value:'PASSPORT',icon:'🛂',label:'Второе гражданство'},
+      {value:'RETIRE',icon:'🌅',label:'Пенсия у моря'},{value:'BIRTH',icon:'👶',label:'Роды за рубежом',desc:'Гражданство ребёнку'}
+    ]}
+  ],
+  en: [
+    { id:'citizenship', title:'🌍 What is your citizenship?', hint:'', type:'single', options:[
+      {value:'RU',icon:'🇷🇺',label:'Russia'},{value:'UA',icon:'🇺🇦',label:'Ukraine'},{value:'BY',icon:'🇧🇾',label:'Belarus'},
+      {value:'KZ',icon:'🇰🇿',label:'Kazakhstan'},{value:'IL',icon:'🇮🇱',label:'Israel'},{value:'EU',icon:'🇪🇺',label:'EU Country'},{value:'OTHER',icon:'🌐',label:'Other'}
+    ]},
+    { id:'occupation', title:'💼 What do you do?', hint:'', type:'single', options:[
+      {value:'EMPLOYEE',icon:'👔',label:'Employee',desc:'Working for a company'},
+      {value:'FREELANCE',icon:'💻',label:'Freelancer',desc:'Remote work'},
+      {value:'BUSINESS',icon:'🏢',label:'Entrepreneur',desc:'Own business'},
+      {value:'NOMAD',icon:'🌍',label:'Digital Nomad',desc:'Location independent'},
+      {value:'INVESTOR',icon:'📈',label:'Investor',desc:'Living off investments'},
+      {value:'RETIRED',icon:'🏖️',label:'Retired / Rentier',desc:'Passive income'}
+    ]},
+    { id:'budget', title:'💰 Relocation budget?', hint:'Including real estate & first year', type:'single', options:[
+      {value:'LOW',icon:'💵',label:'Under $100,000',desc:'Budget'},{value:'MEDIUM',icon:'💰',label:'$100K — $300K',desc:'Comfortable'},
+      {value:'HIGH',icon:'💎',label:'$300K — $500K',desc:'Premium'},{value:'PREMIUM',icon:'💎',label:'$500K — $1M',desc:'VIP'},
+      {value:'ULTRA',icon:'👑',label:'Over $1M',desc:'Unlimited'}
+    ]},
+    { id:'climate', title:'☀️ Preferred climate?', hint:'', type:'single', options:[
+      {value:'TROPICAL',icon:'🌴',label:'Tropical',desc:'Hot, beaches, ocean'},
+      {value:'SUBTROPICAL',icon:'🌊',label:'Subtropical',desc:'Warm summer, mild winter'},
+      {value:'MEDITERRANEAN',icon:'🫒',label:'Mediterranean',desc:'Hot summer, cool winter'},
+      {value:'TEMPERATE',icon:'🍂',label:'Temperate',desc:'4 seasons'},
+      {value:'ANY',icon:'🌈',label:'No preference'}
+    ]},
+    { id:'priorities', title:'🎯 What matters most?', hint:'Choose up to 3', type:'multi', max:3, options:[
+      {value:'SAFETY',icon:'🛡️',label:'Safety'},{value:'TAXES',icon:'💰',label:'Low taxes'},
+      {value:'EDUCATION',icon:'🎓',label:'Education'},{value:'HEALTHCARE',icon:'🏥',label:'Healthcare'},
+      {value:'BUSINESS',icon:'💼',label:'Business environment'},{value:'NATURE',icon:'🌿',label:'Nature'},
+      {value:'BEACH',icon:'🏖️',label:'Beach/Ocean'},{value:'CULTURE',icon:'🎭',label:'Culture'},
+      {value:'COMMUNITY',icon:'👥',label:'Community'},{value:'COST',icon:'🏷️',label:'Low cost of living'},
+      {value:'PASSPORT',icon:'🛂',label:'Strong passport'},{value:'INVESTMENT',icon:'📈',label:'Real estate investment'},
+      {value:'BIRTH',icon:'👶',label:'Birth programs'}
+    ]},
+    { id:'family', title:'👨‍👩‍👧‍👦 Family status?', hint:'', type:'single', options:[
+      {value:'SINGLE',icon:'🧑',label:'Single'},{value:'COUPLE',icon:'👫',label:'Couple'},
+      {value:'FAMILY_SMALL',icon:'👨‍👩‍👦',label:'Family (1-2 kids)'},{value:'FAMILY_BIG',icon:'👨‍👩‍👧‍👦',label:'Large family (3+)'},
+      {value:'PREGNANT',icon:'🤰',label:'Expecting a baby',desc:'Planning birth abroad'}
+    ]},
+    { id:'goal', title:'🏁 Main goal?', hint:'', type:'single', options:[
+      {value:'RELOCATE',icon:'🏠',label:'Relocate permanently'},{value:'BACKUP',icon:'🛡️',label:'Plan B / Backup'},
+      {value:'INVEST',icon:'📈',label:'Investment'},{value:'PASSPORT',icon:'🛂',label:'Second passport'},
+      {value:'RETIRE',icon:'🌅',label:'Retirement by the sea'},{value:'BIRTH',icon:'👶',label:'Birth abroad',desc:'Citizenship for your child'}
+    ]}
+  ]
+};
+
+const countries = [
+  { name:{ru:'Бразилия (Флорианополис)',en:'Brazil (Florianópolis)'}, flag:'🇧🇷',
+    climate:['TROPICAL','SUBTROPICAL'], budget:['LOW','MEDIUM','HIGH','PREMIUM'],
+    priorities:{SAFETY:6,TAXES:5,EDUCATION:6,HEALTHCARE:6,BUSINESS:7,NATURE:10,BEACH:10,CULTURE:8,COMMUNITY:8,COST:7,PASSPORT:7,INVESTMENT:9,BIRTH:8},
+    occupation:{EMPLOYEE:5,FREELANCE:8,BUSINESS:8,NOMAD:9,INVESTOR:10,RETIRED:9},
+    goal:{RELOCATE:9,BACKUP:7,INVEST:10,PASSPORT:7,RETIRE:9,BIRTH:8},
+    family:{SINGLE:9,COUPLE:9,FAMILY_SMALL:8,FAMILY_BIG:7,PREGNANT:8},
+    tags:{ru:['🏖️ Пляжи','📈 Рост цен 12%','🌿 Природа','👶 Гражданство ребёнку'],en:['🏖️ Beaches','📈 12% RE growth','🌿 Nature','👶 Citizenship by birth']},
+    desc:{ru:'Флорианополис — "Остров Магии". Потрясающие пляжи, Tech Hub, рынок недвижимости +12%/год, ВНЖ от R$1M. Ребёнок, рождённый в Бразилии, автоматически получает гражданство.',
+          en:'Florianópolis — "Magic Island". Stunning beaches, Tech Hub, RE market +12%/yr, residency from R$1M. A child born in Brazil automatically receives citizenship.'},
+    scores:{safety:60,cost:70,rental:85,lifestyle:90},
+    info:{ru:{residency:'ВНЖ: от R$1M',passport:'Паспорт: 4 года',tax:'15% нерезиденты',growth:'+12%/год',birth:'✅ Jus soli — гражданство при рождении'},
+          en:{residency:'Residency: from R$1M',passport:'Passport: 4 years',tax:'15% non-residents',growth:'+12%/year',birth:'✅ Jus soli — citizenship by birth'}}
+  },
+  { name:{ru:'Уругвай',en:'Uruguay'}, flag:'🇺🇾',
+    climate:['SUBTROPICAL','TEMPERATE'], budget:['LOW','MEDIUM','HIGH','PREMIUM','ULTRA'],
+    priorities:{SAFETY:9,TAXES:10,EDUCATION:7,HEALTHCARE:7,BUSINESS:7,NATURE:7,BEACH:8,CULTURE:7,COMMUNITY:6,COST:6,PASSPORT:8,INVESTMENT:8,BIRTH:6},
+    occupation:{EMPLOYEE:6,FREELANCE:8,BUSINESS:8,NOMAD:8,INVESTOR:10,RETIRED:10},
+    goal:{RELOCATE:8,BACKUP:9,INVEST:8,PASSPORT:8,RETIRE:9,BIRTH:5},
+    family:{SINGLE:8,COUPLE:9,FAMILY_SMALL:7,FAMILY_BIG:6,PREGNANT:5},
+    tags:{ru:['💰 0% налог 10 лет','🛡️ Безопасная','🛂 ID за 10 дней'],en:['💰 0% tax 10 years','🛡️ Safest in LatAm','🛂 ID in 10 days']},
+    desc:{ru:'"Швейцария Южной Америки". 0% налог на иностранный доход 10 лет! Стабильная демократия, 150+ стран без визы.',
+          en:'"Switzerland of South America". 0% foreign income tax for 10 years! Stable democracy, 150+ visa-free countries.'},
+    scores:{safety:90,cost:60,rental:65,lifestyle:70},
+    info:{ru:{residency:'ВНЖ: доход $1,500/мес',passport:'Паспорт: 3-5 лет',tax:'0% ин.доход (10 лет)',growth:'+10-12%/год',birth:'❌ Нет jus soli'},
+          en:{residency:'Residency: $1,500/mo income',passport:'Passport: 3-5 years',tax:'0% foreign income (10yr)',growth:'+10-12%/year',birth:'❌ No jus soli'}}
+  },
+  { name:{ru:'Коста-Рика',en:'Costa Rica'}, flag:'🇨🇷',
+    climate:['TROPICAL'], budget:['LOW','MEDIUM','HIGH'],
+    priorities:{SAFETY:8,TAXES:6,EDUCATION:6,HEALTHCARE:7,BUSINESS:6,NATURE:10,BEACH:9,CULTURE:6,COMMUNITY:7,COST:7,PASSPORT:5,INVESTMENT:7,BIRTH:4},
+    occupation:{EMPLOYEE:5,FREELANCE:8,BUSINESS:6,NOMAD:9,INVESTOR:7,RETIRED:10},
+    goal:{RELOCATE:8,BACKUP:6,INVEST:6,PASSPORT:5,RETIRE:10,BIRTH:3},
+    family:{SINGLE:8,COUPLE:9,FAMILY_SMALL:8,FAMILY_BIG:7,PREGNANT:4},
+    tags:{ru:['🌿 Эко-рай','🏖️ Два океана','🧘 Pura Vida'],en:['🌿 Eco paradise','🏖️ Two oceans','🧘 Pura Vida']},
+    desc:{ru:'Страна "Pura Vida". Два океана, вулканы, природа. Нет армии, стабильная демократия. Digital Nomad виза.',
+          en:'"Pura Vida" country. Two oceans, volcanoes, nature. No army, stable democracy. Digital Nomad visa.'},
+    scores:{safety:80,cost:70,rental:60,lifestyle:85},
+    info:{ru:{residency:'ВНЖ: $2,500/мес',passport:'Паспорт: 7 лет',tax:'Территориальное',growth:'+6-8%/год',birth:'❌ Нет jus soli'},
+          en:{residency:'Residency: $2,500/mo',passport:'Passport: 7 years',tax:'Territorial',growth:'+6-8%/year',birth:'❌ No jus soli'}}
+  },
+  { name:{ru:'Португалия',en:'Portugal'}, flag:'🇵🇹',
+    climate:['MEDITERRANEAN'], budget:['MEDIUM','HIGH','PREMIUM','ULTRA'],
+    priorities:{SAFETY:9,TAXES:5,EDUCATION:8,HEALTHCARE:8,BUSINESS:7,NATURE:7,BEACH:8,CULTURE:9,COMMUNITY:8,COST:5,PASSPORT:10,INVESTMENT:7,BIRTH:7},
+    occupation:{EMPLOYEE:7,FREELANCE:8,BUSINESS:7,NOMAD:8,INVESTOR:8,RETIRED:9},
+    goal:{RELOCATE:9,BACKUP:8,INVEST:6,PASSPORT:10,RETIRE:9,BIRTH:7},
+    family:{SINGLE:8,COUPLE:9,FAMILY_SMALL:9,FAMILY_BIG:7,PREGNANT:7},
+    tags:{ru:['🇪🇺 Паспорт ЕС','🛡️ Безопасность','☀️ 300 дней солнца'],en:['🇪🇺 EU Passport','🛡️ Safety','☀️ 300 sunny days']},
+    desc:{ru:'Ворота в Европу. Паспорт ЕС через 5 лет. 300 дней солнца, отличное образование и медицина.',
+          en:'Gateway to Europe. EU passport in 5 years. 300 sunny days, excellent education and healthcare.'},
+    scores:{safety:90,cost:50,rental:55,lifestyle:85},
+    info:{ru:{residency:'ВНЖ: D7 виза',passport:'Паспорт ЕС: 5 лет',tax:'NHR отменён; 14.5-48%',growth:'+4-6%/год',birth:'✅ Jus soli (с условиями)'},
+          en:{residency:'Residency: D7 visa',passport:'EU Passport: 5 years',tax:'NHR ended; 14.5-48%',growth:'+4-6%/year',birth:'✅ Jus soli (conditional)'}}
+  },
+  { name:{ru:'ОАЭ (Дубай)',en:'UAE (Dubai)'}, flag:'🇦🇪',
+    climate:['TROPICAL'], budget:['HIGH','PREMIUM','ULTRA'],
+    priorities:{SAFETY:9,TAXES:10,EDUCATION:7,HEALTHCARE:8,BUSINESS:10,NATURE:3,BEACH:6,CULTURE:6,COMMUNITY:7,COST:3,PASSPORT:4,INVESTMENT:8,BIRTH:3},
+    occupation:{EMPLOYEE:8,FREELANCE:7,BUSINESS:10,NOMAD:7,INVESTOR:9,RETIRED:5},
+    goal:{RELOCATE:7,BACKUP:8,INVEST:8,PASSPORT:3,RETIRE:5,BIRTH:2},
+    family:{SINGLE:7,COUPLE:8,FAMILY_SMALL:7,FAMILY_BIG:6,PREGNANT:3},
+    tags:{ru:['💰 0% налог','🏢 Бизнес-хаб','🛡️ Безопасность'],en:['💰 0% income tax','🏢 Business hub','🛡️ Safety']},
+    desc:{ru:'Глобальный бизнес-хаб. 0% подоходный налог, безопасность, инфраструктура. Гражданство невозможно.',
+          en:'Global business hub. 0% income tax, safety, world-class infrastructure. Citizenship nearly impossible.'},
+    scores:{safety:95,cost:30,rental:70,lifestyle:60},
+    info:{ru:{residency:'ВНЖ: от $550K',passport:'Паспорт: невозможно',tax:'0% подоходный',growth:'+5-8%/год',birth:'❌ Нет гражданства'},
+          en:{residency:'Residency: from $550K',passport:'Passport: nearly impossible',tax:'0% income tax',growth:'+5-8%/year',birth:'❌ No citizenship'}}
+  },
+  { name:{ru:'Аргентина',en:'Argentina'}, flag:'🇦🇷',
+    climate:['SUBTROPICAL','TEMPERATE'], budget:['LOW','MEDIUM'],
+    priorities:{SAFETY:5,TAXES:5,EDUCATION:7,HEALTHCARE:7,BUSINESS:5,NATURE:8,BEACH:6,CULTURE:10,COMMUNITY:8,COST:10,PASSPORT:6,INVESTMENT:6,BIRTH:10},
+    occupation:{EMPLOYEE:4,FREELANCE:8,BUSINESS:5,NOMAD:9,INVESTOR:5,RETIRED:7},
+    goal:{RELOCATE:7,BACKUP:5,INVEST:4,PASSPORT:6,RETIRE:7,BIRTH:10},
+    family:{SINGLE:8,COUPLE:8,FAMILY_SMALL:7,FAMILY_BIG:7,PREGNANT:10},
+    tags:{ru:['👶 Лучшие роды','🏷️ Дёшево','🎭 Культура','🥩 Стейки'],en:['👶 Best birth program','🏷️ Very affordable','🎭 Culture','🥩 Steaks']},
+    desc:{ru:'Лучшая страна для родов: гражданство ребёнку + путь к паспорту для родителей. Невероятно дёшево, богатая культура, Буэнос-Айрес.',
+          en:'Best country for birth tourism: citizenship for baby + path to passport for parents. Incredibly cheap, rich culture, Buenos Aires.'},
+    scores:{safety:50,cost:95,rental:50,lifestyle:80},
+    info:{ru:{residency:'ВНЖ: просто получить',passport:'Паспорт: 2 года (через ребёнка!)',tax:'Прогрессивный до 35%',growth:'+3-5%/год',birth:'✅ Jus soli + паспорт родителям через 2г'},
+          en:{residency:'Residency: easy to get',passport:'Passport: 2 years (via child!)',tax:'Progressive up to 35%',growth:'+3-5%/year',birth:'✅ Jus soli + parent passport in 2yr'}}
+  },
+  { name:{ru:'Мексика',en:'Mexico'}, flag:'🇲🇽',
+    climate:['TROPICAL','SUBTROPICAL'], budget:['LOW','MEDIUM','HIGH'],
+    priorities:{SAFETY:5,TAXES:6,EDUCATION:5,HEALTHCARE:6,BUSINESS:7,NATURE:8,BEACH:9,CULTURE:10,COMMUNITY:8,COST:9,PASSPORT:5,INVESTMENT:7,BIRTH:7},
+    occupation:{EMPLOYEE:5,FREELANCE:8,BUSINESS:7,NOMAD:10,INVESTOR:7,RETIRED:8},
+    goal:{RELOCATE:7,BACKUP:6,INVEST:7,PASSPORT:5,RETIRE:8,BIRTH:6},
+    family:{SINGLE:8,COUPLE:8,FAMILY_SMALL:7,FAMILY_BIG:6,PREGNANT:6},
+    tags:{ru:['🌮 Культура','🏖️ Карибы','🏷️ Дёшево','🇺🇸 Рядом с США'],en:['🌮 Culture','🏖️ Caribbean','🏷️ Affordable','🇺🇸 Near USA']},
+    desc:{ru:'Яркая культура, два побережья, близость к США. Digital Nomad рай.',
+          en:'Vibrant culture, two coasts, proximity to USA. Digital Nomad paradise.'},
+    scores:{safety:45,cost:90,rental:65,lifestyle:80},
+    info:{ru:{residency:'ВНЖ: $2,600/мес',passport:'Паспорт: 5 лет',tax:'Прогр. 1.92-35%',growth:'+5-8%/год',birth:'✅ Jus soli'},
+          en:{residency:'Residency: $2,600/mo',passport:'Passport: 5 years',tax:'Progr. 1.92-35%',growth:'+5-8%/year',birth:'✅ Jus soli'}}
+  },
+  { name:{ru:'Турция',en:'Turkey'}, flag:'🇹🇷',
+    climate:['MEDITERRANEAN','SUBTROPICAL'], budget:['LOW','MEDIUM','HIGH'],
+    priorities:{SAFETY:6,TAXES:6,EDUCATION:6,HEALTHCARE:7,BUSINESS:7,NATURE:7,BEACH:8,CULTURE:9,COMMUNITY:7,COST:8,PASSPORT:6,INVESTMENT:8,BIRTH:4},
+    occupation:{EMPLOYEE:5,FREELANCE:7,BUSINESS:7,NOMAD:7,INVESTOR:8,RETIRED:7},
+    goal:{RELOCATE:7,BACKUP:7,INVEST:8,PASSPORT:6,RETIRE:7,BIRTH:3},
+    family:{SINGLE:7,COUPLE:8,FAMILY_SMALL:7,FAMILY_BIG:7,PREGNANT:4},
+    tags:{ru:['🛂 Паспорт за $400K','🏖️ Средиземноморье','💰 Доступно'],en:['🛂 Passport for $400K','🏖️ Mediterranean','💰 Affordable']},
+    desc:{ru:'Гражданство за $400K! Два континента, вкусная кухня, Стамбул — один из самых динамичных городов мира.',
+          en:'Citizenship for $400K! Two continents, amazing cuisine, Istanbul — one of the world\'s most dynamic cities.'},
+    scores:{safety:55,cost:80,rental:70,lifestyle:75},
+    info:{ru:{residency:'ВНЖ: от $200K',passport:'Паспорт: от $400K',tax:'Прогр. 15-40%',growth:'+8-12%/год',birth:'❌ Нет jus soli'},
+          en:{residency:'Residency: from $200K',passport:'Passport: from $400K',tax:'Progr. 15-40%',growth:'+8-12%/year',birth:'❌ No jus soli'}}
+  },
+  { name:{ru:'Греция',en:'Greece'}, flag:'🇬🇷',
+    climate:['MEDITERRANEAN'], budget:['MEDIUM','HIGH','PREMIUM'],
+    priorities:{SAFETY:8,TAXES:6,EDUCATION:6,HEALTHCARE:7,BUSINESS:5,NATURE:8,BEACH:9,CULTURE:10,COMMUNITY:7,COST:7,PASSPORT:9,INVESTMENT:7,BIRTH:4},
+    occupation:{EMPLOYEE:5,FREELANCE:7,BUSINESS:5,NOMAD:8,INVESTOR:7,RETIRED:9},
+    goal:{RELOCATE:7,BACKUP:8,INVEST:7,PASSPORT:9,RETIRE:9,BIRTH:3},
+    family:{SINGLE:7,COUPLE:9,FAMILY_SMALL:8,FAMILY_BIG:7,PREGNANT:4},
+    tags:{ru:['🇪🇺 Паспорт ЕС','🏛️ Острова','💰 Golden Visa'],en:['🇪🇺 EU Passport','🏛️ Islands','💰 Golden Visa']},
+    desc:{ru:'Острова мечты. Golden Visa от €250K. Путь к паспорту ЕС. Расслабленный ритм жизни.',
+          en:'Dream islands. Golden Visa from €250K. Path to EU passport. Relaxed lifestyle.'},
+    scores:{safety:80,cost:65,rental:60,lifestyle:85},
+    info:{ru:{residency:'ВНЖ: Golden Visa €250K',passport:'Паспорт ЕС: 7 лет',tax:'7% на ин.доход',growth:'+6-8%/год',birth:'❌ Нет jus soli'},
+          en:{residency:'Residency: Golden Visa €250K',passport:'EU Passport: 7 years',tax:'7% foreign income',growth:'+6-8%/year',birth:'❌ No jus soli'}}
+  },
+  { name:{ru:'Таиланд',en:'Thailand'}, flag:'🇹🇭',
+    climate:['TROPICAL'], budget:['LOW','MEDIUM'],
+    priorities:{SAFETY:7,TAXES:7,EDUCATION:5,HEALTHCARE:7,BUSINESS:6,NATURE:9,BEACH:10,CULTURE:9,COMMUNITY:7,COST:10,PASSPORT:3,INVESTMENT:5,BIRTH:3},
+    occupation:{EMPLOYEE:4,FREELANCE:9,BUSINESS:6,NOMAD:10,INVESTOR:5,RETIRED:9},
+    goal:{RELOCATE:6,BACKUP:5,INVEST:4,PASSPORT:2,RETIRE:8,BIRTH:2},
+    family:{SINGLE:9,COUPLE:8,FAMILY_SMALL:6,FAMILY_BIG:4,PREGNANT:3},
+    tags:{ru:['🏷️ Дёшево','🏖️ Пляжи мечты','🍜 Кухня'],en:['🏷️ Very cheap','🏖️ Dream beaches','🍜 Cuisine']},
+    desc:{ru:'Рай для digital nomads. Низкая стоимость жизни, пляжи, кухня. Сложно получить гражданство.',
+          en:'Digital nomad paradise. Low cost of living, beaches, cuisine. Hard to get citizenship.'},
+    scores:{safety:70,cost:95,rental:55,lifestyle:85},
+    info:{ru:{residency:'ВНЖ: LTR / Thai Elite',passport:'Паспорт: очень сложно',tax:'Территориальное',growth:'+3-5%/год',birth:'❌ Нет jus soli'},
+          en:{residency:'Residency: LTR / Thai Elite',passport:'Passport: very difficult',tax:'Territorial',growth:'+3-5%/year',birth:'❌ No jus soli'}}
+  }
+];
+
+let currentQuestion = 0, answers = {};
+
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === l.toUpperCase()));
+  document.getElementById('headerTitle').textContent = t[lang].headerTitle;
+  document.getElementById('headerSub').textContent = t[lang].headerSub;
+  if (!document.getElementById('results').classList.contains('hidden')) showResults();
+  else renderQuestion();
+}
+
+function renderQuestion() {
+  const q = Q[lang][currentQuestion];
+  const container = document.getElementById('questionContainer');
+  const progress = ((currentQuestion) / Q[lang].length) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+  document.getElementById('stepInfo').textContent = `${t[lang].question} ${currentQuestion + 1} ${t[lang].stepOf} ${Q[lang].length}`;
+  document.getElementById('btnBack').classList.toggle('hidden', currentQuestion === 0);
+  document.getElementById('btnBack').textContent = t[lang].back;
+  document.getElementById('btnNext').textContent = currentQuestion === Q[lang].length - 1 ? t[lang].showResult : t[lang].next;
+  let html = `<div class="question-card"><h2>${q.title}</h2>`;
+  if (q.hint) html += `<div class="hint">${q.hint}</div>`;
+  if (q.type === 'multi') {
+    html += `<div class="multi-hint">${q.hint || ''}</div><div class="options-grid">`;
+    q.options.forEach(o => {
+      const sel = answers[q.id]&&answers[q.id].includes(o.value)?'selected':'';
+      html += `<div class="option-chip ${sel}" onclick="toggleMulti('${q.id}','${o.value}',${q.max},this)"><span class="chip-icon">${o.icon}</span>${o.label}</div>`;
+    });
+    html += '</div>';
+  } else {
+    html += '<div class="options">';
+    q.options.forEach(o => {
+      const sel = answers[q.id]===o.value?'selected':'';
+      html += `<div class="option ${sel}" onclick="selectOption('${q.id}','${o.value}',this)"><div class="icon">${o.icon}</div><div class="text"><div class="label">${o.label}</div>${o.desc?'<div class="desc">'+o.desc+'</div>':''}</div><div class="check"></div></div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+  container.innerHTML = html;
+  updateNextButton();
+}
+
+function selectOption(qId, value, el) { answers[qId]=value; el.parentElement.querySelectorAll('.option').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); updateNextButton(); }
+function toggleMulti(qId, value, max, el) { if(!answers[qId])answers[qId]=[]; const i=answers[qId].indexOf(value); if(i>-1){answers[qId].splice(i,1);el.classList.remove('selected')} else if(answers[qId].length<max){answers[qId].push(value);el.classList.add('selected')} updateNextButton(); }
+function updateNextButton() { const q=Q[lang][currentQuestion]; const btn=document.getElementById('btnNext'); if(q.type==='multi')btn.disabled=!answers[q.id]||answers[q.id].length===0; else btn.disabled=!answers[q.id]; }
+function nextQuestion() { if(currentQuestion<Q[lang].length-1){currentQuestion++;renderQuestion()}else showResults(); }
+function prevQuestion() { if(currentQuestion>0){currentQuestion--;renderQuestion()} }
+
+function calculateScores() {
+  return countries.map(c => {
+    let score=0,max=0;
+    const clim=c.climate.includes(answers.climate)||answers.climate==='ANY'; score+=clim?15:3; max+=15;
+    const bud=c.budget.includes(answers.budget); score+=bud?10:2; max+=10;
+    if(answers.priorities)answers.priorities.forEach(p=>{score+=c.priorities[p]||0;max+=10});
+    score+=(c.occupation[answers.occupation]||5)*1.5; max+=15;
+    score+=(c.goal[answers.goal]||5)*1.5; max+=15;
+    score+=c.family[answers.family]||5; max+=10;
+    if(['RU','BY','UA','KZ'].includes(answers.citizenship)&&['Бразилия (Флорианополис)','Уругвай','Турция','ОАЭ (Дубай)','Аргентина'].includes(c.name.ru))score+=3;
+    if(answers.goal==='BIRTH'){score+=(c.priorities.BIRTH||0)*2;max+=20}
+    if(answers.family==='PREGNANT'){score+=(c.priorities.BIRTH||0)*2;max+=20}
+    return{...c,score:Math.min(99,Math.round((score/max)*100))};
+  }).sort((a,b)=>b.score-a.score);
+}
+
+function donut(pct, color) {
+  const r=25,c=2*Math.PI*r,d=c*(1-pct/100);
+  return `<div class="donut"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="${r}" fill="none" stroke="#eee" stroke-width="6"/><circle cx="30" cy="30" r="${r}" fill="none" stroke="${color}" stroke-width="6" stroke-dasharray="${c}" stroke-dashoffset="${d}" stroke-linecap="round"/></svg><div class="center-text">${pct}%</div></div>`;
+}
+
+function showResults() {
+  document.getElementById('quiz').classList.add('hidden');
+  const res=document.getElementById('results'); res.classList.remove('hidden');
+  const scored=calculateScores().slice(0,3);
+  const medals=['🥇','🥈','🥉'];
+  const colors=['#D4AF37','#A0A0A0','#CD7F32'];
+  const L=t[lang];
+  let html=`<div class="results-card"><h2>${L.top3}</h2><p style="text-align:center;font-size:11px;color:#888;margin-bottom:14px">${L.top3sub}</p>`;
+
+  scored.forEach((c,i)=>{
+    const inf=c.info[lang];
+    html+=`<div class="result-item ${i===0?'top':''}">
+      <div class="rank"><span class="medal">${medals[i]}</span><span class="country-name">${c.flag} ${c.name[lang]}</span><span class="score">${c.score}% ${L.match}</span></div>
+      <div class="tags">${c.tags[lang].map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="desc-text">${c.desc[lang]}</div>
+      <div class="charts-row">
+        <div class="chart-item">${donut(c.scores.safety,'#2E7D32')}<div class="chart-label">${L.safety}</div></div>
+        <div class="chart-item">${donut(c.scores.cost,'#1565C0')}<div class="chart-label">${L.costLiving}</div></div>
+        <div class="chart-item">${donut(c.scores.rental,'#E65100')}<div class="chart-label">${L.rental}</div></div>
+        <div class="chart-item">${donut(c.scores.lifestyle,'#6B1D3A')}<div class="chart-label">${L.lifestyle}</div></div>
+      </div>
+      <div class="info-row">
+        <div class="info-pill"><span class="pill-icon">📋</span><span class="pill-text"><strong>${inf.residency}</strong></span></div>
+        <div class="info-pill"><span class="pill-icon">🛂</span><span class="pill-text"><strong>${inf.passport}</strong></span></div>
+        <div class="info-pill"><span class="pill-icon">💰</span><span class="pill-text"><strong>${inf.tax}</strong></span></div>
+        <div class="info-pill"><span class="pill-icon">📈</span><span class="pill-text"><strong>${inf.growth}</strong></span></div>
+        ${inf.birth?`<div class="info-pill" style="grid-column:span 2"><span class="pill-icon">👶</span><span class="pill-text"><strong>${inf.birth}</strong></span></div>`:''}
+      </div>
+    </div>`;
+  });
+
+  html+=`</div>
+    <div class="cta-box"><h3>${L.ctaTitle}</h3><p>${L.ctaSub}</p><button class="btn-cta" onclick="window.open('https://t.me/GRONIS_Brazil','_blank')">${L.ctaBtn}</button></div>
+    <div class="disclaimer">${L.disclaimer}</div>`;
+  res.innerHTML=html;
+}
+
+renderQuestion();
+</script>
+</body>
+</html>
