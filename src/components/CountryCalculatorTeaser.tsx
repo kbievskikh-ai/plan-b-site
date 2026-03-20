@@ -14,14 +14,11 @@ export default function CountryCalculatorTeaser() {
   const { language } = useLanguage();
 
   return (
-    <section id="country-calculator" className="py-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl p-8 md:p-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #6B1D3A 0%, #4A1228 50%, #3a0e20 100%)', border: '2px solid rgba(201,169,78,0.35)' }}>
-          {/* Gold corner accents */}
-          <div className="absolute top-0 left-0 w-16 h-16" style={{ borderTop: '2px solid #C9A94E', borderLeft: '2px solid #C9A94E', borderRadius: '16px 0 0 0' }} />
-          <div className="absolute top-0 right-0 w-16 h-16" style={{ borderTop: '2px solid #C9A94E', borderRight: '2px solid #C9A94E', borderRadius: '0 16px 0 0' }} />
-          <div className="absolute bottom-0 left-0 w-16 h-16" style={{ borderBottom: '2px solid #C9A94E', borderLeft: '2px solid #C9A94E', borderRadius: '0 0 0 16px' }} />
-          <div className="absolute bottom-0 right-0 w-16 h-16" style={{ borderBottom: '2px solid #C9A94E', borderRight: '2px solid #C9A94E', borderRadius: '0 0 16px 0' }} />
+    <section id="country-calculator" className="py-16 relative" style={{ background: 'linear-gradient(135deg, #6B1D3A 0%, #4A1228 50%, #3a0e20 100%)' }}>
+      {/* Gold top and bottom lines */}
+      <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, transparent, #C9A94E, transparent)' }} />
+      <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, transparent, #C9A94E, transparent)' }} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Left: Text + CTA */}
@@ -120,7 +117,6 @@ export default function CountryCalculatorTeaser() {
               {language === 'ru' ? '↑ Пример результата калькулятора' : language === 'pt' ? '↑ Exemplo de resultado' : '↑ Sample calculator result'}
             </div>
           </motion.div>
-        </div>
         </div>
       </div>
     </section>
