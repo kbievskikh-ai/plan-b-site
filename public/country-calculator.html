@@ -64,7 +64,7 @@ body{font-family:'Inter',sans-serif;background:#faf9f7;color:#2c2c2c;min-height:
 .result-item .desc-text{font-size:11px;color:#666;line-height:1.5;margin-bottom:12px}
 /* Infographic charts */
 .charts-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
-@media(max-width:500px){.charts-row{grid-template-columns:repeat(2,1fr)}.chart-item .donut{width:50px;height:50px}.chart-item .donut svg{width:50px;height:50px}.options-grid{grid-template-columns:1fr 1fr}.header h1{font-size:22px}}
+@media(max-width:500px){.charts-row{grid-template-columns:repeat(2,1fr)}.chart-item .donut{width:50px;height:50px}.chart-item .donut svg{width:50px;height:50px}.options-grid{grid-template-columns:1fr 1fr}.header h1{font-size:22px}.result-item .rank{flex-wrap:wrap}.result-item .rank .score{font-size:12px;padding:2px 8px}.result-item .rank .country-name{font-size:16px}.info-row{grid-template-columns:1fr}}
 .chart-item{text-align:center}
 .chart-item .donut{width:60px;height:60px;margin:0 auto;position:relative}
 .chart-item .donut svg{width:60px;height:60px;transform:rotate(-90deg)}
@@ -126,7 +126,7 @@ const t = {
     question: 'Вопрос', top3: '🎯 Твои топ-3 страны для переезда', top3sub: 'На основе твоих ответов',
     ctaTitle: '🏠 Хочешь узнать больше?', ctaSub: 'Наши эксперты помогут с переездом и инвестициями в недвижимость.', ctaBtn: 'Получить консультацию →',
     disclaimer: 'Калькулятор предоставляет общие рекомендации. © Migronis · 15 лет помогаем строить жизнь в новых странах.',
-    match: 'совпадение', residency: 'ВНЖ', passport: 'Паспорт', tax: 'Налоги', reGrowth: 'Рост недвиж.', birth: 'Роды',
+    match: '', residency: 'ВНЖ', passport: 'Паспорт', tax: 'Налоги', reGrowth: 'Рост недвиж.', birth: 'Роды',
     safety: 'Безопасность', costLiving: 'Стоимость жизни', rental: 'Аренда', lifestyle: 'Лайфстайл'
   },
   en: {
@@ -136,7 +136,7 @@ const t = {
     question: 'Question', top3: '🎯 Your Top 3 Countries', top3sub: 'Based on your answers',
     ctaTitle: '🏠 Want to Learn More?', ctaSub: 'Our experts help with relocation and real estate investment.', ctaBtn: 'Get Free Consultation →',
     disclaimer: 'Calculator provides general recommendations. © Migronis · 15 years helping people build lives abroad.',
-    match: 'match', residency: 'Residency', passport: 'Passport', tax: 'Taxes', reGrowth: 'RE Growth', birth: 'Birth Program',
+    match: '', residency: 'Residency', passport: 'Passport', tax: 'Taxes', reGrowth: 'RE Growth', birth: 'Birth Program',
     safety: 'Safety', costLiving: 'Cost of Living', rental: 'Rental', lifestyle: 'Lifestyle'
   }
 };
