@@ -32,7 +32,7 @@ export default function CountryCalculatorTeaser() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-6">
-              <img src="https://cdn.migronis.com/img/logo.svg" alt="Migronis" style={{ height: '48px', filter: 'brightness(0) invert(1)' }} className="mb-3" />
+              <img src="https://cdn.migronis.com/img/logo.svg" alt="Migronis" style={{ height: '80px', filter: 'brightness(0) invert(1)' }} className="mb-3" />
               <div className="flex items-center gap-2">
                 <span className="text-2xl">🎁</span>
                 <span className="text-xs uppercase tracking-widest" style={{ color: '#C9A94E' }}>
