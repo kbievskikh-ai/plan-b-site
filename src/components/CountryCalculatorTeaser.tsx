@@ -24,11 +24,14 @@ export default function CountryCalculatorTeaser() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">🎁</span>
-              <span className="text-xs uppercase tracking-widest" style={{ color: '#C9A94E' }}>
-                {language === 'ru' ? 'Подарок к 15-летию Migronis' : language === 'pt' ? 'Presente de 15 anos Migronis' : 'Migronis 15th Anniversary Gift'}
-              </span>
+            <div className="mb-6">
+              <img src="https://cdn.migronis.com/img/logo.svg" alt="Migronis" style={{ height: '32px', filter: 'brightness(0) invert(1)' }} className="mb-3" />
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🎁</span>
+                <span className="text-sm font-semibold" style={{ color: '#C9A94E' }}>
+                  {language === 'ru' ? 'Migronis & GRONIS исполняется 15 лет!' : language === 'pt' ? 'Migronis & GRONIS completam 15 anos!' : 'Migronis & GRONIS turn 15!'}
+                </span>
+              </div>
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
