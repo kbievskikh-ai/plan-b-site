@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost of Living Calculator — Brazil 30 Cities</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --card: #12121a;
+  --card2: #1a1a25;
+  --accent: #6366f1;
+  --accent2: #818cf8;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --red: #ef4444;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --border: #1e1e2e;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+.hero { text-align:center; padding:60px 20px 40px; background:linear-gradient(135deg, #0f0c29, #302b63, #24243e); position:relative; overflow:hidden; }
+.hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:100px; background:linear-gradient(transparent, var(--bg)); }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; margin-bottom:12px; }
+.hero h1 span { background:linear-gradient(135deg, var(--gold), #fbbf24); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero p { color:var(--muted); font-size:1.1rem; max-width:600px; margin:0 auto 24px; }
+.stats-bar { display:flex; justify-content:center; gap:40px; margin-top:20px; position:relative; z-index:1; }
+.stat-item { text-align:center; }
+.stat-num { font-size:1.8rem; font-weight:800; color:var(--gold); font-family:'Playfair Display',serif; }
+.stat-label { font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+
+.container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+/* Filters */
+.filters { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; margin:30px auto; max-width:900px; }
+.filters h3 { font-size:1rem; color:var(--accent2); margin-bottom:16px; text-transform:uppercase; letter-spacing:2px; font-weight:600; }
+.filter-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; }
+.filter-group label { display:block; font-size:0.8rem; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; }
+.filter-group select, .filter-group input { width:100%; padding:10px 14px; background:var(--card2); border:1px solid var(--border); border-radius:10px; color:var(--text); font-size:0.95rem; font-family:'Inter',sans-serif; }
+.filter-group select:focus, .filter-group input:focus { outline:none; border-color:var(--accent); }
+.range-value { font-size:0.85rem; color:var(--gold); font-weight:600; margin-top:4px; }
+input[type=range] { -webkit-appearance:none; width:100%; height:6px; background:var(--border); border-radius:3px; outline:none; border:none; padding:0; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; background:var(--accent); border-radius:50%; cursor:pointer; }
+
+/* City grid */
+.city-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(350px, 1fr)); gap:20px; margin:30px 0 60px; }
+.city-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px; transition:all 0.3s; cursor:pointer; position:relative; overflow:hidden; }
+.city-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 12px 40px rgba(99,102,241,0.15); }
+.city-card.best { border-color:var(--gold); }
+.city-card.best::before { content:'🏆 BEST VALUE'; position:absolute; top:12px; right:12px; background:linear-gradient(135deg, var(--gold), #fbbf24); color:#000; font-size:0.65rem; font-weight:700; padding:4px 10px; border-radius:20px; letter-spacing:1px; }
+.city-card.locked { opacity:0.5; filter:blur(2px); pointer-events:none; }
+.city-card.locked::after { content:'🔒 PRO'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:var(--accent); color:#fff; padding:8px 20px; border-radius:10px; font-weight:700; font-size:0.9rem; filter:none; z-index:2; }
+
+.city-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.city-rank { width:32px; height:32px; background:var(--card2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem; color:var(--accent2); }
+.city-card.best .city-rank { background:linear-gradient(135deg, var(--gold), #fbbf24); color:#000; }
+.city-name { font-size:1.3rem; font-weight:700; font-family:'Playfair Display',serif; }
+.city-state { font-size:0.8rem; color:var(--muted); }
+.city-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+.city-tag { font-size:0.7rem; padding:3px 8px; border-radius:6px; background:var(--card2); color:var(--muted); }
+
+.cost-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.cost-item { display:flex; justify-content:space-between; align-items:center; padding:6px 10px; background:var(--card2); border-radius:8px; }
+.cost-label { font-size:0.75rem; color:var(--muted); }
+.cost-value { font-size:0.85rem; font-weight:600; color:var(--text); }
+.cost-value.cheap { color:var(--green); }
+.cost-value.mid { color:var(--gold); }
+.cost-value.expensive { color:var(--red); }
+
+.total-bar { margin-top:16px; padding:12px; background:linear-gradient(135deg, rgba(99,102,241,0.1), rgba(129,140,248,0.05)); border:1px solid rgba(99,102,241,0.2); border-radius:10px; display:flex; justify-content:space-between; align-items:center; }
+.total-label { font-size:0.8rem; color:var(--muted); }
+.total-value { font-size:1.4rem; font-weight:800; color:var(--accent2); font-family:'Playfair Display',serif; }
+.total-usd { font-size:0.85rem; color:var(--muted); margin-left:8px; }
+
+/* Score bar */
+.score-section { margin-top:12px; }
+.score-bar-bg { height:6px; background:var(--card2); border-radius:3px; overflow:hidden; }
+.score-bar-fill { height:100%; border-radius:3px; transition:width 0.5s; }
+.score-labels { display:flex; justify-content:space-between; margin-top:4px; }
+.score-labels span { font-size:0.65rem; color:var(--muted); }
+
+/* CTA */
+.cta-section { text-align:center; padding:60px 20px; background:linear-gradient(135deg, #1a1040, #0f0c29); border-radius:20px; margin:40px auto; max-width:800px; }
+.cta-section h2 { font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:12px; }
+.cta-section h2 span { color:var(--gold); }
+.cta-section p { color:var(--muted); margin-bottom:24px; }
+.cta-btn { display:inline-block; padding:14px 40px; background:linear-gradient(135deg, var(--accent), #7c3aed); color:#fff; font-weight:700; font-size:1.1rem; border-radius:12px; text-decoration:none; transition:all 0.3s; border:none; cursor:pointer; }
+.cta-btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(99,102,241,0.4); }
+.cta-btn.gold { background:linear-gradient(135deg, var(--gold), #f59e0b); color:#000; }
+
+/* Lang toggle */
+.lang-toggle { position:fixed; top:20px; right:20px; z-index:100; display:flex; gap:4px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:4px; }
+.lang-btn { padding:6px 12px; border:none; background:transparent; color:var(--muted); font-size:0.8rem; font-weight:600; cursor:pointer; border-radius:8px; font-family:'Inter',sans-serif; }
+.lang-btn.active { background:var(--accent); color:#fff; }
+
+.footer { text-align:center; padding:40px 20px; color:var(--muted); font-size:0.8rem; }
+
+@media(max-width:768px) {
+  .city-grid { grid-template-columns:1fr; }
+  .stats-bar { gap:20px; }
+  .cost-grid { grid-template-columns:1fr; }
+  .filter-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('ru')">RU</button>
+  <button class="lang-btn" onclick="setLang('pt')">PT</button>
+</div>
+
+<div class="hero">
+  <h1 id="heroTitle">Cost of Living in <span>Brazil</span></h1>
+  <p id="heroDesc">Compare 30 cities side by side. Find your perfect city based on budget, lifestyle, and priorities.</p>
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">30</div><div class="stat-label" data-i18n="cities">Cities</div></div>
+    <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label" data-i18n="params">Parameters</div></div>
+    <div class="stat-item"><div class="stat-num">2026</div><div class="stat-label" data-i18n="data">Data</div></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="filters">
+    <h3 id="filterTitle">⚡ Quick Filters</h3>
+    <div class="filter-grid">
+      <div class="filter-group">
+        <label data-i18n="region">Region</label>
+        <select id="regionFilter" onchange="renderCities()">
+          <option value="all" data-i18n="allRegions">All Regions</option>
+          <option value="South">South (Sul)</option>
+          <option value="Southeast">Southeast (Sudeste)</option>
+          <option value="Northeast">Northeast (Nordeste)</option>
+          <option value="North">North (Norte)</option>
+          <option value="Central-West">Central-West (Centro-Oeste)</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label data-i18n="sortBy">Sort By</label>
+        <select id="sortFilter" onchange="renderCities()">
+          <option value="total">Total Cost (Low→High)</option>
+          <option value="totalDesc">Total Cost (High→Low)</option>
+          <option value="safety">Safety Score</option>
+          <option value="rent">Rent (Low→High)</option>
+          <option value="sqm">Property Price (Low→High)</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label data-i18n="budget">Max Monthly Budget</label>
+        <input type="range" id="budgetFilter" min="2000" max="15000" value="15000" step="500" oninput="updateBudget();renderCities()">
+        <div class="range-value" id="budgetValue">R$ 15,000</div>
+      </div>
+      <div class="filter-group">
+        <label data-i18n="lifestyle">Lifestyle</label>
+        <select id="lifestyleFilter" onchange="renderCities()">
+          <option value="single">Single</option>
+          <option value="couple">Couple</option>
+          <option value="family">Family (2 kids)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="city-grid" id="cityGrid"></div>
+
+  <div class="cta-section">
+    <h2 id="ctaTitle">Want the <span>full report?</span></h2>
+    <p id="ctaDesc">Get a personalized PDF with detailed breakdown, neighborhood recommendations, and relocation checklist.</p>
+    <button class="cta-btn gold" onclick="alert('Coming soon! 🚀')">📊 Get Full Report — $9.99</button>
+  </div>
+</div>
+
+<div class="footer">
+  Data sources: Numbeo, Expatistan, LivingCost.org, Wise · Updated March 2026<br>
+  Prices are estimates and may vary. 1 USD ≈ R$ 5.20
+</div>
+
+<script>
+const CITIES_DATA = {"Sao Paulo":{"state":"SP","population":12400000,"region":"Southeast","climate":"Subtropical","safety":4.2,"internet":9,"healthcare":8.5,"colIndex":39.2,"rentIndex":15.8,"rent1bdCenter":2800,"rent1bdOutside":1800,"rent3bdCenter":5500,"rent3bdOutside":3500,"mealCheap":35,"mealMid2":200,"mcdonalds":40,"beer":12,"cappuccino":12,"milk1L":5.8,"bread":8,"eggs12":12,"chicken1kg":22,"beef1kg":45,"rice1kg":6.5,"banana1kg":7,"tomato1kg":8,"potato1kg":6,"transport1way":4.4,"transportMonthly":282,"gasoline1L":6.1,"taxi1km":4.5,"utilities":450,"mobile":70,"gym":150,"cinema":40,"preschool":2500,"intlSchoolYear":60000,"sqmCenter":11000,"sqmOutside":7000,"avgSalary":3200,"highlights":["Financial capital","Best restaurants","Cultural hub","Traffic congestion"],"lat":-23.5505,"lng":-46.6333},"Rio de Janeiro":{"state":"RJ","population":6748000,"region":"Southeast","climate":"Tropical","safety":3.5,"internet":8,"healthcare":7.5,"colIndex":34.5,"rentIndex":12.1,"rent1bdCenter":2500,"rent1bdOutside":1500,"rent3bdCenter":5000,"rent3bdOutside":3000,"mealCheap":30,"mealMid2":170,"mcdonalds":38,"beer":10,"cappuccino":10,"milk1L":5.5,"bread":7.5,"eggs12":11,"chicken1kg":20,"beef1kg":42,"rice1kg":6,"banana1kg":6.5,"tomato1kg":7,"potato1kg":5.5,"transport1way":4.3,"transportMonthly":262,"gasoline1L":6.2,"taxi1km":4.2,"utilities":400,"mobile":65,"gym":130,"cinema":35,"preschool":2200,"intlSchoolYear":55000,"sqmCenter":10500,"sqmOutside":6500,"avgSalary":2900,"highlights":["Beach lifestyle","Christ the Redeemer","Carnival","Safety concerns"],"lat":-22.9068,"lng":-43.1729},"Florianopolis":{"state":"SC","population":508826,"region":"South","climate":"Subtropical","safety":7.5,"internet":8.5,"healthcare":8,"colIndex":34.6,"rentIndex":13.6,"rent1bdCenter":2400,"rent1bdOutside":1600,"rent3bdCenter":4800,"rent3bdOutside":3200,"mealCheap":40,"mealMid2":210,"mcdonalds":37,"beer":12,"cappuccino":11,"milk1L":5.07,"bread":7.18,"eggs12":12.69,"chicken1kg":19.5,"beef1kg":43,"rice1kg":7.27,"banana1kg":6.6,"tomato1kg":8.45,"potato1kg":5.7,"transport1way":6.9,"transportMonthly":414,"gasoline1L":6.44,"taxi1km":5,"utilities":374,"mobile":74,"gym":184,"cinema":40,"preschool":3538,"intlSchoolYear":55000,"sqmCenter":12000,"sqmOutside":8000,"avgSalary":2800,"highlights":["42 beaches","Tech hub","Safest capital","Expat community","Real estate boom"],"lat":-27.5954,"lng":-48.548},"Curitiba":{"state":"PR","population":1963726,"region":"South","climate":"Subtropical highland","safety":7,"internet":8.5,"healthcare":8,"colIndex":32.5,"rentIndex":9.1,"rent1bdCenter":1800,"rent1bdOutside":1200,"rent3bdCenter":3500,"rent3bdOutside":2400,"mealCheap":28,"mealMid2":140,"mcdonalds":36,"beer":9,"cappuccino":9,"milk1L":5.2,"bread":7,"eggs12":10,"chicken1kg":18,"beef1kg":38,"rice1kg":5.8,"banana1kg":6,"tomato1kg":7,"potato1kg":5,"transport1way":6,"transportMonthly":330,"gasoline1L":5.9,"taxi1km":4,"utilities":380,"mobile":65,"gym":120,"cinema":32,"preschool":1800,"intlSchoolYear":42000,"sqmCenter":8500,"sqmOutside":5500,"avgSalary":2700,"highlights":["Best public transport","Green city","European culture","Cool climate"],"lat":-25.4284,"lng":-49.2733},"Brasilia":{"state":"DF","population":3055149,"region":"Central-West","climate":"Tropical savanna","safety":5.5,"internet":8.5,"healthcare":8.5,"colIndex":36,"rentIndex":11.5,"rent1bdCenter":2200,"rent1bdOutside":1400,"rent3bdCenter":4500,"rent3bdOutside":3000,"mealCheap":32,"mealMid2":160,"mcdonalds":38,"beer":10,"cappuccino":10,"milk1L":5.5,"bread":7.5,"eggs12":11,"chicken1kg":20,"beef1kg":40,"rice1kg":6,"banana1kg":6,"tomato1kg":7.5,"potato1kg":5.5,"transport1way":5.5,"transportMonthly":280,"gasoline1L":6,"taxi1km":4.3,"utilities":420,"mobile":68,"gym":140,"cinema":35,"preschool":2200,"intlSchoolYear":50000,"sqmCenter":9000,"sqmOutside":6000,"avgSalary":3500,"highlights":["Government capital","Highest salaries","Modern architecture","Dry season"],"lat":-15.7975,"lng":-47.8919},"Belo Horizonte":{"state":"MG","population":2521564,"region":"Southeast","climate":"Tropical","safety":5,"internet":8,"healthcare":7.5,"colIndex":30.5,"rentIndex":8.5,"rent1bdCenter":1700,"rent1bdOutside":1100,"rent3bdCenter":3200,"rent3bdOutside":2200,"mealCheap":25,"mealMid2":130,"mcdonalds":35,"beer":8,"cappuccino":8.5,"milk1L":5,"bread":7,"eggs12":10,"chicken1kg":17,"beef1kg":36,"rice1kg":5.5,"banana1kg":5.5,"tomato1kg":6.5,"potato1kg":5,"transport1way":4.5,"transportMonthly":230,"gasoline1L":5.9,"taxi1km":3.8,"utilities":350,"mobile":60,"gym":110,"cinema":30,"preschool":1600,"intlSchoolYear":38000,"sqmCenter":7000,"sqmOutside":4500,"avgSalary":2500,"highlights":["Best food scene","Affordable","Mining heritage","Hills & culture"],"lat":-19.9167,"lng":-43.9345},"Salvador":{"state":"BA","population":2886698,"region":"Northeast","climate":"Tropical","safety":4,"internet":7,"healthcare":6.5,"colIndex":28,"rentIndex":7,"rent1bdCenter":1500,"rent1bdOutside":900,"rent3bdCenter":2800,"rent3bdOutside":1800,"mealCheap":22,"mealMid2":120,"mcdonalds":35,"beer":7,"cappuccino":7.5,"milk1L":5,"bread":6.5,"eggs12":9,"chicken1kg":16,"beef1kg":35,"rice1kg":5,"banana1kg":5,"tomato1kg":6,"potato1kg":4.5,"transport1way":4.4,"transportMonthly":220,"gasoline1L":5.85,"taxi1km":3.5,"utilities":300,"mobile":55,"gym":90,"cinema":28,"preschool":1200,"intlSchoolYear":30000,"sqmCenter":5500,"sqmOutside":3500,"avgSalary":2100,"highlights":["Afro-Brazilian culture","Beautiful beaches","Cheap living","Vibrant nightlife"],"lat":-12.9714,"lng":-38.5124},"Fortaleza":{"state":"CE","population":2686612,"region":"Northeast","climate":"Tropical","safety":3.8,"internet":7,"healthcare":6.5,"colIndex":27,"rentIndex":6.5,"rent1bdCenter":1400,"rent1bdOutside":850,"rent3bdCenter":2600,"rent3bdOutside":1700,"mealCheap":20,"mealMid2":110,"mcdonalds":34,"beer":7,"cappuccino":7,"milk1L":4.8,"bread":6,"eggs12":9,"chicken1kg":15,"beef1kg":33,"rice1kg":5,"banana1kg":4.5,"tomato1kg":5.5,"potato1kg":4.5,"transport1way":3.6,"transportMonthly":165,"gasoline1L":5.8,"taxi1km":3.2,"utilities":280,"mobile":55,"gym":85,"cinema":26,"preschool":1100,"intlSchoolYear":28000,"sqmCenter":5000,"sqmOutside":3200,"avgSalary":2000,"highlights":["Year-round sun","Cheapest Northeast","Beach paradise","Kite surfing"],"lat":-3.7319,"lng":-38.5267},"Recife":{"state":"PE","population":1653461,"region":"Northeast","climate":"Tropical","safety":4,"internet":7.5,"healthcare":7,"colIndex":28.5,"rentIndex":7.5,"rent1bdCenter":1600,"rent1bdOutside":1000,"rent3bdCenter":3000,"rent3bdOutside":2000,"mealCheap":24,"mealMid2":125,"mcdonalds":35,"beer":8,"cappuccino":8,"milk1L":5,"bread":7,"eggs12":10,"chicken1kg":17,"beef1kg":36,"rice1kg":5.5,"banana1kg":5.5,"tomato1kg":6,"potato1kg":5,"transport1way":4.1,"transportMonthly":195,"gasoline1L":5.9,"taxi1km":3.5,"utilities":320,"mobile":58,"gym":100,"cinema":30,"preschool":1400,"intlSchoolYear":32000,"sqmCenter":6000,"sqmOutside":3800,"avgSalary":2200,"highlights":["Venice of Brazil","Tech scene growing","Boa Viagem beach","Rich history"],"lat":-8.0476,"lng":-34.877},"Porto Alegre":{"state":"RS","population":1492530,"region":"South","climate":"Subtropical","safety":5.5,"internet":8,"healthcare":8,"colIndex":31,"rentIndex":8,"rent1bdCenter":1600,"rent1bdOutside":1100,"rent3bdCenter":3200,"rent3bdOutside":2200,"mealCheap":28,"mealMid2":140,"mcdonalds":36,"beer":9,"cappuccino":9,"milk1L":5.1,"bread":7,"eggs12":10,"chicken1kg":18,"beef1kg":38,"rice1kg":5.8,"banana1kg":5.8,"tomato1kg":7,"potato1kg":5,"transport1way":4.8,"transportMonthly":240,"gasoline1L":5.95,"taxi1km":3.8,"utilities":360,"mobile":62,"gym":110,"cinema":30,"preschool":1700,"intlSchoolYear":40000,"sqmCenter":7500,"sqmOutside":5000,"avgSalary":2600,"highlights":["European roots","Best churrasco","Wine country nearby","Four seasons"],"lat":-30.0346,"lng":-51.2177},"Manaus":{"state":"AM","population":2219580,"region":"North","climate":"Tropical rainforest","safety":4.5,"internet":6.5,"healthcare":6,"colIndex":29,"rentIndex":7,"rent1bdCenter":1400,"rent1bdOutside":900,"rent3bdCenter":2500,"rent3bdOutside":1600,"mealCheap":25,"mealMid2":130,"mcdonalds":36,"beer":8,"cappuccino":8,"milk1L":5.5,"bread":7,"eggs12":11,"chicken1kg":18,"beef1kg":40,"rice1kg":6,"banana1kg":5,"tomato1kg":7,"potato1kg":6,"transport1way":4.5,"transportMonthly":200,"gasoline1L":5.7,"taxi1km":3.5,"utilities":350,"mobile":60,"gym":100,"cinema":28,"preschool":1300,"intlSchoolYear":35000,"sqmCenter":5500,"sqmOutside":3500,"avgSalary":2200,"highlights":["Amazon gateway","Free Trade Zone","Unique nature","Hot & humid"],"lat":-3.119,"lng":-60.0217},"Belem":{"state":"PA","population":1499641,"region":"North","climate":"Tropical rainforest","safety":4,"internet":6.5,"healthcare":6,"colIndex":27.5,"rentIndex":6,"rent1bdCenter":1200,"rent1bdOutside":800,"rent3bdCenter":2300,"rent3bdOutside":1500,"mealCheap":22,"mealMid2":110,"mcdonalds":34,"beer":7,"cappuccino":7,"milk1L":5,"bread":6.5,"eggs12":9,"chicken1kg":16,"beef1kg":35,"rice1kg":5.5,"banana1kg":4.5,"tomato1kg":6,"potato1kg":5,"transport1way":4,"transportMonthly":180,"gasoline1L":5.8,"taxi1km":3.2,"utilities":300,"mobile":55,"gym":90,"cinema":26,"preschool":1100,"intlSchoolYear":28000,"sqmCenter":4500,"sqmOutside":3000,"avgSalary":2000,"highlights":["Amazon cuisine","COP30 host 2025","River culture","Affordable"],"lat":-1.4558,"lng":-48.5024},"Goiania":{"state":"GO","population":1536097,"region":"Central-West","climate":"Tropical savanna","safety":5.5,"internet":7.5,"healthcare":7,"colIndex":29,"rentIndex":7.5,"rent1bdCenter":1500,"rent1bdOutside":1000,"rent3bdCenter":2800,"rent3bdOutside":1900,"mealCheap":25,"mealMid2":120,"mcdonalds":35,"beer":8,"cappuccino":8,"milk1L":5,"bread":6.5,"eggs12":10,"chicken1kg":17,"beef1kg":35,"rice1kg":5.5,"banana1kg":5,"tomato1kg":6,"potato1kg":5,"transport1way":4.5,"transportMonthly":200,"gasoline1L":5.85,"taxi1km":3.5,"utilities":340,"mobile":60,"gym":100,"cinema":28,"preschool":1400,"intlSchoolYear":35000,"sqmCenter":6000,"sqmOutside":4000,"avgSalary":2400,"highlights":["Agribusiness hub","Hot springs nearby","Modern city","Sertanejo culture"],"lat":-16.6869,"lng":-49.2648},"Campinas":{"state":"SP","population":1213792,"region":"Southeast","climate":"Subtropical","safety":6,"internet":8.5,"healthcare":8,"colIndex":33,"rentIndex":10,"rent1bdCenter":2000,"rent1bdOutside":1300,"rent3bdCenter":3800,"rent3bdOutside":2500,"mealCheap":30,"mealMid2":150,"mcdonalds":37,"beer":10,"cappuccino":10,"milk1L":5.5,"bread":7.5,"eggs12":11,"chicken1kg":20,"beef1kg":40,"rice1kg":6,"banana1kg":6,"tomato1kg":7.5,"potato1kg":5.5,"transport1way":5,"transportMonthly":250,"gasoline1L":6,"taxi1km":4,"utilities":380,"mobile":65,"gym":130,"cinema":35,"preschool":2000,"intlSchoolYear":45000,"sqmCenter":8000,"sqmOutside":5500,"avgSalary":3000,"highlights":["Tech & university hub","UNICAMP","Near SP airport","High quality of life"],"lat":-22.9099,"lng":-47.0626},"Vitoria":{"state":"ES","population":365855,"region":"Southeast","climate":"Tropical","safety":6,"internet":7.5,"healthcare":7,"colIndex":30,"rentIndex":8,"rent1bdCenter":1700,"rent1bdOutside":1100,"rent3bdCenter":3200,"rent3bdOutside":2100,"mealCheap":27,"mealMid2":135,"mcdonalds":36,"beer":9,"cappuccino":9,"milk1L":5.2,"bread":7,"eggs12":10,"chicken1kg":18,"beef1kg":38,"rice1kg":5.8,"banana1kg":5.5,"tomato1kg":7,"potato1kg":5,"transport1way":4,"transportMonthly":190,"gasoline1L":5.9,"taxi1km":3.5,"utilities":340,"mobile":60,"gym":110,"cinema":30,"preschool":1500,"intlSchoolYear":38000,"sqmCenter":7000,"sqmOutside":4500,"avgSalary":2500,"highlights":["Island city","Best HDI","Hidden gem","Seafood paradise"],"lat":-20.3155,"lng":-40.3128},"Natal":{"state":"RN","population":890480,"region":"Northeast","climate":"Tropical","safety":5,"internet":7,"healthcare":6.5,"colIndex":27,"rentIndex":6,"rent1bdCenter":1300,"rent1bdOutside":850,"rent3bdCenter":2500,"rent3bdOutside":1600,"mealCheap":22,"mealMid2":110,"mcdonalds":34,"beer":7,"cappuccino":7,"milk1L":4.8,"bread":6,"eggs12":9,"chicken1kg":15,"beef1kg":33,"rice1kg":5,"banana1kg":4.5,"tomato1kg":5.5,"potato1kg":4.5,"transport1way":4,"transportMonthly":170,"gasoline1L":5.8,"taxi1km":3,"utilities":280,"mobile":55,"gym":85,"cinema":25,"preschool":1100,"intlSchoolYear":28000,"sqmCenter":5000,"sqmOutside":3200,"avgSalary":2000,"highlights":["Sun city","Ponta Negra beach","Year-round warmth","Affordable coast"],"lat":-5.7945,"lng":-35.211},"Joao Pessoa":{"state":"PB","population":817511,"region":"Northeast","climate":"Tropical","safety":5.5,"internet":7,"healthcare":6.5,"colIndex":26,"rentIndex":5.5,"rent1bdCenter":1200,"rent1bdOutside":800,"rent3bdCenter":2300,"rent3bdOutside":1500,"mealCheap":20,"mealMid2":100,"mcdonalds":33,"beer":6.5,"cappuccino":6.5,"milk1L":4.5,"bread":5.5,"eggs12":8.5,"chicken1kg":14,"beef1kg":32,"rice1kg":4.8,"banana1kg":4,"tomato1kg":5,"potato1kg":4,"transport1way":4,"transportMonthly":165,"gasoline1L":5.75,"taxi1km":3,"utilities":260,"mobile":50,"gym":80,"cinema":25,"preschool":1000,"intlSchoolYear":25000,"sqmCenter":4500,"sqmOutside":3000,"avgSalary":1900,"highlights":["Easternmost point Americas","Quiet beaches","Low cost","Growing city"],"lat":-7.1195,"lng":-34.845},"Maceio":{"state":"AL","population":1025360,"region":"Northeast","climate":"Tropical","safety":4.5,"internet":6.5,"healthcare":6,"colIndex":25.5,"rentIndex":5.5,"rent1bdCenter":1200,"rent1bdOutside":750,"rent3bdCenter":2200,"rent3bdOutside":1400,"mealCheap":20,"mealMid2":100,"mcdonalds":33,"beer":6,"cappuccino":6.5,"milk1L":4.5,"bread":5.5,"eggs12":8.5,"chicken1kg":14,"beef1kg":32,"rice1kg":4.8,"banana1kg":4,"tomato1kg":5,"potato1kg":4,"transport1way":3.8,"transportMonthly":150,"gasoline1L":5.75,"taxi1km":3,"utilities":260,"mobile":50,"gym":80,"cinema":22,"preschool":1000,"intlSchoolYear":25000,"sqmCenter":4200,"sqmOutside":2800,"avgSalary":1800,"highlights":["Caribbean-like water","Cheapest coast","Natural pools","Tourism growing"],"lat":-9.6658,"lng":-35.7353},"Sao Luis":{"state":"MA","population":1108975,"region":"Northeast","climate":"Tropical","safety":4,"internet":6.5,"healthcare":6,"colIndex":26,"rentIndex":5.5,"rent1bdCenter":1200,"rent1bdOutside":800,"rent3bdCenter":2300,"rent3bdOutside":1500,"mealCheap":20,"mealMid2":100,"mcdonalds":34,"beer":6.5,"cappuccino":6.5,"milk1L":5,"bread":6,"eggs12":9,"chicken1kg":15,"beef1kg":34,"rice1kg":5,"banana1kg":4.5,"tomato1kg":5.5,"potato1kg":4.5,"transport1way":4,"transportMonthly":165,"gasoline1L":5.8,"taxi1km":3,"utilities":280,"mobile":55,"gym":85,"cinema":25,"preschool":1000,"intlSchoolYear":26000,"sqmCenter":4000,"sqmOutside":2800,"avgSalary":1900,"highlights":["UNESCO historic center","Reggae capital","Lençóis Maranhenses nearby","Affordable"],"lat":-2.5297,"lng":-44.2825},"Campo Grande":{"state":"MS","population":906092,"region":"Central-West","climate":"Tropical savanna","safety":6,"internet":7.5,"healthcare":7,"colIndex":28,"rentIndex":6.5,"rent1bdCenter":1400,"rent1bdOutside":900,"rent3bdCenter":2600,"rent3bdOutside":1700,"mealCheap":24,"mealMid2":115,"mcdonalds":35,"beer":8,"cappuccino":8,"milk1L":5,"bread":6.5,"eggs12":10,"chicken1kg":16,"beef1kg":35,"rice1kg":5.5,"banana1kg":5,"tomato1kg":6,"potato1kg":4.5,"transport1way":4.5,"transportMonthly":190,"gasoline1L":5.8,"taxi1km":3.5,"utilities":320,"mobile":58,"gym":95,"cinema":28,"preschool":1200,"intlSchoolYear":30000,"sqmCenter":5000,"sqmOutside":3500,"avgSalary":2200,"highlights":["Pantanal gateway","Clean city","Agribusiness","Japanese community"],"lat":-20.4697,"lng":-54.6201},"Londrina":{"state":"PR","population":575377,"region":"South","climate":"Subtropical","safety":6.5,"internet":7.5,"healthcare":7.5,"colIndex":28,"rentIndex":6.5,"rent1bdCenter":1300,"rent1bdOutside":900,"rent3bdCenter":2500,"rent3bdOutside":1700,"mealCheap":25,"mealMid2":120,"mcdonalds":35,"beer":8,"cappuccino":8,"milk1L":5,"bread":6.5,"eggs12":10,"chicken1kg":17,"beef1kg":36,"rice1kg":5.5,"banana1kg":5,"tomato1kg":6,"potato1kg":5,"transport1way":4.5,"transportMonthly":190,"gasoline1L":5.85,"taxi1km":3.5,"utilities":320,"mobile":58,"gym":95,"cinema":28,"preschool":1200,"intlSchoolYear":30000,"sqmCenter":5500,"sqmOutside":3800,"avgSalary":2400,"highlights":["Coffee capital","University city","Safe & clean","Growing tech"],"lat":-23.3045,"lng":-51.1696},"Joinville":{"state":"SC","population":597658,"region":"South","climate":"Subtropical","safety":7,"internet":8,"healthcare":7.5,"colIndex":30,"rentIndex":8,"rent1bdCenter":1600,"rent1bdOutside":1100,"rent3bdCenter":3000,"rent3bdOutside":2100,"mealCheap":28,"mealMid2":140,"mcdonalds":36,"beer":9,"cappuccino":9,"milk1L":5.1,"bread":7,"eggs12":10.5,"chicken1kg":18,"beef1kg":38,"rice1kg":5.8,"banana1kg":5.5,"tomato1kg":7,"potato1kg":5,"transport1way":5.5,"transportMonthly":250,"gasoline1L":6,"taxi1km":4,"utilities":350,"mobile":62,"gym":110,"cinema":30,"preschool":1600,"intlSchoolYear":38000,"sqmCenter":7000,"sqmOutside":4800,"avgSalary":2700,"highlights":["Industrial powerhouse","German heritage","Dance festival","Near beaches"],"lat":-26.3045,"lng":-48.8487},"Santos":{"state":"SP","population":433656,"region":"Southeast","climate":"Tropical","safety":5.5,"internet":8,"healthcare":7.5,"colIndex":32,"rentIndex":9.5,"rent1bdCenter":1900,"rent1bdOutside":1300,"rent3bdCenter":3600,"rent3bdOutside":2400,"mealCheap":30,"mealMid2":150,"mcdonalds":37,"beer":10,"cappuccino":10,"milk1L":5.5,"bread":7.5,"eggs12":11,"chicken1kg":20,"beef1kg":40,"rice1kg":6,"banana1kg":6,"tomato1kg":7,"potato1kg":5.5,"transport1way":4.8,"transportMonthly":220,"gasoline1L":6,"taxi1km":4,"utilities":380,"mobile":65,"gym":120,"cinema":35,"preschool":1800,"intlSchoolYear":42000,"sqmCenter":8500,"sqmOutside":5500,"avgSalary":2700,"highlights":["Largest port in LatAm","Beachfront gardens","Near SP","Pelé's city"],"lat":-23.9608,"lng":-46.3336},"Balneario Camboriu":{"state":"SC","population":145796,"region":"South","climate":"Subtropical","safety":8,"internet":8.5,"healthcare":7.5,"colIndex":38,"rentIndex":15,"rent1bdCenter":3000,"rent1bdOutside":2000,"rent3bdCenter":5500,"rent3bdOutside":3800,"mealCheap":40,"mealMid2":220,"mcdonalds":38,"beer":14,"cappuccino":12,"milk1L":5.5,"bread":8,"eggs12":13,"chicken1kg":20,"beef1kg":45,"rice1kg":7,"banana1kg":6.5,"tomato1kg":8.5,"potato1kg":6,"transport1way":5.5,"transportMonthly":200,"gasoline1L":6.4,"taxi1km":5,"utilities":400,"mobile":70,"gym":180,"cinema":40,"preschool":3000,"intlSchoolYear":50000,"sqmCenter":15000,"sqmOutside":9000,"avgSalary":2800,"highlights":["Dubai of Brazil","Luxury high-rises","Tallest buildings in BR","Nightlife"],"lat":-26.9906,"lng":-48.6353},"Ribeirao Preto":{"state":"SP","population":711825,"region":"Southeast","climate":"Tropical","safety":6.5,"internet":8,"healthcare":8,"colIndex":31,"rentIndex":8.5,"rent1bdCenter":1700,"rent1bdOutside":1100,"rent3bdCenter":3200,"rent3bdOutside":2200,"mealCheap":28,"mealMid2":140,"mcdonalds":36,"beer":9,"cappuccino":9,"milk1L":5.2,"bread":7,"eggs12":10,"chicken1kg":18,"beef1kg":38,"rice1kg":5.8,"banana1kg":5.5,"tomato1kg":7,"potato1kg":5,"transport1way":4.5,"transportMonthly":200,"gasoline1L":5.9,"taxi1km":3.8,"utilities":350,"mobile":62,"gym":110,"cinema":30,"preschool":1600,"intlSchoolYear":40000,"sqmCenter":7000,"sqmOutside":4500,"avgSalary":2700,"highlights":["Sugarcane capital","Shopping malls","High HDI","Medical hub"],"lat":-21.1767,"lng":-47.8208},"Uberlandia":{"state":"MG","population":699097,"region":"Southeast","climate":"Tropical savanna","safety":6,"internet":7.5,"healthcare":7,"colIndex":28.5,"rentIndex":7,"rent1bdCenter":1400,"rent1bdOutside":900,"rent3bdCenter":2700,"rent3bdOutside":1800,"mealCheap":25,"mealMid2":120,"mcdonalds":35,"beer":8,"cappuccino":8,"milk1L":5,"bread":6.5,"eggs12":10,"chicken1kg":17,"beef1kg":36,"rice1kg":5.5,"banana1kg":5,"tomato1kg":6.5,"potato1kg":5,"transport1way":4.3,"transportMonthly":185,"gasoline1L":5.85,"taxi1km":3.5,"utilities":320,"mobile":58,"gym":100,"cinema":28,"preschool":1300,"intlSchoolYear":32000,"sqmCenter":5800,"sqmOutside":3800,"avgSalary":2400,"highlights":["Logistics hub","Very clean","Growing fast","Agribusiness"],"lat":-18.9186,"lng":-48.2772},"Aracaju":{"state":"SE","population":664908,"region":"Northeast","climate":"Tropical","safety":5,"internet":7,"healthcare":6.5,"colIndex":26,"rentIndex":5.5,"rent1bdCenter":1200,"rent1bdOutside":800,"rent3bdCenter":2300,"rent3bdOutside":1500,"mealCheap":22,"mealMid2":110,"mcdonalds":34,"beer":7,"cappuccino":7,"milk1L":4.8,"bread":6,"eggs12":9,"chicken1kg":15,"beef1kg":33,"rice1kg":5,"banana1kg":4.5,"tomato1kg":5.5,"potato1kg":4.5,"transport1way":4,"transportMonthly":165,"gasoline1L":5.75,"taxi1km":3,"utilities":280,"mobile":55,"gym":85,"cinema":25,"preschool":1000,"intlSchoolYear":25000,"sqmCenter":4200,"sqmOutside":2800,"avgSalary":1900,"highlights":["Smallest capital","Orla de Atalaia","Crab cuisine","Quiet beach life"],"lat":-10.9111,"lng":-37.0717},"Niteroi":{"state":"RJ","population":515317,"region":"Southeast","climate":"Tropical","safety":6,"internet":8,"healthcare":7.5,"colIndex":33,"rentIndex":10.5,"rent1bdCenter":2100,"rent1bdOutside":1400,"rent3bdCenter":4000,"rent3bdOutside":2700,"mealCheap":30,"mealMid2":155,"mcdonalds":37,"beer":10,"cappuccino":10,"milk1L":5.5,"bread":7.5,"eggs12":11,"chicken1kg":20,"beef1kg":42,"rice1kg":6,"banana1kg":6,"tomato1kg":7,"potato1kg":5.5,"transport1way":4.7,"transportMonthly":250,"gasoline1L":6.1,"taxi1km":4.2,"utilities":380,"mobile":65,"gym":130,"cinema":35,"preschool":2000,"intlSchoolYear":45000,"sqmCenter":9000,"sqmOutside":5500,"avgSalary":2700,"highlights":["Best HDI in RJ","View of Rio","Safer than Rio","MAC museum"],"lat":-22.8833,"lng":-43.1036},"Blumenau":{"state":"SC","population":361855,"region":"South","climate":"Subtropical","safety":7.5,"internet":8,"healthcare":7.5,"colIndex":30,"rentIndex":8,"rent1bdCenter":1500,"rent1bdOutside":1000,"rent3bdCenter":2900,"rent3bdOutside":2000,"mealCheap":28,"mealMid2":140,"mcdonalds":36,"beer":9,"cappuccino":9,"milk1L":5.1,"bread":7,"eggs12":10.5,"chicken1kg":18,"beef1kg":38,"rice1kg":5.8,"banana1kg":5.5,"tomato1kg":7,"potato1kg":5,"transport1way":5,"transportMonthly":220,"gasoline1L":6,"taxi1km":4,"utilities":340,"mobile":62,"gym":100,"cinema":30,"preschool":1500,"intlSchoolYear":35000,"sqmCenter":6500,"sqmOutside":4200,"avgSalary":2600,"highlights":["Oktoberfest","German architecture","Tech industry","Very safe"],"lat":-26.9194,"lng":-49.0661},"Itapema":{"state":"SC","population":67057,"region":"South","climate":"Subtropical","safety":8,"internet":8,"healthcare":7,"colIndex":34,"rentIndex":12,"rent1bdCenter":2200,"rent1bdOutside":1500,"rent3bdCenter":4200,"rent3bdOutside":2800,"mealCheap":35,"mealMid2":180,"mcdonalds":37,"beer":12,"cappuccino":10,"milk1L":5.3,"bread":7.5,"eggs12":12,"chicken1kg":19,"beef1kg":42,"rice1kg":6.5,"banana1kg":6,"tomato1kg":8,"potato1kg":5.5,"transport1way":5,"transportMonthly":180,"gasoline1L":6.3,"taxi1km":4.5,"utilities":370,"mobile":65,"gym":150,"cinema":35,"preschool":2500,"intlSchoolYear":45000,"sqmCenter":13000,"sqmOutside":8000,"avgSalary":2500,"highlights":["Meia Praia beach","Luxury real estate","Near BC","Fast-growing","Investment hotspot"],"lat":-27.0903,"lng":-48.6115}};
+
+const USD_RATE = 5.20;
+let currentLang = 'en';
+const FREE_LIMIT = 3;
+
+const i18n = {
+  en: { heroTitle:'Cost of Living in <span>Brazil</span>', heroDesc:'Compare 30 cities side by side. Find your perfect city based on budget, lifestyle, and priorities.', cities:'Cities', params:'Parameters', data:'Data', region:'Region', sortBy:'Sort By', budget:'Max Monthly Budget', lifestyle:'Lifestyle', allRegions:'All Regions', filterTitle:'⚡ Quick Filters', rent:'Rent', food:'Food', transport:'Transport', utils:'Utilities', total:'Monthly Total', ctaTitle:'Want the <span>full report?</span>', ctaDesc:'Get a personalized PDF with detailed breakdown, neighborhood recommendations, and relocation checklist.', single:'Single', couple:'Couple', family:'Family (2 kids)', safetyLabel:'Safety', internetLabel:'Internet', healthLabel:'Healthcare' },
+  ru: { heroTitle:'Стоимость жизни в <span>Бразилии</span>', heroDesc:'Сравните 30 городов. Найдите идеальный город по бюджету, образу жизни и приоритетам.', cities:'Городов', params:'Параметров', data:'Данные', region:'Регион', sortBy:'Сортировка', budget:'Макс. бюджет/мес', lifestyle:'Образ жизни', allRegions:'Все регионы', filterTitle:'⚡ Фильтры', rent:'Аренда', food:'Еда', transport:'Транспорт', utils:'Коммуналка', total:'Итого/мес', ctaTitle:'Хотите <span>полный отчёт?</span>', ctaDesc:'Персональный PDF с детальной разбивкой, рекомендациями районов и чеклистом переезда.', single:'Один', couple:'Пара', family:'Семья (2 ребёнка)', safetyLabel:'Безопасность', internetLabel:'Интернет', healthLabel:'Здравоохранение' },
+  pt: { heroTitle:'Custo de Vida no <span>Brasil</span>', heroDesc:'Compare 30 cidades lado a lado. Encontre sua cidade ideal por orçamento, estilo de vida e prioridades.', cities:'Cidades', params:'Parâmetros', data:'Dados', region:'Região', sortBy:'Ordenar', budget:'Orçamento máx/mês', lifestyle:'Estilo de vida', allRegions:'Todas regiões', filterTitle:'⚡ Filtros', rent:'Aluguel', food:'Comida', transport:'Transporte', utils:'Utilidades', total:'Total/mês', ctaTitle:'Quer o <span>relatório completo?</span>', ctaDesc:'PDF personalizado com análise detalhada, recomendações de bairros e checklist de mudança.', single:'Solteiro', couple:'Casal', family:'Família (2 filhos)', safetyLabel:'Segurança', internetLabel:'Internet', healthLabel:'Saúde' }
+};
+
+function setLang(l) {
+  currentLang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim()===l.toUpperCase()));
+  const t = i18n[l];
+  document.getElementById('heroTitle').innerHTML = t.heroTitle;
+  document.getElementById('heroDesc').textContent = t.heroDesc;
+  document.getElementById('filterTitle').textContent = t.filterTitle;
+  document.getElementById('ctaTitle').innerHTML = t.ctaTitle;
+  document.getElementById('ctaDesc').textContent = t.ctaDesc;
+  renderCities();
+}
+
+function calcTotal(c, lifestyle) {
+  let rent = c.rent1bdCenter;
+  let foodMult = 1;
+  let transportMult = 1;
+  if (lifestyle === 'couple') { rent = c.rent1bdCenter * 1; foodMult = 1.7; transportMult = 2; }
+  if (lifestyle === 'family') { rent = c.rent3bdCenter; foodMult = 3; transportMult = 2.5; }
+  const food = (c.mealCheap * 20 + c.milk1L * 10 + c.bread * 8 + c.eggs12 * 4 + c.chicken1kg * 4 + c.rice1kg * 4 + c.banana1kg * 8) * foodMult / (lifestyle==='single'?2:1);
+  const transport = c.transportMonthly * transportMult;
+  const utils = c.utilities + c.mobile + (c.internet || 100);
+  const extras = c.gym + c.cinema * 2;
+  let childcare = 0;
+  if (lifestyle === 'family') childcare = c.preschool * 2;
+  return { rent, food: Math.round(food), transport: Math.round(transport), utils, extras, childcare, total: Math.round(rent + food + transport + utils + extras + childcare) };
+}
+
+function costClass(val, low, high) {
+  if (val <= low) return 'cheap';
+  if (val >= high) return 'expensive';
+  return 'mid';
+}
+
+function updateBudget() {
+  const v = document.getElementById('budgetFilter').value;
+  document.getElementById('budgetValue').textContent = `R$ ${Number(v).toLocaleString()}`;
+}
+
+function renderCities() {
+  const region = document.getElementById('regionFilter').value;
+  const sort = document.getElementById('sortFilter').value;
+  const budget = Number(document.getElementById('budgetFilter').value);
+  const lifestyle = document.getElementById('lifestyleFilter').value;
+  const t = i18n[currentLang];
+
+  let entries = Object.entries(CITIES_DATA).map(([name, c]) => ({ name, ...c, costs: calcTotal(c, lifestyle) }));
+  if (region !== 'all') entries = entries.filter(e => e.region === region);
+  entries = entries.filter(e => e.costs.total <= budget);
+
+  if (sort === 'total') entries.sort((a,b) => a.costs.total - b.costs.total);
+  else if (sort === 'totalDesc') entries.sort((a,b) => b.costs.total - a.costs.total);
+  else if (sort === 'safety') entries.sort((a,b) => b.safety - a.safety);
+  else if (sort === 'rent') entries.sort((a,b) => a.rent1bdCenter - b.rent1bdCenter);
+  else if (sort === 'sqm') entries.sort((a,b) => a.sqmCenter - b.sqmCenter);
+
+  const grid = document.getElementById('cityGrid');
+  grid.innerHTML = entries.map((c, i) => {
+    const locked = i >= FREE_LIMIT;
+    const best = i === 0;
+    const costs = c.costs;
+    const safetyPct = (c.safety / 10) * 100;
+    const safetyColor = c.safety >= 7 ? 'var(--green)' : c.safety >= 5 ? 'var(--gold)' : 'var(--red)';
+    return `
+    <div class="city-card ${best ? 'best' : ''} ${locked ? 'locked' : ''}">
+      <div class="city-header">
+        <div class="city-rank">${i+1}</div>
+        <div>
+          <div class="city-name">${c.name}</div>
+          <div class="city-state">${c.state} · ${c.region} · Pop: ${(c.population/1e6).toFixed(1)}M</div>
+        </div>
+      </div>
+      <div class="city-tags">${c.highlights.map(h=>`<span class="city-tag">${h}</span>`).join('')}</div>
+      <div class="cost-grid">
+        <div class="cost-item"><span class="cost-label">🏠 ${t.rent}</span><span class="cost-value ${costClass(costs.rent,1300,2500)}">R$ ${costs.rent.toLocaleString()}</span></div>
+        <div class="cost-item"><span class="cost-label">🍔 ${t.food}</span><span class="cost-value ${costClass(costs.food,500,1200)}">R$ ${costs.food.toLocaleString()}</span></div>
+        <div class="cost-item"><span class="cost-label">🚌 ${t.transport}</span><span class="cost-value">R$ ${costs.transport.toLocaleString()}</span></div>
+        <div class="cost-item"><span class="cost-label">💡 ${t.utils}</span><span class="cost-value">R$ ${costs.utils.toLocaleString()}</span></div>
+        ${lifestyle==='family' ? `<div class="cost-item"><span class="cost-label">👶 Childcare</span><span class="cost-value">R$ ${costs.childcare.toLocaleString()}</span></div>` : ''}
+      </div>
+      <div class="total-bar">
+        <span class="total-label">${t.total}</span>
+        <span><span class="total-value">R$ ${costs.total.toLocaleString()}</span><span class="total-usd">≈ $${Math.round(costs.total/USD_RATE).toLocaleString()}</span></span>
+      </div>
+      <div class="score-section">
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="font-size:0.7rem;color:var(--muted)">${t.safetyLabel}</span>
+          <span style="font-size:0.7rem;color:${safetyColor};font-weight:600">${c.safety}/10</span>
+        </div>
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:${safetyPct}%;background:${safetyColor}"></div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+renderCities();
+</script>
+</body>
+</html>
