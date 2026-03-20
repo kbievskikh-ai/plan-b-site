@@ -14,6 +14,7 @@ import CaseStudies from '@/components/CaseStudies';
 import InvestorGuide from '@/components/InvestorGuide';
 import Testimonials from '@/components/Testimonials';
 import WhyBrazil from '@/components/WhyBrazil';
+import CountryCalculatorTeaser from '@/components/CountryCalculatorTeaser';
 import FAQ from '@/components/FAQ';
 import ContactForm from '@/components/ContactForm';
 import { useSettings } from '@/lib/settings';
@@ -38,6 +39,7 @@ export default function SectionManager() {
         <CaseStudies />
         <Testimonials />
         <WhyBrazil />
+        <CountryCalculatorTeaser />
         <FAQ />
         <ContactForm />
       </>
@@ -60,6 +62,7 @@ export default function SectionManager() {
       {show('section_case_studies') && <CaseStudies />}
       {show('section_testimonials') && <Testimonials />}
       {show('section_why_brazil') && <WhyBrazil />}
+      <CountryCalculatorTeaser />
       {show('section_faq') && <FAQ />}
       {show('section_contact') && <ContactForm />}
     </>
