@@ -3,10 +3,11 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
 
+const flagImg = (code: string) => `https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/${code}.svg`;
 const previewCountries = [
-  { flag: '🇧🇷', name: { en: 'Brazil', ru: 'Бразилия', pt: 'Brasil' }, score: 92, tags: ['🏖️', '📈', '🌿'] },
-  { flag: '🇺🇾', name: { en: 'Uruguay', ru: 'Уругвай', pt: 'Uruguai' }, score: 87, tags: ['💰', '🛡️', '🛂'] },
-  { flag: '🇵🇹', name: { en: 'Portugal', ru: 'Португалия', pt: 'Portugal' }, score: 84, tags: ['🇪🇺', '☀️', '🎓'] },
+  { flag: flagImg('1f1e7-1f1f7'), name: { en: 'Brazil', ru: 'Бразилия', pt: 'Brasil' }, score: 92, tags: ['🏖️', '📈', '🌿'] },
+  { flag: flagImg('1f1fa-1f1fe'), name: { en: 'Uruguay', ru: 'Уругвай', pt: 'Uruguai' }, score: 87, tags: ['💰', '🛡️', '🛂'] },
+  { flag: flagImg('1f1f5-1f1f9'), name: { en: 'Portugal', ru: 'Португалия', pt: 'Portugal' }, score: 84, tags: ['🇪🇺', '☀️', '🎓'] },
 ];
 
 export default function CountryCalculatorTeaser() {
@@ -25,11 +26,11 @@ export default function CountryCalculatorTeaser() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-6">
-              <img src="https://cdn.migronis.com/img/logo.svg" alt="Migronis" style={{ height: '32px', filter: 'brightness(0) invert(1)' }} className="mb-3" />
+              <img src="https://cdn.migronis.com/img/logo.svg" alt="Migronis" style={{ height: '48px', filter: 'brightness(0) invert(1)' }} className="mb-3" />
               <div className="flex items-center gap-2">
                 <span className="text-2xl">🎁</span>
-                <span className="text-sm font-semibold" style={{ color: '#C9A94E' }}>
-                  {language === 'ru' ? 'Migronis & GRONIS исполняется 15 лет!' : language === 'pt' ? 'Migronis & GRONIS completam 15 anos!' : 'Migronis & GRONIS turn 15!'}
+                <span className="text-xs uppercase tracking-widest" style={{ color: '#C9A94E' }}>
+                  {language === 'ru' ? 'Подарок к 15-летию Migronis' : language === 'pt' ? 'Presente de 15 anos Migronis' : 'Migronis 15th Anniversary Gift'}
                 </span>
               </div>
             </div>
@@ -93,7 +94,7 @@ export default function CountryCalculatorTeaser() {
                   border: i === 0 ? '1px solid rgba(201,169,78,0.3)' : '1px solid rgba(255,255,255,0.08)'
                 }}
               >
-                <span className="text-4xl">{country.flag}</span>
+                <img src={country.flag} alt="" className="w-10 h-10 rounded" />
                 <div className="flex-1">
                   <div className="text-white font-semibold text-lg">{country.name[language as keyof typeof country.name] || country.name.en}</div>
                   <div className="flex gap-2 mt-1">
