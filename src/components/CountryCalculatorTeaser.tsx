@@ -18,7 +18,7 @@ export default function CountryCalculatorTeaser() {
       {/* Gold top and bottom lines */}
       <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, transparent, #C9A94E, transparent)' }} />
       <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, transparent, #C9A94E, transparent)' }} />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Left: Text + CTA */}
@@ -29,7 +29,7 @@ export default function CountryCalculatorTeaser() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-6">
-              <img src="https://cdn.migronis.com/img/logo.svg" alt="Migronis" style={{ height: '80px', filter: 'brightness(0) invert(1)' }} className="mb-3" />
+              <img src="https://cdn.migronis.com/img/headerLogo.svg" alt="Migronis" style={{ height: '44px', filter: 'brightness(0) invert(1)' }} className="mb-4" />
               <div className="flex items-center gap-2">
                 <span className="text-2xl">🎁</span>
                 <span className="text-xs uppercase tracking-widest" style={{ color: '#C9A94E' }}>
