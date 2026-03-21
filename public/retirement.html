@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retirement Calculator</title>
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+<style>
+:root{--bg:#0a0f1e;--card:#111827;--card2:#1a2332;--accent:#6366f1;--accent2:#8b5cf6;--gold:#d4af37;--green:#10b981;--red:#ef4444;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0a0f1e 0%,#1a1040 50%,#0a0f1e 100%)}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 20px}
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:4px}
+.lang-btn{padding:6px 14px;border:none;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600;background:transparent;color:var(--muted);transition:.2s}
+.lang-btn.active{background:var(--accent);color:#fff}
+.section-title{font-size:1.3rem;font-weight:700;margin:30px 0 16px}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.country-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s;position:relative}
+.country-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(99,102,241,.15)}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card-header .flag{font-size:1.8rem}
+.card-header .name{font-size:1.1rem;font-weight:700}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.detail-item{background:var(--card2);padding:8px 10px;border-radius:8px;font-size:.8rem}
+.detail-item .dlabel{color:var(--muted);font-size:.7rem;margin-bottom:2px}
+.highlight-tag{display:inline-block;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);padding:4px 10px;border-radius:8px;font-size:.72rem;margin:3px 2px;color:var(--accent)}
+.sort-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sort-btn{padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.8rem;cursor:pointer;transition:.2s}
+.sort-btn:hover,.sort-btn.active{color:var(--text);border-color:var(--accent);background:rgba(99,102,241,.1)}
+.score-bar{height:8px;background:var(--border);border-radius:4px;margin-top:6px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.price-big{font-size:1.6rem;font-weight:800;color:var(--green)}
+.stats-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:24px}
+.stat{text-align:center}.stat-num{font-size:2rem;font-weight:800;color:var(--accent)}.stat-label{font-size:.85rem;color:var(--muted)}
+.cta-section{text-align:center;padding:60px 20px;margin-top:40px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.05));border-radius:20px}
+.cta-section h2{font-size:1.8rem;font-weight:800;margin-bottom:12px}.cta-section p{color:var(--muted);margin-bottom:24px}
+.cta-btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;border-radius:12px;font-weight:700;border:none;cursor:pointer;transition:.3s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.footer{text-align:center;padding:30px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:40px}
+img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-0.1em}
+.card-header img.emoji{height:1.8em;width:1.8em}
+@media(max-width:640px){.hero h1{font-size:1.6rem}.results-grid{grid-template-columns:1fr}.stats-row{gap:20px}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.country-card{animation:fadeIn .4s ease-out both}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head><body>
+<div class="lang-toggle"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ru')">RU</button></div>
+<div class="hero"><h1 id="heroTitle">🏖️ Retirement Calculator</h1><p id="heroDesc">Compare retirement destinations: visas, costs, healthcare, taxes, and path to citizenship across 11 countries.</p><div class="stats-row"><div class="stat"><div class="stat-num">11</div><div class="stat-label">Countries</div></div><div class="stat"><div class="stat-num">$800</div><div class="stat-label">From/month</div></div></div></div>
+<div class="container"><div id="content"></div>
+<div class="cta-section"><h2 id="ctaTitle">Need Expert Help?</h2><p id="ctaDesc">Get personalized recommendations based on your goals, budget, and preferences.</p>
+<button class="cta-btn" onclick="alert('Coming soon! Contact info@gronisbrazil.com')">📩 Get Free Consultation</button></div></div>
+<div class="footer"><p>© 2026 Life Decision Platform. Data: government statistics, proprietary research.</p></div>
+<script>
+const FLAGS={"India":"🇮🇳","Turkey":"🇹🇷","Thailand":"🇹🇭","Mexico":"🇲🇽","Malaysia":"🇲🇾","South Korea":"🇰🇷","Germany":"🇩🇪","Israel":"🇮🇱","Singapore":"🇸🇬","Czech Republic":"🇨🇿","Hungary":"🇭🇺","Costa Rica":"🇨🇷","Spain":"🇪🇸","Greece":"🇬🇷","Brazil":"🇧🇷","USA":"🇺🇸","Portugal":"🇵🇹","Panama":"🇵🇦","France":"🇫🇷","Italy":"🇮🇹","UAE (Dubai)":"🇦🇪","UAE":"🇦🇪","Georgia":"🇬🇪","Estonia":"🇪🇪","Indonesia (Bali)":"🇮🇩","Croatia":"🇭🇷","Malta":"🇲🇹","Paraguay":"🇵🇾","Ireland":"🇮🇪","Cyprus":"🇨🇾","Monaco":"🇲🇨","Andorra":"🇦🇩","UK (Non-Dom)":"🇬🇧","UK":"🇬🇧","Canada":"🇨🇦","Australia":"🇦🇺","New Zealand":"🇳🇿","Netherlands":"🇳🇱","Austria":"🇦🇹","Poland":"🇵🇱","St. Kitts & Nevis":"🇰🇳","Dominica":"🇩🇲","Grenada":"🇬🇩","Antigua & Barbuda":"🇦🇬","Vanuatu":"🇻🇺","Jordan":"🇯🇴"};
+const DATA = {"lastUpdate": "2026-03", "countries": {"Portugal": {"visa": "D7 Passive Income Visa", "minIncome": 900, "minIncomeCurrency": "EUR/month", "healthcareQuality": 8, "safety": 8, "climate": 9, "expatCommunity": 9, "englishLevel": 7, "costSingle": 1500, "costCouple": 2200, "taxBenefit": "NHR 10% flat tax on pensions", "pathToCitizenship": "5 years", "highlights": ["NHR tax regime", "Golden Visa", "Best climate EU", "Algarve retirees", "Free healthcare"]}, "Panama": {"visa": "Pensionado Visa", "minIncome": 1000, "minIncomeCurrency": "USD/month", "healthcareQuality": 7, "safety": 6, "climate": 8, "expatCommunity": 8, "englishLevel": 6, "costSingle": 1800, "costCouple": 2500, "taxBenefit": "0% on foreign income", "pathToCitizenship": "5 years", "highlights": ["Best retirement visa", "0% foreign income tax", "USD currency", "Discounts on everything", "Canal zone"]}, "Costa Rica": {"visa": "Pensionado/Rentista", "minIncome": 1000, "minIncomeCurrency": "USD/month", "healthcareQuality": 8, "safety": 7, "climate": 9, "expatCommunity": 8, "englishLevel": 6, "costSingle": 2000, "costCouple": 2800, "taxBenefit": "0% on foreign income", "pathToCitizenship": "7 years", "highlights": ["Pura Vida lifestyle", "Universal healthcare", "No military", "Blue Zone", "Nature paradise"]}, "Malaysia": {"visa": "MM2H (Malaysia My 2nd Home)", "minIncome": 4000, "minIncomeCurrency": "USD/month deposit", "healthcareQuality": 8, "safety": 7, "climate": 8, "expatCommunity": 7, "englishLevel": 7, "costSingle": 1200, "costCouple": 1800, "taxBenefit": "Foreign income not taxed", "pathToCitizenship": "No (permanent resident possible)", "highlights": ["Cheapest quality", "MM2H program", "Medical tourism", "Great food", "Multicultural"]}, "Thailand": {"visa": "Long-Term Resident Visa", "minIncome": 2700, "minIncomeCurrency": "USD/month", "healthcareQuality": 8, "safety": 6, "climate": 8, "expatCommunity": 8, "englishLevel": 5, "costSingle": 1200, "costCouple": 1800, "taxBenefit": "No tax on foreign income (if not remitted)", "pathToCitizenship": "No (but LTR visa 10 years)", "highlights": ["Cheapest quality life", "Medical tourism", "Beach + mountains", "Amazing food", "10 year visa"]}, "Mexico": {"visa": "Temporary Resident (Rentista)", "minIncome": 2500, "minIncomeCurrency": "USD/month", "healthcareQuality": 7, "safety": 5, "climate": 9, "expatCommunity": 9, "englishLevel": 5, "costSingle": 1500, "costCouple": 2200, "taxBenefit": "Territorial tax system", "pathToCitizenship": "5 years", "highlights": ["Near USA", "Great food", "Large expat community", "Affordable", "Rich culture"]}, "Spain": {"visa": "Non-Lucrative Visa", "minIncome": 2400, "minIncomeCurrency": "EUR/month", "healthcareQuality": 9, "safety": 7, "climate": 9, "expatCommunity": 8, "englishLevel": 6, "costSingle": 1800, "costCouple": 2500, "taxBenefit": "Beckham Law possible", "pathToCitizenship": "10 years", "highlights": ["Best healthcare", "300+ sunny days", "EU access", "Mediterranean", "Culture & food"]}, "Greece": {"visa": "Non-EU Retiree Visa", "minIncome": 2000, "minIncomeCurrency": "EUR/month", "healthcareQuality": 7, "safety": 7, "climate": 9, "expatCommunity": 7, "englishLevel": 6, "costSingle": 1300, "costCouple": 1900, "taxBenefit": "7% flat tax on foreign income (7 years)", "pathToCitizenship": "7 years", "highlights": ["7% flat tax!", "Islands paradise", "Cheap EU", "Ancient history", "Mediterranean diet"]}, "Brazil": {"visa": "Retirement Visa (VITEM V)", "minIncome": 2000, "minIncomeCurrency": "USD/month", "healthcareQuality": 7, "safety": 5, "climate": 9, "expatCommunity": 6, "englishLevel": 3, "costSingle": 1200, "costCouple": 1800, "taxBenefit": "Progressive tax", "pathToCitizenship": "4 years (fastest!)", "highlights": ["Fastest citizenship (4yr)", "Beaches", "Cheapest", "Birth tourism combo", "Growing expat scene"]}, "Italy": {"visa": "Elective Residency Visa", "minIncome": 3100, "minIncomeCurrency": "EUR/month", "healthcareQuality": 9, "safety": 7, "climate": 8, "expatCommunity": 7, "englishLevel": 5, "costSingle": 2000, "costCouple": 2800, "taxBenefit": "7% flat tax in South Italy (10 years)", "pathToCitizenship": "10 years", "highlights": ["7% tax in South", "La Dolce Vita", "Best food", "Culture", "€1 houses program"]}, "France": {"visa": "Visitor Visa (Long Stay)", "minIncome": 1600, "minIncomeCurrency": "EUR/month", "healthcareQuality": 10, "safety": 6, "climate": 8, "expatCommunity": 7, "englishLevel": 5, "costSingle": 2200, "costCouple": 3000, "taxBenefit": "Tax treaty benefits", "pathToCitizenship": "5 years", "highlights": ["#1 healthcare WHO", "Culture capital", "Wine & cuisine", "EU access", "Riviera lifestyle"]}}};
+let lang='en';
+function setLang(l){lang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+document.getElementById('heroTitle').textContent=l==='ru'?'🏖️ Калькулятор Эмиграции на Пенсии':'🏖️ Retirement Calculator';
+document.getElementById('heroDesc').textContent=l==='ru'?'Сравните страны для выхода на пенсию: визы, расходы, медицина, налоги и путь к гражданству в 11 странах.':'Compare retirement destinations: visas, costs, healthcare, taxes, and path to citizenship across 11 countries.';
+document.getElementById('ctaTitle').textContent=l==='ru'?'Нужна помощь?':'Need Expert Help?';
+document.getElementById('ctaDesc').textContent=l==='ru'?'Получите персональные рекомендации.':'Get personalized recommendations.';
+render();twemoji.parse(document.body)}
+
+function render(){const c=document.getElementById('content');let entries=Object.entries(DATA.countries);
+entries.sort((a,b)=>a[1].costSingle-b[1].costSingle);
+let html='<div class="section-title">'+(lang==='ru'?'🌍 Рейтинг стран для пенсии':'🌍 Retirement Destinations Ranked')+'</div>';
+html+='<div class="sort-row"><button class="sort-btn active" onclick="this.parentNode.querySelectorAll(\'.sort-btn\').forEach(b=>b.classList.remove(\'active\'));this.classList.add(\'active\');sortCountries(\'cost\')">💰 '+(lang==='ru'?'Дешевле':'Cheapest')+'</button>';
+html+='<button class="sort-btn" onclick="this.parentNode.querySelectorAll(\'.sort-btn\').forEach(b=>b.classList.remove(\'active\'));this.classList.add(\'active\');sortCountries(\'health\')">🏥 '+(lang==='ru'?'Медицина':'Healthcare')+'</button>';
+html+='<button class="sort-btn" onclick="this.parentNode.querySelectorAll(\'.sort-btn\').forEach(b=>b.classList.remove(\'active\'));this.classList.add(\'active\');sortCountries(\'safety\')">🛡️ '+(lang==='ru'?'Безопасность':'Safety')+'</button>';
+html+='<button class="sort-btn" onclick="this.parentNode.querySelectorAll(\'.sort-btn\').forEach(b=>b.classList.remove(\'active\'));this.classList.add(\'active\');sortCountries(\'citizen\')">🛂 '+(lang==='ru'?'Гражданство':'Citizenship')+'</button></div>';
+html+='<div class="results-grid" id="grid"></div>';c.innerHTML=html;sortCountries('cost')}
+function sortCountries(by){let entries=Object.entries(DATA.countries);
+if(by==='cost')entries.sort((a,b)=>a[1].costSingle-b[1].costSingle);
+else if(by==='health')entries.sort((a,b)=>b[1].healthcareQuality-a[1].healthcareQuality);
+else if(by==='safety')entries.sort((a,b)=>b[1].safety-a[1].safety);
+else if(by==='citizen')entries.sort((a,b)=>parseInt(a[1].pathToCitizenship)-parseInt(b[1].pathToCitizenship));
+const g=document.getElementById('grid');g.innerHTML='';
+entries.forEach(([country,info],i)=>{const card=document.createElement('div');card.className='country-card';card.style.animationDelay=(i*.05)+'s';
+card.innerHTML=`<div class="card-header"><span class="flag">${FLAGS[country]||'🌍'}</span><span class="name">${country}</span></div>
+<div class="price-big">$${info.costSingle.toLocaleString()}<span style="font-size:.7rem;color:var(--muted);font-weight:400"> /${lang==='ru'?'мес (1 чел)':'mo (single)'}</span></div>
+<div style="font-size:.85rem;color:var(--muted);margin:4px 0">${lang==='ru'?'Пара':'Couple'}: $${info.costCouple.toLocaleString()}/${lang==='ru'?'мес':'mo'}</div>
+<div class="detail-grid">
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Виза':'Visa'}</div>${info.visa}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Мин. доход':'Min Income'}</div>${info.minIncome} ${info.minIncomeCurrency}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Налоги':'Tax Benefit'}</div>${info.taxBenefit}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Гражданство':'Citizenship'}</div>${info.pathToCitizenship}</div>
+</div>
+<div style="margin-top:12px">
+<div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)"><span>${lang==='ru'?'Медицина':'Healthcare'}</span><span>${info.healthcareQuality}/10</span></div>
+<div class="score-bar"><div class="score-bar-fill" style="width:${info.healthcareQuality*10}%;background:var(--green)"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:6px"><span>${lang==='ru'?'Безопасность':'Safety'}</span><span>${info.safety}/10</span></div>
+<div class="score-bar"><div class="score-bar-fill" style="width:${info.safety*10}%;background:var(--accent)"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:6px"><span>${lang==='ru'?'Климат':'Climate'}</span><span>${info.climate}/10</span></div>
+<div class="score-bar"><div class="score-bar-fill" style="width:${info.climate*10}%;background:var(--gold)"></div></div>
+</div>
+<div style="margin-top:12px">${info.highlights.map(h=>'<span class="highlight-tag">'+h+'</span>').join('')}</div>`;
+g.appendChild(card)});twemoji.parse(g)}
+
+render();twemoji.parse(document.body);
+</script></body></html>

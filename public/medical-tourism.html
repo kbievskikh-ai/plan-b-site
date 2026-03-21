@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Tourism Calculator — Save Up to 90% on Healthcare</title>
+<meta name="description" content="Compare medical procedure costs across 15+ countries. Find the best hospitals, savings, and wait times for heart surgery, dental, IVF, cosmetic and more.">
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+<style>
+:root{--bg:#0a0f1e;--card:#111827;--card2:#1a2332;--accent:#6366f1;--accent2:#8b5cf6;--gold:#d4af37;--green:#10b981;--red:#ef4444;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b;--success:#059669;--warning:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+
+/* Header */
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0a0f1e 0%,#1a1040 50%,#0a0f1e 100%)}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#6366f1,#a78bfa,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 30px}
+.stats-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:24px}
+.stat{text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent)}
+.stat-label{font-size:.85rem;color:var(--muted)}
+
+/* Language Toggle */
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:4px}
+.lang-btn{padding:6px 14px;border:none;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600;background:transparent;color:var(--muted);transition:.2s}
+.lang-btn.active{background:var(--accent);color:#fff}
+
+/* Procedure Selector */
+.section-title{font-size:1.3rem;font-weight:700;margin:30px 0 16px;display:flex;align-items:center;gap:10px}
+.procedure-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin-bottom:30px}
+.proc-btn{padding:14px 12px;background:var(--card);border:2px solid var(--border);border-radius:12px;cursor:pointer;text-align:center;transition:.3s;font-size:.85rem;color:var(--text)}
+.proc-btn:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proc-btn.active{border-color:var(--accent);background:rgba(99,102,241,.15);box-shadow:0 0 20px rgba(99,102,241,.2)}
+.proc-btn .emoji{font-size:1.8rem;display:block;margin-bottom:6px}
+.proc-btn .label{font-weight:600;font-size:.8rem}
+.proc-btn .us-price{color:var(--muted);font-size:.75rem;margin-top:4px}
+
+/* USA Benchmark */
+.usa-benchmark{background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(239,68,68,.05));border:1px solid rgba(239,68,68,.3);border-radius:16px;padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.usa-benchmark .flag{font-size:2rem}
+.usa-benchmark .info{flex:1}
+.usa-benchmark .label{font-size:.85rem;color:var(--muted)}
+.usa-benchmark .price{font-size:2rem;font-weight:800;color:var(--red)}
+
+/* Results */
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.country-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s;position:relative;overflow:hidden}
+.country-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(99,102,241,.15)}
+.country-card.best{border-color:var(--green);box-shadow:0 0 25px rgba(16,185,129,.15)}
+.country-card.best::after{content:"BEST VALUE";position:absolute;top:12px;right:-30px;background:var(--green);color:#fff;font-size:.65rem;font-weight:700;padding:3px 35px;transform:rotate(45deg)}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.card-header .flag{font-size:1.8rem}
+.card-header .name{font-size:1.1rem;font-weight:700}
+.card-header .jci{background:rgba(16,185,129,.15);color:var(--green);font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:6px;margin-left:auto}
+.price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+.price-row .price{font-size:1.8rem;font-weight:800;color:var(--green)}
+.price-row .savings{font-size:1rem;font-weight:700;color:var(--green);background:rgba(16,185,129,.12);padding:4px 10px;border-radius:8px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.detail-item{background:var(--card2);padding:8px 10px;border-radius:8px;font-size:.8rem}
+.detail-item .dlabel{color:var(--muted);font-size:.7rem;margin-bottom:2px}
+.hospitals{margin-top:12px;font-size:.8rem}
+.hospitals .hl{color:var(--muted);font-size:.7rem;margin-bottom:4px}
+.hosp-tag{display:inline-block;background:var(--card2);padding:3px 8px;border-radius:6px;font-size:.72rem;margin:2px 2px;color:var(--text)}
+
+/* Savings Bar */
+.savings-bar{height:6px;background:var(--border);border-radius:3px;margin-top:10px;overflow:hidden}
+.savings-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--accent));border-radius:3px;transition:width .5s}
+
+/* Sort */
+.sort-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sort-btn{padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.8rem;cursor:pointer;transition:.2s}
+.sort-btn:hover,.sort-btn.active{color:var(--text);border-color:var(--accent);background:rgba(99,102,241,.1)}
+
+/* CTA */
+.cta-section{text-align:center;padding:60px 20px;margin-top:40px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.05));border-radius:20px}
+.cta-section h2{font-size:1.8rem;font-weight:800;margin-bottom:12px}
+.cta-section p{color:var(--muted);margin-bottom:24px}
+.cta-btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:.3s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+
+/* Footer */
+.footer{text-align:center;padding:30px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:40px}
+
+/* Mobile */
+@media(max-width:640px){
+.hero h1{font-size:1.6rem}
+.procedure-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.results-grid{grid-template-columns:1fr}
+.usa-benchmark{flex-direction:column;text-align:center}
+.stats-row{gap:20px}
+}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.country-card{animation:fadeIn .4s ease-out both}
+.country-card:nth-child(2){animation-delay:.05s}
+.country-card:nth-child(3){animation-delay:.1s}
+.country-card:nth-child(4){animation-delay:.15s}
+.country-card:nth-child(5){animation-delay:.2s}
+.country-card:nth-child(6){animation-delay:.25s}
+
+img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-0.1em}
+.proc-btn img.emoji,.card-header img.emoji,.usa-benchmark img.emoji{height:1.8em;width:1.8em}
+.stat img.emoji{height:1em;width:1em}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('ru')">RU</button>
+</div>
+
+<div class="hero">
+  <h1 class="i18n" data-en="🏥 Medical Tourism Calculator" data-ru="🏥 Калькулятор Медицинского Туризма"></h1>
+  <p class="i18n" data-en="Compare procedure costs across 15+ countries. Find top hospitals and save up to 90% vs USA prices." data-ru="Сравните стоимость процедур в 15+ странах. Найдите лучшие клиники и сэкономьте до 90% по сравнению с США."></p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">10</div><div class="stat-label i18n" data-en="Procedures" data-ru="Процедур"></div></div>
+    <div class="stat"><div class="stat-num">15</div><div class="stat-label i18n" data-en="Countries" data-ru="Стран"></div></div>
+    <div class="stat"><div class="stat-num">90%</div><div class="stat-label i18n" data-en="Max Savings" data-ru="Макс. экономия"></div></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section-title i18n" data-en="🔬 Choose a Procedure" data-ru="🔬 Выберите процедуру"></div>
+  <div class="procedure-grid" id="procGrid"></div>
+
+  <div id="resultsSection" style="display:none">
+    <div class="usa-benchmark" id="usaBenchmark"></div>
+    
+    <div class="section-title i18n" data-en="🌍 Compare Countries" data-ru="🌍 Сравните страны"></div>
+    <div class="sort-row">
+      <button class="sort-btn active" data-sort="price" onclick="sortBy('price',this)"><span class="i18n" data-en="💰 Cheapest" data-ru="💰 Дешевле"></span></button>
+      <button class="sort-btn" data-sort="savings" onclick="sortBy('savings',this)"><span class="i18n" data-en="📉 Most Savings" data-ru="📉 Больше экономия"></span></button>
+      <button class="sort-btn" data-sort="jci" onclick="sortBy('jci',this)"><span class="i18n" data-en="🏅 JCI Accredited" data-ru="🏅 JCI аккредитация"></span></button>
+      <button class="sort-btn" data-sort="wait" onclick="sortBy('wait',this)"><span class="i18n" data-en="⏱ Shortest Wait" data-ru="⏱ Быстрее"></span></button>
+    </div>
+    <div class="results-grid" id="resultsGrid"></div>
+  </div>
+
+  <div class="cta-section">
+    <h2 class="i18n" data-en="Need Help Choosing?" data-ru="Нужна помощь с выбором?"></h2>
+    <p class="i18n" data-en="Get a personalized medical tourism plan with hospital recommendations, cost estimates, and travel logistics." data-ru="Получите персональный план медицинского туризма с рекомендациями клиник, оценкой стоимости и логистикой."></p>
+    <button class="cta-btn i18n" data-en="📩 Get Free Consultation" data-ru="📩 Бесплатная консультация" onclick="alert(lang==='en'?'Coming soon! Contact us at info@gronisbrazil.com':'Скоро! Свяжитесь с нами: info@gronisbrazil.com')"></button>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2026 Life Decision Platform. Data sources: government statistics, proprietary research, JCI directory.</p>
+  <p style="margin-top:8px">Prices are approximate averages and may vary by hospital, procedure complexity, and package inclusions.</p>
+</div>
+
+<script>
+const FLAGS = {"India":"🇮🇳","Turkey":"🇹🇷","Thailand":"🇹🇭","Mexico":"🇲🇽","Malaysia":"🇲🇾","South Korea":"🇰🇷","Germany":"🇩🇪","Israel":"🇮🇱","Singapore":"🇸🇬","Czech Republic":"🇨🇿","Hungary":"🇭🇺","Costa Rica":"🇨🇷","Spain":"🇪🇸","Greece":"🇬🇷","Brazil":"🇧🇷","USA":"🇺🇸"};
+const PROC_EMOJIS = {"Heart Bypass (CABG)":"❤️","Hip Replacement":"🦴","Dental Implant (single)":"🦷","IVF (per cycle)":"👶","Rhinoplasty":"👃","Hair Transplant (FUE, 3000 grafts)":"💇","Cancer Treatment (comprehensive)":"🎗️","Knee Replacement":"🦿","Gastric Sleeve (Weight Loss)":"⚖️","LASIK (both eyes)":"👁️"};
+const PROC_LABELS_RU = {"Heart Bypass (CABG)":"Шунтирование","Hip Replacement":"Замена бедра","Dental Implant (single)":"Зубной имплант","IVF (per cycle)":"ЭКО (цикл)","Rhinoplasty":"Ринопластика","Hair Transplant (FUE, 3000 grafts)":"Пересадка волос","Cancer Treatment (comprehensive)":"Онкология","Knee Replacement":"Замена колена","Gastric Sleeve (Weight Loss)":"Бариатрия","LASIK (both eyes)":"LASIK (оба глаза)"};
+
+const DATA = {"lastUpdate": "2026-03", "procedures": {"Heart Bypass (CABG)": {"category": "Cardiac", "usaPrice": 123000, "countries": {"India": {"price": 8500, "savings": "93%", "topHospitals": ["Apollo Hospitals", "Fortis", "Narayana Health"], "waitTime": "1-2 weeks", "jci": true}, "Turkey": {"price": 18000, "savings": "85%", "topHospitals": ["Acibadem", "Memorial", "Florence Nightingale"], "waitTime": "1-2 weeks", "jci": true}, "Thailand": {"price": 20000, "savings": "84%", "topHospitals": ["Bumrungrad", "Bangkok Hospital", "Samitivej"], "waitTime": "1-3 weeks", "jci": true}, "Mexico": {"price": 20000, "savings": "84%", "topHospitals": ["Christus Muguerza", "Hospital Angeles"], "waitTime": "2-4 weeks", "jci": true}, "Malaysia": {"price": 12000, "savings": "90%", "topHospitals": ["Gleneagles", "Prince Court"], "waitTime": "1-2 weeks", "jci": true}, "South Korea": {"price": 28000, "savings": "77%", "topHospitals": ["Samsung Medical", "Asan Medical"], "waitTime": "1-2 weeks", "jci": true}, "Germany": {"price": 25000, "savings": "80%", "topHospitals": ["Charité", "Helios", "Schön Klinik"], "waitTime": "2-4 weeks", "jci": false}, "Israel": {"price": 30000, "savings": "76%", "topHospitals": ["Sheba Medical", "Hadassah", "Ichilov"], "waitTime": "1-3 weeks", "jci": true}, "Singapore": {"price": 35000, "savings": "72%", "topHospitals": ["Mount Elizabeth", "Gleneagles SG"], "waitTime": "1 week", "jci": true}}}, "Hip Replacement": {"category": "Orthopedic", "usaPrice": 40000, "countries": {"India": {"price": 6500, "savings": "84%", "topHospitals": ["Apollo", "Fortis", "Max Healthcare"], "waitTime": "1-2 weeks", "jci": true}, "Turkey": {"price": 12000, "savings": "70%", "topHospitals": ["Acibadem", "Liv Hospital"], "waitTime": "1-2 weeks", "jci": true}, "Thailand": {"price": 13000, "savings": "68%", "topHospitals": ["Bumrungrad", "BNH Hospital"], "waitTime": "1-3 weeks", "jci": true}, "Mexico": {"price": 11000, "savings": "73%", "topHospitals": ["Galenia", "Hospital Angeles"], "waitTime": "2-3 weeks", "jci": true}, "Germany": {"price": 18000, "savings": "55%", "topHospitals": ["Charité", "ENDO-Klinik"], "waitTime": "2-4 weeks", "jci": false}, "South Korea": {"price": 15000, "savings": "63%", "topHospitals": ["Samsung Medical", "Severance"], "waitTime": "1-2 weeks", "jci": true}, "Czech Republic": {"price": 10000, "savings": "75%", "topHospitals": ["Motol Hospital", "Na Homolce"], "waitTime": "2-4 weeks", "jci": false}}}, "Dental Implant (single)": {"category": "Dental", "usaPrice": 4000, "countries": {"Mexico": {"price": 1200, "savings": "70%", "topHospitals": ["Dental Destinations", "Sani Dental"], "waitTime": "1-3 days", "jci": false}, "Turkey": {"price": 500, "savings": "88%", "topHospitals": ["DentGroup", "Dental Academy"], "waitTime": "1-3 days", "jci": false}, "Hungary": {"price": 900, "savings": "78%", "topHospitals": ["Evergreen Dental", "Kreativ Dental"], "waitTime": "1-3 days", "jci": false}, "Thailand": {"price": 1200, "savings": "70%", "topHospitals": ["Bangkok Dental", "BIDC"], "waitTime": "2-5 days", "jci": false}, "India": {"price": 750, "savings": "81%", "topHospitals": ["Dental Planet", "Clove Dental"], "waitTime": "1-3 days", "jci": false}, "Costa Rica": {"price": 1000, "savings": "75%", "topHospitals": ["Prisma Dental", "Costa Rica Dental"], "waitTime": "1-3 days", "jci": false}, "Czech Republic": {"price": 800, "savings": "80%", "topHospitals": ["Prague Dental Clinic"], "waitTime": "1-3 days", "jci": false}}}, "IVF (per cycle)": {"category": "Fertility", "usaPrice": 15000, "countries": {"Czech Republic": {"price": 3500, "savings": "77%", "topHospitals": ["IVF Cube", "Reprofit"], "waitTime": "1-3 months", "jci": false}, "India": {"price": 3500, "savings": "77%", "topHospitals": ["Nova IVF", "Cloudnine"], "waitTime": "2-4 weeks", "jci": true}, "Spain": {"price": 5000, "savings": "67%", "topHospitals": ["IVI Madrid", "Eugin Barcelona"], "waitTime": "1-2 months", "jci": false}, "Thailand": {"price": 4500, "savings": "70%", "topHospitals": ["Jetanin", "Safe Fertility"], "waitTime": "1-2 months", "jci": true}, "Israel": {"price": 5000, "savings": "67%", "topHospitals": ["Sheba", "Hadassah"], "waitTime": "1-2 months", "jci": true}, "Greece": {"price": 3500, "savings": "77%", "topHospitals": ["Embryolab", "Assisting Nature"], "waitTime": "1-2 months", "jci": false}, "Turkey": {"price": 3000, "savings": "80%", "topHospitals": ["Memorial", "Acibadem"], "waitTime": "1-2 months", "jci": true}}}, "Rhinoplasty": {"category": "Cosmetic", "usaPrice": 12000, "countries": {"Turkey": {"price": 3000, "savings": "75%", "topHospitals": ["Acibadem", "Estetik International"], "waitTime": "1-2 weeks", "jci": true}, "South Korea": {"price": 5000, "savings": "58%", "topHospitals": ["ID Hospital", "Banobagi"], "waitTime": "1-2 weeks", "jci": false}, "Thailand": {"price": 3000, "savings": "75%", "topHospitals": ["Yanhee Hospital", "Bangkok Hospital"], "waitTime": "1-2 weeks", "jci": true}, "India": {"price": 3000, "savings": "75%", "topHospitals": ["Apollo Cosmetic", "Meditrina"], "waitTime": "1-2 weeks", "jci": true}, "Mexico": {"price": 3800, "savings": "68%", "topHospitals": ["Hospital Angeles", "CER Hospital"], "waitTime": "2-3 weeks", "jci": true}, "Brazil": {"price": 3500, "savings": "71%", "topHospitals": ["Ivo Pitanguy Institute", "Clinica Esthetique"], "waitTime": "2-4 weeks", "jci": false}}}, "Hair Transplant (FUE, 3000 grafts)": {"category": "Cosmetic", "usaPrice": 15000, "countries": {"Turkey": {"price": 2500, "savings": "83%", "topHospitals": ["Estepera", "HLC", "Smile Hair"], "waitTime": "1 week", "jci": false}, "India": {"price": 1500, "savings": "90%", "topHospitals": ["Medispa", "DHI India"], "waitTime": "1-2 weeks", "jci": false}, "Thailand": {"price": 4000, "savings": "73%", "topHospitals": ["Absolute Hair", "DHI Thailand"], "waitTime": "1-2 weeks", "jci": false}, "Hungary": {"price": 3500, "savings": "77%", "topHospitals": ["Hair Clinic Budapest"], "waitTime": "1-2 weeks", "jci": false}, "Mexico": {"price": 3000, "savings": "80%", "topHospitals": ["HMR", "DHI Mexico"], "waitTime": "1-2 weeks", "jci": false}}}, "Cancer Treatment (comprehensive)": {"category": "Oncology", "usaPrice": 150000, "countries": {"India": {"price": 15000, "savings": "90%", "topHospitals": ["Tata Memorial", "Apollo Cancer", "HCG"], "waitTime": "1-2 weeks", "jci": true}, "Israel": {"price": 50000, "savings": "67%", "topHospitals": ["Sheba Medical", "Hadassah", "Assuta"], "waitTime": "1-2 weeks", "jci": true}, "Germany": {"price": 40000, "savings": "73%", "topHospitals": ["Charité", "Heidelberg University", "Helios"], "waitTime": "2-4 weeks", "jci": false}, "Turkey": {"price": 20000, "savings": "87%", "topHospitals": ["Acibadem", "Memorial", "Medicana"], "waitTime": "1-2 weeks", "jci": true}, "South Korea": {"price": 30000, "savings": "80%", "topHospitals": ["Samsung Cancer", "NCC Korea"], "waitTime": "1-2 weeks", "jci": true}, "Singapore": {"price": 45000, "savings": "70%", "topHospitals": ["National Cancer Centre", "Parkway"], "waitTime": "1 week", "jci": true}, "Thailand": {"price": 18000, "savings": "88%", "topHospitals": ["Bumrungrad Cancer", "Siriraj"], "waitTime": "1-2 weeks", "jci": true}}}, "Knee Replacement": {"category": "Orthopedic", "usaPrice": 35000, "countries": {"India": {"price": 5500, "savings": "84%", "topHospitals": ["Apollo", "Fortis", "Max"], "waitTime": "1-2 weeks", "jci": true}, "Turkey": {"price": 10000, "savings": "71%", "topHospitals": ["Acibadem", "Memorial"], "waitTime": "1-2 weeks", "jci": true}, "Thailand": {"price": 11000, "savings": "69%", "topHospitals": ["Bumrungrad", "BNH"], "waitTime": "1-3 weeks", "jci": true}, "Mexico": {"price": 9500, "savings": "73%", "topHospitals": ["Hospital Angeles", "Galenia"], "waitTime": "2-3 weeks", "jci": true}, "Malaysia": {"price": 7500, "savings": "79%", "topHospitals": ["Gleneagles", "Subang Jaya"], "waitTime": "1-2 weeks", "jci": true}}}, "Gastric Sleeve (Weight Loss)": {"category": "Bariatric", "usaPrice": 20000, "countries": {"Mexico": {"price": 4500, "savings": "78%", "topHospitals": ["Hospital MedStar", "Obesity Aid"], "waitTime": "1-2 weeks", "jci": true}, "Turkey": {"price": 4000, "savings": "80%", "topHospitals": ["Memorial", "Acibadem"], "waitTime": "1-2 weeks", "jci": true}, "India": {"price": 3500, "savings": "83%", "topHospitals": ["Apollo", "Max Healthcare"], "waitTime": "1-2 weeks", "jci": true}, "Thailand": {"price": 6000, "savings": "70%", "topHospitals": ["Bumrungrad", "Bangkok Hospital"], "waitTime": "1-2 weeks", "jci": true}, "Czech Republic": {"price": 5000, "savings": "75%", "topHospitals": ["Iscare", "KCM Clinic"], "waitTime": "2-4 weeks", "jci": false}}}, "LASIK (both eyes)": {"category": "Ophthalmology", "usaPrice": 4500, "countries": {"India": {"price": 500, "savings": "89%", "topHospitals": ["Centre for Sight", "Shroff Eye"], "waitTime": "1-3 days", "jci": true}, "Turkey": {"price": 1200, "savings": "73%", "topHospitals": ["Dünyagöz", "Memorial"], "waitTime": "1-3 days", "jci": true}, "Thailand": {"price": 1500, "savings": "67%", "topHospitals": ["TRSC", "Rutnin Eye"], "waitTime": "1-3 days", "jci": true}, "South Korea": {"price": 1800, "savings": "60%", "topHospitals": ["B&VIIT", "Gangnam Eye"], "waitTime": "1-3 days", "jci": false}, "Czech Republic": {"price": 1000, "savings": "78%", "topHospitals": ["Lexum Eye", "Gemini Eye"], "waitTime": "1-3 days", "jci": false}}}}};
+
+let lang = 'en';
+let selectedProc = null;
+let currentSort = 'price';
+
+function setLang(l){
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === l.toUpperCase()));
+  document.querySelectorAll('.i18n').forEach(el => {
+    const v = el.dataset[l];
+    if(v) el.textContent = v;
+  });
+  if(selectedProc) renderResults();
+  renderProcedures();
+  twemoji.parse(document.body);
+}
+
+function renderProcedures(){
+  const grid = document.getElementById('procGrid');
+  grid.innerHTML = '';
+  for(const [name, proc] of Object.entries(DATA.procedures)){
+    const btn = document.createElement('div');
+    btn.className = 'proc-btn' + (selectedProc === name ? ' active' : '');
+    const label = lang === 'ru' ? (PROC_LABELS_RU[name] || name) : name.replace(/ \(.*\)/, '');
+    btn.innerHTML = `<span class="emoji">${PROC_EMOJIS[name]||'🏥'}</span><div class="label">${label}</div><div class="us-price">USA: $${proc.usaPrice.toLocaleString()}</div>`;
+    btn.onclick = () => { selectedProc = name; renderProcedures(); renderResults(); };
+    grid.appendChild(btn);
+  }
+  twemoji.parse(grid);
+}
+
+function renderResults(){
+  const section = document.getElementById('resultsSection');
+  section.style.display = 'block';
+  const proc = DATA.procedures[selectedProc];
+  
+  // USA benchmark
+  const usaDiv = document.getElementById('usaBenchmark');
+  usaDiv.innerHTML = `<span class="flag">🇺🇸</span><div class="info"><div class="label">${lang==='en'?'USA Average Price':'Средняя цена в США'}</div><div class="price">$${proc.usaPrice.toLocaleString()}</div></div>`;
+  twemoji.parse(usaDiv);
+  
+  // Sort countries
+  let entries = Object.entries(proc.countries);
+  if(currentSort === 'price') entries.sort((a,b) => a[1].price - b[1].price);
+  else if(currentSort === 'savings') entries.sort((a,b) => parseInt(b[1].savings) - parseInt(a[1].savings));
+  else if(currentSort === 'jci') entries.sort((a,b) => (b[1].jci?1:0) - (a[1].jci?1:0) || a[1].price - b[1].price);
+  else if(currentSort === 'wait') entries.sort((a,b) => {
+    const wa = parseInt(a[1].waitTime); const wb = parseInt(b[1].waitTime);
+    return wa - wb || a[1].price - b[1].price;
+  });
+  
+  const grid = document.getElementById('resultsGrid');
+  grid.innerHTML = '';
+  const cheapest = Math.min(...entries.map(e => e[1].price));
+  
+  entries.forEach(([country, info], i) => {
+    const card = document.createElement('div');
+    card.className = 'country-card' + (info.price === cheapest ? ' best' : '');
+    card.style.animationDelay = (i * 0.05) + 's';
+    const savingsNum = parseInt(info.savings);
+    const savedAmount = proc.usaPrice - info.price;
+    
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="flag">${FLAGS[country]||'🌍'}</span>
+        <span class="name">${country}</span>
+        ${info.jci ? '<span class="jci">✓ JCI</span>' : ''}
+      </div>
+      <div class="price-row">
+        <span class="price">$${info.price.toLocaleString()}</span>
+        <span class="savings">-${info.savings}</span>
+      </div>
+      <div style="font-size:.8rem;color:var(--muted)">${lang==='en'?'You save':'Экономия'}: <strong style="color:var(--green)">$${savedAmount.toLocaleString()}</strong></div>
+      <div class="savings-bar"><div class="savings-bar-fill" style="width:${savingsNum}%"></div></div>
+      <div class="detail-grid">
+        <div class="detail-item"><div class="dlabel">${lang==='en'?'Wait Time':'Ожидание'}</div>${info.waitTime}</div>
+        <div class="detail-item"><div class="dlabel">${lang==='en'?'Accreditation':'Аккредитация'}</div>${info.jci?'JCI ✅':'Local'}</div>
+      </div>
+      <div class="hospitals">
+        <div class="hl">${lang==='en'?'Top Hospitals':'Лучшие клиники'}:</div>
+        ${info.topHospitals.map(h => `<span class="hosp-tag">${h}</span>`).join('')}
+      </div>`;
+    grid.appendChild(card);
+  });
+  twemoji.parse(grid);
+  section.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function sortBy(sort, btn){
+  currentSort = sort;
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if(selectedProc) renderResults();
+}
+
+// Init
+renderProcedures();
+twemoji.parse(document.body);
+</script>
+</body>
+</html>

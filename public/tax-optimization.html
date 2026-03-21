@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax Optimization Calculator</title>
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+<style>
+:root{--bg:#0a0f1e;--card:#111827;--card2:#1a2332;--accent:#6366f1;--accent2:#8b5cf6;--gold:#d4af37;--green:#10b981;--red:#ef4444;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0a0f1e 0%,#1a1040 50%,#0a0f1e 100%)}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 20px}
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:4px}
+.lang-btn{padding:6px 14px;border:none;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600;background:transparent;color:var(--muted);transition:.2s}
+.lang-btn.active{background:var(--accent);color:#fff}
+.section-title{font-size:1.3rem;font-weight:700;margin:30px 0 16px}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.country-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s;position:relative}
+.country-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(99,102,241,.15)}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card-header .flag{font-size:1.8rem}
+.card-header .name{font-size:1.1rem;font-weight:700}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.detail-item{background:var(--card2);padding:8px 10px;border-radius:8px;font-size:.8rem}
+.detail-item .dlabel{color:var(--muted);font-size:.7rem;margin-bottom:2px}
+.highlight-tag{display:inline-block;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);padding:4px 10px;border-radius:8px;font-size:.72rem;margin:3px 2px;color:var(--accent)}
+.sort-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sort-btn{padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.8rem;cursor:pointer;transition:.2s}
+.sort-btn:hover,.sort-btn.active{color:var(--text);border-color:var(--accent);background:rgba(99,102,241,.1)}
+.score-bar{height:8px;background:var(--border);border-radius:4px;margin-top:6px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.price-big{font-size:1.6rem;font-weight:800;color:var(--green)}
+.stats-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:24px}
+.stat{text-align:center}.stat-num{font-size:2rem;font-weight:800;color:var(--accent)}.stat-label{font-size:.85rem;color:var(--muted)}
+.cta-section{text-align:center;padding:60px 20px;margin-top:40px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.05));border-radius:20px}
+.cta-section h2{font-size:1.8rem;font-weight:800;margin-bottom:12px}.cta-section p{color:var(--muted);margin-bottom:24px}
+.cta-btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;border-radius:12px;font-weight:700;border:none;cursor:pointer;transition:.3s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.footer{text-align:center;padding:30px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:40px}
+img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-0.1em}
+.card-header img.emoji{height:1.8em;width:1.8em}
+@media(max-width:640px){.hero h1{font-size:1.6rem}.results-grid{grid-template-columns:1fr}.stats-row{gap:20px}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.country-card{animation:fadeIn .4s ease-out both}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head><body>
+<div class="lang-toggle"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ru')">RU</button></div>
+<div class="hero"><h1 id="heroTitle">💰 Tax Optimization Calculator</h1><p id="heroDesc">Compare tax regimes across 14 jurisdictions: personal income, corporate, capital gains, dividends, crypto, and VAT.</p><div class="stats-row"><div class="stat"><div class="stat-num">14</div><div class="stat-label">Jurisdictions</div></div><div class="stat"><div class="stat-num">0%</div><div class="stat-label">Min Tax</div></div></div></div>
+<div class="container"><div id="content"></div>
+<div class="cta-section"><h2 id="ctaTitle">Need Expert Help?</h2><p id="ctaDesc">Get personalized recommendations based on your goals, budget, and preferences.</p>
+<button class="cta-btn" onclick="alert('Coming soon! Contact info@gronisbrazil.com')">📩 Get Free Consultation</button></div></div>
+<div class="footer"><p>© 2026 Life Decision Platform. Data: government statistics, proprietary research.</p></div>
+<script>
+const FLAGS={"India":"🇮🇳","Turkey":"🇹🇷","Thailand":"🇹🇭","Mexico":"🇲🇽","Malaysia":"🇲🇾","South Korea":"🇰🇷","Germany":"🇩🇪","Israel":"🇮🇱","Singapore":"🇸🇬","Czech Republic":"🇨🇿","Hungary":"🇭🇺","Costa Rica":"🇨🇷","Spain":"🇪🇸","Greece":"🇬🇷","Brazil":"🇧🇷","USA":"🇺🇸","Portugal":"🇵🇹","Panama":"🇵🇦","France":"🇫🇷","Italy":"🇮🇹","UAE (Dubai)":"🇦🇪","UAE":"🇦🇪","Georgia":"🇬🇪","Estonia":"🇪🇪","Indonesia (Bali)":"🇮🇩","Croatia":"🇭🇷","Malta":"🇲🇹","Paraguay":"🇵🇾","Ireland":"🇮🇪","Cyprus":"🇨🇾","Monaco":"🇲🇨","Andorra":"🇦🇩","UK (Non-Dom)":"🇬🇧","UK":"🇬🇧","Canada":"🇨🇦","Australia":"🇦🇺","New Zealand":"🇳🇿","Netherlands":"🇳🇱","Austria":"🇦🇹","Poland":"🇵🇱","St. Kitts & Nevis":"🇰🇳","Dominica":"🇩🇲","Grenada":"🇬🇩","Antigua & Barbuda":"🇦🇬","Vanuatu":"🇻🇺","Jordan":"🇯🇴"};
+const DATA = {"lastUpdate": "2026-03", "countries": {"UAE (Dubai)": {"personalTax": "0%", "corporateTax": "9% (above $100K)", "capitalGains": "0%", "dividends": "0%", "crypto": "0%", "vatGst": "5%", "residencyReq": "Emirates ID + visa", "minInvestment": "$0 (freelance) or $2,700/mo", "easeOfSetup": 9, "bankingScore": 8, "highlights": ["Zero personal tax", "Free zones", "Golden Visa", "No reporting to most countries", "Crypto-friendly"]}, "Panama": {"personalTax": "0% foreign income", "corporateTax": "25% local only", "capitalGains": "10% local", "dividends": "0% foreign", "crypto": "0%", "vatGst": "7%", "residencyReq": "Friendly Nations Visa", "minInvestment": "$5,000 bank deposit", "easeOfSetup": 7, "bankingScore": 6, "highlights": ["Territorial taxation", "USD currency", "Banking center", "Pensionado visa", "0% on foreign"]}, "Georgia": {"personalTax": "1% (Small Business) or 20%", "corporateTax": "15% (Estonian model)", "capitalGains": "0% (individuals)", "dividends": "5%", "crypto": "0%", "vatGst": "18%", "residencyReq": "Stay 183 days", "minInvestment": "$0", "easeOfSetup": 9, "bankingScore": 7, "highlights": ["1% small business tax!", "No visa needed 1yr", "Cheapest setup", "Estonian model", "Crypto haven"]}, "Singapore": {"personalTax": "0-22% progressive", "corporateTax": "17%", "capitalGains": "0%", "dividends": "0%", "crypto": "0%", "vatGst": "9%", "residencyReq": "EP or EntrePass", "minInvestment": "$50K+ company", "easeOfSetup": 8, "bankingScore": 10, "highlights": ["0% capital gains", "Top banking", "Stable", "Asia gateway", "Intellectual property hub"]}, "Portugal (NHR)": {"personalTax": "20% flat (NHR)", "corporateTax": "21%", "capitalGains": "28% (or 0% NHR foreign)", "dividends": "28% (or 0% NHR)", "crypto": "0% (held >365 days)", "vatGst": "23%", "residencyReq": "D7 or Golden Visa", "minInvestment": "€500K (Golden Visa funds)", "easeOfSetup": 7, "bankingScore": 7, "highlights": ["NHR 20% flat", "0% foreign capital gains", "0% foreign dividends", "EU access", "10 year program"]}, "Malta": {"personalTax": "0-35% (but non-dom 15% min)", "corporateTax": "35% (effective 5% with refunds)", "capitalGains": "0% (non-dom on foreign)", "dividends": "0% (non-dom)", "crypto": "0% (long-term)", "vatGst": "18%", "residencyReq": "Non-dom program", "minInvestment": "€5,000/yr + property", "easeOfSetup": 6, "bankingScore": 7, "highlights": ["Effective 5% corp tax", "Non-dom regime", "EU + English", "Gaming licenses", "Mediterranean island"]}, "Paraguay": {"personalTax": "10% flat", "corporateTax": "10% flat", "capitalGains": "10%", "dividends": "8%", "crypto": "10%", "vatGst": "10%", "residencyReq": "Cedula (easy)", "minInvestment": "$5,000 bank deposit", "easeOfSetup": 8, "bankingScore": 5, "highlights": ["10% flat everything!", "Easiest residency LatAm", "Cheapest", "No worldwide taxation", "Crypto-neutral"]}, "Estonia (e-Residency)": {"personalTax": "20% (only on distributed profits)", "corporateTax": "0% (reinvested) / 20% distributed", "capitalGains": "20% (distributed)", "dividends": "20% (when paid out)", "crypto": "20% distributed", "vatGst": "22%", "residencyReq": "e-Residency (remote)", "minInvestment": "€100 e-Residency + €200/yr", "easeOfSetup": 10, "bankingScore": 8, "highlights": ["0% on reinvested profits!", "Run EU company from anywhere", "100% digital", "No physical presence needed", "Wise/Payoneer integrated"]}, "Ireland": {"personalTax": "20-40%", "corporateTax": "12.5%", "capitalGains": "33%", "dividends": "Taxed as income", "crypto": "33%", "vatGst": "23%", "residencyReq": "Stamp 4 or work permit", "minInvestment": "€1M (investor visa)", "easeOfSetup": 7, "bankingScore": 9, "highlights": ["12.5% corp tax", "Tech HQ (Google, Apple)", "English-speaking EU", "IP regime", "Holding company"]}, "Cyprus": {"personalTax": "0-35%", "corporateTax": "12.5%", "capitalGains": "0% (most cases)", "dividends": "0% (most cases)", "crypto": "0%", "vatGst": "19%", "residencyReq": "Category F permit", "minInvestment": "€300K property", "easeOfSetup": 7, "bankingScore": 6, "highlights": ["0% capital gains (most)", "0% dividends", "12.5% corp", "Non-dom regime", "IP box regime"]}, "Monaco": {"personalTax": "0%", "corporateTax": "33% (only if >25% revenue outside)", "capitalGains": "0%", "dividends": "0%", "crypto": "0%", "vatGst": "20% (French VAT)", "residencyReq": "€500K+ bank deposit", "minInvestment": "€500K", "easeOfSetup": 4, "bankingScore": 9, "highlights": ["Zero personal tax", "Billionaire playground", "F1 Grand Prix", "Mediterranean", "Wealth signal"]}, "Andorra": {"personalTax": "10% (max)", "corporateTax": "10%", "capitalGains": "0% (if held >10yr)", "dividends": "0%", "crypto": "0-10%", "vatGst": "4.5%", "residencyReq": "Active/Passive residency", "minInvestment": "€400K deposit", "easeOfSetup": 6, "bankingScore": 7, "highlights": ["10% max tax", "Between France & Spain", "Ski resort", "Tax haven EU-adjacent", "Lowest VAT Europe"]}, "UK (Non-Dom)": {"personalTax": "20-45% (UK income only if non-dom)", "corporateTax": "25%", "capitalGains": "0% (foreign, non-dom)", "dividends": "0% (foreign, non-dom)", "crypto": "0% (foreign, non-dom)", "vatGst": "20%", "residencyReq": "Right to reside", "minInvestment": "£30K remittance charge (after 7yr)", "easeOfSetup": 7, "bankingScore": 10, "highlights": ["Non-dom: 0% on foreign income", "London = global finance", "Common law", "English", "Ending 2025 (transition)"]}, "Brazil": {"personalTax": "7.5-27.5%", "corporateTax": "34%", "capitalGains": "15-22.5%", "dividends": "0% (until reform)", "crypto": "15%", "vatGst": "~27% (new IVA)", "residencyReq": "VITEM V (investor)", "minInvestment": "R$500K (~$96K)", "easeOfSetup": 5, "bankingScore": 6, "highlights": ["0% dividends (still!)", "Path to citizenship 4yr", "Growing economy", "BRICS member", "Real estate appreciation"]}}};
+let lang='en';
+function setLang(l){lang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+document.getElementById('heroTitle').textContent=l==='ru'?'💰 Калькулятор Налоговой Оптимизации':'💰 Tax Optimization Calculator';
+document.getElementById('heroDesc').textContent=l==='ru'?'Сравните налоговые режимы 14 юрисдикций: НДФЛ, корпоративный, прирост капитала, дивиденды, крипто и НДС.':'Compare tax regimes across 14 jurisdictions: personal income, corporate, capital gains, dividends, crypto, and VAT.';
+document.getElementById('ctaTitle').textContent=l==='ru'?'Нужна помощь?':'Need Expert Help?';
+document.getElementById('ctaDesc').textContent=l==='ru'?'Получите персональные рекомендации.':'Get personalized recommendations.';
+render();twemoji.parse(document.body)}
+
+function render(){const c=document.getElementById('content');let entries=Object.entries(DATA.countries);
+let html='<div class="section-title">'+(lang==='ru'?'🌍 Налоговые юрисдикции':'🌍 Tax Jurisdictions')+'</div>';
+html+='<div class="sort-row"><button class="sort-btn active" onclick="doSort(\'personal\',this)">👤 '+(lang==='ru'?'НДФЛ':'Personal')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'corp\',this)">🏢 '+(lang==='ru'?'Корп.':'Corporate')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'cg\',this)">📈 '+(lang==='ru'?'Капитал':'Cap. Gains')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'crypto\',this)">₿ Crypto</button>';
+html+='<button class="sort-btn" onclick="doSort(\'ease\',this)">⚡ '+(lang==='ru'?'Простота':'Ease')+'</button></div>';
+html+='<div class="results-grid" id="grid"></div>';c.innerHTML=html;doSort('personal',document.querySelector('.sort-btn'))}
+function taxNum(s){const m=s.match(/(\d+)/);return m?parseInt(m[1]):0}
+function doSort(by,btn){document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+let entries=Object.entries(DATA.countries);
+if(by==='personal')entries.sort((a,b)=>taxNum(a[1].personalTax)-taxNum(b[1].personalTax));
+else if(by==='corp')entries.sort((a,b)=>taxNum(a[1].corporateTax)-taxNum(b[1].corporateTax));
+else if(by==='cg')entries.sort((a,b)=>taxNum(a[1].capitalGains)-taxNum(b[1].capitalGains));
+else if(by==='crypto')entries.sort((a,b)=>taxNum(a[1].crypto)-taxNum(b[1].crypto));
+else if(by==='ease')entries.sort((a,b)=>b[1].easeOfSetup-a[1].easeOfSetup);
+const g=document.getElementById('grid');g.innerHTML='';
+entries.forEach(([country,info],i)=>{const card=document.createElement('div');card.className='country-card';card.style.animationDelay=(i*.05)+'s';
+const zeroTax=info.personalTax.includes('0%')&&!info.personalTax.includes('20');
+card.innerHTML=`<div class="card-header"><span class="flag">${FLAGS[country]||'🌍'}</span><span class="name">${country}</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px">
+<div style="text-align:center;background:var(--card2);padding:10px;border-radius:10px"><div style="font-size:.65rem;color:var(--muted)">${lang==='ru'?'НДФЛ':'Personal'}</div><div style="font-size:1.1rem;font-weight:800;color:${zeroTax?'var(--green)':'var(--text)'}">${info.personalTax.split('(')[0].trim()}</div></div>
+<div style="text-align:center;background:var(--card2);padding:10px;border-radius:10px"><div style="font-size:.65rem;color:var(--muted)">${lang==='ru'?'Корп.':'Corporate'}</div><div style="font-size:1.1rem;font-weight:800">${info.corporateTax.split('(')[0].trim()}</div></div>
+<div style="text-align:center;background:var(--card2);padding:10px;border-radius:10px"><div style="font-size:.65rem;color:var(--muted)">₿ Crypto</div><div style="font-size:1.1rem;font-weight:800;color:${info.crypto.includes('0%')?'var(--green)':'var(--text)'}">${info.crypto.split('(')[0].trim()}</div></div>
+</div>
+<div class="detail-grid">
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Прирост капитала':'Capital Gains'}</div>${info.capitalGains}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Дивиденды':'Dividends'}</div>${info.dividends}</div>
+<div class="detail-item"><div class="dlabel">VAT/GST</div>${info.vatGst}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Резидентство':'Residency'}</div>${info.residencyReq}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Мин. вложения':'Min Investment'}</div>${info.minInvestment}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Банкинг':'Banking'}</div>${info.bankingScore}/10</div>
+</div>
+<div style="margin-top:10px"><div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)"><span>${lang==='ru'?'Простота настройки':'Ease of Setup'}</span><span>${info.easeOfSetup}/10</span></div>
+<div class="score-bar"><div class="score-bar-fill" style="width:${info.easeOfSetup*10}%;background:var(--green)"></div></div></div>
+<div style="margin-top:12px">${info.highlights.map(h=>'<span class="highlight-tag">'+h+'</span>').join('')}</div>`;
+g.appendChild(card)});twemoji.parse(g)}
+
+render();twemoji.parse(document.body);
+</script></body></html>

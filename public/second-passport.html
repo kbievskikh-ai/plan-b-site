@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Passport Calculator</title>
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+<style>
+:root{--bg:#0a0f1e;--card:#111827;--card2:#1a2332;--accent:#6366f1;--accent2:#8b5cf6;--gold:#d4af37;--green:#10b981;--red:#ef4444;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0a0f1e 0%,#1a1040 50%,#0a0f1e 100%)}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 20px}
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:4px}
+.lang-btn{padding:6px 14px;border:none;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600;background:transparent;color:var(--muted);transition:.2s}
+.lang-btn.active{background:var(--accent);color:#fff}
+.section-title{font-size:1.3rem;font-weight:700;margin:30px 0 16px}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.country-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s;position:relative}
+.country-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(99,102,241,.15)}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card-header .flag{font-size:1.8rem}
+.card-header .name{font-size:1.1rem;font-weight:700}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.detail-item{background:var(--card2);padding:8px 10px;border-radius:8px;font-size:.8rem}
+.detail-item .dlabel{color:var(--muted);font-size:.7rem;margin-bottom:2px}
+.highlight-tag{display:inline-block;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);padding:4px 10px;border-radius:8px;font-size:.72rem;margin:3px 2px;color:var(--accent)}
+.sort-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sort-btn{padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.8rem;cursor:pointer;transition:.2s}
+.sort-btn:hover,.sort-btn.active{color:var(--text);border-color:var(--accent);background:rgba(99,102,241,.1)}
+.score-bar{height:8px;background:var(--border);border-radius:4px;margin-top:6px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.price-big{font-size:1.6rem;font-weight:800;color:var(--green)}
+.stats-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:24px}
+.stat{text-align:center}.stat-num{font-size:2rem;font-weight:800;color:var(--accent)}.stat-label{font-size:.85rem;color:var(--muted)}
+.cta-section{text-align:center;padding:60px 20px;margin-top:40px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.05));border-radius:20px}
+.cta-section h2{font-size:1.8rem;font-weight:800;margin-bottom:12px}.cta-section p{color:var(--muted);margin-bottom:24px}
+.cta-btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;border-radius:12px;font-weight:700;border:none;cursor:pointer;transition:.3s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.footer{text-align:center;padding:30px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:40px}
+img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-0.1em}
+.card-header img.emoji{height:1.8em;width:1.8em}
+@media(max-width:640px){.hero h1{font-size:1.6rem}.results-grid{grid-template-columns:1fr}.stats-row{gap:20px}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.country-card{animation:fadeIn .4s ease-out both}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head><body>
+<div class="lang-toggle"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ru')">RU</button></div>
+<div class="hero"><h1 id="heroTitle">🛡️ Second Passport Calculator</h1><p id="heroDesc">Compare citizenship & residency by investment programs: CBI, Golden Visas, and ancestry routes across 20 programs.</p><div class="stats-row"><div class="stat"><div class="stat-num">20</div><div class="stat-label">Programs</div></div><div class="stat"><div class="stat-num">$100K</div><div class="stat-label">From</div></div></div></div>
+<div class="container"><div id="content"></div>
+<div class="cta-section"><h2 id="ctaTitle">Need Expert Help?</h2><p id="ctaDesc">Get personalized recommendations based on your goals, budget, and preferences.</p>
+<button class="cta-btn" onclick="alert('Coming soon! Contact info@gronisbrazil.com')">📩 Get Free Consultation</button></div></div>
+<div class="footer"><p>© 2026 Life Decision Platform. Data: government statistics, proprietary research.</p></div>
+<script>
+const FLAGS={"India":"🇮🇳","Turkey":"🇹🇷","Thailand":"🇹🇭","Mexico":"🇲🇽","Malaysia":"🇲🇾","South Korea":"🇰🇷","Germany":"🇩🇪","Israel":"🇮🇱","Singapore":"🇸🇬","Czech Republic":"🇨🇿","Hungary":"🇭🇺","Costa Rica":"🇨🇷","Spain":"🇪🇸","Greece":"🇬🇷","Brazil":"🇧🇷","USA":"🇺🇸","Portugal":"🇵🇹","Panama":"🇵🇦","France":"🇫🇷","Italy":"🇮🇹","UAE (Dubai)":"🇦🇪","UAE":"🇦🇪","Georgia":"🇬🇪","Estonia":"🇪🇪","Indonesia (Bali)":"🇮🇩","Croatia":"🇭🇷","Malta":"🇲🇹","Paraguay":"🇵🇾","Ireland":"🇮🇪","Cyprus":"🇨🇾","Monaco":"🇲🇨","Andorra":"🇦🇩","UK (Non-Dom)":"🇬🇧","UK":"🇬🇧","Canada":"🇨🇦","Australia":"🇦🇺","New Zealand":"🇳🇿","Netherlands":"🇳🇱","Austria":"🇦🇹","Poland":"🇵🇱","St. Kitts & Nevis":"🇰🇳","Dominica":"🇩🇲","Grenada":"🇬🇩","Antigua & Barbuda":"🇦🇬","Vanuatu":"🇻🇺","Jordan":"🇯🇴"};
+const DATA = {"lastUpdate": "2026-03", "programs": {"Citizenship by Investment (CBI)": {"countries": {"St. Kitts & Nevis": {"minInvestment": 250000, "currency": "USD", "type": "Donation or Real Estate $400K", "timeline": "4-6 months", "visaFree": 156, "dualCitizenship": true, "familyIncluded": true, "taxOnWorldwide": false, "highlights": ["Oldest CBI program", "No residence required", "No tax on foreign income", "156 visa-free countries", "Includes EU Schengen"]}, "Dominica": {"minInvestment": 100000, "currency": "USD", "type": "Donation (cheapest CBI)", "timeline": "3-6 months", "visaFree": 144, "dualCitizenship": true, "familyIncluded": true, "taxOnWorldwide": false, "highlights": ["Cheapest CBI ($100K)", "No residence required", "No foreign income tax", "Nature island", "Fast processing"]}, "Grenada": {"minInvestment": 150000, "currency": "USD", "type": "Donation or Real Estate $270K", "timeline": "4-6 months", "visaFree": 147, "dualCitizenship": true, "familyIncluded": true, "taxOnWorldwide": false, "highlights": ["E-2 treaty with USA!", "Spice island", "147 visa-free", "No foreign income tax", "Include parents"]}, "Antigua & Barbuda": {"minInvestment": 100000, "currency": "USD", "type": "Donation (family 4+)", "timeline": "3-6 months", "visaFree": 150, "dualCitizenship": true, "familyIncluded": true, "taxOnWorldwide": false, "highlights": ["$100K family donation", "5 days residence/5yr", "Beach paradise", "150 visa-free", "Fast"]}, "Vanuatu": {"minInvestment": 130000, "currency": "USD", "type": "Donation", "timeline": "1-2 months", "visaFree": 112, "dualCitizenship": true, "familyIncluded": true, "taxOnWorldwide": false, "highlights": ["Fastest CBI (30 days!)", "No income tax", "Pacific island", "0% tax country", "Remote processing"]}, "Turkey": {"minInvestment": 400000, "currency": "USD", "type": "Real Estate", "timeline": "3-6 months", "visaFree": 110, "dualCitizenship": true, "familyIncluded": true, "taxOnWorldwide": true, "highlights": ["Real estate investment", "E-2 treaty USA possible", "Transcontinental", "Growing economy", "Property appreciation"]}, "Jordan": {"minInvestment": 750000, "currency": "USD", "type": "Investment/Real Estate", "timeline": "3-6 months", "visaFree": 52, "dualCitizenship": false, "familyIncluded": true, "taxOnWorldwide": false, "highlights": ["Middle East access", "No foreign income tax", "Strategic location", "Stable kingdom", "Growing"]}}}, "Golden Visa / Residence by Investment (RBI)": {"countries": {"Portugal": {"minInvestment": 500000, "currency": "EUR", "type": "Investment Fund (no real estate since 2023)", "timeline": "6-12 months", "pathToCitizenship": "5 years", "visaFreeWithCitizenship": 186, "highlights": ["EU citizenship in 5yr", "Schengen access", "NHR tax benefits", "Best climate EU", "186 visa-free with passport"]}, "Spain": {"minInvestment": 500000, "currency": "EUR", "type": "Real Estate", "timeline": "2-3 months", "pathToCitizenship": "10 years", "visaFreeWithCitizenship": 190, "highlights": ["EU residence immediately", "Real estate eligible", "Schengen", "10yr to citizenship", "Beach + culture"]}, "Greece": {"minInvestment": 250000, "currency": "EUR", "type": "Real Estate (€500K in Athens/islands)", "timeline": "2-3 months", "pathToCitizenship": "7 years", "visaFreeWithCitizenship": 185, "highlights": ["Cheapest EU Golden Visa", "Real estate eligible", "€250K outside cities", "7yr citizenship", "Islands!"]}, "UAE": {"minInvestment": 545000, "currency": "USD", "type": "Real Estate (AED 2M)", "timeline": "2-4 weeks", "pathToCitizenship": "30 years (no citizenship)", "visaFreeWithCitizenship": 0, "highlights": ["10yr Golden Visa", "0% income tax", "No citizenship available", "Fastest processing", "Luxury lifestyle"]}, "Italy": {"minInvestment": 250000, "currency": "EUR", "type": "Startup/Investment", "timeline": "3-6 months", "pathToCitizenship": "10 years", "visaFreeWithCitizenship": 189, "highlights": ["Investor visa", "Startup option €250K", "10yr citizenship", "EU access", "Dolce Vita"]}, "Malta": {"minInvestment": 150000, "currency": "EUR", "type": "MPRP (rental + contribution)", "timeline": "4-6 months", "pathToCitizenship": "5 years (exceptional)", "visaFreeWithCitizenship": 186, "highlights": ["EU residence", "English-speaking", "5yr citizenship possible", "Mediterranean", "Gaming hub"]}, "Brazil": {"minInvestment": 192000, "currency": "USD", "type": "Real Estate (R$1M, or R$700K North)", "timeline": "2-3 months", "pathToCitizenship": "4 years", "visaFreeWithCitizenship": 170, "highlights": ["Fastest citizenship (4yr!)", "Cheapest", "Real estate eligible", "Jus soli + investment", "BRICS member"]}}}, "Citizenship by Descent / Ancestry": {"countries": {"Italy": {"requirement": "Italian ancestor (no generational limit)", "timeline": "2-4 years", "cost": "$5,000-15,000 (lawyer fees)", "visaFree": 189, "highlights": ["No generational limit!", "EU citizenship", "189 visa-free", "Jure sanguinis", "Most popular ancestry program"]}, "Ireland": {"requirement": "Irish grandparent", "timeline": "6-12 months", "cost": "€300 (registration)", "visaFree": 187, "highlights": ["Grandparent rule", "EU citizenship", "English-speaking", "Fast & cheap", "187 visa-free"]}, "Poland": {"requirement": "Polish ancestor", "timeline": "1-2 years", "cost": "$3,000-8,000", "visaFree": 184, "highlights": ["Confirmation of citizenship", "EU access", "Affordable lawyers", "No language test", "184 visa-free"]}, "Hungary": {"requirement": "Hungarian ancestor + basic language", "timeline": "1-2 years", "cost": "Free (if language test passed)", "visaFree": 183, "highlights": ["FREE if you pass Hungarian exam", "EU citizenship", "Simplified naturalization", "No residence required", "183 visa-free"]}, "Portugal": {"requirement": "Sephardic Jewish ancestry", "timeline": "2-3 years", "cost": "€5,000-15,000", "visaFree": 186, "highlights": ["Sephardic law (still active)", "EU citizenship", "No residence required", "DNA + genealogy", "186 visa-free"]}, "Germany": {"requirement": "Ancestor who lost citizenship due to Nazi persecution", "timeline": "1-2 years", "cost": "Free", "visaFree": 190, "highlights": ["Article 116 (Nazi persecution)", "FREE application", "EU citizenship", "190 visa-free (#1 passport)", "No language required"]}}}}};
+let lang='en';
+function setLang(l){lang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+document.getElementById('heroTitle').textContent=l==='ru'?'🛡️ Калькулятор Второго Паспорта':'🛡️ Second Passport Calculator';
+document.getElementById('heroDesc').textContent=l==='ru'?'Сравните программы гражданства и резидентства: CBI, Golden Visa и гражданство по происхождению — 20 программ.':'Compare citizenship & residency by investment programs: CBI, Golden Visas, and ancestry routes across 20 programs.';
+document.getElementById('ctaTitle').textContent=l==='ru'?'Нужна помощь?':'Need Expert Help?';
+document.getElementById('ctaDesc').textContent=l==='ru'?'Получите персональные рекомендации.':'Get personalized recommendations.';
+render();twemoji.parse(document.body)}
+
+let selectedType=null;
+function render(){const c=document.getElementById('content');
+let html='<div class="section-title">'+(lang==='ru'?'📋 Тип программы':'📋 Program Type')+'</div>';
+html+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:30px" id="typeGrid">';
+for(const[type,prog]of Object.entries(DATA.programs)){
+const labels={'Citizenship by Investment (CBI)':lang==='ru'?'🏆 Гражданство за инвестиции':'🏆 Citizenship by Investment','Golden Visa / Residence by Investment (RBI)':lang==='ru'?'🏠 Золотая виза (ВНЖ)':'🏠 Golden Visa / RBI','Citizenship by Descent / Ancestry':lang==='ru'?'🧬 Гражданство по крови':'🧬 Citizenship by Ancestry'};
+html+=`<div class="sort-btn" style="padding:16px;text-align:center;font-weight:700;cursor:pointer;${selectedType===type?'border-color:var(--accent);background:rgba(99,102,241,.15);color:var(--text)':''}" onclick="selectedType='${type}';render()">${labels[type]||type}<div style="font-size:.7rem;font-weight:400;color:var(--muted);margin-top:4px">${Object.keys(prog.countries).length} ${lang==='ru'?'программ':'programs'}</div></div>`}
+html+='</div>';
+if(selectedType&&DATA.programs[selectedType]){html+='<div class="results-grid" id="grid"></div>';}
+c.innerHTML=html;
+if(selectedType&&DATA.programs[selectedType]){renderPassports();}twemoji.parse(c)}
+function renderPassports(){const prog=DATA.programs[selectedType];const g=document.getElementById('grid');if(!g)return;g.innerHTML='';
+let entries=Object.entries(prog.countries);entries.sort((a,b)=>(a[1].minInvestment||0)-(b[1].minInvestment||0));
+entries.forEach(([country,info],i)=>{const card=document.createElement('div');card.className='country-card';card.style.animationDelay=(i*.05)+'s';
+const isCBI=selectedType.includes('CBI');const isAncestry=selectedType.includes('Ancestry');
+card.innerHTML=`<div class="card-header"><span class="flag">${FLAGS[country]||'🌍'}</span><span class="name">${country}</span></div>
+${isAncestry?
+`<div style="font-size:.9rem;font-weight:600;color:var(--accent);margin-bottom:8px">${info.requirement}</div>
+<div class="detail-grid">
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Срок':'Timeline'}</div>${info.timeline}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Стоимость':'Cost'}</div>${info.cost}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Без визы стран':'Visa-Free'}</div>${info.visaFree} ${lang==='ru'?'стран':'countries'}</div>
+</div>`
+:
+`<div class="price-big">${info.minInvestment?'$'+info.minInvestment.toLocaleString():'N/A'}</div>
+<div style="font-size:.8rem;color:var(--muted);margin:4px 0 12px">${info.type}</div>
+<div class="detail-grid">
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Срок':'Timeline'}</div>${info.timeline}</div>
+${isCBI?`<div class="detail-item"><div class="dlabel">${lang==='ru'?'Без визы':'Visa-Free'}</div>${info.visaFree} ${lang==='ru'?'стран':'countries'}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Двойное':'Dual Citizenship'}</div>${info.dualCitizenship?'✅ Yes':'❌ No'}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Семья':'Family'}</div>${info.familyIncluded?'✅ Included':'❌ No'}</div>`
+:`<div class="detail-item"><div class="dlabel">${lang==='ru'?'Гражданство через':'Citizenship'}</div>${info.pathToCitizenship||'N/A'}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Без визы':'Visa-Free'}</div>${info.visaFreeWithCitizenship||0} ${lang==='ru'?'стран':'countries'}</div>`}
+</div>`}
+<div style="margin-top:12px">${info.highlights.map(h=>'<span class="highlight-tag">'+h+'</span>').join('')}</div>`;
+g.appendChild(card)});twemoji.parse(g)}
+
+render();twemoji.parse(document.body);
+</script></body></html>

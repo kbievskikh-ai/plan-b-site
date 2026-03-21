@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lifestyle & Climate Calculator</title>
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+<style>
+:root{--bg:#0a0f1e;--card:#111827;--card2:#1a2332;--accent:#6366f1;--accent2:#8b5cf6;--gold:#d4af37;--green:#10b981;--red:#ef4444;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0a0f1e 0%,#1a1040 50%,#0a0f1e 100%)}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 20px}
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:4px}
+.lang-btn{padding:6px 14px;border:none;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600;background:transparent;color:var(--muted);transition:.2s}
+.lang-btn.active{background:var(--accent);color:#fff}
+.section-title{font-size:1.3rem;font-weight:700;margin:30px 0 16px}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.country-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s;position:relative}
+.country-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(99,102,241,.15)}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card-header .flag{font-size:1.8rem}
+.card-header .name{font-size:1.1rem;font-weight:700}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.detail-item{background:var(--card2);padding:8px 10px;border-radius:8px;font-size:.8rem}
+.detail-item .dlabel{color:var(--muted);font-size:.7rem;margin-bottom:2px}
+.highlight-tag{display:inline-block;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);padding:4px 10px;border-radius:8px;font-size:.72rem;margin:3px 2px;color:var(--accent)}
+.sort-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sort-btn{padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.8rem;cursor:pointer;transition:.2s}
+.sort-btn:hover,.sort-btn.active{color:var(--text);border-color:var(--accent);background:rgba(99,102,241,.1)}
+.score-bar{height:8px;background:var(--border);border-radius:4px;margin-top:6px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.price-big{font-size:1.6rem;font-weight:800;color:var(--green)}
+.stats-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:24px}
+.stat{text-align:center}.stat-num{font-size:2rem;font-weight:800;color:var(--accent)}.stat-label{font-size:.85rem;color:var(--muted)}
+.cta-section{text-align:center;padding:60px 20px;margin-top:40px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.05));border-radius:20px}
+.cta-section h2{font-size:1.8rem;font-weight:800;margin-bottom:12px}.cta-section p{color:var(--muted);margin-bottom:24px}
+.cta-btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;border-radius:12px;font-weight:700;border:none;cursor:pointer;transition:.3s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.footer{text-align:center;padding:30px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:40px}
+img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-0.1em}
+.card-header img.emoji{height:1.8em;width:1.8em}
+@media(max-width:640px){.hero h1{font-size:1.6rem}.results-grid{grid-template-columns:1fr}.stats-row{gap:20px}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.country-card{animation:fadeIn .4s ease-out both}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head><body>
+<div class="lang-toggle"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ru')">RU</button></div>
+<div class="hero"><h1 id="heroTitle">🏃 Lifestyle & Climate Calculator</h1><p id="heroDesc">Compare lifestyle factors: climate, food, nightlife, outdoor activities, walkability, and cultural richness across 15 countries.</p><div class="stats-row"><div class="stat"><div class="stat-num">15</div><div class="stat-label">Countries</div></div><div class="stat"><div class="stat-num">350</div><div class="stat-label">Max Sunny Days</div></div></div></div>
+<div class="container"><div id="content"></div>
+<div class="cta-section"><h2 id="ctaTitle">Need Expert Help?</h2><p id="ctaDesc">Get personalized recommendations based on your goals, budget, and preferences.</p>
+<button class="cta-btn" onclick="alert('Coming soon! Contact info@gronisbrazil.com')">📩 Get Free Consultation</button></div></div>
+<div class="footer"><p>© 2026 Life Decision Platform. Data: government statistics, proprietary research.</p></div>
+<script>
+const FLAGS={"India":"🇮🇳","Turkey":"🇹🇷","Thailand":"🇹🇭","Mexico":"🇲🇽","Malaysia":"🇲🇾","South Korea":"🇰🇷","Germany":"🇩🇪","Israel":"🇮🇱","Singapore":"🇸🇬","Czech Republic":"🇨🇿","Hungary":"🇭🇺","Costa Rica":"🇨🇷","Spain":"🇪🇸","Greece":"🇬🇷","Brazil":"🇧🇷","USA":"🇺🇸","Portugal":"🇵🇹","Panama":"🇵🇦","France":"🇫🇷","Italy":"🇮🇹","UAE (Dubai)":"🇦🇪","UAE":"🇦🇪","Georgia":"🇬🇪","Estonia":"🇪🇪","Indonesia (Bali)":"🇮🇩","Croatia":"🇭🇷","Malta":"🇲🇹","Paraguay":"🇵🇾","Ireland":"🇮🇪","Cyprus":"🇨🇾","Monaco":"🇲🇨","Andorra":"🇦🇩","UK (Non-Dom)":"🇬🇧","UK":"🇬🇧","Canada":"🇨🇦","Australia":"🇦🇺","New Zealand":"🇳🇿","Netherlands":"🇳🇱","Austria":"🇦🇹","Poland":"🇵🇱","St. Kitts & Nevis":"🇰🇳","Dominica":"🇩🇲","Grenada":"🇬🇩","Antigua & Barbuda":"🇦🇬","Vanuatu":"🇻🇺","Jordan":"🇯🇴"};
+const DATA = {"lastUpdate": "2026-03", "countries": {"Portugal": {"avgTemp": 17, "sunnyDays": 300, "beaches": true, "mountains": true, "skiing": false, "surfing": true, "nightlife": 7, "foodScore": 9, "wineScore": 9, "outdoorScore": 8, "airQuality": 8, "walkability": 8, "bikeScore": 6, "greenSpaces": 7, "culturalScore": 9, "bestFor": ["Retirees", "Digital nomads", "Surfers", "Wine lovers", "Sun seekers"]}, "Spain": {"avgTemp": 18, "sunnyDays": 320, "beaches": true, "mountains": true, "skiing": true, "surfing": true, "nightlife": 9, "foodScore": 9.5, "wineScore": 9, "outdoorScore": 9, "airQuality": 7, "walkability": 9, "bikeScore": 6, "greenSpaces": 7, "culturalScore": 10, "bestFor": ["Foodies", "Party lovers", "Beach + ski", "Culture addicts", "Families"]}, "Italy": {"avgTemp": 16, "sunnyDays": 250, "beaches": true, "mountains": true, "skiing": true, "surfing": false, "nightlife": 7, "foodScore": 10, "wineScore": 10, "outdoorScore": 8, "airQuality": 6, "walkability": 9, "bikeScore": 5, "greenSpaces": 7, "culturalScore": 10, "bestFor": ["Food lovers", "Art enthusiasts", "History buffs", "Wine connoisseurs", "Romantics"]}, "Greece": {"avgTemp": 19, "sunnyDays": 300, "beaches": true, "mountains": true, "skiing": false, "surfing": false, "nightlife": 8, "foodScore": 9, "wineScore": 7, "outdoorScore": 8, "airQuality": 7, "walkability": 7, "bikeScore": 4, "greenSpaces": 6, "culturalScore": 9, "bestFor": ["Island hoppers", "History lovers", "Budget EU", "Sailors", "Mediterranean diet"]}, "Thailand": {"avgTemp": 28, "sunnyDays": 270, "beaches": true, "mountains": true, "skiing": false, "surfing": true, "nightlife": 9, "foodScore": 10, "wineScore": 2, "outdoorScore": 8, "airQuality": 5, "walkability": 5, "bikeScore": 3, "greenSpaces": 7, "culturalScore": 8, "bestFor": ["Budget travelers", "Foodies", "DN", "Yoga/wellness", "Adventure"]}, "Indonesia (Bali)": {"avgTemp": 27, "sunnyDays": 250, "beaches": true, "mountains": true, "skiing": false, "surfing": true, "nightlife": 8, "foodScore": 8, "wineScore": 1, "outdoorScore": 9, "airQuality": 5, "walkability": 3, "bikeScore": 2, "greenSpaces": 9, "culturalScore": 9, "bestFor": ["Surfers", "Yoga", "DN", "Spiritual seekers", "Villa lifestyle"]}, "Costa Rica": {"avgTemp": 25, "sunnyDays": 240, "beaches": true, "mountains": true, "skiing": false, "surfing": true, "nightlife": 5, "foodScore": 6, "wineScore": 2, "outdoorScore": 10, "airQuality": 9, "walkability": 4, "bikeScore": 3, "greenSpaces": 10, "culturalScore": 6, "bestFor": ["Nature lovers", "Eco-tourists", "Surfers", "Wildlife", "Pura Vida seekers"]}, "New Zealand": {"avgTemp": 13, "sunnyDays": 220, "beaches": true, "mountains": true, "skiing": true, "surfing": true, "nightlife": 5, "foodScore": 7, "wineScore": 8, "outdoorScore": 10, "airQuality": 10, "walkability": 6, "bikeScore": 6, "greenSpaces": 10, "culturalScore": 7, "bestFor": ["Adventure sports", "Hikers", "Nature photographers", "LOTR fans", "Clean air"]}, "Brazil": {"avgTemp": 25, "sunnyDays": 280, "beaches": true, "mountains": true, "skiing": false, "surfing": true, "nightlife": 10, "foodScore": 8, "wineScore": 5, "outdoorScore": 9, "airQuality": 7, "walkability": 5, "bikeScore": 4, "greenSpaces": 8, "culturalScore": 9, "bestFor": ["Beach lovers", "Party people", "Surfers", "Nature", "Carnival"]}, "UAE": {"avgTemp": 28, "sunnyDays": 350, "beaches": true, "mountains": false, "skiing": true, "surfing": false, "nightlife": 8, "foodScore": 8, "wineScore": 3, "outdoorScore": 5, "airQuality": 6, "walkability": 4, "bikeScore": 2, "greenSpaces": 3, "culturalScore": 6, "bestFor": ["Luxury seekers", "Tax-free living", "Desert adventures", "Shopping", "Year-round sun"]}, "Netherlands": {"avgTemp": 10, "sunnyDays": 170, "beaches": true, "mountains": false, "skiing": false, "surfing": false, "nightlife": 8, "foodScore": 6, "wineScore": 3, "outdoorScore": 7, "airQuality": 7, "walkability": 9, "bikeScore": 10, "greenSpaces": 8, "culturalScore": 9, "bestFor": ["Cyclists", "Families", "Work-life balance", "Art lovers", "Liberal lifestyle"]}, "Georgia": {"avgTemp": 14, "sunnyDays": 220, "beaches": true, "mountains": true, "skiing": true, "surfing": false, "nightlife": 7, "foodScore": 9, "wineScore": 10, "outdoorScore": 9, "airQuality": 7, "walkability": 6, "bikeScore": 3, "greenSpaces": 8, "culturalScore": 8, "bestFor": ["Wine lovers (8000yr history!)", "Budget travelers", "Hikers", "Ski + beach", "Digital nomads"]}, "Croatia": {"avgTemp": 15, "sunnyDays": 260, "beaches": true, "mountains": true, "skiing": false, "surfing": false, "nightlife": 7, "foodScore": 8, "wineScore": 7, "outdoorScore": 9, "airQuality": 8, "walkability": 8, "bikeScore": 5, "greenSpaces": 8, "culturalScore": 8, "bestFor": ["Sailors", "Island hoppers", "GOT fans", "Adriatic lovers", "DN"]}, "Mexico": {"avgTemp": 22, "sunnyDays": 300, "beaches": true, "mountains": true, "skiing": false, "surfing": true, "nightlife": 9, "foodScore": 10, "wineScore": 5, "outdoorScore": 8, "airQuality": 5, "walkability": 6, "bikeScore": 4, "greenSpaces": 6, "culturalScore": 10, "bestFor": ["Foodies", "US expats", "Surfers", "Culture lovers", "Budget living"]}, "Australia": {"avgTemp": 21, "sunnyDays": 280, "beaches": true, "mountains": true, "skiing": true, "surfing": true, "nightlife": 8, "foodScore": 8, "wineScore": 8, "outdoorScore": 10, "airQuality": 9, "walkability": 7, "bikeScore": 6, "greenSpaces": 9, "culturalScore": 7, "bestFor": ["Beach lifestyle", "Surfers", "Outdoor lovers", "Sports fans", "Wildlife"]}}};
+let lang='en';
+function setLang(l){lang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+document.getElementById('heroTitle').textContent=l==='ru'?'🏃 Калькулятор Стиля Жизни и Климата':'🏃 Lifestyle & Climate Calculator';
+document.getElementById('heroDesc').textContent=l==='ru'?'Сравните стиль жизни: климат, еда, ночная жизнь, активности, пешеходность и культура в 15 странах.':'Compare lifestyle factors: climate, food, nightlife, outdoor activities, walkability, and cultural richness across 15 countries.';
+document.getElementById('ctaTitle').textContent=l==='ru'?'Нужна помощь?':'Need Expert Help?';
+document.getElementById('ctaDesc').textContent=l==='ru'?'Получите персональные рекомендации.':'Get personalized recommendations.';
+render();twemoji.parse(document.body)}
+
+function render(){const c=document.getElementById('content');
+let html='<div class="section-title">'+(lang==='ru'?'🌍 Рейтинг стран по стилю жизни':'🌍 Lifestyle Rankings')+'</div>';
+html+='<div class="sort-row"><button class="sort-btn active" onclick="doSort(\'sun\',this)">☀️ '+(lang==='ru'?'Солнце':'Sunniest')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'food\',this)">🍽️ '+(lang==='ru'?'Еда':'Food')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'outdoor\',this)">🏔️ '+(lang==='ru'?'Активности':'Outdoor')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'nightlife\',this)">🎉 '+(lang==='ru'?'Ночная жизнь':'Nightlife')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'walk\',this)">🚶 '+(lang==='ru'?'Пешеходность':'Walkability')+'</button></div>';
+html+='<div class="results-grid" id="grid"></div>';c.innerHTML=html;doSort('sun',document.querySelector('.sort-btn'))}
+function doSort(by,btn){document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+let entries=Object.entries(DATA.countries);
+if(by==='sun')entries.sort((a,b)=>b[1].sunnyDays-a[1].sunnyDays);
+else if(by==='food')entries.sort((a,b)=>b[1].foodScore-a[1].foodScore);
+else if(by==='outdoor')entries.sort((a,b)=>b[1].outdoorScore-a[1].outdoorScore);
+else if(by==='nightlife')entries.sort((a,b)=>b[1].nightlife-a[1].nightlife);
+else if(by==='walk')entries.sort((a,b)=>b[1].walkability-a[1].walkability);
+const g=document.getElementById('grid');g.innerHTML='';
+entries.forEach(([country,info],i)=>{const card=document.createElement('div');card.className='country-card';card.style.animationDelay=(i*.05)+'s';
+const activities=[];if(info.beaches)activities.push('🏖️');if(info.mountains)activities.push('⛰️');if(info.skiing)activities.push('⛷️');if(info.surfing)activities.push('🏄');
+card.innerHTML=`<div class="card-header"><span class="flag">${FLAGS[country]||'🌍'}</span><span class="name">${country}</span></div>
+<div style="display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap">
+<div style="text-align:center"><div style="font-size:2rem">☀️</div><div style="font-size:.75rem;color:var(--muted)">${info.sunnyDays} ${lang==='ru'?'дней':'days'}</div></div>
+<div style="text-align:center"><div style="font-size:2rem">🌡️</div><div style="font-size:.75rem;color:var(--muted)">${info.avgTemp}°C</div></div>
+<div style="text-align:center"><div style="font-size:1.4rem">${activities.join(' ')}</div><div style="font-size:.75rem;color:var(--muted)">${lang==='ru'?'Активности':'Activities'}</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px">
+${[['🍽️',lang==='ru'?'Еда':'Food',info.foodScore],['🎉',lang==='ru'?'Ночь':'Night',info.nightlife],['🏔️','Outdoor',info.outdoorScore],['🚶',lang==='ru'?'Пешком':'Walk',info.walkability],['🚲',lang==='ru'?'Вело':'Bike',info.bikeScore],['🌿',lang==='ru'?'Парки':'Green',info.greenSpaces]].map(([e,l,s])=>`<div style="text-align:center;background:var(--card2);padding:6px;border-radius:8px"><div style="font-size:.65rem;color:var(--muted)">${e} ${l}</div><div style="font-weight:700;color:${s>=8?'var(--green)':s>=6?'var(--accent)':'var(--muted)'}">${s}/10</div></div>`).join('')}
+</div>
+<div style="margin-top:8px;font-size:.75rem;color:var(--muted)">${lang==='ru'?'Лучше всего для':'Best for'}:</div>
+<div style="margin-top:4px">${info.bestFor.map(b=>'<span class="highlight-tag">'+b+'</span>').join('')}</div>`;
+g.appendChild(card)});twemoji.parse(g)}
+
+render();twemoji.parse(document.body);
+</script></body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Nomad Calculator</title>
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+<style>
+:root{--bg:#0a0f1e;--card:#111827;--card2:#1a2332;--accent:#6366f1;--accent2:#8b5cf6;--gold:#d4af37;--green:#10b981;--red:#ef4444;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0a0f1e 0%,#1a1040 50%,#0a0f1e 100%)}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto 20px}
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:4px}
+.lang-btn{padding:6px 14px;border:none;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600;background:transparent;color:var(--muted);transition:.2s}
+.lang-btn.active{background:var(--accent);color:#fff}
+.section-title{font-size:1.3rem;font-weight:700;margin:30px 0 16px}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.country-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s;position:relative}
+.country-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(99,102,241,.15)}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card-header .flag{font-size:1.8rem}
+.card-header .name{font-size:1.1rem;font-weight:700}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.detail-item{background:var(--card2);padding:8px 10px;border-radius:8px;font-size:.8rem}
+.detail-item .dlabel{color:var(--muted);font-size:.7rem;margin-bottom:2px}
+.highlight-tag{display:inline-block;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);padding:4px 10px;border-radius:8px;font-size:.72rem;margin:3px 2px;color:var(--accent)}
+.sort-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sort-btn{padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.8rem;cursor:pointer;transition:.2s}
+.sort-btn:hover,.sort-btn.active{color:var(--text);border-color:var(--accent);background:rgba(99,102,241,.1)}
+.score-bar{height:8px;background:var(--border);border-radius:4px;margin-top:6px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.price-big{font-size:1.6rem;font-weight:800;color:var(--green)}
+.stats-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:24px}
+.stat{text-align:center}.stat-num{font-size:2rem;font-weight:800;color:var(--accent)}.stat-label{font-size:.85rem;color:var(--muted)}
+.cta-section{text-align:center;padding:60px 20px;margin-top:40px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.05));border-radius:20px}
+.cta-section h2{font-size:1.8rem;font-weight:800;margin-bottom:12px}.cta-section p{color:var(--muted);margin-bottom:24px}
+.cta-btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;border-radius:12px;font-weight:700;border:none;cursor:pointer;transition:.3s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.footer{text-align:center;padding:30px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:40px}
+img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-0.1em}
+.card-header img.emoji{height:1.8em;width:1.8em}
+@media(max-width:640px){.hero h1{font-size:1.6rem}.results-grid{grid-template-columns:1fr}.stats-row{gap:20px}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.country-card{animation:fadeIn .4s ease-out both}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head><body>
+<div class="lang-toggle"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ru')">RU</button></div>
+<div class="hero"><h1 id="heroTitle">💻 Digital Nomad Calculator</h1><p id="heroDesc">Compare DN visa requirements, costs, internet speed, coworking scenes, and tax regimes across 14 countries.</p><div class="stats-row"><div class="stat"><div class="stat-num">14</div><div class="stat-label">Countries</div></div><div class="stat"><div class="stat-num">$800</div><div class="stat-label">From/month</div></div></div></div>
+<div class="container"><div id="content"></div>
+<div class="cta-section"><h2 id="ctaTitle">Need Expert Help?</h2><p id="ctaDesc">Get personalized recommendations based on your goals, budget, and preferences.</p>
+<button class="cta-btn" onclick="alert('Coming soon! Contact info@gronisbrazil.com')">📩 Get Free Consultation</button></div></div>
+<div class="footer"><p>© 2026 Life Decision Platform. Data: government statistics, proprietary research.</p></div>
+<script>
+const FLAGS={"India":"🇮🇳","Turkey":"🇹🇷","Thailand":"🇹🇭","Mexico":"🇲🇽","Malaysia":"🇲🇾","South Korea":"🇰🇷","Germany":"🇩🇪","Israel":"🇮🇱","Singapore":"🇸🇬","Czech Republic":"🇨🇿","Hungary":"🇭🇺","Costa Rica":"🇨🇷","Spain":"🇪🇸","Greece":"🇬🇷","Brazil":"🇧🇷","USA":"🇺🇸","Portugal":"🇵🇹","Panama":"🇵🇦","France":"🇫🇷","Italy":"🇮🇹","UAE (Dubai)":"🇦🇪","UAE":"🇦🇪","Georgia":"🇬🇪","Estonia":"🇪🇪","Indonesia (Bali)":"🇮🇩","Croatia":"🇭🇷","Malta":"🇲🇹","Paraguay":"🇵🇾","Ireland":"🇮🇪","Cyprus":"🇨🇾","Monaco":"🇲🇨","Andorra":"🇦🇩","UK (Non-Dom)":"🇬🇧","UK":"🇬🇧","Canada":"🇨🇦","Australia":"🇦🇺","New Zealand":"🇳🇿","Netherlands":"🇳🇱","Austria":"🇦🇹","Poland":"🇵🇱","St. Kitts & Nevis":"🇰🇳","Dominica":"🇩🇲","Grenada":"🇬🇩","Antigua & Barbuda":"🇦🇬","Vanuatu":"🇻🇺","Jordan":"🇯🇴"};
+const DATA = {"lastUpdate": "2026-03", "countries": {"Portugal": {"visa": "Digital Nomad Visa", "minIncome": 3510, "currency": "EUR/month", "duration": "1 year (renewable)", "tax": "NHR 20% flat", "internet": 8.5, "coworkings": 9, "safety": 8, "climate": 9, "costSingle": 1500, "timezone": "UTC+0/+1", "highlights": ["Lisbon startup hub", "NHR tax 20%", "Best climate EU", "Surf + work", "English friendly"]}, "Estonia": {"visa": "Digital Nomad Visa", "minIncome": 4500, "currency": "EUR/month", "duration": "1 year", "tax": "e-Residency 20%", "internet": 9.5, "coworkings": 8, "safety": 8, "climate": 4, "costSingle": 1200, "timezone": "UTC+2/+3", "highlights": ["e-Residency", "Most digital", "Startup scene", "EU company remote", "Cold winters"]}, "Georgia": {"visa": "Remotely from Georgia", "minIncome": 2000, "currency": "USD/month", "duration": "1 year", "tax": "0% first year", "internet": 8, "coworkings": 7, "safety": 7, "climate": 7, "costSingle": 800, "timezone": "UTC+4", "highlights": ["0% tax first year!", "No visa needed", "Cheapest", "Wine country", "Tbilisi cafes"]}, "Thailand": {"visa": "Long-Term Resident (LTR)", "minIncome": 2700, "currency": "USD/month", "duration": "5-10 years", "tax": "17% flat (LTR)", "internet": 8, "coworkings": 9, "safety": 6, "climate": 8, "costSingle": 1000, "timezone": "UTC+7", "highlights": ["Chiang Mai = DN capital", "Cheapest quality", "Amazing food", "Beach + mountains", "Co-living"]}, "Indonesia (Bali)": {"visa": "Digital Nomad Visa (B211A)", "minIncome": 2000, "currency": "USD/month", "duration": "6 months", "tax": "Not taxed (tourist visa)", "internet": 7, "coworkings": 9, "safety": 6.5, "climate": 9, "costSingle": 1200, "timezone": "UTC+8", "highlights": ["Canggu = world DN capital", "Surf + yoga", "Villa lifestyle", "Cheap", "Community"]}, "Mexico": {"visa": "Temporary Resident", "minIncome": 2500, "currency": "USD/month", "duration": "1-4 years", "tax": "Only if >183 days", "internet": 7.5, "coworkings": 8, "safety": 5, "climate": 9, "costSingle": 1200, "timezone": "UTC-6", "highlights": ["US timezone!", "Playa del Carmen", "CDMX coworking", "Cheap flights US", "No DN visa needed (tourist)"]}, "Spain": {"visa": "Digital Nomad Visa", "minIncome": 2520, "currency": "EUR/month", "duration": "1 year + 2 renewal", "tax": "24% flat (Beckham)", "internet": 8.5, "coworkings": 8, "safety": 7, "climate": 9, "costSingle": 1500, "timezone": "UTC+1/+2", "highlights": ["Valencia = best value", "Barcelona cafes", "EU access", "Mediterranean", "Party + work"]}, "Croatia": {"visa": "Digital Nomad Visa", "minIncome": 2540, "currency": "EUR/month", "duration": "1 year", "tax": "0% (no local tax!)", "internet": 8, "coworkings": 7, "safety": 8.5, "climate": 8, "costSingle": 1200, "timezone": "UTC+1/+2", "highlights": ["0% local tax!", "Adriatic coast", "Split + Dubrovnik", "EU member", "Game of Thrones"]}, "Greece": {"visa": "Digital Nomad Visa", "minIncome": 3500, "currency": "EUR/month", "duration": "2 years", "tax": "50% income tax reduction (7 yrs)", "internet": 7.5, "coworkings": 7, "safety": 7, "climate": 9, "costSingle": 1200, "timezone": "UTC+2/+3", "highlights": ["50% tax reduction!", "Islands", "Cheapest EU coast", "Ancient history", "Cafe culture"]}, "Czech Republic": {"visa": "Zivnostenský list (Trade License)", "minIncome": 0, "currency": "Self-employed", "duration": "Unlimited", "tax": "15% flat", "internet": 8.5, "coworkings": 8, "safety": 8, "climate": 6, "costSingle": 1100, "timezone": "UTC+1/+2", "highlights": ["Prague = DN hub", "€2 beer", "15% flat tax", "Central EU", "Beautiful city"]}, "Brazil": {"visa": "Digital Nomad Visa", "minIncome": 1500, "currency": "USD/month", "duration": "1 year", "tax": "Not taxed (if <183 days)", "internet": 8, "coworkings": 7, "safety": 5, "climate": 9, "costSingle": 1000, "timezone": "UTC-3", "highlights": ["Lowest income req", "Floripa = tech hub", "Beaches", "Cheapest", "Path to citizenship 4yr"]}, "UAE (Dubai)": {"visa": "Virtual Working Visa", "minIncome": 3500, "currency": "USD/month", "duration": "1 year", "tax": "0%", "internet": 9, "coworkings": 9, "safety": 8.5, "climate": 7, "costSingle": 3000, "timezone": "UTC+4", "highlights": ["0% income tax!", "Luxury lifestyle", "Global hub", "Year-round sun", "World-class infra"]}, "Costa Rica": {"visa": "Digital Nomad Visa", "minIncome": 3000, "currency": "USD/month", "duration": "1 year", "tax": "0% on foreign income", "internet": 7, "coworkings": 6, "safety": 7, "climate": 9, "costSingle": 1800, "timezone": "UTC-6", "highlights": ["Pura Vida", "0% foreign income", "Nature paradise", "Surf + work", "US timezone"]}, "Italy": {"visa": "Digital Nomad Visa (2024)", "minIncome": 2800, "currency": "EUR/month", "duration": "1 year", "tax": "Negotiable (new program)", "internet": 7.5, "coworkings": 7, "safety": 7, "climate": 8, "costSingle": 1500, "timezone": "UTC+1/+2", "highlights": ["New 2024 visa!", "Food capital", "Sardinia/Sicily", "Culture", "EU access"]}}};
+let lang='en';
+function setLang(l){lang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+document.getElementById('heroTitle').textContent=l==='ru'?'💻 Калькулятор для Цифровых Кочевников':'💻 Digital Nomad Calculator';
+document.getElementById('heroDesc').textContent=l==='ru'?'Сравните визы для удалёнщиков, расходы, интернет, коворкинги и налоги в 14 странах.':'Compare DN visa requirements, costs, internet speed, coworking scenes, and tax regimes across 14 countries.';
+document.getElementById('ctaTitle').textContent=l==='ru'?'Нужна помощь?':'Need Expert Help?';
+document.getElementById('ctaDesc').textContent=l==='ru'?'Получите персональные рекомендации.':'Get personalized recommendations.';
+render();twemoji.parse(document.body)}
+
+function render(){const c=document.getElementById('content');let entries=Object.entries(DATA.countries);
+entries.sort((a,b)=>a[1].costSingle-b[1].costSingle);
+let html='<div class="section-title">'+(lang==='ru'?'🌍 Рейтинг стран для DN':'🌍 Digital Nomad Destinations')+'</div>';
+html+='<div class="sort-row"><button class="sort-btn active" onclick="doSort(\'cost\',this)">💰 '+(lang==='ru'?'Дешевле':'Cheapest')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'income\',this)">📋 '+(lang==='ru'?'Мин. доход':'Min Income')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'internet\',this)">📶 '+(lang==='ru'?'Интернет':'Internet')+'</button>';
+html+='<button class="sort-btn" onclick="doSort(\'tax\',this)">💰 '+(lang==='ru'?'Налоги':'Tax')+'</button></div>';
+html+='<div class="results-grid" id="grid"></div>';c.innerHTML=html;doSort('cost',document.querySelector('.sort-btn'))}
+function doSort(by,btn){document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+let entries=Object.entries(DATA.countries);
+if(by==='cost')entries.sort((a,b)=>a[1].costSingle-b[1].costSingle);
+else if(by==='income')entries.sort((a,b)=>a[1].minIncome-b[1].minIncome);
+else if(by==='internet')entries.sort((a,b)=>b[1].internet-a[1].internet);
+else if(by==='tax')entries.sort((a,b)=>(a[1].tax.includes('0%')?0:1)-(b[1].tax.includes('0%')?0:1));
+const g=document.getElementById('grid');g.innerHTML='';
+entries.forEach(([country,info],i)=>{const card=document.createElement('div');card.className='country-card';card.style.animationDelay=(i*.05)+'s';
+card.innerHTML=`<div class="card-header"><span class="flag">${FLAGS[country]||'🌍'}</span><span class="name">${country}</span></div>
+<div class="price-big">$${info.costSingle.toLocaleString()}<span style="font-size:.7rem;color:var(--muted);font-weight:400"> /${lang==='ru'?'мес':'mo'}</span></div>
+<div class="detail-grid">
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Виза':'Visa'}</div>${info.visa}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Мин. доход':'Min Income'}</div>${info.minIncome>0?info.minIncome+' '+info.currency:(lang==='ru'?'Не треб.':'Not required')}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Срок':'Duration'}</div>${info.duration}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Налоги':'Tax'}</div>${info.tax}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Часовой пояс':'Timezone'}</div>${info.timezone}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Коворкинги':'Coworkings'}</div>${info.coworkings}/10</div>
+</div>
+<div style="margin-top:12px">
+<div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)"><span>📶 ${lang==='ru'?'Интернет':'Internet'}</span><span>${info.internet}/10</span></div>
+<div class="score-bar"><div class="score-bar-fill" style="width:${info.internet*10}%;background:var(--green)"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:6px"><span>🛡️ ${lang==='ru'?'Безопасность':'Safety'}</span><span>${info.safety}/10</span></div>
+<div class="score-bar"><div class="score-bar-fill" style="width:${info.safety*10}%;background:var(--accent)"></div></div>
+</div>
+<div style="margin-top:12px">${info.highlights.map(h=>'<span class="highlight-tag">'+h+'</span>').join('')}</div>`;
+g.appendChild(card)});twemoji.parse(g)}
+
+render();twemoji.parse(document.body);
+</script></body></html>

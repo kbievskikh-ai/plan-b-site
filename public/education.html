@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education Calculator — Study Abroad Comparison</title>
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
+<style>
+:root{--bg:#0a0f1e;--card:#111827;--card2:#1a2332;--accent:#6366f1;--accent2:#8b5cf6;--gold:#d4af37;--green:#10b981;--red:#ef4444;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0a0f1e 0%,#1a1040 50%,#0a0f1e 100%)}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto}
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:4px}
+.lang-btn{padding:6px 14px;border:none;border-radius:6px;cursor:pointer;font-size:.85rem;font-weight:600;background:transparent;color:var(--muted);transition:.2s}
+.lang-btn.active{background:var(--accent);color:#fff}
+.section-title{font-size:1.3rem;font-weight:700;margin:30px 0 16px}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:30px}
+.prog-btn{padding:18px 14px;background:var(--card);border:2px solid var(--border);border-radius:12px;cursor:pointer;text-align:center;transition:.3s}
+.prog-btn:hover{border-color:var(--accent);transform:translateY(-2px)}
+.prog-btn.active{border-color:var(--accent);background:rgba(99,102,241,.15)}
+.prog-btn .emoji{font-size:2rem;display:block;margin-bottom:8px}
+.prog-btn .label{font-weight:700;font-size:.9rem}
+.prog-btn .desc{color:var(--muted);font-size:.75rem;margin-top:4px}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.country-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s;position:relative}
+.country-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.country-card.free{border-color:var(--green);box-shadow:0 0 20px rgba(16,185,129,.15)}
+.country-card.free::after{content:"FREE!";position:absolute;top:12px;right:12px;background:var(--green);color:#fff;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:6px}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card-header .flag{font-size:1.8rem}
+.card-header .name{font-size:1.1rem;font-weight:700}
+.tuition{font-size:1.6rem;font-weight:800;color:var(--green);margin-bottom:8px}
+.total-cost{font-size:.85rem;color:var(--muted);margin-bottom:12px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.detail-item{background:var(--card2);padding:8px 10px;border-radius:8px;font-size:.8rem}
+.detail-item .dlabel{color:var(--muted);font-size:.7rem;margin-bottom:2px}
+.schools{margin-top:12px;font-size:.8rem}
+.schools .hl{color:var(--muted);font-size:.7rem;margin-bottom:4px}
+.school-tag{display:inline-block;background:var(--card2);padding:3px 8px;border-radius:6px;font-size:.72rem;margin:2px;color:var(--accent)}
+.highlight-tag{display:inline-block;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);padding:4px 10px;border-radius:8px;font-size:.72rem;margin:3px 2px;color:var(--accent)}
+.sort-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sort-btn{padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.8rem;cursor:pointer;transition:.2s}
+.sort-btn:hover,.sort-btn.active{color:var(--text);border-color:var(--accent);background:rgba(99,102,241,.1)}
+.cta-section{text-align:center;padding:60px 20px;margin-top:40px;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.05));border-radius:20px}
+.cta-section h2{font-size:1.8rem;font-weight:800;margin-bottom:12px}
+.cta-section p{color:var(--muted);margin-bottom:24px}
+.cta-btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;border-radius:12px;font-weight:700;border:none;cursor:pointer;transition:.3s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.footer{text-align:center;padding:30px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:40px}
+img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-0.1em}
+.prog-btn img.emoji,.card-header img.emoji{height:1.8em;width:1.8em}
+@media(max-width:640px){.hero h1{font-size:1.6rem}.results-grid{grid-template-columns:1fr}.prog-grid{grid-template-columns:repeat(2,1fr)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.country-card{animation:fadeIn .4s ease-out both}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('ru')">RU</button>
+</div>
+<div class="hero">
+  <h1 id="heroTitle">🎓 Education Calculator</h1>
+  <p id="heroDesc">Compare tuition, living costs, and career prospects across the world's best universities. Find your perfect study destination.</p>
+</div>
+<div class="container">
+  <div class="section-title" id="progTitle">📚 Choose a Program</div>
+  <div class="prog-grid" id="progGrid"></div>
+  <div id="resultsSection" style="display:none">
+    <div class="section-title" id="compareTitle">🌍 Compare Countries</div>
+    <div class="sort-row">
+      <button class="sort-btn active" onclick="sortBy('tuition',this)"><span class="i18n" data-en="💰 Cheapest Tuition" data-ru="💰 Дешевле"></span></button>
+      <button class="sort-btn" onclick="sortBy('total',this)"><span class="i18n" data-en="📊 Total Cost" data-ru="📊 Общая стоимость"></span></button>
+      <button class="sort-btn" onclick="sortBy('visa',this)"><span class="i18n" data-en="🛂 Best Work Visa" data-ru="🛂 Рабочая виза"></span></button>
+    </div>
+    <div class="results-grid" id="resultsGrid"></div>
+  </div>
+  <div class="cta-section">
+    <h2 id="ctaTitle">Need University Application Help?</h2>
+    <p id="ctaDesc">Get personalized advice on university selection, applications, scholarships, and student visas.</p>
+    <button class="cta-btn" id="ctaBtn" onclick="alert('Coming soon!')">📩 Get Free Consultation</button>
+  </div>
+</div>
+<div class="footer"><p>© 2026 Life Decision Platform. Data: QS Rankings, university websites, government sources.</p></div>
+
+<script>
+const FLAGS={"USA":"🇺🇸","France":"🇫🇷","Spain":"🇪🇸","UK":"🇬🇧","Singapore":"🇸🇬","Canada":"🇨🇦","Germany":"🇩🇪","India":"🇮🇳","Australia":"🇦🇺","Netherlands":"🇳🇱","Austria":"🇦🇹","Czech Republic":"🇨🇿","South Korea":"🇰🇷","Hungary":"🇭🇺","Poland":"🇵🇱","Italy":"🇮🇹","Ireland":"🇮🇪"};
+const DATA = {"lastUpdate": "2026-03", "programs": {"MBA": {"description": "Master of Business Administration (2 years)", "usaAvgCost": 120000, "countries": {"USA": {"avgTuition": 120000, "duration": "2 years", "topSchools": ["Harvard", "Stanford", "Wharton", "MIT Sloan"], "language": "English", "workVisa": "OPT 3 years", "costOfLiving": 3500, "ranking": "#1-5 global"}, "France": {"avgTuition": 70000, "duration": "1-2 years", "topSchools": ["INSEAD", "HEC Paris", "ESSEC"], "language": "English/French", "workVisa": "2 year post-study", "costOfLiving": 1800, "ranking": "#1 in Europe (INSEAD)"}, "Spain": {"avgTuition": 50000, "duration": "1-2 years", "topSchools": ["IE Business School", "IESE", "ESADE"], "language": "English/Spanish", "workVisa": "1 year post-study", "costOfLiving": 1500, "ranking": "Top 10 Europe"}, "UK": {"avgTuition": 65000, "duration": "1 year", "topSchools": ["London Business School", "Oxford Said", "Cambridge Judge"], "language": "English", "workVisa": "2 year post-study", "costOfLiving": 2500, "ranking": "#1-3 global"}, "Singapore": {"avgTuition": 60000, "duration": "1-2 years", "topSchools": ["INSEAD Asia", "NUS", "NTU"], "language": "English", "workVisa": "1 year post-study", "costOfLiving": 2500, "ranking": "#1 Asia"}, "Canada": {"avgTuition": 50000, "duration": "2 years", "topSchools": ["Rotman", "Ivey", "McGill Desautels"], "language": "English/French", "workVisa": "3 year PGWP", "costOfLiving": 2000, "ranking": "Top 20 global"}, "Germany": {"avgTuition": 35000, "duration": "1-2 years", "topSchools": ["Mannheim", "WHU", "ESMT Berlin"], "language": "English/German", "workVisa": "18 months post-study", "costOfLiving": 1200, "ranking": "Top 30 Europe"}, "India": {"avgTuition": 15000, "duration": "2 years", "topSchools": ["IIM Ahmedabad", "IIM Bangalore", "ISB"], "language": "English", "workVisa": "N/A (local market)", "costOfLiving": 500, "ranking": "Top in Asia (value)"}, "Australia": {"avgTuition": 55000, "duration": "2 years", "topSchools": ["Melbourne Business", "AGSM", "Monash"], "language": "English", "workVisa": "2-4 year post-study", "costOfLiving": 2200, "ranking": "Top 30 global"}, "Netherlands": {"avgTuition": 40000, "duration": "1 year", "topSchools": ["RSM Erasmus", "Amsterdam"], "language": "English", "workVisa": "1 year orientation visa", "costOfLiving": 1500, "ranking": "Top 20 Europe"}}}, "Master's (STEM)": {"description": "Master of Science in Engineering/CS/Data Science", "usaAvgCost": 80000, "countries": {"Germany": {"avgTuition": 500, "duration": "2 years", "topSchools": ["TU Munich", "RWTH Aachen", "TU Berlin", "Heidelberg"], "language": "English/German", "workVisa": "18 months post-study", "costOfLiving": 1200, "ranking": "FREE tuition!"}, "Austria": {"avgTuition": 1500, "duration": "2 years", "topSchools": ["TU Wien", "University of Vienna", "TU Graz"], "language": "German/English", "workVisa": "Red-White-Red Card", "costOfLiving": 1100, "ranking": "Nearly free!"}, "Czech Republic": {"avgTuition": 3000, "duration": "2 years", "topSchools": ["Czech Technical Uni", "Charles University"], "language": "Czech/English", "workVisa": "9 months post-study", "costOfLiving": 800, "ranking": "Cheapest EU"}, "Netherlands": {"avgTuition": 15000, "duration": "1-2 years", "topSchools": ["TU Delft", "TU Eindhoven", "Wageningen"], "language": "English", "workVisa": "1 year orientation", "costOfLiving": 1500, "ranking": "Top 50 global"}, "Canada": {"avgTuition": 20000, "duration": "2 years", "topSchools": ["U of Toronto", "UBC", "McGill", "Waterloo"], "language": "English", "workVisa": "3 year PGWP → PR", "costOfLiving": 2000, "ranking": "Path to immigration!"}, "France": {"avgTuition": 5000, "duration": "2 years", "topSchools": ["Polytechnique", "CentraleSupélec", "ENS"], "language": "French/English", "workVisa": "2 year post-study", "costOfLiving": 1200, "ranking": "Grande Écoles system"}, "USA": {"avgTuition": 80000, "duration": "2 years", "topSchools": ["MIT", "Stanford", "Caltech", "CMU"], "language": "English", "workVisa": "OPT 3 years STEM", "costOfLiving": 3000, "ranking": "#1 globally"}, "UK": {"avgTuition": 25000, "duration": "1 year", "topSchools": ["Oxford", "Cambridge", "Imperial", "UCL"], "language": "English", "workVisa": "2 year post-study", "costOfLiving": 2500, "ranking": "1 year = fast!"}, "Singapore": {"avgTuition": 30000, "duration": "1-2 years", "topSchools": ["NUS", "NTU", "SUTD"], "language": "English", "workVisa": "Work immediately", "costOfLiving": 2500, "ranking": "#1 Asia STEM"}, "South Korea": {"avgTuition": 8000, "duration": "2 years", "topSchools": ["KAIST", "Seoul National", "POSTECH"], "language": "Korean/English", "workVisa": "D-10 visa", "costOfLiving": 1000, "ranking": "Scholarships available!"}}}, "Bachelor's": {"description": "Undergraduate degree (3-4 years)", "usaAvgCost": 160000, "countries": {"Germany": {"avgTuition": 600, "duration": "3 years", "topSchools": ["LMU Munich", "Heidelberg", "HU Berlin"], "language": "German (some English)", "workVisa": "18 months post-study", "costOfLiving": 1000, "ranking": "FREE tuition!"}, "Czech Republic": {"avgTuition": 0, "duration": "3 years", "topSchools": ["Charles University", "Czech Technical"], "language": "Czech (free) / English (€3K)", "workVisa": "9 months post-study", "costOfLiving": 700, "ranking": "Free in Czech language!"}, "Austria": {"avgTuition": 1500, "duration": "3 years", "topSchools": ["University of Vienna", "TU Wien"], "language": "German", "workVisa": "Red-White-Red Card", "costOfLiving": 1000, "ranking": "Nearly free!"}, "France": {"avgTuition": 2500, "duration": "3 years", "topSchools": ["Sorbonne", "Sciences Po", "Polytechnique"], "language": "French/English", "workVisa": "2 year post-study", "costOfLiving": 1200, "ranking": "Low tuition public"}, "Netherlands": {"avgTuition": 12000, "duration": "3 years", "topSchools": ["Amsterdam", "Leiden", "Utrecht"], "language": "English", "workVisa": "1 year orientation", "costOfLiving": 1300, "ranking": "Most English programs EU"}, "Canada": {"avgTuition": 18000, "duration": "4 years", "topSchools": ["U of Toronto", "UBC", "McGill"], "language": "English/French", "workVisa": "3 year PGWP → PR", "costOfLiving": 1800, "ranking": "Immigration pathway!"}, "Australia": {"avgTuition": 22000, "duration": "3 years", "topSchools": ["Melbourne", "Sydney", "ANU"], "language": "English", "workVisa": "2-4 year post-study", "costOfLiving": 2000, "ranking": "Sunshine + quality"}, "Ireland": {"avgTuition": 12000, "duration": "4 years", "topSchools": ["Trinity College", "UCD", "NUI Galway"], "language": "English", "workVisa": "2 year post-study", "costOfLiving": 1500, "ranking": "English-speaking EU!"}, "Poland": {"avgTuition": 3000, "duration": "3 years", "topSchools": ["Warsaw University", "Jagiellonian"], "language": "Polish/English", "workVisa": "1 year post-study", "costOfLiving": 700, "ranking": "Cheapest English EU"}, "USA": {"avgTuition": 40000, "duration": "4 years", "topSchools": ["Harvard", "MIT", "Stanford", "Yale"], "language": "English", "workVisa": "OPT 1-3 years", "costOfLiving": 2500, "ranking": "#1 globally"}}}, "Medical School": {"description": "MD / Medical degree (5-6 years)", "usaAvgCost": 250000, "countries": {"Czech Republic": {"avgTuition": 12000, "duration": "6 years", "topSchools": ["Charles University (1st, 2nd, 3rd Faculty)"], "language": "English", "workVisa": "License in EU", "costOfLiving": 800, "ranking": "Most popular for intl. students"}, "Hungary": {"avgTuition": 16000, "duration": "6 years", "topSchools": ["Semmelweis", "Szeged", "Debrecen", "Pécs"], "language": "English", "workVisa": "EU recognized", "costOfLiving": 900, "ranking": "4 medical schools in English!"}, "Poland": {"avgTuition": 12000, "duration": "6 years", "topSchools": ["Medical University of Warsaw", "Jagiellonian"], "language": "English", "workVisa": "EU recognized", "costOfLiving": 700, "ranking": "Growing fast"}, "Italy": {"avgTuition": 3000, "duration": "6 years", "topSchools": ["Milan", "Rome La Sapienza", "Bologna"], "language": "English/Italian", "workVisa": "EU recognized", "costOfLiving": 1200, "ranking": "IMAT exam, very competitive"}, "Germany": {"avgTuition": 500, "duration": "6 years", "topSchools": ["Charité Berlin", "Heidelberg", "LMU Munich"], "language": "German (C1 required)", "workVisa": "License in EU", "costOfLiving": 1200, "ranking": "Free but German required"}, "Ireland": {"avgTuition": 25000, "duration": "5 years", "topSchools": ["RCSI", "Trinity", "UCD"], "language": "English", "workVisa": "EU + US recognized", "costOfLiving": 1500, "ranking": "RCSI globally ranked"}, "India": {"avgTuition": 5000, "duration": "5.5 years", "topSchools": ["AIIMS", "CMC Vellore", "KMC Manipal"], "language": "English", "workVisa": "FMGE exam needed", "costOfLiving": 400, "ranking": "Cheapest option"}}}}};
+const PROG_EMOJIS={"MBA":"💼","Master's (STEM)":"🔬","Bachelor's":"📖","Medical School":"🩺"};
+const PROG_RU={"MBA":"MBA","Master's (STEM)":"Магистратура (STEM)","Bachelor's":"Бакалавриат","Medical School":"Медицина"};
+let lang='en',selectedProg=null,currentSort='tuition';
+
+function setLang(l){lang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+document.getElementById('heroTitle').textContent=l==='ru'?'🎓 Калькулятор Образования':'🎓 Education Calculator';
+document.getElementById('heroDesc').textContent=l==='ru'?'Сравните стоимость обучения, проживания и карьерные перспективы в лучших университетах мира.':'Compare tuition, living costs, and career prospects across the world\'s best universities.';
+document.getElementById('progTitle').textContent=l==='ru'?'📚 Выберите программу':'📚 Choose a Program';
+document.getElementById('compareTitle').textContent=l==='ru'?'🌍 Сравните страны':'🌍 Compare Countries';
+document.getElementById('ctaTitle').textContent=l==='ru'?'Нужна помощь с поступлением?':'Need University Application Help?';
+document.getElementById('ctaDesc').textContent=l==='ru'?'Получите персональные рекомендации по выбору университета, подаче документов, стипендиям и студенческим визам.':'Get personalized advice on university selection, applications, scholarships, and student visas.';
+document.getElementById('ctaBtn').textContent=l==='ru'?'📩 Бесплатная консультация':'📩 Get Free Consultation';
+document.querySelectorAll('.i18n').forEach(el=>{const v=el.dataset[l];if(v)el.textContent=v});
+renderPrograms();if(selectedProg)renderResults();twemoji.parse(document.body)}
+
+function renderPrograms(){const g=document.getElementById('progGrid');g.innerHTML='';
+for(const[name,prog]of Object.entries(DATA.programs)){const btn=document.createElement('div');btn.className='prog-btn'+(selectedProg===name?' active':'');
+const label=lang==='ru'?(PROG_RU[name]||name):name;
+btn.innerHTML=`<span class="emoji">${PROG_EMOJIS[name]||'📚'}</span><div class="label">${label}</div><div class="desc">${prog.description}</div>`;
+btn.onclick=()=>{selectedProg=name;renderPrograms();renderResults()};g.appendChild(btn)}twemoji.parse(g)}
+
+function renderResults(){document.getElementById('resultsSection').style.display='block';
+const prog=DATA.programs[selectedProg];let entries=Object.entries(prog.countries);
+const durYears=parseInt(entries[0]?.[1]?.duration)||2;
+if(currentSort==='tuition')entries.sort((a,b)=>a[1].avgTuition-b[1].avgTuition);
+else if(currentSort==='total')entries.sort((a,b)=>(a[1].avgTuition+a[1].costOfLiving*12*durYears)-(b[1].avgTuition+b[1].costOfLiving*12*durYears));
+else if(currentSort==='visa')entries.sort((a,b)=>{const va=a[1].workVisa.includes('3')?3:a[1].workVisa.includes('2')?2:1;const vb=b[1].workVisa.includes('3')?3:b[1].workVisa.includes('2')?2:1;return vb-va});
+const grid=document.getElementById('resultsGrid');grid.innerHTML='';
+const cheapest=Math.min(...entries.map(e=>e[1].avgTuition));
+entries.forEach(([country,info],i)=>{const card=document.createElement('div');
+card.className='country-card'+(info.avgTuition<=1500?' free':'');card.style.animationDelay=(i*.05)+'s';
+const yrs=parseInt(info.duration)||2;const totalCost=info.avgTuition+info.costOfLiving*12*yrs;
+card.innerHTML=`<div class="card-header"><span class="flag">${FLAGS[country]||'🌍'}</span><span class="name">${country}</span></div>
+<div class="tuition">${info.avgTuition<=500?'FREE ✨':'$'+info.avgTuition.toLocaleString()}<span style="font-size:.7rem;color:var(--muted);font-weight:400"> /${lang==='ru'?'год':'year'}</span></div>
+<div class="total-cost">${lang==='ru'?'Итого за':'Total'} ${info.duration}: <strong>$${totalCost.toLocaleString()}</strong> (${lang==='ru'?'обучение + жизнь':'tuition + living'})</div>
+<div class="detail-grid">
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Длительность':'Duration'}</div>${info.duration}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Язык':'Language'}</div>${info.language}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Рабочая виза':'Work Visa'}</div>${info.workVisa}</div>
+<div class="detail-item"><div class="dlabel">${lang==='ru'?'Жизнь/мес':'Living/mo'}</div>$${info.costOfLiving.toLocaleString()}</div>
+</div>
+<div class="schools"><div class="hl">${lang==='ru'?'Лучшие вузы':'Top Schools'}:</div>${info.topSchools.map(s=>`<span class="school-tag">${s}</span>`).join('')}</div>
+${info.ranking?`<div style="margin-top:10px"><span class="highlight-tag">⭐ ${info.ranking}</span></div>`:''}`;
+grid.appendChild(card)});twemoji.parse(grid);document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'})}
+
+function sortBy(s,btn){currentSort=s;document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');if(selectedProg)renderResults()}
+renderPrograms();twemoji.parse(document.body);
+</script>
+</body>
+</html>
