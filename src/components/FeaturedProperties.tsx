@@ -274,7 +274,7 @@ export default function FeaturedProperties() {
               </motion.button>
             )}
             <motion.a 
-              href="#contact" 
+              href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer" 
               className="btn-outline inline-block"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}

@@ -445,7 +445,7 @@ export default function ContactForm() {
               {t('contact.scheduleVideoDesc')}
             </p>
             <a 
-              href="https://wa.me/5548988752300?text=Hello!%20I%27d%20like%20to%20schedule%20a%20video%20consultation."
+              href="https://t.me/Gronis_Leads_bot"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline w-full inline-block text-center"

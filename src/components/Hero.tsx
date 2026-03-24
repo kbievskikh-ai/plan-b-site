@@ -145,7 +145,7 @@ export default function Hero({ videoUrl }: HeroProps) {
               {t('hero.exploreProperties')}
             </motion.a>
             <motion.a
-              href="#contact"
+              href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer"
               className="btn-outline text-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

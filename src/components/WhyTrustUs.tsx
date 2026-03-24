@@ -253,7 +253,7 @@ export default function WhyTrustUs({ showClientExperience = true }: { showClient
           <p className="text-white/70 mb-6 max-w-2xl mx-auto">
             {t('trust.readyToWorkSubtitle')}
           </p>
-          <a href="#contact" className="btn-gold">
+          <a href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer" className="btn-gold">
             {t('trust.scheduleConsultation')}
           </a>
         </motion.div>

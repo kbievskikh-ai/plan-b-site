@@ -132,7 +132,7 @@ export default function AboutMigronis() {
 
         {/* CTA */}
         <ScrollAnimation className="text-center mt-16">
-          <a href="#contact" className="btn-gold inline-block">
+          <a href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer" className="btn-gold inline-block">
             {t('about.requestConsultation')}
           </a>
         </ScrollAnimation>

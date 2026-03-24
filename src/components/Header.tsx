@@ -115,7 +115,7 @@ export default function Header() {
             </div>
 
             <motion.a
-              href="#contact"
+              href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer"
               className="btn-gold ml-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -202,7 +202,7 @@ export default function Header() {
                   </motion.a>
                 ))}
                 <motion.a
-                  href="#contact"
+                  href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}

@@ -15,6 +15,7 @@ import InvestorGuide from '@/components/InvestorGuide';
 import Testimonials from '@/components/Testimonials';
 import WhyBrazil from '@/components/WhyBrazil';
 import CountryCalculatorTeaser from '@/components/CountryCalculatorTeaser';
+import PropertyFinder from '@/components/PropertyFinder';
 import FAQ from '@/components/FAQ';
 import ContactForm from '@/components/ContactForm';
 import { useSettings } from '@/lib/settings';
@@ -27,6 +28,7 @@ export default function SectionManager() {
       <>
         <Hero />
         <FeaturedProperties />
+        <PropertyFinder />
         <CalculatorTeaser />
         <AboutMigronis />
         <WhyTrustUs showClientExperience={true} />
@@ -50,6 +52,7 @@ export default function SectionManager() {
     <>
       {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
       {show('section_featured_properties') && <FeaturedProperties />}
+      <PropertyFinder />
       {show('section_calculator') && <CalculatorTeaser />}
       {show('section_about') && <AboutMigronis />}
       {show('section_why_trust') && <WhyTrustUs showClientExperience={show('section_international_experience')} />}
