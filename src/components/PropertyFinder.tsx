@@ -244,12 +244,12 @@ export default function PropertyFinder() {
                   <p className="text-gray-400 mt-2">
                     We may have options that fit your criteria. Leave your details and our team will prepare a personalized selection.
                   </p>
-                  <button
-                    onClick={() => setStep('contact')}
-                    className="mt-6 bg-[#D4AF37] text-[#1B2951] font-semibold px-8 py-3 rounded-lg hover:bg-[#F7C635] transition-colors"
+                  <a
+                    href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer"
+                    className="mt-6 inline-block bg-[#D4AF37] text-[#1B2951] font-semibold px-8 py-3 rounded-lg hover:bg-[#F7C635] transition-colors"
                   >
                     Get Personalized Selection
-                  </button>
+                  </a>
                 </div>
               ) : (
                 <div className="space-y-8">
@@ -310,12 +310,12 @@ export default function PropertyFinder() {
                       {/* CTA */}
                       <div className="p-6 border-t border-white/10 bg-white/[0.02]">
                         <p className="text-gray-400 text-sm mb-3">Want floor plans, payment schedule, and a detailed report?</p>
-                        <button
-                          onClick={() => setStep('contact')}
-                          className="bg-[#D4AF37] text-[#1B2951] font-semibold px-6 py-2.5 rounded-lg hover:bg-[#F7C635] transition-colors text-sm"
+                        <a
+                          href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer"
+                          className="inline-block bg-[#D4AF37] text-[#1B2951] font-semibold px-6 py-2.5 rounded-lg hover:bg-[#F7C635] transition-colors text-sm"
                         >
                           Get Full Report →
-                        </button>
+                        </a>
                       </div>
                     </div>
                   ))}

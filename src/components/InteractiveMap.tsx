@@ -373,7 +373,7 @@ export default function InteractiveMap() {
           </div>
 
           <ScrollAnimation className="text-center mt-16">
-            <a href="#contact" className="btn-outline inline-block">
+            <a href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer" className="btn-outline inline-block">
               {labels.getGuide}
             </a>
           </ScrollAnimation>
@@ -585,7 +585,7 @@ export default function InteractiveMap() {
 
         {/* CTA */}
         <ScrollAnimation className="text-center mt-16">
-          <a href="#contact" className="btn-outline inline-block">
+          <a href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer" className="btn-outline inline-block">
             {labels.getGuide}
           </a>
         </ScrollAnimation>

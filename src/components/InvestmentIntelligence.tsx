@@ -157,7 +157,7 @@ export default function InvestmentIntelligence() {
             {t('intel.quote')}
           </blockquote>
           <a
-            href="#contact"
+            href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mt-8 bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-xl font-semibold transition-colors duration-300"
           >
             {t('intel.cta')}

@@ -175,7 +175,7 @@ export default function FAQ() {
             {t('faq.stillHaveQuestionsDesc')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="#contact" className="btn-gold">
+            <a href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer" className="btn-gold">
               {t('faq.cta')}
             </a>
             <a href="mailto:konstantin.bievskikh@migronis.com" className="btn-outline">
