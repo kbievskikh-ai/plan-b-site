@@ -14,7 +14,7 @@ import CaseStudies from '@/components/CaseStudies';
 import InvestorGuide from '@/components/InvestorGuide';
 import Testimonials from '@/components/Testimonials';
 import WhyBrazil from '@/components/WhyBrazil';
-import CountryCalculatorTeaser from '@/components/CountryCalculatorTeaser';
+// import CountryCalculatorTeaser from '@/components/CountryCalculatorTeaser';
 import PropertyFinder from '@/components/PropertyFinder';
 import FAQ from '@/components/FAQ';
 import ContactForm from '@/components/ContactForm';
