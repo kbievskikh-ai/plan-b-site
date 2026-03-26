@@ -41,7 +41,7 @@ export default function SectionManager() {
         <CaseStudies />
         <Testimonials />
         <WhyBrazil />
-        <CountryCalculatorTeaser />
+        {/* <CountryCalculatorTeaser /> — hidden per request */}
         <FAQ />
         <ContactForm />
       </>
@@ -65,7 +65,7 @@ export default function SectionManager() {
       {show('section_case_studies') && <CaseStudies />}
       {show('section_testimonials') && <Testimonials />}
       {show('section_why_brazil') && <WhyBrazil />}
-      <CountryCalculatorTeaser />
+      {/* <CountryCalculatorTeaser /> — hidden per request */}
       {show('section_faq') && <FAQ />}
       {show('section_contact') && <ContactForm />}
     </>
