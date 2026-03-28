@@ -292,18 +292,18 @@ export default function GlobalMap() {
                 </div>
                 
                 {country.active ? (
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-3 gap-3 md:gap-4 mt-1">
                     <div>
-                      <p className="text-[10px] text-white/40">{isRu ? "Объекты" : "Properties"}</p>
-                      <p className="text-sm text-[#D4AF37] font-medium">{isRu ? country.statsRu.properties : country.stats.properties}</p>
+                      <p className="text-[9px] md:text-[10px] text-white/40 mb-0.5">{isRu ? "Объекты" : "Properties"}</p>
+                      <p className="text-xs md:text-sm text-[#D4AF37] font-medium">{isRu ? country.statsRu.properties : country.stats.properties}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] text-white/40">ROI</p>
-                      <p className="text-sm text-[#D4AF37] font-medium">{isRu ? country.statsRu.roi : country.stats.roi}</p>
+                      <p className="text-[9px] md:text-[10px] text-white/40 mb-0.5">ROI</p>
+                      <p className="text-xs md:text-sm text-[#D4AF37] font-medium">{isRu ? country.statsRu.roi : country.stats.roi}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] text-white/40">{isRu ? "От" : "From"}</p>
-                      <p className="text-sm text-[#D4AF37] font-medium">{isRu ? country.statsRu.from : country.stats.from}</p>
+                      <p className="text-[9px] md:text-[10px] text-white/40 mb-0.5">{isRu ? "От" : "From"}</p>
+                      <p className="text-xs md:text-sm text-[#D4AF37] font-medium">{isRu ? country.statsRu.from : country.stats.from}</p>
                     </div>
                   </div>
                 ) : (
