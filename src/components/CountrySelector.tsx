@@ -102,15 +102,15 @@ export default function CountrySelector() {
               </p>
             </div>
 
-            {/* Country Grid — 2x2 on mobile, 4 in a row on desktop */}
+            {/* Country Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               {countries.map((country) => (
                 <button
                   key={country.name}
                   onClick={() => country.active && handleSelect(country)}
-                  className={`relative rounded-xl overflow-hidden aspect-[3/4] group transition-all duration-300 ${
+                  className={`relative rounded-xl overflow-hidden aspect-[3/4] group transition-all duration-300 border border-[#D4AF37]/40 ${
                     country.active 
-                      ? 'cursor-pointer hover:shadow-xl hover:scale-[1.02]' 
+                      ? 'cursor-pointer hover:shadow-xl hover:scale-[1.02] hover:border-[#D4AF37]' 
                       : 'cursor-default'
                   }`}
                 >
@@ -129,20 +129,20 @@ export default function CountrySelector() {
                       : 'bg-gradient-to-t from-black/70 via-black/30 to-black/10'
                   }`} />
 
-                  {/* Coming Soon — small ribbon label in top-right corner */}
+                  {/* Coming Soon — small label in top-right corner with gold border */}
                   {!country.active && (
-                    <div className="absolute top-2 right-2 z-10">
-                      <span className="bg-black/60 backdrop-blur-sm text-white/90 px-2.5 py-1 rounded-md text-[10px] font-medium tracking-wider uppercase">
+                    <div className="absolute top-2.5 right-2.5 z-10">
+                      <span className="bg-black/50 backdrop-blur-sm text-[#D4AF37] border border-[#D4AF37]/70 px-2.5 py-1 rounded-md text-[10px] font-semibold tracking-wider uppercase">
                         Coming Soon
                       </span>
                     </div>
                   )}
 
-                  {/* Content — always visible at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-left">
-                    <span className="text-2xl md:text-3xl mb-1 block drop-shadow-lg">{country.flag}</span>
-                    <h3 className="text-white font-heading text-base md:text-lg font-light drop-shadow-md">{country.name}</h3>
-                    <p className="text-white/60 text-[10px] md:text-xs mt-0.5">
+                  {/* Content — centered at bottom for symmetry */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-center">
+                    <span className="text-2xl md:text-3xl mb-1.5 block drop-shadow-lg">{country.flag}</span>
+                    <h3 className="text-white font-heading text-sm md:text-base font-light drop-shadow-md">{country.name}</h3>
+                    <p className="text-white/60 text-[9px] md:text-[11px] mt-0.5 leading-tight">
                       {country.label}
                     </p>
                   </div>
