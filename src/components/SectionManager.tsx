@@ -6,7 +6,8 @@ import FeaturedProperties from '@/components/FeaturedProperties';
 import CalculatorTeaser from '@/components/CalculatorTeaser';
 import AboutMigronis from '@/components/AboutMigronis';
 import WhyTrustUs from '@/components/WhyTrustUs';
-import InteractiveMap from '@/components/InteractiveMap';
+// import InteractiveMap from '@/components/InteractiveMap';
+import GlobalMap from '@/components/GlobalMap';
 import InvestmentAnalytics from '@/components/InvestmentAnalytics';
 import PropertyManagement from '@/components/PropertyManagement';
 import InvestmentPackages from '@/components/InvestmentPackages';
@@ -75,7 +76,7 @@ export default function SectionManager() {
         <CalculatorTeaser />
         <AboutMigronis />
         <WhyTrustUs showClientExperience={true} />
-        <InteractiveMap />
+        <GlobalMap />
         <InvestmentAnalytics />
         <PropertyManagement />
         <InvestmentPackages />
@@ -101,7 +102,7 @@ export default function SectionManager() {
       {show('section_calculator') && <CalculatorTeaser />}
       {show('section_about') && <AboutMigronis />}
       {show('section_why_trust') && <WhyTrustUs showClientExperience={show('section_international_experience')} />}
-      {show('section_map') && <InteractiveMap />}
+      {show('section_map') && <GlobalMap />}
       {show('section_analytics') && <InvestmentAnalytics />}
       {show('section_property_management') && <PropertyManagement />}
       {show('section_investment_packages') && <InvestmentPackages />}
