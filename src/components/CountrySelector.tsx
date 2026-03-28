@@ -10,7 +10,7 @@ const countries = [
     image: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     active: true,
     url: null,
-    label: 'Santa Catarina & Florianópolis',
+    label: 'Santa Catarina &\nFlorianópolis',
   },
   {
     name: 'Azores',
@@ -18,7 +18,7 @@ const countries = [
     image: 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     active: true,
     url: 'https://azores-site.vercel.app',
-    label: 'Atlantic Development',
+    label: 'Atlantic\nDevelopment',
   },
   {
     name: 'Costa Rica',
@@ -26,7 +26,7 @@ const countries = [
     image: 'https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     active: false,
     url: null,
-    label: 'Pacific Coast',
+    label: 'Pacific\nCoast',
   },
   {
     name: 'Uruguay',
@@ -34,7 +34,7 @@ const countries = [
     image: 'https://images.unsplash.com/photo-1584646098378-0874589d76b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     active: false,
     url: null,
-    label: 'Punta del Este & Montevideo',
+    label: 'Punta del Este &\nMontevideo',
   },
 ];
 
@@ -109,8 +109,8 @@ export default function CountrySelector() {
                   key={country.name}
                   onClick={() => country.active && handleSelect(country)}
                   className={`relative rounded-xl overflow-hidden aspect-[3/4] group transition-all duration-300 border border-[#D4AF37]/40 ${
-                    country.active 
-                      ? 'cursor-pointer hover:shadow-xl hover:scale-[1.02] hover:border-[#D4AF37]' 
+                    country.active
+                      ? 'cursor-pointer hover:shadow-xl hover:scale-[1.02] hover:border-[#D4AF37]'
                       : 'cursor-default'
                   }`}
                 >
@@ -122,14 +122,10 @@ export default function CountrySelector() {
                     style={{ backgroundImage: `url("${country.image}")` }}
                   />
 
-                  {/* Overlay */}
-                  <div className={`absolute inset-0 ${
-                    country.active 
-                      ? 'bg-gradient-to-t from-black/70 via-black/10 to-transparent' 
-                      : 'bg-gradient-to-t from-black/70 via-black/30 to-black/10'
-                  }`} />
+                  {/* Overlay — darker at bottom for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                  {/* Coming Soon — small label in top-right corner with gold border */}
+                  {/* Coming Soon — top-right corner */}
                   {!country.active && (
                     <div className="absolute top-2.5 right-2.5 z-10">
                       <span className="bg-black/50 backdrop-blur-sm text-[#D4AF37] border border-[#D4AF37]/70 px-2.5 py-1 rounded-md text-[10px] font-semibold tracking-wider uppercase">
@@ -138,11 +134,20 @@ export default function CountrySelector() {
                     </div>
                   )}
 
-                  {/* Content — centered at bottom for symmetry */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 text-center">
-                    <span className="text-2xl md:text-3xl mb-1.5 block drop-shadow-lg">{country.flag}</span>
+                  {/* Content — FIXED positions from bottom */}
+                  {/* Flag: always 70px from bottom */}
+                  <div className="absolute left-0 right-0 bottom-[70px] flex justify-center">
+                    <span className="text-3xl drop-shadow-lg">{country.flag}</span>
+                  </div>
+
+                  {/* Name: always 42px from bottom */}
+                  <div className="absolute left-0 right-0 bottom-[42px] text-center">
                     <h3 className="text-white font-heading text-sm md:text-base font-light drop-shadow-md">{country.name}</h3>
-                    <p className="text-white/60 text-[9px] md:text-[11px] mt-0.5 leading-tight">
+                  </div>
+
+                  {/* Label: always 12px from bottom, fixed 2-line height */}
+                  <div className="absolute left-2 right-2 bottom-[10px] text-center h-[28px] flex items-start justify-center">
+                    <p className="text-white/60 text-[9px] md:text-[11px] leading-tight whitespace-pre-line">
                       {country.label}
                     </p>
                   </div>
