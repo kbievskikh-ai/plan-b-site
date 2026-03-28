@@ -12,18 +12,16 @@ const countries = [
     nameRu: "Бразилия",
     region: "Santa Catarina & Florianópolis",
     regionRu: "Санта-Катарина и Флорианополис",
-    lat: -27.6,
-    lng: -48.5,
-    // SVG world map coords (approximate Mercator projection)
-    x: 30.5,
-    y: 68,
+    // Position on the map image (percentage from top-left)
+    x: 32,
+    y: 65,
     active: true,
     url: null,
     flag: "🇧🇷",
     stats: { properties: "50+", roi: "12-18%", from: "$85K" },
     statsRu: { properties: "50+", roi: "12-18%", from: "$85K" },
-    description: "Premium beachfront properties in Southern Brazil with strong rental yields and growing digital nomad demand.",
-    descriptionRu: "Премиальная недвижимость на побережье Южной Бразилии с высокой арендной доходностью и растущим спросом.",
+    description: "Premium beachfront properties in Southern Brazil with strong rental yields.",
+    descriptionRu: "Премиальная недвижимость на побережье Южной Бразилии с высокой доходностью.",
   },
   {
     id: "azores",
@@ -31,17 +29,15 @@ const countries = [
     nameRu: "Азорские острова",
     region: "Atlantic Development",
     regionRu: "Атлантический девелопмент",
-    lat: 37.7,
-    lng: -25.7,
-    x: 43.5,
-    y: 35,
+    x: 42,
+    y: 30,
     active: true,
     url: "https://azores-site.vercel.app",
     flag: "🇵🇹",
     stats: { properties: "20+", roi: "8-14%", from: "$120K" },
     statsRu: { properties: "20+", roi: "8-14%", from: "$120K" },
-    description: "Exclusive Atlantic island development with EU residency pathway and pristine natural environment.",
-    descriptionRu: "Эксклюзивный девелопмент на Атлантических островах с путём к резидентству ЕС и нетронутой природой.",
+    description: "Exclusive Atlantic island development with EU residency pathway.",
+    descriptionRu: "Эксклюзивный девелопмент на Атлантических островах с путём к резидентству ЕС.",
   },
   {
     id: "costarica",
@@ -49,10 +45,8 @@ const countries = [
     nameRu: "Коста-Рика",
     region: "Pacific Coast",
     regionRu: "Тихоокеанское побережье",
-    lat: 9.9,
-    lng: -84.1,
-    x: 17,
-    y: 53,
+    x: 18,
+    y: 48,
     active: false,
     url: null,
     flag: "🇨🇷",
@@ -67,17 +61,15 @@ const countries = [
     nameRu: "Уругвай",
     region: "Punta del Este & Montevideo",
     regionRu: "Пунта-дель-Эсте и Монтевидео",
-    lat: -34.9,
-    lng: -56.2,
-    x: 28,
-    y: 72.5,
+    x: 30,
+    y: 76,
     active: false,
     url: null,
     flag: "🇺🇾",
     stats: { properties: "—", roi: "—", from: "—" },
     statsRu: { properties: "—", roi: "—", from: "—" },
-    description: "Coming soon — Stable economy, premium coastal living, and strong property rights.",
-    descriptionRu: "Скоро — стабильная экономика, премиальное побережье и надёжные права собственности.",
+    description: "Coming soon — Stable economy, premium coastal living.",
+    descriptionRu: "Скоро — стабильная экономика, премиальное побережье.",
   },
 ];
 
@@ -89,23 +81,21 @@ export default function GlobalMap() {
   const handleCountryClick = (country: typeof countries[0]) => {
     if (country.url) {
       window.open(country.url, "_blank");
-    } else if (country.active) {
-      setActiveCountry(activeCountry === country.id ? null : country.id);
     } else {
       setActiveCountry(activeCountry === country.id ? null : country.id);
     }
   };
 
   return (
-    <section className="relative py-24 bg-[#0a1628] overflow-hidden" id="map">
+    <section className="relative py-20 md:py-28 bg-[#0F1B2D] overflow-hidden" id="map">
       <ScrollAnimation>
         {/* Section Header */}
-        <div className="text-center mb-16 px-4">
+        <div className="text-center mb-12 md:mb-16 px-4">
           <h2 className="text-3xl md:text-5xl font-heading text-white mb-4">
             {isRu ? "Глобальное присутствие" : "Global Presence"}
           </h2>
           <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-6" />
-          <p className="text-white/50 max-w-2xl mx-auto">
+          <p className="text-white/50 max-w-2xl mx-auto text-sm md:text-base">
             {isRu 
               ? "Инвестиционные возможности в самых перспективных регионах Америки и Атлантики"
               : "Investment opportunities across the most promising regions of the Americas & Atlantic"
@@ -115,144 +105,66 @@ export default function GlobalMap() {
 
         {/* Map Container */}
         <div className="relative max-w-6xl mx-auto px-4">
-          <div className="relative aspect-[2/1] md:aspect-[2.5/1]">
-            {/* World Map SVG Background */}
+          <div className="relative">
+            {/* World Map Image */}
+            <img
+              src="/images/world-map-gold.png"
+              alt="World map"
+              className="w-full h-auto opacity-90"
+              draggable={false}
+            />
+            
+            {/* Connection lines (SVG overlay) */}
             <svg
-              viewBox="0 0 100 50"
-              className="w-full h-full"
-              xmlns="http://www.w3.org/2000/svg"
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
             >
-              {/* Ocean background */}
-              <rect width="100" height="50" fill="#0a1628" />
-              
-              {/* Simplified world map continents - gold outlines */}
-              <g fill="none" stroke="#D4AF37" strokeWidth="0.15" opacity="0.3">
-                {/* North America */}
-                <path d="M5,8 L8,6 L12,5 L18,6 L22,8 L24,12 L22,16 L20,18 L18,20 L15,22 L12,24 L10,22 L8,18 L6,14 L5,10 Z" />
-                {/* Central America */}
-                <path d="M12,24 L14,25 L15,27 L14,28 L12,27 Z" />
-                {/* South America */}
-                <path d="M22,28 L26,26 L30,28 L34,32 L36,36 L34,40 L30,44 L26,44 L22,40 L20,36 L22,32 Z" />
-                {/* Europe */}
-                <path d="M42,8 L44,6 L48,5 L52,6 L54,8 L52,12 L50,14 L48,12 L46,10 L44,10 Z" />
-                {/* Africa */}
-                <path d="M42,18 L46,16 L52,18 L56,22 L58,28 L56,34 L52,38 L48,38 L44,34 L42,28 L40,22 Z" />
-                {/* British Isles */}
-                <path d="M40,8 L42,7 L42,10 L40,10 Z" />
-                {/* Scandinavia */}
-                <path d="M46,3 L48,2 L50,4 L48,6 L46,5 Z" />
-                {/* Asia */}
-                <path d="M54,6 L60,4 L68,5 L76,8 L82,12 L86,16 L84,20 L78,22 L72,20 L66,18 L60,14 L56,10 Z" />
-                {/* Middle East */}
-                <path d="M54,14 L58,14 L60,18 L56,20 L54,18 Z" />
-                {/* India */}
-                <path d="M66,18 L70,18 L72,24 L68,28 L64,24 Z" />
-                {/* Southeast Asia */}
-                <path d="M76,18 L80,16 L84,20 L80,24 L76,22 Z" />
-                {/* Australia */}
-                <path d="M78,32 L86,30 L92,32 L92,38 L86,40 L80,38 Z" />
-                {/* Japan */}
-                <path d="M84,10 L86,8 L86,14 L84,12 Z" />
-                {/* Azores approximate */}
-                <circle cx="38" cy="14" r="0.5" fill="#D4AF37" opacity="0.2" />
-              </g>
-
-              {/* Grid lines */}
-              <g stroke="#D4AF37" strokeWidth="0.05" opacity="0.1">
-                <line x1="0" y1="25" x2="100" y2="25" />
-                <line x1="50" y1="0" x2="50" y2="50" />
-                {/* Tropics */}
-                <line x1="0" y1="18" x2="100" y2="18" strokeDasharray="0.5,0.5" />
-                <line x1="0" y1="32" x2="100" y2="32" strokeDasharray="0.5,0.5" />
-              </g>
-
-              {/* Connection lines between countries */}
-              <g stroke="#D4AF37" strokeWidth="0.08" opacity="0.2" strokeDasharray="0.3,0.3">
-                {/* Brazil to Azores */}
-                <line x1="30.5" y1="34" x2="38" y2="17.5" />
-                {/* Brazil to Costa Rica */}
-                <line x1="30.5" y1="34" x2="17" y2="26.5" />
-                {/* Brazil to Uruguay */}
-                <line x1="30.5" y1="34" x2="28" y2="36.25" />
-              </g>
-
-              {/* Country markers */}
-              {countries.map((country) => (
-                <g key={country.id}>
-                  {/* Pulse ring for active countries */}
-                  {country.active && (
-                    <>
-                      <circle
-                        cx={country.x}
-                        cy={country.y / 2}
-                        r="1.5"
-                        fill="none"
-                        stroke="#D4AF37"
-                        strokeWidth="0.08"
-                        opacity="0.4"
-                      >
-                        <animate
-                          attributeName="r"
-                          values="1;2.5;1"
-                          dur="3s"
-                          repeatCount="indefinite"
-                        />
-                        <animate
-                          attributeName="opacity"
-                          values="0.4;0;0.4"
-                          dur="3s"
-                          repeatCount="indefinite"
-                        />
-                      </circle>
-                    </>
-                  )}
-                  {/* Main dot */}
-                  <circle
-                    cx={country.x}
-                    cy={country.y / 2}
-                    r={country.active ? "0.8" : "0.6"}
-                    fill={country.active ? "#D4AF37" : "#D4AF37"}
-                    opacity={country.active ? 1 : 0.4}
-                    className="cursor-pointer"
-                    onClick={() => handleCountryClick(country)}
-                    style={{ filter: country.active ? "drop-shadow(0 0 3px #D4AF37)" : "none" }}
-                  />
-                  {/* Glow for active */}
-                  {country.active && (
-                    <circle
-                      cx={country.x}
-                      cy={country.y / 2}
-                      r="0.4"
-                      fill="#fff"
-                      opacity="0.6"
-                    />
-                  )}
-                </g>
-              ))}
+              {/* Brazil to Azores */}
+              <line x1="32" y1="65" x2="42" y2="30" stroke="#D4AF37" strokeWidth="0.15" strokeDasharray="0.8,0.5" opacity="0.3" />
+              {/* Brazil to Costa Rica */}
+              <line x1="32" y1="65" x2="18" y2="48" stroke="#D4AF37" strokeWidth="0.15" strokeDasharray="0.8,0.5" opacity="0.3" />
+              {/* Brazil to Uruguay */}
+              <line x1="32" y1="65" x2="30" y2="76" stroke="#D4AF37" strokeWidth="0.15" strokeDasharray="0.8,0.5" opacity="0.3" />
             </svg>
 
-            {/* Country Labels (HTML overlay) */}
+            {/* Country Markers (HTML overlay) */}
             {countries.map((country) => (
               <button
                 key={country.id}
                 onClick={() => handleCountryClick(country)}
-                className={`absolute transform -translate-x-1/2 transition-all duration-300 group ${
-                  country.active ? "hover:scale-110" : "opacity-60"
+                className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 group z-10 ${
+                  country.active ? "hover:scale-110" : "opacity-70 hover:opacity-90"
                 }`}
                 style={{
                   left: `${country.x}%`,
                   top: `${country.y}%`,
                 }}
               >
-                <div className="flex flex-col items-center gap-1">
-                  <span className="text-lg md:text-2xl drop-shadow-lg">{country.flag}</span>
-                  <span className={`text-[10px] md:text-xs font-medium whitespace-nowrap px-2 py-0.5 rounded-full ${
+                {/* Pulse ring */}
+                {country.active && (
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="absolute w-8 h-8 md:w-12 md:h-12 rounded-full bg-[#D4AF37]/20 animate-ping" />
+                  </span>
+                )}
+                
+                {/* Marker */}
+                <div className="relative flex flex-col items-center gap-0.5 md:gap-1">
+                  {/* Dot */}
+                  <div className={`w-3 h-3 md:w-4 md:h-4 rounded-full border-2 ${
                     country.active 
-                      ? "bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30" 
-                      : "bg-white/5 text-white/40 border border-white/10"
+                      ? "bg-[#D4AF37] border-[#E5C76B] shadow-[0_0_12px_rgba(212,175,55,0.6)]" 
+                      : "bg-[#D4AF37]/40 border-[#D4AF37]/30"
+                  }`} />
+                  
+                  {/* Label */}
+                  <span className={`text-[8px] md:text-[11px] font-medium whitespace-nowrap px-1.5 md:px-2 py-0.5 rounded-full backdrop-blur-sm ${
+                    country.active 
+                      ? "bg-[#0F1B2D]/80 text-[#D4AF37] border border-[#D4AF37]/40" 
+                      : "bg-[#0F1B2D]/60 text-white/40 border border-white/10"
                   }`}>
                     {isRu ? country.nameRu : country.name}
-                    {!country.active && <span className="ml-1 text-[8px] opacity-60">soon</span>}
+                    {!country.active && <span className="ml-1 text-[7px] md:text-[9px] opacity-50 italic">soon</span>}
                   </span>
                 </div>
               </button>
@@ -260,17 +172,18 @@ export default function GlobalMap() {
           </div>
 
           {/* Country Info Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-8 md:mt-12">
             {countries.map((country) => (
               <motion.button
                 key={country.id}
                 onClick={() => handleCountryClick(country)}
-                whileHover={country.active ? { scale: 1.02 } : {}}
+                whileHover={country.active ? { scale: 1.02, y: -2 } : {}}
+                whileTap={country.active ? { scale: 0.98 } : {}}
                 className={`relative text-left p-4 md:p-5 rounded-xl border transition-all duration-300 ${
                   activeCountry === country.id
-                    ? "bg-[#D4AF37]/10 border-[#D4AF37]/50"
+                    ? "bg-[#D4AF37]/10 border-[#D4AF37]/50 shadow-lg shadow-[#D4AF37]/5"
                     : country.active
-                    ? "bg-white/5 border-white/10 hover:border-[#D4AF37]/30 hover:bg-[#D4AF37]/5"
+                    ? "bg-white/[0.03] border-white/10 hover:border-[#D4AF37]/30 hover:bg-[#D4AF37]/5"
                     : "bg-white/[0.02] border-white/5"
                 }`}
               >
@@ -280,7 +193,7 @@ export default function GlobalMap() {
                   </span>
                 )}
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xl">{country.flag}</span>
+                  <span className="text-xl md:text-2xl">{country.flag}</span>
                   <div>
                     <h3 className={`text-sm md:text-base font-heading ${country.active ? "text-white" : "text-white/40"}`}>
                       {isRu ? country.nameRu : country.name}
@@ -307,7 +220,7 @@ export default function GlobalMap() {
                     </div>
                   </div>
                 ) : (
-                  <p className="text-xs text-white/20 italic">
+                  <p className="text-[10px] md:text-xs text-white/20 italic leading-relaxed">
                     {isRu ? country.descriptionRu : country.description}
                   </p>
                 )}
