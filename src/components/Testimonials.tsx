@@ -148,7 +148,7 @@ export default function Testimonials() {
 
         {/* CTA */}
         <ScrollAnimation className="text-center mt-16">
-          <a href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer" className="btn-gold inline-block">
+          <a href="https://wa.me/5548988752300" target="_blank" rel="noopener noreferrer" className="btn-gold inline-block">
             {t('testimonials.cta')}
           </a>
         </ScrollAnimation>

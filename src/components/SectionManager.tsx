@@ -38,7 +38,7 @@ function FloatingChat() {
               </svg>
             </div>
           </a>
-          <a href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer"
+          <a href="https://wa.me/5548988752300" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-3 bg-white shadow-lg rounded-full pl-4 pr-2 py-2 hover:shadow-xl transition-all duration-300 group">
             <span className="text-sm text-navy-700 group-hover:text-navy-900">Telegram</span>
             <div className="w-12 h-12 bg-[#0088cc] rounded-full flex items-center justify-center">

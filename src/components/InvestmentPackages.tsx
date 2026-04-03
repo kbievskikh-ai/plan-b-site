@@ -132,7 +132,7 @@ export default function InvestmentPackages() {
 
               {/* CTA Button */}
               <a
-                href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer"
+                href="https://wa.me/5548988752300" target="_blank" rel="noopener noreferrer"
                 className={`block text-center py-3 rounded-xl font-semibold transition-colors duration-300 ${
                   pkg.popular
                     ? 'bg-gold-500 hover:bg-gold-600 text-white'
