@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import GTMScript from "@/components/GTMScript";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <GTMScript />
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
