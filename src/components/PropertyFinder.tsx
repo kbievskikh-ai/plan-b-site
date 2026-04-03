@@ -245,7 +245,7 @@ export default function PropertyFinder() {
                     We may have options that fit your criteria. Leave your details and our team will prepare a personalized selection.
                   </p>
                   <a
-                    href="https://wa.me/5548988752300" target="_blank" rel="noopener noreferrer"
+                    href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
                     className="mt-6 inline-block bg-[#D4AF37] text-[#1B2951] font-semibold px-8 py-3 rounded-lg hover:bg-[#F7C635] transition-colors"
                   >
                     Get Personalized Selection
@@ -311,7 +311,7 @@ export default function PropertyFinder() {
                       <div className="p-6 border-t border-white/10 bg-white/[0.02]">
                         <p className="text-gray-400 text-sm mb-3">Want floor plans, payment schedule, and a detailed report?</p>
                         <a
-                          href="https://wa.me/5548988752300" target="_blank" rel="noopener noreferrer"
+                          href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
                           className="inline-block bg-[#D4AF37] text-[#1B2951] font-semibold px-6 py-2.5 rounded-lg hover:bg-[#F7C635] transition-colors text-sm"
                         >
                           Get Full Report →

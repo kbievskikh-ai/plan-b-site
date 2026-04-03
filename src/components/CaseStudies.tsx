@@ -317,7 +317,7 @@ export default function CaseStudies() {
           <p className="text-white/70 mb-6 max-w-2xl mx-auto">
             {t('caseStudies.ctaSubtitle')}
           </p>
-          <a href="https://wa.me/5548988752300" target="_blank" rel="noopener noreferrer" className="btn-gold">
+          <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" className="btn-gold">
             {t('caseStudies.cta')}
           </a>
         </motion.div>

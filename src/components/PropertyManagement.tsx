@@ -144,7 +144,7 @@ export default function PropertyManagement() {
           className="mt-12 text-center"
         >
           <a
-            href="https://wa.me/5548988752300" target="_blank" rel="noopener noreferrer"
+            href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-xl font-semibold transition-colors duration-300"
           >
             {t('pm.cta')}

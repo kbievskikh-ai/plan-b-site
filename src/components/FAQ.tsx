@@ -175,7 +175,7 @@ export default function FAQ() {
             {t('faq.stillHaveQuestionsDesc')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="https://wa.me/5548988752300" target="_blank" rel="noopener noreferrer" className="btn-gold">
+            <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" className="btn-gold">
               {t('faq.cta')}
             </a>
             <a href="mailto:konstantin.bievskikh@migronis.com" className="btn-outline">

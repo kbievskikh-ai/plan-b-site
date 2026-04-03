@@ -198,7 +198,7 @@ export default function PropertyModal({ property, isOpen, onClose }: PropertyMod
             {/* Action buttons */}
             <div className="flex gap-4 pt-6 border-t border-gray-200">
               <a 
-                href="https://wa.me/5548988752300"
+                href="https://wa.me/5548988117424"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold flex-1 text-center"
@@ -206,7 +206,7 @@ export default function PropertyModal({ property, isOpen, onClose }: PropertyMod
                 Request Details
               </a>
               <a 
-                href="https://wa.me/5548988752300"
+                href="https://wa.me/5548988117424"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline flex-1 text-center"
