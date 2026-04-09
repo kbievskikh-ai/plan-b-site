@@ -10,38 +10,54 @@ const DEVELOPERS = [
   { id: 'costarica', name: 'Pura Vida Living', flag: '🇨🇷', country: 'Costa Rica', projects: 1 },
 ];
 
-const PROJECTS: { id: string; title: string; developer: string; price: string; priceUsd: string; location: string; type: string; roi: string; units: number; stage: string; delivery: string; description: string; validators: { legal: boolean; tax: boolean; appraiser: boolean }; images: string[] }[] = [
+const PROJECTS: { id: string; title: string; developer: string; price: string; priceUsd: string; location: string; type: string; roi: string; units: number; stage: string; delivery: string; description: string; validators: { legal: boolean; tax: boolean; appraiser: boolean }; score?: { overall: number; location: number; roi: number; liquidity: number; risk: number }; financials?: { irr: string; capRate: string; cashOnCash: string; paybackYears: number }; images: string[] }[] = [
   { id: 'terra1', title: 'Terrá Jurerê', developer: 'terraviva', price: 'R$ 2.1M', priceUsd: '$410K', location: 'Jurerê, Florianópolis', type: 'Luxury Apartments', roi: '10.5%', units: 48, stage: 'Under Construction', delivery: 'Q4 2027',
     description: 'Premium apartments in Jurerê — the most exclusive neighborhood in Florianópolis. 2–3 bedrooms, pool, sea view.',
     validators: { legal: true, tax: true, appraiser: true },
+    score: { overall: 92, location: 95, roi: 88, liquidity: 90, risk: 95 },
+    financials: { irr: '14.2%', capRate: '7.8%', cashOnCash: '11.5%', paybackYears: 8.5 },
     images: ['🏖️'] },
   { id: 'terra2', title: 'CB Towers Residence', developer: 'terraviva', price: 'R$ 1.4M', priceUsd: '$275K', location: 'Canasvieiras, Floripa', type: 'High-Rise Apartments', roi: '9.2%', units: 120, stage: 'Foundation', delivery: 'Q2 2028',
     description: 'Modern towers with full infrastructure: gym, pool, coworking. Walking distance to the beach.',
     validators: { legal: true, tax: true, appraiser: false },
+    score: { overall: 78, location: 82, roi: 80, liquidity: 75, risk: 74 },
+    financials: { irr: '12.1%', capRate: '6.9%', cashOnCash: '9.8%', paybackYears: 9.5 },
     images: ['🏢'] },
   { id: 'terra3', title: 'Vista Mar Suites', developer: 'terraviva', price: 'R$ 890K', priceUsd: '$175K', location: 'Campeche, Floripa', type: 'Studios & 1BR', roi: '11.8%', units: 80, stage: 'Pre-Launch', delivery: 'Q1 2029',
     description: 'Affordable studios in the fastest-growing area of Floripa. High Airbnb demand.',
     validators: { legal: true, tax: false, appraiser: false },
+    score: { overall: 68, location: 70, roi: 85, liquidity: 60, risk: 58 },
+    financials: { irr: '16.5%', capRate: '9.2%', cashOnCash: '13.1%', paybackYears: 7.2 },
     images: ['🌊'] },
   { id: 'azure1', title: 'Algarve Oceanview', developer: 'azure', price: '€650K', priceUsd: '$705K', location: 'Lagos, Algarve', type: 'Luxury Villas', roi: '7.5%', units: 24, stage: 'Under Construction', delivery: 'Q3 2027',
     description: 'Clifftop villas with panoramic ocean views. Golden Visa eligible.',
     validators: { legal: true, tax: true, appraiser: true },
+    score: { overall: 85, location: 90, roi: 78, liquidity: 82, risk: 88 },
+    financials: { irr: '10.5%', capRate: '5.5%', cashOnCash: '8.2%', paybackYears: 11 },
     images: ['🌅'] },
   { id: 'azure2', title: 'Lisbon Heritage', developer: 'azure', price: '€420K', priceUsd: '$455K', location: 'Chiado, Lisbon', type: 'Renovated Apartments', roi: '6.8%', units: 16, stage: 'Renovation', delivery: 'Q1 2027',
     description: 'Historic building renovation in the heart of Lisbon. High tourist demand.',
     validators: { legal: true, tax: false, appraiser: true },
+    score: { overall: 72, location: 88, roi: 65, liquidity: 70, risk: 66 },
+    financials: { irr: '9.8%', capRate: '4.8%', cashOnCash: '7.1%', paybackYears: 13 },
     images: ['🏰'] },
   { id: 'siam1', title: 'Phuket Marina Residences', developer: 'siam', price: '฿18M', priceUsd: '$520K', location: 'Phuket, Thailand', type: 'Seafront Apartments', roi: '8.5%', units: 60, stage: 'Under Construction', delivery: 'Q4 2027',
     description: 'Marina-front apartments with yacht access. Freehold for foreigners.',
     validators: { legal: true, tax: true, appraiser: true },
+    score: { overall: 88, location: 92, roi: 84, liquidity: 85, risk: 90 },
+    financials: { irr: '11.8%', capRate: '6.5%', cashOnCash: '10.2%', paybackYears: 9 },
     images: ['⛵'] },
   { id: 'siam2', title: 'Bangkok Sky Garden', developer: 'siam', price: '฿8.5M', priceUsd: '$245K', location: 'Sathorn, Bangkok', type: 'High-End Condos', roi: '9.1%', units: 200, stage: 'Topping Out', delivery: 'Q2 2027',
     description: 'CBD location with BTS access. Infinity pool on the 50th floor.',
     validators: { legal: false, tax: true, appraiser: true },
+    score: { overall: 74, location: 85, roi: 82, liquidity: 70, risk: 60 },
+    financials: { irr: '13.5%', capRate: '7.5%', cashOnCash: '11.0%', paybackYears: 8 },
     images: ['🌃'] },
   { id: 'cr1', title: 'Montaña Wellness Retreat', developer: 'costarica', price: '$380K', priceUsd: '$380K', location: 'Manuel Antonio', type: 'Eco-Lodge', roi: '12.3%', units: 15, stage: 'Under Construction', delivery: 'Q1 2028',
     description: 'Eco-luxury lodges surrounded by rainforest. Near Manuel Antonio National Park.',
     validators: { legal: true, tax: true, appraiser: false },
+    score: { overall: 80, location: 88, roi: 90, liquidity: 65, risk: 78 },
+    financials: { irr: '15.8%', capRate: '8.5%', cashOnCash: '12.8%', paybackYears: 7.5 },
     images: ['🌿'] },
 ];
 
@@ -131,6 +147,61 @@ export default function PlatformClient() {
                       </div>
                     )}
                   </div>
+
+                  {/* GRONIS Property Score */}
+                  {'score' in selectedProject && selectedProject.score && (
+                    <div className="bg-navy-800/50 rounded-2xl p-6 border border-white/5">
+                      <div className="flex items-center justify-between mb-6">
+                        <h3 className="font-bold text-lg">🏆 GRONIS Property Score</h3>
+                        <div className={`px-4 py-2 rounded-xl text-2xl font-bold ${
+                          selectedProject.score.overall >= 85 ? 'bg-green-500/20 text-green-400' :
+                          selectedProject.score.overall >= 70 ? 'bg-yellow-500/20 text-yellow-400' :
+                          'bg-red-500/20 text-red-400'
+                        }`}>{selectedProject.score.overall}/100</div>
+                      </div>
+                      <div className="space-y-3">
+                        {[
+                          { label: 'Location', val: selectedProject.score.location },
+                          { label: 'ROI Potential', val: selectedProject.score.roi },
+                          { label: 'Liquidity', val: selectedProject.score.liquidity },
+                          { label: 'Risk Level', val: selectedProject.score.risk },
+                        ].map((s) => (
+                          <div key={s.label}>
+                            <div className="flex justify-between text-sm mb-1">
+                              <span className="text-gray-400">{s.label}</span>
+                              <span className="font-medium">{s.val}%</span>
+                            </div>
+                            <div className="h-2 bg-navy-900 rounded-full overflow-hidden">
+                              <div className="h-full rounded-full transition-all" style={{ width: `${s.val}%`, background: s.val >= 80 ? '#22c55e' : s.val >= 60 ? '#eab308' : '#ef4444' }} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="text-[10px] text-gray-500 mt-4">Score based on expert analysis of location, market data, financial projections, and risk assessment. Not financial advice.</p>
+                    </div>
+                  )}
+
+                  {/* Financial Metrics */}
+                  {'financials' in selectedProject && selectedProject.financials && (
+                    <div className="bg-navy-800/50 rounded-2xl p-6 border border-white/5">
+                      <h3 className="font-bold text-lg mb-4">📈 Financial Projections</h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        {[
+                          { label: 'IRR', val: selectedProject.financials.irr, desc: 'Internal Rate of Return' },
+                          { label: 'Cap Rate', val: selectedProject.financials.capRate, desc: 'Capitalization Rate' },
+                          { label: 'Cash-on-Cash', val: selectedProject.financials.cashOnCash, desc: 'Annual Cash Return' },
+                          { label: 'Payback', val: selectedProject.financials.paybackYears + ' yrs', desc: 'Investment Recovery' },
+                        ].map((m) => (
+                          <div key={m.label} className="bg-navy-900 rounded-xl p-4 text-center">
+                            <div className="text-[#D4AF37] text-2xl font-bold">{m.val}</div>
+                            <div className="text-xs font-medium mt-1">{m.label}</div>
+                            <div className="text-[10px] text-gray-500">{m.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="text-[10px] text-gray-500 mt-4">Projections based on current market conditions and expert analysis. Actual returns may vary.</p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Right sidebar */}
@@ -277,6 +348,17 @@ export default function PlatformClient() {
                           </div>
                           <span className="text-[10px] text-gray-500">{passedChecks}/{totalChecks}</span>
                         </div>
+                        {/* Property Score */}
+                        {'score' in p && p.score && (
+                          <div className="flex items-center gap-2">
+                            <div className="text-[10px] text-gray-500">GRONIS Score</div>
+                            <div className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                              p.score.overall >= 85 ? 'bg-green-500/20 text-green-400' :
+                              p.score.overall >= 70 ? 'bg-yellow-500/20 text-yellow-400' :
+                              'bg-red-500/20 text-red-400'
+                            }`}>{p.score.overall}/100</div>
+                          </div>
+                        )}
                         <div className="text-[10px] text-gray-500">by {devName(p.developer)}</div>
                       </div>
                     </motion.div>
