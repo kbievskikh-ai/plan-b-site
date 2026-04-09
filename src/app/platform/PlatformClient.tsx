@@ -16,49 +16,49 @@ const PROJECTS: { id: string; title: string; developer: string; price: string; p
     validators: { legal: true, tax: true, appraiser: true },
     score: { overall: 92, location: 95, roi: 88, liquidity: 90, risk: 95 },
     financials: { irr: '14.2%', capRate: '7.8%', cashOnCash: '11.5%', paybackYears: 8.5 },
-    images: ['🏖️'] },
+    images: ['/platform/terra-jurere-1.jpg', '/platform/terra-jurere-2.jpg', '/platform/terra-jurere-3.jpg'] },
   { id: 'terra2', title: 'CB Towers Residence', developer: 'terraviva', price: 'R$ 1.4M', priceUsd: '$275K', location: 'Canasvieiras, Floripa', type: 'High-Rise Apartments', roi: '9.2%', units: 120, stage: 'Foundation', delivery: 'Q2 2028',
     description: 'Modern towers with full infrastructure: gym, pool, coworking. Walking distance to the beach.',
     validators: { legal: true, tax: true, appraiser: false },
     score: { overall: 78, location: 82, roi: 80, liquidity: 75, risk: 74 },
     financials: { irr: '12.1%', capRate: '6.9%', cashOnCash: '9.8%', paybackYears: 9.5 },
-    images: ['🏢'] },
+    images: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80', 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80'] },
   { id: 'terra3', title: 'Vista Mar Suites', developer: 'terraviva', price: 'R$ 890K', priceUsd: '$175K', location: 'Campeche, Floripa', type: 'Studios & 1BR', roi: '11.8%', units: 80, stage: 'Pre-Launch', delivery: 'Q1 2029',
     description: 'Affordable studios in the fastest-growing area of Floripa. High Airbnb demand.',
     validators: { legal: true, tax: false, appraiser: false },
     score: { overall: 68, location: 70, roi: 85, liquidity: 60, risk: 58 },
     financials: { irr: '16.5%', capRate: '9.2%', cashOnCash: '13.1%', paybackYears: 7.2 },
-    images: ['🌊'] },
+    images: ['https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80', 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80'] },
   { id: 'azure1', title: 'Algarve Oceanview', developer: 'azure', price: '€650K', priceUsd: '$705K', location: 'Lagos, Algarve', type: 'Luxury Villas', roi: '7.5%', units: 24, stage: 'Under Construction', delivery: 'Q3 2027',
     description: 'Clifftop villas with panoramic ocean views. Golden Visa eligible.',
     validators: { legal: true, tax: true, appraiser: true },
     score: { overall: 85, location: 90, roi: 78, liquidity: 82, risk: 88 },
     financials: { irr: '10.5%', capRate: '5.5%', cashOnCash: '8.2%', paybackYears: 11 },
-    images: ['🌅'] },
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80', 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80'] },
   { id: 'azure2', title: 'Lisbon Heritage', developer: 'azure', price: '€420K', priceUsd: '$455K', location: 'Chiado, Lisbon', type: 'Renovated Apartments', roi: '6.8%', units: 16, stage: 'Renovation', delivery: 'Q1 2027',
     description: 'Historic building renovation in the heart of Lisbon. High tourist demand.',
     validators: { legal: true, tax: false, appraiser: true },
     score: { overall: 72, location: 88, roi: 65, liquidity: 70, risk: 66 },
     financials: { irr: '9.8%', capRate: '4.8%', cashOnCash: '7.1%', paybackYears: 13 },
-    images: ['🏰'] },
+    images: ['https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=80', 'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=800&q=80'] },
   { id: 'siam1', title: 'Phuket Marina Residences', developer: 'siam', price: '฿18M', priceUsd: '$520K', location: 'Phuket, Thailand', type: 'Seafront Apartments', roi: '8.5%', units: 60, stage: 'Under Construction', delivery: 'Q4 2027',
     description: 'Marina-front apartments with yacht access. Freehold for foreigners.',
     validators: { legal: true, tax: true, appraiser: true },
     score: { overall: 88, location: 92, roi: 84, liquidity: 85, risk: 90 },
     financials: { irr: '11.8%', capRate: '6.5%', cashOnCash: '10.2%', paybackYears: 9 },
-    images: ['⛵'] },
+    images: ['https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80', 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80'] },
   { id: 'siam2', title: 'Bangkok Sky Garden', developer: 'siam', price: '฿8.5M', priceUsd: '$245K', location: 'Sathorn, Bangkok', type: 'High-End Condos', roi: '9.1%', units: 200, stage: 'Topping Out', delivery: 'Q2 2027',
     description: 'CBD location with BTS access. Infinity pool on the 50th floor.',
     validators: { legal: false, tax: true, appraiser: true },
     score: { overall: 74, location: 85, roi: 82, liquidity: 70, risk: 60 },
     financials: { irr: '13.5%', capRate: '7.5%', cashOnCash: '11.0%', paybackYears: 8 },
-    images: ['🌃'] },
+    images: ['https://images.unsplash.com/photo-1555445091-3f3db4c78f6b?w=800&q=80', 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80'] },
   { id: 'cr1', title: 'Montaña Wellness Retreat', developer: 'costarica', price: '$380K', priceUsd: '$380K', location: 'Manuel Antonio', type: 'Eco-Lodge', roi: '12.3%', units: 15, stage: 'Under Construction', delivery: 'Q1 2028',
     description: 'Eco-luxury lodges surrounded by rainforest. Near Manuel Antonio National Park.',
     validators: { legal: true, tax: true, appraiser: false },
     score: { overall: 80, location: 88, roi: 90, liquidity: 65, risk: 78 },
     financials: { irr: '15.8%', capRate: '8.5%', cashOnCash: '12.8%', paybackYears: 7.5 },
-    images: ['🌿'] },
+    images: ['https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&q=80', 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80'] },
 ];
 
 const EXPERTS = [
@@ -113,8 +113,13 @@ export default function PlatformClient() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2 space-y-6">
                   {/* Hero Image */}
-                  <div className="bg-gradient-to-br from-navy-700 to-navy-950 rounded-2xl h-80 flex items-center justify-center text-6xl">
-                    {selectedProject.images[0]}
+                  <div className="bg-gradient-to-br from-navy-700 to-navy-950 rounded-2xl h-80 overflow-hidden">
+                    {selectedProject.images[0].startsWith('http') || selectedProject.images[0].startsWith('/') ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={selectedProject.images[0]} alt={selectedProject.title} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-6xl">{selectedProject.images[0]}</div>
+                    )}
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-2">
@@ -321,8 +326,13 @@ export default function PlatformClient() {
                       onClick={() => setSelectedProject(p)}
                       className="bg-navy-800/50 rounded-2xl border border-white/5 hover:border-[#D4AF37]/30 transition cursor-pointer overflow-hidden group">
                       {/* Image area */}
-                      <div className="h-40 bg-gradient-to-br from-navy-700 to-navy-950 flex items-center justify-center text-4xl group-hover:scale-105 transition-transform duration-300">
-                        {p.images[0]}
+                      <div className="h-40 bg-gradient-to-br from-navy-700 to-navy-950 overflow-hidden relative">
+                        {p.images[0].startsWith('http') || p.images[0].startsWith('/') ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={p.images[0]} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-4xl group-hover:scale-105 transition-transform duration-300">{p.images[0]}</div>
+                        )}
                       </div>
                       {/* Content */}
                       <div className="p-4 space-y-3">
