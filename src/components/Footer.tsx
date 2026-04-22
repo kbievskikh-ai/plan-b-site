@@ -113,7 +113,7 @@ export default function Footer() {
               { name: "Instagram", href: "#" },
               { name: "LinkedIn", href: "#" },
               { name: "YouTube", href: "#" },
-              { name: t('footer.telegram'), href: "#" },
+              { name: t('footer.telegram'), href: "https://t.me/GRONIS_Brazil" },
             ].map((social) => (
               <a
                 key={social.name}
