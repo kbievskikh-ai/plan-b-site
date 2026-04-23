@@ -19,8 +19,8 @@ const T: Record<Lang, Record<string, string>> = {
     units: 'units',
     by: 'by',
     verified: '✓ Verified',
-    gronisScore: 'GRONIS Score',
-    propertyScore: '🏆 GRONIS Property Score',
+    gronisScore: 'IKG Score',
+    propertyScore: '🏆 IKG Property Score',
     financialProjections: '📈 Financial Projections',
     investmentDetails: '📊 Investment Details',
     expertValidation: '🔍 Expert Validation',
@@ -85,8 +85,8 @@ const T: Record<Lang, Record<string, string>> = {
     units: 'юнитов',
     by: 'от',
     verified: '✓ Проверен',
-    gronisScore: 'GRONIS Score',
-    propertyScore: '🏆 GRONIS Score',
+    gronisScore: 'IKG Score',
+    propertyScore: '🏆 IKG Score',
     financialProjections: '📈 Финансовые прогнозы',
     investmentDetails: '📊 Инвестиционные детали',
     expertValidation: '🔍 Экспертная проверка',
@@ -146,8 +146,8 @@ const T: Record<Lang, Record<string, string>> = {
     units: 'юнітів',
     by: 'від',
     verified: '✓ Перевірено',
-    gronisScore: 'GRONIS Score',
-    propertyScore: '🏆 GRONIS Score',
+    gronisScore: 'IKG Score',
+    propertyScore: '🏆 IKG Score',
     financialProjections: '📈 Фінансові прогнози',
     investmentDetails: '📊 Інвестиційні деталі',
     expertValidation: '🔍 Експертна перевірка',
@@ -298,7 +298,7 @@ export default function PlatformClient() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <span className="text-2xl font-bold tracking-wider">Lig<span className="text-[#D4AF37]">Lex</span></span>
             <div>
-              <span className="font-bold font-serif text-lg text-[#D4AF37] block leading-tight">GRONIS</span>
+              <span className="font-bold font-serif text-lg text-[#D4AF37] block leading-tight">IKG Group</span>
               <span className="text-[10px] text-gray-400 hidden sm:block">{t.subtitle}</span>
             </div>
           </button>
