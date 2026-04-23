@@ -21,7 +21,10 @@
     "react-modal": "^3.16.3",
     "react-simple-maps": "^3.0.0",
     "recharts": "^3.7.0",
-    "topojson-client": "^3.1.0"
+    "sodium-native": "^5.1.0",
+    "topojson-client": "^3.1.0",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1"
   },
   "devDependencies": {
     "@types/d3-geo": "^3.1.0",
