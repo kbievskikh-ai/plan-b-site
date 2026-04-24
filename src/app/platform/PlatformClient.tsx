@@ -8,8 +8,8 @@ type Page = 'regions' | 'funds' | 'projects' | 'experts' | 'detail';
 // ────────── Translations ──────────
 const T: Record<Lang, Record<string, string>> = {
   en: {
-    title: 'LigLex',
-    subtitle: 'International Legal-Tech Investment Platform',
+    title: 'IKG Group',
+    subtitle: 'Investment Platform',
     expertsTab: 'Experts',
     back: '← Back',
     verifiedExpert: '✅ Verified Expert',
@@ -74,8 +74,8 @@ const T: Record<Lang, Record<string, string>> = {
     projects: 'Projects',
   },
   ru: {
-    title: 'LigLex',
-    subtitle: 'International Legal-Tech Investment Platform',
+    title: 'IKG Group',
+    subtitle: 'Investment Platform',
     expertsTab: 'Эксперты',
     back: '← Назад',
     verifiedExpert: '✅ Верифицированный эксперт',
@@ -135,8 +135,8 @@ const T: Record<Lang, Record<string, string>> = {
     projects: 'Проекты',
   },
   ua: {
-    title: 'LigLex',
-    subtitle: 'International Legal-Tech Investment Platform',
+    title: 'IKG Group',
+    subtitle: 'Investment Platform',
     expertsTab: 'Експерти',
     back: '← Назад',
     verifiedExpert: '✅ Верифікований експерт',

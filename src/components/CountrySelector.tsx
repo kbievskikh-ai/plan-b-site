@@ -16,8 +16,8 @@ const countries = [
     name: 'Azores',
     flag: '🇵🇹',
     image: 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    active: true,
-    url: 'https://azores-site.vercel.app',
+    active: false,
+    url: null,
     label: 'Atlantic\nDevelopment',
   },
   {
