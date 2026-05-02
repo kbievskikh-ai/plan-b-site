@@ -669,6 +669,7 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
             </button>
             <img
               src={images[galleryIndex].url}
+              alt={`${projectName} gallery`}
               style={{ maxWidth: '90vw', maxHeight: '85vh', objectFit: 'contain', borderRadius: 8 }}
               onClick={(e) => e.stopPropagation()}
             />
