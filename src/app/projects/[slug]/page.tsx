@@ -9,7 +9,7 @@ const API_URL = 'https://api.gronisbrazil.com';
 export default function ProjectPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const [property, setProperty] = useState<any>(null);
+  const [property, setProperty] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
