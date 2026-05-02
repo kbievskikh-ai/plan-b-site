@@ -1,44 +1,35 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import ProjectPageClient from './ProjectPageClient';
 
 const API_URL = 'https://api.gronisbrazil.com';
 
-interface Props {
-  params: Promise<{ slug: string }>;
-}
+export default function ProjectPage() {
+  const params = useParams();
+  const slug = params.slug as string;
+  const [property, setProperty] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-async function getProperty(slug: string) {
-  try {
-    const res = await fetch(`${API_URL}/api/properties/slug/${slug}`, { next: { revalidate: 300 } });
-    if (!res.ok) return null;
-    return res.json();
-  } catch {
-    return null;
+  useEffect(() => {
+    if (!slug) return;
+    fetch(`${API_URL}/api/properties/slug/${slug}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        setProperty(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f3ed' }}>
+        <div style={{ color: '#D4AF37', fontSize: 18 }}>Loading...</div>
+      </div>
+    );
   }
-}
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const property = await getProperty(slug);
-  if (!property) return { title: 'Project Not Found — GRONIS' };
-
-  const title = property.project_name || property.title || 'GRONIS Project';
-  const desc = property.short_description_en || property.short_description_ru || property.description || '';
-  const image = property.images?.[0]?.url || property.og_image || '/og-image.png';
-
-  return {
-    title: `${title} — GRONIS Brazil`,
-    description: desc,
-    openGraph: {
-      title: `${title} — GRONIS Brazil`,
-      description: desc,
-      images: [image],
-    },
-  };
-}
-
-export default async function ProjectPage({ params }: Props) {
-  const { slug } = await params;
-  const property = await getProperty(slug);
   return <ProjectPageClient property={property} slug={slug} />;
 }
