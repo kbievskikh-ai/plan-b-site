@@ -285,7 +285,7 @@ export default function PlatformClient() {
   const fundProjects = useMemo(() => {
     if (!selectedRegion || !selectedFund) return [];
     return regionProjects.filter(p => p.fundType === selectedFund );
-  }, [regionProjects, selectedFund]);
+  }, [regionProjects, selectedFund, selectedRegion]);
 
   const regionName = (id: string) => REGIONS.find(r => r.id === id)?.name[lang] || id;
 
