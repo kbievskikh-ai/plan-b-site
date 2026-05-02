@@ -275,10 +275,10 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
   const units = property.units || [];
   const projectName = property.project_name || property.title || 'Project';
   const description = lang === 'ru' ? (property.full_description_ru || property.short_description_ru || property.description) :
-                      lang === 'pt' ? property.description :
+                      lang === 'pt' ? (property.full_description_pt || property.short_description_pt || property.description) :
                       (property.full_description_en || property.short_description_en || property.description);
   const shortDesc = lang === 'ru' ? property.short_description_ru :
-                    lang === 'pt' ? property.description :
+                    lang === 'pt' ? property.short_description_pt :
                     property.short_description_en;
 
   const tabs = [
