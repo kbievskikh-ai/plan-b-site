@@ -4,25 +4,21 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import ProjectPageClient from './ProjectPageClient';
 
-const API_URL = 'https://api.gronisbrazil.com';
-
-type PropData = Record<string, unknown> | null;
-type FetchState = { loading: true } | { loading: false; data: PropData };
-
 export default function ProjectPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const [state, setState] = useState<FetchState>({ loading: true });
+  const [loading, setLoading] = useState(true);
+  const [property, setProperty] = useState<Record<string, unknown> | null>(null);
 
   useEffect(() => {
-    if (!slug) { setState({ loading: false, data: null }); return; }
-    fetch(`${API_URL}/api/properties/slug/${slug}`)
+    if (!slug) { setLoading(false); return; }
+    fetch('https://api.gronisbrazil.com/api/properties/slug/' + slug)
       .then(r => r.ok ? r.json() : null)
-      .then(data => setState({ loading: false, data }))
-      .catch(() => setState({ loading: false, data: null }));
+      .then(data => { setProperty(data); setLoading(false); })
+      .catch(() => { setLoading(false); });
   }, [slug]);
 
-  if (state.loading) {
+  if (loading) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f3ed' }}>
         <div style={{ textAlign: 'center' }}>
@@ -33,5 +29,5 @@ export default function ProjectPage() {
     );
   }
 
-  return <ProjectPageClient property={'data' in state ? state.data : null} slug={slug} />;
+  return <ProjectPageClient property={property} slug={slug} />;
 }
