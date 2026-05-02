@@ -6,22 +6,23 @@ import ProjectPageClient from './ProjectPageClient';
 
 const API_URL = 'https://api.gronisbrazil.com';
 
+type PropData = Record<string, unknown> | null;
+type FetchState = { loading: true } | { loading: false; data: PropData };
+
 export default function ProjectPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const [property, setProperty] = useState<Record<string, unknown> | null | false>(false);
-  // false = loading, null = not found, object = found
+  const [state, setState] = useState<FetchState>({ loading: true });
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug) { setState({ loading: false, data: null }); return; }
     fetch(`${API_URL}/api/properties/slug/${slug}`)
       .then(r => r.ok ? r.json() : null)
-      .then(data => setProperty(data))
-      .catch(() => setProperty(null));
+      .then(data => setState({ loading: false, data }))
+      .catch(() => setState({ loading: false, data: null }));
   }, [slug]);
 
-  // Show loading state on initial SSR + client fetch
-  if (property === false) {
+  if (state.loading) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f3ed' }}>
         <div style={{ textAlign: 'center' }}>
@@ -32,5 +33,5 @@ export default function ProjectPage() {
     );
   }
 
-  return <ProjectPageClient property={property} slug={slug} />;
+  return <ProjectPageClient property={'data' in state ? state.data : null} slug={slug} />;
 }
