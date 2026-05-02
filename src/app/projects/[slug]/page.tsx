@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import ProjectPageClient from './ProjectPageClient';
 
-const API_URL = 'https://migronis-admin-api-production.up.railway.app';
+const API_URL = 'https://api.gronisbrazil.com';
 
 interface Props {
   params: Promise<{ slug: string }>;
