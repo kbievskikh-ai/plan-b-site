@@ -9,24 +9,25 @@ const API_URL = 'https://api.gronisbrazil.com';
 export default function ProjectPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const [property, setProperty] = useState<Record<string, unknown> | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [property, setProperty] = useState<Record<string, unknown> | null | false>(false);
+  // false = loading, null = not found, object = found
 
   useEffect(() => {
     if (!slug) return;
     fetch(`${API_URL}/api/properties/slug/${slug}`)
       .then(r => r.ok ? r.json() : null)
-      .then(data => {
-        setProperty(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+      .then(data => setProperty(data))
+      .catch(() => setProperty(null));
   }, [slug]);
 
-  if (loading) {
+  // Show loading state on initial SSR + client fetch
+  if (property === false) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f3ed' }}>
-        <div style={{ color: '#D4AF37', fontSize: 18 }}>Loading...</div>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ color: '#D4AF37', fontSize: 18, marginBottom: 8 }}>Loading...</div>
+          <div style={{ color: '#999', fontSize: 12 }}>Loading project data</div>
+        </div>
       </div>
     );
   }
