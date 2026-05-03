@@ -744,7 +744,6 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
     { key: 'overview', label: t.overview },
     { key: 'gallery', label: t.gallery },
     { key: 'units', label: t.units },
-    { key: 'amenities', label: t.amenities },
     ...(property.latitude ? [{ key: 'location', label: t.location }] : []),
     ...(property.list_price ? [{ key: 'investment', label: t.investment }] : []),
     { key: 'faq', label: 'FAQ' },
@@ -966,6 +965,8 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
             ? { 0: 'Студия', 1: '1 спальня', 2: '2 спальни', 3: '3 спальни' }
             : lang === 'pt'
             ? { 0: 'Studio', 1: '1 Quarto', 2: '2 Quartos', 3: '3 Quartos' }
+            : lang === 'es'
+            ? { 0: 'Studio', 1: '1 Dormitorio', 2: '2 Dormitorios', 3: '3 Dormitorios' }
             : { 0: 'Studio', 1: '1 Bed', 2: '2 Bed', 3: '3 Bed' };
 
           return (
@@ -1083,7 +1084,7 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
 
               {unitCards.filter(u => unitFilter === 'all' || u.bedrooms === Number(unitFilter)).length === 0 && (
                 <div style={{ textAlign: 'center', padding: 60, color: '#999' }}>
-                  {lang === 'ru' ? 'Нет юнитов с таким количеством спален' : lang === 'pt' ? 'Sem unidades com este número de quartos' : 'No units with this bedroom count'}
+                  {lang === 'ru' ? 'Нет юнитов с таким количеством спален' : lang === 'pt' ? 'Sem unidades com este número de quartos' : lang === 'es' ? 'No hay unidades con esta cantidad de dormitorios' : 'No units with this bedroom count'}
                 </div>
               )}
 
