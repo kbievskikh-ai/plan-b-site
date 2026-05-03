@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 
-type Lang = 'en' | 'ru' | 'pt';
+type Lang = 'en' | 'ru' | 'pt' | 'es';
 
 const T: Record<Lang, Record<string, string>> = {
   en: {
@@ -148,6 +148,53 @@ const T: Record<Lang, Record<string, string>> = {
     viewOnMap: 'Ver no Google Maps',
     currencyDisclaimer: 'Estimativas em USD a 5.3 BRL/USD. Taxa real pode variar.',
   },
+  es: {
+    backToSite: '← Volver a GRONIS',
+    overview: 'Resumen',
+    gallery: 'Galería',
+    units: 'Apartamentos',
+    amenities: 'Planos',
+    location: 'Ubicación',
+    investment: 'Inversión',
+    contact: 'Contacto',
+    sqm: 'm²',
+    suites: 'suites',
+    parking: 'estacionamiento',
+    from: 'desde',
+    floor: 'Piso',
+    garden: 'Jardín',
+    penthouse: 'Penthouse',
+    available: 'Disponible',
+    sold: 'Vendido',
+    reserved: 'Reservado',
+    allUnits: 'Todos',
+    downloadPdf: 'Descargar PDF',
+    requestInfo: 'Solicitar Detalles',
+    scheduleCall: 'Agendar Llamada',
+    whatsappUs: 'WhatsApp',
+    shareLink: 'Copiar Enlace',
+    linkCopied: '¡Enlace copiado!',
+    roiTitle: 'Análisis de Inversión',
+    purchasePrice: 'Precio de Compra',
+    monthlyRent: 'Alquiler Mensal Estimado',
+    annualYield: 'Rendimiento Anual',
+    fiveYearGrowth: 'Valorización a 5 Años',
+    fiveYearRoi: 'ROI Total a 5 Años',
+    deliveryDate: 'Entrega',
+    developer: 'Desarrollador',
+    totalArea: 'Área Total',
+    projectDetails: 'Detalles del Proyecto',
+    keyFeatures: 'Características Principales',
+    notFound: 'Proyecto no encontrado',
+    notFoundDesc: 'El proyecto que buscas no existe o ha sido eliminado.',
+    totalUnits: 'Total de unidades',
+    floors: 'pisos',
+    towers: 'torres',
+    priceRange: 'Rango de precios',
+    areaRange: 'Rango de áreas',
+    viewOnMap: 'Ver en Google Maps',
+    currencyDisclaimer: 'Estimaciones en USD a 5.3 BRL/USD. El tipo de cambio real puede variar.',
+  },
 };
 
 const NAVY = '#1B2951';
@@ -262,6 +309,15 @@ function getFAQ(property: PropertyData, lang: Lang): { q: string; a: string }[] 
     { q: 'É seguro investir?', a: 'O projeto é estruturado como SPE (patrimônio separado). Todos os contratos são registrados no cartório de registro de imóveis do Brasil.' },
   ];
 
+  if (lang === 'es') return [
+    { q: `¿Cuándo se entrega ${projectName}?`, a: deliveryYear ? `Entrega estimada: ${deliveryYear}. ${property.tag === 'Pre-sale' ? 'El proyecto está en preventa — los mejores precios están disponibles ahora.' : ''}` : 'Fecha de entrega por confirmar.' },
+    { q: '¿Dónde está ubicado el proyecto?', a: `${location}, Florianópolis, Santa Catarina, Brasil. Jurerê es el barrio más prestigioso de la isla con la mejor infraestructura y playas.` },
+    { q: '¿Cuál es la estructura de pago?', a: `Anticipo: ${downPct}%. ${installments ? `Luego plan de cuotas de ${installments} meses directamente con el desarrollador — sin banco, sin intereses.` : 'Plan de cuotas del desarrollador disponible.'} Financiamiento bancario también disponible.` },
+    { q: '¿Pueden comprar los extranjeros?', a: 'Sí, los extranjeros pueden comprar propiedades libremente en Brasil. Necesitarás un CPF (identificación fiscal brasileña) — te ayudamos con todo el proceso.' },
+    { q: '¿Qué ingreso por alquiler puedo esperar?', a: 'Jurerê es uno de los barrios más líquidos de Florianópolis. Alquiler temporal por Airbnb rinde 5-7% anual, largo plazo — 4-5%. Gestión de propiedad disponible.' },
+    { q: '¿Es seguro invertir?', a: 'El proyecto está estructurado como SPE (entidad de propósito especial) — tu inversión está protegida por una entidad legal separada. Todos los contratos están registrados en el registro inmobiliario de Brasil.' },
+  ];
+
   return [
     { q: `When is ${projectName} delivering?`, a: deliveryYear ? `Estimated delivery: ${deliveryYear}. ${property.tag === 'Pre-sale' ? 'The project is in pre-sale stage — best prices are available now.' : ''}` : 'Delivery date to be confirmed.' },
     { q: 'Where is the project located?', a: `${location}, Florianópolis, Santa Catarina, Brazil. Jurerê is the most prestigious neighborhood on the island with the best infrastructure and beaches.` },
@@ -275,39 +331,39 @@ function getFAQ(property: PropertyData, lang: Lang): { q: string; a: string }[] 
 // TERRA Jurerê unit data — from official pricelist
 const TERRA_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string> }[] = [
   { type: 'Loft Studio', areaMin: 37, areaMax: 44, bedrooms: 0, bathrooms: 1, floorPlan: '/floor-plans/terra/terra_plan_p5.png',
-    label: { en: 'Loft Studio', ru: 'Лофт Студия', pt: 'Loft Studio' } },
+    label: { en: 'Loft Studio', ru: 'Лофт Студия', pt: 'Loft Studio', es: 'Loft Studio' } },
   { type: '1 Bedroom', areaMin: 45, areaMax: 55, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/terra/terra_plan_p6.png',
-    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto' } },
+    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto', es: '1 Dormitorio' } },
   { type: '1 Bed + Terrace', areaMin: 55, areaMax: 70, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/terra/terra_plan_p7.png',
-    label: { en: '1 Bed + Terrace', ru: '1 спальня + Терраса', pt: '1 Quarto + Terraço' } },
+    label: { en: '1 Bed + Terrace', ru: '1 спальня + Терраса', pt: '1 Quarto + Terraço', es: '1 Dormitorio + Terraza' } },
   { type: '2 Bedroom', areaMin: 70, areaMax: 90, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/terra/terra_plan_p8.png',
-    label: { en: '2 Bedroom', ru: '2 спальни', pt: '2 Quartos' } },
+    label: { en: '2 Bedroom', ru: '2 спальни', pt: '2 Quartos', es: '2 Dormitorios' } },
   { type: '2 Bed Premium', areaMin: 85, areaMax: 110, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/terra/terra_plan_p9.png',
-    label: { en: '2 Bed Premium', ru: '2 спальни Премиум', pt: '2 Quartos Premium' } },
+    label: { en: '2 Bed Premium', ru: '2 спальни Премиум', pt: '2 Quartos Premium', es: '2 Dormitorios Premium' } },
   { type: '3 Bedroom', areaMin: 110, areaMax: 140, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/terra/terra_plan_p10.png',
-    label: { en: '3 Bedroom', ru: '3 спальни', pt: '3 Quartos' } },
+    label: { en: '3 Bedroom', ru: '3 спальни', pt: '3 Quartos', es: '3 Dormitorios' } },
   { type: '3 Bed + Terrace', areaMin: 140, areaMax: 180, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/terra/terra_plan_p11.png',
-    label: { en: '3 Bed + Terrace', ru: '3 спальни + Терраса', pt: '3 Quartos + Terraço' } },
+    label: { en: '3 Bed + Terrace', ru: '3 спальни + Терраса', pt: '3 Quartos + Terraço', es: '3 Dormitorios + Terraza' } },
 ];
 
 // NATUS Residence unit data — from official pricelist
 const NATUS_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number }[] = [
   { type: '1 Bedroom (Tipo)', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_check_page_4.png',
-    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto' }, priceMin: 899000, priceMax: 899000 },
+    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto', es: '1 Dormitorio' }, priceMin: 899000, priceMax: 899000 },
   { type: '1 Bed Loft Duplex', areaMin: 59, areaMax: 59, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_check_page_4.png',
-    label: { en: '1 Bed Loft Duplex', ru: 'Лофт Дуплекс 1 спальня', pt: '1 Quarto Loft Duplex' }, priceMin: 899000, priceMax: 1300000 },
+    label: { en: '1 Bed Loft Duplex', ru: 'Лофт Дуплекс 1 спальня', pt: '1 Quarto Loft Duplex', es: 'Loft Dúplex 1 Dormitorio' }, priceMin: 899000, priceMax: 1300000 },
   { type: '2 Bedrooms (Tipo/Terraço)', areaMin: 74, areaMax: 85, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_check_page_5.png',
-    label: { en: '2 Bedrooms', ru: '2 спальни', pt: '2 Quartos' }, priceMin: 1290000, priceMax: 1650000 },
+    label: { en: '2 Bedrooms', ru: '2 спальни', pt: '2 Quartos', es: '2 Dormitorios' }, priceMin: 1290000, priceMax: 1650000 },
   { type: '2 Bed Garden', areaMin: 108, areaMax: 108, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_check_page_5.png',
-    label: { en: '2 Bed Garden', ru: '2 спальни Сад', pt: '2 Quartos Garden' }, priceMin: 1980000, priceMax: 1980000 },
+    label: { en: '2 Bed Garden', ru: '2 спальни Сад', pt: '2 Quartos Garden', es: '2 Dormitorios Garden' }, priceMin: 1980000, priceMax: 1980000 },
   { type: '3 Bedrooms (Tipo/Terraço)', areaMin: 97, areaMax: 114, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
-    label: { en: '3 Bedrooms', ru: '3 спальни', pt: '3 Quartos' }, priceMin: 1690000, priceMax: 1990000 },
+    label: { en: '3 Bedrooms', ru: '3 спальни', pt: '3 Quartos', es: '3 Dormitorios' }, priceMin: 1690000, priceMax: 1990000 },
   { type: '3 Bed Garden', areaMin: 130, areaMax: 130, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
-    label: { en: '3 Bed Garden', ru: '3 спальни Сад', pt: '3 Quartos Garden' }, priceMin: 2480000, priceMax: 2480000 },
+    label: { en: '3 Bed Garden', ru: '3 спальни Сад', pt: '3 Quartos Garden', es: '3 Dormitorios Garden' }, priceMin: 2480000, priceMax: 2480000 },
   { type: 'Penthouse 1-2 Bed', areaMin: 88, areaMax: 114, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
-    label: { en: 'Penthouse 1-2 Bed', ru: 'Пентхаус 1-2 спальни', pt: 'Cobertura 1-2 Quartos' }, priceMin: 1530000, priceMax: 2150000 },
+    label: { en: 'Penthouse 1-2 Bed', ru: 'Пентхаус 1-2 спальни', pt: 'Cobertura 1-2 Quartos', es: 'Penthouse 1-2 Dormitorios' }, priceMin: 1530000, priceMax: 2150000 },
   { type: 'Penthouse 3 Bed', areaMin: 161, areaMax: 161, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
-    label: { en: 'Penthouse 3 Bed', ru: 'Пентхаус 3 спальни', pt: 'Cobertura 3 Quartos' }, priceMin: 3040000, priceMax: 3040000 },
+    label: { en: 'Penthouse 3 Bed', ru: 'Пентхаус 3 спальни', pt: 'Cobertura 3 Quartos', es: 'Penthouse 3 Dormitorios' }, priceMin: 3040000, priceMax: 3040000 },
 ];
 
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
@@ -350,17 +406,17 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
   // Fallback — generic types
   const types = [
     { key: '1bed', areaMin: 45, areaMax: 55, bedrooms: 1, bathrooms: 1, yieldPct: 0.055,
-      label: lang === 'ru' ? '1 спальня' : lang === 'pt' ? '1 Quarto' : '1 Bedroom' },
+      label: lang === 'ru' ? '1 спальня' : lang === 'pt' ? '1 Quarto' : lang === 'es' ? '1 Dormitorio' : '1 Bedroom' },
     { key: '1bed_ter', areaMin: 55, areaMax: 70, bedrooms: 1, bathrooms: 1, yieldPct: 0.052,
-      label: lang === 'ru' ? '1 спальня + терраса' : lang === 'pt' ? '1 Quarto + Terraço' : '1 Bed + Terrace' },
+      label: lang === 'ru' ? '1 спальня + терраса' : lang === 'pt' ? '1 Quarto + Terraço' : lang === 'es' ? '1 Dormitorio + Terraza' : '1 Bed + Terrace' },
     { key: '2bed', areaMin: 65, areaMax: 85, bedrooms: 2, bathrooms: 2, yieldPct: 0.048,
-      label: lang === 'ru' ? '2 спальни' : lang === 'pt' ? '2 Quartos' : '2 Bedroom' },
+      label: lang === 'ru' ? '2 спальни' : lang === 'pt' ? '2 Quartos' : lang === 'es' ? '2 Dormitorios' : '2 Bedroom' },
     { key: '2bed_prem', areaMin: 85, areaMax: 100, bedrooms: 2, bathrooms: 2, yieldPct: 0.044,
-      label: lang === 'ru' ? '2 спальни премиум' : lang === 'pt' ? '2 Quartos Premium' : '2 Bed Premium' },
+      label: lang === 'ru' ? '2 спальни премиум' : lang === 'pt' ? '2 Quartos Premium' : lang === 'es' ? '2 Dormitorios Premium' : '2 Bed Premium' },
     { key: '3bed', areaMin: 110, areaMax: 140, bedrooms: 3, bathrooms: 3, yieldPct: 0.038,
-      label: lang === 'ru' ? '3 спальни' : lang === 'pt' ? '3 Quartos' : '3 Bedroom' },
+      label: lang === 'ru' ? '3 спальни' : lang === 'pt' ? '3 Quartos' : lang === 'es' ? '3 Dormitorios' : '3 Bedroom' },
     { key: '3bed_ter', areaMin: 140, areaMax: 180, bedrooms: 3, bathrooms: 3, yieldPct: 0.035,
-      label: lang === 'ru' ? '3 спальни + терраса' : lang === 'pt' ? '3 Quartos + Terraço' : '3 Bed + Terrace' },
+      label: lang === 'ru' ? '3 спальни + терраса' : lang === 'pt' ? '3 Quartos + Terraço' : lang === 'es' ? '3 Dormitorios + Terraza' : '3 Bed + Terrace' },
   ];
 
   return types.map(t => ({

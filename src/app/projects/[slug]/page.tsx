@@ -8,12 +8,13 @@ const NAVY = '#1B2951';
 const GOLD = '#D4AF37';
 const LANG_KEY = 'gronis_lang';
 
-type Lang = 'en' | 'ru' | 'pt';
+type Lang = 'en' | 'ru' | 'pt' | 'es';
 
 const LANGUAGES: { code: Lang; flag: string; name: string; native: string }[] = [
   { code: 'en', flag: '🇬🇧', name: 'English', native: 'English' },
   { code: 'ru', flag: '🇷🇺', name: 'Russian', native: 'Русский' },
   { code: 'pt', flag: '🇧🇷', name: 'Portuguese', native: 'Português' },
+  { code: 'es', flag: '🇪🇸', name: 'Spanish', native: 'Español' },
 ];
 
 export default function ProjectPage() {
@@ -26,7 +27,7 @@ export default function ProjectPage() {
   // Check saved language on mount
   useEffect(() => {
     const saved = localStorage.getItem(LANG_KEY);
-    if (saved && ['en', 'ru', 'pt'].includes(saved)) {
+    if (saved && ['en', 'ru', 'pt', 'es'].includes(saved)) {
       setLang(saved as Lang);
     }
   }, []);
