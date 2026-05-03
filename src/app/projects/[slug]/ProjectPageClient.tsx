@@ -349,22 +349,50 @@ const TERRA_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: n
 
 // NATUS Residence unit data — from official pricelist
 const NATUS_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
-  { type: '1 Bedroom (Tipo)', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_floorplan_page_42.jpg',
-    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto', es: '1 Dormitorio' }, priceMin: 899000, priceMax: 899000, yieldPct: 0.055 },
-  { type: '1 Bed Loft Duplex', areaMin: 59, areaMax: 59, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_floorplan_page_62.jpg',
-    label: { en: '1 Bed Loft Duplex', ru: 'Лофт Дуплекс 1 спальня', pt: '1 Quarto Loft Duplex', es: 'Loft Dúplex 1 Dormitorio' }, priceMin: 899000, priceMax: 1300000, yieldPct: 0.052 },
-  { type: '2 Bedrooms (Tipo/Terraço)', areaMin: 74, areaMax: 85, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_44.jpg',
-    label: { en: '2 Bedrooms', ru: '2 спальни', pt: '2 Quartos', es: '2 Dormitorios' }, priceMin: 1290000, priceMax: 1650000, yieldPct: 0.048 },
-  { type: '2 Bed Garden', areaMin: 108, areaMax: 108, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_45.jpg',
-    label: { en: '2 Bed Garden', ru: '2 спальни Сад', pt: '2 Quartos Garden', es: '2 Dormitorios Garden' }, priceMin: 1980000, priceMax: 1980000, yieldPct: 0.044 },
-  { type: '3 Bedrooms (Tipo/Terraço)', areaMin: 97, areaMax: 114, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_47.jpg',
-    label: { en: '3 Bedrooms', ru: '3 спальни', pt: '3 Quartos', es: '3 Dormitorios' }, priceMin: 1690000, priceMax: 1990000, yieldPct: 0.040 },
-  { type: '3 Bed Garden', areaMin: 130, areaMax: 130, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_48.jpg',
-    label: { en: '3 Bed Garden', ru: '3 спальни Сад', pt: '3 Quartos Garden', es: '3 Dormitorios Garden' }, priceMin: 2480000, priceMax: 2480000, yieldPct: 0.038 },
-  { type: 'Penthouse 1-2 Bed', areaMin: 88, areaMax: 114, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_60.jpg',
-    label: { en: 'Penthouse 1-2 Bed', ru: 'Пентхаус 1-2 спальни', pt: 'Cobertura 1-2 Quartos', es: 'Penthouse 1-2 Dormitorios' }, priceMin: 1530000, priceMax: 2150000, yieldPct: 0.045 },
-  { type: 'Penthouse 3 Bed', areaMin: 161, areaMax: 161, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_58.jpg',
-    label: { en: 'Penthouse 3 Bed', ru: 'Пентхаус 3 спальни', pt: 'Cobertura 3 Quartos', es: 'Penthouse 3 Dormitorios' }, priceMin: 3040000, priceMax: 3040000, yieldPct: 0.035 },
+  { type: 'T0 — 52 m²', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_floorplan_page_42.jpg',
+    label: { en: 'T0 — 52 m²', ru: 'T0 — 52 м²', pt: 'T0 — 52 m²', es: 'T0 — 52 m²' }, priceMin: 899000, priceMax: 899000, yieldPct: 0.055 },
+  { type: 'T0 Garden — 75 m²', areaMin: 75, areaMax: 75, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_floorplan_page_43.jpg',
+    label: { en: 'T0 Garden — 75 m²', ru: 'T0 Garden — 75 м²', pt: 'T0 Garden — 75 m²', es: 'T0 Garden — 75 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.055 },
+  { type: 'T1 — 74 m²', areaMin: 74, areaMax: 74, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_44.jpg',
+    label: { en: 'T1 — 74 m²', ru: 'T1 — 74 м²', pt: 'T1 — 74 m²', es: 'T1 — 74 m²' }, priceMin: 1290000, priceMax: 1650000, yieldPct: 0.048 },
+  { type: 'T1 Garden — 108 m²', areaMin: 108, areaMax: 108, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_45.jpg',
+    label: { en: 'T1 Garden — 108 m²', ru: 'T1 Garden — 108 м²', pt: 'T1 Garden — 108 m²', es: 'T1 Garden — 108 m²' }, priceMin: 1980000, priceMax: 1980000, yieldPct: 0.044 },
+  { type: 'T1 Terraço — 85 m²', areaMin: 85, areaMax: 85, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_46.jpg',
+    label: { en: 'T1 Terraço — 85 m²', ru: 'T1 Terraço — 85 м²', pt: 'T1 Terraço — 85 m²', es: 'T1 Terraço — 85 m²' }, priceMin: 1350000, priceMax: 1350000, yieldPct: 0.048 },
+  { type: 'T2 — 97 m²', areaMin: 97, areaMax: 97, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_47.jpg',
+    label: { en: 'T2 — 97 m²', ru: 'T2 — 97 м²', pt: 'T2 — 97 m²', es: 'T2 — 97 m²' }, priceMin: 1690000, priceMax: 1690000, yieldPct: 0.040 },
+  { type: 'T2 Garden — 130 m²', areaMin: 130, areaMax: 130, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_48.jpg',
+    label: { en: 'T2 Garden — 130 m²', ru: 'T2 Garden — 130 м²', pt: 'T2 Garden — 130 m²', es: 'T2 Garden — 130 m²' }, priceMin: 2480000, priceMax: 2480000, yieldPct: 0.038 },
+  { type: 'T2 Garden C — 127 m²', areaMin: 127, areaMax: 127, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_49.jpg',
+    label: { en: 'T2 Garden C — 127 m²', ru: 'T2 Garden C — 127 м²', pt: 'T2 Garden C — 127 m²', es: 'T2 Garden C — 127 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.038 },
+  { type: 'T2 Terraço — 121 m²', areaMin: 121, areaMax: 121, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_50.jpg',
+    label: { en: 'T2 Terraço — 121 m²', ru: 'T2 Terraço — 121 м²', pt: 'T2 Terraço — 121 m²', es: 'T2 Terraço — 121 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.040 },
+  { type: 'T2 Terraço B — 114 m²', areaMin: 114, areaMax: 114, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_51.jpg',
+    label: { en: 'T2 Terraço B — 114 m²', ru: 'T2 Terraço B — 114 м²', pt: 'T2 Terraço B — 114 m²', es: 'T2 Terraço B — 114 m²' }, priceMin: 1990000, priceMax: 1990000, yieldPct: 0.040 },
+  { type: 'T3 — 109 m²', areaMin: 109, areaMax: 109, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_52.jpg',
+    label: { en: 'T3 — 109 m²', ru: 'T3 — 109 м²', pt: 'T3 — 109 m²', es: 'T3 — 109 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.040 },
+  { type: 'T3 Terraço — 123 m²', areaMin: 123, areaMax: 123, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_53.jpg',
+    label: { en: 'T3 Terraço — 123 m²', ru: 'T3 Terraço — 123 м²', pt: 'T3 Terraço — 123 m²', es: 'T3 Terraço — 123 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.040 },
+  { type: 'T4 Cobertura — 114 m²', areaMin: 114, areaMax: 114, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_54.jpg',
+    label: { en: 'T4 Cobertura — 114 m²', ru: 'T4 Cobertura — 114 м²', pt: 'T4 Cobertura — 114 m²', es: 'T4 Cobertura — 114 m²' }, priceMin: 2150000, priceMax: 2150000, yieldPct: 0.045 },
+  { type: 'T6 Cobertura — 134 m²', areaMin: 134, areaMax: 134, bedrooms: 2, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_55.jpg',
+    label: { en: 'T6 Cobertura — 134 m²', ru: 'T6 Cobertura — 134 м²', pt: 'T6 Cobertura — 134 m²', es: 'T6 Cobertura — 134 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.042 },
+  { type: 'T7 Cobertura — 108 m²', areaMin: 108, areaMax: 108, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_56.jpg',
+    label: { en: 'T7 Cobertura — 108 m²', ru: 'T7 Cobertura — 108 м²', pt: 'T7 Cobertura — 108 m²', es: 'T7 Cobertura — 108 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.044 },
+  { type: 'T8 Cobertura — 114 m²', areaMin: 114, areaMax: 114, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_57.jpg',
+    label: { en: 'T8 Cobertura — 114 m²', ru: 'T8 Cobertura — 114 м²', pt: 'T8 Cobertura — 114 m²', es: 'T8 Cobertura — 114 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.045 },
+  { type: 'T9 Cobertura — 161 m²', areaMin: 161, areaMax: 161, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_floorplan_page_58.jpg',
+    label: { en: 'T9 Cobertura — 161 m²', ru: 'T9 Cobertura — 161 м²', pt: 'T9 Cobertura — 161 m²', es: 'T9 Cobertura — 161 m²' }, priceMin: 3040000, priceMax: 3040000, yieldPct: 0.035 },
+  { type: 'T10 Cobertura — 135 m²', areaMin: 135, areaMax: 135, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_59.jpg',
+    label: { en: 'T10 Cobertura — 135 m²', ru: 'T10 Cobertura — 135 м²', pt: 'T10 Cobertura — 135 m²', es: 'T10 Cobertura — 135 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.040 },
+  { type: 'T11 Cobertura — 88 m²', areaMin: 88, areaMax: 88, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_floorplan_page_60.jpg',
+    label: { en: 'T11 Cobertura — 88 m²', ru: 'T11 Cobertura — 88 м²', pt: 'T11 Cobertura — 88 m²', es: 'T11 Cobertura — 88 m²' }, priceMin: 1530000, priceMax: 1530000, yieldPct: 0.050 },
+  { type: 'Duplex L1 — 81 m²', areaMin: 81, areaMax: 81, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_floorplan_page_61.jpg',
+    label: { en: 'Duplex L1 — 81 m²', ru: 'Duplex L1 — 81 м²', pt: 'Duplex L1 — 81 m²', es: 'Duplex L1 — 81 m²' }, priceMin: 0, priceMax: 0, yieldPct: 0.052 },
+  { type: 'Duplex L2 — 59 m²', areaMin: 59, areaMax: 59, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_floorplan_page_62.jpg',
+    label: { en: 'Duplex L2 — 59 m²', ru: 'Duplex L2 — 59 м²', pt: 'Duplex L2 — 59 m²', es: 'Duplex L2 — 59 m²' }, priceMin: 899000, priceMax: 1300000, yieldPct: 0.052 },
+  { type: 'Duplex L3 — 79 m²', areaMin: 79, areaMax: 79, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_floorplan_page_63.jpg',
+    label: { en: 'Duplex L3 — 79 m²', ru: 'Duplex L3 — 79 м²', pt: 'Duplex L3 — 79 m²', es: 'Duplex L3 — 79 m²' }, priceMin: 1690000, priceMax: 1690000, yieldPct: 0.048 },
 ];
 
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
@@ -1064,9 +1092,21 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
                         {/* Price */}
                         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid #e5e5e5' }}>
                           <div>
-                            <div style={{ fontSize: 11, color: '#aaa' }}>{t.from}</div>
-                            <div style={{ fontSize: 18, fontWeight: 700, color: NAVY }}>{formatBrl(u.priceMin)}</div>
-                            <div style={{ fontSize: 12, color: '#888' }}>{formatUsd(brlToUsd(u.priceMin))} USD</div>
+                            {u.priceMin > 0 ? (
+                              <>
+                                <div style={{ fontSize: 11, color: '#aaa' }}>{t.from}</div>
+                                <div style={{ fontSize: 18, fontWeight: 700, color: NAVY }}>{formatBrl(u.priceMin)}</div>
+                                <div style={{ fontSize: 12, color: '#888' }}>{formatUsd(brlToUsd(u.priceMin))} USD</div>
+                              </>
+                            ) : (
+                              <>
+                                <div style={{ fontSize: 11, color: '#aaa' }}>&nbsp;</div>
+                                <div style={{ fontSize: 16, fontWeight: 700, color: NAVY }}>
+                                  {lang === 'ru' ? 'По запросу' : lang === 'pt' ? 'Sob consulta' : lang === 'es' ? 'Bajo consulta' : 'On request'}
+                                </div>
+                                <div style={{ fontSize: 12, color: '#888' }}>&nbsp;</div>
+                              </>
+                            )}
                           </div>
                           <a
                             href={`https://wa.me/5548988117424?text=${encodeURIComponent(`Hi! I'm interested in the ${u.label||u.type} at ${projectName}`)}`}
