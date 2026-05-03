@@ -235,6 +235,7 @@ interface Unit {
   bathrooms: number;
   floorPlan?: string;
   label?: string;
+  yieldPct?: number;
   growthRate?: number;
 }
 
@@ -329,41 +330,41 @@ function getFAQ(property: PropertyData, lang: Lang): { q: string; a: string }[] 
 }
 
 // TERRA Jurerê unit data — from official pricelist
-const TERRA_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string> }[] = [
+const TERRA_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; yieldPct: number }[] = [
   { type: 'Loft Studio', areaMin: 37, areaMax: 44, bedrooms: 0, bathrooms: 1, floorPlan: '/floor-plans/terra/terra_plan_p5.png',
-    label: { en: 'Loft Studio', ru: 'Лофт Студия', pt: 'Loft Studio', es: 'Loft Studio' } },
+    label: { en: 'Loft Studio', ru: 'Лофт Студия', pt: 'Loft Studio', es: 'Loft Studio' }, yieldPct: 0.060 },
   { type: '1 Bedroom', areaMin: 45, areaMax: 55, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/terra/terra_plan_p6.png',
-    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto', es: '1 Dormitorio' } },
+    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto', es: '1 Dormitorio' }, yieldPct: 0.055 },
   { type: '1 Bed + Terrace', areaMin: 55, areaMax: 70, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/terra/terra_plan_p7.png',
-    label: { en: '1 Bed + Terrace', ru: '1 спальня + Терраса', pt: '1 Quarto + Terraço', es: '1 Dormitorio + Terraza' } },
+    label: { en: '1 Bed + Terrace', ru: '1 спальня + Терраса', pt: '1 Quarto + Terraço', es: '1 Dormitorio + Terraza' }, yieldPct: 0.052 },
   { type: '2 Bedroom', areaMin: 70, areaMax: 90, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/terra/terra_plan_p8.png',
-    label: { en: '2 Bedroom', ru: '2 спальни', pt: '2 Quartos', es: '2 Dormitorios' } },
+    label: { en: '2 Bedroom', ru: '2 спальни', pt: '2 Quartos', es: '2 Dormitorios' }, yieldPct: 0.048 },
   { type: '2 Bed Premium', areaMin: 85, areaMax: 110, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/terra/terra_plan_p9.png',
-    label: { en: '2 Bed Premium', ru: '2 спальни Премиум', pt: '2 Quartos Premium', es: '2 Dormitorios Premium' } },
+    label: { en: '2 Bed Premium', ru: '2 спальни Премиум', pt: '2 Quartos Premium', es: '2 Dormitorios Premium' }, yieldPct: 0.045 },
   { type: '3 Bedroom', areaMin: 110, areaMax: 140, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/terra/terra_plan_p10.png',
-    label: { en: '3 Bedroom', ru: '3 спальни', pt: '3 Quartos', es: '3 Dormitorios' } },
+    label: { en: '3 Bedroom', ru: '3 спальни', pt: '3 Quartos', es: '3 Dormitorios' }, yieldPct: 0.040 },
   { type: '3 Bed + Terrace', areaMin: 140, areaMax: 180, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/terra/terra_plan_p11.png',
-    label: { en: '3 Bed + Terrace', ru: '3 спальни + Терраса', pt: '3 Quartos + Terraço', es: '3 Dormitorios + Terraza' } },
+    label: { en: '3 Bed + Terrace', ru: '3 спальни + Терраса', pt: '3 Quartos + Terraço', es: '3 Dormitorios + Terraza' }, yieldPct: 0.038 },
 ];
 
 // NATUS Residence unit data — from official pricelist
-const NATUS_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number }[] = [
+const NATUS_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
   { type: '1 Bedroom (Tipo)', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_check_page_4.png',
-    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto', es: '1 Dormitorio' }, priceMin: 899000, priceMax: 899000 },
+    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto', es: '1 Dormitorio' }, priceMin: 899000, priceMax: 899000, yieldPct: 0.055 },
   { type: '1 Bed Loft Duplex', areaMin: 59, areaMax: 59, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_check_page_4.png',
-    label: { en: '1 Bed Loft Duplex', ru: 'Лофт Дуплекс 1 спальня', pt: '1 Quarto Loft Duplex', es: 'Loft Dúplex 1 Dormitorio' }, priceMin: 899000, priceMax: 1300000 },
+    label: { en: '1 Bed Loft Duplex', ru: 'Лофт Дуплекс 1 спальня', pt: '1 Quarto Loft Duplex', es: 'Loft Dúplex 1 Dormitorio' }, priceMin: 899000, priceMax: 1300000, yieldPct: 0.052 },
   { type: '2 Bedrooms (Tipo/Terraço)', areaMin: 74, areaMax: 85, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_check_page_5.png',
-    label: { en: '2 Bedrooms', ru: '2 спальни', pt: '2 Quartos', es: '2 Dormitorios' }, priceMin: 1290000, priceMax: 1650000 },
+    label: { en: '2 Bedrooms', ru: '2 спальни', pt: '2 Quartos', es: '2 Dormitorios' }, priceMin: 1290000, priceMax: 1650000, yieldPct: 0.048 },
   { type: '2 Bed Garden', areaMin: 108, areaMax: 108, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_check_page_5.png',
-    label: { en: '2 Bed Garden', ru: '2 спальни Сад', pt: '2 Quartos Garden', es: '2 Dormitorios Garden' }, priceMin: 1980000, priceMax: 1980000 },
+    label: { en: '2 Bed Garden', ru: '2 спальни Сад', pt: '2 Quartos Garden', es: '2 Dormitorios Garden' }, priceMin: 1980000, priceMax: 1980000, yieldPct: 0.044 },
   { type: '3 Bedrooms (Tipo/Terraço)', areaMin: 97, areaMax: 114, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
-    label: { en: '3 Bedrooms', ru: '3 спальни', pt: '3 Quartos', es: '3 Dormitorios' }, priceMin: 1690000, priceMax: 1990000 },
+    label: { en: '3 Bedrooms', ru: '3 спальни', pt: '3 Quartos', es: '3 Dormitorios' }, priceMin: 1690000, priceMax: 1990000, yieldPct: 0.040 },
   { type: '3 Bed Garden', areaMin: 130, areaMax: 130, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
-    label: { en: '3 Bed Garden', ru: '3 спальни Сад', pt: '3 Quartos Garden', es: '3 Dormitorios Garden' }, priceMin: 2480000, priceMax: 2480000 },
+    label: { en: '3 Bed Garden', ru: '3 спальни Сад', pt: '3 Quartos Garden', es: '3 Dormitorios Garden' }, priceMin: 2480000, priceMax: 2480000, yieldPct: 0.038 },
   { type: 'Penthouse 1-2 Bed', areaMin: 88, areaMax: 114, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
-    label: { en: 'Penthouse 1-2 Bed', ru: 'Пентхаус 1-2 спальни', pt: 'Cobertura 1-2 Quartos', es: 'Penthouse 1-2 Dormitorios' }, priceMin: 1530000, priceMax: 2150000 },
+    label: { en: 'Penthouse 1-2 Bed', ru: 'Пентхаус 1-2 спальни', pt: 'Cobertura 1-2 Quartos', es: 'Penthouse 1-2 Dormitorios' }, priceMin: 1530000, priceMax: 2150000, yieldPct: 0.045 },
   { type: 'Penthouse 3 Bed', areaMin: 161, areaMax: 161, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
-    label: { en: 'Penthouse 3 Bed', ru: 'Пентхаус 3 спальни', pt: 'Cobertura 3 Quartos', es: 'Penthouse 3 Dormitorios' }, priceMin: 3040000, priceMax: 3040000 },
+    label: { en: 'Penthouse 3 Bed', ru: 'Пентхаус 3 спальни', pt: 'Cobertura 3 Quartos', es: 'Penthouse 3 Dormitorios' }, priceMin: 3040000, priceMax: 3040000, yieldPct: 0.035 },
 ];
 
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
@@ -384,6 +385,7 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
       priceMin: u.priceMin,
       priceMax: u.priceMax,
       label: u.label[lang],
+      yieldPct: u.yieldPct,
       growthRate,
     }));
   }
@@ -399,6 +401,7 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
       priceMin: Math.round(u.areaMin * priceM2),
       priceMax: Math.round(u.areaMax * priceM2),
       label: u.label[lang],
+      yieldPct: u.yieldPct,
       growthRate,
     }));
   }
