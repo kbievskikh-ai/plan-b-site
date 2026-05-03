@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 
@@ -12,7 +12,7 @@ const T: Record<Lang, Record<string, string>> = {
     overview: 'Overview',
     gallery: 'Gallery',
     units: 'Apartments',
-    amenities: 'Amenities',
+    amenities: 'Floor Plans',
     location: 'Location',
     investment: 'Investment',
     contact: 'Contact',
@@ -59,7 +59,7 @@ const T: Record<Lang, Record<string, string>> = {
     overview: 'Обзор',
     gallery: 'Галерея',
     units: 'Квартиры',
-    amenities: 'Инфраструктура',
+    amenities: 'Планировки',
     location: 'Локация',
     investment: 'Инвестиции',
     contact: 'Контакт',
@@ -106,7 +106,7 @@ const T: Record<Lang, Record<string, string>> = {
     overview: 'Visão Geral',
     gallery: 'Galeria',
     units: 'Apartamentos',
-    amenities: 'Amenidades',
+    amenities: 'Plantas',
     location: 'Localização',
     investment: 'Investimento',
     contact: 'Contato',
@@ -184,6 +184,11 @@ interface Unit {
   areaMax: number;
   priceMin: number;
   priceMax: number;
+  bedrooms: number;
+  bathrooms: number;
+  floorPlan?: string;
+  label?: string;
+  growthRate?: number;
 }
 
 interface PropertyData {
@@ -229,6 +234,404 @@ interface PropertyData {
   video_url?: string;
   virtual_tour_url?: string;
   price_per_m2?: number;
+}
+
+// FAQ generator
+function getFAQ(property: PropertyData, lang: Lang): { q: string; a: string }[] {
+  const projectName = property.project_name || property.title || 'Project';
+  const deliveryYear = property.delivery_year || property.year_built;
+  const downPct = property.down_payment_pct || 25;
+  const installments = property.installments_count;
+  const location = property.location || property.region || 'Florianópolis';
+
+  if (lang === 'ru') return [
+    { q: `Когда сдаётся ${projectName}?`, a: deliveryYear ? `Плановая сдача — ${deliveryYear} год. ${property.tag === 'Pre-sale' ? 'Проект находится на стадии предпродажи — лучшие цены именно сейчас.' : ''}` : 'Дата сдачи уточняется.' },
+    { q: 'Где находится проект?', a: `${location}, Флорианополис, штат Санта-Катарина, Бразилия. Журере — самый престижный район острова с лучшей инфраструктурой и пляжами.` },
+    { q: 'Какова схема оплаты?', a: `Первоначальный взнос ${downPct}%. ${installments ? `Дальше — рассрочка ${installments} месяцев напрямую от застройщика без банка и процентов.` : 'Доступна рассрочка от застройщика.'} Также возможно ипотечное финансирование через бразильские банки.` },
+    { q: 'Могу ли я купить иностранцу?', a: 'Да, иностранные граждане могут свободно приобретать недвижимость в Бразилии. Вам понадобится CPF (бразильский ИНН) — мы поможем оформить.' },
+    { q: 'Какой доход от аренды?', a: 'Журере — один из самых ликвидных районов Флорианополиса. Краткосрочная аренда через Airbnb приносит 5-7% годовых, долгосрочная — 4-5%. Мы помогаем с управлением.' },
+    { q: 'Безопасно ли инвестировать?', a: 'Проект структурирован как SPE (Special Purpose Entity) — ваше имущество защищено отдельным юридическим лицом. Все договоры регистрируются в бразильском реестре недвижимости.' },
+  ];
+
+  if (lang === 'pt') return [
+    { q: `Quando será a entrega do ${projectName}?`, a: deliveryYear ? `Previsão de entrega: ${deliveryYear}. ${property.tag === 'Pre-sale' ? 'O projeto está em pré-lançamento — os melhores preços estão disponíveis agora.' : ''}` : 'Data de entrega a confirmar.' },
+    { q: 'Onde fica o empreendimento?', a: `${location}, Florianópolis, Santa Catarina, Brasil. Jurerê é o bairro mais prestigioso da ilha com a melhor infraestrutura e praias.` },
+    { q: 'Qual é a forma de pagamento?', a: `Entrada de ${downPct}%. ${installments ? `Parcelamento direto da incorporadora em ${installments} meses sem banco e sem juros.` : 'Parcelamento direto da incorporadora disponível.'} Financiamento bancário também disponível.` },
+    { q: 'Posso comprar sendo estrangeiro?', a: 'Sim, estrangeiros podem adquirir imóveis livremente no Brasil. É necessário CPF — ajudamos com todo o processo.' },
+    { q: 'Qual a renda de aluguel?', a: 'Jurerê é um dos bairros mais líquidos de Florianópolis. Aluguel de temporada via Airbnb rende 5-7% ao ano, longo prazo — 4-5%. Oferecemos gestão de propriedade.' },
+    { q: 'É seguro investir?', a: 'O projeto é estruturado como SPE (patrimônio separado). Todos os contratos são registrados no cartório de registro de imóveis do Brasil.' },
+  ];
+
+  return [
+    { q: `When is ${projectName} delivering?`, a: deliveryYear ? `Estimated delivery: ${deliveryYear}. ${property.tag === 'Pre-sale' ? 'The project is in pre-sale stage — best prices are available now.' : ''}` : 'Delivery date to be confirmed.' },
+    { q: 'Where is the project located?', a: `${location}, Florianópolis, Santa Catarina, Brazil. Jurerê is the most prestigious neighborhood on the island with the best infrastructure and beaches.` },
+    { q: 'What is the payment structure?', a: `Down payment: ${downPct}%. ${installments ? `Then ${installments}-month installment plan directly from the developer — no bank, no interest.` : 'Developer installment plan available.'} Bank financing is also an option.` },
+    { q: 'Can foreigners buy?', a: 'Yes, foreigners can freely purchase property in Brazil. You will need a CPF (Brazilian tax ID) — we assist with the entire process.' },
+    { q: 'What rental income can I expect?', a: 'Jurerê is one of the most liquid neighborhoods in Florianópolis. Short-term Airbnb rentals yield 5-7% annually, long-term — 4-5%. Property management available.' },
+    { q: 'Is it safe to invest?', a: 'The project is structured as an SPE (Special Purpose Entity) — your investment is protected by a separate legal entity. All contracts are registered with the Brazilian real estate registry.' },
+  ];
+}
+
+// TERRA Jurerê unit data — from official pricelist
+const TERRA_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string> }[] = [
+  { type: 'Loft Studio', areaMin: 37, areaMax: 44, bedrooms: 0, bathrooms: 1, floorPlan: '/floor-plans/terra/terra_plan_p5.png',
+    label: { en: 'Loft Studio', ru: 'Лофт Студия', pt: 'Loft Studio' } },
+  { type: '1 Bedroom', areaMin: 45, areaMax: 55, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/terra/terra_plan_p6.png',
+    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto' } },
+  { type: '1 Bed + Terrace', areaMin: 55, areaMax: 70, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/terra/terra_plan_p7.png',
+    label: { en: '1 Bed + Terrace', ru: '1 спальня + Терраса', pt: '1 Quarto + Terraço' } },
+  { type: '2 Bedroom', areaMin: 70, areaMax: 90, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/terra/terra_plan_p8.png',
+    label: { en: '2 Bedroom', ru: '2 спальни', pt: '2 Quartos' } },
+  { type: '2 Bed Premium', areaMin: 85, areaMax: 110, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/terra/terra_plan_p9.png',
+    label: { en: '2 Bed Premium', ru: '2 спальни Премиум', pt: '2 Quartos Premium' } },
+  { type: '3 Bedroom', areaMin: 110, areaMax: 140, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/terra/terra_plan_p10.png',
+    label: { en: '3 Bedroom', ru: '3 спальни', pt: '3 Quartos' } },
+  { type: '3 Bed + Terrace', areaMin: 140, areaMax: 180, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/terra/terra_plan_p11.png',
+    label: { en: '3 Bed + Terrace', ru: '3 спальни + Терраса', pt: '3 Quartos + Terraço' } },
+];
+
+// NATUS Residence unit data — from official pricelist
+const NATUS_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number }[] = [
+  { type: '1 Bedroom (Tipo)', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_check_page_4.png',
+    label: { en: '1 Bedroom', ru: '1 спальня', pt: '1 Quarto' }, priceMin: 899000, priceMax: 899000 },
+  { type: '1 Bed Loft Duplex', areaMin: 59, areaMax: 59, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/natus/natus_check_page_4.png',
+    label: { en: '1 Bed Loft Duplex', ru: 'Лофт Дуплекс 1 спальня', pt: '1 Quarto Loft Duplex' }, priceMin: 899000, priceMax: 1300000 },
+  { type: '2 Bedrooms (Tipo/Terraço)', areaMin: 74, areaMax: 85, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_check_page_5.png',
+    label: { en: '2 Bedrooms', ru: '2 спальни', pt: '2 Quartos' }, priceMin: 1290000, priceMax: 1650000 },
+  { type: '2 Bed Garden', areaMin: 108, areaMax: 108, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_check_page_5.png',
+    label: { en: '2 Bed Garden', ru: '2 спальни Сад', pt: '2 Quartos Garden' }, priceMin: 1980000, priceMax: 1980000 },
+  { type: '3 Bedrooms (Tipo/Terraço)', areaMin: 97, areaMax: 114, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
+    label: { en: '3 Bedrooms', ru: '3 спальни', pt: '3 Quartos' }, priceMin: 1690000, priceMax: 1990000 },
+  { type: '3 Bed Garden', areaMin: 130, areaMax: 130, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
+    label: { en: '3 Bed Garden', ru: '3 спальни Сад', pt: '3 Quartos Garden' }, priceMin: 2480000, priceMax: 2480000 },
+  { type: 'Penthouse 1-2 Bed', areaMin: 88, areaMax: 114, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
+    label: { en: 'Penthouse 1-2 Bed', ru: 'Пентхаус 1-2 спальни', pt: 'Cobertura 1-2 Quartos' }, priceMin: 1530000, priceMax: 2150000 },
+  { type: 'Penthouse 3 Bed', areaMin: 161, areaMax: 161, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/natus/natus_check_page_6.png',
+    label: { en: 'Penthouse 3 Bed', ru: 'Пентхаус 3 спальни', pt: 'Cobertura 3 Quartos' }, priceMin: 3040000, priceMax: 3040000 },
+];
+
+function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
+  const priceM2 = Number(property.price_per_m2) || 15000;
+  const growthRate = Number(property.yearly_growth_rate) || 8;
+  const projName = (property.project_name || property.title || slug || '').toLowerCase();
+  const isTerra = projName.includes('terra') || slug.includes('terra');
+  const isNatus = projName.includes('natus') || slug.includes('natus');
+
+  if (isNatus) {
+    return NATUS_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: u.priceMin,
+      priceMax: u.priceMax,
+      label: u.label[lang],
+      growthRate,
+    }));
+  }
+
+  if (isTerra) {
+    return TERRA_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: Math.round(u.areaMin * priceM2),
+      priceMax: Math.round(u.areaMax * priceM2),
+      label: u.label[lang],
+      growthRate,
+    }));
+  }
+
+  // Fallback — generic types
+  const types = [
+    { key: '1bed', areaMin: 45, areaMax: 55, bedrooms: 1, bathrooms: 1, yieldPct: 0.055,
+      label: lang === 'ru' ? '1 спальня' : lang === 'pt' ? '1 Quarto' : '1 Bedroom' },
+    { key: '1bed_ter', areaMin: 55, areaMax: 70, bedrooms: 1, bathrooms: 1, yieldPct: 0.052,
+      label: lang === 'ru' ? '1 спальня + терраса' : lang === 'pt' ? '1 Quarto + Terraço' : '1 Bed + Terrace' },
+    { key: '2bed', areaMin: 65, areaMax: 85, bedrooms: 2, bathrooms: 2, yieldPct: 0.048,
+      label: lang === 'ru' ? '2 спальни' : lang === 'pt' ? '2 Quartos' : '2 Bedroom' },
+    { key: '2bed_prem', areaMin: 85, areaMax: 100, bedrooms: 2, bathrooms: 2, yieldPct: 0.044,
+      label: lang === 'ru' ? '2 спальни премиум' : lang === 'pt' ? '2 Quartos Premium' : '2 Bed Premium' },
+    { key: '3bed', areaMin: 110, areaMax: 140, bedrooms: 3, bathrooms: 3, yieldPct: 0.038,
+      label: lang === 'ru' ? '3 спальни' : lang === 'pt' ? '3 Quartos' : '3 Bedroom' },
+    { key: '3bed_ter', areaMin: 140, areaMax: 180, bedrooms: 3, bathrooms: 3, yieldPct: 0.035,
+      label: lang === 'ru' ? '3 спальни + терраса' : lang === 'pt' ? '3 Quartos + Terraço' : '3 Bed + Terrace' },
+  ];
+
+  return types.map(t => ({
+    type: t.key,
+    areaMin: t.areaMin,
+    areaMax: t.areaMax,
+    bedrooms: t.bedrooms,
+    bathrooms: t.bathrooms,
+    priceMin: Math.round(t.areaMin * priceM2),
+    priceMax: Math.round(t.areaMax * priceM2),
+    label: t.label,
+    growthRate,
+  }));
+}
+
+function InvestmentCalculator({ property, lang, t, GOLD, NAVY, slug }: {
+  property: PropertyData;
+  lang: Lang;
+  t: typeof T.en;
+  GOLD: string;
+  NAVY: string;
+  slug: string;
+}) {
+  const unitTypes = getUnitTypes(property, lang, slug);
+  const [selected, setSelected] = useState(0);
+  const unit = unitTypes[selected];
+  const [holdYears, setHoldYears] = useState(5);
+  const [useMin, setUseMin] = useState(true);
+
+  const purchasePrice = useMin ? unit.priceMin : unit.priceMax;
+  const purchaseUSD = Math.round(purchasePrice / 5.3);
+  const monthlyRent = Math.round(purchasePrice * unit.yieldPct / 12);
+  const monthlyRentUSD = Math.round(monthlyRent / 5.3);
+  const annualRent = monthlyRent * 12;
+  const appreciation = Math.round(purchasePrice * Math.pow(1 + unit.growthRate / 100, holdYears) - purchasePrice);
+  const totalRentalIncome = annualRent * holdYears;
+  const futureValue = purchasePrice + appreciation;
+  const totalReturn = totalRentalIncome + appreciation;
+  const roiTotal = Math.round((totalReturn / purchasePrice) * 100);
+  const downPayment = Math.round(purchasePrice * 0.25);
+  const downPaymentUSD = Math.round(downPayment / 5.3);
+
+  const labels = lang === 'ru' ? {
+    title: 'Калькулятор доходности',
+    selectUnit: 'Выберите тип юнита',
+    from: 'от',
+    to: 'до',
+    holdPeriod: 'Срок владения',
+    years: 'лет',
+    year: 'год',
+    years2: 'года',
+    results: 'Результаты',
+    purchasePrice: 'Цена покупки',
+    downPayment: 'Первоначальный взнос (25%)',
+    monthlyRent: 'Аренда / мес',
+    annualYield: 'Арендная доходность',
+    appreciation: `Рост за ${holdYears} ${holdYears === 1 ? 'год' : holdYears < 5 ? 'года' : 'лет'}`,
+    futureValue: 'Будущая стоимость',
+    totalIncome: 'Общий доход',
+    totalROI: `Общий ROI за ${holdYears} ${holdYears === 1 ? 'год' : holdYears < 5 ? 'года' : 'лет'}`,
+    disclaimer: '* Прогнозы основаны на исторических данных. Прошлые результаты не гарантируют будущих. Курс: 1 USD = R$5.30',
+  } : lang === 'pt' ? {
+    title: 'Calculadora de Investimento',
+    selectUnit: 'Selecione o tipo de unidade',
+    from: 'a partir de',
+    to: 'até',
+    holdPeriod: 'Período de posse',
+    years: 'anos',
+    year: 'ano',
+    years2: 'anos',
+    results: 'Resultados',
+    purchasePrice: 'Preço de Compra',
+    downPayment: 'Entrada (25%)',
+    monthlyRent: 'Aluguel / mês',
+    annualYield: 'Rendimento Anual',
+    appreciation: `Valorização em ${holdYears} ${holdYears === 1 ? 'ano' : 'anos'}`,
+    futureValue: 'Valor Futuro',
+    totalIncome: 'Rendimento Total',
+    totalROI: `ROI Total em ${holdYears} ${holdYears === 1 ? 'ano' : 'anos'}`,
+    disclaimer: '* Projeções baseadas em dados históricos. Resultados passados não garantem resultados futuros. Câmbio: 1 USD = R$5.30',
+  } : {
+    title: 'Investment Calculator',
+    selectUnit: 'Select unit type',
+    from: 'from',
+    to: 'to',
+    holdPeriod: 'Hold period',
+    years: 'years',
+    year: 'year',
+    years2: 'years',
+    results: 'Results',
+    purchasePrice: 'Purchase Price',
+    downPayment: 'Down Payment (25%)',
+    monthlyRent: 'Monthly Rent',
+    annualYield: 'Annual Yield',
+    appreciation: `${holdYears}-Year Appreciation`,
+    futureValue: 'Future Value',
+    totalIncome: 'Total Income',
+    totalROI: `Total ${holdYears}-Year ROI`,
+    disclaimer: '* Projections based on historical data. Past performance does not guarantee future results. Rate: 1 USD = R$5.30',
+  };
+
+  const holdYearsLabels = [3, 5, 7, 10];
+
+  return (
+    <div>
+      {/* Calculator Card */}
+      <div style={{
+        background: `linear-gradient(135deg, ${NAVY}, #2a3f75)`, borderRadius: 12,
+        padding: 32, color: '#fff', marginBottom: 24,
+      }}>
+        <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 24, fontFamily: "'Playfair Display', serif" }}>
+          {labels.title}
+        </div>
+
+        {/* Unit Type Selector */}
+        <div style={{ marginBottom: 24 }}>
+          <div style={{ color: '#aaa', fontSize: 12, marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>{labels.selectUnit}</div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {unitTypes.map((u, i) => (
+              <button key={i} onClick={() => setSelected(i)}
+                style={{
+                  padding: '10px 16px', borderRadius: 8, border: selected === i ? `2px solid ${GOLD}` : '2px solid rgba(255,255,255,0.15)',
+                  background: selected === i ? 'rgba(212,175,55,0.15)' : 'rgba(255,255,255,0.05)',
+                  color: selected === i ? GOLD : '#ccc', fontSize: 13, fontWeight: selected === i ? 700 : 400,
+                  cursor: 'pointer', transition: 'all 0.2s', textAlign: 'left',
+                }}
+              >
+                <div>{u.label}</div>
+                <div style={{ fontSize: 11, color: '#888', marginTop: 2 }}>{u.areaMin}–{u.areaMax} m²</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Price Range Toggle */}
+        <div style={{ marginBottom: 24, display: 'flex', gap: 8, alignItems: 'center' }}>
+          <button onClick={() => setUseMin(true)}
+            style={{
+              padding: '6px 16px', borderRadius: 6, border: 'none',
+              background: useMin ? GOLD : 'rgba(255,255,255,0.1)', color: useMin ? NAVY : '#aaa',
+              fontWeight: 700, fontSize: 13, cursor: 'pointer',
+            }}
+          >{labels.from} {formatBrl(unit.priceMin)}</button>
+          <button onClick={() => setUseMin(false)}
+            style={{
+              padding: '6px 16px', borderRadius: 6, border: 'none',
+              background: !useMin ? GOLD : 'rgba(255,255,255,0.1)', color: !useMin ? NAVY : '#aaa',
+              fontWeight: 700, fontSize: 13, cursor: 'pointer',
+            }}
+          >{labels.to} {formatBrl(unit.priceMax)}</button>
+        </div>
+
+        {/* Hold Period */}
+        <div style={{ marginBottom: 28 }}>
+          <div style={{ color: '#aaa', fontSize: 12, marginBottom: 10, textTransform: 'uppercase', letterSpacing: 1 }}>{labels.holdPeriod}</div>
+          <div style={{ display: 'flex', gap: 8 }}>
+            {holdYearsLabels.map(y => (
+              <button key={y} onClick={() => setHoldYears(y)}
+                style={{
+                  padding: '8px 20px', borderRadius: 8, border: holdYears === y ? `2px solid ${GOLD}` : '2px solid rgba(255,255,255,0.15)',
+                  background: holdYears === y ? 'rgba(212,175,55,0.15)' : 'rgba(255,255,255,0.05)',
+                  color: holdYears === y ? GOLD : '#ccc', fontSize: 14, fontWeight: holdYears === y ? 700 : 400,
+                  cursor: 'pointer',
+                }}
+              >{y} {y === 1 ? labels.year : labels.years}</button>
+            ))}
+          </div>
+        </div>
+
+        {/* Results */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 24 }}>
+          <div style={{ color: GOLD, fontSize: 12, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 16 }}>{labels.results}</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
+            <div>
+              <div style={{ color: '#aaa', fontSize: 12 }}>{labels.purchasePrice}</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: '#fff' }}>{formatBrl(purchasePrice)}</div>
+              <div style={{ color: '#888', fontSize: 12 }}>${purchaseUSD.toLocaleString()} USD</div>
+            </div>
+            <div>
+              <div style={{ color: '#aaa', fontSize: 12 }}>{labels.downPayment}</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: '#fff' }}>{formatBrl(downPayment)}</div>
+              <div style={{ color: '#888', fontSize: 12 }}>${downPaymentUSD.toLocaleString()} USD</div>
+            </div>
+            <div>
+              <div style={{ color: '#aaa', fontSize: 12 }}>{labels.monthlyRent}</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: GOLD }}>{formatBrl(monthlyRent)}</div>
+              <div style={{ color: '#888', fontSize: 12 }}>${monthlyRentUSD.toLocaleString()} USD</div>
+            </div>
+            <div>
+              <div style={{ color: '#aaa', fontSize: 12 }}>{labels.annualYield}</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: GOLD }}>{(unit.yieldPct * 100).toFixed(1)}%</div>
+            </div>
+            <div>
+              <div style={{ color: '#aaa', fontSize: 12 }}>{labels.appreciation}</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: GOLD }}>+{formatBrl(appreciation)}</div>
+            </div>
+            <div>
+              <div style={{ color: '#aaa', fontSize: 12 }}>{labels.futureValue}</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: '#fff' }}>{formatBrl(futureValue)}</div>
+            </div>
+          </div>
+
+          {/* Total ROI - Big Number */}
+          <div style={{ marginTop: 24, padding: '20px 24px', background: 'rgba(212,175,55,0.1)', borderRadius: 10, textAlign: 'center', border: `1px solid rgba(212,175,55,0.3)` }}>
+            <div style={{ color: '#aaa', fontSize: 12, textTransform: 'uppercase', letterSpacing: 1 }}>{labels.totalROI}</div>
+            <div style={{ fontSize: 42, fontWeight: 900, color: GOLD, marginTop: 4 }}>{roiTotal}%</div>
+            <div style={{ color: '#888', fontSize: 12, marginTop: 4 }}>{formatBrl(totalRentalIncome)} rental + {formatBrl(appreciation)} growth</div>
+          </div>
+        </div>
+      </div>
+      <p style={{ color: '#999', fontSize: 11, textAlign: 'center' }}>{labels.disclaimer}</p>
+    </div>
+  );
+}
+
+// Highlight key facts in description text
+function highlightKeyFacts(text: string, gold: string): React.ReactNode {
+  if (!text) return null;
+  
+  // Patterns to highlight: percentages, prices with USD/$, numbers with units, key phrases
+  const patterns = [
+    /\d+\.?\d*%\s*(?:below|above|off|discount|yield|ROI|appreciation|growth|return|доходность|рост|скидка|ниже|выше|desconto|valorização|rendimento)?/gi,
+    /USD\s*[\d,]+(?:\.\d+)?(?:\s*(?:per|\/|\s)m²)?/gi,
+    /\$[\d,]+(?:\.\d+)?(?:\s*(?:per|\/|\s)m²)?/gi,
+    /\d+[\d,]*(?:\.\d+)?\s*(?:m²|sqm|sq\.\s*m|м²)/gi,
+    /\d+\s*(?:months?|мес|месяц|месец|meses)/gi,
+    /\d+\s*(?:years?|год|лет|года|anos)/gi,
+    /\d+\s*(?:floors?|этаж|этажей|andar)/gi,
+    /360°/gi,
+    /(?:pre-launch|pre-sale|pre-sale|пре-релиз|ранняя продажа|pré-lançamento)/gi,
+    /(?:down payment|первоначальный взнос|entrada)/gi,
+  ];
+
+  // Build a combined regex
+  const combined = new RegExp(
+    patterns.map(p => `(${p.source})`).join('|'),
+    'gi'
+  );
+
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+
+  while ((match = combined.exec(text)) !== null) {
+    // Add text before match
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    // Add highlighted match
+    parts.push(
+      React.createElement('span', {
+        key: key++,
+        style: {
+          color: gold,
+          fontWeight: 700,
+          background: 'rgba(212, 175, 55, 0.1)',
+          padding: '1px 4px',
+          borderRadius: 3,
+        }
+      }, match[0])
+    );
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Add remaining text
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts.length > 0 ? React.createElement(React.Fragment, null, ...parts) : text;
 }
 
 export default function ProjectPageClient({ property, slug }: { property: PropertyData | null; slug: string }) {
@@ -284,10 +687,11 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
   const tabs = [
     { key: 'overview', label: t.overview },
     { key: 'gallery', label: t.gallery },
-    ...(units.length > 0 ? [{ key: 'units', label: t.units }] : []),
-    ...(features.length > 0 ? [{ key: 'amenities', label: t.amenities }] : []),
+    { key: 'units', label: t.units },
+    { key: 'amenities', label: t.amenities },
     ...(property.latitude ? [{ key: 'location', label: t.location }] : []),
     ...(property.list_price ? [{ key: 'investment', label: t.investment }] : []),
+    { key: 'faq', label: 'FAQ' },
   ];
 
   const statusColors: Record<string, { bg: string; text: string }> = {
@@ -298,7 +702,7 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: '#f5f3ed', minHeight: '100vh' }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: '#f5f3ed', minHeight: '100vh', paddingBottom: 90 }}>
       {/* Header */}
       <header style={{
         position: 'sticky', top: 0, zIndex: 50,
@@ -407,19 +811,37 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
         {/* OVERVIEW */}
         {activeTab === 'overview' && (
           <div>
-            {/* Key Stats */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16, marginBottom: 32 }}>
-              {property.built_area && (
-                <StatCard label={t.totalArea} value={`${property.built_area} ${t.sqm}`} />
+            {/* Project Facts — top of page */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 32 }}>
+              {(property.delivery_year || property.year_built) && (
+                <div style={{ background: '#fff', borderRadius: 10, padding: '18px 20px', border: '1px solid #e5e5e5' }}>
+                  <div style={{ fontSize: 11, color: '#888', textTransform: 'uppercase', letterSpacing: 1 }}>{lang === 'ru' ? 'Сдача' : lang === 'pt' ? 'Entrega' : 'Delivery'}</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: GOLD, marginTop: 4 }}>{property.delivery_year || property.year_built}</div>
+                  <div style={{ fontSize: 11, color: '#aaa', marginTop: 2 }}>{property.tag || (lang === 'ru' ? 'В продаже' : lang === 'pt' ? 'À venda' : 'Now selling')}</div>
+                </div>
               )}
-              {property.beds && (
-                <StatCard label={`${property.beds} ${t.suites}`} value={`${property.beds}`} />
+              {property.location && (
+                <div style={{ background: '#fff', borderRadius: 10, padding: '18px 20px', border: '1px solid #e5e5e5' }}>
+                  <div style={{ fontSize: 11, color: '#888', textTransform: 'uppercase', letterSpacing: 1 }}>{lang === 'ru' ? 'Локация' : lang === 'pt' ? 'Localização' : 'Location'}</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: NAVY, marginTop: 4 }}>{property.location}</div>
+                  {property.region && <div style={{ fontSize: 11, color: '#aaa', marginTop: 2 }}>{property.region}, Brazil</div>}
+                </div>
               )}
-              {property.parking_spaces && (
-                <StatCard label={t.parking} value={`${property.parking_spaces}`} />
+              {property.down_payment_pct && (
+                <div style={{ background: '#fff', borderRadius: 10, padding: '18px 20px', border: '1px solid #e5e5e5' }}>
+                  <div style={{ fontSize: 11, color: '#888', textTransform: 'uppercase', letterSpacing: 1 }}>{lang === 'ru' ? 'Взнос' : lang === 'pt' ? 'Entrada' : 'Down Payment'}</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: GOLD, marginTop: 4 }}>{property.down_payment_pct}%</div>
+                  <div style={{ fontSize: 11, color: '#aaa', marginTop: 2 }}>{property.installments_count ? (lang === 'ru' ? `${property.installments_count} месяцев рассрочка` : lang === 'pt' ? `${property.installments_count} meses parcelado` : `${property.installments_count} months installment`) : ''}</div>
+                </div>
               )}
-              {property.delivery_year && (
-                <StatCard label={t.deliveryDate} value={`${property.delivery_year}`} />
+              {(property.beds || property.parking_spaces) && (
+                <div style={{ background: '#fff', borderRadius: 10, padding: '18px 20px', border: '1px solid #e5e5e5' }}>
+                  <div style={{ fontSize: 11, color: '#888', textTransform: 'uppercase', letterSpacing: 1 }}>{lang === 'ru' ? 'Комплектация' : lang === 'pt' ? 'Especificações' : 'Specs'}</div>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: NAVY, marginTop: 4 }}>
+                    {property.beds ? `${property.beds} ${lang === 'ru' ? 'сьютов' : lang === 'pt' ? 'suítes' : 'suites'}` : ''}
+                    {property.parking_spaces ? ` · ${property.parking_spaces} ${lang === 'ru' ? 'парковок' : lang === 'pt' ? 'vagas' : 'parking'}` : ''}
+                  </div>
+                </div>
               )}
             </div>
 
@@ -429,13 +851,13 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
                 <div style={{ fontSize: 18, fontWeight: 700, color: NAVY, marginBottom: 16, fontFamily: "'Playfair Display', serif" }}>
                   {t.projectDetails}
                 </div>
-                <p style={{ color: '#555', lineHeight: 1.8, fontSize: 14, whiteSpace: 'pre-line' }}>{description}</p>
+                <div style={{ color: '#555', lineHeight: 1.8, fontSize: 14, whiteSpace: 'pre-line' }}>{highlightKeyFacts(description, GOLD)}</div>
               </div>
             )}
 
             {/* Key Features */}
             {features.length > 0 && (
-              <div style={{ background: '#fff', borderRadius: 12, padding: 32, border: '1px solid #e5e5e5' }}>
+              <div style={{ background: '#fff', borderRadius: 12, padding: 32, marginBottom: 24, border: '1px solid #e5e5e5' }}>
                 <div style={{ fontSize: 18, fontWeight: 700, color: NAVY, marginBottom: 16, fontFamily: "'Playfair Display', serif" }}>
                   {t.keyFeatures}
                 </div>
@@ -449,6 +871,7 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
                 </div>
               </div>
             )}
+
           </div>
         )}
 
@@ -480,63 +903,198 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
           </div>
         )}
 
-        {/* UNITS */}
-        {activeTab === 'units' && units.length > 0 && (
-          <div>
-            <div style={{ display: 'grid', gap: 16 }}>
-              {units.map((u, i) => (
-                <div key={i} style={{
-                  background: '#fff', borderRadius: 12, padding: 24,
-                  border: '1px solid #e5e5e5',
-                  display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 16, alignItems: 'center',
-                }}>
-                  <div>
-                    <div style={{ fontWeight: 700, color: NAVY, fontSize: 16 }}>{u.type}</div>
-                    <div style={{ color: '#888', fontSize: 12, marginTop: 4 }}>{u.areaMin === u.areaMax ? `${u.areaMin} ${t.sqm}` : `${u.areaMin}–${u.areaMax} ${t.sqm}`}</div>
-                  </div>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontWeight: 700, color: NAVY }}>{formatBrl(u.priceMin)}</div>
-                    <div style={{ color: '#888', fontSize: 12 }}>{formatUsd(brlToUsd(u.priceMin))} USD</div>
-                  </div>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontWeight: 600, color: '#666', fontSize: 13 }}>
-                      {u.priceMin !== u.priceMax ? `${formatBrl(u.priceMax)}` : ''}
+        {/* UNITS / APARTMENTS */}
+        {activeTab === 'units' && (() => {
+          const unitCards = getUnitTypes(property, lang, slug);
+          const bedLabels = lang === 'ru'
+            ? { 0: 'Студия', 1: '1 спальня', 2: '2 спальни', 3: '3 спальни' }
+            : lang === 'pt'
+            ? { 0: 'Studio', 1: '1 Quarto', 2: '2 Quartos', 3: '3 Quartos' }
+            : { 0: 'Studio', 1: '1 Bed', 2: '2 Bed', 3: '3 Bed' };
+
+          return (
+            <div>
+              {/* Unit type filter */}
+              <div style={{ display: 'flex', gap: 8, marginBottom: 24, flexWrap: 'wrap' }}>
+                <button
+                  onClick={() => setUnitFilter('all')}
+                  style={{
+                    padding: '8px 16px', borderRadius: 8,
+                    border: unitFilter === 'all' ? `2px solid ${GOLD}` : '2px solid #e5e5e5',
+                    background: unitFilter === 'all' ? 'rgba(212,175,55,0.1)' : '#fff',
+                    color: unitFilter === 'all' ? NAVY : '#888',
+                    fontSize: 13, fontWeight: unitFilter === 'all' ? 700 : 400, cursor: 'pointer',
+                  }}
+                >{t.allUnits}</button>
+                {[1, 2, 3].map(n => (
+                  <button key={n} onClick={() => setUnitFilter(String(n))}
+                    style={{
+                      padding: '8px 16px', borderRadius: 8,
+                      border: unitFilter === String(n) ? `2px solid ${GOLD}` : '2px solid #e5e5e5',
+                      background: unitFilter === String(n) ? 'rgba(212,175,55,0.1)' : '#fff',
+                      color: unitFilter === String(n) ? NAVY : '#888',
+                      fontSize: 13, fontWeight: unitFilter === String(n) ? 700 : 400, cursor: 'pointer',
+                    }}
+                  >{bedLabels[n as keyof typeof bedLabels]}</button>
+                ))}
+              </div>
+
+              {/* Unit Cards Grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 }}>
+                {unitCards
+                  .filter(u => unitFilter === 'all' || u.bedrooms === Number(unitFilter))
+                  .map((u, i) => (
+                    <div key={i} style={{
+                      background: '#fff', borderRadius: 14,
+                      border: '1px solid #e5e5e5', overflow: 'hidden',
+                      transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'none'; }}
+                    >
+                      {/* Floor plan image or placeholder */}
+                      {u.floorPlan ? (
+                        <div style={{
+                          height: 200, background: '#f8f7f3',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          overflow: 'hidden', borderBottom: '1px solid #e5e5e5',
+                        }}>
+                          <img
+                            src={u.floorPlan}
+                            alt={`${u.type} floor plan`}
+                            style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 8 }}
+                          />
+                        </div>
+                      ) : (
+                        <div style={{
+                          height: 200, background: '#f8f7f3',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          borderBottom: '1px solid #e5e5e5',
+                        }}>
+                          <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                            <rect x="4" y="4" width="72" height="72" rx="4" stroke="#D4AF37" strokeWidth="2"/>
+                            <rect x="12" y="12" width="28" height="30" rx="2" stroke="#D4AF37" strokeWidth="1.5"/>
+                            <rect x="40" y="12" width="28" height="30" rx="2" stroke="#D4AF37" strokeWidth="1.5"/>
+                            <rect x="12" y="48" width="56" height="20" rx="2" stroke="#D4AF37" strokeWidth="1.5"/>
+                            <circle cx="54" cy="27" r="4" stroke="#D4AF37" strokeWidth="1.5"/>
+                          </svg>
+                        </div>
+                      )}
+
+                      {/* Card Content */}
+                      <div style={{ padding: '16px 20px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+                          <div style={{ fontWeight: 700, color: NAVY, fontSize: 16 }}>
+                            {u.label || u.type}
+                          </div>
+                          <div style={{
+                            padding: '3px 10px', borderRadius: 4, fontSize: 11, fontWeight: 600,
+                            background: 'rgba(212,175,55,0.1)', color: GOLD,
+                          }}>
+                            {bedLabels[u.bedrooms as keyof typeof bedLabels]}
+                          </div>
+                        </div>
+
+                        {/* Specs row */}
+                        <div style={{ display: 'flex', gap: 16, marginBottom: 12, fontSize: 12, color: '#888' }}>
+                          <span>📐 {u.areaMin === u.areaMax ? `${u.areaMin} m²` : `${u.areaMin}–${u.areaMax} m²`}</span>
+                          <span>🚿 {u.bathrooms} {t.baths}</span>
+                        </div>
+
+                        {/* Price */}
+                        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid #e5e5e5' }}>
+                          <div>
+                            <div style={{ fontSize: 11, color: '#aaa' }}>{t.from}</div>
+                            <div style={{ fontSize: 18, fontWeight: 700, color: NAVY }}>{formatBrl(u.priceMin)}</div>
+                            <div style={{ fontSize: 12, color: '#888' }}>{formatUsd(brlToUsd(u.priceMin))} USD</div>
+                          </div>
+                          <a
+                            href={`https://wa.me/5548988117424?text=${encodeURIComponent(`Hi! I'm interested in the ${u.label||u.type} at ${projectName}`)}`}
+                            target="_blank" rel="noopener noreferrer"
+                            style={{
+                              padding: '10px 18px', borderRadius: 8, fontSize: 12, fontWeight: 700,
+                              background: GOLD, color: NAVY, textDecoration: 'none',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            {t.requestInfo}
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <span style={{
-                      padding: '6px 16px', borderRadius: 6, fontSize: 12, fontWeight: 700,
-                      background: GOLD, color: NAVY, cursor: 'pointer',
+                ))}
+              </div>
+
+              {unitCards.filter(u => unitFilter === 'all' || u.bedrooms === Number(unitFilter)).length === 0 && (
+                <div style={{ textAlign: 'center', padding: 60, color: '#999' }}>
+                  {lang === 'ru' ? 'Нет юнитов с таким количеством спален' : lang === 'pt' ? 'Sem unidades com este número de quartos' : 'No units with this bedroom count'}
+                </div>
+              )}
+
+              <p style={{ color: '#999', fontSize: 11, marginTop: 24, textAlign: 'center' }}>{t.currencyDisclaimer}</p>
+            </div>
+          );
+        })()}
+
+        {/* FLOOR PLANS */}
+        {activeTab === 'amenities' && (() => {
+          const unitCards = getUnitTypes(property, lang, slug);
+          return (
+            <div style={{
+              display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 16,
+            }}>
+              {unitCards.map((u, i) => (
+                <div key={i} style={{
+                  background: '#fff', borderRadius: 12,
+                  border: '1px solid #e5e5e5', overflow: 'hidden',
+                }}>
+                  {/* Floor plan image */}
+                  {u.floorPlan ? (
+                    <div style={{
+                      height: 220, background: '#f8f7f3',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      overflow: 'hidden', borderBottom: '1px solid #e5e5e5',
                     }}>
-                      {t.requestInfo}
-                    </span>
+                      <img
+                        src={u.floorPlan}
+                        alt={`${u.type} floor plan`}
+                        style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 8 }}
+                      />
+                    </div>
+                  ) : (
+                    <div style={{
+                      height: 220, background: '#f8f7f3',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      borderBottom: '1px solid #e5e5e5',
+                    }}>
+                      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                        <rect x="4" y="4" width="72" height="72" rx="4" stroke="#D4AF37" strokeWidth="2"/>
+                        <rect x="12" y="12" width="28" height="30" rx="2" stroke="#D4AF37" strokeWidth="1.5"/>
+                        <rect x="40" y="12" width="28" height="30" rx="2" stroke="#D4AF37" strokeWidth="1.5"/>
+                        <rect x="12" y="48" width="56" height="20" rx="2" stroke="#D4AF37" strokeWidth="1.5"/>
+                        <circle cx="54" cy="27" r="4" stroke="#D4AF37" strokeWidth="1.5"/>
+                      </svg>
+                    </div>
+                  )}
+                  <div style={{ padding: '14px 16px' }}>
+                    <div style={{ fontWeight: 700, color: NAVY, fontSize: 15, marginBottom: 6 }}>{u.label || u.type}</div>
+                    <div style={{ display: 'flex', gap: 12, fontSize: 12, color: '#888', marginBottom: 8 }}>
+                      <span>📐 {u.areaMin === u.areaMax ? `${u.areaMin} m²` : `${u.areaMin}–${u.areaMax} m²`}</span>
+                      <span>🛏 ${u.bedrooms} ${t.suites === 'suites' ? 'bed' : ''}</span>
+                      <span>🚿 ${u.bathrooms}</span>
+                    </div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: NAVY }}>
+                      {formatBrl(u.priceMin)}{u.priceMax > u.priceMin ? ` — ${formatBrl(u.priceMax)}` : ''}
+                    </div>
+                    <div style={{ fontSize: 12, color: '#888' }}>
+                      {formatUsd(brlToUsd(u.priceMin))}{u.priceMax > u.priceMin ? ` — ${formatUsd(brlToUsd(u.priceMax))}` : ''} USD
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
-            <p style={{ color: '#999', fontSize: 11, marginTop: 16, textAlign: 'center' }}>{t.currencyDisclaimer}</p>
-          </div>
-        )}
-
-        {/* AMENITIES */}
-        {activeTab === 'amenities' && features.length > 0 && (
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 12,
-          }}>
-            {features.map((f, i) => {
-              const name = lang === 'ru' ? (f.name_ru || f.name) : lang === 'pt' ? f.name : (f.name_en || f.name);
-              return (
-                <div key={i} style={{
-                  background: '#fff', borderRadius: 10, padding: '16px 20px',
-                  border: '1px solid #e5e5e5', display: 'flex', alignItems: 'center', gap: 10,
-                }}>
-                  <span style={{ color: GOLD, fontSize: 18 }}>✦</span>
-                  <span style={{ fontSize: 13, color: '#444' }}>{name}</span>
-                </div>
-              );
-            })}
-          </div>
-        )}
+          );
+        })()}
 
         {/* LOCATION */}
         {activeTab === 'location' && property.latitude && (
@@ -567,50 +1125,130 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
           </div>
         )}
 
-        {/* INVESTMENT */}
+        {/* INVESTMENT CALCULATOR */}
         {activeTab === 'investment' && property.list_price && (
+          <>
+          <InvestmentCalculator property={property} lang={lang} t={t} GOLD={GOLD} NAVY={NAVY} slug={slug} />
+
+          {/* Disclaimer after calculator */}
+          <div style={{ background: '#fff', borderRadius: 10, padding: '16px 20px', border: '1px solid #e5e5e5', fontSize: 11, color: '#888', lineHeight: 1.7, marginTop: 24 }}>
+            <strong style={{ color: '#666' }}>{lang === 'ru' ? 'Правовая информация' : lang === 'pt' ? 'Informação Legal' : 'Legal Disclaimer'}</strong><br />
+            {lang === 'ru'
+              ? 'Все расчёты доходности являются прогнозными и основаны на исторических данных рынка недвижимости Флорианополиса. Прошлые результаты не гарантируют будущих. Курс валют: 1 USD = R$5.30 (может измениться). Данная информация не является предложением ценных бумаг или инвестиционным советом. Рекомендуется консультация с финансовым консультантом перед принятием инвестиционных решений. CRECI 11410-J. GRONIS International Real Estate — лицензированное риэлторское агентство.'
+              : lang === 'pt'
+              ? 'Todas as projeções de rentabilidade são estimativas baseadas em dados históricos do mercado imobiliário de Florianópolis. Resultados passados não garantem resultados futuros. Câmbio: 1 USD = R$5.30 (sujeito a alteração). Esta informação não constitui oferta de valores mobiliários ou conselho de investimento. Recomenda-se consulta com um consultor financeiro antes de tomar decisões de investimento. CRECI 11410-J. GRONIS International Real Estate — imobiliária licenciada.'
+              : 'All yield projections are estimates based on historical data from the Florianópolis real estate market. Past performance does not guarantee future results. Exchange rate: 1 USD = R$5.30 (subject to change). This information does not constitute an offer of securities or investment advice. Consultation with a financial advisor is recommended before making investment decisions. CRECI 11410-J. GRONIS International Real Estate — licensed real estate agency.'}
+          </div>
+          </>
+        )}
+
+        {/* FAQ TAB */}
+        {activeTab === 'faq' && (
           <div>
-            <div style={{
-              background: `linear-gradient(135deg, ${NAVY}, #2a3f75)`, borderRadius: 12,
-              padding: 32, color: '#fff', marginBottom: 24,
-            }}>
-              <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 24, fontFamily: "'Playfair Display', serif" }}>
-                {t.roiTitle}
+            <h2 style={{ fontSize: 20, fontWeight: 700, color: NAVY, marginBottom: 20, fontFamily: "'Playfair Display', serif" }}>
+              {lang === 'ru' ? 'Частые вопросы' : lang === 'pt' ? 'Perguntas Frequentes' : 'Frequently Asked Questions'}
+            </h2>
+            {getFAQ(property, lang).map((faq, i) => (
+              <div key={i} style={{ background: '#fff', borderRadius: 10, padding: '20px 24px', border: '1px solid #e5e5e5', marginBottom: 12 }}>
+                <div style={{ fontWeight: 700, color: NAVY, fontSize: 15, marginBottom: 8 }}>{faq.q}</div>
+                <div style={{ color: '#555', fontSize: 14, lineHeight: 1.7 }}>{faq.a}</div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
-                <div>
-                  <div style={{ color: '#aaa', fontSize: 12, marginBottom: 4 }}>{t.purchasePrice}</div>
-                  <div style={{ fontSize: 22, fontWeight: 700, color: GOLD }}>{formatBrl(property.list_price)}</div>
-                  <div style={{ color: '#aaa', fontSize: 13 }}>{formatUsd(brlToUsd(property.list_price))} USD</div>
+            ))}
+
+            {/* How It Works — Steps */}
+            <div style={{ marginTop: 32 }}>
+              <h2 style={{ fontSize: 20, fontWeight: 700, color: NAVY, marginBottom: 8, fontFamily: "'Playfair Display', serif" }}>
+                {lang === 'ru' ? 'Как купить' : lang === 'pt' ? 'Como Comprar' : 'Your Path to a New Home'}
+              </h2>
+              <p style={{ color: '#888', fontSize: 13, marginBottom: 24 }}>
+                {lang === 'ru' ? 'Три простых шага к вашей новой недвижимости в Бразилии' : lang === 'pt' ? 'Três passos simples para seu novo imóvel no Brasil' : 'Three simple steps to your new property in Brazil'}
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+                {/* Step 1 */}
+                <div style={{ background: `linear-gradient(135deg, ${NAVY}, #2a3f75)`, borderRadius: 12, padding: 28, color: '#fff', position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: 16, right: 20, fontSize: 48, fontWeight: 900, color: 'rgba(212,175,55,0.2)' }}>01</div>
+                  <div style={{ fontSize: 28, marginBottom: 12 }}>📞</div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: GOLD, marginBottom: 8 }}>{lang === 'ru' ? 'Консультация' : lang === 'pt' ? 'Consulta' : 'Consultation'}</div>
+                  <div style={{ fontSize: 13, color: '#ccc', lineHeight: 1.6 }}>
+                    {lang === 'ru'
+                      ? 'Бесплатный звонок или чат. Обсуждаем ваши цели, бюджет и предпочтения по локации и типу недвижимости.'
+                      : lang === 'pt'
+                      ? 'Ligação ou chat gratuito. Discutimos seus objetivos, orçamento e preferências de localização e tipo de imóvel.'
+                      : 'Free call or chat. We discuss your goals, budget, and preferences for location and property type.'}
+                  </div>
                 </div>
-                {property.monthly_rent_estimate && (
-                  <div>
-                    <div style={{ color: '#aaa', fontSize: 12, marginBottom: 4 }}>{t.monthlyRent}</div>
-                    <div style={{ fontSize: 22, fontWeight: 700, color: GOLD }}>{formatBrl(property.monthly_rent_estimate)}</div>
-                    <div style={{ color: '#aaa', fontSize: 13 }}>{formatUsd(brlToUsd(property.monthly_rent_estimate))} USD</div>
+                {/* Step 2 */}
+                <div style={{ background: `linear-gradient(135deg, ${NAVY}, #2a3f75)`, borderRadius: 12, padding: 28, color: '#fff', position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: 16, right: 20, fontSize: 48, fontWeight: 900, color: 'rgba(212,175,55,0.2)' }}>02</div>
+                  <div style={{ fontSize: 28, marginBottom: 12 }}>🏠</div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: GOLD, marginBottom: 8 }}>{lang === 'ru' ? 'Подбор объекта' : lang === 'pt' ? 'Seleção de Imóvel' : 'Property Selection'}</div>
+                  <div style={{ fontSize: 13, color: '#ccc', lineHeight: 1.6 }}>
+                    {lang === 'ru'
+                      ? 'Подбираем лучшие варианты из нашей базы. Презентация, виртуальный тур, планировки и расчёт доходности.'
+                      : lang === 'pt'
+                      ? 'Selecionamos as melhores opções da nossa base. Apresentação, tour virtual, plantas e cálculo de rentabilidade.'
+                      : 'We select the best options from our portfolio. Presentation, virtual tour, floor plans, and ROI calculation.'}
                   </div>
-                )}
-                {property.roi_percentage && (
-                  <div>
-                    <div style={{ color: '#aaa', fontSize: 12, marginBottom: 4 }}>{t.annualYield}</div>
-                    <div style={{ fontSize: 22, fontWeight: 700, color: GOLD }}>{property.roi_percentage}%</div>
+                </div>
+                {/* Step 3 */}
+                <div style={{ background: `linear-gradient(135deg, ${NAVY}, #2a3f75)`, borderRadius: 12, padding: 28, color: '#fff', position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: 16, right: 20, fontSize: 48, fontWeight: 900, color: 'rgba(212,175,55,0.2)' }}>03</div>
+                  <div style={{ fontSize: 28, marginBottom: 12 }}>✅</div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: GOLD, marginBottom: 8 }}>{lang === 'ru' ? 'Оформление' : lang === 'pt' ? 'Garantir o Investimento' : 'Secure Your Investment'}</div>
+                  <div style={{ fontSize: 13, color: '#ccc', lineHeight: 1.6 }}>
+                    {lang === 'ru'
+                      ? 'Бронирование, договор, оформление CPF. Полное сопровождение от первого звонка до получения ключей.'
+                      : lang === 'pt'
+                      ? 'Reserva, contrato, obtenção de CPF. Acompanhamento completo da primeira ligação até as chaves.'
+                      : 'Reservation, contract, CPF registration. Full support from the first call to receiving your keys.'}
                   </div>
-                )}
-                {property.forecast5y && (
-                  <div>
-                    <div style={{ color: '#aaa', fontSize: 12, marginBottom: 4 }}>{t.fiveYearGrowth}</div>
-                    <div style={{ fontSize: 22, fontWeight: 700, color: GOLD }}>+{property.forecast5y}%</div>
-                  </div>
-                )}
+                </div>
               </div>
             </div>
-            <p style={{ color: '#999', fontSize: 11, textAlign: 'center' }}>
-              {lang === 'ru'
-                ? '* Прогнозы основаны на исторических данных. Прошлые результаты не гарантируют будущих. Курс: 1 USD = R$5.30'
-                : lang === 'pt'
-                ? '* Projeções baseadas em dados históricos. Resultados passados não garantem resultados futuros. Câmbio: 1 USD = R$5.30'
-                : '* Projections based on historical data. Past performance does not guarantee future results. Rate: 1 USD = R$5.30'}
-            </p>
+
+            {/* Broker Card */}
+            <div style={{
+              marginTop: 32,
+              background: `linear-gradient(135deg, ${NAVY}, #1a2040)`,
+              borderRadius: 16,
+              padding: 32,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 28,
+              flexWrap: 'wrap',
+            }}>
+              <div style={{
+                width: 90, height: 90, borderRadius: '50%',
+                background: `linear-gradient(135deg, ${GOLD}, #c9a227)`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 36, fontWeight: 900, color: NAVY, flexShrink: 0,
+              }}>KB</div>
+              <div style={{ flex: 1, minWidth: 200 }}>
+                <div style={{ color: GOLD, fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 4 }}>
+                  {lang === 'ru' ? 'Ваш персональный брокер' : lang === 'pt' ? 'Seu Corretor Pessoal' : 'Your Personal Broker'}
+                </div>
+                <div style={{ color: '#fff', fontSize: 22, fontWeight: 700, fontFamily: "'Playfair Display', serif", marginBottom: 12 }}>
+                  Konstantin Bievskikh
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, fontSize: 13 }}>
+                  <a href="tel:+5548988752300" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    📞 +55 (48) 98875-2300
+                  </a>
+                  <a href="mailto:konstantin.bievskikh@migronis.com" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    ✉️ konstantin.bievskikh@migronis.com
+                  </a>
+                  <a href="https://gronisbrazil.com" target="_blank" rel="noopener noreferrer" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    🌐 gronisbrazil.com
+                  </a>
+                </div>
+                <div style={{ color: '#666', fontSize: 11, marginTop: 10 }}>CRECI 11410-J</div>
+              </div>
+            </div>
+
+            {/* Tagline */}
+            <div style={{ textAlign: 'center', marginTop: 24, letterSpacing: 4, color: GOLD, fontWeight: 800, fontSize: 12 }}>
+              LIVE. INVEST. BELONG.
+            </div>
           </div>
         )}
       </div>
@@ -618,29 +1256,23 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
       {/* CTA Bar */}
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0,
-        background: '#fff', borderTop: '1px solid #e5e5e5',
-        padding: '12px 24px',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
+        background: 'linear-gradient(to top, rgba(255,255,255,0.98) 80%, rgba(255,255,255,0))',
+        padding: '16px 24px 20px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
         zIndex: 40,
       }}>
-        <button
-          onClick={copyLink}
-          style={{
-            padding: '10px 20px', borderRadius: 8, border: '1px solid #e5e5e5',
-            background: '#fff', cursor: 'pointer', fontSize: 13, fontWeight: 600, color: NAVY,
-          }}
-        >
-          {linkCopied ? '✓ ' + t.linkCopied : t.shareLink}
-        </button>
         <a
           href="https://wa.me/5548988117424"
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            padding: '10px 24px', borderRadius: 8, border: 'none',
-            background: '#25D366', color: '#fff', cursor: 'pointer',
-            fontSize: 13, fontWeight: 700, textDecoration: 'none',
-            display: 'flex', alignItems: 'center', gap: 6,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+            padding: '14px 40px', borderRadius: 50,
+            background: `linear-gradient(135deg, ${GOLD}, #c9a227)`,
+            color: NAVY, fontSize: 15, fontWeight: 800, textDecoration: 'none',
+            boxShadow: '0 4px 20px rgba(212,175,55,0.4)',
+            letterSpacing: 0.5,
+            transition: 'all 0.2s',
           }}
         >
           💬 {t.whatsappUs}
