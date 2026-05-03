@@ -471,9 +471,10 @@ function InvestmentCalculator({ property, lang, t, GOLD, NAVY, slug }: {
   NAVY: string;
   slug: string;
 }) {
-  const unitTypes = getUnitTypes(property, lang, slug);
+  const allUnitTypes = getUnitTypes(property, lang, slug);
+  const unitTypes = allUnitTypes.filter(u => u.priceMin > 0);
   const [selected, setSelected] = useState(0);
-  const unit = unitTypes[selected];
+  const unit = unitTypes[selected] || unitTypes[0];
   const [holdYears, setHoldYears] = useState(5);
   const [useMin, setUseMin] = useState(true);
 
