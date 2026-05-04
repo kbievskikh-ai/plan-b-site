@@ -436,6 +436,18 @@ const MAKAI_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: n
   { type: '3BR Penthouse — 404 m²', areaMin: 404, areaMax: 404, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/makai/makai_plan_25.jpg',
     label: { en: '3BR Penthouse — 404 м²', ru: '3BR Penthouse — 404 м²', pt: '3BR Penthouse — 404 м²', es: '3BR Penthouse — 404 м²' }, priceMin: 13545424, priceMax: 13545424, yieldPct: 0.06 },
 ];
+
+const BOSC_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
+  { type: 'Studio — 40 m²', areaMin: 40, areaMax: 40, bedrooms: 1, bathrooms: 1, floorPlan: '',
+    label: { en: 'Studio — 40 m²', ru: 'Студия — 40 м²', pt: 'Studio — 40 m²', es: 'Studio — 40 m²' }, priceMin: 640218, priceMax: 640218, yieldPct: 0.15 },
+  { type: 'Studio Mezanino — 52 m²', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '',
+    label: { en: 'Studio Mezanino — 52 m²', ru: 'Студия Mezanino — 52 м²', pt: 'Studio Mezanino — 52 m²', es: 'Studio Mezanino — 52 m²' }, priceMin: 832284, priceMax: 832284, yieldPct: 0.14 },
+  { type: '1BR+Suite — 55-63 m²', areaMin: 55, areaMax: 63, bedrooms: 1, bathrooms: 1, floorPlan: '',
+    label: { en: '1BR+Suite — 55-63 m²', ru: '1BR+Suite — 55-63 м²', pt: '1BR+Suite — 55-63 m²', es: '1BR+Suite — 55-63 m²' }, priceMin: 880300, priceMax: 1008346, yieldPct: 0.13 },
+  { type: '2BR — 72-84 m²', areaMin: 72, areaMax: 84, bedrooms: 2, bathrooms: 2, floorPlan: '',
+    label: { en: '2BR — 72-84 m²', ru: '2BR — 72-84 м²', pt: '2BR — 72-84 m²', es: '2BR — 72-84 m²' }, priceMin: 1152392, priceMax: 1344458, yieldPct: 0.12 },
+];
+
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
   const priceM2 = Number(property.price_per_m2) || 15000;
   const growthRate = Number(property.yearly_growth_rate) || 8;
@@ -444,6 +456,7 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
   const isNatus = projName.includes('natus') || slug.includes('natus');
   const isAzzur = projName.includes('azzur') || slug.includes('azzur');
   const isMakai = projName.includes('makai') || slug.includes('makai');
+  const isBosc = projName.includes('bosc') || slug.includes('bosc');
 
   if (isNatus) {
     return NATUS_UNITS.map(u => ({
@@ -479,6 +492,22 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
 
   if (isMakai) {
     return MAKAI_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: u.priceMin,
+      priceMax: u.priceMax,
+      label: u.label[lang],
+      yieldPct: u.yieldPct,
+      growthRate,
+    }));
+  }
+
+  if (isBosc) {
+    return BOSC_UNITS.map(u => ({
       type: u.type,
       areaMin: u.areaMin,
       areaMax: u.areaMax,
