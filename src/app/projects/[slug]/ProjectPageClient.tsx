@@ -438,14 +438,16 @@ const MAKAI_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: n
 ];
 
 const BOSC_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
-  { type: 'Studio — 40 m²', areaMin: 40, areaMax: 40, bedrooms: 1, bathrooms: 1, floorPlan: '',
-    label: { en: 'Studio — 40 m²', ru: 'Студия — 40 м²', pt: 'Studio — 40 m²', es: 'Studio — 40 m²' }, priceMin: 640218, priceMax: 640218, yieldPct: 0.15 },
-  { type: 'Studio Mezanino — 52 m²', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '',
-    label: { en: 'Studio Mezanino — 52 m²', ru: 'Студия Mezanino — 52 м²', pt: 'Studio Mezanino — 52 m²', es: 'Studio Mezanino — 52 m²' }, priceMin: 832284, priceMax: 832284, yieldPct: 0.14 },
-  { type: '1BR+Suite — 55-63 m²', areaMin: 55, areaMax: 63, bedrooms: 1, bathrooms: 1, floorPlan: '',
-    label: { en: '1BR+Suite — 55-63 m²', ru: '1BR+Suite — 55-63 м²', pt: '1BR+Suite — 55-63 m²', es: '1BR+Suite — 55-63 m²' }, priceMin: 880300, priceMax: 1008346, yieldPct: 0.13 },
-  { type: '2BR — 72-84 m²', areaMin: 72, areaMax: 84, bedrooms: 2, bathrooms: 2, floorPlan: '',
-    label: { en: '2BR — 72-84 m²', ru: '2BR — 72-84 м²', pt: '2BR — 72-84 m²', es: '2BR — 72-84 m²' }, priceMin: 1152392, priceMax: 1344458, yieldPct: 0.12 },
+  { type: 'Studio — 34 m²', areaMin: 34, areaMax: 35, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/bosc/studio_A1.jpg',
+    label: { en: 'Studio — 34 m²', ru: 'Студия — 34 м²', pt: 'Studio — 34 m²', es: 'Studio — 34 m²' }, priceMin: 618568, priceMax: 698287, yieldPct: 0.15 },
+  { type: 'Studio — 40-44 m²', areaMin: 40, areaMax: 44, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/bosc/studio_A4.jpg',
+    label: { en: 'Studio — 40-44 m²', ru: 'Студия — 40-44 м²', pt: 'Studio — 40-44 m²', es: 'Studio — 40-44 m²' }, priceMin: 799253, priceMax: 901141, yieldPct: 0.14 },
+  { type: '1BR — 45-47 m²', areaMin: 45, areaMax: 47, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/bosc/apt_1BR_A.jpg',
+    label: { en: '1BR — 45-47 m²', ru: '1BR — 45-47 м²', pt: '1BR — 45-47 m²', es: '1BR — 45-47 м²' }, priceMin: 735370, priceMax: 950990, yieldPct: 0.13 },
+  { type: '1BR+ — 49-52 m²', areaMin: 49, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/bosc/apt_1BR_D.jpg',
+    label: { en: '1BR+ — 49-52 m²', ru: '1BR+ — 49-52 м²', pt: '1BR+ — 49-52 м²', es: '1BR+ — 49-52 м²' }, priceMin: 927102, priceMax: 995708, yieldPct: 0.12 },
+  { type: '2BR — 55 m²', areaMin: 55, areaMax: 55, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/bosc/apt_2BR_A.jpg',
+    label: { en: '2BR — 55 m²', ru: '2BR — 55 м²', pt: '2BR — 55 m²', es: '2BR — 55 м²' }, priceMin: 1103216, priceMax: 1103216, yieldPct: 0.12 },
 ];
 
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
