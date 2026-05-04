@@ -395,15 +395,53 @@ const NATUS_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: n
     label: { en: 'Duplex L3 — 79 m²', ru: 'Duplex L3 — 79 м²', pt: 'Duplex L3 — 79 m²', es: 'Duplex L3 — 79 m²' }, priceMin: 1690000, priceMax: 1690000, yieldPct: 0.048 },
 ];
 
+const AZZURE_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
+  { type: '2BR Compact — 132 m²', areaMin: 132, areaMax: 132, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/azzur/azzur_plan_50.jpg',
+    label: { en: '2BR Compact — 132 m²', ru: '2BR Compact — 132 м²', pt: '2BR Compact — 132 m²', es: '2BR Compact — 132 m²' }, priceMin: 4008651, priceMax: 4112409, yieldPct: 0.048 },
+  { type: '2BR — 151-181 m²', areaMin: 151, areaMax: 181, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/azzur/azzur_plan_53.jpg',
+    label: { en: '2BR — 151-181 m²', ru: '2BR — 151-181 м²', pt: '2BR — 151-181 m²', es: '2BR — 151-181 m²' }, priceMin: 4631126, priceMax: 5421998, yieldPct: 0.045 },
+  { type: '3BR Compact — 132 m²', areaMin: 132, areaMax: 133, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/azzur/azzur_plan_56.jpg',
+    label: { en: '3BR Compact — 132 m²', ru: '3BR Compact — 132 м²', pt: '3BR Compact — 132 m²', es: '3BR Compact — 132 m²' }, priceMin: 4292428, priceMax: 4680807, yieldPct: 0.048 },
+  { type: '3BR — 149-153 m²', areaMin: 149, areaMax: 153, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/azzur/azzur_plan_58.jpg',
+    label: { en: '3BR — 149-153 m²', ru: '3BR — 149-153 м²', pt: '3BR — 149-153 m²', es: '3BR — 149-153 m²' }, priceMin: 4561234, priceMax: 5390354, yieldPct: 0.046 },
+  { type: '3BR — 172-226 m²', areaMin: 172, areaMax: 226, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/azzur/azzur_plan_62.jpg',
+    label: { en: '3BR — 172-226 m²', ru: '3BR — 172-226 м²', pt: '3BR — 172-226 m²', es: '3BR — 172-226 m²' }, priceMin: 5485647, priceMax: 9822905, yieldPct: 0.042 },
+  { type: '3BR Penthouse — 243-326 m²', areaMin: 243, areaMax: 326, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/azzur/azzur_plan_75.jpg',
+    label: { en: '3BR Penthouse — 243-326 m²', ru: '3BR Penthouse — 243-326 м²', pt: '3BR Penthouse — 243-326 m²', es: '3BR Penthouse — 243-326 m²' }, priceMin: 9353381, priceMax: 15228631, yieldPct: 0.035 },
+  { type: '4BR — 176-216 m²', areaMin: 176, areaMax: 216, bedrooms: 4, bathrooms: 4, floorPlan: '/floor-plans/azzur/azzur_plan_66.jpg',
+    label: { en: '4BR — 176-216 m²', ru: '4BR — 176-216 м²', pt: '4BR — 176-216 m²', es: '4BR — 176-216 m²' }, priceMin: 5494800, priceMax: 7166992, yieldPct: 0.042 },
+  { type: '4BR Premium — 204-240 m²', areaMin: 204, areaMax: 240, bedrooms: 4, bathrooms: 4, floorPlan: '/floor-plans/azzur/azzur_plan_70.jpg',
+    label: { en: '4BR Premium — 204-240 m²', ru: '4BR Premium — 204-240 м²', pt: '4BR Premium — 204-240 m²', es: '4BR Premium — 204-240 m²' }, priceMin: 9830896, priceMax: 11633476, yieldPct: 0.038 },
+  { type: '4BR Penthouse — 263-271 m²', areaMin: 263, areaMax: 271, bedrooms: 4, bathrooms: 4, floorPlan: '/floor-plans/azzur/azzur_plan_84.jpg',
+    label: { en: '4BR Penthouse — 263-271 m²', ru: '4BR Penthouse — 263-271 м²', pt: '4BR Penthouse — 263-271 m²', es: '4BR Penthouse — 263-271 m²' }, priceMin: 11153971, priceMax: 11436204, yieldPct: 0.035 },
+];
+
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
   const priceM2 = Number(property.price_per_m2) || 15000;
   const growthRate = Number(property.yearly_growth_rate) || 8;
   const projName = (property.project_name || property.title || slug || '').toLowerCase();
   const isTerra = projName.includes('terra') || slug.includes('terra');
   const isNatus = projName.includes('natus') || slug.includes('natus');
+  const isAzzur = projName.includes('azzur') || slug.includes('azzur');
 
   if (isNatus) {
     return NATUS_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: u.priceMin,
+      priceMax: u.priceMax,
+      label: u.label[lang],
+      yieldPct: u.yieldPct,
+      growthRate,
+    }));
+  }
+
+  if (isAzzur) {
+    return AZZURE_UNITS.map(u => ({
       type: u.type,
       areaMin: u.areaMin,
       areaMax: u.areaMax,
