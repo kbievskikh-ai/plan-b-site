@@ -450,6 +450,18 @@ const BOSC_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: nu
     label: { en: '2BR — 55 m²', ru: '2BR — 55 м²', pt: '2BR — 55 m²', es: '2BR — 55 м²' }, priceMin: 1103216, priceMax: 1103216, yieldPct: 0.12 },
 ];
 
+
+const VIVACE_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
+  { type: 'Studio — 52 m²', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '',
+    label: { en: 'Studio — 52 m²', ru: 'Студия — 52 м²', pt: 'Studio — 52 m²', es: 'Studio — 52 m²' }, priceMin: 1201510, priceMax: 1201510, yieldPct: 0.16 },
+  { type: '1BR — 54.6 m²', areaMin: 54, areaMax: 55, bedrooms: 1, bathrooms: 1, floorPlan: '',
+    label: { en: '1BR — 54.6 m²', ru: '1BR — 54.6 м²', pt: '1BR — 54.6 m²', es: '1BR — 54.6 m²' }, priceMin: 1823280, priceMax: 1823280, yieldPct: 0.14 },
+  { type: '3BR Duplex — 100-130 m²', areaMin: 100, areaMax: 130, bedrooms: 3, bathrooms: 2, floorPlan: '',
+    label: { en: '3BR — 100-130 m²', ru: '3BR — 100-130 м²', pt: '3BR — 100-130 m²', es: '3BR — 100-130 m²' }, priceMin: 2500000, priceMax: 3200000, yieldPct: 0.12 },
+  { type: '4BR Duplex — 153.6 m²', areaMin: 153, areaMax: 154, bedrooms: 4, bathrooms: 3, floorPlan: '',
+    label: { en: '4BR Duplex — 153.6 m²', ru: '4BR Дуплекс — 153.6 м²', pt: '4BR Duplex — 153.6 m²', es: '4BR Duplex — 153.6 m²' }, priceMin: 3973320, priceMax: 3973320, yieldPct: 0.12 },
+];
+
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
   const priceM2 = Number(property.price_per_m2) || 15000;
   const growthRate = Number(property.yearly_growth_rate) || 8;
@@ -459,6 +471,7 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
   const isAzzur = projName.includes('azzur') || slug.includes('azzur');
   const isMakai = projName.includes('makai') || slug.includes('makai');
   const isBosc = projName.includes('bosc') || slug.includes('bosc');
+  const isVivace = projName.includes('vivace') || slug.includes('vivace');
 
   if (isNatus) {
     return NATUS_UNITS.map(u => ({
@@ -510,6 +523,22 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
 
   if (isBosc) {
     return BOSC_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: u.priceMin,
+      priceMax: u.priceMax,
+      label: u.label[lang],
+      yieldPct: u.yieldPct,
+      growthRate,
+    }));
+  }
+
+  if (isVivace) {
+    return VIVACE_UNITS.map(u => ({
       type: u.type,
       areaMin: u.areaMin,
       areaMax: u.areaMax,
