@@ -397,23 +397,23 @@ const NATUS_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: n
 
 const AZZURE_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
   { type: '2BR Compact — 132 m²', areaMin: 132, areaMax: 132, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/azzur/azzur_plan_50.jpg',
-    label: { en: '2BR Compact — 132 m²', ru: '2BR Compact — 132 м²', pt: '2BR Compact — 132 m²', es: '2BR Compact — 132 m²' }, priceMin: 4008651, priceMax: 4112409, yieldPct: 0.048 },
+    label: { en: '2BR Compact — 132 m²', ru: '2BR Compact — 132 м²', pt: '2BR Compact — 132 m²', es: '2BR Compact — 132 m²' }, priceMin: 4008651, priceMax: 4112409, yieldPct: 0.06 },
   { type: '2BR — 151-181 m²', areaMin: 151, areaMax: 181, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/azzur/azzur_plan_53.jpg',
-    label: { en: '2BR — 151-181 m²', ru: '2BR — 151-181 м²', pt: '2BR — 151-181 m²', es: '2BR — 151-181 m²' }, priceMin: 4631126, priceMax: 5421998, yieldPct: 0.045 },
+    label: { en: '2BR — 151-181 m²', ru: '2BR — 151-181 м²', pt: '2BR — 151-181 m²', es: '2BR — 151-181 m²' }, priceMin: 4631126, priceMax: 5421998, yieldPct: 0.055 },
   { type: '3BR Compact — 132 m²', areaMin: 132, areaMax: 133, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/azzur/azzur_plan_56.jpg',
-    label: { en: '3BR Compact — 132 m²', ru: '3BR Compact — 132 м²', pt: '3BR Compact — 132 m²', es: '3BR Compact — 132 m²' }, priceMin: 4292428, priceMax: 4680807, yieldPct: 0.048 },
+    label: { en: '3BR Compact — 132 m²', ru: '3BR Compact — 132 м²', pt: '3BR Compact — 132 m²', es: '3BR Compact — 132 m²' }, priceMin: 4292428, priceMax: 4680807, yieldPct: 0.06 },
   { type: '3BR — 149-153 m²', areaMin: 149, areaMax: 153, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/azzur/azzur_plan_58.jpg',
-    label: { en: '3BR — 149-153 m²', ru: '3BR — 149-153 м²', pt: '3BR — 149-153 m²', es: '3BR — 149-153 m²' }, priceMin: 4561234, priceMax: 5390354, yieldPct: 0.046 },
+    label: { en: '3BR — 149-153 m²', ru: '3BR — 149-153 м²', pt: '3BR — 149-153 m²', es: '3BR — 149-153 m²' }, priceMin: 4561234, priceMax: 5390354, yieldPct: 0.055 },
   { type: '3BR — 172-226 m²', areaMin: 172, areaMax: 226, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/azzur/azzur_plan_62.jpg',
-    label: { en: '3BR — 172-226 m²', ru: '3BR — 172-226 м²', pt: '3BR — 172-226 m²', es: '3BR — 172-226 m²' }, priceMin: 5485647, priceMax: 9822905, yieldPct: 0.042 },
+    label: { en: '3BR — 172-226 m²', ru: '3BR — 172-226 м²', pt: '3BR — 172-226 m²', es: '3BR — 172-226 m²' }, priceMin: 5485647, priceMax: 9822905, yieldPct: 0.05 },
   { type: '3BR Penthouse — 243-326 m²', areaMin: 243, areaMax: 326, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/azzur/azzur_plan_75.jpg',
-    label: { en: '3BR Penthouse — 243-326 m²', ru: '3BR Penthouse — 243-326 м²', pt: '3BR Penthouse — 243-326 m²', es: '3BR Penthouse — 243-326 m²' }, priceMin: 9353381, priceMax: 15228631, yieldPct: 0.035 },
+    label: { en: '3BR Penthouse — 243-326 m²', ru: '3BR Penthouse — 243-326 м²', pt: '3BR Penthouse — 243-326 m²', es: '3BR Penthouse — 243-326 m²' }, priceMin: 9353381, priceMax: 15228631, yieldPct: 0.04 },
   { type: '4BR — 176-216 m²', areaMin: 176, areaMax: 216, bedrooms: 4, bathrooms: 4, floorPlan: '/floor-plans/azzur/azzur_plan_66.jpg',
-    label: { en: '4BR — 176-216 m²', ru: '4BR — 176-216 м²', pt: '4BR — 176-216 m²', es: '4BR — 176-216 m²' }, priceMin: 5494800, priceMax: 7166992, yieldPct: 0.042 },
+    label: { en: '4BR — 176-216 m²', ru: '4BR — 176-216 м²', pt: '4BR — 176-216 m²', es: '4BR — 176-216 m²' }, priceMin: 5494800, priceMax: 7166992, yieldPct: 0.05 },
   { type: '4BR Premium — 204-240 m²', areaMin: 204, areaMax: 240, bedrooms: 4, bathrooms: 4, floorPlan: '/floor-plans/azzur/azzur_plan_70.jpg',
-    label: { en: '4BR Premium — 204-240 m²', ru: '4BR Premium — 204-240 м²', pt: '4BR Premium — 204-240 m²', es: '4BR Premium — 204-240 m²' }, priceMin: 9830896, priceMax: 11633476, yieldPct: 0.038 },
+    label: { en: '4BR Premium — 204-240 m²', ru: '4BR Premium — 204-240 м²', pt: '4BR Premium — 204-240 m²', es: '4BR Premium — 204-240 m²' }, priceMin: 9830896, priceMax: 11633476, yieldPct: 0.045 },
   { type: '4BR Penthouse — 263-271 m²', areaMin: 263, areaMax: 271, bedrooms: 4, bathrooms: 4, floorPlan: '/floor-plans/azzur/azzur_plan_84.jpg',
-    label: { en: '4BR Penthouse — 263-271 m²', ru: '4BR Penthouse — 263-271 м²', pt: '4BR Penthouse — 263-271 m²', es: '4BR Penthouse — 263-271 m²' }, priceMin: 11153971, priceMax: 11436204, yieldPct: 0.035 },
+    label: { en: '4BR Penthouse — 263-271 m²', ru: '4BR Penthouse — 263-271 м²', pt: '4BR Penthouse — 263-271 m²', es: '4BR Penthouse — 263-271 m²' }, priceMin: 11153971, priceMax: 11436204, yieldPct: 0.04 },
 ];
 
 const MAKAI_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
