@@ -416,6 +416,27 @@ const AZZURE_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: 
     label: { en: '4BR Penthouse — 263-271 m²', ru: '4BR Penthouse — 263-271 м²', pt: '4BR Penthouse — 263-271 m²', es: '4BR Penthouse — 263-271 m²' }, priceMin: 11153971, priceMax: 11436204, yieldPct: 0.035 },
 ];
 
+const MAKAI_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
+  { type: 'Studio Mezanino — 71-94 m²', areaMin: 71, areaMax: 94, bedrooms: 1, bathrooms: 1, floorPlan: '',
+    label: { en: 'Studio Mezanino — 71-94 m²', ru: 'Студия Mezanino — 71-94 м²', pt: 'Studio Mezanino — 71-94 m²', es: 'Studio Mezanino — 71-94 m²' }, priceMin: 1552714, priceMax: 2091044, yieldPct: 0.050 },
+  { type: '1BR+Suite — 85-91 m²', areaMin: 85, areaMax: 91, bedrooms: 1, bathrooms: 2, floorPlan: '',
+    label: { en: '1BR+Suite — 85-91 m²', ru: '1BR+Suite — 85-91 м²', pt: '1BR+Suite — 85-91 m²', es: '1BR+Suite — 85-91 m²' }, priceMin: 1770503, priceMax: 2159392, yieldPct: 0.048 },
+  { type: '3BR Mezanino — 149-161 m²', areaMin: 149, areaMax: 161, bedrooms: 3, bathrooms: 3, floorPlan: '',
+    label: { en: '3BR Mezanino — 149-161 m²', ru: '3BR Mezanino — 149-161 м²', pt: '3BR Mezanino — 149-161 m²', es: '3BR Mezanino — 149-161 m²' }, priceMin: 3119681, priceMax: 3979647, yieldPct: 0.040 },
+  { type: '1BR+Suite Cobertura — 139-140 m²', areaMin: 139, areaMax: 140, bedrooms: 1, bathrooms: 2, floorPlan: '',
+    label: { en: '1BR+Suite Cobertura — 139-140 m²', ru: '1BR+Suite Cobertura — 139-140 м²', pt: '1BR+Suite Cobertura — 139-140 m²', es: '1BR+Suite Cobertura — 139-140 m²' }, priceMin: 3672926, priceMax: 3683727, yieldPct: 0.042 },
+  { type: '2BR+Suite Cobertura — 220 m²', areaMin: 220, areaMax: 220, bedrooms: 2, bathrooms: 2, floorPlan: '',
+    label: { en: '2BR+Suite Cobertura — 220 m²', ru: '2BR+Suite Cobertura — 220 м²', pt: '2BR+Suite Cobertura — 220 m²', es: '2BR+Suite Cobertura — 220 m²' }, priceMin: 3683727, priceMax: 5034979, yieldPct: 0.038 },
+  { type: '4BR Mezanino — 218 m²', areaMin: 218, areaMax: 218, bedrooms: 4, bathrooms: 4, floorPlan: '',
+    label: { en: '4BR Mezanino — 218 m²', ru: '4BR Mezanino — 218 м²', pt: '4BR Mezanino — 218 m²', es: '4BR Mezanino — 218 m²' }, priceMin: 4553495, priceMax: 5804649, yieldPct: 0.036 },
+  { type: '4BR Penthouse — 313 m²', areaMin: 313, areaMax: 313, bedrooms: 4, bathrooms: 4, floorPlan: '',
+    label: { en: '4BR Penthouse — 313 m²', ru: '4BR Penthouse — 313 м²', pt: '4BR Penthouse — 313 m²', es: '4BR Penthouse — 313 m²' }, priceMin: 10505856, priceMax: 10505856, yieldPct: 0.030 },
+  { type: '3BR — 148-149 m²', areaMin: 148, areaMax: 149, bedrooms: 3, bathrooms: 3, floorPlan: '',
+    label: { en: '3BR — 148-149 m²', ru: '3BR — 148-149 м²', pt: '3BR — 148-149 m²', es: '3BR — 148-149 m²' }, priceMin: 3670787, priceMax: 3690928, yieldPct: 0.040 },
+  { type: '3BR Penthouse — 404 m²', areaMin: 404, areaMax: 404, bedrooms: 3, bathrooms: 3, floorPlan: '',
+    label: { en: '3BR Penthouse — 404 m²', ru: '3BR Penthouse — 404 м²', pt: '3BR Penthouse — 404 m²', es: '3BR Penthouse — 404 m²' }, priceMin: 13545424, priceMax: 13545424, yieldPct: 0.028 },
+];
+
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
   const priceM2 = Number(property.price_per_m2) || 15000;
   const growthRate = Number(property.yearly_growth_rate) || 8;
@@ -423,6 +444,7 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
   const isTerra = projName.includes('terra') || slug.includes('terra');
   const isNatus = projName.includes('natus') || slug.includes('natus');
   const isAzzur = projName.includes('azzur') || slug.includes('azzur');
+  const isMakai = projName.includes('makai') || slug.includes('makai');
 
   if (isNatus) {
     return NATUS_UNITS.map(u => ({
@@ -442,6 +464,22 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
 
   if (isAzzur) {
     return AZZURE_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: u.priceMin,
+      priceMax: u.priceMax,
+      label: u.label[lang],
+      yieldPct: u.yieldPct,
+      growthRate,
+    }));
+  }
+
+  if (isMakai) {
+    return MAKAI_UNITS.map(u => ({
       type: u.type,
       areaMin: u.areaMin,
       areaMax: u.areaMax,
