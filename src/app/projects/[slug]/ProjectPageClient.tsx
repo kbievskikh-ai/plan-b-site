@@ -453,13 +453,13 @@ const BOSC_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: nu
 
 const VIVACE_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
   { type: 'Studio — 52 m²', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/vivace/vivace_page_3.jpg',
-    label: { en: 'Studio — 52 m²', ru: 'Студия — 52 м²', pt: 'Studio — 52 m²', es: 'Studio — 52 m²' }, priceMin: 1201510, priceMax: 1201510, yieldPct: 0.16 },
+    label: { en: 'Studio — 52 m²', ru: 'Студия — 52 м²', pt: 'Studio — 52 m²', es: 'Studio — 52 m²' }, priceMin: 1201510, priceMax: 1201510, yieldPct: 0.10 },
   { type: '1BR — 54.6 m²', areaMin: 54, areaMax: 55, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/vivace/vivace_page_3.jpg',
-    label: { en: '1BR — 54.6 m²', ru: '1BR — 54.6 м²', pt: '1BR — 54.6 m²', es: '1BR — 54.6 m²' }, priceMin: 1823280, priceMax: 1823280, yieldPct: 0.14 },
+    label: { en: '1BR — 54.6 m²', ru: '1BR — 54.6 м²', pt: '1BR — 54.6 m²', es: '1BR — 54.6 m²' }, priceMin: 1823280, priceMax: 1823280, yieldPct: 0.09 },
   { type: '3BR Duplex — 100-130 m²', areaMin: 100, areaMax: 130, bedrooms: 3, bathrooms: 2, floorPlan: '/floor-plans/vivace/vivace_page_2.jpg',
-    label: { en: '3BR — 100-130 m²', ru: '3BR — 100-130 м²', pt: '3BR — 100-130 m²', es: '3BR — 100-130 m²' }, priceMin: 2500000, priceMax: 3200000, yieldPct: 0.12 },
+    label: { en: '3BR — 100-130 m²', ru: '3BR — 100-130 м²', pt: '3BR — 100-130 m²', es: '3BR — 100-130 m²' }, priceMin: 2500000, priceMax: 3200000, yieldPct: 0.085 },
   { type: '4BR Duplex — 153.6 m²', areaMin: 153, areaMax: 154, bedrooms: 4, bathrooms: 3, floorPlan: '/floor-plans/vivace/vivace_page_2.jpg',
-    label: { en: '4BR Duplex — 153.6 m²', ru: '4BR Дуплекс — 153.6 м²', pt: '4BR Duplex — 153.6 m²', es: '4BR Duplex — 153.6 m²' }, priceMin: 3973320, priceMax: 3973320, yieldPct: 0.12 },
+    label: { en: '4BR Duplex — 153.6 m²', ru: '4BR Дуплекс — 153.6 м²', pt: '4BR Duplex — 153.6 m²', es: '4BR Duplex — 153.6 m²' }, priceMin: 3973320, priceMax: 3973320, yieldPct: 0.08 },
 ];
 
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
