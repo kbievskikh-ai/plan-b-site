@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "GRONIS — Real Estate Investment in Brazil",
+  title: "Plan B — Real Estate Investment in Brazil",
   description:
     "Discover investment properties in Florianópolis, Balneário Camboriú, and coastal Brazil. Real estate for international investors.",
 };

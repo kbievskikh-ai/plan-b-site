@@ -91,14 +91,14 @@ export default function CountrySelector() {
             <div className="text-center mb-8">
               <div className="inline-block mb-3">
                 <div className="w-11 h-11 gold-gradient rounded-lg flex items-center justify-center mx-auto">
-                  <span className="text-white font-heading font-bold text-lg">G</span>
+                  <span className="text-white font-heading font-bold text-lg">B</span>
                 </div>
               </div>
               <h2 className="text-xl md:text-2xl font-heading font-light text-gray-900 mb-1">
                 Choose Your Investment Destination
               </h2>
               <p className="text-gray-500 text-xs">
-                GRONIS International — Real Estate Across The Americas & Atlantic
+                Plan B Brazil — Real Estate Across The Americas & Atlantic
               </p>
             </div>
 

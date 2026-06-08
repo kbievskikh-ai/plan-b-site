@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import ScrollAnimation from "./ScrollAnimation";
 import { useLanguage } from "@/lib/i18n";
 
-export default function AboutMigronis() {
+export default function AboutPlanB() {
   const { t } = useLanguage();
 
   const stats = [

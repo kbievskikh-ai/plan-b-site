@@ -8,7 +8,7 @@ const SECTIONS = [
   { key: 'section_hero', label: 'Hero Banner', icon: '🎬' },
   { key: 'section_featured_properties', label: 'Featured Properties', icon: '🏠' },
   { key: 'section_calculator', label: 'Investment Calculator', icon: '🧮' },
-  { key: 'section_about', label: 'About GRONIS', icon: '👥' },
+  { key: 'section_about', label: 'About Plan B', icon: '👥' },
   { key: 'section_why_trust', label: 'Why Trust Us', icon: '🤝' },
   { key: 'section_international_experience', label: 'International Client Experience', icon: '🌍' },
   { key: 'section_map', label: 'Interactive Map / Regions', icon: '🗺️' },
@@ -37,7 +37,7 @@ export default function AdminPage() {
       const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: 'admin@migronis.com', password }),
+        body: JSON.stringify({ email: 'admin@planb.com', password }),
       });
       const data = await res.json();
       if (data.token) {
@@ -96,7 +96,7 @@ export default function AdminPage() {
               <span className="text-white font-bold text-2xl" style={{fontFamily: 'serif'}}>G</span>
             </div>
             <h1 className="text-white text-xl font-bold">Section Manager</h1>
-            <p className="text-white/50 text-sm mt-1">GRONIS Admin</p>
+            <p className="text-white/50 text-sm mt-1">Plan B Admin</p>
           </div>
           <input
             type="password"
@@ -131,7 +131,7 @@ export default function AdminPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-white text-2xl font-bold" style={{fontFamily: 'serif'}}>Section Manager</h1>
-            <p className="text-white/40 text-sm">Toggle sections on/off on gronisbrazil.com</p>
+            <p className="text-white/40 text-sm">Toggle sections on/off on planbbrazil.com</p>
           </div>
           <a href="/" className="text-[#D4AF37] text-sm hover:underline">← Back to site</a>
         </div>
@@ -175,7 +175,7 @@ export default function AdminPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-white/30 text-xs">Changes apply instantly. Refresh gronisbrazil.com to see updates.</p>
+          <p className="text-white/30 text-xs">Changes apply instantly. Refresh planbbrazil.com to see updates.</p>
           <button
             onClick={() => { localStorage.removeItem('admin_token'); setAuthed(false); setToken(''); }}
             className="mt-4 text-white/30 text-xs hover:text-white/60 transition"

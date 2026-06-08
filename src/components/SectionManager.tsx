@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedProperties from '@/components/FeaturedProperties';
 import CalculatorTeaser from '@/components/CalculatorTeaser';
-import AboutMigronis from '@/components/AboutMigronis';
+import AboutPlanB from '@/components/AboutPlanB';
 import WhyTrustUs from '@/components/WhyTrustUs';
 // import InteractiveMap from '@/components/InteractiveMap';
 import GlobalMap from '@/components/GlobalMap';
@@ -38,7 +38,7 @@ function FloatingChat() {
               </svg>
             </div>
           </a>
-          <a href="https://t.me/Gronis_Leads_bot" target="_blank" rel="noopener noreferrer"
+          <a href="https://t.me/KBIEVSKIKH" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-3 bg-white shadow-lg rounded-full pl-4 pr-2 py-2 hover:shadow-xl transition-all duration-300 group">
             <span className="text-sm text-navy-700 group-hover:text-navy-900">Telegram</span>
             <div className="w-12 h-12 bg-[#0088cc] rounded-full flex items-center justify-center">
@@ -74,7 +74,7 @@ export default function SectionManager() {
         <FeaturedProperties />
         <PropertyFinder />
         <CalculatorTeaser />
-        <AboutMigronis />
+        <AboutPlanB />
         <WhyTrustUs showClientExperience={true} />
         <GlobalMap />
         <InvestmentAnalytics />
@@ -100,7 +100,7 @@ export default function SectionManager() {
       {show('section_featured_properties') && <FeaturedProperties />}
       <PropertyFinder />
       {show('section_calculator') && <CalculatorTeaser />}
-      {show('section_about') && <AboutMigronis />}
+      {show('section_about') && <AboutPlanB />}
       {show('section_why_trust') && <WhyTrustUs showClientExperience={show('section_international_experience')} />}
       {show('section_map') && <GlobalMap />}
       {show('section_analytics') && <InvestmentAnalytics />}

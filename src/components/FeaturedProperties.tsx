@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { properties as fallbackProperties, Property } from '@/data/properties';
 import { fetchProperties } from '@/lib/api';
-import PropertyModal from './PropertyModal';
 import PropertyFilters, { FilterState } from './PropertyFilters';
 import { useLanguage } from '@/lib/i18n';
 
@@ -14,9 +14,9 @@ const PROPERTIES_PER_TAB = 8;
 
 export default function FeaturedProperties() {
   const { t, language } = useLanguage();
+  const router = useRouter();
   const [allProperties, setAllProperties] = useState<Property[]>([])
   const [loaded, setLoaded] = useState(false);
-  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
   const [filters, setFilters] = useState<FilterState>({
     priceRange: '',
     type: '',
@@ -41,9 +41,11 @@ export default function FeaturedProperties() {
   // Fetch properties from API on mount
   useEffect(() => {
     fetchProperties().then(props => {
+      console.log('[FeaturedProperties] API returned:', props.length, 'properties');
       setAllProperties(props);
       setLoaded(true);
-    }).catch(() => {
+    }).catch((err) => {
+      console.log('[FeaturedProperties] Fetch error, showing fallback:', err.message);
       setAllProperties(fallbackProperties);
       setLoaded(true);
     });
@@ -156,7 +158,11 @@ export default function FeaturedProperties() {
               key={property.id}
               variants={item}
               className="group cursor-pointer flex flex-col"
-              onClick={() => setSelectedProperty(property)}
+              onClick={() => {
+                if (property.slug) {
+                  router.push(`/projects/${property.slug}`);
+                }
+              }}
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
@@ -285,14 +291,6 @@ export default function FeaturedProperties() {
         )}
       </div>
 
-      {/* Property Modal */}
-      {selectedProperty && (
-        <PropertyModal
-          property={selectedProperty}
-          isOpen={true}
-          onClose={() => setSelectedProperty(null)}
-        />
-      )}
     </section>
   );
 }

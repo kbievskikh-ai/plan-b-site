@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Толя, Куда Дальше?! — Migronis Calculator</title>
+<title>Толя, Куда Дальше?! — Plan B Calculator</title>
 <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -86,9 +86,9 @@ body{font-family:'Inter',sans-serif;background:#faf9f7;color:#2c2c2c;min-height:
 <body>
 
 <div class="header">
-  <img src="https://cdn.migronis.com/img/headerLogo.svg" alt="Migronis" style="height:32px;filter:brightness(0) invert(1);margin-bottom:4px" onerror="this.outerHTML='<div style=font-family:Playfair+Display,serif;font-size:13px;letter-spacing:4px;color:#C9A94E>✦ MIGRONIS ✦</div>'">
+  <img src="https://cdn.planb.com/img/headerLogo.svg" alt="Plan B" style="height:32px;filter:brightness(0) invert(1);margin-bottom:4px" onerror="this.outerHTML='<div style=font-family:Playfair+Display,serif;font-size:13px;letter-spacing:4px;color:#C9A94E>✦ MIPlan B ✦</div>'">
   <h1 id="headerTitle">Толя, Куда Дальше?!</h1>
-  <p id="headerSub">Интерактивный калькулятор · Подарок к 15-летию Migronis</p>
+  <p id="headerSub">Интерактивный калькулятор · Подарок к 15-летию Plan B</p>
   <div class="lang-switch">
     <button class="lang-btn active" onclick="setLang('ru')">RU</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -121,21 +121,21 @@ let lang = 'ru';
 const t = {
   ru: {
     headerTitle: 'Толя, Куда Дальше?!',
-    headerSub: 'Интерактивный калькулятор · Подарок к 15-летию Migronis',
+    headerSub: 'Интерактивный калькулятор · Подарок к 15-летию Plan B',
     stepOf: 'из', next: 'Далее →', back: '← Назад', showResult: 'Показать результат 🎯',
     question: 'Вопрос', top3: '🎯 Твои топ-3 страны для переезда', top3sub: 'На основе твоих ответов',
     ctaTitle: '🏠 Хочешь узнать больше?', ctaSub: 'Наши эксперты помогут с переездом и инвестициями в недвижимость.', ctaBtn: 'Получить консультацию →',
-    disclaimer: 'Калькулятор предоставляет общие рекомендации. © Migronis · 15 лет помогаем строить жизнь в новых странах.',
+    disclaimer: 'Калькулятор предоставляет общие рекомендации. © Plan B · 15 лет помогаем строить жизнь в новых странах.',
     match: '', residency: 'ВНЖ', passport: 'Паспорт', tax: 'Налоги', reGrowth: 'Рост недвиж.', birth: 'Роды',
     safety: 'Безопасность', costLiving: 'Стоимость жизни', rental: 'Аренда', lifestyle: 'Лайфстайл'
   },
   en: {
     headerTitle: 'Tolya, What\'s Next?!',
-    headerSub: 'Interactive Calculator · Gift for Migronis 15th Anniversary',
+    headerSub: 'Interactive Calculator · Gift for Plan B 15th Anniversary',
     stepOf: 'of', next: 'Next →', back: '← Back', showResult: 'Show Results 🎯',
     question: 'Question', top3: '🎯 Your Top 3 Countries', top3sub: 'Based on your answers',
     ctaTitle: '🏠 Want to Learn More?', ctaSub: 'Our experts help with relocation and real estate investment.', ctaBtn: 'Get Free Consultation →',
-    disclaimer: 'Calculator provides general recommendations. © Migronis · 15 years helping people build lives abroad.',
+    disclaimer: 'Calculator provides general recommendations. © Plan B · 15 years helping people build lives abroad.',
     match: '', residency: 'Residency', passport: 'Passport', tax: 'Taxes', reGrowth: 'RE Growth', birth: 'Birth Program',
     safety: 'Safety', costLiving: 'Cost of Living', rental: 'Rental', lifestyle: 'Lifestyle'
   }
@@ -470,7 +470,7 @@ function showResults() {
   });
 
   html+=`</div>
-    <div class="cta-box"><h3>${L.ctaTitle}</h3><p>${L.ctaSub}</p><button class="btn-cta" onclick="window.open('https://t.me/GRONIS_Brazil','_blank')">${L.ctaBtn}</button></div>
+    <div class="cta-box"><h3>${L.ctaTitle}</h3><p>${L.ctaSub}</p><button class="btn-cta" onclick="window.open('https://t.me/Plan B_Brazil','_blank')">${L.ctaBtn}</button></div>
     <div class="disclaimer">${L.disclaimer}</div>`;
   res.innerHTML=html;
 }

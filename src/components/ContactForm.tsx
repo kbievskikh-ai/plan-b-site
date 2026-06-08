@@ -15,7 +15,7 @@ interface ContactSettings {
 
 const DEFAULT_CONTACT: ContactSettings = {
   phone: '+55 48 988117424',
-  email: 'konstantin.bievskikh@migronis.com',
+  email: 'planbievskikh@gmail.com',
   whatsapp: '+55 48 98875-2300',
   address: 'Florianópolis, Santa Catarina',
 };
@@ -465,7 +465,7 @@ export default function ContactForm() {
               {t('contact.downloadGuideDesc')}
             </p>
             <a 
-              href={language === 'ru' ? '/GRONIS_Investment_Guide_RU.pdf' : language === 'pt' ? '/GRONIS_Investment_Guide_PT.pdf' : '/GRONIS_Investment_Guide_EN.pdf'}
+              href={language === 'ru' ? '/Plan B_Investment_Guide_RU.pdf' : language === 'pt' ? '/Plan B_Investment_Guide_PT.pdf' : '/Plan B_Investment_Guide_EN.pdf'}
               download
               className="btn-outline w-full"
             >

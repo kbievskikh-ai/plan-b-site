@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
 
     const now = new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' });
 
-    let message = `🔥 GRONIS PROPERTY FINDER — NEW LEAD\n\n`;
+    let message = `🔥 Plan B PROPERTY FINDER — NEW LEAD\n\n`;
     message += `📊 Funnel Data:\n`;
     message += `• Budget: ${budgetLabels[budget] || budget || 'N/A'}\n`;
     message += `• Goal: ${purposeLabels[purpose] || purpose || 'N/A'}\n`;
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    message += `\n📍 Source: gronisbrazil.com/property-finder`;
+    message += `\n📍 Source: planbbrazil.com/property-finder`;
     message += `\n🕐 ${now} BRT`;
 
     // Send to Telegram

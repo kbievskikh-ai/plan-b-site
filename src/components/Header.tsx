@@ -58,10 +58,10 @@ export default function Header() {
             whileHover={{ scale: 1.02 }}
           >
             <div className="w-10 h-10 gold-gradient rounded-lg flex items-center justify-center">
-              <span className="text-white font-heading font-bold text-lg">G</span>
+              <span className="text-white font-heading font-bold text-lg">B</span>
             </div>
             <div>
-              <span className="text-white font-heading text-xl tracking-wide">GRONIS</span>
+              <span className="text-white font-heading text-xl tracking-wide">Plan B</span>
               <span className="block text-gold-400 text-[10px] tracking-[0.3em] uppercase">
                 International Real Estate
               </span>

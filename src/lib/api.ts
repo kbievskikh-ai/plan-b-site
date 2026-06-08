@@ -1,6 +1,6 @@
 import { Property, properties as fallbackProperties } from '@/data/properties';
 
-const API_URL = 'https://migronis-admin-api-production.up.railway.app';
+const API_URL = 'https://api.gronisbrazil.com';
 
 interface ApiFeature {
   id: number;
@@ -13,9 +13,11 @@ interface ApiFeature {
 interface ApiProperty {
   id: number;
   title: string;
+  slug?: string;
   description: string;
   price: string;
   price_usd: string;
+  list_price?: string;
   location: string;
   region: string;
   images: Array<{ url: string; publicId?: string }>;
@@ -65,8 +67,9 @@ function parsePriceBrl(price: string | number | null | undefined): number {
 
 // Parse USD display string to number (e.g. "From $250,000" → 250000)
 function parseUsdNum(priceUsd: string | null | undefined): number {
-  if (!priceUsd) return 0;
-  const match = priceUsd.replace(/,/g, '').match(/(\d+)/);
+  if (!priceUsd || priceUsd === 'None' || priceUsd === 'N/A' || priceUsd.trim() === '') return 0;
+  const cleaned = priceUsd.replace(/,/g, '').replace(/\./g, '');
+  const match = cleaned.match(/(\d+)/);
   return match ? Number(match[1]) : 0;
 }
 
@@ -76,28 +79,55 @@ function formatBrl(num: number): string {
 }
 
 function mapApiProperty(p: ApiProperty, index: number): Property {
-  const priceBrl = parsePriceBrl(p.price);
-  const priceUsdNum = parseUsdNum(p.price_usd);
+  // Use price first, fallback to list_price from DB
+  const priceBrl = parsePriceBrl(p.price) || parsePriceBrl(p.list_price);
+  let priceUsdNum = parseUsdNum(p.price_usd);
+  if (!priceUsdNum && priceBrl > 0) {
+    priceUsdNum = Math.round(priceBrl / 5.5);
+  }
+
+  // Format price display strings
+  let priceDisplay = '';
+  let priceUsdDisplay = '';
+  if (priceBrl > 0) {
+    priceDisplay = formatBrl(priceBrl);
+  }
+  if (p.price_usd) {
+    priceUsdDisplay = p.price_usd.startsWith('$') ? p.price_usd : '$' + p.price_usd;
+  } else if (priceUsdNum > 0) {
+    priceUsdDisplay = '$' + priceUsdNum.toLocaleString();
+  }
+
+  // Smart type mapping: override to investment when tag signals it
+  const tag = (p.tag || '').toLowerCase();
+  const isInvestment = tag.includes('pre-sale') || tag.includes('pre-launch') ||
+                       tag.includes('investment') || tag.includes('sold out') ||
+                       tag.includes('roi') || (p.expected_roi && p.expected_roi.length > 0);
+  let mappedType = isInvestment ? 'investment' : mapType(p.type);
+
+  // Images from API — objects without images will be filtered out upstream
+  const images = p.images?.length ? p.images.map(img => img.url) : [];
 
   return {
     id: p.id,
     title: p.title,
+    slug: p.slug || undefined,
     location: p.location || p.region || '',
     region: p.region || p.location || '',
-    price: formatBrl(priceBrl),
-    priceUsd: p.price_usd ? (p.price_usd.startsWith('$') ? p.price_usd : `$${p.price_usd}`) : '',
+    price: priceDisplay,
+    priceUsd: priceUsdDisplay,
     priceBrl,
     priceUsdNum,
     beds: p.beds || 0,
     baths: p.baths || 0,
     area: p.area ? `${String(p.area).replace(/\s*m[²2]?\s*$/i, '')} m²` : '',
     areaNum: parseInt(p.area) || 0,
-    type: mapType(p.type),
+    type: mappedType,
     tag: p.tag || p.type || 'New',
     gradient: gradients[index % gradients.length],
     description: p.description || '',
     expectedROI: p.expected_roi || '',
-    images: p.images?.length ? p.images.map(img => img.url) : [],
+    images,
     features: (p.features || []).map(f => f.name),
     featuresGrouped: {
       imovel: (p.features || []).filter(f => f.category === 'imovel').map(f => ({ name: f.name, name_ru: f.name_ru, name_en: f.name_en })),
@@ -108,28 +138,47 @@ function mapApiProperty(p: ApiProperty, index: number): Property {
 
 export async function fetchProperties(): Promise<Property[]> {
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
+    console.log('[API] Fetching from:', `${API_URL}/api/properties?limit=100`);
     
-    const res = await fetch(`${API_URL}/api/properties?limit=50`, {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => {
+      controller.abort();
+      console.log('[API] Request timed out after 8s');
+    }, 8000);
+    
+    const res = await fetch(`${API_URL}/api/properties?limit=100`, {
       signal: controller.signal,
       cache: 'no-store',
     });
     clearTimeout(timeout);
     
+    console.log('[API] Response status:', res.status);
+    
     if (!res.ok) throw new Error(`API ${res.status}`);
     
     const data = await res.json();
+    console.log('[API] Parsed JSON, keys:', Object.keys(data));
+    
     const apiProperties: ApiProperty[] = data.data || [];
     
-    // Only use API properties that are active
-    const active = apiProperties.filter(p => p.status === 'active');
+    // Blocklist of incomplete properties to hide from site
+    const blocklist = ['spot-ii', 'spot-iii', 'marena', 'la mare campeche', 'la esmeralda', 'blue diamond home club'];
     
-    if (active.length === 0) return fallbackProperties;
+    // Only use API properties that are active AND have at least one image AND not blocklisted
+    const withImages = apiProperties.filter((p: ApiProperty) => {
+      if (p.status !== 'active') return false;
+      if (p.images && p.images.length === 0) return false;
+      const slug = (p.slug || '').toLowerCase();
+      const title = p.title.toLowerCase();
+      if (blocklist.some(b => slug.includes(b) || title.includes(b))) return false;
+      return true;
+    });
     
-    return active.map((p, i) => mapApiProperty(p, i));
-  } catch (err) {
-    console.warn('Failed to fetch properties from API, using fallback:', err);
+    console.log(`[API] Got ${apiProperties.length} total, ${withImages.length} with images`);
+    
+    return withImages.map((p: ApiProperty, i: number) => mapApiProperty(p, i));
+  } catch (err: any) {
+    console.warn('[API] Failed to fetch properties, using fallback:', err?.message || err, err?.name);
     return fallbackProperties;
   }
 }

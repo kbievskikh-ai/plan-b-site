@@ -8,7 +8,7 @@ type Lang = 'en' | 'ru' | 'pt' | 'es';
 
 const T: Record<Lang, Record<string, string>> = {
   en: {
-    backToSite: '← Back to GRONIS',
+    backToSite: '← Back to Plan B',
     overview: 'Overview',
     gallery: 'Gallery',
     units: 'Apartments',
@@ -35,6 +35,7 @@ const T: Record<Lang, Record<string, string>> = {
     linkCopied: 'Link copied!',
     roiTitle: 'Investment Analysis',
     purchasePrice: 'Purchase Price',
+    priceOnRequest: 'Price on request',
     monthlyRent: 'Est. Monthly Rent',
     annualYield: 'Annual Rental Yield',
     fiveYearGrowth: '5-Year Appreciation',
@@ -55,7 +56,7 @@ const T: Record<Lang, Record<string, string>> = {
     currencyDisclaimer: 'USD estimates at 5.3 BRL/USD. Actual rate may vary.',
   },
   ru: {
-    backToSite: '← Вернуться на GRONIS',
+    backToSite: '← Вернуться на Plan B',
     overview: 'Обзор',
     gallery: 'Галерея',
     units: 'Квартиры',
@@ -82,6 +83,7 @@ const T: Record<Lang, Record<string, string>> = {
     linkCopied: 'Ссылка скопирована!',
     roiTitle: 'Инвестиционный анализ',
     purchasePrice: 'Цена покупки',
+    priceOnRequest: 'Цена по запросу',
     monthlyRent: 'Ожидаемая аренда/мес',
     annualYield: 'Годовая арендная доходность',
     fiveYearGrowth: 'Рост за 5 лет',
@@ -102,7 +104,7 @@ const T: Record<Lang, Record<string, string>> = {
     currencyDisclaimer: 'Оценки в USD по курсу 5.3 BRL/USD. Фактический курс может отличаться.',
   },
   pt: {
-    backToSite: '← Voltar para GRONIS',
+    backToSite: '← Voltar para Plan B',
     overview: 'Visão Geral',
     gallery: 'Galeria',
     units: 'Apartamentos',
@@ -129,6 +131,7 @@ const T: Record<Lang, Record<string, string>> = {
     linkCopied: 'Link copiado!',
     roiTitle: 'Análise de Investimento',
     purchasePrice: 'Preço de Compra',
+    priceOnRequest: 'Preço sob consulta',
     monthlyRent: 'Aluguel Mensal Estimado',
     annualYield: 'Yield Anual de Aluguel',
     fiveYearGrowth: 'Valorização em 5 Anos',
@@ -149,7 +152,7 @@ const T: Record<Lang, Record<string, string>> = {
     currencyDisclaimer: 'Estimativas em USD a 5.3 BRL/USD. Taxa real pode variar.',
   },
   es: {
-    backToSite: '← Volver a GRONIS',
+    backToSite: '← Volver a Plan B',
     overview: 'Resumen',
     gallery: 'Galería',
     units: 'Apartamentos',
@@ -176,6 +179,7 @@ const T: Record<Lang, Record<string, string>> = {
     linkCopied: '¡Enlace copiado!',
     roiTitle: 'Análisis de Inversión',
     purchasePrice: 'Precio de Compra',
+    priceOnRequest: 'Precio bajo consulta',
     monthlyRent: 'Alquiler Mensal Estimado',
     annualYield: 'Rendimiento Anual',
     fiveYearGrowth: 'Valorización a 5 Años',
@@ -451,6 +455,57 @@ const BOSC_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: nu
 ];
 
 
+const SELETO_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
+  { type: 'Loft 2 Demi-Suíte', areaMin: 58, areaMax: 70, bedrooms: 1, bathrooms: 2, floorPlan: '',
+    label: { en: 'Loft 2 Demi-Suite', ru: 'Лофт 2 Demi-Suite', pt: 'Loft 2 Demi-Suíte', es: 'Loft 2 Demi-Suite' }, priceMin: 1205380, priceMax: 1450000, yieldPct: 0.065 },
+  { type: 'Garden Apt — 183 m²', areaMin: 183, areaMax: 183, bedrooms: 2, bathrooms: 2, floorPlan: '',
+    label: { en: 'Garden Apartment — 183 m²', ru: 'Garden квартира — 183 м²', pt: 'Apartamento Garden — 183 m²', es: 'Apartamento Garden — 183 m²' }, priceMin: 2035680, priceMax: 2035680, yieldPct: 0.055 },
+  { type: '2BR — 100-130 m²', areaMin: 100, areaMax: 130, bedrooms: 2, bathrooms: 2, floorPlan: '',
+    label: { en: '2BR — 100-130 m²', ru: '2BR — 100-130 м²', pt: '2 Quartos — 100-130 m²', es: '2 Dormitorios — 100-130 m²' }, priceMin: 1800000, priceMax: 2400000, yieldPct: 0.055 },
+  { type: '3BR — 140-180 m²', areaMin: 140, areaMax: 180, bedrooms: 3, bathrooms: 3, floorPlan: '',
+    label: { en: '3BR — 140-180 m²', ru: '3BR — 140-180 м²', pt: '3 Quartos — 140-180 m²', es: '3 Dormitorios — 140-180 m²' }, priceMin: 2800000, priceMax: 3600000, yieldPct: 0.05 },
+  { type: '3BR Penthouse — 240-260 m²', areaMin: 240, areaMax: 260, bedrooms: 3, bathrooms: 3, floorPlan: '',
+    label: { en: '3BR Penthouse — 240-260 m²', ru: '3BR Пентхаус — 240-260 м²', pt: 'Cobertura 3 Quartos — 240-260 m²', es: 'Penthouse 3 Dormitorios — 240-260 m²' }, priceMin: 5500000, priceMax: 6622260, yieldPct: 0.045 },
+  { type: '4BR Penthouse — 280-320 m²', areaMin: 280, areaMax: 320, bedrooms: 4, bathrooms: 4, floorPlan: '',
+    label: { en: '4BR Penthouse — 280-320 m²', ru: '4BR Пентхаус — 280-320 м²', pt: 'Cobertura 4 Quartos — 280-320 m²', es: 'Penthouse 4 Dormitorios — 280-320 m²' }, priceMin: 7000000, priceMax: 8500000, yieldPct: 0.04 },
+];
+
+// SPOT II — Jurerê, Florianópolis (87% sold, delivery Jun 2029)
+// 46 total units, 5 available, micro-units for short-term rental
+// Net yield ~10%, CUB-indexed pricing
+const SPOT_II_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
+  { type: 'Type D — 26-29 m²', areaMin: 26, areaMax: 29, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Type D — 26-29 m²', ru: 'Type D — 26-29 м²', pt: 'Tipo D — 26-29 m²', es: 'Tipo D — 26-29 m²' }, priceMin: 668000, priceMax: 740000, yieldPct: 0.10 },
+  { type: 'Type G — 22-23 m²', areaMin: 22, areaMax: 23, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Type G — 22-23 m²', ru: 'Type G — 22-23 м²', pt: 'Tipo G — 22-23 m²', es: 'Tipo G — 22-23 m²' }, priceMin: 500000, priceMax: 550000, yieldPct: 0.10 },
+  { type: 'Type H — 15-20 m²', areaMin: 15, areaMax: 20, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Type H — 15-20 m²', ru: 'Type H — 15-20 м²', pt: 'Tipo H — 15-20 m²', es: 'Tipo H — 15-20 m²' }, priceMin: 422000, priceMax: 506000, yieldPct: 0.10 },
+  { type: 'Type I — 15-16 m²', areaMin: 15, areaMax: 16, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Type I — 15-16 m²', ru: 'Type I — 15-16 м²', pt: 'Tipo I — 15-16 m²', es: 'Tipo I — 15-16 m²' }, priceMin: 402000, priceMax: 480000, yieldPct: 0.10 },
+  { type: 'Type K — 15-17 m²', areaMin: 15, areaMax: 17, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Type K — 15-17 m²', ru: 'Type K — 15-17 м²', pt: 'Tipo K — 15-17 m²', es: 'Tipo K — 15-17 m²' }, priceMin: 399000, priceMax: 530000, yieldPct: 0.10 },
+];
+
+// SPOT III — Jurerê, Florianópolis (Pre-launch, delivery Mar 2030)
+// 72 units, Rua Accácio Melo 64, micro-units, estimated +94% appreciation
+// Net yield ~10%, CUB-indexed pricing
+const SPOT_III_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
+  { type: 'Ground (L1-L3) — 21-22 m²', areaMin: 21, areaMax: 22, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Ground (L1-L3) — 21-22 m²', ru: 'Ground (L1-L3) — 21-22 м²', pt: 'Térreo (L1-L3) — 21-22 m²', es: 'Planta Baja (L1-L3) — 21-22 m²' }, priceMin: 279000, priceMax: 289000, yieldPct: 0.10 },
+  { type: 'Floor 1 — 23-34 m²', areaMin: 23, areaMax: 34, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Floor 1 — 23-34 m²', ru: 'Этаж 1 — 23-34 м²', pt: 'Andar 1 — 23-34 m²', es: 'Piso 1 — 23-34 m²' }, priceMin: 437000, priceMax: 569000, yieldPct: 0.10 },
+  { type: 'Floor 2 — 15-29 m²', areaMin: 15, areaMax: 29, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Floor 2 — 15-29 m²', ru: 'Этаж 2 — 15-29 м²', pt: 'Andar 2 — 15-29 m²', es: 'Piso 2 — 15-29 m²' }, priceMin: 374000, priceMax: 506000, yieldPct: 0.10 },
+  { type: 'Floor 3 — 15-45 m²', areaMin: 15, areaMax: 45, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Floor 3 — 15-45 m²', ru: 'Этаж 3 — 15-45 м²', pt: 'Andar 3 — 15-45 m²', es: 'Piso 3 — 15-45 m²' }, priceMin: 385000, priceMax: 560000, yieldPct: 0.10 },
+  { type: 'Floor 4 — 15-24 m²', areaMin: 15, areaMax: 24, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Floor 4 — 15-24 m²', ru: 'Этаж 4 — 15-24 м²', pt: 'Andar 4 — 15-24 m²', es: 'Piso 4 — 15-24 m²' }, priceMin: 395000, priceMax: 560000, yieldPct: 0.10 },
+  { type: 'Floor 5 — 15-24 m²', areaMin: 15, areaMax: 24, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Floor 5 — 15-24 m²', ru: 'Этаж 5 — 15-24 м²', pt: 'Andar 5 — 15-24 m²', es: 'Piso 5 — 15-24 m²' }, priceMin: 406000, priceMax: 581000, yieldPct: 0.10 },
+  { type: 'Penthouse (Floor 6) — 19-41 m²', areaMin: 19, areaMax: 41, bedrooms: 0, bathrooms: 1, floorPlan: '',
+    label: { en: 'Penthouse — 19-41 m²', ru: 'Пентхаус — 19-41 м²', pt: 'Cobertura — 19-41 m²', es: 'Penthouse — 19-41 m²' }, priceMin: 530000, priceMax: 635000, yieldPct: 0.10 },
+];
+
 const VIVACE_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
   { type: 'Studio — 52 m²', areaMin: 52, areaMax: 52, bedrooms: 1, bathrooms: 1, floorPlan: '/floor-plans/vivace/vivace_page_3.jpg',
     label: { en: 'Studio — 52 m²', ru: 'Студия — 52 м²', pt: 'Studio — 52 m²', es: 'Studio — 52 m²' }, priceMin: 1201510, priceMax: 1201510, yieldPct: 0.08 },
@@ -460,6 +515,23 @@ const VIVACE_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: 
     label: { en: '3BR — 100-130 m²', ru: '3BR — 100-130 м²', pt: '3BR — 100-130 m²', es: '3BR — 100-130 m²' }, priceMin: 2500000, priceMax: 3200000, yieldPct: 0.065 },
   { type: '4BR Duplex — 153.6 m²', areaMin: 153, areaMax: 154, bedrooms: 4, bathrooms: 3, floorPlan: '/floor-plans/vivace/vivace_page_2.jpg',
     label: { en: '4BR Duplex — 153.6 m²', ru: '4BR Дуплекс — 153.6 м²', pt: '4BR Duplex — 153.6 m²', es: '4BR Duplex — 153.6 m²' }, priceMin: 3973320, priceMax: 3973320, yieldPct: 0.06 },
+];
+
+// Blue Diamond Home Club — Bombinhas/SC (from pricelist Feb 2026)
+// Delivery: T1 Nov 2026, T2 Nov 2027, T3+T4 Nov 2028
+const BLUE_DIAMOND_UNITS: { type: string; areaMin: number; areaMax: number; bedrooms: number; bathrooms: number; floorPlan: string; label: Record<Lang, string>; priceMin: number; priceMax: number; yieldPct: number }[] = [
+  { type: '1SU + 1D — 88 m²', areaMin: 88, areaMax: 88, bedrooms: 2, bathrooms: 1, floorPlan: '/floor-plans/blue-diamond/bd_floorplan_page_2.png',
+    label: { en: '1 Suite + 1 Bedroom — 88 m²', ru: '1 Сьюта + 1 Спальня — 88 м²', pt: '1 Suíte + 1 Dormitório — 88 m²', es: '1 Suite + 1 Dormitorio — 88 m²' }, priceMin: 975824, priceMax: 1066764, yieldPct: 0.07 },
+  { type: '2SU — 80-85 m²', areaMin: 80, areaMax: 85, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/blue-diamond/bd_floorplan_page_5.png',
+    label: { en: '2 Suites — 80-85 m²', ru: '2 Сьюты — 80-85 м²', pt: '2 Suítes — 80-85 m²', es: '2 Suites — 80-85 m²' }, priceMin: 975824, priceMax: 1080170, yieldPct: 0.065 },
+  { type: '2SU — 91-92 m²', areaMin: 91, areaMax: 92, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/blue-diamond/bd_floorplan_page_3.png',
+    label: { en: '2 Suites — 91-92 m²', ru: '2 Сьюты — 91-92 м²', pt: '2 Suítes — 91-92 m²', es: '2 Suites — 91-92 m²' }, priceMin: 1080170, priceMax: 1105049, yieldPct: 0.06 },
+  { type: '2SU — 96-97 m²', areaMin: 96, areaMax: 97, bedrooms: 2, bathrooms: 2, floorPlan: '/floor-plans/blue-diamond/bd_floorplan_page_4.png',
+    label: { en: '2 Suites — 96-97 m²', ru: '2 Сьюты — 96-97 м²', pt: '2 Suítes — 96-97 m²', es: '2 Suites — 96-97 m²' }, priceMin: 1165675, priceMax: 1253101, yieldPct: 0.06 },
+  { type: 'Garden — 130 m²', areaMin: 130, areaMax: 131, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/blue-diamond/bd_floorplan_page_6.png',
+    label: { en: 'Garden — 130 m² (3 Suites)', ru: 'Garden — 130 м² (3 Сьюты)', pt: 'Garden — 130 m² (3 Suítes)', es: 'Garden — 130 m² (3 Suites)' }, priceMin: 1687376, priceMax: 1700100, yieldPct: 0.055 },
+  { type: 'Penthouse Duplex — 171-189 m²', areaMin: 171, areaMax: 189, bedrooms: 3, bathrooms: 3, floorPlan: '/floor-plans/blue-diamond/bd_floorplan_page_8.png',
+    label: { en: 'Penthouse Duplex — 171-189 m² (3 Suites)', ru: 'Пентхаус Дуплекс — 171-189 м² (3 Сьюты)', pt: 'Cobertura Duplex — 171-189 m² (3 Suítes)', es: 'Penthouse Duplex — 171-189 m² (3 Suites)' }, priceMin: 2224605, priceMax: 2433759, yieldPct: 0.045 },
 ];
 
 function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] {
@@ -472,6 +544,26 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
   const isMakai = projName.includes('makai') || slug.includes('makai');
   const isBosc = projName.includes('bosc') || slug.includes('bosc');
   const isVivace = projName.includes('vivace') || slug.includes('vivace');
+  const isSeleto = projName.includes('seleto') || slug.includes('seleto');
+  const isBlueDiamond = projName.includes('blue diamond') || projName.includes('blue-diamond') || slug.includes('blue-diamond') || slug.includes('blue_diamond');
+  const isSpotII = projName.includes('spot ii') || projName.includes('spot-ii') || projName.includes('spot_ii') || slug.includes('spot-ii') || slug.includes('spot_ii');
+  const isSpotIII = projName.includes('spot iii') || projName.includes('spot-iii') || projName.includes('spot_iii') || slug.includes('spot-iii') || slug.includes('spot_iii');
+
+  if (isSeleto) {
+    return SELETO_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: u.priceMin,
+      priceMax: u.priceMax,
+      label: u.label[lang],
+      yieldPct: u.yieldPct,
+      growthRate,
+    }));
+  }
 
   if (isNatus) {
     return NATUS_UNITS.map(u => ({
@@ -553,6 +645,54 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
     }));
   }
 
+  if (isBlueDiamond) {
+    return BLUE_DIAMOND_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: u.priceMin,
+      priceMax: u.priceMax,
+      label: u.label[lang],
+      yieldPct: u.yieldPct,
+      growthRate,
+    }));
+  }
+
+  if (isSpotII) {
+    return SPOT_II_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: u.priceMin,
+      priceMax: u.priceMax,
+      label: u.label[lang],
+      yieldPct: u.yieldPct,
+      growthRate,
+    }));
+  }
+
+  if (isSpotIII) {
+    return SPOT_III_UNITS.map(u => ({
+      type: u.type,
+      areaMin: u.areaMin,
+      areaMax: u.areaMax,
+      bedrooms: u.bedrooms,
+      bathrooms: u.bathrooms,
+      floorPlan: u.floorPlan,
+      priceMin: u.priceMin,
+      priceMax: u.priceMax,
+      label: u.label[lang],
+      yieldPct: u.yieldPct,
+      growthRate,
+    }));
+  }
+
   if (isTerra) {
     return TERRA_UNITS.map(u => ({
       type: u.type,
@@ -569,33 +709,8 @@ function getUnitTypes(property: PropertyData, lang: Lang, slug: string): Unit[] 
     }));
   }
 
-  // Fallback — generic types
-  const types = [
-    { key: '1bed', areaMin: 45, areaMax: 55, bedrooms: 1, bathrooms: 1, yieldPct: 0.055,
-      label: lang === 'ru' ? '1 спальня' : lang === 'pt' ? '1 Quarto' : lang === 'es' ? '1 Dormitorio' : '1 Bedroom' },
-    { key: '1bed_ter', areaMin: 55, areaMax: 70, bedrooms: 1, bathrooms: 1, yieldPct: 0.052,
-      label: lang === 'ru' ? '1 спальня + терраса' : lang === 'pt' ? '1 Quarto + Terraço' : lang === 'es' ? '1 Dormitorio + Terraza' : '1 Bed + Terrace' },
-    { key: '2bed', areaMin: 65, areaMax: 85, bedrooms: 2, bathrooms: 2, yieldPct: 0.048,
-      label: lang === 'ru' ? '2 спальни' : lang === 'pt' ? '2 Quartos' : lang === 'es' ? '2 Dormitorios' : '2 Bedroom' },
-    { key: '2bed_prem', areaMin: 85, areaMax: 100, bedrooms: 2, bathrooms: 2, yieldPct: 0.044,
-      label: lang === 'ru' ? '2 спальни премиум' : lang === 'pt' ? '2 Quartos Premium' : lang === 'es' ? '2 Dormitorios Premium' : '2 Bed Premium' },
-    { key: '3bed', areaMin: 110, areaMax: 140, bedrooms: 3, bathrooms: 3, yieldPct: 0.038,
-      label: lang === 'ru' ? '3 спальни' : lang === 'pt' ? '3 Quartos' : lang === 'es' ? '3 Dormitorios' : '3 Bedroom' },
-    { key: '3bed_ter', areaMin: 140, areaMax: 180, bedrooms: 3, bathrooms: 3, yieldPct: 0.035,
-      label: lang === 'ru' ? '3 спальни + терраса' : lang === 'pt' ? '3 Quartos + Terraço' : lang === 'es' ? '3 Dormitorios + Terraza' : '3 Bed + Terrace' },
-  ];
-
-  return types.map(t => ({
-    type: t.key,
-    areaMin: t.areaMin,
-    areaMax: t.areaMax,
-    bedrooms: t.bedrooms,
-    bathrooms: t.bathrooms,
-    priceMin: Math.round(t.areaMin * priceM2),
-    priceMax: Math.round(t.areaMax * priceM2),
-    label: t.label,
-    growthRate,
-  }));
+  // No real unit data for this project
+  return [];
 }
 
 function InvestmentCalculator({ property, lang, t, GOLD, NAVY, slug }: {
@@ -868,17 +983,17 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
   const t = T[lang];
 
   useEffect(() => {
-    const saved = localStorage.getItem('gronis_lang');
+    const saved = localStorage.getItem('planb_lang');
     if (saved && T[saved as Lang]) setLang(saved as Lang);
   }, []);
 
   const setLangAndSave = (l: Lang) => {
     setLang(l);
-    localStorage.setItem('gronis_lang', l);
+    localStorage.setItem('planb_lang', l);
   };
 
   const copyLink = useCallback(() => {
-    navigator.clipboard.writeText(`https://gronisbrazil.com/projects/${slug}`);
+    navigator.clipboard.writeText(`https://planbbrazil.com/projects/${slug}`);
     setLinkCopied(true);
     setTimeout(() => setLinkCopied(false), 2000);
   }, [slug]);
@@ -910,7 +1025,13 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
   const tabs = [
     { key: 'overview', label: t.overview },
     { key: 'gallery', label: t.gallery },
-    { key: 'units', label: t.units },
+    ...(() => {
+      const projStr = (property.project_name || property.title || slug || '').toLowerCase();
+      const hasRealUnits = ['seleto', 'natus', 'azzur', 'makai', 'bosc', 'vivace', 'terra', 'blue-diamond', 'blue diamond', 'blue_diamond', 'spot-ii', 'spot ii', 'spot_ii', 'spot-iii', 'spot iii', 'spot_iii'].some(
+        k => projStr.includes(k) || (slug || '').includes(k)
+      );
+      return hasRealUnits ? [{ key: 'units', label: t.units }] : [];
+    })(),
     ...(property.latitude ? [{ key: 'location', label: t.location }] : []),
     ...(property.list_price ? [{ key: 'investment', label: t.investment }] : []),
     { key: 'faq', label: 'FAQ' },
@@ -998,7 +1119,11 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, color: '#ccc', fontSize: 14 }}>
             {property.location && <span>📍 {property.location}</span>}
             {property.delivery_year && <span>📅 {t.deliveryDate}: {property.delivery_year}</span>}
-            {property.list_price && <span style={{ color: GOLD, fontWeight: 700 }}>{formatBrl(property.list_price)}</span>}
+            {property.list_price ? (
+              <span style={{ color: GOLD, fontWeight: 700 }}>{formatBrl(property.list_price)}</span>
+            ) : (
+              <span style={{ color: '#D4AF37', fontWeight: 600, fontStyle: 'italic' }}>Price on request</span>
+            )}
           </div>
         </div>
       </div>
@@ -1370,10 +1495,10 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
           <div style={{ background: '#fff', borderRadius: 10, padding: '16px 20px', border: '1px solid #e5e5e5', fontSize: 11, color: '#888', lineHeight: 1.7, marginTop: 24 }}>
             <strong style={{ color: '#666' }}>{lang === 'ru' ? 'Правовая информация' : lang === 'pt' ? 'Informação Legal' : 'Legal Disclaimer'}</strong><br />
             {lang === 'ru'
-              ? 'Все расчёты доходности являются прогнозными и основаны на исторических данных рынка недвижимости Флорианополиса. Прошлые результаты не гарантируют будущих. Курс валют: 1 USD = R$5.30 (может измениться). Данная информация не является предложением ценных бумаг или инвестиционным советом. Рекомендуется консультация с финансовым консультантом перед принятием инвестиционных решений. CRECI 11410-J. GRONIS International Real Estate — лицензированное риэлторское агентство.'
+              ? 'Все расчёты доходности являются прогнозными и основаны на исторических данных рынка недвижимости Флорианополиса. Прошлые результаты не гарантируют будущих. Курс валют: 1 USD = R$5.30 (может измениться). Данная информация не является предложением ценных бумаг или инвестиционным советом. Рекомендуется консультация с финансовым консультантом перед принятием инвестиционных решений. CRECI 11410-J. Plan B Brazil — лицензированное риэлторское агентство.'
               : lang === 'pt'
-              ? 'Todas as projeções de rentabilidade são estimativas baseadas em dados históricos do mercado imobiliário de Florianópolis. Resultados passados não garantem resultados futuros. Câmbio: 1 USD = R$5.30 (sujeito a alteração). Esta informação não constitui oferta de valores mobiliários ou conselho de investimento. Recomenda-se consulta com um consultor financeiro antes de tomar decisões de investimento. CRECI 11410-J. GRONIS International Real Estate — imobiliária licenciada.'
-              : 'All yield projections are estimates based on historical data from the Florianópolis real estate market. Past performance does not guarantee future results. Exchange rate: 1 USD = R$5.30 (subject to change). This information does not constitute an offer of securities or investment advice. Consultation with a financial advisor is recommended before making investment decisions. CRECI 11410-J. GRONIS International Real Estate — licensed real estate agency.'}
+              ? 'Todas as projeções de rentabilidade são estimativas baseadas em dados históricos do mercado imobiliário de Florianópolis. Resultados passados não garantem resultados futuros. Câmbio: 1 USD = R$5.30 (sujeito a alteração). Esta informação não constitui oferta de valores mobiliários ou conselho de investimento. Recomenda-se consulta com um consultor financeiro antes de tomar decisões de investimento. CRECI 11410-J. Plan B Brazil — imobiliária licenciada.'
+              : 'All yield projections are estimates based on historical data from the Florianópolis real estate market. Past performance does not guarantee future results. Exchange rate: 1 USD = R$5.30 (subject to change). This information does not constitute an offer of securities or investment advice. Consultation with a financial advisor is recommended before making investment decisions. CRECI 11410-J. Plan B Brazil — licensed real estate agency.'}
           </div>
           </>
         )}
@@ -1470,11 +1595,11 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
                   <a href="tel:+5548988752300" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
                     📞 +55 (48) 98875-2300
                   </a>
-                  <a href="mailto:konstantin.bievskikh@migronis.com" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    ✉️ konstantin.bievskikh@migronis.com
+                  <a href="mailto:planbievskikh@gmail.com" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    ✉️ planbievskikh@gmail.com
                   </a>
-                  <a href="https://gronisbrazil.com" target="_blank" rel="noopener noreferrer" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    🌐 gronisbrazil.com
+                  <a href="https://planbbrazil.com" target="_blank" rel="noopener noreferrer" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    🌐 planbbrazil.com
                   </a>
                 </div>
                 <div style={{ color: '#666', fontSize: 11, marginTop: 10 }}>CRECI 11410-J</div>

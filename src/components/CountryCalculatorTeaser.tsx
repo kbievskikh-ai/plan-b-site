@@ -29,11 +29,11 @@ export default function CountryCalculatorTeaser() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-6">
-              <img src="https://cdn.migronis.com/img/headerLogo.svg" alt="Migronis" style={{ height: '44px', filter: 'brightness(0) invert(1)' }} className="mb-4" />
+              <img src="https://cdn.planb.com/img/headerLogo.svg" alt="Plan B" style={{ height: '44px', filter: 'brightness(0) invert(1)' }} className="mb-4" />
               <div className="flex items-center gap-2">
                 <span className="text-2xl">🎁</span>
                 <span className="text-xs uppercase tracking-widest" style={{ color: '#C9A94E' }}>
-                  {language === 'ru' ? 'Подарок к 15-летию Migronis' : language === 'pt' ? 'Presente de 15 anos Migronis' : 'Migronis 15th Anniversary Gift'}
+                  {language === 'ru' ? 'Подарок к 15-летию Plan B' : language === 'pt' ? 'Presente de 15 anos Plan B' : 'Plan B 15th Anniversary Gift'}
                 </span>
               </div>
             </div>

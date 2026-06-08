@@ -24,7 +24,7 @@ export default function Footer() {
   ];
 
   const company = [
-    t('footer.aboutMigronis'),
+    t('footer.aboutPlanB'),
     t('footer.ourTeam'),
     t('footer.investmentGuide'),
     t('footer.blog'),
@@ -40,10 +40,10 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 gold-gradient rounded-sm flex items-center justify-center">
-                <span className="text-white font-heading font-bold text-lg">G</span>
+                <span className="text-white font-heading font-bold text-lg">B</span>
               </div>
               <div>
-                <span className="text-white font-heading text-xl tracking-wide">GRONIS</span>
+                <span className="text-white font-heading text-xl tracking-wide">Plan B</span>
                 <span className="block text-gold-400 text-[10px] tracking-[0.3em] uppercase">
                   International Real Estate
                 </span>
@@ -106,14 +106,14 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-sm">
-            © 2026 GRONIS International Real Estate. {t('footer.allRightsReserved')}
+            © 2026 Plan B Brazil. {t('footer.allRightsReserved')}
           </p>
           <div className="flex items-center gap-6">
             {[
               { name: "Instagram", href: "#" },
               { name: "LinkedIn", href: "#" },
               { name: "YouTube", href: "#" },
-              { name: t('footer.telegram'), href: "https://t.me/Gronis_Leads_bot" },
+              { name: t('footer.telegram'), href: "https://t.me/KBIEVSKIKH" },
             ].map((social) => (
               <a
                 key={social.name}

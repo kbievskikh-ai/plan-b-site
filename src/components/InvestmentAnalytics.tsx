@@ -366,19 +366,34 @@ export default function InvestmentAnalytics() {
         <div className="mt-12 pt-8 border-t border-white/20">
           <div className="text-center">
             <h4 className="font-heading text-lg text-white mb-4">{t('analytics.dataSources')}</h4>
-            <div className="grid md:grid-cols-3 gap-6 text-sm text-white/60">
-              <div>
-                <strong className="text-gold-500">IBGE</strong><br />
-                {t('analytics.ibge')}
-              </div>
-              <div>
-                <strong className="text-gold-500">SECOVI-SC</strong><br />
-                {t('analytics.secoviSc')}
-              </div>
-              <div>
-                <strong className="text-gold-500">Central Bank of Brazil</strong><br />
-                {t('analytics.centralBank')}
-              </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              <a href="https://www.ibge.gov.br" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                <div className="w-14 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
+                  <img src="/images/partners/ibge.svg" alt="IBGE" className="w-full h-full object-contain" />
+                </div>
+                <div className="text-left">
+                  <strong className="text-gold-500 text-sm">IBGE</strong><br />
+                  <span className="text-white/60 text-xs">{t('analytics.ibge')}</span>
+                </div>
+              </a>
+              <a href="https://secovi-sc.com.br" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                <div className="w-14 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-gold-500 font-bold text-[10px]">SECOVI-SC</span>
+                </div>
+                <div className="text-left">
+                  <strong className="text-gold-500 text-sm">SECOVI-SC</strong><br />
+                  <span className="text-white/60 text-xs">{t('analytics.secoviSc')}</span>
+                </div>
+              </a>
+              <a href="https://www.bcb.gov.br" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                <div className="w-14 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
+                  <img src="/images/partners/bcb.png" alt="BCB" className="w-full h-full object-contain" />
+                </div>
+                <div className="text-left">
+                  <strong className="text-gold-500 text-sm">Central Bank</strong><br />
+                  <span className="text-white/60 text-xs">{t('analytics.centralBank')}</span>
+                </div>
+              </a>
             </div>
             <p className="text-white/50 text-xs mt-6">
               {t('analytics.disclaimer')}

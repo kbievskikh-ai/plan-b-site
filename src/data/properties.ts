@@ -1,6 +1,7 @@
 export interface Property {
   id: number;
   title: string;
+  slug?: string;
   location: string;
   region: string;
   price: string;
@@ -201,6 +202,52 @@ export const properties: Property[] = [
     images: ["/images/property8-1.jpg", "/images/property8-2.jpg", "/images/property8-3.jpg"],
     features: ["Tech Hub Location", "Central Location", "Digital Nomad Ready", "Innovation District"],
     coordinates: { lat: -27.5954, lng: -48.5480 }
+  },
+  {
+    id: 9,
+    title: "SPOT II Jurerê",
+    slug: "spot-ii",
+    location: "Jurerê, Florianópolis",
+    region: "Florianópolis",
+    price: "R$ 399.000",
+    priceUsd: "$79,000",
+    priceBrl: 399000,
+    priceUsdNum: 79000,
+    beds: 0,
+    baths: 1,
+    area: "15-29 m²",
+    areaNum: 22,
+    type: "investment",
+    tag: "87% Sold Out",
+    gradient: "from-[#1B2951] to-[#D4AF37]",
+    description: "Micro-unit development in the heart of Jurerê, designed for short-term rental. 87% sold out — only 5 units remaining. CUB-indexed pricing, construction-phase payments. Delivery June 2029. Net yield up to 14.3%.",
+    expectedROI: "10-14% annual",
+    images: [],
+    features: ["Designed for short-term rental", "Micro-units 15-29 m²", "CUB/SC indexed pricing", "Construction-phase payments", "Premium beach address", "87% sold out"],
+    coordinates: { lat: -27.1089, lng: -48.4748 }
+  },
+  {
+    id: 10,
+    title: "SPOT III Jurerê",
+    slug: "spot-iii",
+    location: "Jurerê, Florianópolis",
+    region: "Florianópolis",
+    price: "R$ 279.000",
+    priceUsd: "$55,000",
+    priceBrl: 279000,
+    priceUsdNum: 55000,
+    beds: 0,
+    baths: 1,
+    area: "15-47 m²",
+    areaNum: 31,
+    type: "investment",
+    tag: "Pre-Launch",
+    gradient: "from-[#1B2951] to-[#2a3f75]",
+    description: "Pre-launch micro-unit development by Seazone. 72 units, Rua Accácio Melo 64, Jurerê. Lowest entry in Jurerê from R$ 279K. Estimated +94% appreciation. Delivery March 2030. Net yield up to 14.3%.",
+    expectedROI: "14% annual",
+    images: [],
+    features: ["Pre-launch pricing", "72 micro-units 15-47 m²", "Lowest entry R$ 279K", "+94% estimated appreciation", "CUB-indexed construction payments", "Rua Accácio Melo 64, Jurerê"],
+    coordinates: { lat: -27.1089, lng: -48.4748 }
   }
 ];
 
@@ -267,6 +314,69 @@ export const regions = [
     lat: -27.6667, 
     lng: -49.0167,
     highlights: ["Wine Country", "Mountain Retreat", "Rural Luxury", "Eco-Tourism"]
+  },
+  { 
+    name: "Palhoça", 
+    properties: 2, 
+    desc: "Growing suburb of Florianópolis", 
+    coordinates: { lat: -27.6406, lng: -48.6703 },
+    lat: -27.6406, 
+    lng: -48.6703,
+    highlights: ["Suburban Growth", "Affordable Entry", "Mainland Access", "Residential"]
+  },
+  { 
+    name: "São José", 
+    properties: 2, 
+    desc: "Business district near airport", 
+    coordinates: { lat: -27.5969, lng: -48.6339 },
+    lat: -27.5969, 
+    lng: -48.6339,
+    highlights: ["Business Hub", "Airport Proximity", "Urban Living", "Commercial"]
+  },
+  { 
+    name: "Garopaba", 
+    properties: 2, 
+    desc: "Pristine beaches & whale watching", 
+    coordinates: { lat: -27.7706, lng: -48.6256 },
+    lat: -27.7706, 
+    lng: -48.6256,
+    highlights: ["Pristine Beaches", "Whale Watching", "Surfing", "Nature"]
+  },
+  { 
+    name: "Penha", 
+    properties: 1, 
+    desc: "Home of Beto Carrero World theme park", 
+    coordinates: { lat: -26.7731, lng: -48.6531 },
+    lat: -26.7731, 
+    lng: -48.6531,
+    highlights: ["Theme Park", "Tourism", "Family Friendly", "Investment"]
+  },
+  { 
+    name: "Laguna", 
+    properties: 1, 
+    desc: "Historic coastal town", 
+    coordinates: { lat: -28.4831, lng: -48.7831 },
+    lat: -28.4831, 
+    lng: -48.7831,
+    highlights: ["Historic Center", "Coastal Charm", "Fishing Village", "Culture"]
+  },
+  { 
+    name: "Joinville", 
+    properties: 1, 
+    desc: "Industrial capital of SC", 
+    coordinates: { lat: -26.3044, lng: -48.8456 },
+    lat: -26.3044, 
+    lng: -48.8456,
+    highlights: ["Industrial Hub", "Urban Center", "Business", "Infrastructure"]
+  },
+  { 
+    name: "Blumenau", 
+    properties: 1, 
+    desc: "German heritage & Oktoberfest", 
+    coordinates: { lat: -26.9194, lng: -49.0661 },
+    lat: -26.9194, 
+    lng: -49.0661,
+    highlights: ["German Culture", "Oktoberfest", "Tourism", "Heritage"]
   },
 ];
 

@@ -632,7 +632,7 @@ export default function BirthCalculatorClient() {
         <div className="mt-12 mb-8 text-center">
           <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
             className="inline-block bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold px-8 py-4 rounded-xl text-lg transition">
-            💬 Связаться с GRONIS
+            💬 Связаться с Plan B
           </a>
           <p className="text-gray-500 text-sm mt-3">Консультация бесплатная • Отвечаем за 15 минут</p>
           <p className="text-gray-600 text-xs mt-2">Расчёт приблизительный. Финальная стоимость зависит от ваших предпочтений.</p>
