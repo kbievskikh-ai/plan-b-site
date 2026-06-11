@@ -158,8 +158,8 @@ export default function ProjectPage() {
         padding: 24,
       }}>
         <div style={{ marginBottom: 48, textAlign: 'center' }}>
-          <div style={{ color: GOLD, fontWeight: 800, fontSize: 20, letterSpacing: 6, marginBottom: 8 }}>
-            G R O N I S
+          <div style={{ color: GOLD, fontWeight: 800, fontSize: 28, letterSpacing: 4, marginBottom: 8 }}>
+            Plan B
           </div>
           <div style={{ color: '#8899bb', fontSize: 12, letterSpacing: 2 }}>
             INTERNATIONAL REAL ESTATE
