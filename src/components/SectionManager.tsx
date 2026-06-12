@@ -3,20 +3,9 @@
 import { useState } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedProperties from '@/components/FeaturedProperties';
-// import CalculatorTeaser from '@/components/CalculatorTeaser';
 import AboutPlanB from '@/components/AboutPlanB';
 import WhyTrustUs from '@/components/WhyTrustUs';
-// import InteractiveMap from '@/components/InteractiveMap';
-import GlobalMap from '@/components/GlobalMap';
-import InvestmentAnalytics from '@/components/InvestmentAnalytics';
-import PropertyManagement from '@/components/PropertyManagement';
-import InvestmentPackages from '@/components/InvestmentPackages';
-import InvestmentIntelligence from '@/components/InvestmentIntelligence';
-import CaseStudies from '@/components/CaseStudies';
-import InvestorGuide from '@/components/InvestorGuide';
-import Testimonials from '@/components/Testimonials';
 import WhyBrazil from '@/components/WhyBrazil';
-// import CountryCalculatorTeaser from '@/components/CountryCalculatorTeaser';
 import PropertyFinder from '@/components/PropertyFinder';
 import FAQ from '@/components/FAQ';
 import ContactForm from '@/components/ContactForm';
@@ -73,19 +62,9 @@ export default function SectionManager() {
         <Hero />
         <FeaturedProperties />
         <PropertyFinder />
-
         <AboutPlanB />
-        <WhyTrustUs showClientExperience={true} />
-        <GlobalMap />
-        <InvestmentAnalytics />
-        <PropertyManagement />
-        <InvestmentPackages />
-        <InvestmentIntelligence />
-        <InvestorGuide />
-        <CaseStudies />
-        <Testimonials />
+        <WhyTrustUs showClientExperience={false} />
         <WhyBrazil />
-        {/* <CountryCalculatorTeaser /> — hidden per request */}
         <FAQ />
         <ContactForm />
       </>
@@ -99,19 +78,9 @@ export default function SectionManager() {
       {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
       {show('section_featured_properties') && <FeaturedProperties />}
       <PropertyFinder />
-      {/* CalculatorTeaser removed */}
       {show('section_about') && <AboutPlanB />}
-      {show('section_why_trust') && <WhyTrustUs showClientExperience={show('section_international_experience')} />}
-      {show('section_map') && <GlobalMap />}
-      {show('section_analytics') && <InvestmentAnalytics />}
-      {show('section_property_management') && <PropertyManagement />}
-      {show('section_investment_packages') && <InvestmentPackages />}
-      {show('section_investment_intelligence') && <InvestmentIntelligence />}
-      {show('section_investor_guide') && <InvestorGuide />}
-      {show('section_case_studies') && <CaseStudies />}
-      {show('section_testimonials') && <Testimonials />}
+      {show('section_why_trust') && <WhyTrustUs showClientExperience={false} />}
       {show('section_why_brazil') && <WhyBrazil />}
-      {/* <CountryCalculatorTeaser /> — hidden per request */}
       {show('section_faq') && <FAQ />}
       {show('section_contact') && <ContactForm />}
     </>
