@@ -15,7 +15,7 @@ const countries = [
   {
     name: 'Chile',
     flag: '🇨🇱',
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1555993539-1732b0258235?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1100&q=80',
     active: false,
     url: null,
     label: 'Santiago &\nCentral Valley',
