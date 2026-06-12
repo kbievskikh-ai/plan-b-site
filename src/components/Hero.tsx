@@ -60,95 +60,90 @@ export default function Hero({ videoUrl }: HeroProps) {
 
       {/* Content */}
       <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
-          {/* Left: Text */}
-          <div className="max-w-xl">
-            {/* Eyebrow */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex items-center gap-3 mb-6"
-            >
-              <div className="w-12 h-[1px] bg-gold-400" />
-              <span className="text-gold-400 text-sm tracking-[0.3em] uppercase font-medium">
-                {t('hero.location')}
-              </span>
-            </motion.div>
-
-            {/* Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-heading text-3xl sm:text-5xl lg:text-7xl text-white leading-[1.1] mb-4 sm:mb-6 [text-wrap:balance]"
-            >
-              {t('hero.title1')}
-              <br />
-              <span className="text-gold-400">{t('hero.title2')}</span>
-              <br />
-              {t('hero.title3')}
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-white/60 text-sm sm:text-xl max-w-xl mb-6 sm:mb-10 leading-relaxed"
-            >
-              {t('hero.subtitle')}
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <motion.a
-                href="#calculator"
-                className="btn-gold text-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {t('hero.calculateInvestment')}
-              </motion.a>
-              <motion.a
-                href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
-                className="btn-outline text-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {t('hero.requestConsultation')}
-              </motion.a>
-            </motion.div>
-          </div>
-
-          {/* Right: Floating video card */}
+        <div className="max-w-3xl">
+          {/* Eyebrow */}
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="hidden lg:block relative"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-3 mb-6"
           >
-            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-gold-500/20 border border-gold-500/30 aspect-video bg-navy-950">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-              >
-                <source src="/videos/hero-jurere.mp4" type="video/mp4" />
-              </video>
-            </div>
-            {/* Accent border */}
-            <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-2 border-gold-500/20 -z-10" />
+            <div className="w-12 h-[1px] bg-gold-400" />
+            <span className="text-gold-400 text-sm tracking-[0.3em] uppercase font-medium">
+              {t('hero.location')}
+            </span>
+          </motion.div>
+
+          {/* Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="font-heading text-3xl sm:text-5xl lg:text-7xl text-white leading-[1.1] mb-4 sm:mb-6 [text-wrap:balance]"
+          >
+            {t('hero.title1')}
+            <br />
+            <span className="text-gold-400">{t('hero.title2')}</span>
+            <br />
+            {t('hero.title3')}
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-white/60 text-sm sm:text-xl max-w-xl mb-6 sm:mb-10 leading-relaxed"
+          >
+            {t('hero.subtitle')}
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <motion.a
+              href="#calculator"
+              className="btn-gold text-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {t('hero.calculateInvestment')}
+            </motion.a>
+            <motion.a
+              href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
+              className="btn-outline text-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {t('hero.requestConsultation')}
+            </motion.a>
           </motion.div>
         </div>
       </div>
+
+      {/* Floating video card — top right */}
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="hidden lg:block absolute top-1/2 right-8 sm:right-12 lg:right-16 xl:right-24 -translate-y-1/2 z-30 w-80 xl:w-96"
+      >
+        <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-gold-500/30 bg-navy-950">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/videos/hero-jurere.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
