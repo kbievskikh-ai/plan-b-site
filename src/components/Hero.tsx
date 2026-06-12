@@ -10,11 +10,6 @@ interface HeroProps {
 export default function Hero({ videoUrl }: HeroProps) {
   const { t } = useLanguage();
   
-  const stats = [
-    { value: "$60M+", label: t('hero.portfolioValue') },
-    { value: "12.5%", label: t('hero.avgRoi') },
-  ];
-
   return (
     <section className="relative h-screen min-h-[700px] flex items-center pt-24 sm:pt-32 bg-navy-900 overflow-hidden">
       {/* Video/placeholder background */}
@@ -103,32 +98,6 @@ export default function Hero({ videoUrl }: HeroProps) {
             {t('hero.subtitle')}
           </motion.p>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="mb-8"
-          >
-            <div className="flex flex-row items-center gap-0 sm:bg-white/5 sm:backdrop-blur-sm sm:border sm:border-white/10 sm:rounded-2xl sm:px-2 sm:py-3">
-              {stats.map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 ${
-                    index < stats.length - 1 ? 'border-r border-white/10' : ''
-                  }`}
-                >
-                  <span className="text-gold-400 font-heading text-lg sm:text-xl lg:text-2xl font-bold whitespace-nowrap">
-                    {stat.value}
-                  </span>
-                  <span className="text-white/40 text-[9px] sm:text-[10px] leading-tight tracking-wider uppercase max-w-[55px] sm:max-w-[70px]">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -137,12 +106,12 @@ export default function Hero({ videoUrl }: HeroProps) {
             className="flex flex-col sm:flex-row gap-4"
           >
             <motion.a
-              href="#properties"
+              href="#calculator"
               className="btn-gold text-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {t('hero.exploreProperties')}
+              {t('hero.calculateInvestment')}
             </motion.a>
             <motion.a
               href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"

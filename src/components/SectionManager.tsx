@@ -3,11 +3,11 @@
 import { useState } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedProperties from '@/components/FeaturedProperties';
-import AboutPlanB from '@/components/AboutPlanB';
-import WhyTrustUs from '@/components/WhyTrustUs';
+import AboutKonstantin from '@/components/AboutKonstantin';
 import WhyBrazil from '@/components/WhyBrazil';
 import CalculatorTeaser from '@/components/CalculatorTeaser';
 import PropertyFinder from '@/components/PropertyFinder';
+import HowItWorks from '@/components/HowItWorks';
 import FAQ from '@/components/FAQ';
 import ContactForm from '@/components/ContactForm';
 import { useSettings } from '@/lib/settings';
@@ -61,11 +61,11 @@ export default function SectionManager() {
         <CountrySelector />
         <FloatingChat />
         <Hero />
-        <FeaturedProperties />
-        <PropertyFinder />
         <CalculatorTeaser />
-        <AboutPlanB />
-        <WhyTrustUs showClientExperience={false} />
+        <AboutKonstantin />
+        <PropertyFinder />
+        <FeaturedProperties />
+        <HowItWorks />
         <WhyBrazil />
         <FAQ />
         <ContactForm />
@@ -78,11 +78,11 @@ export default function SectionManager() {
       <CountrySelector />
       <FloatingChat />
       {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
-      {show('section_featured_properties') && <FeaturedProperties />}
-      <PropertyFinder />
       <CalculatorTeaser />
-      {show('section_about') && <AboutPlanB />}
-      {show('section_why_trust') && <WhyTrustUs showClientExperience={false} />}
+      <AboutKonstantin />
+      <PropertyFinder />
+      {show('section_featured_properties') && <FeaturedProperties />}
+      <HowItWorks />
       {show('section_why_brazil') && <WhyBrazil />}
       {show('section_faq') && <FAQ />}
       {show('section_contact') && <ContactForm />}

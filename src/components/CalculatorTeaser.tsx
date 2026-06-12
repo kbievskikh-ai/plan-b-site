@@ -160,7 +160,7 @@ export default function CalculatorTeaser() {
                 </div>
 
                 {/* CTA */}
-                <div className="pt-2">
+                <div className="pt-2 space-y-3">
                   <a
                     href="/calculator.html"
                     target="_blank"
@@ -170,7 +170,18 @@ export default function CalculatorTeaser() {
                     {t('calc.openFull')}
                     <span className="ml-2">→</span>
                   </a>
-                  <p className="text-gray-600 text-[10px] text-center mt-3">
+                  <div className="text-center">
+                    <p className="text-gray-400 text-xs mb-2">{t('calc.personalizedPrompt')}</p>
+                    <a
+                      href="https://wa.me/5548988117424"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gold-500 hover:text-gold-400 text-sm font-semibold underline underline-offset-4 transition-colors"
+                    >
+                      {t('calc.strategyCallCta')}
+                    </a>
+                  </div>
+                  <p className="text-gray-600 text-[10px] text-center">
                     {t('calc.disclaimer')}
                   </p>
                 </div>
