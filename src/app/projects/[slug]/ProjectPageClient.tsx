@@ -1054,8 +1054,8 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
         padding: '0 24px', height: 56,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <a href="/" style={{ color: GOLD, fontWeight: 800, fontSize: 14, letterSpacing: 3, textDecoration: 'none' }}>
-            Plan B
+          <a href="/" style={{ color: GOLD, fontWeight: 800, fontSize: 14, letterSpacing: 4, textDecoration: 'none' }}>
+            G R O N I S
           </a>
           <span style={{ color: '#555', fontSize: 10 }}>|</span>
           <span style={{ color: '#aaa', fontSize: 12, letterSpacing: 1 }}>{t.backToSite}</span>

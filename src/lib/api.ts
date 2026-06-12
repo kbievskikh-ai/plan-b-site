@@ -1,6 +1,6 @@
 import { Property, properties as fallbackProperties } from '@/data/properties';
 
-const API_URL = 'https://api.gronisbrazil.com';
+const API_URL = 'https://api.planbbrazil.com';
 
 interface ApiFeature {
   id: number;

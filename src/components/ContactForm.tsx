@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
 
-const API_URL = 'https://api.gronisbrazil.com';
+const API_URL = 'https://api.planbbrazil.com';
 
 interface ContactSettings {
   phone: string;

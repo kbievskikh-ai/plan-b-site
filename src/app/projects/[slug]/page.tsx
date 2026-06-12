@@ -129,7 +129,7 @@ export default function ProjectPage() {
       return;
     }
     // Fetch all properties and filter by slug
-    fetch('https://api.gronisbrazil.com/api/properties?limit=200')
+    fetch('https://api.planbbrazil.com/api/properties?limit=200')
       .then(r => r.ok ? r.json() : null)
       .then(data => {
         const all = data?.data || [];
@@ -158,8 +158,8 @@ export default function ProjectPage() {
         padding: 24,
       }}>
         <div style={{ marginBottom: 48, textAlign: 'center' }}>
-          <div style={{ color: GOLD, fontWeight: 800, fontSize: 28, letterSpacing: 4, marginBottom: 8 }}>
-            Plan B
+          <div style={{ color: GOLD, fontWeight: 800, fontSize: 20, letterSpacing: 6, marginBottom: 8 }}>
+            G R O N I S
           </div>
           <div style={{ color: '#8899bb', fontSize: 12, letterSpacing: 2 }}>
             INTERNATIONAL REAL ESTATE

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedProperties from '@/components/FeaturedProperties';
-import CalculatorTeaser from '@/components/CalculatorTeaser';
+// import CalculatorTeaser from '@/components/CalculatorTeaser';
 import AboutPlanB from '@/components/AboutPlanB';
 import WhyTrustUs from '@/components/WhyTrustUs';
 // import InteractiveMap from '@/components/InteractiveMap';
@@ -73,7 +73,7 @@ export default function SectionManager() {
         <Hero />
         <FeaturedProperties />
         <PropertyFinder />
-        <CalculatorTeaser />
+
         <AboutPlanB />
         <WhyTrustUs showClientExperience={true} />
         <GlobalMap />
@@ -99,7 +99,7 @@ export default function SectionManager() {
       {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
       {show('section_featured_properties') && <FeaturedProperties />}
       <PropertyFinder />
-      {show('section_calculator') && <CalculatorTeaser />}
+      {/* CalculatorTeaser removed */}
       {show('section_about') && <AboutPlanB />}
       {show('section_why_trust') && <WhyTrustUs showClientExperience={show('section_international_experience')} />}
       {show('section_map') && <GlobalMap />}

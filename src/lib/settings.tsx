@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-const API_URL = 'https://api.gronisbrazil.com';
+const API_URL = 'https://api.planbbrazil.com';
 
 interface SettingsContextType {
   settings: Record<string, string>;

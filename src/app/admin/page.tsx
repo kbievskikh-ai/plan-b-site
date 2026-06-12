@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-const API_URL = 'https://api.gronisbrazil.com';
+const API_URL = 'https://api.planbbrazil.com';
 
 const SECTIONS = [
   { key: 'section_hero', label: 'Hero Banner', icon: '🎬' },
