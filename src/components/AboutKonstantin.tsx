@@ -19,15 +19,11 @@ export default function AboutKonstantin() {
           >
             <div className="relative">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-navy-900">
-                {/* Placeholder for founder photo — replace with real photo */}
-                <div className="w-full h-full bg-gradient-to-br from-navy-900 via-navy-800 to-gold-500/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 rounded-full bg-gold-500/20 flex items-center justify-center mx-auto mb-4">
-                      <span className="text-gold-500 text-5xl font-serif font-bold">K</span>
-                    </div>
-                    <p className="text-white/40 text-sm">Your photo here</p>
-                  </div>
-                </div>
+                <img
+                  src="/images/konstantin.jpg"
+                  alt="Konstantin - Plan B Brazil"
+                  className="w-full h-full object-cover"
+                />
               </div>
               {/* Accent border */}
               <div className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl border-2 border-gold-500/30 -z-10" />
