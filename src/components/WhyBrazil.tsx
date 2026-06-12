@@ -89,39 +89,42 @@ export default function WhyBrazil() {
 
           <ScrollAnimation direction="right">
             <div className="relative">
-              <div className="aspect-[4/5] bg-gradient-to-br from-navy-700 to-navy-800 relative overflow-hidden">
-                <div className="absolute inset-0" style={{
-                  background: "linear-gradient(160deg, #1a2a3a 0%, #0d1a2a 40%, #1a3a4a 70%, #0d2a3a 100%)",
-                }} />
-                <div className="absolute bottom-0 left-0 right-0 h-1 gold-gradient" />
-                <motion.div 
-                  className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md p-6 border border-white/10"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
+              {/* Video background */}
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden relative">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
                 >
-                  <div className="grid grid-cols-2 gap-4">
+                  <source src="/videos/hero-jurere.mp4" type="video/mp4" />
+                </video>
+                {/* Gradient overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
+                {/* Stats overlay */}
+                <div className="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20">
+                  <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <div className="text-gold-400 font-heading text-2xl">35%</div>
-                      <div className="text-white/60 text-xs tracking-wider uppercase mt-1">{t('whyBrazil.stat1Label')}</div>
+                      <div className="text-gold-400 font-heading text-xl">35%</div>
+                      <div className="text-white/70 text-[10px] tracking-wider uppercase mt-1">{t('whyBrazil.stat1Label')}</div>
                     </div>
                     <div>
-                      <div className="text-gold-400 font-heading text-2xl">#1</div>
-                      <div className="text-white/60 text-xs tracking-wider uppercase mt-1">{t('whyBrazil.stat2Label')}</div>
+                      <div className="text-gold-400 font-heading text-xl">#1</div>
+                      <div className="text-white/70 text-[10px] tracking-wider uppercase mt-1">{t('whyBrazil.stat2Label')}</div>
                     </div>
                     <div>
-                      <div className="text-gold-400 font-heading text-2xl">8.2%</div>
-                      <div className="text-white/60 text-xs tracking-wider uppercase mt-1">{t('whyBrazil.stat3Label')}</div>
+                      <div className="text-gold-400 font-heading text-xl">8.2%</div>
+                      <div className="text-white/70 text-[10px] tracking-wider uppercase mt-1">{t('whyBrazil.stat3Label')}</div>
                     </div>
                     <div>
-                      <div className="text-gold-400 font-heading text-2xl">$200K</div>
-                      <div className="text-white/60 text-xs tracking-wider uppercase mt-1">{t('whyBrazil.stat4Label')}</div>
+                      <div className="text-gold-400 font-heading text-xl">$200K</div>
+                      <div className="text-white/70 text-[10px] tracking-wider uppercase mt-1">{t('whyBrazil.stat4Label')}</div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </div>
-              <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-gold-400/30" />
             </div>
           </ScrollAnimation>
         </div>
