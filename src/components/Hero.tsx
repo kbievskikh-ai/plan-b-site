@@ -125,26 +125,6 @@ export default function Hero({ videoUrl }: HeroProps) {
         </div>
       </div>
 
-      {/* Floating video card — top right */}
-      <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.9 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        className="hidden lg:block absolute top-1/2 right-8 sm:right-12 lg:right-16 xl:right-24 -translate-y-1/2 z-30 w-80 xl:w-96"
-      >
-        <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-gold-500/30 bg-navy-950">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/videos/hero-jurere.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </motion.div>
-
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
