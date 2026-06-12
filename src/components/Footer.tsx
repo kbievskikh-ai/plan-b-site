@@ -112,7 +112,7 @@ export default function Footer() {
             {[
               { name: "Instagram", href: "https://instagram.com/kbievskikh" },
               { name: "LinkedIn", href: "https://www.linkedin.com/in/konstantin-bievskikh-05b61731b" },
-              { name: "YouTube", href: "#" },
+              { name: "YouTube", href: "https://www.youtube.com/watch?v=ggA2TiqVMww" },
               { name: t('footer.telegram'), href: "https://t.me/KBIEVSKIKH" },
             ].map((social) => (
               <a
