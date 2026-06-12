@@ -16,7 +16,7 @@ interface ContactSettings {
 const DEFAULT_CONTACT: ContactSettings = {
   phone: '+55 48 988117424',
   email: 'planbbrazil@gmail.com',
-  whatsapp: '+55 48 98875-2300',
+  whatsapp: '+55 48 988117424',
   address: 'Florianópolis, Santa Catarina',
 };
 
@@ -66,21 +66,7 @@ interface FormData {
 
 export default function ContactForm() {
   const { t, language } = useLanguage();
-  const [contact, setContact] = useState<ContactSettings>(DEFAULT_CONTACT);
-
-  useEffect(() => {
-    fetch(`${API_URL}/api/settings`)
-      .then(r => r.json())
-      .then((data: Record<string, string>) => {
-        setContact({
-          phone: data.contact_phone || DEFAULT_CONTACT.phone,
-          email: data.contact_email || DEFAULT_CONTACT.email,
-          whatsapp: data.whatsapp || DEFAULT_CONTACT.whatsapp,
-          address: data.contact_address || DEFAULT_CONTACT.address,
-        });
-      })
-      .catch(() => { /* keep defaults */ });
-  }, []);
+  const contact = DEFAULT_CONTACT;
 
   const [formData, setFormData] = useState<FormData>({
     name: '',
