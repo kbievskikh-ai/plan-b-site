@@ -15,7 +15,7 @@ interface ContactSettings {
 
 const DEFAULT_CONTACT: ContactSettings = {
   phone: '+55 48 988117424',
-  email: 'planbievskikh@gmail.com',
+  email: 'planbbrazil@gmail.com',
   whatsapp: '+55 48 98875-2300',
   address: 'Florianópolis, Santa Catarina',
 };
