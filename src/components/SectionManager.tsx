@@ -6,6 +6,7 @@ import FeaturedProperties from '@/components/FeaturedProperties';
 import AboutPlanB from '@/components/AboutPlanB';
 import WhyTrustUs from '@/components/WhyTrustUs';
 import WhyBrazil from '@/components/WhyBrazil';
+import CalculatorTeaser from '@/components/CalculatorTeaser';
 import PropertyFinder from '@/components/PropertyFinder';
 import FAQ from '@/components/FAQ';
 import ContactForm from '@/components/ContactForm';
@@ -62,6 +63,7 @@ export default function SectionManager() {
         <Hero />
         <FeaturedProperties />
         <PropertyFinder />
+        <CalculatorTeaser />
         <AboutPlanB />
         <WhyTrustUs showClientExperience={false} />
         <WhyBrazil />
@@ -78,6 +80,7 @@ export default function SectionManager() {
       {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
       {show('section_featured_properties') && <FeaturedProperties />}
       <PropertyFinder />
+      <CalculatorTeaser />
       {show('section_about') && <AboutPlanB />}
       {show('section_why_trust') && <WhyTrustUs showClientExperience={false} />}
       {show('section_why_brazil') && <WhyBrazil />}
