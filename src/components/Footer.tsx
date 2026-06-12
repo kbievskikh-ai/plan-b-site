@@ -110,8 +110,8 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-6">
             {[
-              { name: "Instagram", href: "#" },
-              { name: "LinkedIn", href: "#" },
+              { name: "Instagram", href: "https://instagram.com/kbievskikh" },
+              { name: "LinkedIn", href: "https://www.linkedin.com/in/konstantin-bievskikh-05b61731b" },
               { name: "YouTube", href: "#" },
               { name: t('footer.telegram'), href: "https://t.me/KBIEVSKIKH" },
             ].map((social) => (
