@@ -1053,9 +1053,12 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '0 24px', height: 56,
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <a href="/" style={{ color: GOLD, fontWeight: 800, fontSize: 14, letterSpacing: 4, textDecoration: 'none' }}>
-            G R O N I S
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
+            <div style={{ width: 32, height: 32, background: `linear-gradient(135deg, ${GOLD}, #c4a035)`, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ color: '#fff', fontWeight: 800, fontSize: 16 }}>B</span>
+            </div>
+            <span style={{ color: '#fff', fontWeight: 700, fontSize: 14, letterSpacing: 1 }}>Plan B</span>
           </a>
           <span style={{ color: '#555', fontSize: 10 }}>|</span>
           <span style={{ color: '#aaa', fontSize: 12, letterSpacing: 1 }}>{t.backToSite}</span>

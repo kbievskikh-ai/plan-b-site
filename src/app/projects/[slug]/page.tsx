@@ -158,10 +158,13 @@ export default function ProjectPage() {
         padding: 24,
       }}>
         <div style={{ marginBottom: 48, textAlign: 'center' }}>
-          <div style={{ color: GOLD, fontWeight: 800, fontSize: 20, letterSpacing: 6, marginBottom: 8 }}>
-            G R O N I S
+          <div style={{ width: 56, height: 56, background: `linear-gradient(135deg, ${GOLD}, #c4a035)`, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
+            <span style={{ color: '#fff', fontWeight: 800, fontSize: 28 }}>B</span>
           </div>
-          <div style={{ color: '#8899bb', fontSize: 12, letterSpacing: 2 }}>
+          <div style={{ color: '#fff', fontWeight: 700, fontSize: 20, letterSpacing: 2, marginBottom: 4 }}>
+            Plan B
+          </div>
+          <div style={{ color: '#8899bb', fontSize: 11, letterSpacing: 3 }}>
             INTERNATIONAL REAL ESTATE
           </div>
         </div>

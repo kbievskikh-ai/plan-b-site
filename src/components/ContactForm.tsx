@@ -451,7 +451,7 @@ export default function ContactForm() {
               {t('contact.downloadGuideDesc')}
             </p>
             <a 
-              href={language === 'ru' ? '/Plan B_Investment_Guide_RU.pdf' : language === 'pt' ? '/Plan B_Investment_Guide_PT.pdf' : '/Plan B_Investment_Guide_EN.pdf'}
+              href="/Brazil_Plan_B_Guide.pdf"
               download
               className="btn-outline w-full"
             >
