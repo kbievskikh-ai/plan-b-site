@@ -418,6 +418,7 @@ const translations: Record<Language, Translations> = {
       rentalYield: 'Rental Yield/yr',
       openFull: 'Open Full Calculator',
       disclaimer: 'Simplified estimate. Open the full calculator for detailed analysis with costs, leverage, and global comparison.',
+    },
     tools: {
       sectionLabel: 'Plan B Tools & Reports',
       title1: 'Professional Decision',
