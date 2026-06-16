@@ -54,7 +54,7 @@ export default function AboutKonstantin() {
             {/* Trust badges */}
             <div className="mt-8 flex flex-wrap gap-4">
               <div className="bg-gold-50 px-4 py-3 rounded-lg border border-gold-200">
-                <div className="text-gold-700 text-sm font-semibold">CRECI #11410-J</div>
+                <div className="text-gold-700 text-sm font-semibold">CRECI-SC 59616</div>
                 <div className="text-gold-600/70 text-xs">Licensed in Santa Catarina</div>
               </div>
               <div className="bg-navy-50 px-4 py-3 rounded-lg border border-navy-100">

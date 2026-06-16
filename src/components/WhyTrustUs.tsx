@@ -18,7 +18,7 @@ export default function WhyTrustUs({ showClientExperience = true }: { showClient
     {
       title: t('trust.creciLicensed'),
       description: t('trust.creciDesc'),
-      number: 'CRECI #11410-J'
+      number: 'CRECI-SC 59616'
     },
   ];
 

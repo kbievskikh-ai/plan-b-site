@@ -15,6 +15,7 @@ export default function Header() {
     { label: t('nav.properties'), href: "#properties", section: 'section_featured_properties' },
     { label: t('nav.regions'), href: "#regions", section: 'section_map' },
     { label: t('nav.whyBrazil'), href: "#investment", section: 'section_why_brazil' },
+    { label: t('nav.research'), href: "#research", section: 'section_research' },
     { label: t('nav.about'), href: "#about", section: 'section_about' },
     { label: t('nav.caseStudies'), href: "#case-studies", section: 'section_case_studies' },
     { label: t('nav.faq'), href: "#faq", section: 'section_faq' },
@@ -62,8 +63,8 @@ export default function Header() {
             </div>
             <div>
               <span className="text-white font-heading text-xl tracking-wide">Plan B</span>
-              <span className="block text-gold-400 text-[10px] tracking-[0.3em] uppercase">
-                International Real Estate
+              <span className="block text-gold-400 text-[10px] tracking-[0.2em] uppercase">
+                Investment Advisory
               </span>
             </div>
           </motion.a>

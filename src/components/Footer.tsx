@@ -44,13 +44,16 @@ export default function Footer() {
               </div>
               <div>
                 <span className="text-white font-heading text-xl tracking-wide">Plan B</span>
-                <span className="block text-gold-400 text-[10px] tracking-[0.3em] uppercase">
-                  International Real Estate
+                <span className="block text-gold-400 text-[10px] tracking-[0.2em] uppercase">
+                  Investment Advisory
                 </span>
               </div>
             </div>
             <p className="text-white/30 text-sm leading-relaxed mt-4">
               {t('footer.description')}
+            </p>
+            <p className="text-white/20 text-xs mt-3">
+              Licensed Real Estate Professional — CRECI-SC 59616
             </p>
           </div>
 
@@ -105,9 +108,14 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/20 text-sm">
-            © 2026 Plan B Brazil. {t('footer.allRightsReserved')}
-          </p>
+          <div>
+            <p className="text-white/20 text-sm">
+              © 2026 Plan B Brazil. {t('footer.allRightsReserved')}
+            </p>
+            <p className="text-white/15 text-xs mt-1">
+              Officially licensed in Santa Catarina, Brazil — CRECI-SC 59616
+            </p>
+          </div>
           <div className="flex items-center gap-6">
             {[
               { name: "Instagram", href: "https://instagram.com/kbievskikh" },

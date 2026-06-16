@@ -7,7 +7,9 @@ import AboutKonstantin from '@/components/AboutKonstantin';
 import WhyBrazil from '@/components/WhyBrazil';
 import CalculatorTeaser from '@/components/CalculatorTeaser';
 import PropertyFinder from '@/components/PropertyFinder';
+import PlanBTools from '@/components/PlanBTools';
 import HowItWorks from '@/components/HowItWorks';
+import ResearchSection from '@/components/ResearchSection';
 import FAQ from '@/components/FAQ';
 import ContactForm from '@/components/ContactForm';
 import { useSettings } from '@/lib/settings';
@@ -64,9 +66,11 @@ export default function SectionManager() {
         <CalculatorTeaser />
         <AboutKonstantin />
         <PropertyFinder />
+        <PlanBTools />
         <FeaturedProperties />
         <HowItWorks />
         <WhyBrazil />
+        <ResearchSection />
         <FAQ />
         <ContactForm />
       </>
@@ -81,9 +85,11 @@ export default function SectionManager() {
       <CalculatorTeaser />
       <AboutKonstantin />
       <PropertyFinder />
+      <PlanBTools />
       {show('section_featured_properties') && <FeaturedProperties />}
       <HowItWorks />
       {show('section_why_brazil') && <WhyBrazil />}
+      {show('section_research') && <ResearchSection />}
       {show('section_faq') && <FAQ />}
       {show('section_contact') && <ContactForm />}
     </>
