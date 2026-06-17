@@ -1,9 +1,11 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
 
-const tools = [
+// Main tools (core for Plan B preparation)
+const mainTools = [
   {
     id: 'fit-score',
     icon: (
@@ -15,9 +17,14 @@ const tools = [
     nameKey: 'tools.fitScoreName',
     descKey: 'tools.fitScoreDesc',
     ctaKey: 'tools.fitScoreCta',
-    href: '/calculator.html',
+    href: '/brazil-fit-score',
     nextKey: 'tools.fitScoreNext',
-    accent: 'border-gold-400',
+    accentBorder: 'hover:border-gold-400/40',
+    accentBg: 'hover:bg-gold-400/[0.04]',
+    accentIcon: 'border-gold-400/20 text-gold-400 group-hover:bg-gold-400/10',
+    accentShadow: 'hover:shadow-gold-400/5',
+    accentText: 'text-gold-400',
+    accentGlow: 'via-gold-400/30',
   },
   {
     id: 'regions-report',
@@ -30,9 +37,14 @@ const tools = [
     nameKey: 'tools.regionsReportName',
     descKey: 'tools.regionsReportDesc',
     ctaKey: 'tools.regionsReportCta',
-    href: 'https://planb-sc-calculator.vercel.app',
+    href: '/ideal-regions',
     nextKey: 'tools.regionsReportNext',
-    accent: 'border-gold-400',
+    accentBorder: 'hover:border-amber-500/40',
+    accentBg: 'hover:bg-amber-500/[0.04]',
+    accentIcon: 'border-amber-500/20 text-amber-400 group-hover:bg-amber-500/10',
+    accentShadow: 'hover:shadow-amber-500/5',
+    accentText: 'text-amber-400',
+    accentGlow: 'via-amber-500/30',
   },
   {
     id: 'investment-calculator',
@@ -46,19 +58,84 @@ const tools = [
     ctaKey: 'tools.calculatorCta',
     href: '/calculator.html',
     nextKey: 'tools.calculatorNext',
-    accent: 'border-gold-400',
+    accentBorder: 'hover:border-cyan-400/40',
+    accentBg: 'hover:bg-cyan-400/[0.04]',
+    accentIcon: 'border-cyan-400/20 text-cyan-400 group-hover:bg-cyan-400/10',
+    accentShadow: 'hover:shadow-cyan-400/5',
+    accentText: 'text-cyan-400',
+    accentGlow: 'via-cyan-400/30',
+  },
+];
+
+// Bonus tools (free additional products) — visa-path moved to rightmost
+const bonusTools = [
+  {
+    id: 'birth-calculator',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+      </svg>
+    ),
+    nameKey: 'tools.birthCalcName',
+    descKey: 'tools.birthCalcDesc',
+    ctaKey: 'tools.birthCalcCta',
+    href: '/birth-calculator',
+    nextKey: 'tools.birthCalcNext',
+    accentBorder: 'hover:border-rose-400/40',
+    accentBg: 'hover:bg-rose-400/[0.04]',
+    accentIcon: 'border-rose-400/20 text-rose-400 group-hover:bg-rose-400/10',
+    accentShadow: 'hover:shadow-rose-400/5',
+    accentText: 'text-rose-400',
+    accentGlow: 'via-rose-400/30',
+  },
+  {
+    id: 'visa-path',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+    nameKey: 'tools.visaPathName',
+    descKey: 'tools.visaPathDesc',
+    ctaKey: 'tools.visaPathCta',
+    href: '/visa-path',
+    nextKey: 'tools.visaPathNext',
+    accentBorder: 'hover:border-teal-400/40',
+    accentBg: 'hover:bg-teal-400/[0.04]',
+    accentIcon: 'border-teal-400/20 text-teal-400 group-hover:bg-teal-400/10',
+    accentShadow: 'hover:shadow-teal-400/5',
+    accentText: 'text-teal-400',
+    accentGlow: 'via-teal-400/30',
   },
 ];
 
 export default function PlanBTools() {
   const { t } = useLanguage();
+  const [fitScoreDone, setFitScoreDone] = useState(false);
+
+  useEffect(() => {
+    // Check if Fit Score was completed (stored in localStorage)
+    const done = localStorage.getItem('planb_fit_score_done') === 'true';
+    setFitScoreDone(done);
+  }, []);
+
+  const handleFitScoreClick = () => {
+    localStorage.setItem('planb_fit_score_done', 'true');
+    setFitScoreDone(true);
+  };
+
+  const handleRegionsReportClick = (e: React.MouseEvent) => {
+    if (!fitScoreDone) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <section id="tools" className="py-20 bg-navy-900 relative overflow-hidden">
-      {/* Subtle accent */}
+      {/* Subtle accent line */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -82,53 +159,150 @@ export default function PlanBTools() {
           </p>
         </motion.div>
 
-        {/* Tool Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {tools.map((tool, index) => (
-            <motion.div
-              key={tool.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.12 }}
-              whileHover={{ y: -4 }}
-              className="group bg-navy-800/50 border border-white/[0.06] hover:border-gold-400/30 rounded-xl p-6 flex flex-col transition-all duration-300"
-            >
-              {/* Icon */}
-              <div className="w-14 h-14 border border-gold-400/20 flex items-center justify-center text-gold-400 mb-5 group-hover:bg-gold-400/10 transition-colors duration-300">
-                {tool.icon}
+        {/* ===== MAIN TOOLS (gold-bordered group) ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-10"
+        >
+          {/* Group label */}
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-gold-400/30 bg-gold-400/[0.05]">
+              <svg className="w-4 h-4 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span className="text-gold-400 text-xs tracking-[0.2em] uppercase font-semibold">
+                {t('tools.mainToolsLabel')}
+              </span>
+            </div>
+            <p className="text-white/40 text-xs mt-2 max-w-lg mx-auto">
+              {t('tools.mainToolsDesc')}
+            </p>
+          </div>
+
+          <div className="relative rounded-2xl p-[2px] bg-gradient-to-r from-gold-400/40 via-gold-400/20 to-gold-400/40">
+            <div className="bg-navy-950/60 rounded-2xl p-6 sm:p-8">
+              <div className="grid sm:grid-cols-3 gap-5">
+                {mainTools.map((tool, index) => {
+                  const isRegionsReport = tool.id === 'regions-report';
+                  const isFitScore = tool.id === 'fit-score';
+                  const isLocked = isRegionsReport && !fitScoreDone;
+
+                  return (
+                    <motion.a
+                      key={tool.id}
+                      href={tool.href}
+                      target={tool.href.startsWith('http') ? '_blank' : undefined}
+                      rel={tool.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      onClick={isFitScore ? handleFitScoreClick : (isRegionsReport ? handleRegionsReportClick : undefined)}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className={`group relative rounded-xl transition-all duration-300 hover:-translate-y-1 p-[1px] bg-gradient-to-b ${tool.accentGlow} via-gold-400/20 to-transparent hover:shadow-lg ${tool.accentShadow} ${isLocked ? 'opacity-50 cursor-not-allowed hover:translate-y-0' : 'cursor-pointer'}`}
+                    >
+                      <div className="bg-navy-900/80 rounded-xl p-6 flex flex-col transition-all duration-300">
+                        <div className={`w-14 h-14 border flex items-center justify-center mb-5 transition-colors duration-300 ${tool.accentIcon} ${isLocked ? 'opacity-40' : ''}`}>
+                          {tool.icon}
+                        </div>
+                        <h3 className="font-heading text-lg text-white mb-2 group-hover:text-gold-400 transition-colors duration-300">
+                          {t(tool.nameKey)}
+                        </h3>
+                        <p className="text-white/50 text-sm leading-relaxed flex-1 mb-6">
+                          {t(tool.descKey)}
+                        </p>
+                        {isLocked ? (
+                          <div className="flex items-center gap-2 text-sm text-amber-400/60">
+                            <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                            <span className="text-[11px] leading-relaxed">{t('tools.lockedMessage')}</span>
+                          </div>
+                        ) : (
+                          <div className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${tool.accentText} group-hover:opacity-80`}>
+                            {t(tool.ctaKey)}
+                            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                          </div>
+                        )}
+                        <div className="mt-4 pt-4 border-t border-white/[0.06]">
+                          <p className="text-white/25 text-[11px] leading-relaxed">{t(tool.nextKey)}</p>
+                        </div>
+                      </div>
+                    </motion.a>
+                  );
+                })}
               </div>
+            </div>
+          </div>
+        </motion.div>
 
-              {/* Content */}
-              <h3 className="font-heading text-lg text-white mb-2 group-hover:text-gold-400 transition-colors duration-300">
-                {t(tool.nameKey)}
-              </h3>
-              <p className="text-white/40 text-sm leading-relaxed flex-1 mb-6">
-                {t(tool.descKey)}
-              </p>
+        {/* ===== BONUS TOOLS (free products group) ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          {/* Group label */}
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-teal-400/30 bg-teal-400/[0.05]">
+              <svg className="w-4 h-4 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+              </svg>
+              <span className="text-teal-400 text-xs tracking-[0.2em] uppercase font-semibold">
+                {t('tools.bonusToolsLabel')}
+              </span>
+            </div>
+            <p className="text-white/40 text-xs mt-2 max-w-lg mx-auto">
+              {t('tools.bonusToolsDesc')}
+            </p>
+          </div>
 
-              {/* CTA */}
-              <a
-                href={tool.href}
-                target={tool.href.startsWith('http') ? '_blank' : undefined}
-                rel={tool.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="inline-flex items-center gap-2 text-gold-400 text-sm font-semibold group/link hover:text-gold-300 transition-colors"
-              >
-                {t(tool.ctaKey)}
-                <svg className="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </a>
-
-              {/* Next step hint */}
-              <div className="mt-4 pt-4 border-t border-white/[0.04]">
-                <p className="text-white/25 text-[11px] leading-relaxed">
-                  {t(tool.nextKey)}
-                </p>
+          <div className="relative rounded-2xl p-[1px] bg-gradient-to-r from-teal-400/20 via-teal-400/10 to-rose-400/20">
+            <div className="bg-navy-950/40 rounded-2xl p-6 sm:p-8">
+              <div className="grid sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+                {bonusTools.map((tool, index) => (
+                  <motion.a
+                    key={tool.id}
+                    href={tool.href}
+                    target={tool.href.startsWith('http') ? '_blank' : undefined}
+                    rel={tool.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`group relative rounded-xl transition-all duration-300 hover:-translate-y-1 p-[1px] bg-gradient-to-b ${tool.accentGlow} via-gold-400/15 to-transparent hover:shadow-lg cursor-pointer`}
+                  >
+                    <div className="bg-navy-900/80 rounded-xl p-6 flex flex-col transition-all duration-300">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className={`w-14 h-14 border flex items-center justify-center transition-colors duration-300 ${tool.accentIcon}`}>
+                          {tool.icon}
+                        </div>
+                        <span className="px-2 py-0.5 bg-teal-400/10 text-teal-400 rounded text-[10px] font-semibold tracking-wider uppercase">
+                          {t('tools.bonusBadge')}
+                        </span>
+                      </div>
+                      <h3 className="font-heading text-lg text-white mb-2 group-hover:text-gold-400 transition-colors duration-300">
+                        {t(tool.nameKey)}
+                      </h3>
+                      <p className="text-white/50 text-sm leading-relaxed flex-1 mb-6">
+                        {t(tool.descKey)}
+                      </p>
+                      <div className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${tool.accentText} group-hover:opacity-80`}>
+                        {t(tool.ctaKey)}
+                        <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Subtle footer line */}
         <motion.div
