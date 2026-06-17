@@ -2,130 +2,160 @@
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/lib/i18n';
 
-// ─── Pricing data ───
+// ─── Pricing data (stored in USD, BRL = USD × rate) ───
+const EXCHANGE_RATE = 5.6;
+const fmtUSD = (v: number) => '$' + v.toLocaleString();
+const fmtBRL = (v: number) => 'R$ ' + Math.round(v * EXCHANGE_RATE).toLocaleString('pt-BR');
+const fmtPrice = (usd: number) => `${fmtUSD(usd)} (${fmtBRL(usd)})`;
+const pct = (v: number, total: number) => total > 0 ? Math.round((v / total) * 100) : 0;
+
 const FLIGHT_PRICES: Record<string, number> = {
   'Москва': 1800, 'Санкт-Петербург': 1900, 'Киев': 1700, 'Минск': 1800,
   'Алматы': 2100, 'Ташкент': 2000, 'Тбилиси': 1600, 'Ереван': 1700,
   'Стамбул': 1400, 'Дубай': 1300, 'Лиссабон': 900, 'Другой': 2000,
 };
 
+const cityNames: Record<string, { en: string }> = {
+  'Москва': { en: 'Moscow' }, 'Санкт-Петербург': { en: 'St. Petersburg' }, 'Киев': { en: 'Kyiv' }, 'Минск': { en: 'Minsk' },
+  'Алматы': { en: 'Almaty' }, 'Ташкент': { en: 'Tashkent' }, 'Тбилиси': { en: 'Tbilisi' }, 'Ереван': { en: 'Yerevan' },
+  'Стамбул': { en: 'Istanbul' }, 'Дубай': { en: 'Dubai' }, 'Лиссабон': { en: 'Lisbon' }, 'Другой': { en: 'Other' },
+};
+
 const AREAS = [
-  { name: 'Centro', apt: 3500, apartHotel: 6500 },
-  { name: 'Jurerê', apt: 5500, apartHotel: 9000 },
-  { name: 'Campeche', apt: 3000, apartHotel: 5500 },
-  { name: 'Lagoa da Conceição', apt: 4500, apartHotel: 7500 },
-  { name: 'Canasvieiras', apt: 3200, apartHotel: 5800 },
+  { name: 'Centro', apt: 700, apartHotel: 1200 },
+  { name: 'Jurerê', apt: 1500, apartHotel: 2500 },
+  { name: 'Campeche', apt: 600, apartHotel: 1000 },
+  { name: 'Lagoa da Conceição', apt: 900, apartHotel: 1600 },
+  { name: 'Canasvieiras', apt: 650, apartHotel: 1100 },
 ];
 
 const HOSPITALS = [
-  { name: 'Hospital Florianópolis', natural: 12000, csection: 20000 },
-  { name: 'Hospital Unimed', natural: 15000, csection: 25000 },
-  { name: 'Hospital São José', natural: 10000, csection: 17000 },
-  { name: 'Hospital Infantil (SUS)', natural: 0, csection: 0 },
+  { name: 'Hospital Particular', natural: 2500, csection: 4500 },
+  { name: 'Hospital Premium', natural: 3500, csection: 5500 },
+  { name: 'Hospital Standard', natural: 2000, csection: 3800 },
+  { name: 'Hospital Público (SUS)', natural: 0, csection: 0 },
 ];
 
 type Section = 'flights' | 'accommodation' | 'medical' | 'documents' | 'food' | 'insurance' | 'transport' | 'misc' | 'summary';
 
-const SECTIONS: { id: Section; title: string; icon: string }[] = [
-  { id: 'flights', title: 'Перелёт', icon: '✈️' },
-  { id: 'accommodation', title: 'Проживание', icon: '🏠' },
-  { id: 'medical', title: 'Роды и медицина', icon: '🏥' },
-  { id: 'documents', title: 'Документы', icon: '📄' },
-  { id: 'food', title: 'Питание', icon: '🍽' },
-  { id: 'insurance', title: 'Страховка', icon: '🛡' },
-  { id: 'transport', title: 'Транспорт', icon: '🚗' },
-  { id: 'misc', title: 'Дополнительно', icon: '📦' },
-];
-
-const formatBRL = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-const formatUSD = (v: number) => '$' + Math.round(v / 5.1).toLocaleString();
-const pct = (v: number, total: number) => total > 0 ? Math.round((v / total) * 100) : 0;
-
 const COLORS = ['#D4AF37', '#1B2951', '#2a3b6b', '#e8cb7a', '#6366f1', '#10b981', '#f59e0b', '#ef4444'];
 
 export default function BirthCalculatorClient() {
+  const { t, language, setLanguage } = useLanguage();
+  const isRu = language === 'ru';
+
   // ─── State ───
   const [activeSection, setActiveSection] = useState<Section>('flights');
   const [origin, setOrigin] = useState('Москва');
   const [travelers, setTravelers] = useState(2);
   const [flightClass, setFlightClass] = useState<'economy' | 'business'>('economy');
-
   const [months, setMonths] = useState(3);
   const [housingType, setHousingType] = useState<'apt' | 'apartHotel'>('apt');
-  const [area, setArea] = useState(2); // index
-
+  const [area, setArea] = useState(2);
   const [hospitalIdx, setHospitalIdx] = useState(0);
   const [birthType, setBirthType] = useState<'natural' | 'csection'>('natural');
   const [prenatal, setPrenatal] = useState(true);
   const [pediatrician, setPediatrician] = useState(true);
-
-  const [foodLevel, setFoodLevel] = useState(1); // 0=basic, 1=comfy, 2=premium
-
-  const [insuranceType, setInsuranceType] = useState(1); // 0=none, 1=standard, 2=premium
-
-  const [transportType, setTransportType] = useState(1); // 0=public, 1=uber, 2=rental
-
+  const [foodLevel, setFoodLevel] = useState(1);
+  const [insuranceType, setInsuranceType] = useState(1);
+  const [transportType, setTransportType] = useState(1);
   const [babySupplies, setBabySupplies] = useState(true);
   const [tourism, setTourism] = useState(true);
   const [emergencyFund, setEmergencyFund] = useState(true);
 
-  // ─── Calculations ───
-  const costs = useMemo(() => {
-    const flightPerPerson = FLIGHT_PRICES[origin] * (flightClass === 'business' ? 2.5 : 1);
-    const flights = flightPerPerson * travelers * 2; // round trip
+  // ─── Section labels ───
+  const sections: { id: Section; title: string; icon: string }[] = [
+    { id: 'flights', title: isRu ? t('birthCalc.sections.flightsRu') : t('birthCalc.sections.flights'), icon: '✈️' },
+    { id: 'accommodation', title: isRu ? t('birthCalc.sections.accommodationRu') : t('birthCalc.sections.accommodation'), icon: '🏠' },
+    { id: 'medical', title: isRu ? t('birthCalc.sections.medicalRu') : t('birthCalc.sections.medical'), icon: '🏥' },
+    { id: 'documents', title: isRu ? t('birthCalc.sections.documentsRu') : t('birthCalc.sections.documents'), icon: '📄' },
+    { id: 'food', title: isRu ? t('birthCalc.sections.foodRu') : t('birthCalc.sections.food'), icon: '🍽' },
+    { id: 'insurance', title: isRu ? t('birthCalc.sections.insuranceRu') : t('birthCalc.sections.insurance'), icon: '🛡' },
+    { id: 'transport', title: isRu ? t('birthCalc.sections.transportRu') : t('birthCalc.sections.transport'), icon: '🚗' },
+    { id: 'misc', title: isRu ? t('birthCalc.sections.miscRu') : t('birthCalc.sections.misc'), icon: '📦' },
+  ];
 
+  const sectionCost = (id: Section) => {
+    const c = calcCosts();
+    switch (id) {
+      case 'flights': return c.flights; case 'accommodation': return c.accommodation;
+      case 'medical': return c.medical; case 'documents': return c.documents;
+      case 'food': return c.food; case 'insurance': return c.insurance;
+      case 'transport': return c.transport; default: return c.misc;
+    }
+  };
+
+  // ─── Calculations ───
+  const calcCosts = () => {
+    const flightPerPerson = FLIGHT_PRICES[origin] * (flightClass === 'business' ? 2.5 : 1);
+    const flights = flightPerPerson * travelers * 2;
     const areaData = AREAS[area];
     const monthlyRent = housingType === 'apt' ? areaData.apt : areaData.apartHotel;
     const accommodation = monthlyRent * months;
-
     const hosp = HOSPITALS[hospitalIdx];
     const birth = birthType === 'natural' ? hosp.natural : hosp.csection;
-    const prenatalCost = prenatal ? 4500 : 0; // consultations + ultrasounds
-    const pedCost = pediatrician ? 2000 : 0;
-    const anesthesia = birthType === 'csection' ? 3000 : 1500;
+    const prenatalCost = prenatal ? 800 : 0;
+    const pedCost = pediatrician ? 400 : 0;
+    const anesthesia = birthType === 'csection' ? 700 : 300;
     const medical = birth + prenatalCost + pedCost + anesthesia;
-
-    const birthCert = 0; // free in Brazil
-    const cpf = 0; // free
-    const passport = 350; // R$
-    const apostille = 200;
-    const translation = 800;
-    const photos = 50;
-    const documents = birthCert + cpf + passport + apostille + translation + photos;
-
-    const foodPerMonth = [3500, 5500, 8000][foodLevel];
+    const documents = 0 + 0 + 80 + 50 + 150 + 10; // passport $80, apostille $50, translation $150, photos $10
+    const foodPerMonth = [300, 500, 800][foodLevel];
     const food = foodPerMonth * months;
-
-    const insurancePerMonth = [0, 1200, 2500][insuranceType];
+    const insurancePerMonth = [0, 150, 400][insuranceType];
     const insurance = insurancePerMonth * months;
-
-    const transportPerMonth = [400, 1500, 3500][transportType];
+    const transportPerMonth = [50, 300, 700][transportType];
     const transport = transportPerMonth * months;
-
     let misc = 0;
-    if (babySupplies) misc += 3000;
-    if (tourism) misc += months * 1500;
-    if (emergencyFund) misc += 5000;
-
+    if (babySupplies) misc += 600;
+    if (tourism) misc += months * 300;
+    if (emergencyFund) misc += 1000;
     const total = flights + accommodation + medical + documents + food + insurance + transport + misc;
-
     return { flights, accommodation, medical, documents, food, insurance, transport, misc, total };
-  }, [origin, flightClass, travelers, months, housingType, area, hospitalIdx, birthType, prenatal, pediatrician, foodLevel, insuranceType, transportType, babySupplies, tourism, emergencyFund]);
+  };
+
+  const costs = calcCosts();
 
   const costItems = [
-    { label: '✈️ Перелёт', value: costs.flights },
-    { label: '🏠 Проживание', value: costs.accommodation },
-    { label: '🏥 Роды и медицина', value: costs.medical },
-    { label: '📄 Документы', value: costs.documents },
-    { label: '🍽 Питание', value: costs.food },
-    { label: '🛡 Страховка', value: costs.insurance },
-    { label: '🚗 Транспорт', value: costs.transport },
-    { label: '📦 Дополнительно', value: costs.misc },
+    { label: '✈️ ' + (isRu ? t('birthCalc.sections.flightsRu') : t('birthCalc.sections.flights')), value: costs.flights },
+    { label: '🏠 ' + (isRu ? t('birthCalc.sections.accommodationRu') : t('birthCalc.sections.accommodation')), value: costs.accommodation },
+    { label: '🏥 ' + (isRu ? t('birthCalc.sections.medicalRu') : t('birthCalc.sections.medical')), value: costs.medical },
+    { label: '📄 ' + (isRu ? t('birthCalc.sections.documentsRu') : t('birthCalc.sections.documents')), value: costs.documents },
+    { label: '🍽 ' + (isRu ? t('birthCalc.sections.foodRu') : t('birthCalc.sections.food')), value: costs.food },
+    { label: '🛡 ' + (isRu ? t('birthCalc.sections.insuranceRu') : t('birthCalc.sections.insurance')), value: costs.insurance },
+    { label: '🚗 ' + (isRu ? t('birthCalc.sections.transportRu') : t('birthCalc.sections.transport')), value: costs.transport },
+    { label: '📦 ' + (isRu ? t('birthCalc.sections.miscRu') : t('birthCalc.sections.misc')), value: costs.misc },
   ];
+
+  const bcT = (key: string) => t(`birthCalc.${key}`);
+  const fsT = (key: string) => t(`birthCalc.flightsSection.${key}`);
+  const acT = (key: string) => t(`birthCalc.accommodationSection.${key}`);
+  const mdT = (key: string) => t(`birthCalc.medicalSection.${key}`);
+  const dcT = (key: string) => t(`birthCalc.documentsSection.${key}`);
+  const fdT = (key: string) => t(`birthCalc.foodSection.${key}`);
+  const inT = (key: string) => t(`birthCalc.insuranceSection.${key}`);
+  const trT = (key: string) => t(`birthCalc.transportSection.${key}`);
+  const mxT = (key: string) => t(`birthCalc.miscSection.${key}`);
 
   return (
     <div className="min-h-screen bg-navy-950 text-white">
+      {/* Language Switcher — centered */}
+      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-1 bg-navy-900/90 backdrop-blur rounded-full border border-gold-400/30 p-1 shadow-lg">
+        <button
+          onClick={() => setLanguage('en')}
+          className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+            !isRu ? 'bg-gold-500 text-navy-950' : 'text-gold-400/60 hover:text-gold-400'
+          }`}
+        >EN</button>
+        <button
+          onClick={() => setLanguage('ru')}
+          className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+            isRu ? 'bg-gold-500 text-navy-950' : 'text-gold-400/60 hover:text-gold-400'
+          }`}
+        >RU</button>
+      </div>
+
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-navy-950">
         <div className="absolute inset-0 opacity-10">
@@ -135,13 +165,13 @@ export default function BirthCalculatorClient() {
         <div className="relative max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <span className="inline-block px-4 py-1.5 bg-gold-500/20 text-gold-400 rounded-full text-sm font-medium mb-6">
-              Birth Tourism Calculator
+              {isRu ? bcT('badgeRu') : bcT('badge')}
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Калькулятор стоимости <span className="text-gold-400">родов в Бразилии</span>
+              {isRu ? bcT('title1Ru') : bcT('title1')} <span className="text-gold-400">{isRu ? bcT('titleHighlightRu') : bcT('titleHighlight')}</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-              Рассчитайте полную стоимость рождения ребёнка в Бразилии: перелёт, проживание, роды, оформление документов и гражданство
+              {isRu ? bcT('subtitleRu') : bcT('subtitle')}
             </p>
           </motion.div>
         </div>
@@ -150,10 +180,10 @@ export default function BirthCalculatorClient() {
       {/* Sticky total bar */}
       <div className="sticky top-0 z-50 bg-navy-900/95 backdrop-blur border-b border-gold-500/20">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <span className="text-gray-400 text-sm">Итого:</span>
+          <span className="text-gray-400 text-sm">{isRu ? bcT('totalLabelRu') : bcT('totalLabel')}:</span>
           <div className="text-right">
-            <span className="text-2xl md:text-3xl font-bold text-gold-400">{formatBRL(costs.total)}</span>
-            <span className="text-gray-400 ml-2 text-sm">≈ {formatUSD(costs.total)}</span>
+            <span className="text-2xl md:text-3xl font-bold text-gold-400">{fmtUSD(costs.total)}</span>
+            <span className="text-gray-400 ml-2 text-sm">≈ {fmtBRL(costs.total)}</span>
           </div>
         </div>
       </div>
@@ -162,10 +192,8 @@ export default function BirthCalculatorClient() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left: Navigation */}
           <div className="lg:col-span-1 space-y-2">
-            {SECTIONS.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => setActiveSection(s.id)}
+            {sections.map((s) => (
+              <button key={s.id} onClick={() => setActiveSection(s.id)}
                 className={`w-full text-left px-4 py-3 rounded-xl transition-all ${
                   activeSection === s.id
                     ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400'
@@ -174,83 +202,59 @@ export default function BirthCalculatorClient() {
               >
                 <span className="mr-2">{s.icon}</span>
                 <span className="font-medium">{s.title}</span>
-                <span className="float-right text-sm opacity-70">
-                  {formatBRL(
-                    s.id === 'flights' ? costs.flights :
-                    s.id === 'accommodation' ? costs.accommodation :
-                    s.id === 'medical' ? costs.medical :
-                    s.id === 'documents' ? costs.documents :
-                    s.id === 'food' ? costs.food :
-                    s.id === 'insurance' ? costs.insurance :
-                    s.id === 'transport' ? costs.transport :
-                    costs.misc
-                  )}
-                </span>
+                <span className="float-right text-sm opacity-70">{fmtUSD(sectionCost(s.id))}</span>
               </button>
             ))}
-
-            {/* Summary button */}
-            <button
-              onClick={() => setActiveSection('summary')}
+            <button onClick={() => setActiveSection('summary')}
               className={`w-full text-left px-4 py-4 rounded-xl transition-all mt-4 font-bold ${
                 activeSection === 'summary'
                   ? 'bg-gold-500 text-navy-950'
                   : 'bg-gold-500/10 border border-gold-500/30 text-gold-400 hover:bg-gold-500/20'
               }`}
             >
-              📊 Итого: {formatBRL(costs.total)}
+              📊 {isRu ? bcT('totalLabelRu') : bcT('totalLabel')}: {fmtUSD(costs.total)}
             </button>
           </div>
 
           {/* Right: Content */}
           <div className="lg:col-span-2">
-            <motion.div
-              key={activeSection}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+            <motion.div key={activeSection} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
               className="bg-navy-800/50 rounded-2xl p-6 md:p-8 border border-white/5"
             >
               {/* ─── FLIGHTS ─── */}
               {activeSection === 'flights' && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>✈️ Перелёт</h2>
-                  <p className="text-gray-400 text-sm mb-6">Стоимость авиабилетов до Флорианополиса (FLN) и обратно</p>
+                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{fsT('title')}</h2>
+                  <p className="text-gray-400 text-sm mb-6">{isRu ? fsT('descRu') : fsT('desc')}</p>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Город вылета</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">{isRu ? fsT('cityLabelRu') : fsT('cityLabel')}</label>
                     <select value={origin} onChange={e => setOrigin(e.target.value)}
                       className="w-full bg-navy-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-gold-500 focus:outline-none">
-                      {Object.keys(FLIGHT_PRICES).map(c => <option key={c} value={c}>{c}</option>)}
+                      {Object.keys(FLIGHT_PRICES).map(c => <option key={c} value={c}>{isRu ? c : cityNames[c]?.en || c}</option>)}
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Количество пассажиров: {travelers}</label>
-                    <input type="range" min={1} max={4} value={travelers} onChange={e => setTravelers(+e.target.value)}
-                      className="w-full accent-gold-500" />
+                    <label className="block text-sm font-medium text-gray-300 mb-2">{isRu ? fsT('travelersLabelRu') : fsT('travelersLabel')}: {travelers}</label>
+                    <input type="range" min={1} max={4} value={travelers} onChange={e => setTravelers(+e.target.value)} className="w-full accent-gold-500" />
                     <div className="flex justify-between text-xs text-gray-500 mt-1"><span>1</span><span>4</span></div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-3">Класс обслуживания</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-3">{isRu ? fsT('classLabelRu') : fsT('classLabel')}</label>
                     <div className="grid grid-cols-2 gap-3">
                       {(['economy', 'business'] as const).map(c => (
                         <button key={c} onClick={() => setFlightClass(c)}
-                          className={`py-3 rounded-xl font-medium transition ${
-                            flightClass === c ? 'bg-gold-500 text-navy-950' : 'bg-navy-900 text-gray-300 border border-white/10'
-                          }`}>
-                          {c === 'economy' ? 'Эконом' : 'Бизнес'}
+                          className={`py-3 rounded-xl font-medium transition ${flightClass === c ? 'bg-gold-500 text-navy-950' : 'bg-navy-900 text-gray-300 border border-white/10'}`}>
+                          {isRu ? fsT(c === 'economy' ? 'economyRu' : 'businessRu') : fsT(c === 'economy' ? 'economy' : 'business')}
                         </button>
                       ))}
                     </div>
                   </div>
 
                   <div className="bg-navy-900/50 rounded-xl p-4 mt-4">
-                    <div className="flex justify-between"><span className="text-gray-400">Билет (туда-обратно):</span><span>{formatBRL(FLIGHT_PRICES[origin] * (flightClass === 'business' ? 2.5 : 1) * 2)}</span></div>
-                    <div className="flex justify-between mt-1"><span className="text-gray-400">Пассажиры:</span><span>× {travelers}</span></div>
-                    <div className="flex justify-between mt-3 pt-3 border-t border-white/10 font-bold text-gold-400">
-                      <span>Итого перелёт:</span><span>{formatBRL(costs.flights)}</span>
-                    </div>
+                    <p className="text-sm text-gray-400">{isRu ? fsT('infoRu') : fsT('info')}</p>
                   </div>
                 </div>
               )}
@@ -258,51 +262,44 @@ export default function BirthCalculatorClient() {
               {/* ─── ACCOMMODATION ─── */}
               {activeSection === 'accommodation' && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>🏠 Проживание</h2>
-                  <p className="text-gray-400 text-sm mb-6">Рекомендуем приехать за 1-2 месяца до родов и остаться на 1 месяц после</p>
+                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{acT('title')}</h2>
+                  <p className="text-gray-400 text-sm mb-6">{isRu ? acT('descRu') : acT('desc')}</p>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Длительность: {months} мес.</label>
-                    <input type="range" min={2} max={5} value={months} onChange={e => setMonths(+e.target.value)}
-                      className="w-full accent-gold-500" />
-                    <div className="flex justify-between text-xs text-gray-500 mt-1"><span>2 мес</span><span>5 мес</span></div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">{isRu ? acT('monthsLabelRu') : acT('monthsLabel')}: {months}</label>
+                    <input type="range" min={1} max={6} value={months} onChange={e => setMonths(+e.target.value)} className="w-full accent-gold-500" />
+                    <div className="flex justify-between text-xs text-gray-500 mt-1"><span>1</span><span>6</span></div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-3">Тип жилья</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-3">{isRu ? acT('typeLabelRu') : acT('typeLabel')}</label>
                     <div className="grid grid-cols-2 gap-3">
                       {(['apt', 'apartHotel'] as const).map(t => (
                         <button key={t} onClick={() => setHousingType(t)}
-                          className={`py-3 rounded-xl font-medium transition ${
-                            housingType === t ? 'bg-gold-500 text-navy-950' : 'bg-navy-900 text-gray-300 border border-white/10'
-                          }`}>
-                          {t === 'apt' ? '🏢 Квартира' : '🏨 Апарт-отель'}
+                          className={`py-3 rounded-xl font-medium transition ${housingType === t ? 'bg-gold-500 text-navy-950' : 'bg-navy-900 text-gray-300 border border-white/10'}`}>
+                          {isRu ? acT(t === 'apt' ? 'aptRu' : 'apartHotelRu') : acT(t === 'apt' ? 'apt' : 'apartHotel')}
                         </button>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-3">Район Флорипы</label>
-                    <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-3">{isRu ? acT('areaLabelRu') : acT('areaLabel')}</label>
+                    <div className="grid grid-cols-1 gap-2">
                       {AREAS.map((a, i) => (
-                        <button key={i} onClick={() => setArea(i)}
-                          className={`w-full text-left px-4 py-3 rounded-xl transition flex justify-between items-center ${
-                            area === i ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 text-gray-300 border border-white/10'
-                          }`}>
-                          <span className="font-medium">{a.name}</span>
-                          <span className="text-sm">{formatBRL(housingType === 'apt' ? a.apt : a.apartHotel)}/мес</span>
+                        <button key={a.name} onClick={() => setArea(i)}
+                          className={`px-4 py-3 rounded-xl text-left transition ${area === i ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 border border-white/10 text-gray-300'}`}>
+                          <div className="font-medium">{a.name}</div>
+                          <div className="text-sm opacity-70">
+                            {isRu ? acT('aptRu') : acT('apt')}: {fmtUSD(housingType === 'apt' ? a.apt : a.apartHotel)}/мес
+                          </div>
                         </button>
                       ))}
                     </div>
                   </div>
 
                   <div className="bg-navy-900/50 rounded-xl p-4 mt-4">
-                    <div className="flex justify-between"><span className="text-gray-400">Аренда в месяц:</span><span>{formatBRL(housingType === 'apt' ? AREAS[area].apt : AREAS[area].apartHotel)}</span></div>
-                    <div className="flex justify-between mt-1"><span className="text-gray-400">Период:</span><span>{months} мес</span></div>
-                    <div className="flex justify-between mt-3 pt-3 border-t border-white/10 font-bold text-gold-400">
-                      <span>Итого проживание:</span><span>{formatBRL(costs.accommodation)}</span>
-                    </div>
+                    <p className="text-sm text-gray-400">{isRu ? acT('infoRu') : acT('info')}</p>
                   </div>
                 </div>
               )}
@@ -310,20 +307,18 @@ export default function BirthCalculatorClient() {
               {/* ─── MEDICAL ─── */}
               {activeSection === 'medical' && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>🏥 Роды и медицина</h2>
-                  <p className="text-gray-400 text-sm mb-6">Бразилия — лидер по качеству медицины в Латинской Америке</p>
+                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{mdT('title')}</h2>
+                  <p className="text-gray-400 text-sm mb-6">{isRu ? mdT('descRu') : mdT('desc')}</p>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-3">Госпиталь</label>
-                    <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-3">{isRu ? mdT('hospitalLabelRu') : mdT('hospitalLabel')}</label>
+                    <div className="grid grid-cols-1 gap-2">
                       {HOSPITALS.map((h, i) => (
-                        <button key={i} onClick={() => setHospitalIdx(i)}
-                          className={`w-full text-left px-4 py-3 rounded-xl transition ${
-                            hospitalIdx === i ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 text-gray-300 border border-white/10'
-                          }`}>
+                        <button key={h.name} onClick={() => setHospitalIdx(i)}
+                          className={`px-4 py-3 rounded-xl text-left transition ${hospitalIdx === i ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 border border-white/10 text-gray-300'}`}>
                           <div className="font-medium">{h.name}</div>
-                          <div className="text-xs text-gray-400 mt-1">
-                            Естественные: {h.natural === 0 ? 'бесплатно (SUS)' : formatBRL(h.natural)} • Кесарево: {h.csection === 0 ? 'бесплатно (SUS)' : formatBRL(h.csection)}
+                          <div className="text-sm opacity-70">
+                            {isRu ? mdT('naturalRu') : mdT('natural')}: {h.natural === 0 ? 'SUS (free)' : fmtUSD(h.natural)} | {isRu ? mdT('csectionRu') : mdT('csection')}: {h.csection === 0 ? 'SUS (free)' : fmtUSD(h.csection)}
                           </div>
                         </button>
                       ))}
@@ -331,43 +326,32 @@ export default function BirthCalculatorClient() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-3">Тип родов</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-3">{isRu ? mdT('birthTypeLabelRu') : mdT('birthTypeLabel')}</label>
                     <div className="grid grid-cols-2 gap-3">
-                      {(['natural', 'csection'] as const).map(t => (
-                        <button key={t} onClick={() => setBirthType(t)}
-                          className={`py-3 rounded-xl font-medium transition ${
-                            birthType === t ? 'bg-gold-500 text-navy-950' : 'bg-navy-900 text-gray-300 border border-white/10'
-                          }`}>
-                          {t === 'natural' ? '🤱 Естественные' : '🔪 Кесарево'}
+                      {(['natural', 'csection'] as const).map(bt => (
+                        <button key={bt} onClick={() => setBirthType(bt)}
+                          className={`py-3 rounded-xl font-medium transition ${birthType === bt ? 'bg-gold-500 text-navy-950' : 'bg-navy-900 text-gray-300 border border-white/10'}`}>
+                          {isRu ? mdT(bt === 'natural' ? 'naturalRu' : 'csectionRu') : mdT(bt === 'natural' ? 'natural' : 'csection')}
                         </button>
                       ))}
                     </div>
                   </div>
 
                   <div className="space-y-3">
-                    <label className="block text-sm font-medium text-gray-300">Дополнительно</label>
                     {[
-                      { label: 'Ведение беременности (пренатал)', state: prenatal, set: setPrenatal, cost: 4500 },
-                      { label: 'Педиатр / неонатолог', state: pediatrician, set: setPediatrician, cost: 2000 },
-                    ].map((item, i) => (
-                      <button key={i} onClick={() => item.set(!item.state)}
-                        className={`w-full text-left px-4 py-3 rounded-xl transition flex justify-between ${
-                          item.state ? 'bg-gold-500/10 border border-gold-500/20 text-white' : 'bg-navy-900 text-gray-500 border border-white/5'
-                        }`}>
-                        <span>{item.state ? '✅' : '⬜'} {item.label}</span>
-                        <span className="text-sm">{formatBRL(item.cost)}</span>
-                      </button>
+                      { checked: prenatal, set: setPrenatal, labelKey: 'prenatal', labelKeyRu: 'prenatalRu', cost: 800 },
+                      { checked: pediatrician, set: setPediatrician, labelKey: 'pediatrician', labelKeyRu: 'pediatricianRu', cost: 400 },
+                    ].map(item => (
+                      <label key={item.labelKey} className="flex items-center gap-3 px-4 py-3 bg-navy-900/50 rounded-xl cursor-pointer">
+                        <input type="checkbox" checked={item.checked} onChange={e => item.set(e.target.checked)} className="accent-gold-500 w-5 h-5" />
+                        <span className="text-sm text-gray-300">{isRu ? mdT(item.labelKeyRu) : mdT(item.labelKey)}</span>
+                        <span className="ml-auto text-sm text-gold-400">{item.checked ? fmtUSD(item.cost) : '—'}</span>
+                      </label>
                     ))}
                   </div>
 
-                  <div className="bg-navy-900/50 rounded-xl p-4 mt-4 space-y-1">
-                    <div className="flex justify-between"><span className="text-gray-400">Роды ({birthType === 'natural' ? 'естественные' : 'кесарево'}):</span><span>{formatBRL(birthType === 'natural' ? HOSPITALS[hospitalIdx].natural : HOSPITALS[hospitalIdx].csection)}</span></div>
-                    <div className="flex justify-between"><span className="text-gray-400">Анестезия:</span><span>{formatBRL(birthType === 'csection' ? 3000 : 1500)}</span></div>
-                    {prenatal && <div className="flex justify-between"><span className="text-gray-400">Пренатал:</span><span>{formatBRL(4500)}</span></div>}
-                    {pediatrician && <div className="flex justify-between"><span className="text-gray-400">Педиатр:</span><span>{formatBRL(2000)}</span></div>}
-                    <div className="flex justify-between mt-3 pt-3 border-t border-white/10 font-bold text-gold-400">
-                      <span>Итого медицина:</span><span>{formatBRL(costs.medical)}</span>
-                    </div>
+                  <div className="bg-navy-900/50 rounded-xl p-4">
+                    <p className="text-sm text-gray-400">{isRu ? mdT('infoRu') : mdT('info')}</p>
                   </div>
                 </div>
               )}
@@ -375,39 +359,27 @@ export default function BirthCalculatorClient() {
               {/* ─── DOCUMENTS ─── */}
               {activeSection === 'documents' && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>📄 Документы и гражданство</h2>
-                  <p className="text-gray-400 text-sm mb-6">Ребёнок, рождённый в Бразилии, автоматически получает бразильское гражданство</p>
+                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{dcT('title')}</h2>
+                  <p className="text-gray-400 text-sm mb-6">{isRu ? dcT('descRu') : dcT('desc')}</p>
 
                   <div className="space-y-3">
                     {[
-                      { label: 'Свидетельство о рождении (Certidão)', cost: 0, note: 'Бесплатно' },
-                      { label: 'CPF для ребёнка', cost: 0, note: 'Бесплатно' },
-                      { label: 'Бразильский паспорт', cost: 350, note: 'Срочное оформление' },
-                      { label: 'Апостиль / консульская легализация', cost: 200, note: 'Для использования за рубежом' },
-                      { label: 'Перевод документов', cost: 800, note: 'Свидетельство, справки' },
-                      { label: 'Фото на документы', cost: 50, note: '' },
+                      { label: isRu ? 'Свидетельство о рождении' : 'Birth Certificate', cost: 0 },
+                      { label: 'CPF (Brazilian tax ID)', cost: 0 },
+                      { label: isRu ? 'Паспорт Бразилии для ребёнка' : 'Brazilian passport for baby', cost: 80 },
+                      { label: 'Apostille', cost: 50 },
+                      { label: isRu ? 'Перевод документов' : 'Document translation', cost: 150 },
+                      { label: isRu ? 'Фотографии' : 'Photos', cost: 10 },
                     ].map((d, i) => (
-                      <div key={i} className="flex justify-between items-center px-4 py-3 bg-navy-900 rounded-xl border border-white/5">
-                        <div>
-                          <div className="font-medium text-white">{d.label}</div>
-                          {d.note && <div className="text-xs text-gray-500 mt-0.5">{d.note}</div>}
-                        </div>
-                        <span className={`font-medium ${d.cost === 0 ? 'text-green-400' : 'text-white'}`}>
-                          {d.cost === 0 ? 'Бесплатно' : formatBRL(d.cost)}
-                        </span>
+                      <div key={i} className="flex justify-between px-4 py-3 bg-navy-900/50 rounded-xl">
+                        <span className="text-sm text-gray-300">{d.label}</span>
+                        <span className="text-sm text-gold-400">{d.cost === 0 ? (isRu ? 'Бесплатно' : 'Free') : fmtUSD(d.cost)}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="bg-green-900/20 border border-green-500/20 rounded-xl p-4 mt-4">
-                    <div className="text-green-400 font-medium">🇧🇷 Гражданство Бразилии — автоматически!</div>
-                    <div className="text-gray-400 text-sm mt-1">Ребёнок получает гражданство по праву рождения (jus soli). Родители могут подать на ВНЖ через 1 год.</div>
-                  </div>
-
-                  <div className="bg-navy-900/50 rounded-xl p-4 mt-4">
-                    <div className="flex justify-between font-bold text-gold-400">
-                      <span>Итого документы:</span><span>{formatBRL(costs.documents)}</span>
-                    </div>
+                  <div className="bg-navy-900/50 rounded-xl p-4">
+                    <p className="text-sm text-gray-400">{isRu ? dcT('infoRu') : dcT('info')}</p>
                   </div>
                 </div>
               )}
@@ -415,35 +387,23 @@ export default function BirthCalculatorClient() {
               {/* ─── FOOD ─── */}
               {activeSection === 'food' && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>🍽 Питание</h2>
-                  <p className="text-gray-400 text-sm mb-6">Бюджет на питание для семьи из {travelers} человек</p>
+                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{fdT('title')}</h2>
+                  <p className="text-gray-400 text-sm mb-6">{isRu ? fdT('descRu') : fdT('desc')}</p>
 
-                  <div className="space-y-2">
-                    {[
-                      { label: '🥘 Базовый', desc: 'Готовка дома, базовые продукты', cost: 3500, idx: 0 },
-                      { label: '🍳 Комфортный', desc: 'Дом + иногда кафе/рестораны', cost: 5500, idx: 1 },
-                      { label: '🍽 Премиум', desc: 'Рестораны, доставка, деликатесы', cost: 8000, idx: 2 },
-                    ].map((f) => (
-                      <button key={f.idx} onClick={() => setFoodLevel(f.idx)}
-                        className={`w-full text-left px-4 py-4 rounded-xl transition ${
-                          foodLevel === f.idx ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 text-gray-300 border border-white/10'
-                        }`}>
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <div className="font-medium">{f.label}</div>
-                            <div className="text-xs text-gray-500 mt-0.5">{f.desc}</div>
-                          </div>
-                          <span className="font-medium">{formatBRL(f.cost)}/мес</span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="bg-navy-900/50 rounded-xl p-4 mt-4">
-                    <div className="flex justify-between"><span className="text-gray-400">В месяц:</span><span>{formatBRL([3500, 5500, 8000][foodLevel])}</span></div>
-                    <div className="flex justify-between mt-1"><span className="text-gray-400">Период:</span><span>{months} мес</span></div>
-                    <div className="flex justify-between mt-3 pt-3 border-t border-white/10 font-bold text-gold-400">
-                      <span>Итого питание:</span><span>{formatBRL(costs.food)}</span>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-3">{isRu ? fdT('levelLabelRu') : fdT('levelLabel')}</label>
+                    <div className="grid grid-cols-3 gap-3">
+                      {([
+                        { key: 'basic', keyRu: 'basicRu', cost: 300 },
+                        { key: 'comfy', keyRu: 'comfyRu', cost: 500 },
+                        { key: 'premium', keyRu: 'premiumRu', cost: 1500 },
+                      ] as const).map((level, i) => (
+                        <button key={level.key} onClick={() => setFoodLevel(i)}
+                          className={`py-3 rounded-xl font-medium transition text-center ${foodLevel === i ? 'bg-gold-500 text-navy-950' : 'bg-navy-900 text-gray-300 border border-white/10'}`}>
+                          <div>{isRu ? fdT(level.keyRu) : fdT(level.key)}</div>
+                          <div className="text-xs mt-1 opacity-70">{fmtUSD(level.cost)}/мес</div>
+                        </button>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -452,33 +412,23 @@ export default function BirthCalculatorClient() {
               {/* ─── INSURANCE ─── */}
               {activeSection === 'insurance' && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>🛡 Страховка</h2>
-                  <p className="text-gray-400 text-sm mb-6">Медицинское страхование на время пребывания</p>
+                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{inT('title')}</h2>
+                  <p className="text-gray-400 text-sm mb-6">{isRu ? inT('descRu') : inT('desc')}</p>
 
-                  <div className="space-y-2">
-                    {[
-                      { label: '❌ Без страховки', desc: 'Все расходы из кармана', cost: 0, idx: 0 },
-                      { label: '🛡 Стандарт', desc: 'Базовое покрытие, экстренная помощь', cost: 1200, idx: 1 },
-                      { label: '👑 Премиум', desc: 'Полное покрытие включая материнство', cost: 2500, idx: 2 },
-                    ].map((ins) => (
-                      <button key={ins.idx} onClick={() => setInsuranceType(ins.idx)}
-                        className={`w-full text-left px-4 py-4 rounded-xl transition ${
-                          insuranceType === ins.idx ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 text-gray-300 border border-white/10'
-                        }`}>
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <div className="font-medium">{ins.label}</div>
-                            <div className="text-xs text-gray-500 mt-0.5">{ins.desc}</div>
-                          </div>
-                          <span className="font-medium">{ins.cost === 0 ? '—' : `${formatBRL(ins.cost)}/мес`}</span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="bg-navy-900/50 rounded-xl p-4 mt-4">
-                    <div className="flex justify-between font-bold text-gold-400">
-                      <span>Итого страховка:</span><span>{formatBRL(costs.insurance)}</span>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-3">{isRu ? inT('typeLabelRu') : inT('typeLabel')}</label>
+                    <div className="grid grid-cols-1 gap-2">
+                      {([
+                        { key: 'none', keyRu: 'noneRu', cost: 0 },
+                        { key: 'standard', keyRu: 'standardRu', cost: 150 },
+                        { key: 'premium', keyRu: 'premiumRu', cost: 400 },
+                      ] as const).map((level, i) => (
+                        <button key={level.key} onClick={() => setInsuranceType(i)}
+                          className={`px-4 py-3 rounded-xl text-left transition ${insuranceType === i ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 border border-white/10 text-gray-300'}`}>
+                          <div className="font-medium">{isRu ? inT(level.keyRu) : inT(level.key)}</div>
+                          <div className="text-sm opacity-70">{level.cost === 0 ? (isRu ? 'Бесплатно' : 'Free') : fmtUSD(level.cost) + '/мес'}</div>
+                        </button>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -487,33 +437,23 @@ export default function BirthCalculatorClient() {
               {/* ─── TRANSPORT ─── */}
               {activeSection === 'transport' && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>🚗 Транспорт</h2>
-                  <p className="text-gray-400 text-sm mb-6">Транспортные расходы на месте</p>
+                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{trT('title')}</h2>
+                  <p className="text-gray-400 text-sm mb-6">{isRu ? trT('descRu') : trT('desc')}</p>
 
-                  <div className="space-y-2">
-                    {[
-                      { label: '🚌 Общественный', desc: 'Автобусы, ~R$5 за поездку', cost: 400, idx: 0 },
-                      { label: '🚕 Uber/Такси', desc: 'Комфорт, средние расстояния', cost: 1500, idx: 1 },
-                      { label: '🚗 Аренда авто', desc: 'Свобода передвижения', cost: 3500, idx: 2 },
-                    ].map((t) => (
-                      <button key={t.idx} onClick={() => setTransportType(t.idx)}
-                        className={`w-full text-left px-4 py-4 rounded-xl transition ${
-                          transportType === t.idx ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 text-gray-300 border border-white/10'
-                        }`}>
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <div className="font-medium">{t.label}</div>
-                            <div className="text-xs text-gray-500 mt-0.5">{t.desc}</div>
-                          </div>
-                          <span className="font-medium">{formatBRL(t.cost)}/мес</span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="bg-navy-900/50 rounded-xl p-4 mt-4">
-                    <div className="flex justify-between font-bold text-gold-400">
-                      <span>Итого транспорт:</span><span>{formatBRL(costs.transport)}</span>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-3">{isRu ? trT('typeLabelRu') : trT('typeLabel')}</label>
+                    <div className="grid grid-cols-1 gap-2">
+                      {([
+                        { key: 'public', keyRu: 'publicRu', cost: 50 },
+                        { key: 'uber', keyRu: 'uberRu', cost: 300 },
+                        { key: 'rental', keyRu: 'rentalRu', cost: 700 },
+                      ] as const).map((level, i) => (
+                        <button key={level.key} onClick={() => setTransportType(i)}
+                          className={`px-4 py-3 rounded-xl text-left transition ${transportType === i ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 border border-white/10 text-gray-300'}`}>
+                          <div className="font-medium">{isRu ? trT(level.keyRu) : trT(level.key)}</div>
+                          <div className="text-sm opacity-70">{fmtUSD(level.cost)}/мес</div>
+                        </button>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -522,120 +462,209 @@ export default function BirthCalculatorClient() {
               {/* ─── MISC ─── */}
               {activeSection === 'misc' && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>📦 Дополнительно</h2>
-                  <p className="text-gray-400 text-sm mb-6">Дополнительные расходы</p>
+                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>{mxT('title')}</h2>
+                  <p className="text-gray-400 text-sm mb-6">{isRu ? mxT('descRu') : mxT('desc')}</p>
 
                   <div className="space-y-3">
                     {[
-                      { label: '👶 Детские товары (коляска, автокресло, одежда)', state: babySupplies, set: setBabySupplies, cost: 3000 },
-                      { label: '🌴 Туризм и развлечения', state: tourism, set: setTourism, cost: months * 1500 },
-                      { label: '🆘 Резервный фонд', state: emergencyFund, set: setEmergencyFund, cost: 5000 },
-                    ].map((item, i) => (
-                      <button key={i} onClick={() => item.set(!item.state)}
-                        className={`w-full text-left px-4 py-4 rounded-xl transition flex justify-between items-center ${
-                          item.state ? 'bg-gold-500/10 border border-gold-500/20 text-white' : 'bg-navy-900 text-gray-500 border border-white/5'
-                        }`}>
-                        <span>{item.state ? '✅' : '⬜'} {item.label}</span>
-                        <span className="text-sm">{formatBRL(item.cost)}</span>
-                      </button>
+                      { checked: babySupplies, set: setBabySupplies, labelKey: 'babySupplies', labelKeyRu: 'babySuppliesRu', cost: 600 },
+                      { checked: tourism, set: setTourism, labelKey: 'tourism', labelKeyRu: 'tourismRu', cost: 300 * months },
+                      { checked: emergencyFund, set: setEmergencyFund, labelKey: 'emergencyFund', labelKeyRu: 'emergencyFundRu', cost: 1000 },
+                    ].map(item => (
+                      <label key={item.labelKey} className="flex items-center gap-3 px-4 py-3 bg-navy-900/50 rounded-xl cursor-pointer">
+                        <input type="checkbox" checked={item.checked} onChange={e => item.set(e.target.checked)} className="accent-gold-500 w-5 h-5" />
+                        <span className="text-sm text-gray-300">{isRu ? mxT(item.labelKeyRu) : mxT(item.labelKey)}</span>
+                        <span className="ml-auto text-sm text-gold-400">{item.checked ? fmtUSD(item.cost) : '—'}</span>
+                      </label>
                     ))}
-                  </div>
-
-                  <div className="bg-navy-900/50 rounded-xl p-4 mt-4">
-                    <div className="flex justify-between font-bold text-gold-400">
-                      <span>Итого дополнительно:</span><span>{formatBRL(costs.misc)}</span>
-                    </div>
                   </div>
                 </div>
               )}
 
               {/* ─── SUMMARY ─── */}
               {activeSection === 'summary' && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>📊 Полная сводка</h2>
-                  <p className="text-gray-400 text-sm mb-6">Расчёт стоимости рождения ребёнка в Бразилии (Флорианополис)</p>
+                <div className="space-y-8">
+                  <h2 className="text-2xl font-bold" style={{ fontFamily: 'Playfair Display, serif' }}>{isRu ? bcT('summaryTitleRu') : bcT('summaryTitle')}</h2>
 
-                  {/* Total */}
-                  <div className="bg-gradient-to-r from-gold-500/20 to-gold-500/5 rounded-2xl p-6 text-center border border-gold-500/20">
-                    <div className="text-sm text-gray-400 mb-1">Общая стоимость</div>
-                    <div className="text-4xl md:text-5xl font-bold text-gold-400">{formatBRL(costs.total)}</div>
-                    <div className="text-lg text-gray-400 mt-1">≈ {formatUSD(costs.total)}</div>
-                  </div>
-
-                  {/* Breakdown */}
-                  <div className="space-y-3">
-                    {costItems.map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: COLORS[i] }} />
-                        <div className="flex-1">
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm">{item.label}</span>
-                            <span className="font-medium">{formatBRL(item.value)}</span>
-                          </div>
-                          <div className="w-full bg-navy-900 rounded-full h-2 mt-1">
-                            <div className="h-2 rounded-full transition-all" style={{
-                              width: `${pct(item.value, costs.total)}%`,
-                              backgroundColor: COLORS[i],
-                            }} />
-                          </div>
-                        </div>
-                        <span className="text-xs text-gray-500 w-10 text-right">{pct(item.value, costs.total)}%</span>
+                  {/* Donut chart */}
+                  <div className="flex items-center gap-8">
+                    <div className="relative w-48 h-48 flex-shrink-0">
+                      <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
+                        {costItems.reduce((acc, item, i) => {
+                          const prev = acc.prevTotal;
+                          const dashArray = `${pct(item.value, costs.total)}, ${100 - pct(item.value, costs.total)}`;
+                          acc.elements.push(
+                            <circle key={i} cx="18" cy="18" r="15.915" fill="none" stroke={COLORS[i]} strokeWidth="3"
+                              strokeDasharray={dashArray} strokeDashoffset={-prev} className="transition-all duration-500" />
+                          );
+                          acc.prevTotal += pct(item.value, costs.total);
+                          return acc;
+                        }, { elements: [] as JSX.Element[], prevTotal: 0 }).elements}
+                      </svg>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <div className="text-2xl font-bold text-gold-400">{fmtUSD(costs.total)}</div>
+                        <div className="text-xs text-gray-500">{fmtBRL(costs.total)}</div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
 
-                  {/* Comparison */}
-                  <div className="mt-8">
-                    <h3 className="text-lg font-bold mb-4">🌍 Сравнение с другими странами</h3>
-                    <div className="grid grid-cols-2 gap-3">
-                      {[
-                        { country: '🇧🇷 Бразилия', cost: costs.total, highlight: true },
-                        { country: '🇺🇸 США', cost: costs.total * 3.5 },
-                        { country: '🇵🇹 Португалия', cost: costs.total * 2.2 },
-                        { country: '🇹🇭 Таиланд', cost: costs.total * 1.3 },
-                      ].map((c, i) => (
-                        <div key={i} className={`px-4 py-3 rounded-xl ${c.highlight ? 'bg-gold-500/20 border border-gold-500/30 text-gold-400' : 'bg-navy-900 text-gray-300 border border-white/5'}`}>
-                          <div className="text-sm font-medium">{c.country}</div>
-                          <div className="text-lg font-bold mt-1">{formatBRL(c.cost)}</div>
-                          <div className="text-xs text-gray-500">≈ {formatUSD(c.cost)}</div>
+                    <div className="flex-1 space-y-2">
+                      {costItems.map((item, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: COLORS[i] }} />
+                          <span className="text-sm flex-1">{item.label}</span>
+                          <span className="text-sm font-medium">{fmtUSD(item.value)}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* What you get */}
-                  <div className="bg-green-900/20 border border-green-500/20 rounded-2xl p-6 mt-6">
-                    <h3 className="text-lg font-bold text-green-400 mb-3">✅ Что вы получаете</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-300">
-                      <div>🇧🇷 Бразильское гражданство ребёнку</div>
-                      <div>🛂 Паспорт Бразилии (6-й в мире по силе)</div>
-                      <div>🏥 Качественная медицина</div>
-                      <div>📋 Все документы оформлены</div>
-                      <div>🏠 Возможность ВНЖ для родителей</div>
-                      <div>🌍 Безвиз в 170+ стран</div>
-                    </div>
+                  {/* Breakdown bars */}
+                  <div className="space-y-4">
+                    {costItems.map((item, i) => (
+                      <div key={i} className="flex items-center gap-4">
+                        <div className="w-40 text-sm text-gray-400 flex-shrink-0">{item.label}</div>
+                        <div className="flex-1">
+                          <div className="flex justify-between mb-1">
+                            <span className="text-sm">{fmtUSD(item.value)}</span>
+                            <span className="text-sm text-gray-500">{pct(item.value, costs.total)}%</span>
+                          </div>
+                          <div className="w-full bg-navy-900 rounded-full h-2">
+                            <div className="h-2 rounded-full transition-all" style={{ width: `${pct(item.value, costs.total)}%`, backgroundColor: COLORS[i] }} />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
                   {/* CTA */}
                   <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
                     className="block w-full bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold text-center py-4 rounded-xl text-lg transition mt-6">
-                    💬 Получить персональную консультацию
+                    💬 {isRu ? bcT('ctaRu') : bcT('cta')}
                   </a>
-                  <p className="text-center text-xs text-gray-500">Напишите нам в WhatsApp — ответим за 15 минут</p>
+                  <p className="text-center text-xs text-gray-500">{isRu ? bcT('ctaNoteRu') : bcT('ctaNote')}</p>
                 </div>
               )}
             </motion.div>
           </div>
         </div>
 
+                  {/* Citizenship Benefits */}
+                  <div className="bg-gradient-to-br from-green-900/20 to-gold-500/10 border border-gold-400/20 rounded-2xl p-6 mt-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-3xl">🇧🇷</span>
+                      <div>
+                        <h3 className="text-xl font-bold text-gold-400" style={{ fontFamily: 'Playfair Display, serif' }}>
+                          {isRu ? bcT('citizenshipTitleRu') : bcT('citizenshipTitle')}
+                        </h3>
+                        <p className="text-sm text-gray-400">
+                          {isRu ? bcT('citizenshipSubtitleRu') : bcT('citizenshipSubtitle')}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Citizenship flow */}
+                    <div className="flex items-start gap-2 mb-6 overflow-x-auto pb-2">
+                      {[
+                        { emoji: '👶', label: isRu ? 'Рождение' : 'Birth' },
+                        { emoji: '🇧🇷', label: isRu ? 'Гражданство' : 'Citizenship' },
+                        { emoji: '🛂', label: isRu ? 'Паспорт' : 'Passport' },
+                        { emoji: '‍👩‍👦', label: isRu ? 'Резидентство родителей' : 'Parents Residency' },
+                      ].map((step, i) => (
+                        <div key={i} className="flex items-center min-w-fit">
+                          <div className="text-center px-4 py-3 bg-white/5 rounded-xl border border-gold-400/20">
+                            <div className="text-2xl mb-1">{step.emoji}</div>
+                            <div className="text-xs text-gray-300">{step.label}</div>
+                          </div>
+                          {i < 3 && <div className="w-8 h-0.5 bg-gold-400/30 mx-1 mt-6" />}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Key benefits */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {[
+                        { icon: '🇧🇷', title: isRu ? 'Гражданство по праву рождения' : 'Birthright Citizenship', desc: isRu ? 'Ребёнок автоматически получает бразильское гражданство — jure soli' : 'Child automatically receives Brazilian citizenship — jure soli' },
+                        { icon: '🛂', title: isRu ? 'Бразильский паспорт' : 'Brazilian Passport', desc: isRu ? 'Безвиз в 170+ стран, включая ЕС, Великобританию, Южную Америку' : 'Visa-free to 170+ countries including EU, UK, South America' },
+                        { icon: '👨‍👩‍', title: isRu ? 'Резидентство для родителей' : 'Residency for Parents', desc: isRu ? 'Родители получают право на постоянное жительство через ребёнка' : 'Parents get permanent residency rights through the child' },
+                        { icon: '', title: isRu ? 'Свобода передвижения' : 'Freedom of Movement', desc: isRu ? 'Паспорт Бразилии входит в топ-20 самых сильных в мире' : 'Brazilian passport ranks among top 20 globally' },
+                      ].map((b, i) => (
+                        <div key={i} className="flex gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                          <span className="text-xl flex-shrink-0">{b.icon}</span>
+                          <div>
+                            <div className="text-sm font-semibold text-gold-300">{b.title}</div>
+                            <div className="text-xs text-gray-400 mt-0.5">{b.desc}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Comparison Table */}
+                  <div className="mt-8">
+                    <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+                      {isRu ? bcT('comparisonTitleRu') : bcT('comparisonTitle')}
+                    </h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="text-gray-400 border-b border-white/10">
+                            <th className="text-left py-3 px-3">{isRu ? 'Страна' : 'Country'}</th>
+                            <th className="text-center py-3 px-3">{isRu ? 'Стоимость' : 'Cost'}</th>
+                            <th className="text-center py-3 px-3 hidden sm:table-cell">{isRu ? 'Комфорт' : 'Comfort'}</th>
+                            <th className="text-center py-3 px-3 hidden sm:table-cell">{isRu ? 'Гражданство' : 'Citizenship'}</th>
+                            <th className="text-center py-3 px-3 hidden md:table-cell">{isRu ? 'Медицина' : 'Medicine'}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {[
+                            { flag: '🇷', name: isRu ? 'Бразилия' : 'Brazil', cost: costs.total, comfort: '★★★★☆', citizenship: isRu ? 'Автомат' : 'Automatic', medicine: isRu ? 'Высокое' : 'High', highlight: true },
+                            { flag: '🇺🇸', name: isRu ? 'США' : 'USA', cost: costs.total * 3.5, comfort: '★★★★★', citizenship: isRu ? 'Автомат' : 'Automatic', medicine: isRu ? 'Топ' : 'Top' },
+                            { flag: '🇹', name: isRu ? 'Португалия' : 'Portugal', cost: costs.total * 2.2, comfort: '★★★★☆', citizenship: isRu ? '—' : '—', medicine: isRu ? 'Высокое' : 'High' },
+                            { flag: '🇹🇭', name: isRu ? 'Таиланд' : 'Thailand', cost: costs.total * 1.3, comfort: '★★★☆☆', citizenship: isRu ? '—' : '—', medicine: isRu ? 'Хорошее' : 'Good' },
+                          ].map((c, i) => (
+                            <tr key={i} className={`border-b border-white/5 ${c.highlight ? 'bg-gold-500/10' : ''}`}>
+                              <td className="py-3 px-3">
+                                <span className={c.highlight ? 'font-bold text-gold-400' : 'text-gray-300'}>
+                                  {c.flag} {c.name}
+                                </span>
+                              </td>
+                              <td className="text-center py-3 px-3">
+                                <span className={c.highlight ? 'font-bold text-gold-400' : 'text-gray-300'}>
+                                  {fmtUSD(c.cost)}
+                                </span>
+                              </td>
+                              <td className="text-center py-3 px-3 text-yellow-400 hidden sm:table-cell">{c.comfort}</td>
+                              <td className="text-center py-3 px-3 hidden sm:table-cell">
+                                <span className={c.citizenship === '—' ? 'text-gray-500' : 'text-green-400'}>
+                                  {c.citizenship}
+                                </span>
+                              </td>
+                              <td className="text-center py-3 px-3 text-gray-300 hidden md:table-cell">{c.medicine}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-3">
+                      {isRu ? '* Оценки комфорта и медицины субъективны и основаны на отзывах клиентов' : '* Comfort and medicine ratings are subjective, based on client feedback'}
+                    </p>
+                  </div>
+
+
+        {/* Disclaimer */}
+        <div className="mt-8 bg-navy-900/50 rounded-xl p-5 border border-white/5">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            ⚠️ {isRu ? bcT('disclaimerRu') : bcT('disclaimer')}
+          </p>
+        </div>
+
         {/* Bottom CTA */}
         <div className="mt-12 mb-8 text-center">
           <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
             className="inline-block bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold px-8 py-4 rounded-xl text-lg transition">
-            💬 Связаться с Plan B
+            💬 {isRu ? bcT('bottomCtaRu') : bcT('bottomCta')}
           </a>
-          <p className="text-gray-500 text-sm mt-3">Консультация бесплатная • Отвечаем за 15 минут</p>
-          <p className="text-gray-600 text-xs mt-2">Расчёт приблизительный. Финальная стоимость зависит от ваших предпочтений.</p>
+          <p className="text-gray-500 text-sm mt-3">{isRu ? bcT('bottomNoteRu') : bcT('bottomNote')}</p>
         </div>
       </div>
     </div>

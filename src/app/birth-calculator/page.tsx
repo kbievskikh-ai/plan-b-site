@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import BirthCalculatorClient from './BirthCalculatorClient';
 
 export const metadata: Metadata = {
-  title: 'Калькулятор стоимости родов в Бразилии | Plan B',
-  description: 'Рассчитайте полную стоимость рождения ребёнка в Бразилии: перелёт, проживание, роды, документы, гражданство.',
+  title: 'Plan B — Birth in Brazil Cost Calculator',
+  description: 'Calculate the full cost of having a baby in Brazil: flights, accommodation, delivery, documents, and citizenship.',
 };
 
 export default function BirthCalculatorPage() {

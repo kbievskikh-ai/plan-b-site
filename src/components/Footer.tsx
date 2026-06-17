@@ -126,7 +126,7 @@ export default function Footer() {
               <a
                 key={social.name}
                 href={social.href}
-                className="text-white/20 hover:text-gold-400 text-xs tracking-wider uppercase transition-colors"
+                className="text-gold-400/70 hover:text-gold-300 text-xs tracking-wider uppercase font-semibold transition-all duration-300 hover:scale-105"
               >
                 {social.name}
               </a>
