@@ -135,19 +135,19 @@ export default function WhyBrazil() {
           </a>
         </ScrollAnimation>
 
-        {/* Small secondary CTA: Official Santa Catarina Video */}
+        {/* Secondary CTA: Official Santa Catarina Video */}
         <ScrollAnimation className="text-center mt-8">
           <a
-            href="https://www.youtube.com/watch?v=EXAMPLE"
+            href="https://www.youtube.com/watch?v=ggA2TiqVMww"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-white/40 hover:text-gold-400 text-sm transition-colors duration-300 group"
+            className="inline-flex items-center gap-3 px-6 py-3 border border-red-500/40 rounded-xl text-red-400 hover:bg-red-500/10 hover:border-red-400/60 transition-all duration-300 group"
           >
-            <svg className="w-5 h-5 text-red-500 group-hover:text-red-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-red-500 group-hover:text-red-400 transition-colors flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
-            Watch Official Santa Catarina Overview
-            <svg className="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <span className="text-sm font-medium">Watch Official Santa Catarina Overview</span>
+            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </a>

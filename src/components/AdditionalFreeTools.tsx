@@ -15,7 +15,6 @@ const freeTools = [
     descKey: 'tools.birthCalcDesc',
     ctaKey: 'tools.birthCalcCta',
     href: '/birth-calculator',
-    accentBorder: 'hover:border-rose-400/40',
     accentIcon: 'border-rose-400/20 text-rose-400 group-hover:bg-rose-400/10',
     accentText: 'text-rose-400',
     accentGlow: 'via-rose-400/30',
@@ -31,7 +30,6 @@ const freeTools = [
     descKey: 'tools.visaPathDesc',
     ctaKey: 'tools.visaPathCta',
     href: '/visa-path',
-    accentBorder: 'hover:border-teal-400/40',
     accentIcon: 'border-teal-400/20 text-teal-400 group-hover:bg-teal-400/10',
     accentText: 'text-teal-400',
     accentGlow: 'via-teal-400/30',
@@ -56,15 +54,15 @@ export default function AdditionalFreeTools() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-400/50" />
             <span className="text-gold-400 text-xs tracking-[0.25em] uppercase font-semibold">
-              Free Tools
+              {t('freeTools.sectionLabel')}
             </span>
             <div className="w-8 h-[1px] bg-gold-400/50" />
           </div>
           <h2 className="font-heading text-2xl sm:text-3xl text-white leading-tight">
-            Additional <span className="text-gold-400">Free Tools</span>
+            {t('freeTools.title')}
           </h2>
           <p className="mt-3 text-sm text-white/50 max-w-lg mx-auto">
-            Free planning tools for families and future residents of Brazil.
+            {t('freeTools.subtitle')}
           </p>
         </motion.div>
 

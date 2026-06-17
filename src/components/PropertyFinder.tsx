@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/lib/i18n';
 import { finderProperties, findUnits, FinderProperty, FinderUnit } from '@/data/finder-properties';
 
 type Step = 'budget' | 'purpose' | 'bedrooms' | 'results' | 'contact';
@@ -28,6 +29,7 @@ const BEDROOM_OPTIONS = [
 ];
 
 export default function PropertyFinder() {
+  const { t } = useLanguage();
   const [step, setStep] = useState<Step>('budget');
   const [budget, setBudget] = useState(0);
   const [purpose, setPurpose] = useState('');
@@ -119,12 +121,12 @@ export default function PropertyFinder() {
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-[#D4AF37] text-sm font-medium tracking-[4px] uppercase mb-3">Personalized Recommendations</p>
+          <p className="text-[#D4AF37] text-sm font-medium tracking-[4px] uppercase mb-3">{t('finder.label')}</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">
-            Find Properties Matching Your Investment Goals
+            {t('finder.title')}
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Answer 3 quick questions and get personalized property recommendations with real pricing.
+            {t('finder.subtitle')}
           </p>
         </div>
 

@@ -22,15 +22,15 @@ export default function ConsultationCTA() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-gold-400" />
             <span className="text-gold-400 text-xs tracking-[0.25em] uppercase font-semibold">
-              {t('contact.sectionLabel') || 'Get Started'}
+              {t('consultation.sectionLabel')}
             </span>
             <div className="w-8 h-[1px] bg-gold-400" />
           </div>
           <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl text-white leading-tight">
-            Ready to Discuss <span className="text-gold-400">Your Goals?</span>
+            {t('consultation.title')}
           </h2>
           <p className="mt-4 text-sm sm:text-base text-white/50 max-w-xl mx-auto leading-relaxed">
-            Book a consultation and receive personalized guidance based on your investment objectives.
+            {t('consultation.subtitle')}
           </p>
         </motion.div>
 
@@ -56,10 +56,10 @@ export default function ConsultationCTA() {
                 </svg>
               </div>
               <h3 className="font-heading text-white text-lg mb-2 group-hover:text-gold-400 transition-colors">
-                Book Consultation
+                {t('consultation.bookTitle')}
               </h3>
               <p className="text-white/50 text-xs leading-relaxed">
-                Schedule a call to discuss your investment goals.
+                {t('consultation.bookDesc')}
               </p>
             </div>
           </motion.a>
@@ -79,10 +79,10 @@ export default function ConsultationCTA() {
                 </svg>
               </div>
               <h3 className="font-heading text-white text-lg mb-2 group-hover:text-green-400 transition-colors">
-                WhatsApp
+                {t('consultation.whatsappTitle')}
               </h3>
               <p className="text-white/50 text-xs leading-relaxed">
-                Quick questions? Message us directly.
+                {t('consultation.whatsappDesc')}
               </p>
             </div>
           </motion.a>
@@ -101,10 +101,10 @@ export default function ConsultationCTA() {
                 </svg>
               </div>
               <h3 className="font-heading text-white text-lg mb-2 group-hover:text-amber-400 transition-colors">
-                Download Guide
+                {t('consultation.guideTitle')}
               </h3>
               <p className="text-white/50 text-xs leading-relaxed">
-                Free Investment Guide for Brazil.
+                {t('consultation.guideDesc')}
               </p>
             </div>
           </motion.a>
