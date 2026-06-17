@@ -119,9 +119,9 @@ export default function PropertyFinder() {
       <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-[#D4AF37] text-sm font-medium tracking-[4px] uppercase mb-3">Property Finder</p>
+          <p className="text-[#D4AF37] text-sm font-medium tracking-[4px] uppercase mb-3">Personalized Recommendations</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">
-            Find Your Perfect Investment
+            Find Properties Matching Your Investment Goals
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Answer 3 quick questions and get personalized property recommendations with real pricing.

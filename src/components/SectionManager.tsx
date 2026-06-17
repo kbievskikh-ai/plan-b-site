@@ -5,13 +5,13 @@ import Hero from '@/components/Hero';
 import FeaturedProperties from '@/components/FeaturedProperties';
 import AboutKonstantin from '@/components/AboutKonstantin';
 import WhyBrazil from '@/components/WhyBrazil';
-import CalculatorTeaser from '@/components/CalculatorTeaser';
 import PropertyFinder from '@/components/PropertyFinder';
 import PlanBTools from '@/components/PlanBTools';
 import HowItWorks from '@/components/HowItWorks';
 import ResearchSection from '@/components/ResearchSection';
 import FAQ from '@/components/FAQ';
-import ContactForm from '@/components/ContactForm';
+import AdditionalFreeTools from '@/components/AdditionalFreeTools';
+import ConsultationCTA from '@/components/ConsultationCTA';
 import { useSettings } from '@/lib/settings';
 import CountrySelector from '@/components/CountrySelector';
 
@@ -63,16 +63,16 @@ export default function SectionManager() {
         <CountrySelector />
         <FloatingChat />
         <Hero />
-        <CalculatorTeaser />
         <AboutKonstantin />
-        <PropertyFinder />
         <PlanBTools />
+        <PropertyFinder />
         <FeaturedProperties />
-        <HowItWorks />
         <WhyBrazil />
         <ResearchSection />
+        <HowItWorks />
         <FAQ />
-        <ContactForm />
+        <AdditionalFreeTools />
+        <ConsultationCTA />
       </>
     );
   }
@@ -82,16 +82,16 @@ export default function SectionManager() {
       <CountrySelector />
       <FloatingChat />
       {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
-      <CalculatorTeaser />
-      <AboutKonstantin />
-      <PropertyFinder />
+      {show('section_about') && <AboutKonstantin />}
       <PlanBTools />
+      <PropertyFinder />
       {show('section_featured_properties') && <FeaturedProperties />}
-      <HowItWorks />
       {show('section_why_brazil') && <WhyBrazil />}
       {show('section_research') && <ResearchSection />}
+      <HowItWorks />
       {show('section_faq') && <FAQ />}
-      {show('section_contact') && <ContactForm />}
+      <AdditionalFreeTools />
+      <ConsultationCTA />
     </>
   );
 }
