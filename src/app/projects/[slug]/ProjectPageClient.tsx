@@ -1498,10 +1498,10 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
           <div style={{ background: '#fff', borderRadius: 10, padding: '16px 20px', border: '1px solid #e5e5e5', fontSize: 11, color: '#888', lineHeight: 1.7, marginTop: 24 }}>
             <strong style={{ color: '#666' }}>{lang === 'ru' ? 'Правовая информация' : lang === 'pt' ? 'Informação Legal' : 'Legal Disclaimer'}</strong><br />
             {lang === 'ru'
-              ? 'Все расчёты доходности являются прогнозными и основаны на исторических данных рынка недвижимости Флорианополиса. Прошлые результаты не гарантируют будущих. Курс валют: 1 USD = R$5.30 (может измениться). Данная информация не является предложением ценных бумаг или инвестиционным советом. Рекомендуется консультация с финансовым консультантом перед принятием инвестиционных решений. CRECI 11410-J. Plan B Brazil — лицензированное риэлторское агентство.'
+              ? 'Все расчёты доходности являются прогнозными и основаны на исторических данных рынка недвижимости Флорианополиса. Прошлые результаты не гарантируют будущих. Курс валют: 1 USD = R$5.30 (может измениться). Данная информация не является предложением ценных бумаг или инвестиционным советом. Рекомендуется консультация с финансовым консультантом перед принятием инвестиционных решений. CRECI-SC 59616. Plan B Brazil — лицензированное риэлторское агентство.'
               : lang === 'pt'
-              ? 'Todas as projeções de rentabilidade são estimativas baseadas em dados históricos do mercado imobiliário de Florianópolis. Resultados passados não garantem resultados futuros. Câmbio: 1 USD = R$5.30 (sujeito a alteração). Esta informação não constitui oferta de valores mobiliários ou conselho de investimento. Recomenda-se consulta com um consultor financeiro antes de tomar decisões de investimento. CRECI 11410-J. Plan B Brazil — imobiliária licenciada.'
-              : 'All yield projections are estimates based on historical data from the Florianópolis real estate market. Past performance does not guarantee future results. Exchange rate: 1 USD = R$5.30 (subject to change). This information does not constitute an offer of securities or investment advice. Consultation with a financial advisor is recommended before making investment decisions. CRECI 11410-J. Plan B Brazil — licensed real estate agency.'}
+              ? 'Todas as projeções de rentabilidade são estimativas baseadas em dados históricos do mercado imobiliário de Florianópolis. Resultados passados não garantem resultados futuros. Câmbio: 1 USD = R$5.30 (sujeito a alteração). Esta informação não constitui oferta de valores mobiliários ou conselho de investimento. Recomenda-se consulta com um consultor financeiro antes de tomar decisões de investimento. CRECI-SC 59616. Plan B Brazil — imobiliária licenciada.'
+              : 'All yield projections are estimates based on historical data from the Florianópolis real estate market. Past performance does not guarantee future results. Exchange rate: 1 USD = R$5.30 (subject to change). This information does not constitute an offer of securities or investment advice. Consultation with a financial advisor is recommended before making investment decisions. CRECI-SC 59616. Plan B Brazil — licensed real estate agency.'}
           </div>
           </>
         )}
@@ -1605,7 +1605,7 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
                     🌐 planbbrazil.com
                   </a>
                 </div>
-                <div style={{ color: '#666', fontSize: 11, marginTop: 10 }}>CRECI 11410-J</div>
+                <div style={{ color: '#666', fontSize: 11, marginTop: 10 }}>CRECI-SC 59616</div>
               </div>
             </div>
 

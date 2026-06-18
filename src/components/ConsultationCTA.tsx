@@ -43,7 +43,7 @@ export default function ConsultationCTA() {
         >
           {/* Book Consultation */}
           <motion.a
-            href="https://cal.com/konstantin-bievskikh"
+            href="https://t.me/kbievskikh"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ y: -4 }}
@@ -89,7 +89,7 @@ export default function ConsultationCTA() {
 
           {/* Download Guide */}
           <motion.a
-            href="/Plan_B_Investment_Guide.pdf"
+            href="/Brazil_Plan_B_Guide.pdf"
             download
             whileHover={{ y: -4 }}
             className="group relative rounded-xl p-[1px] bg-gradient-to-b from-amber-400/40 via-amber-400/20 to-transparent hover:shadow-lg hover:shadow-amber-400/10"

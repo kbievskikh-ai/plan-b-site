@@ -9,6 +9,7 @@ import PropertyFinder from '@/components/PropertyFinder';
 import PlanBTools from '@/components/PlanBTools';
 import HowItWorks from '@/components/HowItWorks';
 import ResearchSection from '@/components/ResearchSection';
+import ResearchInsights from '@/components/ResearchInsights';
 import FAQ from '@/components/FAQ';
 import AdditionalFreeTools from '@/components/AdditionalFreeTools';
 import ConsultationCTA from '@/components/ConsultationCTA';
@@ -68,6 +69,7 @@ export default function SectionManager() {
         <PropertyFinder />
         <FeaturedProperties />
         <WhyBrazil />
+        <ResearchInsights />
         <ResearchSection />
         <HowItWorks />
         <FAQ />
@@ -87,6 +89,7 @@ export default function SectionManager() {
       <PropertyFinder />
       {show('section_featured_properties') && <FeaturedProperties />}
       {show('section_why_brazil') && <WhyBrazil />}
+      <ResearchInsights />
       {show('section_research') && <ResearchSection />}
       <HowItWorks />
       {show('section_faq') && <FAQ />}

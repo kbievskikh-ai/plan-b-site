@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
 
 export type Language = 'en' | 'ru' | 'pt';
 
@@ -2106,7 +2106,14 @@ function getNestedTranslation(obj: Translations, path: string): string {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => {
+    // Read from localStorage on initial render
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('planb_language') as Language;
+      if (saved && ['en', 'ru', 'pt'].includes(saved)) return saved;
+    }
+    return 'en';
+  });
 
   const t = useCallback((key: string): string => {
     const result = getNestedTranslation(translations[language], key);
@@ -2115,6 +2122,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       return getNestedTranslation(translations['en'], key);
     }
     return result;
+  }, [language]);
+
+  // Persist language to localStorage
+  useEffect(() => {
+    localStorage.setItem('planb_language', language);
   }, [language]);
 
   return (
