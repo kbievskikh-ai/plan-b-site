@@ -1,11 +1,13 @@
 'use client';
 
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { SECTION_ICONS } from '@/components/SectionIcons';
 
 const API_URL = 'https://plan-b-admin-api-production.up.railway.app';
 
@@ -21,49 +23,52 @@ interface ResearchItem {
   featured: boolean;
 }
 
-const SECTIONS: Record<string, { icon: string; en: string; ru: string; pt: string; categories: string[] }> = {
+const SECTIONS: Record<string, { iconKey: string; en: string; ru: string; pt: string; categories: string[] }> = {
   'market-reports': {
-    icon: '📊', en: 'Market Reports & Forecasts', ru: 'Рыночные отчёты и прогнозы', pt: 'Relatórios de Mercado',
+    iconKey: 'MarketReports', en: 'Market Reports & Forecasts', ru: 'Рыночные отчёты и прогнозы', pt: 'Relatórios de Mercado',
     categories: ['Market Report'],
   },
   'city-reports': {
-    icon: '🏙️', en: 'City Reports', ru: 'Городские отчёты', pt: 'Relatórios por Cidade',
+    iconKey: 'CityReports', en: 'City Reports', ru: 'Городские отчёты', pt: 'Relatórios por Cidade',
     categories: ['Region Analysis', 'City Report'],
   },
   'district-guides': {
-    icon: '🏘️', en: 'District Guides', ru: 'Гайды по районам', pt: 'Guias por Bairro',
+    iconKey: 'DistrictGuides', en: 'District Guides', ru: 'Гайды по районам', pt: 'Guias por Bairro',
     categories: ['Investment Guide', 'District Guide'],
   },
   'developer-reviews': {
-    icon: '🏗️', en: 'Developer Reviews', ru: 'Обзоры застройщиков', pt: 'Análise de Desenvolvedores',
+    iconKey: 'DeveloperReviews', en: 'Developer Reviews', ru: 'Обзоры застройщиков', pt: 'Análise de Desenvolvedores',
     categories: ['Developer Review'],
   },
   'guides': {
-    icon: '📋', en: 'Guides & Resources', ru: 'Гайды и ресурсы', pt: 'Guias e Recursos',
+    iconKey: 'GuidesResources', en: 'Guides & Resources', ru: 'Гайды и ресурсы', pt: 'Guias e Recursos',
     categories: ['Tax & Legal', 'Relocation'],
   },
 };
 
-export default function ResearchSectionPage({ params }: { params: Promise<{ section: string }> }) {
-  const { section } = use(params);
+export default function ResearchSectionPage() {
+  const params = useParams();
+  const section = params?.section as string;
   const { language } = useLanguage();
   const [items, setItems] = useState<ResearchItem[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const sectionData = SECTIONS[section];
+  const sectionData = section ? SECTIONS[section] : undefined;
 
   useEffect(() => {
-    fetch(`${API_URL}/api/research?limit=50&lang=${language}`)
+    if (!section || !sectionData) { setLoading(false); return; }
+
+    fetch(`${API_URL}/api/research?limit=50`)
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data?.data?.length) {
           const filtered = data.data
-            .filter((r: Record<string, unknown>) => {
-              const cat = String(r.category || '');
-              const status = String((r as any).status || 'published');
+            .filter((r: any) => {
+              const cat = r.category || '';
+              const status = r.status || 'published';
               return status !== 'draft' && sectionData.categories.includes(cat);
             })
-            .map((r: Record<string, unknown>) => ({
+            .map((r: any) => ({
               id: String(r.id || ''),
               title: String(r.title || ''),
               description: String(r.description || ''),
@@ -83,10 +88,27 @@ export default function ResearchSectionPage({ params }: { params: Promise<{ sect
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [language, section, sectionData]);
+  }, [section]);
 
-  const t = sectionData?.[language as keyof typeof sectionData] || sectionData?.en || section;
+  if (!sectionData && section) {
+    return (
+      <main className="min-h-screen bg-navy-950">
+        <Header />
+        <section className="py-20">
+          <div className="max-w-6xl mx-auto px-4 text-center">
+            <h1 className="text-2xl text-white mb-4">Section not found</h1>
+            <Link href="/#research" className="text-gold-400 hover:underline">← Back to Research</Link>
+          </div>
+        </section>
+        <Footer />
+      </main>
+    );
+  }
+
+  if (!section) return null;
+
   const sectionTitle = sectionData?.[language as keyof typeof sectionData] || sectionData?.en || section;
+  const IconComponent = SECTION_ICONS[section || ''];
 
   return (
     <main className="min-h-screen bg-navy-950">
@@ -105,20 +127,14 @@ export default function ResearchSectionPage({ params }: { params: Promise<{ sect
           </div>
 
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-14"
-          >
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-8 h-[1px] bg-gold-400/50" />
-              <span className="text-3xl">{sectionData?.icon}</span>
+              {IconComponent && <IconComponent className="w-10 h-10" />}
               <span className="text-gold-400 text-xs tracking-[0.25em] uppercase font-semibold">{sectionTitle}</span>
               <div className="w-8 h-[1px] bg-gold-400/50" />
             </div>
-            <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl text-white leading-tight">
-              {sectionTitle}
-            </h1>
+            <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl text-white leading-tight">{sectionTitle}</h1>
             <p className="mt-4 text-sm text-white/50 max-w-2xl mx-auto">
               {items.length} report{items.length !== 1 ? 's' : ''} available for download
             </p>
@@ -150,14 +166,9 @@ export default function ResearchSectionPage({ params }: { params: Promise<{ sect
                     transition={{ delay: index * 0.05, duration: 0.3 }}
                     className="group relative rounded-xl overflow-hidden bg-navy-900/80 border border-white/10 hover:border-gold-400/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold-400/5"
                   >
-                    {/* Cover Image */}
                     <div className="aspect-[16/10] overflow-hidden bg-navy-800">
                       {item.coverImage ? (
-                        <img
-                          src={item.coverImage}
-                          alt={item.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
+                        <img src={item.coverImage} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
                           <svg className="w-12 h-12 text-white/10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
@@ -167,7 +178,6 @@ export default function ResearchSectionPage({ params }: { params: Promise<{ sect
                       )}
                     </div>
 
-                    {/* Content */}
                     <div className="p-4">
                       <div className="flex items-center justify-between mb-2">
                         {item.category && (
@@ -187,9 +197,7 @@ export default function ResearchSectionPage({ params }: { params: Promise<{ sect
                       </h3>
 
                       {item.description && (
-                        <p className="text-white/40 text-xs leading-relaxed line-clamp-2 mb-3">
-                          {item.description}
-                        </p>
+                        <p className="text-white/40 text-xs leading-relaxed line-clamp-2 mb-3">{item.description}</p>
                       )}
 
                       <div className="flex items-center gap-2 text-xs font-semibold text-gold-400 group-hover:opacity-80 transition-opacity">

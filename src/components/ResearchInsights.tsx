@@ -4,13 +4,14 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
 import Link from 'next/link';
+import { SECTION_ICONS } from '@/components/SectionIcons';
 
 const API_URL = 'https://plan-b-admin-api-production.up.railway.app';
 
 const SECTIONS = [
   {
     key: 'market-reports',
-    icon: '📊',
+    iconKey: 'MarketReports',
     en: 'Market Reports & Forecasts',
     ru: 'Рыночные отчёты и прогнозы',
     pt: 'Relatórios de Mercado',
@@ -18,7 +19,7 @@ const SECTIONS = [
   },
   {
     key: 'city-reports',
-    icon: '🏙️',
+    iconKey: 'CityReports',
     en: 'City Reports',
     ru: 'Городские отчёты',
     pt: 'Relatórios por Cidade',
@@ -26,7 +27,7 @@ const SECTIONS = [
   },
   {
     key: 'district-guides',
-    icon: '🏘️',
+    iconKey: 'DistrictGuides',
     en: 'District Guides',
     ru: 'Гайды по районам',
     pt: 'Guias por Bairro',
@@ -34,7 +35,7 @@ const SECTIONS = [
   },
   {
     key: 'developer-reviews',
-    icon: '🏗️',
+    iconKey: 'DeveloperReviews',
     en: 'Developer Reviews',
     ru: 'Обзоры застройщиков',
     pt: 'Análise de Desenvolvedores',
@@ -42,7 +43,7 @@ const SECTIONS = [
   },
   {
     key: 'guides',
-    icon: '📋',
+    iconKey: 'GuidesResources',
     en: 'Guides & Resources',
     ru: 'Гайды и ресурсы',
     pt: 'Guias e Recursos',
@@ -55,7 +56,7 @@ export default function ResearchInsights() {
   const [counts, setCounts] = useState<Record<string, number>>({});
 
   useEffect(() => {
-    fetch(`${API_URL}/api/research?limit=50&lang=${language}`)
+    fetch(`${API_URL}/api/research?limit=50`)
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data?.data?.length) {
@@ -68,7 +69,7 @@ export default function ResearchInsights() {
         }
       })
       .catch(() => {});
-  }, [language]);
+  }, []);
 
   const total = Object.values(counts).reduce((a, b) => a + b, 0);
 
@@ -115,33 +116,36 @@ export default function ResearchInsights() {
 
         {/* Section Cards - Click to navigate */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
-          {SECTIONS.map((section, index) => (
-            <motion.div
-              key={section.key}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-            >
-              <Link
-                href={`/research/${section.key}`}
-                className="group block rounded-xl bg-navy-900/80 border border-white/10 hover:border-gold-400/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold-400/5 p-6 text-center"
+          {SECTIONS.map((section, index) => {
+            const IconComponent = SECTION_ICONS[section.key];
+            return (
+              <motion.div
+                key={section.key}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
               >
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  {section.icon}
-                </div>
-                <h3 className="font-heading text-sm text-white mb-2 group-hover:text-gold-400 transition-colors duration-300 leading-snug min-h-[2.5rem] flex items-center justify-center">
-                  {t(section)}
-                </h3>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                  <span className="text-white/40 text-xs">{counts[section.key] ?? '—'} reports</span>
-                  <svg className="w-3 h-3 text-gold-400 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                <Link
+                  href={`/research/${section.key}`}
+                  className="group block rounded-xl bg-navy-900/80 border border-white/10 hover:border-gold-400/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold-400/5 p-6 text-center"
+                >
+                  <div className="mb-3 flex justify-center">
+                    {IconComponent && <IconComponent className="w-10 h-10 group-hover:scale-110 transition-transform duration-300" />}
+                  </div>
+                  <h3 className="font-heading text-sm text-white mb-3 group-hover:text-gold-400 transition-colors duration-300 leading-snug min-h-[2.5rem] flex items-center justify-center">
+                    {t(section)}
+                  </h3>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                    <span className="text-white/40 text-xs">{counts[section.key] ?? '—'} reports</span>
+                    <svg className="w-3 h-3 text-gold-400 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
 
           {/* All Reports card */}
           <motion.div
@@ -154,10 +158,10 @@ export default function ResearchInsights() {
               href="/research/all"
               className="group block rounded-xl bg-gradient-to-br from-gold-500/10 to-amber-500/5 border border-gold-400/20 hover:border-gold-400/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold-400/10 p-6 text-center"
             >
-              <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                📚
+              <div className="mb-3 flex justify-center">
+                {SECTION_ICONS.all && <SECTION_ICONS.all className="w-10 h-10 group-hover:scale-110 transition-transform duration-300" />}
               </div>
-              <h3 className="font-heading text-sm text-gold-400 mb-2 leading-snug min-h-[2.5rem] flex items-center justify-center">
+              <h3 className="font-heading text-sm text-gold-400 mb-3 leading-snug min-h-[2.5rem] flex items-center justify-center">
                 {language === 'ru' ? 'Все отчёты' : language === 'pt' ? 'Todos os Relatórios' : 'All Reports'}
               </h3>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-400/10 border border-gold-400/20">
