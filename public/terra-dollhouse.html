@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terrá - 1BR Dollhouse</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; font-family: 'Inter', sans-serif; overflow: hidden; }
+#container { width: 100vw; height: 100vh; }
+#info {
+  position: absolute; top: 20px; left: 20px; color: #fff;
+  background: rgba(0,0,0,0.6); padding: 15px 20px; border-radius: 12px;
+  backdrop-filter: blur(10px); font-size: 14px; max-width: 280px;
+}
+#info h2 { font-size: 16px; margin-bottom: 8px; color: #D4AF37; }
+#info p { color: #ccc; line-height: 1.5; }
+#controls {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 10px;
+}
+.btn {
+  background: rgba(212,175,55,0.2); border: 1px solid #D4AF37; color: #D4AF37;
+  padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 13px;
+  transition: all 0.2s;
+}
+.btn:hover { background: rgba(212,175,55,0.4); }
+.btn.active { background: rgba(212,175,55,0.6); }
+#tooltip {
+  position: absolute; background: rgba(0,0,0,0.8); color: #fff;
+  padding: 8px 12px; border-radius: 6px; font-size: 12px;
+  pointer-events: none; display: none; white-space: nowrap;
+}
+</style>
+</head>
+<body>
+<div id="container"></div>
+<div id="info">
+  <h2>🏠 Terrá Jurerê — 1BR</h2>
+  <p>43.71 м² • Drag to rotate • Scroll to zoom<br>
+  Click rooms to highlight</p>
+</div>
+<div id="controls">
+  <button class="btn active" onclick="setView('dollhouse')">Dollhouse</button>
+  <button class="btn" onclick="setView('top')">Top View</button>
+  <button class="btn" onclick="setView('inside')">Walk Inside</button>
+  <button class="btn" onclick="toggleRoof()">Toggle Roof</button>
+  <button class="btn" onclick="toggleWalls()">Toggle Walls</button>
+</div>
+<div id="tooltip"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// === SCENE SETUP ===
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1a1a2e);
+scene.fog = new THREE.Fog(0x1a1a2e, 30, 60);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(8, 10, 8);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;
+document.getElementById('container').appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.target.set(0, 0.5, 0);
+controls.minDistance = 2;
+controls.maxDistance = 25;
+
+// === LIGHTING ===
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+scene.add(ambientLight);
+
+const mainLight = new THREE.DirectionalLight(0xfff5e6, 1.5);
+mainLight.position.set(5, 10, 5);
+mainLight.castShadow = true;
+mainLight.shadow.mapSize.set(2048, 2048);
+mainLight.shadow.camera.near = 0.5;
+mainLight.shadow.camera.far = 30;
+mainLight.shadow.camera.left = -10;
+mainLight.shadow.camera.right = 10;
+mainLight.shadow.camera.top = 10;
+mainLight.shadow.camera.bottom = -10;
+scene.add(mainLight);
+
+const fillLight = new THREE.DirectionalLight(0x8888ff, 0.3);
+fillLight.position.set(-5, 5, -5);
+scene.add(fillLight);
+
+const pointLight = new THREE.PointLight(0xffd700, 0.5, 15);
+pointLight.position.set(0, 3, 0);
+scene.add(pointLight);
+
+// === MATERIALS ===
+const matFloor = new THREE.MeshStandardMaterial({ color: 0x8B7355, roughness: 0.8 });
+const matLivingFloor = new THREE.MeshStandardMaterial({ color: 0xD4C5A9, roughness: 0.6 });
+const matBathFloor = new THREE.MeshStandardMaterial({ color: 0xC8D8E8, roughness: 0.3 });
+const matWall = new THREE.MeshStandardMaterial({ color: 0xF5F0E8, roughness: 0.9 });
+const matWallOutside = new THREE.MeshStandardMaterial({ color: 0xE8E0D0, roughness: 0.8 });
+const matGlass = new THREE.MeshPhysicalMaterial({ color: 0x88ccff, transparent: true, opacity: 0.15, roughness: 0.05, metalness: 0.1 });
+const matWood = new THREE.MeshStandardMaterial({ color: 0x6B4226, roughness: 0.7 });
+const matDarkWood = new THREE.MeshStandardMaterial({ color: 0x3D2314, roughness: 0.6 });
+const matBed = new THREE.MeshStandardMaterial({ color: 0xF5F5DC, roughness: 0.8 });
+const matSofa = new THREE.MeshStandardMaterial({ color: 0x708090, roughness: 0.7 });
+const matKitchen = new THREE.MeshStandardMaterial({ color: 0x2C2C2C, roughness: 0.4, metalness: 0.3 });
+const matKitchenCounter = new THREE.MeshStandardMaterial({ color: 0xF0EDE8, roughness: 0.3 });
+const matCeramic = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, roughness: 0.2 });
+const matTile = new THREE.MeshStandardMaterial({ color: 0xE8E0D0, roughness: 0.4 });
+const matBalcony = new THREE.MeshStandardMaterial({ color: 0xB8A88A, roughness: 0.9 });
+const matHighlight = new THREE.MeshStandardMaterial({ color: 0xD4AF37, emissive: 0xD4AF37, emissiveIntensity: 0.3 });
+
+// === DIMENSIONS (from floor plan, meters) ===
+// Master: 3.45 x 3.89
+// Living: 5.25 x 3.89
+// Varanda: 1.93 x 2.51
+// WC1: 1.87 x 1.68
+// WC2: 1.87 x 1.01
+// Wall thickness: 0.15m
+const wallH = 2.7;
+const wallT = 0.15;
+const floorH = 0.1;
+
+const rooms = [];
+const walls = [];
+
+function addBox(x, y, z, w, h, d, mat, name, castShadow = true) {
+  const geo = new THREE.BoxGeometry(w, h, d);
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.position.set(x, y, z);
+  if (castShadow) { mesh.castShadow = true; mesh.receiveShadow = true; }
+  if (name) { mesh.userData = { name }; }
+  scene.add(mesh);
+  return mesh;
+}
+
+// === FLOOR (ground plane) ===
+const groundGeo = new THREE.PlaneGeometry(40, 40);
+const groundMat = new THREE.MeshStandardMaterial({ color: 0x2a2a3e, roughness: 1 });
+const ground = new THREE.Mesh(groundGeo, groundMat);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -0.05;
+ground.receiveShadow = true;
+scene.add(ground);
+
+// Grid
+const gridHelper = new THREE.GridHelper(40, 40, 0x333355, 0x222244);
+gridHelper.position.y = 0;
+scene.add(gridHelper);
+
+// === BUILDING THE APARTMENT ===
+// Coordinate system: X goes left-right, Z goes front-back
+// Master bedroom on LEFT, living room on RIGHT
+// Bathrooms on BOTTOM-LEFT
+// Balcony on TOP of living room
+
+// Floor slabs
+// Master floor
+rooms.push(addBox(-3.5, floorH/2, 0, 3.45, floorH, 3.89, matFloor, 'Master Bedroom'));
+// Living floor
+rooms.push(addBox(1.75, floorH/2, 0, 5.25, floorH, 3.89, matLivingFloor, 'Living Room'));
+// Varanda floor
+rooms.push(addBox(3.2, floorH/2, -3.2, 1.93, floorH, 2.51, matBalcony, 'Varanda'));
+// WC1 floor
+rooms.push(addBox(-3.5, floorH/2, 2.85, 1.87, floorH, 1.68, matBathFloor, 'Bathroom 1'));
+// WC2 floor
+rooms.push(addBox(-1.55, floorH/2, 2.95, 1.87, floorH, 1.01, matBathFloor, 'Bathroom 2'));
+
+// === WALLS ===
+function addWall(x, y, z, w, h, d, name = '') {
+  const mesh = addBox(x, y, z, w, h, d, matWall, name);
+  walls.push(mesh);
+  return mesh;
+}
+
+// -- MASTER BEDROOM WALLS --
+// Left wall (outer)
+addWall(-5.225, wallH/2, 0, wallT, wallH, 3.89, 'Master left wall');
+// Top wall (outer)
+addWall(-3.5, wallH/2, -1.945, 3.45, wallH, wallT, 'Master top wall');
+// Bottom wall (part - with door opening)
+addWall(-4.3, wallH/2, 1.945, 1.75, wallH, wallT, 'Master bottom-left wall');
+addWall(-2.625, wallH/2, 1.945, 0.85, wallH, wallT, 'Master bottom-right wall');
+
+// -- LIVING ROOM WALLS --
+// Right wall (outer)
+addWall(4.375, wallH/2, 0, wallT, wallH, 3.89, 'Living right wall');
+// Top wall (with door to balcony - wider opening)
+addWall(3.2, wallH/2, -1.945, 3.0, wallH, wallT, 'Living top-left wall');
+addWall(4.15, wallH/2, -1.945, wallT, wallH, wallT, 'Living top-mid wall');
+// Bottom wall (with door to entry)
+addWall(1.5, wallH/2, 1.945, 2.0, wallH, wallT, 'Living bottom-left wall');
+addWall(3.5, wallH/2, 1.945, 1.75, wallH, wallT, 'Living bottom-right wall');
+
+// -- WALL BETWEEN MASTER AND LIVING --
+addWall(0.0, wallH/2, -0.95, wallT, wallH, 1.99, 'Master-living top wall');
+addWall(0.0, wallH/2, 0.95, wallT, wallH, 0.99, 'Master-living bottom wall');
+
+// -- VARANDA WALLS --
+// Left wall
+addWall(2.235, wallH/2, -3.2, wallT, wallH, 2.51, 'Varanda left wall');
+// Right wall
+addWall(4.165, wallH/2, -3.2, wallT, wallH, 2.51, 'Varanda right wall');
+// Top wall (outer)
+addWall(3.2, wallH/2, -4.455, 1.93, wallH, wallT, 'Varanda top wall');
+
+// -- BATHROOM WALLS --
+// WC1: left outer wall
+addWall(-4.435, wallH/2, 2.85, wallT, wallH, 1.68, 'WC1 left wall');
+// WC1: bottom wall
+addWall(-3.5, wallH/2, 3.69, 1.87, wallH, wallT, 'WC1 bottom wall');
+// WC1: right wall
+addWall(-2.565, wallH/2, 2.85, wallT, wallH, 0.85, 'WC1 right-top wall');
+addWall(-2.565, wallH/2, 3.35, wallT, wallH, 0.17, 'WC1 door-right wall');
+
+// WC2: bottom wall
+addWall(-1.55, wallH/2, 3.455, 1.87, wallH, wallT, 'WC2 bottom wall');
+// WC2: right wall
+addWall(-0.615, wallH/2, 2.95, wallT, wallH, 1.01, 'WC2 right wall');
+// WC2: left wall (partial - door opening)
+addWall(-2.5, wallH/2, 2.95, 1.15, wallH, wallT, 'WC2 left wall');
+
+// -- OUTER WALLS (connecting) --
+// Bottom outer wall left of bathrooms
+addWall(-4.435, wallH/2, 3.7, 0.01, wallH, 0.01);
+
+// Top outer wall between master and balcony area
+addWall(-1.725, wallH/2, -1.945, 1.45, wallH, wallT, 'Top mid wall');
+addWall(-0.625, wallH/2, -1.945, 0.4, wallH, wallT, 'Top mid-right wall');
+
+// Front outer walls
+addWall(-1.5, wallH/2, 1.945, 1.75, wallH, wallT, 'Front mid-left wall');
+
+// === GLASS (windows / balcony door area) ===
+const glassBalcony = addBox(3.2, wallH/2, -1.945, 0.95, wallH * 0.8, wallT * 0.5, matGlass, 'Balcony glass');
+
+// === FURNITURE ===
+
+// --- MASTER BEDROOM ---
+// Bed (1.8m x 2.0m) - against left wall
+addBox(-4.3, 0.4, 0.2, 1.8, 0.5, 2.0, matBed, 'Bed');
+// Mattress top
+addBox(-4.3, 0.7, 0.2, 1.75, 0.15, 1.95, new THREE.MeshStandardMaterial({color: 0xFAFAFA, roughness: 0.9}), 'Mattress');
+// Headboard
+addBox(-5.1, 0.9, 0.2, 0.15, 0.9, 1.6, matDarkWood, 'Headboard');
+// Nightstand (right side of bed)
+addBox(-3.2, 0.3, 0.2, 0.4, 0.45, 0.4, matWood, 'Nightstand');
+// Wardrobe (on top wall)
+addBox(-3.5, 1.2, -1.7, 2.0, 2.0, 0.6, matDarkWood, 'Wardrobe');
+
+// --- LIVING ROOM ---
+// Sofa (against right wall)
+addBox(3.6, 0.35, 0.5, 0.85, 0.5, 2.0, matSofa, 'Sofa');
+// Sofa back
+addBox(3.9, 0.7, 0.5, 0.15, 0.6, 2.0, matSofa, 'Sofa back');
+// Coffee table
+addBox(2.5, 0.25, 0.5, 0.6, 0.35, 0.4, matWood, 'Coffee table');
+
+// Dining table
+addBox(1.2, 0.55, -0.3, 0.8, 0.08, 0.8, matWood, 'Dining table');
+addBox(1.2, 0.28, -0.3, 0.08, 0.48, 0.08, matWood);
+// Dining chairs
+for (let [cx, cz] of [[0.7, -0.3], [1.7, -0.3], [1.2, -0.8], [1.2, 0.2]]) {
+  addBox(cx, 0.3, cz, 0.35, 0.45, 0.35, matSofa, 'Chair');
+}
+
+// Kitchen (bottom right of living)
+// Kitchen counter (L-shape approximation)
+addBox(3.8, 0.55, 1.4, 1.1, 0.85, 0.6, matKitchenCounter, 'Kitchen counter');
+addBox(3.25, 0.55, 1.65, 0.5, 0.85, 0.6, matKitchenCounter, 'Kitchen counter side');
+// Kitchen top
+addBox(3.8, 0.95, 1.4, 1.1, 0.05, 0.6, matKitchen, 'Kitchen top');
+// Fridge
+addBox(4.2, 0.9, 1.8, 0.6, 1.6, 0.6, matKitchen, 'Fridge');
+// Stove
+addBox(3.5, 0.93, 1.4, 0.6, 0.05, 0.55, matKitchen, 'Stove');
+
+// --- VARANDA ---
+// Round dining table
+const tableGeo = new THREE.CylinderGeometry(0.5, 0.5, 0.05, 16);
+const table = new THREE.Mesh(tableGeo, matWood);
+table.position.set(3.2, 0.55, -3.2);
+table.castShadow = true;
+table.userData = { name: 'Balcony table' };
+scene.add(table);
+// Table leg
+addBox(3.2, 0.28, -3.2, 0.06, 0.5, 0.06, matWood);
+// Balcony chairs (4)
+for (let i = 0; i < 4; i++) {
+  const angle = (i / 4) * Math.PI * 2;
+  const cx = 3.2 + Math.cos(angle) * 0.7;
+  const cz = -3.2 + Math.sin(angle) * 0.7;
+  addBox(cx, 0.3, cz, 0.35, 0.45, 0.35, matTile, 'Balcony chair');
+}
+// Balcony railing
+addBox(3.2, 1.1, -4.4, 1.93, 0.05, 0.05, matGlass, 'Balcony railing top');
+addBox(2.26, 0.55, -4.455, wallT, 1.0, wallT, matGlass);
+addBox(4.14, 0.55, -4.455, wallT, 1.0, wallT, matGlass);
+
+// --- BATHROOMS ---
+// WC1: Shower + toilet
+addBox(-4.1, 0.55, 3.1, 0.8, 0.9, 0.8, matCeramic, 'Shower');
+addBox(-2.9, 0.3, 3.2, 0.4, 0.38, 0.5, matCeramic, 'Toilet 1');
+addBox(-4.1, 0.5, 2.6, 0.6, 0.7, 0.4, matCeramic, 'Vanity 1');
+
+// WC2: Bathtub + toilet
+addBox(-1.2, 0.4, 3.1, 0.7, 0.55, 1.5, matCeramic, 'Bathtub');
+addBox(-2.2, 0.3, 3.1, 0.4, 0.38, 0.5, matCeramic, 'Toilet 2');
+
+// === CEILING (roof) - toggleable ===
+const roofGroup = new THREE.Group();
+const matRoof = new THREE.MeshStandardMaterial({ color: 0xE8E0D0, roughness: 0.8, side: THREE.DoubleSide });
+const roofGeo = new THREE.PlaneGeometry(10, 8);
+const roof = new THREE.Mesh(roofGeo, matRoof);
+roof.rotation.x = -Math.PI / 2;
+roof.position.set(0, wallH, 0);
+roofGroup.add(roof);
+scene.add(roofGroup);
+
+// === ROOM LABELS (floating text sprites) ===
+function createLabel(text, position, color = '#D4AF37') {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 256;
+  canvas.height = 64;
+  ctx.fillStyle = 'transparent';
+  ctx.fillRect(0, 0, 256, 64);
+  ctx.font = 'bold 28px Inter, sans-serif';
+  ctx.fillStyle = color;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, 128, 32);
+  
+  const texture = new THREE.CanvasTexture(canvas);
+  const spriteMat = new THREE.SpriteMaterial({ map: texture, transparent: true });
+  const sprite = new THREE.Sprite(spriteMat);
+  sprite.position.copy(position);
+  sprite.scale.set(2, 0.5, 1);
+  scene.add(sprite);
+  return sprite;
+}
+
+const labels = [
+  createLabel('Master 13.43 м²', new THREE.Vector3(-3.5, wallH + 0.5, 0)),
+  createLabel('Living 20.40 м²', new THREE.Vector3(1.75, wallH + 0.5, 0)),
+  createLabel('Varanda 4.84 м²', new THREE.Vector3(3.2, wallH + 0.5, -3.2)),
+  createLabel('WC 3.15 м²', new THREE.Vector3(-3.5, wallH + 0.5, 2.85)),
+  createLabel('WC 1.89 м²', new THREE.Vector3(-1.55, wallH + 0.5, 2.95)),
+];
+
+// === RAYCASTER for room hover ===
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const tooltip = document.getElementById('tooltip');
+let hoveredRoom = null;
+
+window.addEventListener('mousemove', (e) => {
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(scene.children);
+  
+  let found = false;
+  for (const hit of intersects) {
+    if (hit.object.userData && hit.object.userData.name && hit.object.geometry.parameters) {
+      if (hit.object.geometry.parameters.height <= 0.15) {
+        tooltip.style.display = 'block';
+        tooltip.style.left = e.clientX + 15 + 'px';
+        tooltip.style.top = e.clientY - 10 + 'px';
+        tooltip.textContent = hit.object.userData.name;
+        found = true;
+        break;
+      }
+    }
+  }
+  if (!found) tooltip.style.display = 'none';
+});
+
+// === VIEW CONTROLS ===
+let roofVisible = true;
+let wallsVisible = true;
+
+window.setView = function(view) {
+  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  switch(view) {
+    case 'dollhouse':
+      camera.position.set(8, 10, 8);
+      controls.target.set(0, 0.5, 0);
+      roofGroup.visible = true;
+      walls.forEach(w => w.visible = true);
+      break;
+    case 'top':
+      camera.position.set(0, 14, 0.01);
+      controls.target.set(0, 0, 0);
+      roofGroup.visible = false;
+      walls.forEach(w => {
+        w.material = w.material === matWall ? matWallOutside : w.material;
+      });
+      break;
+    case 'inside':
+      camera.position.set(1.75, 1.5, 0);
+      controls.target.set(1.75, 1.0, 0);
+      roofGroup.visible = false;
+      walls.forEach(w => w.material = new THREE.MeshStandardMaterial({
+        color: 0xF5F0E8, roughness: 0.9, transparent: true, opacity: 0.3
+      }));
+      break;
+  }
+  controls.update();
+};
+
+window.toggleRoof = function() {
+  roofVisible = !roofVisible;
+  roofGroup.visible = roofVisible;
+};
+
+window.toggleWalls = function() {
+  wallsVisible = !wallsVisible;
+  walls.forEach(w => w.visible = wallsVisible);
+};
+
+// === ANIMATION ===
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+// === RESIZE ===
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
