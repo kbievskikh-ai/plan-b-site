@@ -1,0 +1,34 @@
+# Plan B Brazil
+
+> Independent real estate investment advisory in Santa Catarina, Brazil.
+> Konstantin Bievskikh, CRECI-SC 59616-F. Based in Florianópolis.
+> Research-driven analysis for international investors buying property remotely.
+> Languages: English, Russian, Portuguese.
+
+Plan B Brazil is not a brokerage marketing arm. It publishes independent market
+research on Santa Catarina real estate — district-level pricing, developer track
+records, yield analysis, tax and residency implications — and advises foreign
+investors (typically $150K–$500K) purchasing remotely.
+
+## Coverage
+- Cities: Florianópolis, Balneário Camboriú, Itapema, Porto Belo, Bombinhas
+- Districts: Jurerê, Canasvieiras, Campeche, Lagoa da Conceição, Canto Grande, and others
+- Topics: off-plan (planta) purchases, cota / co-investment structures, CUB indexation,
+  rental yields, ITBI and capital gains, Brazilian investor visa (RN 36/2018)
+
+## Research
+- Market reports: https://planbbrazil.com/research/market-reports
+- City reports: https://planbbrazil.com/research/city-reports
+- District guides: https://planbbrazil.com/research/district-guides
+- Developer reviews: https://planbbrazil.com/research/developer-reviews
+- Guides: https://planbbrazil.com/research/guides
+- All: https://planbbrazil.com/research/all
+
+## Listings
+- Properties: https://planbbrazil.com/#properties
+- Individual projects: https://planbbrazil.com/projects/{slug}
+
+## Contact
+- Website: https://planbbrazil.com
+- Email: kbievskikh@planbbrazil.com
+- Telegram: @KBIEVSKIKH
