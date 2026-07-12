@@ -94,7 +94,7 @@ export default function FAQ() {
             <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" className="btn-gold">
               {t('faq.cta')}
             </a>
-            <a href="mailto:planbievskikh@gmail.com" className="btn-outline">
+            <a href="mailto:kbievskikh@planbbrazil.com" className="btn-outline">
               {t('faq.emailQuestions')}
             </a>
           </div>

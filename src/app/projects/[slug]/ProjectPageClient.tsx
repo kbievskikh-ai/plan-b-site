@@ -1598,8 +1598,8 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
                   <a href="tel:+5548988752300" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
                     📞 +55 (48) 98875-2300
                   </a>
-                  <a href="mailto:planbievskikh@gmail.com" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    ✉️ planbievskikh@gmail.com
+                  <a href="mailto:kbievskikh@planbbrazil.com" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    ✉️ kbievskikh@planbbrazil.com
                   </a>
                   <a href="https://planbbrazil.com" target="_blank" rel="noopener noreferrer" style={{ color: '#ccc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
                     🌐 planbbrazil.com

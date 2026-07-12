@@ -138,12 +138,9 @@ function mapApiProperty(p: ApiProperty, index: number): Property {
 
 export async function fetchProperties(): Promise<Property[]> {
   try {
-    console.log('[API] Fetching from:', `${API_URL}/api/properties?limit=100`);
-    
     const controller = new AbortController();
     const timeout = setTimeout(() => {
       controller.abort();
-      console.log('[API] Request timed out after 8s');
     }, 8000);
     
     const res = await fetch(`${API_URL}/api/properties?limit=100`, {
@@ -152,12 +149,9 @@ export async function fetchProperties(): Promise<Property[]> {
     });
     clearTimeout(timeout);
     
-    console.log('[API] Response status:', res.status);
-    
     if (!res.ok) throw new Error(`API ${res.status}`);
     
     const data = await res.json();
-    console.log('[API] Parsed JSON, keys:', Object.keys(data));
     
     const apiProperties: ApiProperty[] = data.data || [];
     
@@ -173,8 +167,6 @@ export async function fetchProperties(): Promise<Property[]> {
       if (blocklist.some(b => slug.includes(b) || title.includes(b))) return false;
       return true;
     });
-    
-    console.log(`[API] Got ${apiProperties.length} total, ${withImages.length} with images`);
     
     return withImages.map((p: ApiProperty, i: number) => mapApiProperty(p, i));
   } catch (err: any) {

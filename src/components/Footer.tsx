@@ -24,12 +24,12 @@ export default function Footer() {
   ];
 
   const company = [
-    t('footer.aboutPlanB'),
-    t('footer.ourTeam'),
-    t('footer.investmentGuide'),
-    t('footer.blog'),
-    t('footer.privacyPolicy'),
-    t('footer.contactLink'),
+    { label: t('footer.aboutPlanB'), href: '/#about' },
+    { label: t('footer.ourTeam'), href: '/#about' },
+    { label: t('footer.investmentGuide'), href: '/research/all' },
+    { label: t('footer.blog'), href: '/blog' },
+    { label: t('footer.privacyPolicy'), href: '/privacy-policy' },
+    { label: t('footer.contactLink'), href: '/#contact' },
   ];
 
   return (
@@ -96,9 +96,9 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {company.map((item) => (
-                <li key={item}>
-                  <a href="#about" className="text-white/30 hover:text-gold-400 text-sm transition-colors">
-                    {item}
+                <li key={item.label}>
+                  <a href={item.href} className="text-white/30 hover:text-gold-400 text-sm transition-colors">
+                    {item.label}
                   </a>
                 </li>
               ))}
