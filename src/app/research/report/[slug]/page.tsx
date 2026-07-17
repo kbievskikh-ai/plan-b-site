@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getAllResearch, getResearchBySlug, SECTIONS } from '@/lib/research-server';
 import { REPORT_CONTENT } from '@/data/report-content';
+import { RENTAL_YIELD_REPORT } from '@/data/rental-yield-report-content';
+import RentalYieldReportBody from '@/components/RentalYieldReportBody';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -10,7 +12,14 @@ export const revalidate = 3600;
 
 const SITE = 'https://planbbrazil.com';
 
-type Props = { params: { slug: string } };
+type Props = { params: { slug: string }; searchParams?: { lang?: string } };
+
+/**
+ * Слаги, для которых есть полноценный двуязычный визуальный рендер (не только sr-only-текст).
+ * URL один, язык выбирается через ?lang=ru|en (дефолт — en). Это временное
+ * решение до настоящего i18n-роутинга на сайте (см. BUSINESS.md, 2026-07-17).
+ */
+const RICH_BILINGUAL_SLUGS = new Set(['rental-yield-report-santa-catarina-2026']);
 
 /**
  * Точечные SEO-переопределения meta title / H1 по slug, когда финальная формулировка отличается от
@@ -28,21 +37,27 @@ export async function generateStaticParams() {
   return all.map((r) => ({ slug: r.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
+  const isRichBilingual = RICH_BILINGUAL_SLUGS.has(params.slug);
+  const requestedLang = searchParams?.lang === 'ru' ? 'ru' : 'en';
   const r = await getResearchBySlug(params.slug, 'en');
   if (!r) return { title: 'Report — Plan B Brazil' };
+  const rLang = isRichBilingual && requestedLang === 'ru' ? await getResearchBySlug(params.slug, 'ru') : null;
 
   const seoOverride = SEO_OVERRIDES[params.slug];
-  const title = seoOverride ? seoOverride.title : `${r.title} | Plan B Brazil`;
-  const url = `${SITE}/research/report/${r.slug}`;
+  const title = seoOverride ? seoOverride.title : `${(rLang || r).title} | Plan B Brazil`;
+  const description = (rLang || r).description;
+  const url = isRichBilingual
+    ? `${SITE}/research/report/${r.slug}${requestedLang === 'ru' ? '?lang=ru' : ''}`
+    : `${SITE}/research/report/${r.slug}`;
 
   return {
     title,
-    description: r.description.slice(0, 300),
-    alternates: { canonical: url },
+    description: description.slice(0, 300),
+    alternates: { canonical: `${SITE}/research/report/${r.slug}` },
     openGraph: {
       title,
-      description: r.description.slice(0, 300),
+      description: description.slice(0, 300),
       url,
       siteName: 'Plan B Brazil',
       type: 'article',
@@ -53,7 +68,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title,
-      description: r.description.slice(0, 200),
+      description: description.slice(0, 200),
       images: r.coverImage ? [r.coverImage] : undefined,
     },
   };
@@ -66,7 +81,9 @@ function sectionKeyFor(category: string): string {
   return 'all';
 }
 
-export default async function ReportPage({ params }: Props) {
+export default async function ReportPage({ params, searchParams }: Props) {
+  const isRichBilingual = RICH_BILINGUAL_SLUGS.has(params.slug);
+  const requestedLang = searchParams?.lang === 'ru' ? 'ru' : 'en';
   // Страница всегда рендерит английскую версию как основной видимый контент (URL/canonical —
   // один на оба языка, slug считается от EN title). RU-версия полного текста рендерится
   // рядом, sr-only, чтобы Googlebot/GPTBot и русскоязычные поисковые запросы тоже находили текст
@@ -83,15 +100,22 @@ export default async function ReportPage({ params }: Props) {
   const content = contentByLang?.en;
   const contentRu = contentByLang?.ru;
 
+  // Для rich-bilingual отчётов основной JSON-LD соответствует выбранному языку (то, что видит человек),
+  // второй язык ␸дёт вторым блоком для краулеров. Для остальных отчётов поведение как раньше: EN всегда первый.
+  const primaryForJsonLd = isRichBilingual && requestedLang === 'ru' && rRu ? rRu : r;
+  const secondaryForJsonLd = isRichBilingual ? (requestedLang === 'ru' ? r : rRu) : rRu;
+  const primaryLangTag = isRichBilingual ? requestedLang : 'en';
+  const secondaryLangTag = isRichBilingual ? (requestedLang === 'ru' ? 'en' : 'ru') : 'ru';
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: r.title,
-    description: r.description,
+    headline: primaryForJsonLd.title,
+    description: primaryForJsonLd.description,
     url: `${SITE}/research/report/${r.slug}`,
-    datePublished: r.publishedAt,
-    dateModified: r.publishedAt,
-    image: r.coverImage || undefined,
+    datePublished: primaryForJsonLd.publishedAt,
+    dateModified: primaryForJsonLd.publishedAt,
+    image: primaryForJsonLd.coverImage || undefined,
     author: {
       '@type': 'Person',
       name: 'Konstantin Bievskikh',
@@ -108,20 +132,20 @@ export default async function ReportPage({ params }: Props) {
       '@type': 'Place',
       name: 'Santa Catarina, Brazil',
     },
-    inLanguage: 'en',
+    inLanguage: primaryLangTag,
     isAccessibleForFree: true,
   };
 
-  const jsonLdRu = rRu
+  const jsonLdRu = secondaryForJsonLd
     ? {
         '@context': 'https://schema.org',
         '@type': 'Article',
-        headline: rRu.title,
-        description: rRu.description,
+        headline: secondaryForJsonLd.title,
+        description: secondaryForJsonLd.description,
         url: `${SITE}/research/report/${r.slug}`,
-        datePublished: rRu.publishedAt,
-        dateModified: rRu.publishedAt,
-        image: rRu.coverImage || undefined,
+        datePublished: secondaryForJsonLd.publishedAt,
+        dateModified: secondaryForJsonLd.publishedAt,
+        image: secondaryForJsonLd.coverImage || undefined,
         author: {
           '@type': 'Person',
           name: 'Konstantin Bievskikh',
@@ -138,15 +162,18 @@ export default async function ReportPage({ params }: Props) {
           '@type': 'Place',
           name: 'Santa Catarina, Brazil',
         },
-        inLanguage: 'ru',
+        inLanguage: secondaryLangTag,
         isAccessibleForFree: true,
-        translationOfWork: { '@type': 'Article', headline: r.title, url: `${SITE}/research/report/${r.slug}` },
+        translationOfWork: { '@type': 'Article', headline: primaryForJsonLd.title, url: `${SITE}/research/report/${r.slug}` },
       }
     : null;
 
   const backSection = sectionKeyFor(r.category);
   const seoOverride = SEO_OVERRIDES[r.slug];
-  const displayH1 = seoOverride ? seoOverride.h1 : r.title;
+  const displayH1 = seoOverride ? seoOverride.h1 : (requestedLang === 'ru' && rRu ? rRu.title : r.title);
+  const displayDescription = requestedLang === 'ru' && rRu ? rRu.description : r.description;
+  const richData = isRichBilingual ? RENTAL_YIELD_REPORT[requestedLang] : null;
+  const richDataOther = isRichBilingual ? RENTAL_YIELD_REPORT[requestedLang === 'ru' ? 'en' : 'ru'] : null;
 
   return (
     <>
@@ -162,11 +189,18 @@ export default async function ReportPage({ params }: Props) {
       )}
 
       {/*
-        RU-версия полного текста — серверно-отрендерена, визуально скрыта (sr-only), не display:none.
-        Цель — чтобы текст отчёта на русском индексировался и читался LLM-краулерами без JS,
-        без дублирования видимого UI (сайт пока не переключает видимый язык этой страницы по localStorage).
+        Конкурирующий язык — серверно-отрендерен, визуально скрыт (sr-only), не display:none.
+        Живой посетитель видит полный текст выбранного языка (через ?lang=) в видимом блоке ниже;
+        этот блок — только дополнительный слой для Googlebot/GPTBot, чтобы оба языка индексировались
+        под одним URL, а не единственный способ увидеть конкурирующий язык.
       */}
-      {rRu && (
+      {richDataOther && (
+        <div lang={requestedLang === 'ru' ? 'en' : 'ru'} className="sr-only">
+          <h2>{richDataOther.reportTitleFull}</h2>
+          <RentalYieldReportBody data={richDataOther} />
+        </div>
+      )}
+      {!isRichBilingual && rRu && (
         <div lang="ru" className="sr-only">
           <h2>{rRu.title}</h2>
           <p>{rRu.description}</p>
@@ -197,22 +231,39 @@ export default async function ReportPage({ params }: Props) {
 
           <h1 className="text-3xl md:text-4xl font-serif text-white mb-6">{displayH1}</h1>
 
-          <p className="text-lg text-white/70 mb-8 leading-relaxed">{r.description}</p>
+          <p className="text-lg text-white/70 mb-8 leading-relaxed">{displayDescription}</p>
 
-          <div className="flex items-center gap-4 mb-12 text-sm text-white/50">
-            <span>Konstantin Bievskikh · CRECI-SC 59616-F</span>
-            {r.publishedAt && (
-              <time dateTime={r.publishedAt}>
-                {new Date(r.publishedAt).toLocaleDateString('en-GB', {
-                  year: 'numeric',
-                  month: 'long',
-                })}
-              </time>
+          <div className="flex items-center justify-between flex-wrap gap-3 mb-12 text-sm text-white/50">
+            <div className="flex items-center gap-4">
+              <span>Konstantin Bievskikh · CRECI-SC 59616-F</span>
+              {r.publishedAt && (
+                <time dateTime={r.publishedAt}>
+                  {new Date(r.publishedAt).toLocaleDateString('en-GB', {
+                    year: 'numeric',
+                    month: 'long',
+                  })}
+                </time>
+              )}
+            </div>
+            {isRichBilingual && (
+              <a
+                href={`/research/report/${r.slug}?lang=${requestedLang === 'ru' ? 'en' : 'ru'}`}
+                className="text-gold-400 hover:underline text-sm"
+              >
+                {requestedLang === 'ru' ? 'Read in English →' : 'Читать по-русски →'}
+              </a>
             )}
           </div>
 
-          {/* Полный текст отчёта — появится после извлечения из PDF */}
-          {content && (
+          {/* Полный визуальный рендер отчёта на выбранном языке (таблицы/карточки/графики — не только текст) */}
+          {richData && (
+            <div className="mb-12">
+              <RentalYieldReportBody data={richData} />
+            </div>
+          )}
+
+          {/* Полный текст отчёта (старый путь, для отчётов без богатого визуального рендера) */}
+          {!isRichBilingual && content && (
             <div className="prose prose-invert max-w-none mb-12">
               {content.sections.map((s, i) => (
                 <section key={i} className="mb-8">
