@@ -168,7 +168,7 @@ export default async function ReportPage({ params }: Props) {
       */}
       {rRu && (
         <div lang="ru" className="sr-only">
-          <h1>{rRu.title}</h1>
+          <h2>{rRu.title}</h2>
           <p>{rRu.description}</p>
           {contentRu?.sections.map((s, i) => (
             <section key={i}>
