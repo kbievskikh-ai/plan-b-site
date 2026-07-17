@@ -75,22 +75,35 @@ export function slugify(s: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-/** Все опубликованные отчёты. Кеш 1 час → страницы можно пре-рендерить. */
-export async function getAllResearch(): Promise<ResearchItem[]> {
-  try {
-    const res = await fetch(`${API_URL}/api/research?limit=50`, {
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) throw new Error(`API ${res.status}`);
+export type ResearchLang = 'en' | 'ru' | 'pt';
 
-    const data = await res.json();
-    const raw: any[] = data?.data || [];
+async function fetchResearchRaw(lang: ResearchLang): Promise<any[]> {
+  const res = await fetch(`${API_URL}/api/research?limit=50&lang=${lang}`, {
+    next: { revalidate: 3600 },
+  });
+  if (!res.ok) throw new Error(`API ${res.status}`);
+  const data = await res.json();
+  return (data?.data || []).filter((r: any) => (r.status || 'published') !== 'draft');
+}
+
+/**
+ * Все опубликованные отчёты, локализованные под `lang`. Кеш 1 час → страницы можно пре-рендерить.
+ *
+ * Slug ВСЕГДА считается от английского title (стабильный идентификатор для URL/sitemap),
+ * даже когда контент запрошен на русском — иначе slugify() от кириллицы даёт пустую строку.
+ */
+export async function getAllResearch(lang: ResearchLang = 'en'): Promise<ResearchItem[]> {
+  try {
+    const enRaw = lang === 'en' ? null : await fetchResearchRaw('en');
+    const raw = lang === 'en' ? await fetchResearchRaw('en') : await fetchResearchRaw(lang);
+
+    const slugById = new Map<string, string>();
+    (enRaw || raw).forEach((r: any) => slugById.set(String(r.id), slugify(String(r.title || ''))));
 
     return raw
-      .filter((r) => (r.status || 'published') !== 'draft')
-      .map((r) => ({
+      .map((r: any) => ({
         id: String(r.id || ''),
-        slug: slugify(String(r.title || '')),
+        slug: slugById.get(String(r.id)) || slugify(String(r.title || '')),
         title: String(r.title || ''),
         description: String(r.description || ''),
         category: String(r.category || ''),
@@ -110,14 +123,14 @@ export async function getAllResearch(): Promise<ResearchItem[]> {
   }
 }
 
-export async function getResearchBySection(section: string): Promise<ResearchItem[]> {
+export async function getResearchBySection(section: string, lang: ResearchLang = 'en'): Promise<ResearchItem[]> {
   const sectionData = SECTIONS[section];
   if (!sectionData) return [];
-  const all = await getAllResearch();
+  const all = await getAllResearch(lang);
   return all.filter((r) => sectionData.categories.includes(r.category));
 }
 
-export async function getResearchBySlug(slug: string): Promise<ResearchItem | null> {
-  const all = await getAllResearch();
+export async function getResearchBySlug(slug: string, lang: ResearchLang = 'en'): Promise<ResearchItem | null> {
+  const all = await getAllResearch(lang);
   return all.find((r) => r.slug === slug) || null;
 }

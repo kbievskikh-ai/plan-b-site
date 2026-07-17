@@ -12,16 +12,28 @@ const SITE = 'https://planbbrazil.com';
 
 type Props = { params: { slug: string } };
 
+/**
+ * Точечные SEO-переопределения meta title / H1 по slug, когда финальная формулировка отличается от
+ * титла в БД (r.title). URL/slug не затрагиваются — оверрайд только для отображаемого текста.
+ */
+const SEO_OVERRIDES: Record<string, { title: string; h1: string }> = {
+  'rental-yield-report-santa-catarina-2026': {
+    title: 'Доходность аренды недвижимости в Бразилии: реальные цифры 2026',
+    h1: 'Доходность аренды в Санта-Катарине: официальная против реальной',
+  },
+};
+
 export async function generateStaticParams() {
   const all = await getAllResearch();
   return all.map((r) => ({ slug: r.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const r = await getResearchBySlug(params.slug);
+  const r = await getResearchBySlug(params.slug, 'en');
   if (!r) return { title: 'Report — Plan B Brazil' };
 
-  const title = `${r.title} | Plan B Brazil`;
+  const seoOverride = SEO_OVERRIDES[params.slug];
+  const title = seoOverride ? seoOverride.title : `${r.title} | Plan B Brazil`;
   const url = `${SITE}/research/report/${r.slug}`;
 
   return {
@@ -55,12 +67,21 @@ function sectionKeyFor(category: string): string {
 }
 
 export default async function ReportPage({ params }: Props) {
-  const r = await getResearchBySlug(params.slug);
+  // Страница всегда рендерит английскую версию как основной видимый контент (URL/canonical —
+  // один на оба языка, slug считается от EN title). RU-версия полного текста рендерится
+  // рядом, sr-only, чтобы Googlebot/GPTBot и русскоязычные поисковые запросы тоже находили текст
+  // без JS и без отдельного URL на язык. Это не клоакинг — тот же паттерн, что и на /research/[section].
+  const [r, rRu] = await Promise.all([
+    getResearchBySlug(params.slug, 'en'),
+    getResearchBySlug(params.slug, 'ru'),
+  ]);
   if (!r) notFound();
 
-  // Полный текст отчёта, если он уже извлечён из PDF (см. scripts/extract-pdf-content.py).
+  // Полный текст отчёта по языкам, если он уже внесён (см. src/data/report-content.ts).
   // Пока пусто — страница всё равно работает: title, description, cover, ссылка на PDF.
-  const content = REPORT_CONTENT[r.slug];
+  const contentByLang = REPORT_CONTENT[r.slug];
+  const content = contentByLang?.en;
+  const contentRu = contentByLang?.ru;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -91,7 +112,41 @@ export default async function ReportPage({ params }: Props) {
     isAccessibleForFree: true,
   };
 
+  const jsonLdRu = rRu
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: rRu.title,
+        description: rRu.description,
+        url: `${SITE}/research/report/${r.slug}`,
+        datePublished: rRu.publishedAt,
+        dateModified: rRu.publishedAt,
+        image: rRu.coverImage || undefined,
+        author: {
+          '@type': 'Person',
+          name: 'Konstantin Bievskikh',
+          jobTitle: 'Real Estate Investment Advisor',
+          identifier: 'CRECI-SC 59616-F',
+          url: SITE,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Plan B Brazil',
+          url: SITE,
+        },
+        about: {
+          '@type': 'Place',
+          name: 'Santa Catarina, Brazil',
+        },
+        inLanguage: 'ru',
+        isAccessibleForFree: true,
+        translationOfWork: { '@type': 'Article', headline: r.title, url: `${SITE}/research/report/${r.slug}` },
+      }
+    : null;
+
   const backSection = sectionKeyFor(r.category);
+  const seoOverride = SEO_OVERRIDES[r.slug];
+  const displayH1 = seoOverride ? seoOverride.h1 : r.title;
 
   return (
     <>
@@ -99,6 +154,32 @@ export default async function ReportPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {jsonLdRu && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdRu) }}
+        />
+      )}
+
+      {/*
+        RU-версия полного текста — серверно-отрендерена, визуально скрыта (sr-only), не display:none.
+        Цель — чтобы текст отчёта на русском индексировался и читался LLM-краулерами без JS,
+        без дублирования видимого UI (сайт пока не переключает видимый язык этой страницы по localStorage).
+      */}
+      {rRu && (
+        <div lang="ru" className="sr-only">
+          <h1>{rRu.title}</h1>
+          <p>{rRu.description}</p>
+          {contentRu?.sections.map((s, i) => (
+            <section key={i}>
+              <h2>{s.heading}</h2>
+              {s.paragraphs.map((p, j) => (
+                <p key={j}>{p}</p>
+              ))}
+            </section>
+          ))}
+        </div>
+      )}
 
       <main className="min-h-screen bg-navy-950">
         <Header />
@@ -114,7 +195,7 @@ export default async function ReportPage({ params }: Props) {
             {r.category}
           </span>
 
-          <h1 className="text-3xl md:text-4xl font-serif text-white mb-6">{r.title}</h1>
+          <h1 className="text-3xl md:text-4xl font-serif text-white mb-6">{displayH1}</h1>
 
           <p className="text-lg text-white/70 mb-8 leading-relaxed">{r.description}</p>
 
