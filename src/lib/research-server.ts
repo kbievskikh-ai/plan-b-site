@@ -77,6 +77,15 @@ export function slugify(s: string): string {
 
 export type ResearchLang = 'en' | 'ru' | 'pt';
 
+/**
+ * Ручные переопределения slug по EN title, когда авто-slugify даёт не тот URL, какой нужен
+ * (например, когда требуется транслитерация в slug вместо английского текста). Ключ — точный
+ * EN title в базе. Не влияет на сам title — только на URL.
+ */
+const SLUG_OVERRIDES: Record<string, string> = {
+  'Brazil Residency Through Real Estate 2026': 'vnzh-braziliya-nedvizhimost',
+};
+
 async function fetchResearchRaw(lang: ResearchLang): Promise<any[]> {
   const res = await fetch(`${API_URL}/api/research?limit=50&lang=${lang}`, {
     next: { revalidate: 3600 },
@@ -98,7 +107,10 @@ export async function getAllResearch(lang: ResearchLang = 'en'): Promise<Researc
     const raw = lang === 'en' ? await fetchResearchRaw('en') : await fetchResearchRaw(lang);
 
     const slugById = new Map<string, string>();
-    (enRaw || raw).forEach((r: any) => slugById.set(String(r.id), slugify(String(r.title || ''))));
+    (enRaw || raw).forEach((r: any) => {
+      const enTitle = String(r.title || '');
+      slugById.set(String(r.id), SLUG_OVERRIDES[enTitle] || slugify(enTitle));
+    });
 
     return raw
       .map((r: any) => ({

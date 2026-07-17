@@ -15,20 +15,35 @@ const SITE = 'https://planbbrazil.com';
 type Props = { params: { slug: string }; searchParams?: { lang?: string } };
 
 /**
- * Слаги, для которых есть полноценный двуязычный визуальный рендер (не только sr-only-текст).
- * URL один, язык выбирается через ?lang=ru|en (дефолт — en). Это временное
- * решение до настоящего i18n-роутинга на сайте (см. BUSINESS.md, 2026-07-17).
+ * Слаги, для которых есть богатый визуальный компонент (таблицы/карточки/графики), а не просто
+ * проза sections (см. RentalYieldReportBody). Для остальных двуязычных отчётов (есть оба языка
+ * в REPORT_CONTENT) билингвальный ?lang=ru|en режим включается автоматически простым текстом
+ * (см. hasBilingualText в компоненте ниже). URL один для обоих языков, язык выбирается
+ * через ?lang=. Это временное решение до настоящего i18n-роутинга (см. BUSINESS.md, 2026-07-17).
  */
 const RICH_BILINGUAL_SLUGS = new Set(['rental-yield-report-santa-catarina-2026']);
 
 /**
- * Точечные SEO-переопределения meta title / H1 по slug, когда финальная формулировка отличается от
- * титла в БД (r.title). URL/slug не затрагиваются — оверрайд только для отображаемого текста.
+ * Точечные SEO-переопределения meta title / H1 по slug и языку, когда финальная формулировка
+ * отличается от титла в БД (r.title / rRu.title). URL/slug не затрагиваются — оверрайд только для
+ * отображаемого текста. важно: ключ по языку — оверрайд для EN не должен просачиться на RU-страницу и наоборот.
  */
-const SEO_OVERRIDES: Record<string, { title: string; h1: string }> = {
+const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string; h1: string }>>> = {
   'rental-yield-report-santa-catarina-2026': {
-    title: 'Доходность аренды недвижимости в Бразилии: реальные цифры 2026',
-    h1: 'Доходность аренды в Санта-Катарине: официальная против реальной',
+    ru: {
+      title: 'Доходность аренды недвижимости в Бразилии: реальные цифры 2026',
+      h1: 'Доходность аренды в Санта-Катарине: официальная против реальной',
+    },
+  },
+  'brazil-residency-through-real-estate-2026': {
+    en: {
+      title: 'Brazil Residency Through Real Estate 2026',
+      h1: "Brazil Residency Through Real Estate: What's True, and What's Myth",
+    },
+    ru: {
+      title: 'ВНЖ Бразилии через недвижимость в 2026: как есть на самом деле',
+      h1: 'ВНЖ Бразилии через недвижимость: что правда, а что миф',
+    },
   },
 };
 
@@ -38,16 +53,18 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
-  const isRichBilingual = RICH_BILINGUAL_SLUGS.has(params.slug);
   const requestedLang = searchParams?.lang === 'ru' ? 'ru' : 'en';
   const r = await getResearchBySlug(params.slug, 'en');
   if (!r) return { title: 'Report — Plan B Brazil' };
-  const rLang = isRichBilingual && requestedLang === 'ru' ? await getResearchBySlug(params.slug, 'ru') : null;
+  const contentByLang = REPORT_CONTENT[params.slug];
+  const hasBilingualText = !!(contentByLang?.en && contentByLang?.ru);
+  const isBilingual = RICH_BILINGUAL_SLUGS.has(params.slug) || hasBilingualText;
+  const rLang = isBilingual && requestedLang === 'ru' ? await getResearchBySlug(params.slug, 'ru') : null;
 
-  const seoOverride = SEO_OVERRIDES[params.slug];
+  const seoOverride = SEO_OVERRIDES[params.slug]?.[requestedLang];
   const title = seoOverride ? seoOverride.title : `${(rLang || r).title} | Plan B Brazil`;
   const description = (rLang || r).description;
-  const url = isRichBilingual
+  const url = isBilingual
     ? `${SITE}/research/report/${r.slug}${requestedLang === 'ru' ? '?lang=ru' : ''}`
     : `${SITE}/research/report/${r.slug}`;
 
@@ -82,12 +99,8 @@ function sectionKeyFor(category: string): string {
 }
 
 export default async function ReportPage({ params, searchParams }: Props) {
-  const isRichBilingual = RICH_BILINGUAL_SLUGS.has(params.slug);
   const requestedLang = searchParams?.lang === 'ru' ? 'ru' : 'en';
-  // Страница всегда рендерит английскую версию как основной видимый контент (URL/canonical —
-  // один на оба языка, slug считается от EN title). RU-версия полного текста рендерится
-  // рядом, sr-only, чтобы Googlebot/GPTBot и русскоязычные поисковые запросы тоже находили текст
-  // без JS и без отдельного URL на язык. Это не клоакинг — тот же паттерн, что и на /research/[section].
+  // Страница всегда рендерит оба языка (URL/canonical — один на оба, slug считается от EN title).
   const [r, rRu] = await Promise.all([
     getResearchBySlug(params.slug, 'en'),
     getResearchBySlug(params.slug, 'ru'),
@@ -100,12 +113,18 @@ export default async function ReportPage({ params, searchParams }: Props) {
   const content = contentByLang?.en;
   const contentRu = contentByLang?.ru;
 
-  // Для rich-bilingual отчётов основной JSON-LD соответствует выбранному языку (то, что видит человек),
-  // второй язык ␸дёт вторым блоком для краулеров. Для остальных отчётов поведение как раньше: EN всегда первый.
-  const primaryForJsonLd = isRichBilingual && requestedLang === 'ru' && rRu ? rRu : r;
-  const secondaryForJsonLd = isRichBilingual ? (requestedLang === 'ru' ? r : rRu) : rRu;
-  const primaryLangTag = isRichBilingual ? requestedLang : 'en';
-  const secondaryLangTag = isRichBilingual ? (requestedLang === 'ru' ? 'en' : 'ru') : 'ru';
+  // Главный выбор: есть ли богатый визуальный компонент или просто оба языка текста в REPORT_CONTENT —
+  // в обоих случаях живые люди должны видеть выбранный язык видимо, а конкурирующий язык — только sr-only для ботов.
+  const isRichBilingual = RICH_BILINGUAL_SLUGS.has(params.slug);
+  const hasBilingualText = !!(content && contentRu);
+  const isBilingual = isRichBilingual || hasBilingualText;
+
+  // Для билингвальных отчётов основной JSON-LD соответствует выбранному языку (то, что видит человек),
+  // второй язык идёт вторым блоком для краулеров. Для остальных отчётов поведение как раньше: EN всегда первый.
+  const primaryForJsonLd = isBilingual && requestedLang === 'ru' && rRu ? rRu : r;
+  const secondaryForJsonLd = isBilingual ? (requestedLang === 'ru' ? r : rRu) : rRu;
+  const primaryLangTag = isBilingual ? requestedLang : 'en';
+  const secondaryLangTag = isBilingual ? (requestedLang === 'ru' ? 'en' : 'ru') : 'ru';
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -169,11 +188,17 @@ export default async function ReportPage({ params, searchParams }: Props) {
     : null;
 
   const backSection = sectionKeyFor(r.category);
-  const seoOverride = SEO_OVERRIDES[r.slug];
+  const seoOverride = SEO_OVERRIDES[r.slug]?.[requestedLang];
   const displayH1 = seoOverride ? seoOverride.h1 : (requestedLang === 'ru' && rRu ? rRu.title : r.title);
   const displayDescription = requestedLang === 'ru' && rRu ? rRu.description : r.description;
   const richData = isRichBilingual ? RENTAL_YIELD_REPORT[requestedLang] : null;
   const richDataOther = isRichBilingual ? RENTAL_YIELD_REPORT[requestedLang === 'ru' ? 'en' : 'ru'] : null;
+  // Для простых билингвальных отчётов (оба языка в REPORT_CONTENT, нет рич-компонента): видимый
+  // текст на выбранном языке, конкурирующий язык — sr-only.
+  const displayContent = requestedLang === 'ru' ? contentRu : content;
+  const otherContent = requestedLang === 'ru' ? content : contentRu;
+  const otherLangTitle = requestedLang === 'ru' ? r.title : rRu?.title;
+  const otherLangDescription = requestedLang === 'ru' ? r.description : rRu?.description;
 
   return (
     <>
@@ -200,7 +225,21 @@ export default async function ReportPage({ params, searchParams }: Props) {
           <RentalYieldReportBody data={richDataOther} />
         </div>
       )}
-      {!isRichBilingual && rRu && (
+      {!isRichBilingual && hasBilingualText && otherContent && (
+        <div lang={requestedLang === 'ru' ? 'en' : 'ru'} className="sr-only">
+          <h2>{otherLangTitle}</h2>
+          <p>{otherLangDescription}</p>
+          {otherContent.sections.map((s, i) => (
+            <section key={i}>
+              <h2>{s.heading}</h2>
+              {s.paragraphs.map((p, j) => (
+                <p key={j}>{p}</p>
+              ))}
+            </section>
+          ))}
+        </div>
+      )}
+      {!isRichBilingual && !hasBilingualText && rRu && (
         <div lang="ru" className="sr-only">
           <h2>{rRu.title}</h2>
           <p>{rRu.description}</p>
@@ -245,7 +284,7 @@ export default async function ReportPage({ params, searchParams }: Props) {
                 </time>
               )}
             </div>
-            {isRichBilingual && (
+            {isBilingual && (
               <a
                 href={`/research/report/${r.slug}?lang=${requestedLang === 'ru' ? 'en' : 'ru'}`}
                 className="text-gold-400 hover:underline text-sm"
@@ -262,10 +301,10 @@ export default async function ReportPage({ params, searchParams }: Props) {
             </div>
           )}
 
-          {/* Полный текст отчёта (старый путь, для отчётов без богатого визуального рендера) */}
-          {!isRichBilingual && content && (
+          {/* Полный текст отчёта на выбранном языке (для билингвальных отчётов видит человек; для остальных всегда EN) */}
+          {!isRichBilingual && displayContent && (
             <div className="prose prose-invert max-w-none mb-12">
-              {content.sections.map((s, i) => (
+              {displayContent.sections.map((s, i) => (
                 <section key={i} className="mb-8">
                   <h2 className="text-2xl font-serif text-white mb-4">{s.heading}</h2>
                   {s.paragraphs.map((p, j) => (
