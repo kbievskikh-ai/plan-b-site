@@ -84,6 +84,9 @@ export type ResearchLang = 'en' | 'ru' | 'pt';
  */
 const SLUG_OVERRIDES: Record<string, string> = {
   'Brazil Residency Through Real Estate 2026': 'vnzh-braziliya-nedvizhimost',
+  'Can You Pay for Brazilian Real Estate in Cryptocurrency 2026': 'oplata-kriptovalyutoy-nedvizhimost-braziliya',
+  'Capital Gains Tax on Real Estate Sales in Brazil 2026: 15% and How to Legally Avoid It': 'nalog-prodazha-nedvizhimost-braziliya',
+  'Rio, São Paulo, or Southern Brazil: Where Investment Actually Performs Better': 'gde-kupit-nedvizhimost-braziliya',
 };
 
 // Версия кэша: Vercel Data Cache (fetch-кэш) переживает между деплоями, поэтому одинаковый URL может отдавать

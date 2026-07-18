@@ -45,6 +45,36 @@ const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string;
       h1: 'ВНЖ Бразилии через недвижимость: что правда, а что миф',
     },
   },
+  'oplata-kriptovalyutoy-nedvizhimost-braziliya': {
+    en: {
+      title: 'Can You Pay for Brazilian Real Estate in Cryptocurrency 2026',
+      h1: 'Can You Pay for Brazilian Real Estate in Cryptocurrency?',
+    },
+    ru: {
+      title: 'Оплата недвижимости в Бразилии криптовалютой и из России 2026',
+      h1: 'Можно ли оплатить недвижимость в Бразилии криптовалютой',
+    },
+  },
+  'nalog-prodazha-nedvizhimost-braziliya': {
+    en: {
+      title: 'Capital Gains Tax on Real Estate Sales in Brazil 2026: 15% and How to Legally Avoid It',
+      h1: 'Capital Gains Tax on Real Estate Sales in Brazil: 15% and How to Legally Avoid It',
+    },
+    ru: {
+      title: 'Налог с продажи недвижимости в Бразилии 2026: 15% и льгота',
+      h1: 'Налог при продаже недвижимости в Бразилии: 15% и как его избежать законно',
+    },
+  },
+  'gde-kupit-nedvizhimost-braziliya': {
+    en: {
+      title: 'Rio, São Paulo, or Southern Brazil: Where Investment Actually Performs Better',
+      h1: 'Rio, São Paulo, or Southern Brazil: Where Investment Actually Performs Better',
+    },
+    ru: {
+      title: 'Где купить недвижимость в Бразилии: Рио, Сан-Паулу или юг',
+      h1: 'Рио, Сан-Паулу или юг Бразилии: где на самом деле выгоднее инвестировать',
+    },
+  },
 };
 
 export async function generateStaticParams() {
