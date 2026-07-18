@@ -86,8 +86,14 @@ const SLUG_OVERRIDES: Record<string, string> = {
   'Brazil Residency Through Real Estate 2026': 'vnzh-braziliya-nedvizhimost',
 };
 
+// Версия кэша: Vercel Data Cache (fetch-кэш) переживает между деплоями, поэтому одинаковый URL может отдавать
+// старый ответ даже после нового деплоя, если старый fetch с тем же URL уже был закэширован в
+// предыдущем деплое. Бумпнуть это число при следующем деплое, если опять видишь старые данные
+// после изменения в research API.
+const RESEARCH_CACHE_BUSTER = 2;
+
 async function fetchResearchRaw(lang: ResearchLang): Promise<any[]> {
-  const res = await fetch(`${API_URL}/api/research?limit=50&lang=${lang}`, {
+  const res = await fetch(`${API_URL}/api/research?limit=50&lang=${lang}&_v=${RESEARCH_CACHE_BUSTER}`, {
     next: { revalidate: 3600 },
   });
   if (!res.ok) throw new Error(`API ${res.status}`);
