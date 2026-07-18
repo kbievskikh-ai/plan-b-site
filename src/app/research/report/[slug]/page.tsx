@@ -35,7 +35,7 @@ const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string;
       h1: 'Доходность аренды в Санта-Катарине: официальная против реальной',
     },
   },
-  'brazil-residency-through-real-estate-2026': {
+  'vnzh-braziliya-nedvizhimost': {
     en: {
       title: 'Brazil Residency Through Real Estate 2026',
       h1: "Brazil Residency Through Real Estate: What's True, and What's Myth",
@@ -317,21 +317,28 @@ export default async function ReportPage({ params, searchParams }: Props) {
             </div>
           )}
 
-          {r.pdfUrl && (
-            <div className="border border-gold-400/30 rounded-lg p-6 bg-white/5">
-              <h2 className="text-lg text-white mb-2">Full report (PDF)</h2>
-              <p className="text-sm text-white/60 mb-4">
-                Charts, pricing tables, and full analysis.
-              </p>
-              <a
-                href={r.pdfUrl}
-                className="inline-block px-6 py-3 bg-gold-400 text-navy-950 rounded font-medium hover:bg-gold-300 transition"
-                download
-              >
-                Download PDF
-              </a>
-            </div>
-          )}
+          {(() => {
+            const displayPdfUrl = requestedLang === 'ru' && rRu?.pdfUrl ? rRu.pdfUrl : r.pdfUrl;
+            return displayPdfUrl ? (
+              <div className="border border-gold-400/30 rounded-lg p-6 bg-white/5">
+                <h2 className="text-lg text-white mb-2">
+                  {requestedLang === 'ru' ? 'Полный отчёт (PDF)' : 'Full report (PDF)'}
+                </h2>
+                <p className="text-sm text-white/60 mb-4">
+                  {requestedLang === 'ru'
+                    ? 'Графики, таблицы цен, полный анализ.'
+                    : 'Charts, pricing tables, and full analysis.'}
+                </p>
+                <a
+                  href={displayPdfUrl}
+                  className="inline-block px-6 py-3 bg-gold-400 text-navy-950 rounded font-medium hover:bg-gold-300 transition"
+                  download
+                >
+                  {requestedLang === 'ru' ? 'Скачать PDF' : 'Download PDF'}
+                </a>
+              </div>
+            ) : null;
+          })()}
 
           <div className="mt-16 pt-8 border-t border-white/10">
             <h2 className="text-xl text-white mb-3">Questions about this market?</h2>

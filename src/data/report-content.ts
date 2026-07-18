@@ -238,7 +238,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
     },
   },
 
-  'brazil-residency-through-real-estate-2026': {
+  'vnzh-braziliya-nedvizhimost': {
     en: {
       sections: [
         {
