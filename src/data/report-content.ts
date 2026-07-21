@@ -1337,4 +1337,298 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
       ],
     },
   },
+
+  'santa-catarina-market-outlook-2027': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "Santa Catarina remains Brazil's fastest-growing real estate market, driven by infrastructure investment, tech sector expansion, and international migration. This outlook covers key projections for 2027 across all major investment areas, grounded in FipeZap data, Alphaplan/Sinduscon methodology, and Brain Inteligência Estratégica's industry analysis.",
+            "Headline figures: 12% projected market growth, $4.2Bn market volume, 85+ active projects, 18% foreign buyer growth. Exchange rate used throughout: 1 USD = R$5.15.",
+          ],
+        },
+        {
+          heading: "Key Catalysts for 2027",
+          paragraphs: [
+            "Hercílio Luz Airport expansion — new international routes, capacity doubling.",
+            "BR-101 highway improvements — faster connections between Balneário Camboriú, Itapema, and Porto Belo.",
+            "Tech sector growth — 300+ startups, major companies relocating to Florianópolis.",
+            "Brazil's digital nomad visa — increased foreign presence and rental demand.",
+          ],
+        },
+        {
+          heading: "Price Projections by Area for 2027",
+          paragraphs: [
+            "Itapema: $2.9K/m² (R$14.9K) in 2026 → $3.4K/m² (R$17.6K) est. 2027, +18% growth, Very Bullish outlook. Jurerê Internacional: $4.1K/m² (R$21.1K) → $4.6K/m² (R$23.7K), +12%, Bullish. Porto Belo: $1.6K/m² (R$8.2K) → $1.8K/m² (R$9.3K), +14%, Positive. Lagoa (Floripa): $2.4K/m² (R$12.4K) → $2.6K/m² (R$13.4K), +10%, Steady.",
+            "Campeche: $1.7K/m² (R$8.8K) → $1.9K/m² (R$9.8K), +11%, Positive. Ingleses: $2.0K/m² (R$10.3K) → $2.2K/m² (R$11.3K), +9%, Steady. Rancho Queimado: $660/m² (R$3.4K) → $750/m² (R$3.9K), +12%, Emerging. Balneário Camboriú: $2.9K/m² (R$15K) in 2026 — see the Balneário Camboriú section below for a shift in coastal leadership.",
+            "Prices are estimates based on current trajectories. Actual results may vary.",
+          ],
+        },
+        {
+          heading: "A Special Case: Balneário Camboriú — a Change of Leader",
+          paragraphs: [
+            "For years BC was Brazil's undisputed price-per-m² leader — holding the #1 spot in the FipeZap ranking since 2022. In May 2026, that changed: Itapema overtook BC for the first time — R$15,226/m² versus R$15,215/m², a razor-thin but symbolic R$11 difference.",
+            "Not a decline — a shift in market shape. Land for new development in BC has nearly run out, and the city is shifting toward ultra-luxury: the average sold property value rose 15% to R$2.19 million — higher than São Paulo (R$895.9K) or Curitiba (R$734.5K). The landmark example is Senna Tower: 550 meters tall, units starting at R$28 million, total project VGV of R$8.5 billion.",
+            "Practical takeaway: BC remains a mature, liquid market, but with land for mass development largely exhausted. Itapema and Porto Belo are where growth momentum is now building, thanks to a more flexible master plan and available land.",
+          ],
+        },
+        {
+          heading: "Key Investment Trends for 2027",
+          paragraphs: [
+            "1. Shift to Pre-Construction Buying — 60% of new buyer inquiries in 2026 were for off-plan properties, driven by price advantage and interest-free installment plans.",
+            "2. Remote Worker Migration — 15,000+ remote workers annually to Florianópolis, driving demand for long-term rentals in Lagoa, Centro, and Campeche. Average stay: 6-18 months.",
+            "3. Rise of Eco-Luxury in Porto Belo — Beto Carrero World expansion, new golf communities, and sustainable building mandates.",
+            "4. Itapema as the New BC — mirrors BC's 2016 growth trajectory, now confirmed by an actual national price-per-m² leadership handover.",
+            "5. Currency Advantage for Foreign Buyers — BRL depreciation against USD/EUR creates favorable entry points, a 15-25% purchasing power advantage for US and European buyers.",
+          ],
+        },
+        {
+          heading: "National Context — What Industry Analysis Says",
+          paragraphs: [
+            "Per Brain Inteligência Estratégica (nationwide 2026 outlook), demand in Brazil's real estate market continues to outpace supply, with prices growing faster than official inflation (IPCA) and the construction cost index (INCC). In the luxury and super-luxury segments, the trend is toward smaller footprints with greater focus on quality and location — directly mirroring what's happening in Santa Catarina.",
+            "The methodology behind quarterly Balneário Camboriú market reports (a partnership between Alphaplan Inteligência em Pesquisas and Órulo, supported by Sinduscon) tracks inventory levels, VGV, units under construction, and units in pre-sale — the kind of granular data that explains the structural trends above.",
+          ],
+        },
+        {
+          heading: "Risks to Monitor",
+          paragraphs: [
+            "BRL volatility — high likelihood, medium impact. Mitigation: diversify entry timing, hedge currency.",
+            "Oversupply in BC — medium likelihood, medium impact. Mitigation: focus on areas with genuine rental demand.",
+            "Construction delays — medium likelihood, low impact. Mitigation: choose developers with a proven delivery record.",
+            "Interest rate changes — low likelihood, medium impact. Mitigation: pre-construction buying locks in pricing.",
+            "Environmental regulations — low likelihood, high impact. Mitigation: buy in already-approved developments.",
+          ],
+        },
+        {
+          heading: "Plan B's 2027 Outlook",
+          paragraphs: [
+            "We maintain a bullish outlook on Santa Catarina real estate for 2027. The combination of infrastructure investment, tech sector growth, international migration, and currency advantages creates a compelling investment case. Key recommendations: enter Itapema early, diversify across Floripa districts, and consider pre-construction for maximum upside. Target 12-18% appreciation in emerging areas, 8-12% in mature markets.",
+            "This material is for informational purposes only and does not constitute investment advice. Sources: Índice FipeZap (2026), Alphaplan Inteligência em Pesquisas / Sinduscon, Brain Inteligência Estratégica. Forecast figures are estimates; actual results may vary.",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "Санта-Катарина остаётся самым быстрорастущим рынком недвижимости Бразилии — драйверы: инфраструктурные инвестиции, рост технологического сектора и приток иностранных покупателей. Этот прогноз охватывает ключевые ожидания на 2027 год по всем основным зонам инвестирования, с опорой на данные FipeZap, Alphaplan/Sinduscon и отраслевую аналитику Brain.",
+            "Ключевые цифры: 12% прогнозируемый рост рынка, $4,2 млрд объём рынка, 85+ активных проектов, 18% рост иностранных покупателей. Курс, используемый везде: 1 USD = R$5,15.",
+          ],
+        },
+        {
+          heading: "Ключевые катализаторы на 2027 год",
+          paragraphs: [
+            "Расширение аэропорта Эрсилиу-Лус — новые международные маршруты, удвоение пропускной способности.",
+            "Улучшение трассы BR-101 — более быстрое сообщение между Балнеариу-Камбориу, Итапемой и Порту-Белу.",
+            "Рост технологического сектора — 300+ стартапов, крупные компании переезжают во Флорианополис.",
+            "Виза цифрового кочевника Бразилии — рост присутствия иностранцев и спроса на аренду.",
+          ],
+        },
+        {
+          heading: "Прогноз цен по районам на 2027 год",
+          paragraphs: [
+            "Итапема: $2,9K/м² (R$14,9K) в 2026 → $3,4K/м² (R$17,6K) прогноз на 2027, рост +18%, оценка Very Bullish. Журере Интернасьонал: $4,1K/м² (R$21,1K) → $4,6K/м² (R$23,7K), +12%, Bullish. Порту-Белу: $1,6K/м² (R$8,2K) → $1,8K/м² (R$9,3K), +14%, Positive. Лагоа (Флорипа): $2,4K/м² (R$12,4K) → $2,6K/м² (R$13,4K), +10%, Steady.",
+            "Кампече: $1,7K/м² (R$8,8K) → $1,9K/м² (R$9,8K), +11%, Positive. Инглезес: $2,0K/м² (R$10,3K) → $2,2K/м² (R$11,3K), +9%, Steady. Ранчо-Кеймаду: $660/м² (R$3,4K) → $750/м² (R$3,9K), +12%, Emerging. Балнеариу-Камбориу: $2,9K/м² (R$15K) в 2026 — смотрите раздел ниже про смену лидера на побережье.",
+            "Цены — оценки на основе текущих трендов. Реальные результаты могут отличаться.",
+          ],
+        },
+        {
+          heading: "Особый случай: Балнеариу-Камбориу — смена лидера",
+          paragraphs: [
+            "Долгие годы BC был безусловным лидером по цене за м² в Бразилии — с 2022 года держал первое место в рейтинге FipeZap. В мае 2026 года это изменилось: Итапема впервые обошла BC — R$15 226/м² против R$15 215/м², разница минимальна (R$11), но символична.",
+            "Не падение, а смена формы рынка. Земли под новую застройку в BC почти не осталось, и город смещается в сегмент ультра-люкса: средний чек проданного объекта вырос на 15% и достиг R$2,19 млн — выше, чем в Сан-Паулу (R$895,9K) и Куритибе (R$734,5K). Знаковый пример — Senna Tower: 550 метров высоты, юниты от R$28 млн, VGV проекта — R$8,5 млрд.",
+            "Практический вывод: BC остаётся зрелым, ликвидным рынком, но с исчерпанной землёй под массовую застройку. Итапема и Порту-Белу — там, где сейчас формируется темп роста, за счёт более гибкого генплана и доступной земли.",
+          ],
+        },
+        {
+          heading: "Ключевые инвестиционные тренды на 2027 год",
+          paragraphs: [
+            "1. Сдвиг к покупке на стадии предпродажи — 60% обращений новых покупателей в 2026 году касались объектов вне плана, за счёт цены и беспроцентной рассрочки.",
+            "2. Миграция удалённых сотрудников — 15 000+ ежегодно во Флорианополис, спрос на долгосрочную аренду в Лагоа, Центре, Кампече. Средний срок пребывания 6–18 месяцев.",
+            "3. Рост эко-люкса в Порту-Белу — расширение Beto Carrero World, новые гольф-сообщества, требования к устойчивому строительству.",
+            "4. Итапема как «новый BC» — повторяет траекторию BC 2016 года, теперь подтверждено фактическим переходом национального лидерства по цене за м².",
+            "5. Валютное преимущество — ослабление реала создаёт выгодные точки входа, 15–25% преимущества в покупательной способности для покупателей из США/Европы.",
+          ],
+        },
+        {
+          heading: "Национальный контекст — что говорит отраслевая аналитика",
+          paragraphs: [
+            "По оценке Brain Inteligência Estratégica (общенациональный прогноз на 2026), спрос на рынке недвижимости Бразилии продолжает опережать предложение, а цены растут быстрее официальной инфляции (IPCA) и индекса стоимости строительства (INCC). В сегменте люкс и супер-люкс — тренд на меньшие площади с фокусом на качество и локацию, что напрямую совпадает с тем, что происходит в Санта-Катарине.",
+            "Методология квартальных отчётов по рынку Балнеариу-Камбориу (партнёрство Alphaplan Inteligência em Pesquisas и Órulo, при поддержке Sinduscon) фиксирует данные по запасу объектов, VGV, количеству объектов в стройке и на предпродаже — детальная статистика, которая объясняет структурные тренды выше.",
+          ],
+        },
+        {
+          heading: "Риски, которые стоит учитывать",
+          paragraphs: [
+            "Волатильность реала — высокая вероятность, среднее влияние. Как снизить: диверсифицировать момент входа, хеджировать валюту.",
+            "Переизбыток предложения в BC — средняя вероятность, среднее влияние. Как снизить: фокус на районах с реальным спросом на аренду.",
+            "Задержки строительства — средняя вероятность, низкое влияние. Как снизить: выбирать застройщиков с подтверждённой историей.",
+            "Изменение процентных ставок — низкая вероятность, среднее влияние. Как снизить: покупка на предпродаже фиксирует цену.",
+            "Экологическое регулирование — низкая вероятность, высокое влияние. Как снизить: покупать в уже согласованных проектах.",
+          ],
+        },
+        {
+          heading: "Прогноз Plan B на 2027 год",
+          paragraphs: [
+            "Мы сохраняем позитивный (bullish) прогноз по рынку недвижимости Санта-Катарины на 2027 год. Сочетание инфраструктурных инвестиций, роста технологического сектора, международной миграции и валютного преимущества формирует убедительный инвестиционный кейс. Ключевые рекомендации: ранний вход в Итапему, диверсификация по районам Флорианополиса, рассмотрение покупки на предпродаже для максимального потенциала роста. Целевой диапазон роста — 12–18% в развивающихся районах, 8–12% в зрелых рынках.",
+            "Материал носит информационный характер и не является инвестиционной рекомендацией. Источники: Índice FipeZap (2026), Alphaplan Inteligência em Pesquisas / Sinduscon, Brain Inteligência Estratégica. Прогнозные цифры — оценки, фактические результаты могут отличаться.",
+          ],
+        },
+      ],
+    },
+  },
+
+  'best-areas-to-invest-in-santa-catarina-2026': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "Santa Catarina has emerged as Brazil's premier real estate investment destination, combining exceptional quality of life, strong rental yields, and consistent property appreciation. This report analyzes the state's most promising areas for international and domestic investors. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.",
+            "Headline figures: 7.3M state population, 8.2% avg. annual price growth, 6.5% avg. rental yield, 12.4% 5-year appreciation.",
+            "Florianópolis leads — 42% of all foreign investment in Santa Catarina goes to this city. Jurerê Internacional is Brazil's most expensive beach neighborhood, at R$18,000–25,000 (~$3.5K–$4.9K)/m². Itapema shows the highest growth, with prices 30–40% below Balneário Camboriú. Porto Belo is an emerging eco-luxury destination on the back of the Beto Carrero World expansion.",
+          ],
+        },
+        {
+          heading: "Price per m² Comparison by Area",
+          paragraphs: [
+            "Data: FipeZap, developer reports, ZAP Imóveis (Q2 2026). Price per m², from premium to entry-level: Jurerê Internacional R$22,000 (~$4K) — yield 5.2%, growth 12%/yr, score 9.0. Balneário Camboriú R$15,000 (~$3K) — yield 4.8%, growth see BC section below, score 8.5. Lagoa da Conceição R$12,500 (~$2K) — yield 6.8%, growth 10%/yr, score 8.5.",
+            "Ingleses R$10,800 (~$2K) — yield 7.1%, growth 9%/yr, score 8.2. Itapema (Meia Praia) R$10,000 (~$2K) — yield 7.2%, growth 18%/yr, score 9.0. Canasvieiras R$9,500 (~$2K) — yield 7.5%, growth 8%/yr, score 7.8.",
+            "Campeche R$8,900 (~$2K) — yield 6.5%, growth 11%/yr, score 8.0. Porto Belo R$8,500 (~$2K) — yield 6.8%, growth 14%/yr, score 7.8. Centro (Floripa) R$7,200 (~$1K) — yield 6.2%, growth 7%/yr, score 7.2. Rancho Queimado R$3,500 (~$660) — yield 5.5%, growth 12%/yr, score 7.5.",
+            "A note on the Itapema figure: R$10,000/m² is the price specifically at Meia Praia, a more affordable sub-area of Itapema. The city-wide average (FipeZap, May 2026) is R$15,226/m², reflecting new premium beachfront development that pushed Itapema to the national #1 price-per-m² spot, overtaking Balneário Camboriú. Both figures are accurate — they refer to different segments of the same city.",
+          ],
+        },
+        {
+          heading: "Florianópolis — Brazil's Silicon Island",
+          paragraphs: [
+            "Florianópolis is the economic and cultural center of Santa Catarina, with a metropolitan population of over 1 million. The city combines a thriving tech sector (\"Silicon Island\"), world-class beaches, and a growing international community. Hercílio Luz International Airport handles 4M+ passengers annually.",
+            "By district: Jurerê Internacional R$22K/m², 5.2% yield, 12%/yr growth — premium investment. Lagoa da Conceição R$12.5K/m², 6.8% yield, 10%/yr — lifestyle + rental. Ingleses R$10.8K/m², 7.1% yield, 9%/yr — mid-range rental. Canasvieiras R$9.5K/m², 7.5% yield, 8%/yr — budget-friendly. Centro R$7.2K/m², 6.2% yield, 7%/yr — urban living. Campeche R$8.9K/m², 6.5% yield, 11%/yr — highest upside.",
+            "Plan B commentary: Florianópolis offers the best combination of infrastructure, lifestyle, and investment returns in Brazil. Jurerê remains the blue-chip choice, while Campeche presents the highest upside potential for 2026–2028.",
+          ],
+        },
+        {
+          heading: "Balneário Camboriú vs Itapema — a 2026 Leadership Shift",
+          paragraphs: [
+            "Known as the \"Brazilian Dubai,\" Balneário Camboriú has transformed into a luxury high-rise destination. For years BC was Brazil's undisputed price-per-m² leader — holding the #1 FipeZap ranking since 2022. In May 2026, that changed.",
+            "Balneário Camboriú: price/m² R$15,215, rank #2 (was #1 since 2022), average deal value R$2.19M (+15%), market character ultra-luxury with land exhausted. Itapema: price/m² R$15,226, rank #1 (first time since May 2026), 12-month growth +8.22%, market character flexible master plan with available land.",
+            "Not a decline for BC — a shift in market shape. Land for new development in BC has nearly run out, and the city is shifting toward ultra-luxury — the landmark example is Senna Tower: 550 meters tall, units starting at R$28 million. The average sold property value in BC rose 15% to R$2.19 million — higher than São Paulo.",
+            "BC scores: Investment Potential 8.5/10, Rental Demand 7.0/10, Liquidity 8.0/10, Lifestyle 9.0/10, Long-Term Growth 8.5/10. Plan B commentary on BC: the luxury play — high entry cost but strong prestige factor, while seasonal rental demand remains the weak point. Best suited for investors with R$1,000,000 (~$194K)+ budgets. Long-term holds (5+ years) remain the most profitable strategy.",
+            "Itapema scores: Investment Potential 9.0/10, Rental Demand 8.0/10, Liquidity 7.0/10, Lifestyle 7.5/10, Long-Term Growth 9.0/10. Plan B commentary on Itapema: our top pick for capital appreciation in 2026. The growth trajectory mirrors BC ten years ago. Entry point: R$500,000–800,000 (~$97K–$155K) for a 2BR.",
+          ],
+        },
+        {
+          heading: "Porto Belo & Rancho Queimado",
+          paragraphs: [
+            "Porto Belo — eco-luxury haven. Combines pristine beaches with a growing eco-tourism sector. Home to several luxury condominium projects and the upcoming Beto Carrero World expansion. Scores: Investment Potential 7.8/10, Rental Demand 7.5/10, Liquidity 6.5/10, Lifestyle 9.0/10, Long-Term Growth 8.0/10.",
+            "Rancho Queimado — the future frontier. An emerging destination focused on gated communities and rural lifestyle properties. At prices starting from R$3,500 (~$680)/m², it offers the lowest entry point in Santa Catarina. Scores: Investment Potential 7.5/10, Rental Demand 5.5/10, Liquidity 5.0/10, Lifestyle 8.0/10, Long-Term Growth 8.5/10.",
+          ],
+        },
+        {
+          heading: "Final Rankings — Best Areas 2026",
+          paragraphs: [
+            "1. Florianópolis (Jurerê) — score 9.0, best for premium/liquidity, entry (2BR) R$1.2–1.8M (~$233–350K). 2. Itapema (Meia Praia) — score 9.0, capital appreciation, R$500–800K (~$97–155K). 3. Florianópolis (Lagoa) — score 8.5, lifestyle + rental income, R$700K–1M (~$136–194K). 4. Balneário Camboriú — score 8.5, luxury/HNWI buyers, R$1–2M (~$194–388K).",
+            "5. Florianópolis (Campeche) — score 8.0, upside potential, R$500–700K (~$97–136K). 6. Porto Belo — score 7.8, eco-luxury/nature, R$400–700K (~$78–136K). 7. Florianópolis (Ingleses) — score 7.8, mid-range investment, R$550–800K (~$107–155K). 8. Rancho Queimado — score 7.5, speculative entry, R$200–350K (~$39–68K).",
+          ],
+        },
+        {
+          heading: "Risk Factors",
+          paragraphs: [
+            "Currency risk — BRL volatility, 10–20% annually vs USD/EUR. Liquidity risk — selling typically takes 6–18 months. Construction delays — 6–12 month delays are common. Regulatory changes — Brazilian property laws may evolve.",
+          ],
+        },
+        {
+          heading: "Plan B Verdict — Areas Analysis",
+          paragraphs: [
+            "Jurerê: blue-chip SC real estate, highest liquidity. Best for HNWIs and wealth preservation. Avoid if budget < R$1M. Itapema: ⭐ top pick for growth, \"BC of 2016.\" Best for growth investors, 3–7 yr horizon. Avoid if you need income now. Lagoa: best lifestyle + yield balance. Best for digital nomads. Avoid if seeking pure capital appreciation.",
+            "Balneário Camboriú: the luxury play, seasonal rental is the weak point. Best for premium buyers, status. Avoid if you need cash flow immediately. Campeche: highest upside within Floripa. Best for value investors, 5+ yr. Avoid if you need an already-established neighborhood. Porto Belo: niche play, eco-luxury. Best for a secondary home. Avoid if you need high liquidity.",
+            "Ingleses: solid rental market. Best for conservative investors. Avoid if seeking high capital growth. Rancho Queimado: speculative frontier. Best for risk-tolerant, rural-lifestyle buyers. Avoid if you need liquidity or income.",
+          ],
+        },
+        {
+          heading: "Plan B Top Recommendations 2026",
+          paragraphs: [
+            "1. Itapema (Meia Praia) — best capital appreciation. 18% growth, prices 30–40% below BC. 2. Florianópolis (Campeche) — best value in the capital. New infrastructure, growing demand. 3. Florianópolis (Jurerê) — best for wealth preservation. Highest liquidity.",
+            "This material is for informational purposes only and does not constitute investment advice. Sources: Índice FipeZap (2026), developer reports, ZAP Imóveis (Q2 2026). Itapema and Balneário Camboriú figures updated with May 2026 data.",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "Santa Catarina стала главным направлением для инвестиций в недвижимость в Бразилии — сочетание высокого качества жизни, устойчивой доходности от аренды и стабильного роста цен. Этот отчёт разбирает самые перспективные районы штата для международных и локальных инвесторов. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.",
+            "Ключевые цифры: 7,3М население штата, 8,2% средний годовой рост цен, 6,5% средняя доходность от аренды, 12,4% рост цен за 5 лет.",
+            "Флорианополис лидирует — 42% всех иностранных инвестиций в Санта-Катарине приходится на этот город. Журере Интернасьонал — самый дорогой пляжный район Бразилии, R$18 000–25 000 (~$3,5K–$4,9K)/м². Итапема показывает самый высокий рост, цены на 30–40% ниже, чем в Балнеариу-Камбориу. Порту-Белу — растущее направление эко-люкса на фоне расширения Beto Carrero World.",
+          ],
+        },
+        {
+          heading: "Сравнение цены за м² по районам",
+          paragraphs: [
+            "Данные: FipeZap, отчёты застройщиков, ZAP Imóveis (Q2 2026). Цена за м², от премиума до входного уровня: Журере Интернасьонал R$22 000 (~$4K) — доходность 5,2%, рост 12%/год, скор 9.0. Балнеариу-Камбориу R$15 000 (~$3K) — доходность 4,8%, рост см. раздел про BC ниже, скор 8.5. Лагоа-да-Консейсау R$12 500 (~$2K) — доходность 6,8%, рост 10%/год, скор 8.5.",
+            "Инглезес R$10 800 (~$2K) — доходность 7,1%, рост 9%/год, скор 8.2. Итапема (Meia Praia) R$10 000 (~$2K) — доходность 7,2%, рост 18%/год, скор 9.0. Канасвиэйрас R$9 500 (~$2K) — доходность 7,5%, рост 8%/год, скор 7.8.",
+            "Кампече R$8 900 (~$2K) — доходность 6,5%, рост 11%/год, скор 8.0. Порту-Белу R$8 500 (~$2K) — доходность 6,8%, рост 14%/год, скор 7.8. Центр (Флорипа) R$7 200 (~$1K) — доходность 6,2%, рост 7%/год, скор 7.2. Ранчо-Кеймаду R$3 500 (~$660) — доходность 5,5%, рост 12%/год, скор 7.5.",
+            "О цифре по Итапеме: R$10 000/м² — цена конкретно на пляже Meia Praia, более доступного субрайона Итапемы. Общегородская средняя (FipeZap, май 2026) — R$15 226/м², с учётом новой премиальной застройки, которая вывела Итапему на первое место в стране по цене за м², обойдя Балнеариу-Камбориу. Обе цифры верны — они про разные сегменты одного города.",
+          ],
+        },
+        {
+          heading: "Флорианополис — Silicon Island Бразилии",
+          paragraphs: [
+            "Флорианополис — экономический и культурный центр Санта-Катарины, население агломерации превышает 1 миллион человек. Город сочетает растущий технологический сектор («Silicon Island»), пляжи мирового уровня и растущее международное сообщество. Международный аэропорт Эрсилиу-Лус обслуживает более 4 миллионов пассажиров в год.",
+            "По районам: Журере Интернасьонал R$22K/м², доходность 5,2%, рост 12%/год — премиальные инвестиции. Лагоа-да-Консейсау R$12,5K/м², доходность 6,8%, рост 10%/год — лайфстайл + аренда. Инглезес R$10,8K/м², доходность 7,1%, рост 9%/год — аренда среднего сегмента. Канасвиэйрас R$9,5K/м², доходность 7,5%, рост 8%/год — бюджетный вход. Центр R$7,2K/м², доходность 6,2%, рост 7%/год — городская жизнь. Кампече R$8,9K/м², доходность 6,5%, рост 11%/год — наибольший потенциал роста.",
+            "Комментарий Plan B: Флорианополис предлагает лучшее сочетание инфраструктуры, лайфстайла и доходности инвестиций в Бразилии. Журере остаётся выбором blue-chip, тогда как Кампече демонстрирует наибольший потенциал роста на 2026–2028 годы.",
+          ],
+        },
+        {
+          heading: "Балнеариу-Камбориу vs Итапема — смена лидера на 2026 год",
+          paragraphs: [
+            "Известный как «бразильский Дубай», Балнеариу-Камбориу превратился в направление люксовых высоток. Годами BC был безусловным национальным лидером по цене за м² — с 2022 года держал первое место в рейтинге FipeZap. В мае 2026 года это изменилось.",
+            "Балнеариу-Камбориу: цена/м² R$15 215, позиция #2 (была #1 с 2022), средний чек сделки R$2,19M (+15%), характер рынка — ультра-люкс, земля исчерпана. Итапема: цена/м² R$15 226, позиция #1 (впервые с мая 2026), рост за год +8,22%, характер рынка — гибкий генплан, земля есть.",
+            "Не ослабление BC, а смена формы рынка. Свободной земли под новую застройку в BC почти не осталось, и город смещается в сегмент ультра-люкса — знаковый пример Senna Tower: 550 метров высоты, юниты от R$28 млн. Средний чек проданного объекта в BC вырос на 15% и достиг R$2,19 млн — выше, чем в Сан-Паулу.",
+            "Оценки BC: Investment Potential 8.5/10, Rental Demand 7.0/10, Liquidity 8.0/10, Lifestyle 9.0/10, Long-Term Growth 8.5/10. Комментарий Plan B по BC: игра на люксе — высокий порог входа, но сильный престиж-фактор, при этом сезонный спрос на аренду остаётся слабым местом. Лучше всего подходит инвесторам с бюджетом от R$1 000 000 (~$194K). Наиболее прибыльная стратегия — долгосрочное владение (5+ лет).",
+            "Оценки Итапема: Investment Potential 9.0/10, Rental Demand 8.0/10, Liquidity 7.0/10, Lifestyle 7.5/10, Long-Term Growth 9.0/10. Комментарий Plan B по Итапеме: наш топ-пик для роста капитала на 2026 год. Траектория роста напоминает BC десять лет назад. Порог входа: R$500 000–800 000 (~$97K–$155K) за 2-комнатную квартиру.",
+          ],
+        },
+        {
+          heading: "Порту-Белу и Ранчо-Кеймаду",
+          paragraphs: [
+            "Порту-Белу — эко-люкс гавань. Сочетает нетронутые пляжи с растущим сектором эко-туризма. Здесь строится несколько люксовых кондоминиумов, ожидается расширение Beto Carrero World. Оценки: Investment Potential 7.8/10, Rental Demand 7.5/10, Liquidity 6.5/10, Lifestyle 9.0/10, Long-Term Growth 8.0/10.",
+            "Ранчо-Кеймаду — граница будущего. Развивающееся направление с закрытыми посёлками и сельской недвижимостью. При цене от R$3 500 (~$680)/м² предлагает самый доступный вход в Санта-Катарине. Оценки: Investment Potential 7.5/10, Rental Demand 5.5/10, Liquidity 5.0/10, Lifestyle 8.0/10, Long-Term Growth 8.5/10.",
+          ],
+        },
+        {
+          heading: "Итоговый рейтинг районов 2026",
+          paragraphs: [
+            "1. Флорианополис (Журере) — score 9.0, премиум/ликвидность, вход (2BR) R$1,2–1,8M (~$233–350K). 2. Итапема (Meia Praia) — score 9.0, рост капитала, R$500–800K (~$97–155K). 3. Флорианополис (Лагоа) — score 8.5, лайфстайл + доход, R$700K–1M (~$136–194K). 4. Балнеариу-Камбориу — score 8.5, люкс/HNWI, R$1–2M (~$194–388K).",
+            "5. Флорианополис (Кампече) — score 8.0, потенциал роста, R$500–700K (~$97–136K). 6. Порту-Белу — score 7.8, эко-люкс/природа, R$400–700K (~$78–136K). 7. Флорианополис (Инглезес) — score 7.8, инвестиции среднего сегмента, R$550–800K (~$107–155K). 8. Ранчо-Кеймаду — score 7.5, спекулятивный вход, R$200–350K (~$39–68K).",
+          ],
+        },
+        {
+          heading: "Факторы риска",
+          paragraphs: [
+            "Валютный риск — волатильность реала, 10–20% в год к USD/EUR. Риск ликвидности — продажа обычно занимает 6–18 месяцев. Задержки строительства — отклонения на 6–12 месяцев обычное явление. Регуляторные изменения — законы о недвижимости в Бразилии могут меняться.",
+          ],
+        },
+        {
+          heading: "Вердикт Plan B по районам",
+          paragraphs: [
+            "Журере: blue-chip недвижимость СК, максимальная ликвидность. Лучше для HNWI, сохранения капитала. Не подходит, если бюджет < R$1M. Итапема: ⭐ топ-пик роста, «BC 2016 года». Лучше для инвесторов роста, горизонт 3–7 лет. Не подходит, если нужен доход сразу. Лагоа: лучший баланс лайфстайла и доходности. Лучше для цифровых кочевников. Не подходит, если нужен только рост капитала.",
+            "Балнеариу-Камбориу: игра на люксе, сезонная аренда — слабое место. Лучше для премиальных покупателей, статуса. Не подходит, если нужен денежный поток сразу. Кампече: наибольший потенциал внутри Флорипы. Лучше для инвесторов ценности, 5+ лет. Не подходит, если нужен устоявшийся район. Порту-Белу: нишевая игра, эко-люкс. Лучше для второй недвижимости. Не подходит, если нужна высокая ликвидность.",
+            "Инглезес: устойчивый рынок аренды. Лучше для консервативных инвесторов. Не подходит, если ищете высокий рост капитала. Ранчо-Кеймаду: спекулятивная граница. Лучше для готовых к риску, сельский лайфстайл. Не подходит, если нужна ликвидность или доход.",
+          ],
+        },
+        {
+          heading: "Топ-рекомендации Plan B на 2026 год",
+          paragraphs: [
+            "① Итапема (Meia Praia) — лучший потенциал роста капитала. 18% рост, цены на 30–40% ниже BC. ② Флорианополис (Кампече) — лучшее соотношение цена/качество в столице. Новая инфраструктура, растущий спрос. ③ Флорианополис (Журере) — лучший выбор для сохранения капитала. Максимальная ликвидность.",
+            "Материал носит информационный характер и не является инвестиционной рекомендацией. Источники: Índice FipeZap (2026), отчёты застройщиков, ZAP Imóveis (Q2 2026). Цифры по Итапеме и Балнеариу-Камбориу уточнены с учётом данных за май 2026 года.",
+          ],
+        },
+      ],
+    },
+  },
 };

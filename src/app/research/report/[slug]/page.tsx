@@ -105,6 +105,18 @@ const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string;
       h1: 'Как купить недвижимость в Бразилии: инструкция и все расходы для иностранца',
     },
   },
+  'santa-catarina-market-outlook-2027': {
+    ru: {
+      title: 'Рыночный прогноз Santa Catarina 2027',
+      h1: 'Прогноз рынка недвижимости Санта-Катарины 2027',
+    },
+  },
+  'best-areas-to-invest-in-santa-catarina-2026': {
+    ru: {
+      title: 'Лучшие районы для инвестиций в Санта-Катарине 2026',
+      h1: 'Лучшие районы для инвестиций в Санта-Катарине',
+    },
+  },
 };
 
 export async function generateStaticParams() {
