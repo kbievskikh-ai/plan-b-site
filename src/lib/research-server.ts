@@ -87,13 +87,16 @@ const SLUG_OVERRIDES: Record<string, string> = {
   'Can You Pay for Brazilian Real Estate in Cryptocurrency 2026': 'oplata-kriptovalyutoy-nedvizhimost-braziliya',
   'Capital Gains Tax on Real Estate Sales in Brazil 2026: 15% and How to Legally Avoid It': 'nalog-prodazha-nedvizhimost-braziliya',
   'Rio, São Paulo, or Southern Brazil: Where Investment Actually Performs Better': 'gde-kupit-nedvizhimost-braziliya',
+  'Buying Property Through an SPE in Brazil 2026': 'spe-struktura-nedvizhimost-braziliya',
+  'Brazil as a Safe Harbor: A Plan B for Your Family 2026': 'braziliya-plan-b-vnzh-pasport',
+  'How to Buy Property in Brazil: Steps and Costs 2026': 'kak-kupit-nedvizhimost-braziliya',
 };
 
 // Версия кэша: Vercel Data Cache (fetch-кэш) переживает между деплоями, поэтому одинаковый URL может отдавать
 // старый ответ даже после нового деплоя, если старый fetch с тем же URL уже был закэширован в
 // предыдущем деплое. Бумпнуть это число при следующем деплое, если опять видишь старые данные
 // после изменения в research API.
-const RESEARCH_CACHE_BUSTER = 3;
+const RESEARCH_CACHE_BUSTER = 4;
 
 async function fetchResearchRaw(lang: ResearchLang): Promise<any[]> {
   const res = await fetch(`${API_URL}/api/research?limit=50&lang=${lang}&_v=${RESEARCH_CACHE_BUSTER}`, {

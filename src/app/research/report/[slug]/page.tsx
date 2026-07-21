@@ -75,6 +75,36 @@ const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string;
       h1: 'Рио, Сан-Паулу или юг Бразилии: где на самом деле выгоднее инвестировать',
     },
   },
+  'spe-struktura-nedvizhimost-braziliya': {
+    en: {
+      title: 'Buying Property Through an SPE in Brazil 2026',
+      h1: 'Buying Property Through an SPE in Brazil: What You Need to Know Before Signing',
+    },
+    ru: {
+      title: 'Покупка недвижимости через SPE — что нужно знать',
+      h1: 'Покупка недвижимости через SPE: что нужно знать перед сделкой',
+    },
+  },
+  'braziliya-plan-b-vnzh-pasport': {
+    en: {
+      title: 'Brazil as a Safe Harbor: A Plan B for Your Family 2026',
+      h1: 'Brazil as a Safe Harbor: A Plan B for Your Family',
+    },
+    ru: {
+      title: 'Бразилия как запасной аэродром — план Б для вашей семьи',
+      h1: 'Бразилия как запасной аэродром: план Б для вашей семьи',
+    },
+  },
+  'kak-kupit-nedvizhimost-braziliya': {
+    en: {
+      title: 'How to Buy Property in Brazil: Steps and Costs 2026',
+      h1: 'How to Buy Property in Brazil: A Step-by-Step Guide and All the Costs',
+    },
+    ru: {
+      title: 'Как купить недвижимость в Бразилии: шаги и расходы',
+      h1: 'Как купить недвижимость в Бразилии: инструкция и все расходы для иностранца',
+    },
+  },
 };
 
 export async function generateStaticParams() {

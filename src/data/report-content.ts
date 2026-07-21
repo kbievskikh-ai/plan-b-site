@@ -909,5 +909,432 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
       ],
     },
   },
-};
+  'spe-struktura-nedvizhimost-braziliya': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "If you're offered a stake in a project through an SPE (Sociedade de Propósito Específico) with a higher-than-usual commission, a slick presentation, and a promise to \"get in at the earliest stage\" — read this before you agree. I've been through this structure myself, both as an advisor who brought clients into one and as someone who's been paid through one. Here's the honest version: what the law says, and what actually happens in practice.",
+          ],
+        },
+        {
+          heading: "What an SPE Is",
+          paragraphs: [
+            "An SPE (Sociedade de Propósito Específico) is a legal entity created for a specific investment project. The idea is simple: the developer sets up a separate entity for one project, and investors buy in through shares (cotas) in that entity, rather than purchasing a finished unit directly.",
+            "It's worth understanding: this structure was specifically designed to prevent the \"defrauded buyers\" history from repeating. It has two genuine legal advantages: first, liability is segregated strictly project-by-project — problems on one project don't carry over to another. Second, for the developer, it's a way to scale using borrowed funds without mixing capital across different developments. That's exactly why large, experienced developers use SPEs routinely — the structure works when it's managed in good faith.",
+            "Don't panic at the word \"SPE\". The structure itself isn't a reason to run. The danger appears when an SPE ends up in the hands of a dishonest developer or construction administrator — then it turns into a ticking time bomb, and sooner or later it goes off. The issue isn't the tool, it's who's using it.",
+          ],
+        },
+        {
+          heading: "The Legal Gap No One Mentions in the Pitch",
+          paragraphs: [
+            "Here's a fact worth knowing beforehand, not after: Brazil has no dedicated law governing SPEs specifically in real estate. That's not my opinion — it's the direct wording used by Brazilian lawyers who specialize in this area.",
+            "There's a separate, much stronger protection mechanism — patrimônio de afetação (Law No. 10.931/2004). It segregates a specific project's assets from the developer's general assets: if the company goes bankrupt, the project's money and property do not get swept into the general bankruptcy estate — they go to the buyers.",
+            "The key nuance: adopting patrimônio de afetação is voluntary for the developer, not mandatory. They can adopt it, or not — and the marketing materials usually won't mention this either way. This is the first question to ask before signing anything.",
+            "With patrimônio de afetação adopted: project assets are segregated from the developer, funds are protected in a bankruptcy, construction continues or buyers get priority in bankruptcy, a more transparent and verifiable structure. Without it: project assets are mixed with the developer's general assets, in a bankruptcy buyer funds sit in the general pool of debts, risk of the \"bicycle effect\" — project funds diverted elsewhere, minimal protection if the developer runs into trouble.",
+          ],
+        },
+        {
+          heading: "Where This Law Came From — and Why It Matters",
+          paragraphs: [
+            "The patrimônio de afetação law didn't appear in 2004 by accident — it was enacted after the collapse of the developer Encol in the late 1990s, which went bankrupt and left more than 700 unfinished properties across the country. Before that, lawyers documented what became known as the \"bicycle effect\" (efeito bicicleta): money collected for one SPE project was redirected to plug holes in another project by the same developer, whose funds had already been misused.",
+            "If this reminds you of 1990s housing-cooperative scandals and defrauded buyers, you're not alone in that impression. The mechanics really are similar: collecting construction money before a project is actually structured and protected.",
+          ],
+        },
+        {
+          heading: "The Risk Premium — and Why \"30-40% in a Year\" Promises Should Worry You",
+          paragraphs: [
+            "It's important to separate two different things. The risk premium is what a developer promises an investor for entering the structure at the earliest, riskiest stage. This is where the tempting promises live — \"you'll earn 30-40% in a year.\" My honest view as a practitioner: that's not systematic. There may be isolated successful projects that hit those numbers, but when it's presented as the norm rather than a rare exception, that's a red flag, not a realistic scenario.",
+            "The commission is a separate story, and it's about me as a broker, not about the investor. I receive it from the developer for selling units within the SPE structure. That's where I had a personal, unpleasant experience, which I'll describe below.",
+          ],
+        },
+        {
+          heading: "My Own Experience — From Both Sides of the Same Deal",
+          paragraphs: [
+            "I'll be honest about this, because I think it matters more than any theory — and from two angles at once: as a broker, and from the standpoint of the client's outcome.",
+            "The broker's side — a delayed commission. I worked as a broker and sold three units to my clients within one SPE project — contracts signed, down payment made, everything done properly. I went to the developer for my commission, and was told: \"We'll definitely pay you, but only after the investment group closes\" — meaning after roughly 80% of the units sell and the construction budget is formed.",
+            "The wait was long. From a broker's standpoint, that means next time I'll think hard about whether to bring clients into a similar project — not because the project itself is bad, but because the structure doesn't work in my favor as an intermediary who needs money today, not many months from now. Worth noting: Brazilian developers are already aware of this issue and have started inventing bonuses and incentive schemes for brokers — because nobody wants to wait.",
+            "The client's side — the deal worked out. At the same time, the project itself delivered honestly: the developer completed construction on time, without delays, exactly as promised. The client, net of all costs and commission, earned 42% in hard currency — entering at an early stage as the SPE structure intends, plus a solid discount for paying the full amount upfront in cash.",
+          ],
+        },
+        {
+          heading: "An Honest Balance — Both Sides of the Coin",
+          paragraphs: [
+            "This system has both upsides and downsides, and I want to say that plainly. It worked out well for me and my clients specifically because we did deep due diligence on the developer and the project before investing — not because we got lucky.",
+            "But I also know other stories — projects that froze, never got finished, where the developer collected investor money and disappeared, now wanted by the authorities. People lost money. There are, unfortunately, quite a few such examples.",
+            "So before making a decision — always consult a specialist. I'm glad to advise personally, and if needed, recommend lawyers and attorneys to discuss the risks of a specific project.",
+          ],
+        },
+        {
+          heading: "My Take — Weigh It Very Carefully",
+          paragraphs: [
+            "Yes, the pitch sounds convincing, and sometimes there's an early-entry discount. But the risk is real, and I've seen it not just on the client side but on my own. Even with an experienced developer at the helm, the structure itself carries layers of risk that aren't present in a conventional incorporação with a properly adopted patrimônio de afetação.",
+            "I would not recommend an inexperienced investor enter an SPE deal without support that actually verifies the structure, rather than relying on a polished presentation.",
+          ],
+        },
+        {
+          heading: "What to Check Before Entering an SPE",
+          paragraphs: [
+            "1. Patrimônio de Afetação — has it been adopted for this project, yes or no, in writing.",
+            "2. A signed project — is there an approved project, not just renders.",
+            "3. Construction permit — has the alvará de construção been issued.",
+            "4. Actual construction stage — not what you're told, check documents, and the site in person if possible.",
+            "5. Project-stops scenario — what happens to your money if construction halts.",
+          ],
+        },
+        {
+          heading: "Bottom Line",
+          paragraphs: [
+            "An SPE is a legal, common structure, and not every such project is problematic. But it carries a real legal gap (no dedicated law), a real historical reason for caution (Encol, the \"bicycle effect\"), and my own experience confirms the risks are concrete, not theoretical. A higher commission isn't a reason to go in without looking. Weigh it carefully, verify patrimônio de afetação in writing, and don't rely on the presentation alone.",
+            "Informational material, not legal or investment advice. Legal framework confirmed by Dr. Wilian Campos (OAB/SC 50.897), WK International Services, July 2026. Risk assessments reflect Konstantin Bievskikh's personal practical experience.",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "Если вам предлагают войти в проект через SPE (Sociedade de Propósito Específico) с комиссией выше обычной, привлекательной презентацией и обещанием «войти на самом раннем этапе» — прежде чем соглашаться, прочитайте это. Я лично прошёл через эту структуру — и как советник, приводивший туда клиентов, и как человек, который сам получал по ней деньги. Расскажу честно: и что говорит закон, и что происходит на практике.",
+          ],
+        },
+        {
+          heading: "Что такое SPE",
+          paragraphs: [
+            "SPE (Sociedade de Propósito Específico) — юридическое лицо, создаваемое под конкретный инвестиционный проект. Идея простая: застройщик открывает отдельную структуру под один объект, инвесторы входят через доли (котас) в этой структуре, а не покупают готовую квартиру напрямую.",
+            "Важно понимать: эта структура была придумана как раз для того, чтобы не повторялась история с обманутыми дольщиками. У неё два реальных законных преимущества: во-первых, ответственность разграничена строго по каждому проекту отдельно — проблемы одного проекта застройщика не переходят на другой. Во-вторых, для застройщика это возможность масштабироваться на заёмных средствах, не смешивая капитал разных строек. Именно поэтому крупные, опытные застройщики используют SPE на регулярной основе — структура работает, когда ей управляют добросовестно.",
+            "Не паникуйте при слове «SPE». Сама по себе структура — не повод бежать. Опасность возникает, когда SPE попадает в руки недобросовестного застройщика или администратора стройки — тогда это превращается в бомбу замедленного действия, и рано или поздно она рванёт. Дело не в инструменте, а в том, кто его использует.",
+          ],
+        },
+        {
+          heading: "Юридический пробел, о котором вам не расскажут в презентации",
+          paragraphs: [
+            "Вот факт, который стоит знать до, а не после: в Бразилии нет отдельного закона, регулирующего именно SPE в недвижимости. Это не моя оценка — это прямая формулировка бразильских юристов, специализирующихся на этой теме.",
+            "Есть отдельный, гораздо более сильный механизм защиты — patrimônio de afetação (закон № 10.931/2004). Он отделяет активы конкретного проекта от общего имущества застройщика: если компания обанкротится, деньги и объект проекта не попадают в общую массу банкротства, а достаются покупателям.",
+            "Ключевой нюанс: применение patrimônio de afetação — добровольное для застройщика, не обязательное. Он может его принять, а может не принять — и в маркетинговых материалах вам об этом чаще всего не скажут вообще. Это первый вопрос, который нужно задать до подписания.",
+            "При оформленном patrimônio de afetação: активы проекта отделены от застройщика, при банкротстве деньги защищены, стройка продолжается или покупатели в приоритете при банкротстве, более прозрачная и проверяемая структура. Без него: активы проекта смешаны с общим имуществом застройщика, при банкротстве деньги покупателей в общей массе долгов, риск «эффекта велосипеда» — деньги проекта уходят на другие нужды, минимальная защита при проблемах у застройщика.",
+          ],
+        },
+        {
+          heading: "Откуда взялся этот закон — и почему это важно понимать",
+          paragraphs: [
+            "Закон о patrimônio de afetação появился в 2004 году не случайно — его приняли после краха застройщика Encol в конце 1990-х, который обанкротился и оставил более 700 недостроенных объектов по всей стране. До этого юристы фиксировали так называемый «эффект велосипеда» (efeito bicicleta): деньги, собранные на один проект SPE, перенаправлялись на затыкание дыр в другом проекте того же застройщика, деньги которого уже были потрачены не по назначению.",
+            "Если вам это напоминает истории с кооперативами и обманутыми дольщиками из 90-х — вы не одиноки в этом ощущении. Механика действительно похожа: сбор денег на строительство до того, как проект реально готов и защищён.",
+          ],
+        },
+        {
+          heading: "Премия за риск — и почему обещания «30-40% за год» должны настораживать",
+          paragraphs: [
+            "Важно разделять два разных понятия. Премия за риск — это то, что застройщик обещает инвестору за вход в структуру на раннем, самом рискованном этапе. Именно здесь встречаются заманчивые обещания вроде «заработаете 30-40% за год». Моё честное мнение как практика: такого не бывает системно. Могут быть единичные удачные проекты с такой доходностью, но когда это преподносится как норма, а не редкое исключение — это красный флаг, а не реалистичный сценарий.",
+            "Комиссия — это отдельная история, и она про меня как риелтора, не про инвестора. Я получаю её от застройщика за продажу юнитов в структуре SPE. Именно с ней у меня был личный неприятный опыт, о котором расскажу ниже.",
+          ],
+        },
+        {
+          heading: "Мой личный опыт — с двух сторон одной сделки",
+          paragraphs: [
+            "Расскажу честно, потому что считаю это важнее любой теории — и с двух ракурсов сразу: как риелтор и с точки зрения результата для клиента.",
+            "Со стороны риелтора — задержка комиссии. Я работал брокером и продал три квартиры своим клиентам в одном проекте SPE — договоры оформлены, первоначальный взнос внесён, всё честно и по правилам. Прихожу к застройщику за комиссией — а мне отвечают: «Заплатим обязательно, но только после закрытия инвестиционной группы» — то есть после того, как будет продано около 80% юнитов и сформируется бюджет на строительство.",
+            "Ждать пришлось долго. С точки зрения риелтора это значит: в следующий раз я крепко подумаю, вести ли клиентов в подобный проект — не потому что сам проект плохой, а потому что структура невыгодна лично мне как посреднику, которому деньги нужны сегодня, а не через много месяцев. Замечу: бразильские застройщики уже это понимают и начинают придумывать бонусы и мотивационные схемы для риелторов — потому что никто не хочет ждать.",
+            "Со стороны результата для клиента — сделка сработала. При этом сам проект отработал честно: застройщик сдал объект вовремя, без опозданий, точно как обещал. Клиент, за вычетом всех издержек и комиссии, заработал 42% в валюте — вошёл на раннем этапе, как и предполагает структура SPE, плюс получил хорошую скидку за полную оплату сразу наличными.",
+          ],
+        },
+        {
+          heading: "Честный баланс — обе стороны медали",
+          paragraphs: [
+            "У этой системы есть и плюсы, и минусы, и я хочу, чтобы это было сказано прямо. У меня с клиентами получилось хорошо именно потому, что мы провели глубокую проверку застройщика и проекта до того, как инвестировать — не потому что «повезло».",
+            "Но я знаю и другие истории — проекты, которые заморозились, не достроились, где застройщик собрал деньги инвесторов и скрылся, сейчас находится в розыске. Люди потеряли деньги. Таких примеров, к сожалению, достаточно много.",
+            "Поэтому прежде чем принимать решение — обязательно проконсультируйтесь со специалистом. Я готов лично проконсультировать и, если нужно, порекомендовать юристов и адвокатов, с которыми можно обсудить все риски конкретного проекта.",
+          ],
+        },
+        {
+          heading: "Мой вывод — взвешивайте очень внимательно",
+          paragraphs: [
+            "Да, презентация звучит убедительно, иногда предложат скидку за ранний вход. Но риск — реальный, и я видел его не только со стороны клиентов, но и на себе. Даже если управляет опытный застройщик, сама структура несёт в себе слои риска, которых нет в классической инкорпорации с оформленным patrimônio de afetação.",
+            "Я бы не рекомендовал неопытному инвестору входить в SPE без сопровождения, которое реально проверяет структуру, а не полагается на красивую презентацию.",
+          ],
+        },
+        {
+          heading: "Что проверить перед тем, как войти в SPE",
+          paragraphs: [
+            "1. Patrimônio de afetação — оформлен ли по этому проекту, да или нет, письменно.",
+            "2. Подписанный проект — есть ли утверждённый проект, не только рендеры.",
+            "3. Разрешение на строительство — получен ли alvará de construção.",
+            "4. Реальный этап стройки — не на словах, а по документам и, если возможно, лично на месте.",
+            "5. Сценарий остановки проекта — что происходит с вашими деньгами, если стройка встанет.",
+          ],
+        },
+        {
+          heading: "Что в итоге",
+          paragraphs: [
+            "SPE — легальная и распространённая структура, и не каждый такой проект проблемный. Но у неё есть реальный юридический пробел (нет отдельного закона), реальная историческая причина для осторожности (Encol, «эффект велосипеда»), и мой личный опыт подтверждает: риски конкретные, не теоретические. Более высокая комиссия — не повод входить не глядя. Взвешивайте внимательно, проверяйте patrimônio de afetação письменно, и не полагайтесь только на презентацию.",
+            "Информационный материал, не юридическая или инвестиционная консультация. Правовая база подтверждена Dr. Wilian Campos (OAB/SC 50.897), WK International Services, июль 2026. Оценки рисков — личный практический опыт Константина Биевских.",
+          ],
+        },
+      ],
+    },
+  },
 
+  'braziliya-plan-b-vnzh-pasport': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "Diversifying where you keep your money, where your children are educated, where your family has the option to live if it were ever needed — that's ordinary strategic planning, the same logic as diversifying an investment portfolio. Not having such an option is, in itself, a risk — regardless of where you're from.",
+            "My name is Konstantin Bievskikh, and my company's name isn't an accident. Plan B Brazil — because that's exactly what I offer: a calmly prepared backup option.",
+          ],
+        },
+        {
+          heading: "Why Think About a \"Plan B\" at All",
+          paragraphs: [
+            "It's about your family having a real option — an established residency, a clear path to citizenship, an asset in a stable jurisdiction — that you might not use for years, but that exists if you ever need it.",
+            "People think about this for different reasons: political instability, currency risk, wanting to give their children a wider set of choices, or simply sound asset diversification. Your reason is yours; the tool is the same.",
+          ],
+        },
+        {
+          heading: "Why Brazil Specifically",
+          paragraphs: [
+            "Florianópolis — one of the safest state capitals in Brazil. 170+ countries with visa-free or simplified access on a Brazilian passport. $194K (R$1,000,000) real estate investment threshold to start the residency process.",
+            "Safety. Florianópolis, where I work, consistently ranks among the safest state capitals in Brazil according to official statistics — well above the average for major Brazilian cities and most global metropolises.",
+            "A real, legal path to residency. The investor visa through real estate is a clear process: from $194,000 (R$1,000,000) invested in Santa Catarina property, you get temporary residency leading to permanent residency, and eventually citizenship. We covered the full path, including honest timelines, in a separate article on Brazil residency through real estate.",
+            "Dual citizenship is allowed. Brazil doesn't require you to renounce your current citizenship — you gain a second passport, not a replacement for the first.",
+            "Citizenship for children born in Brazil. The constitution enshrines jus soli — a child born on Brazilian soil automatically becomes a citizen, regardless of the parents' nationality.",
+            "Quality of life. Florianópolis consistently ranks among Brazil's cities with the highest human development index — infrastructure, healthcare, climate, and a growing tech sector with an international community.",
+          ],
+        },
+        {
+          heading: "Why I Personally Chose Brazil — Long Before It Was a Trend",
+          paragraphs: [
+            "2009 — moved to Brazil, the start of a personal and professional journey in the country. 2009–2021 — lived and worked across different regions, from the Amazon to Porto Alegre. 2021 — today: Santa Catarina, a deliberate choice after getting to know the whole country.",
+            "Personal experience, not marketing copy. I want to say this not as an advisor, but as someone who lived this decision himself. I chose Brazil for my family more than 10 years ago — in 2009 — not now, when everyone is talking about it, but back when it wasn't a fashionable or obvious choice at all.",
+            "Before settling in Santa Catarina, I lived and worked in several major cities along Brazil's coast — from the Amazon in the north to Porto Alegre in the south. This isn't a tourist's acquaintance with the country from vacations. I've seen firsthand how business works in different regions, how different the mentality, economy, and pace of life can be between the tropical Amazon and the cool southern state with European roots. Over these years, Portuguese has become essentially my native language — not a phrasebook language, but the one I use to run my business and everyday life, every day.",
+            "Before settling on Brazil, I travelled a considerable part of the world. We seriously considered Europe, the US, and Asia as places to build a family life. In the end, the choice landed on Latin America, and specifically Brazil — and that decision has been tested by more than fifteen years, not fresh enthusiasm.",
+          ],
+        },
+        {
+          heading: "Business and Government Connections in the Region",
+          paragraphs: [
+            "Years of living in the country and speaking the language at a native level bring more than everyday convenience — they open real access that a recent arrival simply doesn't have. Over my years working in Santa Catarina, I've built personal relationships with business figures and municipal officials across the region. This isn't a vague \"I know people\" — it's concrete, years-earned access to people who make decisions at the city and state level. For a client, that means: questions that take a foreign investor months to resolve through official channels are often resolved directly for me.",
+          ],
+        },
+        {
+          heading: "What \"Plan B\" Means in Practice",
+          paragraphs: [
+            "It's worth separating two approaches here, because they're often confused.",
+            "A last-minute decision: decisions made in a rush, under pressure of circumstances; no time for due diligence — real risk of running into fraud; relocating without prepared documents or an understanding of the process; a choice made under pressure instead of a considered decision.",
+            "Prepared readiness: residency established ahead of time, while there's room to choose calmly; an asset that's both an investment and grounds for a visa; documents ready — the family knows where and how they could go; a decision made with a clear head, well in advance.",
+            "This is risk management, not a reaction to circumstances. That's exactly why the best time to prepare a Plan B is before you ever need one.",
+          ],
+        },
+        {
+          heading: "About the Company — Why Plan B Brazil",
+          paragraphs: [
+            "Plan B Brazil is an independent investment advisory, not affiliated with any developer. License CRECI-SC 59616-F. Our approach is analytical: decisions based on data, not just impressions from a polished presentation. That's why every piece we publish is built on real numbers, official statistics, and verifiable sources — not general promises.",
+          ],
+        },
+        {
+          heading: "Honest About the Timeline and Limitations",
+          paragraphs: [
+            "The path to permanent residency takes real time — we've covered this in detail elsewhere: from purchase to citizenship, it's years, not months. Presence requirements to maintain status are flexible, but not nominal. Brazil isn't a flawless country without problems, like any other, and the decision to diversify here deserves a real assessment, not a superficial one.",
+            "But as an option, prepared in advance, it works predictably, provided the process is done correctly and legally from the start.",
+          ],
+        },
+        {
+          heading: "Bottom Line",
+          paragraphs: [
+            "Having a Plan B means taking your family's future seriously. Brazil offers real, legal tools for this: a path to residency and citizenship, safety, quality of life, a strong passport, and permitted dual citizenship. You don't have to use the option — but having it prepared in advance means choosing calm over rush, if the moment of choice ever comes.",
+            "This material is for informational purposes only and does not constitute legal or immigration advice. Visa-access indices are drawn from several public sources and may vary by methodology. For guidance on your specific situation, consult an immigration attorney.",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "Диверсифицировать — там, где вы храните деньги, где учатся дети, где у семьи есть возможность жить, если понадобится, — это обычное стратегическое планирование, то же самое, что диверсификация инвестиционного портфеля. Не иметь такого варианта — само по себе риск, независимо от того, откуда вы родом.",
+            "Меня зовут Константин Биевских, и название моей компании — не случайность. Plan B Brazil — потому что именно это я и предлагаю: заранее подготовленный, спокойный запасной вариант.",
+          ],
+        },
+        {
+          heading: "Зачем вообще думать о «плане Б»",
+          paragraphs: [
+            "Речь о том, чтобы у вашей семьи была реальная опция — оформленный ВНЖ, понятный путь к гражданству, актив в стабильной юрисдикции — которую можно не использовать годами, но которая есть, если понадобится.",
+            "Люди задумываются об этом по разным причинам: политическая нестабильность, валютные риски, желание дать детям более широкий выбор в будущем, разумная диверсификация активов. Причина ваша, инструмент — один и тот же.",
+          ],
+        },
+        {
+          heading: "Почему именно Бразилия",
+          paragraphs: [
+            "Флорианополис — одна из самых безопасных столиц штатов Бразилии. 170+ стран с безвизовым или упрощённым доступом по бразильскому паспорту. $194K (R$1 000 000) — порог инвестиции в недвижимость для старта визового процесса.",
+            "Безопасность. Флорианополис, где я работаю, стабильно входит в число самых безопасных столиц штатов Бразилии по официальной статистике — заметно выше среднего показателя по крупным городам страны и большинства мировых мегаполисов.",
+            "Реальный, легальный путь к резиденции. Инвестиционная виза через недвижимость — понятный процесс: от $194 000 (R$1 000 000) в недвижимость в Санта-Катарине даёт временную резиденцию, ведущую к постоянной, а затем — к гражданству. Мы подробно разбирали весь путь, включая честные сроки, в отдельной статье про ВНЖ Бразилии через недвижимость.",
+            "Двойное гражданство разрешено. Бразилия не требует отказываться от текущего гражданства — вы получаете второй паспорт, а не заменяете первый.",
+            "Гражданство детям, рождённым в Бразилии. Конституция страны закрепляет право почвы (jus soli) — ребёнок, рождённый на территории Бразилии, автоматически становится гражданином, независимо от гражданства родителей.",
+            "Качество жизни. Флорианополис стабильно входит в число городов Бразилии с самым высоким индексом человеческого развития — инфраструктура, здравоохранение, климат, растущий технологический сектор с международным сообществом.",
+          ],
+        },
+        {
+          heading: "Почему я лично выбрал Бразилию — задолго до того, как это стало трендом",
+          paragraphs: [
+            "2009 — переезд в Бразилию, начало личного и профессионального пути в стране. 2009–2021 — жизнь и работа в разных регионах, от Амазонки до Порту-Алегри. 2021 — сегодня: Санта-Катарина, осознанный выбор после знакомства со всей страной.",
+            "Личный опыт, не рекламный текст. Хочу сказать это не как советник, а как человек, который прожил это решение сам. Я выбрал Бразилию для своей семьи более 10 лет назад — в 2009 году — не сейчас, когда об этом заговорили все, а тогда, когда это не было ни модным, ни очевидным решением.",
+            "До того как остановиться в Санта-Катарине, я жил и работал в разных крупных городах на побережье Бразилии — от Амазонки на севере до Порту-Алегри на юге. Это не туристическое знакомство со страной по отпускам. Я видел изнутри, как устроен бизнес в разных регионах, насколько разными могут быть менталитет, экономика и ритм жизни в тропической Амазонии и в прохладном южном штате с европейскими корнями. За эти годы португальский стал для меня фактически родным языком — это не туристический разговорник, это язык, на котором я веду бизнес и повседневную жизнь каждый день.",
+            "Прежде чем остановиться на Бразилии, я объехал изрядную часть мира. Мы всерьёз рассматривали Европу, США, Азию как место для жизни семьи. В итоге выбор пал на Латинскую Америку, и конкретно на Бразилию — и это решение проверено более чем пятнадцатью годами, а не свежим энтузиазмом.",
+          ],
+        },
+        {
+          heading: "Связи в бизнесе и во власти региона",
+          paragraphs: [
+            "Годы жизни в стране и владение языком на уровне носителя дают не только бытовое удобство — они открывают реальный доступ, которого нет у человека, недавно приехавшего в страну. За время работы в Санта-Катарине я выстроил личные отношения с представителями бизнеса и муниципальной власти региона. Это не абстрактное «у меня есть знакомства» — это конкретный, годами наработанный доступ к людям, которые принимают решения на уровне города и штата. Для клиента это означает: вопросы, которые для стороннего инвестора решаются месяцами через официальные каналы, для меня часто решаются напрямую.",
+          ],
+        },
+        {
+          heading: "Что «план Б» означает практически",
+          paragraphs: [
+            "Здесь важно разделить два подхода, потому что их часто путают.",
+            "Решение в последний момент: решения принимаются в спешке, под давлением обстоятельств; нет времени на due diligence — риск наткнуться на мошенников; переезд без подготовленных документов и понимания процесса; выбор под давлением вместо взвешенного решения.",
+            "Подготовленная готовность: резиденция оформлена заранее, пока есть время выбирать спокойно; актив, который одновременно инвестиция и основание для визы; документы готовы — семья знает, куда и как можно поехать; решение принято на трезвую голову, заблаговременно.",
+            "Это управление рисками, а не реакция на обстоятельства. Именно поэтому лучшее время подготовить план Б — это время, когда он ещё не понадобился.",
+          ],
+        },
+        {
+          heading: "О компании — почему Plan B Brazil",
+          paragraphs: [
+            "Plan B Brazil — независимая инвестиционная консультация, не аффилированная с застройщиками. Лицензия CRECI-SC 59616-F. Наш подход — аналитический: решения на основе данных, а не только впечатлений от красивой презентации. Именно поэтому в каждом материале, который мы публикуем, — реальные цифры, официальная статистика и проверяемые источники, а не общие обещания.",
+          ],
+        },
+        {
+          heading: "Честно о сроках и ограничениях",
+          paragraphs: [
+            "Путь к постоянной резиденции занимает реальное время — мы разбирали это подробно отдельно: от покупки до гражданства это годы, не месяцы. Присутствие в стране для сохранения статуса гибкое, но не номинальное. Бразилия — не идеальная страна без проблем, как и любая другая, и решение диверсифицироваться сюда требует реальной, а не поверхностной оценки.",
+            "Но как опция, подготовленная заранее, — это работает предсказуемо, при условии, что процесс пройден правильно и легально с самого начала.",
+          ],
+        },
+        {
+          heading: "Что в итоге",
+          paragraphs: [
+            "Иметь план Б — значит относиться к будущему своей семьи серьёзно. Бразилия даёт для этого реальные, легальные инструменты: путь к резиденции и гражданству, безопасность, качество жизни, сильный паспорт, разрешённое двойное гражданство. Не обязательно использовать эту опцию — но иметь её подготовленной заранее значит выбирать спокойствие вместо спешки, если момент выбора когда-нибудь наступит.",
+            "Материал носит информационный характер и не является юридической или иммиграционной консультацией. Индексы визовой доступности приведены по нескольким публичным источникам и могут отличаться в зависимости от методики. Для оценки конкретной ситуации рекомендуем консультацию с иммиграционным юристом.",
+          ],
+        },
+      ],
+    },
+  },
+
+  'kak-kupit-nedvizhimost-braziliya': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "Two questions come up more than any others: \"how does this actually work\" and \"what will it cost on top of the price.\" Here are both, step by step, with figures at every stage — so you don't have to piece the picture together from different sources.",
+          ],
+        },
+        {
+          heading: "Can a Foreigner Even Buy Property in Brazil",
+          paragraphs: [
+            "Yes, without restrictions for urban real estate. A foreigner can own an apartment or house in Brazil under the same conditions as a citizen — no special permit is required, except for certain categories of border-zone and rural land, which don't apply to an ordinary residential purchase.",
+            "An important scope note for this article. This covers buying a new-construction property — under construction or in pre-sale, directly from the developer. For the resale market, the due diligence process and legal verification can differ significantly (there, you actually check the matrícula of the specific property, which doesn't exist yet for new construction). For a resale transaction, we recommend a separate consultation.",
+          ],
+        },
+        {
+          heading: "Step by Step",
+          paragraphs: [
+            "1. CPF (Brazilian individual taxpayer ID) — without it you can't open an account, register a deal, or pay taxes. Obtained through a Brazilian consulate or directly in Brazil.",
+            "2. Bank account — not always strictly mandatory, but practically necessary for the currency operation and its registration.",
+            "3. Property selection and developer verification — full checklist further down this article.",
+            "4. International wire transfer — from your bank to the Brazilian account, with the incoming capital registered at the Central Bank.",
+            "5. Contract with the developer — signing the purchase agreement — may be structured as cotas or a direct contract, depending on the project.",
+            "6. Delivery and registration — after construction completes, registration at the Cartório de Registro de Imóveis. From this point you're officially the owner.",
+          ],
+        },
+        {
+          heading: "What It Actually Costs — By Stage, Not One Number",
+          paragraphs: [
+            "Good news on commission. Agency or broker commission is typically 5% of the property's value. But when buying new construction, this commission is usually paid by the seller (the developer), not the buyer. For you as a buyer, this is most often not an extra line item.",
+            "An important nuance about ITBI. When buying new construction, ITBI usually isn't paid at the time of purchase. This tax is only charged when the property is registered in the property registry — which happens after the building is delivered. That means you could even resell your unit before construction finishes without ever paying ITBI yourself — whoever ultimately registers the completed property in their name pays it.",
+            "At purchase (pre-sale/under construction): commission is usually on the seller — often no direct cost to the buyer. At registration (after delivery): ITBI (property transfer tax) — 2–3% of the property's value, plus notary fees. Annually: IPTU — 0.3–1.5% of the assessed value per year. On sale: capital gains tax — details in a separate article.",
+          ],
+        },
+        {
+          heading: "How to Verify the Developer — What to Look At",
+          paragraphs: [
+            "New construction doesn't have its own matrícula — the building hasn't been built yet, and individual units haven't been registered as separate properties. So verification runs through the developer and the project itself, not a property-specific registry extract.",
+            "Registro de Incorporação — the project's own registration (not the future unit's) at the real estate registry — legally required before sales can begin. It's tied to the matrícula of the land the building sits on, and it can be requested and checked.",
+            "Track record of previous projects — how many projects the developer has delivered, whether on time, and any public reviews or lawsuits from past buyers.",
+            "CNPJ and the company's legal history — corporate registration status, and any ongoing legal proceedings (processos judiciais) against the developer.",
+            "Patrimônio de Afetação — whether this protection has been adopted for the specific project — covered in detail in our article on the SPE structure.",
+            "The broker's CRECI — the license handling your transaction should be current and verifiable.",
+            "Actual construction stage — verified through documents and, if possible, in person — not just from the presentation and renders.",
+          ],
+        },
+        {
+          heading: "Bottom Line",
+          paragraphs: [
+            "Buying property in Brazil as a foreigner has no legal barriers, but it follows a clear sequence: CPF → account → property verification → transfer → deed → registration. One-off entry costs run 4–6% on top of the property's price. Everything else comes down to verifying properly before the money moves, not after.",
+            "This material is for informational purposes only and does not constitute legal or tax advice. For guidance on your specific transaction, consult an attorney.",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "Два вопроса, которые задают чаще всего: «как это вообще происходит» и «сколько это будет стоить сверху». Отвечаю на оба сразу, по шагам, с цифрами на каждом этапе — чтобы не пришлось собирать картину по кусочкам из разных источников.",
+          ],
+        },
+        {
+          heading: "Может ли иностранец вообще купить недвижимость в Бразилии",
+          paragraphs: [
+            "Да, без ограничений для городской недвижимости. Иностранец может владеть квартирой или домом в Бразилии на тех же условиях, что и гражданин — специального разрешения не требуется, кроме отдельных категорий приграничных и сельских земель, которые не касаются обычной жилой покупки.",
+            "Важная оговорка о сфере этой статьи. Здесь рассмотрена покупка новостройки — объекта на стадии строительства или предпродажи, напрямую у застройщика. Для вторичного рынка процесс due diligence и юридическая проверка могут существенно отличаться (там как раз проверяется matrícula конкретного объекта, чего нет у новостройки). Для сделки на вторичном рынке рекомендуем отдельную консультацию.",
+          ],
+        },
+        {
+          heading: "Шаг за шагом",
+          paragraphs: [
+            "1. CPF (бразильский налоговый номер физлица) — без него нельзя открыть счёт, зарегистрировать сделку, платить налоги. Оформляется через консульство или напрямую в Бразилии.",
+            "2. Банковский счёт — формально не всегда строго обязателен, но практически необходим для валютной операции и её регистрации.",
+            "3. Выбор объекта и проверка застройщика — подробный чек-лист ниже в этой статье.",
+            "4. Международный перевод — из вашего банка на бразильский счёт, с регистрацией поступления капитала в Центробанке.",
+            "5. Договор с застройщиком — подписание договора купли-продажи (может быть в виде котас или прямого контракта — зависит от структуры проекта).",
+            "6. Сдача и регистрация — после завершения строительства, регистрация объекта в Cartório de Registro de Imóveis. С этого момента вы официально владелец.",
+          ],
+        },
+        {
+          heading: "Сколько это стоит на самом деле — по шагам, не одной цифрой",
+          paragraphs: [
+            "Хорошая новость про комиссию. Комиссия агентства или брокера обычно составляет 5% от стоимости объекта. Но при покупке новостройки эту комиссию, как правило, платит продавец (застройщик), а не покупатель. Для вас как покупателя это чаще всего не дополнительная статья расходов.",
+            "Важный нюанс про ITBI. При покупке новостройки ITBI обычно не платится в момент покупки. Этот налог взимается только при регистрации объекта в реестре недвижимости — а она происходит уже после сдачи дома. Это значит, что можно даже перепродать свой юнит до завершения стройки, ни разу не заплатив ITBI лично — налог заплатит тот, кто в итоге зарегистрирует готовый объект на своё имя.",
+            "При покупке (пресейл/стройка): комиссия обычно на продавце — прямых расходов для покупателя чаще всего нет. При регистрации (после сдачи): ITBI (налог на переход права собственности) — 2–3% от стоимости объекта, плюс нотариальные услуги. Ежегодно: IPTU — 0,3–1,5% от оценочной стоимости в год. При продаже: налог на прирост капитала — подробности в отдельной статье.",
+          ],
+        },
+        {
+          heading: "Как проверить застройщика — на что смотреть",
+          paragraphs: [
+            "У новостройки нет собственной matrícula — дом ещё не построен, юниты не выделены как отдельные объекты в реестре. Поэтому проверка идёт не через выписку по объекту, а через проверку самого застройщика и проекта.",
+            "Registro de Incorporação — регистрация самого проекта (не будущего юнита) в реестре недвижимости — обязательна по закону до начала продаж. Привязана к matrícula земли, на которой строится объект, и её можно запросить и проверить.",
+            "История сдачи предыдущих проектов — сколько объектов застройщик уже сдал, вовремя ли, есть ли публичные отзывы или судебные иски от предыдущих покупателей.",
+            "CNPJ и юридическая история компании — регистрация юрлица, наличие текущих судебных процессов (processos judiciais) против застройщика.",
+            "Patrimônio de afetação — оформлена ли эта защита по конкретному проекту — подробно разбирали в статье про структуру SPE.",
+            "CRECI брокера, который сопровождает сделку — лицензия должна быть действующей и проверяемой.",
+            "Реальный этап строительства — по документам и, если возможно, лично на месте — не только по презентации и рендерам.",
+          ],
+        },
+        {
+          heading: "Что в итоге",
+          paragraphs: [
+            "Покупка недвижимости в Бразилии иностранцем — процесс без юридических барьеров, но с чёткой последовательностью шагов: CPF → счёт → проверка объекта → перевод → сделка → регистрация. Разовые расходы на входе — 4–6% сверх цены объекта. Всё остальное — вопрос правильной проверки перед тем, как вносить деньги, а не после.",
+            "Материал носит информационный характер и не является юридической или налоговой консультацией. Для оценки вашей конкретной сделки рекомендуем консультацию с юристом.",
+          ],
+        },
+      ],
+    },
+  },
+};
