@@ -114,7 +114,37 @@ const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string;
   'best-areas-to-invest-in-santa-catarina-2026': {
     ru: {
       title: 'Лучшие районы для инвестиций в Санта-Катарине 2026',
-      h1: 'Лучшие районы для инвестиций в Санта-Катарине',
+      h1: 'Лучшие районы для инвестиции в Санта-Катарине',
+    },
+  },
+  'rancho-queimado-investment-report-2026': {
+    ru: {
+      title: 'Инвестиционный отчёт по Rancho Queimado 2026',
+      h1: 'Инвестиционный отчёт по Rancho Queimado 2026',
+    },
+  },
+  'porto-belo-investment-report-2026': {
+    ru: {
+      title: 'Инвестиционный отчёт по Porto Belo 2026',
+      h1: 'Инвестиционный отчёт по Porto Belo 2026',
+    },
+  },
+  'itapema-investment-report-2026': {
+    ru: {
+      title: 'Инвестиционный отчёт по Itapema 2026',
+      h1: 'Инвестиционный отчёт по Itapema 2026',
+    },
+  },
+  'balneario-camboriu-investment-report-2026': {
+    ru: {
+      title: 'Инвестиционный отчёт по Balneário Camboriú 2026',
+      h1: 'Инвестиционный отчёт по Balneário Camboriú 2026',
+    },
+  },
+  'florianopolis-investment-report-2026': {
+    ru: {
+      title: 'Инвестиционный отчёт по Флорианополису 2026',
+      h1: 'Инвестиционный отчёт по Флорианополису 2026',
     },
   },
 };

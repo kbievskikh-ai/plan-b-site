@@ -1631,4 +1631,685 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
       ],
     },
   },
+
+  'rancho-queimado-investment-report-2026': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "R$5,000–7,000/m² for gated community houses, rural luxury, short-term rental potential, and the coolest climate in Santa Catarina. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.",
+            "Headline figures: $1.2K avg. price/m² (~R$6K), 5.5% rental yield, 8% annual growth, 8,000 population.",
+          ],
+        },
+        {
+          heading: "Market Overview",
+          paragraphs: [
+            "Rancho Queimado is Santa Catarina's most affordable real estate entry point and an emerging rural-luxury destination. Located inland from Florianópolis in the Serra region, the municipality of 8,000 residents offers a cooler climate (average 18°C vs 25°C on the coast), mountain scenery, and a growing portfolio of gated communities and country estates.",
+            "The area is positioned as a weekend escape and second-home destination for Florianópolis residents and visitors seeking nature, tranquility, and a mountain lifestyle.",
+            "Located in the Serra region, approximately 50 km inland from Florianópolis and 30 km from São José. Accessed via SC-433 highway, a 45-minute drive from downtown Floripa. The municipality sits at 500–700 meters elevation, giving it a cooler climate than the coast. Surrounded by Atlantic Forest reserves, rivers, and mountain scenery.",
+            "Approximately 8,000 permanent residents, with a small but growing number of second-home owners and remote workers. The demographic skews toward families and retirees who value the cooler climate and rural setting. A strong agricultural tradition (apples, grapes, artisanal products) adds to the area's charm.",
+          ],
+        },
+        {
+          heading: "Real Estate Price Analysis",
+          paragraphs: [
+            "Gated community houses: $1.0–1.3K/m² (~R$5–7K), entry from $291K+ (~R$1.5M+) for a 2BR — lifestyle buyers. Country estates (5+ ha): $0.8–1.1K/m² (~R$4–6K), entry from $485K+ (~R$2.5M+) — HNWIs, rural luxury. Standard houses (town): $0.6–0.9K/m² (~R$3–5K), entry from $97K+ (~R$500K+) — local buyers. Land (per hectare): R$100–200K/ha (~$19–39K) — developers, farmers.",
+          ],
+        },
+        {
+          heading: "Market Dynamics & Trends",
+          paragraphs: [
+            "Rancho Queimado is a niche market driven by lifestyle demand rather than speculation. The gated community segment (e.g., Condomínio Verdes Colinas) attracts buyers seeking rural luxury with modern amenities.",
+            "STR potential for premium properties: top-performing gated houses achieve $60,000+/year revenue at 55% occupancy and $310/night rates. The market is illiquid — few transactions, limited buyer pool — but prices are stable to moderately rising (+5–10% annually).",
+            "The area benefits from its proximity to Florianópolis (45 min) and the growing trend of remote work enabling rural living.",
+          ],
+        },
+        {
+          heading: "A Major Catalyst: Alpes Catarina — Indoor Ski Resort",
+          paragraphs: [
+            "Headline numbers: R$1.5Bn announced investment, 500m indoor slope length — the largest in the Americas, 800K m² Boa Vista tourism district footprint.",
+            "Rancho Queimado has an approved project underway: Alpes Catarina, an indoor ski complex billed as the largest indoor ski slope in the Americas (500 meters). The project is part of a larger tourism district called Boa Vista, spanning roughly 800,000 m² and including hotels, restaurants, a brewery, a winery, commercial space, and residential villas.",
+            "Project status — an approved plan, not a concept: the municipal master plan has already been approved; the developer is Grupo NOWA, which specializes in high-end real estate. The first residential village is expected to break ground in 2026, pending final environmental approvals. The town already has the Serra da Boa Vista lookout — the largest glass panoramic platform in the state — which already functions as an early tourism draw.",
+            "For an investor, this means Rancho Queimado isn't just a niche lifestyle market today — it's a location with a large announced catalyst that could materially shift tourism flow and real estate demand over the coming years. A project of this scale (R$1.5 billion) in a municipality of just 8,000 residents is potentially transformational for the local real estate market.",
+          ],
+        },
+        {
+          heading: "Rental Market & Developers",
+          paragraphs: [
+            "Long-term (annual): $190–380/month (~R$1–2K), gross yield 3.0–4.0%. Short-term (Airbnb, premium): $2,300–4,700/month (~R$12–25K), 60–70% occupancy, gross yield 6.0–8.0%. STR (median): $850–1,300/month (~R$4.5–7K), 40–55% occupancy, gross yield 4.0–5.0%.",
+            "Active developers: gated community developers (Verdes Colinas area, luxury houses 560m²+, premium segment), estate developers (rural 5+ hectare properties, ultra-premium), local builders (town center, standard houses, budget segment).",
+          ],
+        },
+        {
+          heading: "Plan B Investment Score",
+          paragraphs: [
+            "Investment 7.5/10. Rental Demand 5.5/10. Liquidity 5.0/10. Lifestyle 8.0/10. Growth 6.5/10. Overall 7.0/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.",
+          ],
+        },
+        {
+          heading: "Plan B Verdict — Rancho Queimado",
+          paragraphs: [
+            "⚠ CONSIDER — for lifestyle + STR, 7+ year hold. Rancho Queimado is a niche lifestyle play with STR potential for premium properties. At $291K+ (~R$1.5M+) for gated community houses, it's accessible for buyers seeking rural luxury. Top-performing STR properties achieve $60K+/year revenue at 55% occupancy — competitive yields if you can secure a premium property. The market is illiquid — few transactions, limited buyer pool — so only invest if you're comfortable with a 7+ year hold. Best for lifestyle buyers who value the cooler climate, mountain scenery, and rural setting, with STR income as a bonus.",
+            "This material is for informational purposes only and does not constitute investment advice.",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "R$5 000–7 000/м² за дома в закрытых посёлках, сельский люкс, потенциал под краткосрочную аренду и самый прохладный климат в Санта-Катарине. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.",
+            "Ключевые цифры: $1,2K средняя цена/м² (~R$6K), 5,5% доходность от аренды, 8% рост в год, 8К население.",
+          ],
+        },
+        {
+          heading: "Обзор рынка",
+          paragraphs: [
+            "Ранчо-Кеймаду — самый доступный вход в недвижимость Санта-Катарины и растущее направление «сельского люкса». Расположен в глубине материка от Флорианополиса, в регионе Серра, муниципалитет с населением 8 000 человек предлагает более прохладный климат (в среднем 18°C против 25°C на побережье), горные пейзажи и растущий портфель закрытых посёлков и загородных усадеб.",
+            "Район позиционируется как направление для отдыха выходного дня и вторая недвижимость для жителей Флорианополиса и гостей, ищущих природу, спокойствие и горный лайфстайл.",
+            "Регион Серра, примерно 50 км вглубь от Флорианополиса и 30 км от Сан-Жозе. Доступ по трассе SC-433, 45 минут на машине от центра Флорипы. Муниципалитет находится на высоте 500–700 метров, что даёт более прохладный климат, чем на побережье. Территория окружена заповедниками Атлантического леса, реками и горными пейзажами.",
+            "Около 8 000 постоянных жителей, небольшое, но растущее число владельцев второй недвижимости и удалённых сотрудников. Демография смещена в сторону семей и пенсионеров, ценящих прохладный климат и сельский уклад. Сильные аграрные традиции (яблоки, виноград, ремесленные продукты) добавляют району характера.",
+          ],
+        },
+        {
+          heading: "Анализ цен на недвижимость",
+          paragraphs: [
+            "Дома в закрытых посёлках: $1,0–1,3K/м² (~R$5–7K), вход от $291K+ (~R$1,5M+) за 2BR — лайфстайл-покупатели. Усадьбы (5+ га): $0,8–1,1K/м² (~R$4–6K), вход от $485K+ (~R$2,5M+) — HNWI, сельский люкс. Обычные дома (город): $0,6–0,9K/м² (~R$3–5K), вход от $97K+ (~R$500K+) — локальные покупатели. Земля (за гектар): R$100–200K/га (~$19–39K) — застройщики, фермеры.",
+          ],
+        },
+        {
+          heading: "Рыночная динамика",
+          paragraphs: [
+            "Ранчо-Кеймаду — нишевый рынок, движимый лайфстайл-спросом, а не спекуляцией. Сегмент закрытых посёлков (например, Condomínio Verdes Colinas) привлекает покупателей, ищущих сельский люкс с современными удобствами.",
+            "STR-потенциал премиальных объектов: топовые дома в закрытых посёлках приносят от $60 000+/год при загрузке 55% и ставке $310/ночь. Рынок низколиквидный — мало сделок, ограниченный пул покупателей — но цены стабильны или умеренно растут (+5–10% в год).",
+            "Район выигрывает от близости к Флорианополису (45 минут) и растущего тренда удалённой работы, позволяющего жить за городом.",
+          ],
+        },
+        {
+          heading: "Крупный катализатор: Alpes Catarina — крытый горнолыжный курорт",
+          paragraphs: [
+            "Ключевые цифры: R$1,5Bn заявленный объём инвестиций, 500м длина крытой трассы — крупнейшей в Америках, 800К м² площадь туристического района Boa Vista.",
+            "В Rancho Queimado утверждён и находится в стадии реализации проект Alpes Catarina — крытый горнолыжный комплекс, который заявлен как крупнейшая крытая горнолыжная трасса в Северной и Южной Америке (500 метров). Проект — часть более крупного туристического района Boa Vista площадью около 800 000 м², включающего отели, рестораны, пивоварню, винодельню, коммерческие площади и жилые виллы.",
+            "Статус проекта — не концепция, а утверждённый план: генплан муниципалитета уже утверждён, застройщик — Grupo NOWA (специализация — недвижимость высокого класса). Первая жилая деревня комплекса должна выйти в стройку уже в 2026 году, при условии завершения экологических согласований. Город уже располагает смотровой площадкой Serra da Boa Vista — крупнейшей панорамной стеклянной платформой штата, которая работает как ранний магнит турпотока.",
+            "Для инвестора это означает: Rancho Queimado — не просто нишевый лайфстайл-рынок сегодня, а территория с заявленным крупным катализатором, способным кардинально изменить турпоток и спрос на недвижимость в горизонте нескольких лет. Проект такого масштаба (R$1,5 млрд) в муниципалитете с населением всего 8 000 человек — потенциально трансформационное событие для локального рынка недвижимости.",
+          ],
+        },
+        {
+          heading: "Аренда и застройщики",
+          paragraphs: [
+            "Долгосрочная (годовая): $190–380/мес (~R$1–2K), валовая доходность 3,0–4,0%. Краткосрочная (Airbnb, премиум): $2 300–4 700/мес (~R$12–25K), загрузка 60–70%, валовая доходность 6,0–8,0%. STR (медиана): $850–1 300/мес (~R$4,5–7K), загрузка 40–55%, валовая доходность 4,0–5,0%.",
+            "Активные застройщики: застройщики закрытых посёлков (район Verdes Colinas, дома от 560м², премиальный сегмент), застройщики усадеб (сельская недвижимость от 5 га, ультра-премиум), локальные застройщики (центр города, обычные дома, бюджетный сегмент).",
+          ],
+        },
+        {
+          heading: "Plan B Investment Score",
+          paragraphs: [
+            "Investment 7,5/10. Rental Demand 5,5/10. Liquidity 5,0/10. Lifestyle 8,0/10. Growth 6,5/10. Overall 7,0/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.",
+          ],
+        },
+        {
+          heading: "Вердикт Plan B — Rancho Queimado",
+          paragraphs: [
+            "⚠ CONSIDER — для лайфстайла + STR, горизонт 7+ лет. Ранчо-Кеймаду — нишевая лайфстайл-игра с потенциалом краткосрочной аренды для премиальных объектов. При входе от $291K (~R$1,5M+) за дом в закрытом посёлке, район доступен для покупателей, ищущих сельский люкс. Топовые STR-объекты приносят $60K+/год при загрузке 55% — конкурентная доходность, если удастся обеспечить премиальный объект. Рынок низколиквиден, поэтому инвестировать стоит, только если вы готовы к горизонту от 7 лет. Лучше всего подходит лайфстайл-покупателям, которые ценят прохладный климат, горные пейзажи и сельский уклад, с доходом от STR как бонусом.",
+            "Материал носит информационный характер и не является инвестиционной рекомендацией.",
+          ],
+        },
+      ],
+    },
+  },
+
+  'porto-belo-investment-report-2026': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "Eco-luxury coastal market — R$12–18K/m² on average (full range R$6–25K by segment), 14% annual growth, the Beto Carrero tourism corridor, nature-focused development. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.",
+            "Headline figures: $2.3K avg. price/m² (~R$12K), 6.8% rental yield, 14% annual growth, 25,000 population.",
+          ],
+        },
+        {
+          heading: "Market Overview",
+          paragraphs: [
+            "Porto Belo is an emerging eco-luxury destination on Santa Catarina's central coast, between Itapema and Bombinhas. The municipality of 25,000 residents combines pristine beaches, Atlantic Forest reserves, and a growing portfolio of luxury gated communities.",
+            "Porto Belo benefits from its location on the \"tourism corridor,\" which includes Beto Carrero World (Latin America's largest theme park, 15 km away, 1.5M+ annual visitors), cruise ship terminals in Itajaí, and the expanding real estate markets of Itapema and Balneário Camboriú.",
+            "Central coast of Santa Catarina, approximately 60 km north of Florianópolis and 20 km south of Balneário Camboriú. Accessed via BR-101 highway and the SC-411 coastal road. The most developed beach area is Balneário Pereqüe. The area is surrounded by Atlantic Forest reserves with significant environmental protections limiting dense development — which actually protects property values by constraining supply.",
+            "Approximately 25,000 permanent residents, with a seasonal population that doubles during summer. The municipality grows 3–4% annually, driven by internal migration. The demographic skews toward families and retirees who value the quieter, nature-oriented lifestyle. The summer influx includes significant numbers of theme park visitors, cruise passengers, and domestic tourists.",
+          ],
+        },
+        {
+          heading: "Real Estate Price Analysis",
+          paragraphs: [
+            "Beachfront luxury: $2.8–4.7K/m² (~R$15–25K), entry from $291K+ (~R$1.5M+) — luxury buyers, HNWI. Gated communities: $1.9–2.8K/m² (~R$10–15K), entry from $146K+ (~R$750K+) — upper-middle families. Mid-standard (Pereqüe): $1.3–1.9K/m² (~R$7–10K), entry from $78K+ (~R$400K+) — investors, first-time buyers. Pre-construction: $1.1–1.7K/m² (~R$6–9K), entry from $58K+ (~R$300K+) — growth investors.",
+            "A note on the price range: the stated average of $2.3K/m² spans a wide spread — from pre-construction ($1.1K) to beachfront luxury ($4.7K). The \"Mid-standard (Pereqüe)\" segment is the most common and closest to the R$8.5K/m² figure used in our broader Santa Catarina market overviews (Outlook 2027, Best Areas).",
+          ],
+        },
+        {
+          heading: "A Major Catalyst: Beto Carrero World's R$2 Billion Expansion",
+          paragraphs: [
+            "Headline numbers: R$2Bn announced expansion investment, 5M target annual visitors (up from 2.7M), 3 new theme areas + a hotel complex.",
+            "Latin America's largest theme park, located 15 km from Porto Belo, has announced a R$2 billion expansion plan — three new theme areas and a hotel complex of three hotels (~200 rooms each) integrated into the park.",
+            "Not a concept — an announced, structured plan: confirmed projects include a SpongeBob-themed area in partnership with Paramount (the world's largest area dedicated to the character, by 2028) and a Galinha Pintadinha area (2026). The park's goal is to grow visitors from 2.7 million to 5 million annually within five years, and staff from 2,000 to 4,000 by 2030. Per the park's CEO Alex Murad: \"We're thinking about the park's future for the next 5, 10 years and beyond.\"",
+            "For Porto Belo, sitting on the \"tourism corridor\" next to the park, this points to structural growth in tourist flow — and, by extension, demand for short-term rentals and real estate — for years to come, not a one-off effect.",
+          ],
+        },
+        {
+          heading: "Market Dynamics & Trends",
+          paragraphs: [
+            "Porto Belo is in the early-to-mid stage of its growth cycle. Prices are 30–40% below Balneário Camboriú and 20–30% below Itapema, offering significant upside as the area continues developing.",
+            "The area is attracting eco-conscious developers who build sustainable, nature-integrated projects. Land near the beach is increasingly scarce due to environmental protections, which limits supply and supports price growth. Expect 8–12% nominal appreciation per year through 2026.",
+          ],
+        },
+        {
+          heading: "Rental Market & Developers",
+          paragraphs: [
+            "Long-term (annual): $280–470/month (~R$1.5–2.5K), gross yield 4.0–4.5%. Short-term (Airbnb): $470–750/month (~R$2.5–4K), 75–80% occupancy, gross yield 6.8–7.5%. Seasonal (Dec–Feb): $1,300–2,300/month (~R$7–12K), 85–92% occupancy — peak-season income, not an annual yield.",
+            "Active developers: eco-luxury developers (gated communities, sustainable projects, 50–100 units, premium), regional builders (Balneário Pereqüe, mid-rise apartments, 30–60 units, mid-standard), boutique developers (nature-integrated, small eco-condos, 15–30 units, premium).",
+          ],
+        },
+        {
+          heading: "Plan B Investment Score",
+          paragraphs: [
+            "Investment 7.8/10. Rental Demand 7.5/10. Liquidity 6.5/10. Lifestyle 9.0/10. Growth 8.0/10. Overall 7.8/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.",
+          ],
+        },
+        {
+          heading: "Plan B Verdict — Porto Belo",
+          paragraphs: [
+            "✅ BUY — for eco-luxury + growth, 5–7 year hold. Porto Belo combines eco-luxury with strong growth potential. At 30–40% below Balneário Camboriú prices, it offers significant upside as the area continues developing. Beto Carrero World's R$2 billion expansion provides a unique, structural rental demand driver not found in other SC beach markets. Entry at $78K–146K (~R$400–750K) in gated communities offers the best risk-adjusted returns. Best for nature lovers, secondary home buyers, and eco-conscious investors who accept lower liquidity for lifestyle quality.",
+            "This material is for informational purposes only and does not constitute investment advice.",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "Эко-люкс прибрежный рынок — R$12–18K/м² в среднем (полный диапазон R$6–25K по сегментам), рост 14% в год, туристический коридор Beto Carrero, природо-ориентированная застройка. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.",
+            "Ключевые цифры: $2,3K средняя цена/м² (~R$12K), 6,8% доходность от аренды, 14% рост в год, 25K население.",
+          ],
+        },
+        {
+          heading: "Обзор рынка",
+          paragraphs: [
+            "Porto Belo — развивающееся направление эко-люкса на центральном побережье Санта-Катарины, между Итапемой и Бомбиньясом. Муниципалитет с населением 25 000 человек сочетает нетронутые пляжи, заповедники Атлантического леса и растущий портфель люксовых закрытых посёлков.",
+            "Porto Belo выигрывает от расположения на «туристическом коридоре», включающем Beto Carrero World (крупнейший тематический парк Латинской Америки, в 15 км, 1,5 млн+ посетителей в год), круизные терминалы в Итажаи и растущие рынки недвижимости Итапемы и Балнеариу-Камбориу.",
+            "Центральное побережье Санта-Катарины, примерно 60 км к северу от Флорианополиса и 20 км к югу от Балнеариу-Камбориу. Доступ по трассе BR-101 и прибрежной дороге SC-411. Наиболее развитый пляжный район — Balneário Pereqüe. Территория окружена заповедниками Атлантического леса со значительными экологическими ограничениями плотной застройки — это фактически защищает стоимость недвижимости, ограничивая предложение.",
+            "Около 25 000 постоянных жителей, сезонное население удваивается летом. Рост муниципалитета — 3–4% в год, за счёт внутренней миграции. Демография смещена к семьям и пенсионерам, ценящим более тихий, природо-ориентированный лайфстайл. Летний приток включает значительное число посетителей парка, пассажиров круизов и внутренних туристов.",
+          ],
+        },
+        {
+          heading: "Анализ цен на недвижимость",
+          paragraphs: [
+            "Пляжный люкс: $2,8–4,7K/м² (~R$15–25K), вход от $291K+ (~R$1,5M+) — люкс-покупатели, HNWI. Закрытые посёлки: $1,9–2,8K/м² (~R$10–15K), вход от $146K+ (~R$750K+) — семьи верхнего среднего класса. Средний стандарт (Перекуэ): $1,3–1,9K/м² (~R$7–10K), вход от $78K+ (~R$400K+) — инвесторы, первая покупка. Предпродажа: $1,1–1,7K/м² (~R$6–9K), вход от $58K+ (~R$300K+) — инвесторы роста.",
+            "О диапазоне цен: заявленная средняя $2,3K/м² охватывает широкий разброс — от предпродаж ($1,1K) до пляжного люкса ($4,7K). Сегмент «Средний стандарт (Перекуэ)» — самый распространённый и наиболее сопоставимый с оценкой R$8,5K/м², которая использовалась в наших более общих обзорах рынка Санта-Катарины (Outlook 2027, Best Areas).",
+          ],
+        },
+        {
+          heading: "Крупный катализатор: Beto Carrero World — расширение на R$2 млрд",
+          paragraphs: [
+            "Ключевые цифры: R$2Bn заявленный объём инвестиций в расширение, 5M целевой турпоток в год (сейчас 2,7M), 3 новые тематические зоны + гостиничный комплекс.",
+            "Крупнейший тематический парк Латинской Америки, расположенный в 15 км от Porto Belo, объявил план расширения на R$2 миллиарда — три новые тематические зоны и гостиничный комплекс из трёх отелей (~200 номеров каждый), интегрированный в парк.",
+            "Не концепция, а объявленный и структурированный план: среди подтверждённых проектов — зона Губки Боба в партнёрстве с Paramount (крупнейшая в мире зона, посвящённая персонажу, к 2028 году) и зона Галинки Пиньядинья (2026 год). Цель парка — удвоить турпоток с 2,7 млн до 5 млн посетителей в год в течение пяти лет, а штат — с 2 000 до 4 000 сотрудников к 2030 году. По словам CEO парка Алекса Мурада: «Мы думаем о будущем парка на следующие 5, 10 лет и дальше».",
+            "Для Porto Belo, находящегося на «туристическом коридоре» рядом с парком, это означает структурный рост турпотока и, соответственно, спроса на краткосрочную аренду и недвижимость — на годы вперёд, а не разовый эффект.",
+          ],
+        },
+        {
+          heading: "Рыночная динамика",
+          paragraphs: [
+            "Porto Belo находится на ранней-средней стадии своего цикла роста. Цены на 30–40% ниже, чем в Балнеариу-Камбориу, и на 20–30% ниже, чем в Итапеме — это создаёт значительный потенциал роста по мере развития района.",
+            "Район привлекает эко-ориентированных застройщиков, строящих устойчивые проекты, интегрированные в природу. Земля у побережья становится всё более дефицитной из-за экологических ограничений, что сдерживает предложение и поддерживает рост цен. Ожидаемая номинальная переоценка — 8–12% в год до 2026 года.",
+          ],
+        },
+        {
+          heading: "Аренда и застройщики",
+          paragraphs: [
+            "Долгосрочная (годовая): $280–470/мес (~R$1,5–2,5K), валовая доходность 4,0–4,5%. Краткосрочная (Airbnb): $470–750/мес (~R$2,5–4K), загрузка 75–80%, валовая доходность 6,8–7,5%. Сезонная (дек–фев): $1 300–2 300/мес (~R$7–12K), загрузка 85–92% — пиковый доход высокого сезона, не годовая доходность.",
+            "Активные застройщики: эко-люкс застройщики (закрытые посёлки, устойчивые проекты на 50–100 юнитов, премиум), региональные застройщики (Balneário Pereqüe, среднеэтажные дома на 30–60 юнитов, средний стандарт), бутик-застройщики (природо-интегрированные, эко-кондо на 15–30 юнитов, премиум).",
+          ],
+        },
+        {
+          heading: "Plan B Investment Score",
+          paragraphs: [
+            "Investment 7,8/10. Rental Demand 7,5/10. Liquidity 6,5/10. Lifestyle 9,0/10. Growth 8,0/10. Overall 7,8/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.",
+          ],
+        },
+        {
+          heading: "Вердикт Plan B — Porto Belo",
+          paragraphs: [
+            "✅ BUY — для эко-люкса + роста, горизонт 5–7 лет. Porto Belo сочетает эко-люкс с сильным потенциалом роста. При ценах на 30–40% ниже Балнеариу-Камбориу, район предлагает значительный потенциал роста по мере развития. Расширение Beto Carrero World на R$2 млрд даёт уникальный, структурный драйвер спроса на аренду, которого нет на других пляжных рынках Санта-Катарины. Вход от $78K–146K (~R$400–750K) в закрытых посёлках предлагает лучшее соотношение риск/доходность. Лучше всего подходит любителям природы, покупателям второй недвижимости и эко-ориентированным инвесторам, готовым принять более низкую ликвидность ради качества лайфстайла.",
+            "Материал носит информационный характер и не является инвестиционной рекомендацией.",
+          ],
+        },
+      ],
+    },
+  },
+
+  'itapema-investment-report-2026': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "Itapema has surpassed Balneário Camboriú to become Brazil's most expensive residential market per square meter — R$15,226/m² (~$2.9K/m²) per FipeZAP data as of mid-2026. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.",
+            "Headline figures: $2.9K avg. price/m² (~R$15.2K), 7.2% avg. yield, 18% annual growth, 70,000 population.",
+          ],
+        },
+        {
+          heading: "Market Overview",
+          paragraphs: [
+            "The city of 70,000 residents is experiencing the fastest real estate growth in Santa Catarina — 18% annual appreciation and +28–30% price variation over the past 12 months (a wider spread across property types, not just the index).",
+            "The growth is driven by the Meia Praia development wave — a 5 km beachfront corridor of high-rise luxury towers, new infrastructure, and expanding amenities. Itapema mirrors BC's 2016 growth trajectory but with more available land and a faster appreciation curve.",
+            "Central coast of Santa Catarina, approximately 70 km north of Florianópolis and 10 km south of Balneário Camboriú. Itapema occupies a coastal strip between the Atlantic Ocean and the Serra do Mar hills. The city's prime area is Meia Praia (\"Half Beach\"), a 5 km beachfront corridor running the length of the urban area. Access is via BR-101 highway, with the Meia Praia sand strip widening project improving beachfront infrastructure.",
+            "Approximately 70,000 permanent residents, having grown rapidly over the past decade due to internal migration and development. Seasonal population reaches 200,000+ in summer. The city attracts buyers from São Paulo, Rio Grande do Sul, Paraná, and increasingly from abroad (Argentina, Europe, USA). The demographic skews toward upper-middle and high-income families seeking second homes or investments. A growing number of remote workers and retirees have relocated permanently.",
+          ],
+        },
+        {
+          heading: "Real Estate Price Analysis",
+          paragraphs: [
+            "Beachfront luxury (Meia Praia): $3.4K+/m² (~R$18K+), entry from $470K+ (~R$2.5M+) — HNWIs, luxury buyers. Premium (Meia Praia, 2nd line): $2.3–3.4K/m² (~R$12–18K), entry from $291K+ (~R$1.5M+) — upper-middle investors. Mid-range (inland): $1.7–2.3K/m² (~R$9–12K), entry from $146K+ (~R$750K+) — families, first-time buyers. Pre-construction: $1.9–2.8K/m² (~R$10–15K), entry from $194K+ (~R$1M+) — growth investors.",
+          ],
+        },
+        {
+          heading: "A Major Catalyst: the Meia Praia Beach Widening Project",
+          paragraphs: [
+            "Headline numbers: R$60M project value (50/50 municipality/state), up to 46.8% estimated beachfront appreciation potential, 4-month construction time starting August 2026.",
+            "The Meia Praia beach widening project isn't a concept — it's a permitted and funded initiative. The environmental installation license (LAI) has already been issued by Santa Catarina's Environment Institute (May 2026). The project calls for laying 416,000–498,000 m³ of sand along 4.75 km of coastline, widening the beach by 20–60 meters.",
+            "An appreciation estimate — not marketing, a developer's calculation: per methodology from the Appraisal Institute, beach widening generates up to 2.6% property appreciation for every 10% gain in sand strip width. Developer Edify applied this methodology to Itapema's case and arrived at an estimate: beachfront property could appreciate by up to 46.8% once the widening is complete. Local media are already framing this as a potential factor that could permanently cement Itapema's status as Brazil's most expensive real estate market per square meter.",
+            "Construction is set to begin in August 2026 (after the fish spawning closed season) and should take 4 months — completing before the summer tourist season.",
+          ],
+        },
+        {
+          heading: "Market Dynamics & Trends",
+          paragraphs: [
+            "Itapema is in the midst of a luxury development boom. Meia Praia is being transformed from a quiet beach into a high-rise corridor with resort-style amenities, ocean views, and premium finishes.",
+            "Key growth drivers: (1) territorial expansion still underway — unlike mature BC, Itapema has room to grow; (2) the beach widening project improves beachfront property value; (3) spillover demand from BC buyers priced out of the R$15K+/m² market; (4) strong marketing toward high-income buyers from other states. Per market analysts, the luxury segment is in \"rapidly accelerating annual appreciation.\" Transactions close 6–8% below asking price on average.",
+          ],
+        },
+        {
+          heading: "Rental Market & Developers",
+          paragraphs: [
+            "Long-term (annual): $470–750/month (~R$2.5–4K), gross yield 4.0–4.5%. Short-term (Airbnb): $850–1,500/month (~R$4.5–8K), 80–85% occupancy, gross yield 7.2–8.5%. Seasonal (Dec–Feb): $2,300–4,700/month (~R$12–25K), 92–97% occupancy — peak-season income, not an annual yield.",
+            "Active developers: major SC developers (15+, Meia Praia beachfront, luxury towers 100–300 units, ultra-premium), regional builders (inland expansion, mid-rise condos 40–80 units, mid-to-premium), SP/RJ developers (emerging projects, new luxury launches, premium).",
+          ],
+        },
+        {
+          heading: "Plan B Investment Score",
+          paragraphs: [
+            "Investment 9.0/10. Rental Demand 8.0/10. Liquidity 7.0/10. Lifestyle 7.5/10. Growth 9.0/10. Overall 8.6/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.",
+          ],
+        },
+        {
+          heading: "Plan B Verdict — Itapema",
+          paragraphs: [
+            "✅ STRONG BUY — our #1 growth pick for 2026, 3–7 year hold. Itapema is our top pick for capital appreciation: a confirmed #1 price-per-m² status nationally (R$15,226/m²), 18% annual appreciation (+28–30% over the past 12 months across a broader set of transactions). The market mirrors BC a decade ago — early-stage development, available land, a strong catalyst pipeline. Entry at $146K–291K (~R$750K–1.5M) for a 2BR in Meia Praia offers exceptional upside.",
+            "Practical guidance: buy pre-construction for maximum appreciation, or existing units for immediate rental income. Properties near the improved beachfront, once the widening project completes, will see the strongest appreciation.",
+            "This material is for informational purposes only and does not constitute investment advice. Sources: \u00cdndice FipeZap (2026), Prefeitura de Itapema, Instituto do Meio Ambiente de Santa Catarina (IMA).",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "Итапема обошла Балнеариу-Камбориу и стала самым дорогим жилым рынком Бразилии по цене за квадратный метр — R$15 226/м² (~$2,9K/м²) по данным FipeZAP на середину 2026 года. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.",
+            "Ключевые цифры: $2,9K средняя цена/м² (~R$15,2K), 7,2% средняя доходность, 18% годовой рост, 70K население.",
+          ],
+        },
+        {
+          heading: "Обзор рынка",
+          paragraphs: [
+            "Город с населением 70 000 человек показывает самый быстрый рост недвижимости в Санта-Катарине — 18% годового роста и +28–30% вариации цены за последние 12 месяцев (более широкий разброс по типам недвижимости, не только индекс).",
+            "Рост движим волной застройки Meia Praia — 5-километровым прибрежным коридором люксовых высоток, новой инфраструктурой и расширяющимися удобствами. Итапема повторяет траекторию роста BC 2016 года, но с большим количеством свободной земли и более быстрой кривой удорожания.",
+            "Центральное побережье Санта-Катарины, примерно 70 км к северу от Флорианополиса и 10 км к югу от Балнеариу-Камбориу. Итапема занимает прибрежную полосу между Атлантическим океаном и хребтом Серра-ду-Мар. Ключевой район — Meia Praia («Половина пляжа»), 5-километровый прибрежный коридор вдоль всей городской застройки. Доступ по трассе BR-101, инфраструктуру побережья улучшает проект расширения пляжной полосы Meia Praia.",
+            "Около 70 000 постоянных жителей, город быстро рос последнее десятилетие за счёт внутренней миграции и застройки. Сезонное население достигает 200 000+ летом. Город привлекает покупателей из Сан-Паулу, Риу-Гранди-ду-Сул, Параны и всё больше из-за рубежа (Аргентина, Европа, США). Демография смещена к семьям верхнего среднего и высокого дохода, ищущим вторую недвижимость или инвестиции. Растёт число удалённых сотрудников и пенсионеров, переехавших на постоянной основе.",
+          ],
+        },
+        {
+          heading: "Анализ цен на недвижимость",
+          paragraphs: [
+            "Пляжный люкс (Meia Praia): $3,4K+/м² (~R$18K+), вход от $470K+ (~R$2,5M+) — HNWI, люкс-покупатели. Премиум (Meia Praia, 2-я линия): $2,3–3,4K/м² (~R$12–18K), вход от $291K+ (~R$1,5M+) — инвесторы верхнего среднего класса. Средний сегмент (вглубь): $1,7–2,3K/м² (~R$9–12K), вход от $146K+ (~R$750K+) — семьи, первая покупка. Предпродажа: $1,9–2,8K/м² (~R$10–15K), вход от $194K+ (~R$1M+) — инвесторы роста.",
+          ],
+        },
+        {
+          heading: "Крупный катализатор: расширение пляжа Meia Praia",
+          paragraphs: [
+            "Ключевые цифры: R$60M объём проекта (50/50 муниципалитет/штат), до 46,8% потенциального удорожания прибрежной недвижимости, 4 месяца строительства, старт в августе 2026.",
+            "Проект расширения пляжной полосы Meia Praia — не концепция, а разрешённая и профинансированная инициатива. Экологическая лицензия на установку (LAI) уже выдана Институтом окружающей среды Санта-Катарины (май 2026). Проект предусматривает укладку 416–498 тысяч м³ песка вдоль 4,75 км побережья, с расширением пляжной полосы на 20–60 метров.",
+            "Оценка потенциального удорожания — не маркетинг, а расчёт застройщика: по методике консалтинговой компании Appraisal Institute, расширение пляжной полосы даёт до 2,6% удорожания недвижимости на каждые 10% прироста ширины пляжа. Застройщик Edify применил эту методику к реалиям Итапемы и получил оценку: пляжная недвижимость может подорожать до 46,8% после завершения расширения. СМИ уже называют это потенциальным фактором, который окончательно закрепит за Итапемой статус самого дорогого рынка недвижимости Бразилии по цене за м².",
+            "Строительство стартует в августе 2026 года (после окончания периода нереста рыбы) и должно завершиться за 4 месяца — до начала летнего туристического сезона.",
+          ],
+        },
+        {
+          heading: "Рыночная динамика",
+          paragraphs: [
+            "Итапема переживает бум люксовой застройки. Meia Praia превращается из тихого пляжа в коридор высоток с курортными удобствами, видом на океан и премиальной отделкой.",
+            "Ключевые драйверы роста: (1) территориальная экспансия всё ещё продолжается — в отличие от зрелого BC, у Итапемы есть куда расти; (2) проект расширения пляжной полосы повышает ценность прибрежной недвижимости; (3) спрос от покупателей, вытесненных из рынка BC ценами от R$15K+/м²; (4) активный маркетинг на состоятельных покупателей из других штатов. По оценке рыночных аналитиков, люксовый сегмент находится в состоянии «быстро ускоряющейся годовой переоценки». Сделки закрываются в среднем на 6–8% ниже запрашиваемой цены.",
+          ],
+        },
+        {
+          heading: "Аренда и застройщики",
+          paragraphs: [
+            "Долгосрочная (годовая): $470–750/мес (~R$2,5–4K), валовая доходность 4,0–4,5%. Краткосрочная (Airbnb): $850–1 500/мес (~R$4,5–8K), загрузка 80–85%, валовая доходность 7,2–8,5%. Сезонная (дек–фев): $2 300–4 700/мес (~R$12–25K), загрузка 92–97% — пиковый доход в высокий сезон, не годовая доходность.",
+            "Активные застройщики: крупные застройщики Санта-Катарины (15+, прибрежная застройка Meia Praia, люксовые башни на 100–300 юнитов, ультра-премиум), региональные застройщики (экспансия вглубь территории, среднеэтажные кондо на 40–80 юнитов, средне-премиальный сегмент), застройщики из SP/RJ (новые проекты, люксовые запуски, премиум).",
+          ],
+        },
+        {
+          heading: "Plan B Investment Score",
+          paragraphs: [
+            "Investment 9,0/10. Rental Demand 8,0/10. Liquidity 7,0/10. Lifestyle 7,5/10. Growth 9,0/10. Overall 8,6/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.",
+          ],
+        },
+        {
+          heading: "Вердикт Plan B — Itapema",
+          paragraphs: [
+            "✅ STRONG BUY — топ-пик роста на 2026 год, горизонт 3–7 лет. Итапема — наш главный выбор на рост капитала: подтверждённый статус #1 по цене за м² в стране (R$15 226/м²), рост 18% в год (+28–30% за последние 12 месяцев по более широкому кругу сделок). Рынок повторяет путь BC десять лет назад — ранняя стадия развития, свободная земля, сильный пайплайн катализаторов. Вход $146K–291K (~R$750K–1,5M) за 2BR на Meia Praia даёт исключительный потенциал роста.",
+            "Практическая рекомендация: покупайте на стадии предпродажи для максимального роста стоимости, либо готовые юниты — для немедленного дохода от аренды. Объекты рядом с обновлённой пляжной полосой (после завершения проекта расширения) получат наиболее сильный рост стоимости.",
+            "Материал носит информационный характер и не является инвестиционной рекомендацией. Источники: Índice FipeZap (2026), Prefeitura de Itapema, Instituto do Meio Ambiente de Santa Catarina (IMA).",
+          ],
+        },
+      ],
+    },
+  },
+
+  'balneario-camboriu-investment-report-2026': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "Balneário Camboriú (BC) is Brazil's most iconic luxury beach destination, known as the \"Brazilian Dubai.\" The city features some of South America's tallest residential towers, premium shopping, and a cosmopolitan lifestyle. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.",
+            "Headline figures: $2.8K avg. price/m² (~R$15K), 4.8% avg. yield, 117% price growth since 2018, 150,000 population.",
+          ],
+        },
+        {
+          heading: "Market Overview",
+          paragraphs: [
+            "With 150,000+ permanent residents and 4M+ annual visitors, BC combines year-round activity with seasonal luxury tourism. In 2026, BC ranks #1–2 nationally for price per m² at approximately R$15,000/m² (~$2.8K/m²), having grown 117% since 2018 (from R$6,873 to R$14,906/m², FipeZap data, January 2018–December 2025).",
+            "Central coast of Santa Catarina, approximately 80 km north of Florianópolis and 120 km south of Joinville. A narrow coastal strip between the Atlantic Ocean and the Serra do Mar hills. Accessed via BR-101 highway, a 1-hour drive from both Florianópolis and Joinville airports. The beachfront (Avenida Atlântica) runs 5 km and is the city's primary commercial and residential corridor.",
+            "Approximately 150,000 permanent residents, having grown 29% between 2010 and 2022 per IBGE data. Seasonal population reaches 500,000+ during summer (December–February) and major holidays. The city attracts significant internal migration from São Paulo, Rio Grande do Sul, and Paraná. The demographic skews toward upper-middle and high-income households, with a growing expat community from Argentina, Uruguay, and Europe.",
+          ],
+        },
+        {
+          heading: "Real Estate Price Analysis",
+          paragraphs: [
+            "Luxury towers (beachfront): $5.7K+/m² (~R$30K+), entry from $146K+ (~R$750K+) — HNWIs, status buyers. Premium (Barra Sul, Pioneiros): $2.8–4.7K/m² (~R$15–25K), entry $74K–111K (~R$2–3M) — upper-middle class. Mid-range: $1.9–2.8K/m² (~R$10–15K), entry $37K–74K (~R$1–2M) — investors, families. Budget (inland): $1.3–1.9K/m² (~R$7–10K), entry $25K–37K (~R$700K–1M) — first-time buyers.",
+          ],
+        },
+        {
+          heading: "A Shifting Dynamic: BC vs Itapema in 2026",
+          paragraphs: [
+            "Headline numbers: R$3–2.78Bn 2025 sales volume (two sources — DWV / industry data), R$4.1Bn Itapema's 2025 sales volume — overtook BC, up to R$40K ultra-luxury segment potential by 2030.",
+            "An honest picture, not just good news: BC held the #1 spot in FipeZap's price-per-m² ranking since 2022 — but in May 2026, Itapema overtook BC for the first time (R$15,226/m² vs R$15,215/m²). More significantly, in total sales volume (VGV) for full-year 2025, Itapema (population just 86,000) already outsold BC (150,000) — R$4.1 billion versus R$3 billion per DWV platform data. This isn't a narrow, one-off loss — it's a broader shift in market dynamics.",
+            "That said, BC's market isn't weakening — it's changing shape. Per a Sort Investimentos projection, prices in select premium projects could double by 2030, reaching R$40,000/m², at an average annual growth of 16% in the ultra-luxury segment. A R$5 million investment in 2025 at that pace could grow to roughly R$13.4 million by 2030 — a 167.6% gain. Some penthouses already command R$40,000–60,000/m² (~$7.5–11K/m²).",
+          ],
+        },
+        {
+          heading: "A Major Catalyst: Senna Tower",
+          paragraphs: [
+            "Headline numbers: 550m height — the world's tallest residential building, R$110K avg. price/m² (~$21.4K/m²), R$2.48Bn sales volume already at an early stage.",
+            "Senna Tower isn't a concept — it's an actively under-construction project on Avenida Atlântica, at the heart of Barra Sul, between the Camboriú River and Praia Central. The building will be the world's tallest residential structure — roughly 70% taller than the Eiffel Tower (324m), with 157 floors, 228 exclusive units, and penthouses up to 903 m².",
+            "An active construction site, not just renders: as of March 2026, this isn't a project on paper — it's a construction site in active progress: foundations 40 meters deep, engineering equipment unprecedented in Brazil already operating on site. The building will be the first in Latin America to use Tuned Mass Damper (TMD) technology to mitigate wind sway, and the world's first supertall residential building certified LEED Platinum. The developer is FG Empreendimentos, with 40+ years in the BC market, 60+ delivered mega-projects, and 5,500+ units. It's a partnership with the Senna family. Expected completion: 2032–2033.",
+            "The effect is already visible: properties within the tower's radius of influence — both in Barra Sul itself and adjacent neighborhoods — are registering additional appreciation on the back of the increased prestige and international visibility the project brings to the city as a whole.",
+          ],
+        },
+        {
+          heading: "Market Dynamics & Trends",
+          paragraphs: [
+            "BC operates in a league of its own in Brazil. The market is driven by luxury high-rise towers with full resort amenities, targeting HNWIs from across Brazil and South America. Key districts include Barra Sul (emerging luxury corridor), Pioneiros (established premium), Centro (urban core), and the iconic beachfront Avenida Atlântica.",
+            "The city's small geographic area (46 km²) and limited beachfront land create natural supply constraints. The market is maturing — appreciation is expected to moderate from the 2018–2023 boom but remain above national averages.",
+          ],
+        },
+        {
+          heading: "Rental Market & Developers",
+          paragraphs: [
+            "Long-term (annual): $570–950/month (~R$3–5K), gross yield 3.5–4.0%. Short-term (Airbnb): $950–1,900/month (~R$5–10K), 75–80% occupancy, gross yield 5.0–6.0%. Seasonal (Dec–Feb): $2,800–5,700/month (~R$15–30K), 92–97% occupancy — peak-season income, not an annual yield.",
+            "Active developers: major SC developers (10+, luxury high-rises, 100–300 units, ultra-premium), regional builders (mid-rises, 40–80 units, mid-to-premium), SP/RJ developers (Barra Sul corridor, emerging projects, premium).",
+          ],
+        },
+        {
+          heading: "Plan B Investment Score",
+          paragraphs: [
+            "Investment 8.5/10. Rental Demand 7.0/10. Liquidity 8.5/10. Lifestyle 9.5/10. Growth 8.5/10. Overall 8.5/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.",
+          ],
+        },
+        {
+          heading: "Plan B Verdict — Balneário Camboriú",
+          paragraphs: [
+            "✅ BUY — for prestige and long-term growth, 5+ year hold. BC remains the premier luxury play in Santa Catarina. At R$15,000/m² (~$2.8K/m²), it's the most expensive coastal market in Brazil, with 117% price growth since 2018. Best for HNWIs with $74K+ budgets who value status, lifestyle, and long-term capital appreciation. The market is maturing — appreciation will moderate but remain above national averages.",
+            "Key strategy: buy premium segment in Barra Sul (emerging luxury corridor) for the best growth runway. Hold 5+ years for maximum appreciation. Short-term rental during peak season (Dec–Mar) offsets carrying costs.",
+            "This material is for informational purposes only and does not constitute investment advice. Sources: Índice FipeZap (2026), DWV (sales volume data), Sort Investimentos (ultra-luxury segment projection).",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "Balneário Camboriú (BC) — самый узнаваемый люксовый пляжный курорт Бразилии, известный как «бразильский Дубай». Город с одними из самых высоких жилых башен Южной Америки, премиальным шопингом и космополитичным лайфстайлом. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.",
+            "Ключевые цифры: $2,8K средняя цена/м² (~R$15K), 4,8% средняя доходность, 117% рост цены с 2018 года, 150K население.",
+          ],
+        },
+        {
+          heading: "Обзор рынка",
+          paragraphs: [
+            "150 000+ постоянных жителей и 4 млн+ туристов в год — BC сочетает круглогодичную активность с сезонным люксовым туризмом. В 2026 году BC занимает #1–2 место в стране по цене за м² — около R$15 000/м² (~$2,8K/м²), выросшей на 117% с 2018 года (с R$6 873 до R$14 906/м², данные FipeZap, январь 2018 — декабрь 2025).",
+            "Центральное побережье Санта-Катарины, примерно 80 км к северу от Флорианополиса и 120 км к югу от Жоинвиля. Узкая прибрежная полоса между Атлантическим океаном и хребтом Серра-ду-Мар. Доступ по трассе BR-101, час езды от аэропортов Флорианополиса и Жоинвиля. Набережная (Avenida Atlântica) — 5 км, главный коммерческий и жилой коридор города.",
+            "Около 150 000 постоянных жителей, рост на 29% за 2010–2022 (данные IBGE). Сезонное население достигает 500 000+ летом (декабрь–февраль) и в крупные праздники. Город привлекает значительную внутреннюю миграцию из Сан-Паулу, Риу-Гранди-ду-Сул и Параны. Демография смещена к домохозяйствам верхнего среднего и высокого дохода, растёт сообщество экспатов из Аргентины, Уругвая и Европы.",
+          ],
+        },
+        {
+          heading: "Анализ цен на недвижимость",
+          paragraphs: [
+            "Люксовые башни (1-я линия): $5,7K+/м² (~R$30K+), вход от $146K+ (~R$750K+) — HNWI, статусные покупатели. Премиум (Barra Sul, Pioneiros): $2,8–4,7K/м² (~R$15–25K), вход $74K–111K (~R$2–3M) — верхний средний класс. Средний сегмент: $1,9–2,8K/м² (~R$10–15K), вход $37K–74K (~R$1–2M) — инвесторы, семьи. Бюджетный (вглубь территории): $1,3–1,9K/м² (~R$7–10K), вход $25K–37K (~R$700K–1M) — первая покупка.",
+          ],
+        },
+        {
+          heading: "Смена динамики: BC vs Итапема в 2026 году",
+          paragraphs: [
+            "Ключевые цифры: R$3–2,78Bn объём продаж 2025 (два источника — DWV / отраслевые данные), R$4,1Bn объём продаж Итапемы за 2025 — обошла BC, до R$40K потенциал ультра-люкс сегмента к 2030.",
+            "Честная картина, не только хорошие новости: BC удерживал позицию #1 в рейтинге FipeZap по цене за м² с 2022 года — но в мае 2026 года Итапема впервые обошла BC (R$15 226/м² против R$15 215/м²). Более того, по общему объёму продаж (VGV) за весь 2025 год Итапема (население всего 86 000) уже обошла BC (150 000) — R$4,1 млрд против R$3 млрд по данным платформы DWV. Это не разовая узкая потеря, а более широкий сдвиг рыночной динамики.",
+            "При этом рынок BC не ослабевает — он меняет форму. По прогнозу Sort Investimentos, цены в отдельных премиальных проектах могут удвоиться к 2030 году, достигнув R$40 000/м², при среднегодовом росте 16% в ультра-люкс сегменте. Инвестиция R$5 млн в 2025 году при таком темпе может вырасти до ~R$13,4 млн к 2030 — рост на 167,6%. Некоторые пентхаусы уже сегодня достигают R$40 000–60 000/м² (~$7,5–11K/м²).",
+          ],
+        },
+        {
+          heading: "Крупный катализатор: Senna Tower",
+          paragraphs: [
+            "Ключевые цифры: 550м высота — самое высокое жилое здание в мире, R$110K средняя цена/м² (~$21,4K/м²), R$2,48Bn объём продаж уже на начальной стадии.",
+            "Senna Tower — не концепция, а активно строящийся объект на Avenida Atlântica в самом сердце Barra Sul, между рекой Камбориу и Praia Central. Здание станет самым высоким жилым зданием в мире — на 70% выше Эйфелевой башни (324м), 157 этажей, 228 эксклюзивных юнитов, пентхаусы площадью до 903 м².",
+            "Реальная стройка, не только рендеры: по состоянию на март 2026 года — это не проект на бумаге, а объект в активном строительстве: фундамент на глубине 40 метров, беспрецедентное для Бразилии инженерное оборудование на площадке. Здание первым в Латинской Америке применит технологию Tuned Mass Damper (TMD) для гашения ветровых колебаний и станет первым в мире жилым супернебоскрёбом с платиновым сертификатом LEED. Застройщик — FG Empreendimentos, более 40 лет на рынке BC, 60+ реализованных мегапроектов, 5 500+ юнитов. Партнёрство с семьёй Айртона Сенны. Планируемое завершение — 2032–2033 год.",
+            "Эффект уже заметен: объекты в радиусе влияния башни — как в самом Barra Sul, так и в соседних районах — фиксируют дополнительный рост стоимости на фоне возросшего престижа и международной видимости, которую проект придаёт городу в целом.",
+          ],
+        },
+        {
+          heading: "Рыночная динамика",
+          paragraphs: [
+            "BC работает в своей собственной лиге в Бразилии. Рынок движим люксовыми высотками с полным курортным набором удобств, нацеленными на состоятельных покупателей со всей Бразилии и Южной Америки. Ключевые районы: Barra Sul (растущий люксовый коридор), Pioneiros (устоявшийся премиум), Центр (городское ядро), набережная Avenida Atlântica (культовый люкс).",
+            "Небольшая площадь города (46 км²) и ограниченная прибрежная земля создают естественные ограничения предложения. Рынок взрослеет — ожидается, что темп удорожания замедлится относительно бума 2018–2023, но останется выше среднего по стране.",
+          ],
+        },
+        {
+          heading: "Аренда и застройщики",
+          paragraphs: [
+            "Долгосрочная (годовая): $570–950/мес (~R$3–5K), валовая доходность 3,5–4,0%. Краткосрочная (Airbnb): $950–1 900/мес (~R$5–10K), загрузка 75–80%, валовая доходность 5,0–6,0%. Сезонная (дек–фев): $2 800–5 700/мес (~R$15–30K), загрузка 92–97% — пиковый доход в высокий сезон, не годовая доходность.",
+            "Активные застройщики: крупные застройщики Санта-Катарины (10+, люксовые высотки на 100–300 юнитов, ультра-премиум), региональные застройщики (среднеэтажные дома на 40–80 юнитов, средний-премиальный сегмент), застройщики из SP/RJ (коридор Barra Sul, новые проекты, премиум).",
+          ],
+        },
+        {
+          heading: "Plan B Investment Score",
+          paragraphs: [
+            "Investment 8,5/10. Rental Demand 7,0/10. Liquidity 8,5/10. Lifestyle 9,5/10. Growth 8,5/10. Overall 8,5/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.",
+          ],
+        },
+        {
+          heading: "Вердикт Plan B — Balneário Camboriú",
+          paragraphs: [
+            "✅ BUY — для престижа и долгосрочного роста, горизонт 5+ лет. BC остаётся главной люксовой игрой в Санта-Катарине. При R$15 000/м² (~$2,8K/м²) — это самый дорогой прибрежный рынок Бразилии, со 117% роста цены с 2018 года. Лучше всего подходит состоятельным покупателям с бюджетом от $74K, ценящим статус, лайфстайл и долгосрочный прирост капитала. Рынок взрослеет — темп замедлится, но останется выше среднего по стране.",
+            "Ключевая стратегия: покупайте премиум-сегмент в Barra Sul (растущий люксовый коридор) для лучшей траектории роста. Держите от 5 лет для максимального удорожания. Краткосрочная аренда в пиковый сезон (дек–март) компенсирует расходы на содержание.",
+            "Материал носит информационный характер и не является инвестиционной рекомендацией. Источники: Índice FipeZap (2026), DWV (данные по объёму продаж), Sort Investimentos (прогноз ультра-люкс сегмента).",
+          ],
+        },
+      ],
+    },
+  },
+
+  'florianopolis-investment-report-2026': {
+    en: {
+      sections: [
+        {
+          heading: "The Short Version",
+          paragraphs: [
+            "Florianópolis is the capital of Santa Catarina and Brazil's leading tech hub outside São Paulo. Known as \"Silicon Island,\" the city combines a thriving technology sector, world-class beaches, and a growing international community. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.",
+            "Headline figures: 550K city population (metro area 1M+), 4M+ annual tourists, 6.5% average rental yield, 300+ tech startups.",
+          ],
+        },
+        {
+          heading: "Market Overview",
+          paragraphs: [
+            "The metro area has over 1 million residents, and the city attracts 4M+ tourists annually. Hercílio Luz Airport handles 4M+ passengers annually, with direct flights to São Paulo, Buenos Aires, and seasonal European routes. Tech sector: 300+ startups, major tech companies, a growing remote worker community.",
+          ],
+        },
+        {
+          heading: "Infrastructure Catalysts",
+          paragraphs: [
+            "Florianópolis is going through a wave of major infrastructure projects simultaneously — a rare confluence for one city in one time window. Headline numbers: R$350M Marina Beira-Mar Norte (440,000 m²), R$19M airport expansion in 2026, +330% international passenger growth over 7 years.",
+            "Marina Beira-Mar Norte — downtown's biggest transformation since the 1960s: a R$350 million project (private investment, developer JL Construções) across 440,000 m² — public and private marinas totaling 612 boat slips, a park, a boardwalk, and commercial space. Environmental licenses were granted in February 2026, construction began in March 2026, with a 4-year timeline. Expected to generate 2,000+ jobs. The mayor called it \"the biggest transformation of downtown since the construction of Avenida Beira-Mar Norte itself in the 1960s.\" Districts that benefit directly: Centro, Agronômica, Trindade, Itacorubi.",
+            "The airport — already Brazil's #3 for international traffic: the airport's 30-year development master plan calls for roughly R$988 million in investment through 2046. In 2026 specifically, R$19 million is allocated for expanding the international terminal (+824 m², 9 e-gates, a new Duty Free), completing early 2027. International passenger traffic has grown 330% over 7 years — in Q1 2026, international flights accounted for 41% of all passengers, a record. Florianópolis already ranks #3 among Brazilian airports for international traffic, behind only Guarulhos (São Paulo) and Galeão (Rio). A new route to Panama launches, 5x weekly.",
+            "Downtown revitalization and regional cruise infrastructure: the \"Viva Cidade Arborizada\" project is greening 7 key downtown streets with mature trees, improving comfort and urban aesthetics — part of a broader downtown revitalization already being linked in local media to a new wave of residential development. Separately, in the nearby port city of Itajaí (not on the island itself, but in the same coastal region), a new cruise terminal is being developed — designed by WSP (250+ ports worldwide), able to receive the world's largest cruise ships, and presented in Miami with Royal Caribbean, MSC Cruzeiros, and Costa Cruzeiros. This strengthens the whole region's positioning as a world-class tourism destination.",
+          ],
+        },
+        {
+          heading: "Price per m² Trend — 2018–2026",
+          paragraphs: [
+            "Source: FipeZap, ZAP Imóveis, data as of June 2026. This is a city-wide average trajectory — it differs from premium districts like Jurerê, where prices are significantly higher. Average price per m² by year (R$): 2018 — 5.8K, 2019 — 6.4K, 2020 — 7.1K, 2021 — 7.5K, 2022 — 8.0K, 2023 — 8.4K, 2024 — 8.9K, 2025* — ~9.05K (interpolated, not directly provided by the source), 2026 — 9.2K.",
+            "Growth from R$5,800 to R$9,200/m² over 8 years — a cumulative +58.6%. This is a conservative city-wide metric, closer to mid-tier districts (such as Campeche) than to premium areas.",
+          ],
+        },
+        {
+          heading: "District Analysis",
+          paragraphs: [
+            "Jurerê Internacional: R$22K (~$4.3K)/m², yield 5.2%, growth 12%/yr, score 9.0 — premium luxury. Lagoa da Conceição: R$12.5K (~$2.4K)/m², yield 6.8%, growth 10%/yr, score 8.5 — lifestyle + rental. Ingleses: R$10.8K (~$2.1K)/m², yield 7.1%, growth 9%/yr, score 8.2 — mid-range rental.",
+            "Canasvieiras: R$9.5K (~$1.8K)/m², yield 7.5%, growth 8%/yr, score 7.8 — budget-friendly. Centro: R$7.2K (~$1.4K)/m², yield 6.2%, growth 7%/yr, score 7.2 — urban living. Campeche: R$8.9K (~$1.7K)/m², yield 6.5%, growth 11%/yr, score 8.0 — highest upside.",
+          ],
+        },
+        {
+          heading: "Investment Opportunities",
+          paragraphs: [
+            "1. Pre-construction in Campeche — R$500K–700K (~$97K–$136K) for a 2BR, 11% annual growth. 2. Long-term rental in Ingleses — 7–7.5% yields with stable demand. 3. Luxury appreciation in Jurerê — +180% over 7 years, limited supply. 4. Commercial in Centro — growing tech sector creates office demand.",
+          ],
+        },
+        {
+          heading: "Risks",
+          paragraphs: [
+            "Seasonal vacancy — beach areas see 60–70% occupancy in winter. Construction oversupply — several large launches simultaneously. Environmental regulations — coastal zone restrictions limit development. Infrastructure strain — growth is testing water, sewage, and road capacity.",
+          ],
+        },
+        {
+          heading: "Outlook 2027–2030",
+          paragraphs: [
+            "Florianópolis is positioned for continued growth. Key catalysts: Hercílio Luz Airport expansion (new international routes), the tech sector boom (300+ startups), remote worker demand — plus the marina, downtown revitalization, and regional cruise infrastructure detailed above. We project 8–12% appreciation in emerging areas (Campeche, Lagoa) and 5–8% in mature markets (Jurerê, Centro).",
+          ],
+        },
+        {
+          heading: "Plan B Verdict by District",
+          paragraphs: [
+            "Our on-the-ground assessment based on direct experience with investors and developers. Jurerê Int.: SC's most resilient real estate, limited land, elite status, prices doubled since 2018. Best profile: HNWIs, from R$1.2M (~$233K)+. Key catalyst: limited supply.",
+            "Lagoa: best lifestyle-to-price ratio, strong remote worker demand, \"the Brooklyn of Floripa.\" Best profile: digital nomads, lifestyle. Key catalyst: remote work migration. Ingleses: most stable rental market in northern Floripa, safe conservative choice. Best profile: conservative rental investors. Key catalyst: airport proximity.",
+            "Canasvieiras: budget-friendly entry into Floripa's north, best for lowest entry with decent yields. Best profile: first-time SC investors. Key catalyst: lower prices attract development. Centro: urban core with commercial mix, growing tech office demand, not a beach play. Best profile: urban, commercial investors. Key catalyst: tech expansion.",
+            "Campeche: ⭐ highest upside in Floripa, new urban center near the airport, risk: oversupply. Best profile: growth-focused, 5+ yr. Key catalyst: airport, urban center.",
+          ],
+        },
+        {
+          heading: "Plan B Top Recommendations 2026",
+          paragraphs: [
+            "1. Campeche — best value play. New infrastructure, growing demand, R$500K–700K (~$97K–$136K) for a 2BR. 2. Lagoa da Conceição — best lifestyle + yield balance. Remote worker demand. R$700K–1M (~$136K–$194K) for a 2BR. 3. Jurerê Internacional — best for wealth preservation. Highest liquidity. From R$1.2M (~$233K)+.",
+            "This material is for informational purposes only and does not constitute investment advice. Sources: Índice FipeZap (2026), ZAP Imóveis, Prefeitura de Florianópolis, Zurich Airport Brasil, Instituto Mais Itajaí.",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: "Коротко о главном",
+          paragraphs: [
+            "Флорианополис — столица Санта-Катарины и ведущий технологический хаб Бразилии за пределами Сан-Паулу. Известный как «Silicon Island», город сочетает процветающий технологический сектор, пляжи мирового уровня и растущее международное сообщество. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.",
+            "Ключевые цифры: 550K население города (агломерация 1M+), 4M+ туристов в год, 6,5% средняя доходность аренды, 300+ технологических стартапов.",
+          ],
+        },
+        {
+          heading: "Обзор рынка",
+          paragraphs: [
+            "Агломерация насчитывает более 1 миллиона жителей, город привлекает 4 млн+ туристов ежегодно. Аэропорт Эрсилиу-Лус обслуживает 4 млн+ пассажиров в год, с прямыми рейсами в Сан-Паулу, Буэнос-Айрес и сезонными европейскими маршрутами. Технологический сектор — 300+ стартапов, крупные технологические компании, растущее сообщество удалённых сотрудников.",
+          ],
+        },
+        {
+          heading: "Инфраструктурные катализаторы",
+          paragraphs: [
+            "Флорианополис переживает волну крупных инфраструктурных проектов одновременно — редкое сочетание для одного города в одном временном окне. Ключевые цифры: R$350M Марина Beira-Mar Norte (440 тыс. м²), R$19M расширение аэропорта в 2026 году, +330% рост международного потока за 7 лет.",
+            "Марина Beira-Mar Norte — крупнейшая трансформация центра с 1960-х: проект стоимостью R$350 млн (частные инвестиции, застройщик JL Construções) на площади 440 тыс. м² — общественная и частная марины на 612 причалов, парк, набережная, коммерческие площади. Экологические лицензии получены в феврале 2026, строительство стартовало в марте 2026, срок — 4 года. Ожидается 2000+ рабочих мест. Мэр города назвал это «крупнейшей трансформацией центра со времён строительства самой Avenida Beira-Mar Norte в 1960-х». Районы, которые выиграют напрямую: Центр, Agronômica, Trindade, Itacorubi.",
+            "Аэропорт — уже #3 в Бразилии по международному трафику: 30-летний мастер-план развития аэропорта Эрсилиу-Лус предполагает инвестиции около R$988 млн до 2046 года. В 2026 году отдельно выделено R$19 млн на расширение международного терминала (+824 м², 9 электронных пропускных пунктов, новый Duty Free), завершение — начало 2027. Международный пассажиропоток вырос на 330% за 7 лет — в I квартале 2026 года международные рейсы составили 41% всех пассажиров, рекордный показатель. Флорианополис уже занимает 3-е место среди аэропортов Бразилии по международному трафику, уступая только Гуарульюс (Сан-Паулу) и Галеан (Рио). Новый маршрут — в Панаму, 5 раз в неделю.",
+            "Облагораживание центра и региональная круизная инфраструктура: проект «Viva Cidade Arborizada» озеленяет 7 ключевых улиц центра взрослыми деревьями, повышая комфорт и эстетику городской среды — часть более широкой ревитализации центрального района, уже связываемой в местных СМИ с новой волной жилой застройки. Отдельно, в соседнем портовом городе Итажаи (не на самом острове, но в том же прибрежном регионе) разрабатывается новый круизный терминал — спроектирован компанией WSP (250+ портов мира), рассчитан на приём крупнейших круизных лайнеров планеты, презентован в Майами при участии Royal Caribbean, MSC Cruzeiros и Costa Cruzeiros. Это усиливает позиционирование всего региона как туристического направления мирового уровня.",
+          ],
+        },
+        {
+          heading: "Динамика цены за м² — 2018–2026",
+          paragraphs: [
+            "Источник: FipeZap, ZAP Imóveis, данные на июнь 2026. Это общегородская усреднённая траектория — отличается от премиальных районов вроде Журере, где цены значительно выше. Средняя цена за м² по годам (R$): 2018 — 5,8K, 2019 — 6,4K, 2020 — 7,1K, 2021 — 7,5K, 2022 — 8,0K, 2023 — 8,4K, 2024 — 8,9K, 2025* — ~9,05K (интерполировано, данные за этот год не были предоставлены источником напрямую), 2026 — 9,2K.",
+            "Рост с R$5 800 до R$9 200/м² за 8 лет — совокупно +58,6%. Это консервативная общегородская метрика, ближе к показателям среднего сегмента (например, Кампече), а не к премиальным районам.",
+          ],
+        },
+        {
+          heading: "Разбивка по районам",
+          paragraphs: [
+            "Журере Интернасьонал: R$22K (~$4,3K)/м², доходность 5,2%, рост 12%/год, score 9.0 — премиум люкс. Лагоа-да-Консейсау: R$12,5K (~$2,4K)/м², доходность 6,8%, рост 10%/год, score 8.5 — лайфстайл + аренда. Инглезес: R$10,8K (~$2,1K)/м², доходность 7,1%, рост 9%/год, score 8.2 — аренда среднего сегмента.",
+            "Канасвиэйрас: R$9,5K (~$1,8K)/м², доходность 7,5%, рост 8%/год, score 7.8 — бюджетный вход. Центр: R$7,2K (~$1,4K)/м², доходность 6,2%, рост 7%/год, score 7.2 — городская жизнь. Кампече: R$8,9K (~$1,7K)/м², доходность 6,5%, рост 11%/год, score 8.0 — наибольший потенциал.",
+          ],
+        },
+        {
+          heading: "Инвестиционные возможности",
+          paragraphs: [
+            "1. Предпродажа в Кампече — R$500K–700K (~$97K–$136K) за 2BR, рост 11% в год. 2. Долгосрочная аренда в Инглезес — доходность 7–7,5% при стабильном спросе. 3. Люксовый рост в Журере — +180% за 7 лет, ограниченное предложение. 4. Коммерческая недвижимость в Центре — растущий техсектор создаёт спрос на офисы.",
+          ],
+        },
+        {
+          heading: "Риски",
+          paragraphs: [
+            "Сезонная вакантность — пляжные районы показывают загрузку 60–70% зимой. Переизбыток строительства — несколько крупных запусков одновременно. Экологические ограничения — прибрежная зона ограничивает застройку. Нагрузка на инфраструктуру — рост тестирует ёмкость воды, канализации, дорог.",
+          ],
+        },
+        {
+          heading: "Прогноз 2027–2030",
+          paragraphs: [
+            "Флорианополис готов к продолжению роста. Ключевые катализаторы: расширение аэропорта Эрсилиу-Лус (новые международные маршруты), бум технологического сектора (300+ стартапов), спрос от удалённых сотрудников — плюс исследованные выше марина, облагораживание центра и региональная круизная инфраструктура. Прогнозируем рост 8–12% в развивающихся районах (Кампече, Лагоа) и 5–8% в зрелых рынках (Журере, Центр).",
+          ],
+        },
+        {
+          heading: "Вердикт Plan B по районам",
+          paragraphs: [
+            "Наша оценка на основе прямого опыта работы с инвесторами и застройщиками. Журере Инт.: самая устойчивая недвижимость СК, ограниченная земля, элитный статус, цены удвоились с 2018. Лучший профиль: HNWI, от R$1,2M (~$233K)+. Ключевой катализатор: ограниченное предложение.",
+            "Лагоа: лучшее соотношение лайфстайл/цена, сильный спрос от удалённых сотрудников, «Бруклин Флорипы». Лучший профиль: цифровые кочевники. Ключевой катализатор: миграция удалёнки. Инглезес: самый стабильный рынок аренды севера Флорипы, безопасный консервативный выбор. Лучший профиль: консервативные инвесторы. Ключевой катализатор: близость к аэропорту.",
+            "Канасвиэйрас: доступный вход на север Флорипы, лучшее для минимального входа с приличной доходностью. Лучший профиль: начинающие инвесторы в СК. Ключевой катализатор: низкие цены привлекают застройку. Центр: городское ядро с коммерческим миксом, растущий спрос на офисы, не пляжная игра. Лучший профиль: городские, коммерческие инвесторы. Ключевой катализатор: расширение техсектора.",
+            "Кампече: ⭐ наибольший потенциал во Флорипе, новый городской центр рядом с аэропортом, риск: избыток предложения. Лучший профиль: ориентир на рост, 5+ лет. Ключевой катализатор: аэропорт, городской центр.",
+          ],
+        },
+        {
+          heading: "Топ-рекомендации Plan B на 2026 год",
+          paragraphs: [
+            "1. Кампече — лучшее соотношение цена/качество. Новая инфраструктура, растущий спрос, R$500K–700K (~$97K–$136K) за 2BR. 2. Лагоа-да-Консейсау — лучший баланс лайфстайла и доходности. Спрос от удалённых сотрудников. R$700K–1M (~$136K–$194K) за 2BR. 3. Журере Интернасьонал — лучший выбор для сохранения капитала. Максимальная ликвидность. От R$1,2M (~$233K)+.",
+            "Материал носит информационный характер и не является инвестиционной рекомендацией. Источники: Índice FipeZap (2026), ZAP Imóveis, Prefeitura de Florianópolis, Zurich Airport Brasil, Instituto Mais Itajaí.",
+          ],
+        },
+      ],
+    },
+  },
 };
