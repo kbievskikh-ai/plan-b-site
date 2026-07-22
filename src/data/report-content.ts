@@ -2312,4 +2312,129 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
       ],
     },
   },
+
+  'brazil-investment-guide-2026': {
+    en: {
+      sections: [
+        {
+          heading: 'Important Notice',
+          paragraphs: [
+            'This document is a market research report provided for informational and educational purposes only. Published bi-annually (January & July editions). Data current as of June 2026.',
+            "Plan B Brazil is an independent investment advisory. We receive commissions from developers on completed transactions — this is standard market practice among real estate consultants in Brazil, not a hidden conflict of interest. What matters is this: the decision always stays with the client. Our role is to lay out every option honestly, highlighting the strengths and weaknesses of each — including cases where we recommend against a purchase entirely, as in our separate report on the risks of the SPE structure — rather than steering you toward a specific developer for our own benefit.",
+            'All information in this guide is based on publicly available market data, government sources (IBGE, FipeZap, Banco Central do Brasil), and our professional field research in the Santa Catarina real estate market as of June 2026.',
+            'This report does not constitute an offer to sell or a solicitation to buy any property or investment. Past performance of the real estate market is not indicative of future results. No return is guaranteed, and all investments carry risk. Before making any investment decision, you should consult with a qualified lawyer and accountant licensed in Brazil, as well as your financial advisor in your home country.',
+            '© 2026 Plan B Brazil — Independent Investment Advisory · Florianópolis, Santa Catarina, Brazil · CRECI-SC 59616 · All rights reserved',
+          ],
+        },
+        {
+          heading: "What's Inside",
+          paragraphs: [
+            'Executive Summary · Letter from the Founder · Research Methodology & Data Sources · Why Santa Catarina? · Market Overview & Data Analysis · Investment Strategies · Buying Process for Foreigners · Taxes & Legal Considerations · Residency Through Real Estate · Risk Analysis · The Plan B Investment Score™ · Sample Property Analysis · Neighbourhood Guide · How Investors Get Misled · Market Scenarios · How Plan B Brazil Works · Pre-Purchase Checklist · Next Steps',
+          ],
+        },
+        {
+          heading: 'Why This Guide Exists',
+          paragraphs: [
+            "Brazil's southern coast has become one of the most compelling real estate opportunities for international investors. Santa Catarina, Brazil's smallest coastal state, consistently ranks #1 in quality of life — yet remains largely unknown outside Latin America.",
+            'This guide was created because international investors typically discover São Paulo or Rio first and never learn that Santa Catarina offers higher safety, better infrastructure, stronger rental yields, and a more stable regulatory environment.',
+          ],
+        },
+        {
+          heading: 'Key Numbers at a Glance',
+          paragraphs: [
+            '#1 Quality of Life in Brazil. R$4,200+ avg. price/m² (Florianópolis premium). 5–7% short-term rental yield. ~100–180% price growth in Jurerê (2018–2025).',
+            'Estimates vary by property segment and data source methodology. See our full Florianópolis Investment Report for a detailed breakdown by district.',
+          ],
+        },
+        {
+          heading: 'Who This Guide Is For',
+          paragraphs: [
+            'European and North American investors seeking geographic diversification beyond traditional markets like Portugal, Spain, or the Caribbean.',
+            'Digital entrepreneurs and remote workers considering a Latin American base with reliable infrastructure and digital nomad visa access.',
+            'Retirees looking for an affordable coastal lifestyle with modern healthcare and the Brazilian investor visa pathway.',
+            'High-net-worth individuals exploring real estate for residency, wealth preservation, and lifestyle diversification.',
+            'Anyone curious about Brazil\'s real estate market who wants honest, data-driven information — not marketing.',
+          ],
+        },
+        {
+          heading: 'What This Guide Is Not',
+          paragraphs: [
+            'This is not a sales brochure. We will not guarantee returns, promise risk-free investments, or claim "now is the perfect time." We are an independent investment advisory, not a real estate agency. Our role is market analysis, property evaluation, and purchase support — always from the investor\'s perspective.',
+            'Our approach: Plan B Brazil combines public data sources (IBGE, FipeZap, Central Bank), local market intelligence, and field research across Florianópolis, Balneário Camboriú, Itapema, and Bombinhas.',
+          ],
+        },
+        {
+          heading: 'Want the Full Picture?',
+          paragraphs: [
+            'The full 47-page guide is available for download below. Talk to Konstantin for a personal walkthrough of any section.',
+            'Konstantin Bievskikh · Plan B Brazil · CRECI-SC 59616-F · planbbrazil.com · WhatsApp +55 (48) 98811-7424',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Гид доступен на английском языке',
+          paragraphs: [
+            'Полный PDF-гид (47 страниц) издан только на английском языке. Текст на этой странице — русский перевод для ознакомления; при скачивании кнопка ведёт на английский PDF-файл.',
+          ],
+        },
+        {
+          heading: 'Важное уведомление',
+          paragraphs: [
+            'Этот документ — рыночное исследование, предоставляемое исключительно в информационных и образовательных целях. Издаётся дважды в год (январское и июльское издания). Данные актуальны на июнь 2026 года.',
+            'Plan B Brazil — независимая инвестиционная консультация. Мы получаем комиссию от застройщиков за завершённые сделки — это стандартная рыночная практика среди консультантов по недвижимости в Бразилии, а не скрытый конфликт интересов. Ключевое: решение всегда остаётся за клиентом. Наша задача — честно показать все опции, подсветив сильные и слабые стороны каждой, включая случаи, когда мы прямо рекомендуем не покупать — как в нашем отдельном материале о рисках структуры СПЕ — а не подталкивать к конкретному застройщику ради собственной выгоды.',
+            'Вся информация в этом гиде основана на общедоступных рыночных данных, государственных источниках (IBGE, FipeZap, Центральный банк Бразилии) и нашем профессиональном полевом исследовании рынка недвижимости Санта-Катарины по состоянию на июнь 2026 года.',
+            'Этот отчёт не является предложением о продаже или предложением купить какую-либо недвижимость или инвестицию. Прошлые результаты рынка недвижимости не гарантируют будущих. Доходность не гарантирована, все инвестиции несут риск. Перед принятием инвестиционного решения проконсультируйтесь с квалифицированным юристом и бухгалтером, лицензированным в Бразилии, а также с вашим финансовым консультантом в стране проживания.',
+            '© 2026 Plan B Brazil — Independent Investment Advisory · Флорианополис, Санта-Катарина, Бразилия · CRECI-SC 59616 · Все права защищены',
+          ],
+        },
+        {
+          heading: 'Что внутри',
+          paragraphs: [
+            'Executive Summary · Письмо от основателя · Методология исследования и источники данных · Почему Санта-Катарина? · Обзор рынка и анализ данных · Инвестиционные стратегии · Процесс покупки для иностранцев · Налоги и юридические аспекты · Резидентство через недвижимость · Анализ рисков · Plan B Investment Score™ · Пример анализа объекта · Гид по районам · Как инвесторов вводят в заблуждение · Рыночные сценарии · Как работает Plan B Brazil · Чек-лист перед покупкой · Следующие шаги',
+          ],
+        },
+        {
+          heading: 'Зачем нужен этот гид',
+          paragraphs: [
+            'Южное побережье Бразилии стало одной из самых убедительных возможностей для международных инвесторов в недвижимость. Санта-Катарина — самый маленький прибрежный штат Бразилии — стабильно занимает 1-е место по качеству жизни в стране, оставаясь при этом малоизвестным за пределами Латинской Америки.',
+            'Этот гид создан потому, что международные инвесторы обычно сначала открывают для себя Сан-Паулу или Рио и так и не узнают, что Санта-Катарина предлагает более высокую безопасность, лучшую инфраструктуру, более сильную доходность аренды и более стабильную регуляторную среду.',
+          ],
+        },
+        {
+          heading: 'Ключевые цифры',
+          paragraphs: [
+            '#1 по качеству жизни в Бразилии. R$4 200+ средняя цена/м² (премиум-сегмент Флорианополиса). 5–7% доходность краткосрочной аренды. ~100–180% рост цен в Журере (2018–2025).',
+            'Оценки различаются в зависимости от сегмента недвижимости и методологии источника. Подробная разбивка по районам — в нашем полном отчёте по Флорианополису.',
+          ],
+        },
+        {
+          heading: 'Кому подойдёт этот гид',
+          paragraphs: [
+            'Европейским и североамериканским инвесторам, ищущим географическую диверсификацию за пределами традиционных рынков вроде Португалии, Испании или Карибов.',
+            'Цифровым предпринимателям и удалённым сотрудникам, рассматривающим базу в Латинской Америке с надёжной инфраструктурой и доступом к визе цифрового кочевника.',
+            'Пенсионерам, ищущим доступный прибрежный лайфстайл с современным здравоохранением и путём через инвесторскую визу Бразилии.',
+            'Состоятельным инвесторам, изучающим недвижимость для резидентства, сохранения капитала и диверсификации лайфстайла.',
+            'Всем, кто интересуется рынком недвижимости Бразилии и хочет честную, основанную на данных информацию — не маркетинг.',
+          ],
+        },
+        {
+          heading: 'Чем этот гид не является',
+          paragraphs: [
+            'Это не рекламная брошюра. Мы не гарантируем доходность, не обещаем безрисковых инвестиций и не заявляем «сейчас идеальное время». Мы независимая инвестиционная консультация, не агентство недвижимости. Наша роль — анализ рынка, оценка объектов и сопровождение покупки — всегда с точки зрения интересов инвестора.',
+            'Наш подход: Plan B Brazil объединяет публичные источники данных (IBGE, FipeZap, Центробанк), локальную рыночную аналитику и полевые исследования во Флорианополисе, Балнеариу-Камбориу, Итапеме и Бомбиньясе.',
+          ],
+        },
+        {
+          heading: 'Хотите обсудить детали?',
+          paragraphs: [
+            'Полный гид на 47 страниц (PDF, на английском языке) доступен для скачивания ниже. Пишите Константину, чтобы разобрать любой раздел лично.',
+            'Konstantin Bievskikh · Plan B Brazil · CRECI-SC 59616-F · planbbrazil.com · WhatsApp +55 (48) 98811-7424',
+          ],
+        },
+      ],
+    },
+  },
 };

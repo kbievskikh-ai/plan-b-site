@@ -147,6 +147,12 @@ const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string;
       h1: 'Инвестиционный отчёт по Флорианополису 2026',
     },
   },
+  'brazil-investment-guide-2026': {
+    ru: {
+      title: 'Инвестиционный гид по Бразилии 2026',
+      h1: 'Инвестиционный гид по Бразилии 2026 (гид доступен для скачивания на английском языке)',
+    },
+  },
 };
 
 export async function generateStaticParams() {
