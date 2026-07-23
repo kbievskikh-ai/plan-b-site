@@ -99,7 +99,7 @@ const SLUG_OVERRIDES: Record<string, string> = {
 // старый ответ даже после нового деплоя, если старый fetch с тем же URL уже был закэширован в
 // предыдущем деплое. Бумпнуть это число при следующем деплое, если опять видишь старые данные
 // после изменения в research API.
-const RESEARCH_CACHE_BUSTER = 4;
+const RESEARCH_CACHE_BUSTER = 5;
 
 async function fetchResearchRaw(lang: ResearchLang): Promise<any[]> {
   const res = await fetch(`${API_URL}/api/research?limit=50&lang=${lang}&_v=${RESEARCH_CACHE_BUSTER}`, {
