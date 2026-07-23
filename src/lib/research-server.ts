@@ -90,6 +90,9 @@ const SLUG_OVERRIDES: Record<string, string> = {
   'Buying Property Through an SPE in Brazil 2026': 'spe-struktura-nedvizhimost-braziliya',
   'Brazil as a Safe Harbor: A Plan B for Your Family 2026': 'braziliya-plan-b-vnzh-pasport',
   'How to Buy Property in Brazil: Steps and Costs 2026': 'kak-kupit-nedvizhimost-braziliya',
+  'Brazil 2026-2027: The Market Has Stopped Moving as One Front': 'brazil-market-strategy-2026-2027',
+  'Brazil for Dummies': 'brazil-for-dummies-culture-guide',
+  'Practical Guide for Newcomers to Florianópolis': 'newcomers-guide-florianopolis',
 };
 
 // Версия кэша: Vercel Data Cache (fetch-кэш) переживает между деплоями, поэтому одинаковый URL может отдавать

@@ -32,6 +32,149 @@ export interface ReportContentByLang {
 }
 
 export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
+  'brazil-market-strategy-2026-2027': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'For the past few years, it was easy to buy almost anywhere in Santa Catarina and barely make a mistake — the market grew as one organism. That era is ending. Going forward, the cost of a wrong call won\'t depend on whether you bought "in Brazil" or "in Florianópolis" — it will depend on which specific market segment you landed in.',
+          ],
+        },
+        {
+          heading: 'The 2025–2026 Economy — in Plain Terms',
+          paragraphs: [
+            '2025 closed with GDP growth of 2.3% — the slowest pace since the pandemic. Construction as a whole grew just 0.5%. The Central Bank\'s benchmark rate Selic closed the year at 15%, above the 14.25% analysts expected.',
+            'Key figures: GDP growth 2025 — 2.3%. Selic rate, year-end 2025 — 15%. Public debt/GDP, 2026 forecast — 10%. Household debt/GDP — 36%+.',
+            'Why is the rate so high if inflation isn\'t critical? In plain terms: the government needs to borrow more and more, and the high rate is the price of that debt. The measure of how much the government needs to borrow is called NFSP — in 2026 it\'s projected to rise to 10% of GDP, the highest since the pandemic year of 2020.',
+          ],
+        },
+        {
+          heading: '2026 — the Year of "Hyperstagnation"',
+          paragraphs: [
+            'That\'s what industry economists call what\'s ahead: there\'s growth, but barely noticeable. Deceleration, 2024 vs 2026 forecast: Consumption — +4.8% in 2024, down to +1.9% (forecast) in 2026. Investment — +7.3% in 2024, down to +2.1% (forecast) in 2026.',
+            'Even if the Selic drops from 14.5% to 12–13% over the year, that doesn\'t solve the problem for real estate. The rate is still too high for comfortable mortgage financing. Mortgage lending volume is 19% below the 2021 peak. And household debt above 36% of GDP means that even cheaper credit won\'t immediately bring the average buyer back to the market.',
+          ],
+        },
+        {
+          heading: 'Construction Isn\'t Shrinking — It\'s Redistributing',
+          paragraphs: [
+            'Per national ABRAINC-Fipe data (the industry association plus a research institute): project launches grew 19.3% over 12 months, real sales value grew 4.8%, and the affordable housing program grew 20.8%.',
+            'Sounds great — but almost all of that growth came from the government\'s affordable housing program, Minha Casa Minha Vida (+20.8%). The mid-to-high price segment, meanwhile, is selling down accumulated inventory, not growing.',
+            'Developers squeezed from both sides: costs are rising — an expensive dollar makes imported materials pricier, and labor costs keep climbing. And passing those costs on to the buyer is hard — credit is expensive and scarce. The industry\'s answer isn\'t a freeze, it\'s discipline: more selective launches, a more cautious approach.',
+            'This isn\'t a boom story, and it isn\'t a bust story. It\'s the story of a market that has stopped moving as one whole — which is exactly why national or even city-level averages describe what\'s happening with a specific asset worse and worse. Florianópolis is a great example to see this in detail.',
+          ],
+        },
+        {
+          heading: 'One City — Three Different Worlds',
+          paragraphs: [
+            'The headline number for Florianópolis sounds simple: about R$12.6K/m², growth of roughly 8% a year. But behind that average sit three completely different markets — from Jurerê Internacional at R$33K/m² down to Serra Catarinense entry prices around R$900/m². The gap between the most expensive and most affordable segment of one city is 36 times. This is confirmed by independent research from Alphaplan (a consultancy specializing in real estate market research) in partnership with Sinduscon Grande Florianópolis (the region\'s developer association).',
+            'Norte da Ilha — a market already at its ceiling. Over 12 years, the district\'s population grew 61% — from 92,500 to 149,000. That\'s nearly 28% of all of Florianópolis\'s population. The drivers aren\'t just tourism, but also the Sapiens Parque tech cluster and an influx of remote workers. But supply is thin: just 42 active projects with 675 units left in stock. The upper price tier — Jurerê Internacional (~R$33K/m²), Jurerê (R$28.6K/m²) — is already trading at levels typical of mature prime locations. Further growth here will increasingly hinge on scarcity of specific plots, not on overall demand.',
+            'Methodological note: our earlier Florianópolis materials cited Jurerê Internacional at R$22K/m² (FipeZap data). The Alphaplan/Sinduscon figures are higher — they apparently separate "Jurerê" and "Jurerê Internacional" as two distinct price tiers, while FipeZap gives a single averaged estimate. Both figures are correct — they measure different things.',
+            'Continente and Estreito — a market catching up. Over 16,500 active businesses form the district\'s economic base. Annual price growth is about 12.5%, above the city average. This is a classic profile of a market repricing behind infrastructure (a new bypass road eased logistics) — but the price ceiling here is still far off.',
+            'Serra Catarinense — a market still forming. 603 available units, 15 projects, the lowest price in the state — R$889–930/m². This is an early stage: people buy here not for current yield, but betting that a winter tourist destination will become a place of permanent and second homes. Risk is higher, the horizon longer — but the repricing potential here is something the island no longer has.',
+          ],
+        },
+        {
+          heading: 'Submarket Stages — at a Glance',
+          paragraphs: [
+            'Norte da Ilha — at the ceiling: scarce prime, limited upside. Continente-Estreito — catching up: repricing, medium risk. Serra Catarinense — forming: high risk, long horizon, high potential.',
+          ],
+        },
+        {
+          heading: 'Before You Invest — Consult Professionals',
+          paragraphs: [
+            'Lumping all three segments into one decision under the banner "real estate in Florianópolis" is a methodological error. It used to be less visible, because a rising market masked the difference. In a flat macro cycle like 2026–2027, that difference becomes decisive.',
+            'Our advice — don\'t rely on our assessment alone. A similar conclusion — independently — is reached by Alphaplan, a reference consultancy that has prepared industry studies of Santa Catarina\'s real estate market for years. Their analysis is aimed at developers, not investors — which makes it more valuable that the conclusion matches ours. Before making a significant investment decision, it\'s worth checking against independent data sources — not just the seller\'s position. We can help arrange that consultation.',
+          ],
+        },
+        {
+          heading: 'What This Means for You',
+          paragraphs: [
+            'The question "is it worth investing in Brazil" is too blunt to be useful in 2026–2027. The sharper question is: what stage is the specific submarket in, does that stage match your horizon and risk tolerance, and is the choice confirmed by independent data.',
+            'It\'s exactly at this level of detail — comparing market stages, not general country trends — that investment strategy for the next cycle should be built.',
+          ],
+        },
+        {
+          heading: 'Sources & Disclaimer',
+          paragraphs: [
+            'This material is for informational purposes only and does not constitute investment advice. Sources: MSc Tiago Jung (CEO of Alphaplan), "Análise Econômica 2026," presentation for Construsul BC, May 2026; Alphaplan research (alphaplanpesquisas.com.br) in partnership with Sinduscon Grande Florianópolis; ABRAINC-Fipe; Índice FipeZap; Banco Central do Brasil. Plan B Brazil acts as an independent advisor and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Последние несколько лет было легко покупать почти где угодно в Санта-Катарине и почти не ошибаться — рынок рос целиком, как один организм. Это время заканчивается. Дальше цена ошибки будет зависеть не от того, что вы купили «в Бразилии» или «во Флорианополисе», а от того, в каком конкретном сегменте рынка вы оказались.',
+          ],
+        },
+        {
+          heading: 'Экономика 2025–2026 — коротко и по-простому',
+          paragraphs: [
+            '2025 год бразильская экономика закрыла с ростом ВВП 2,3% — минимальным темпом со времён пандемии. Строительный сектор в целом прибавил лишь 0,5%. Базовая ставка Центробанка Selic завершила год на уровне 15% годовых — выше, чем ожидали аналитики (14,25%).',
+            'Ключевые цифры: рост ВВП Бразилии в 2025 — 2,3%. Ставка Selic на конец 2025 — 15%. Госдолг/ВВП, прогноз на 2026 — 10%. Долги домохозяйств/ВВП — 36%+.',
+            'Почему ставка такая высокая, если инфляция не критичная? Простыми словами: государству нужно занимать всё больше денег, а высокая ставка — плата за этот долг. Показатель того, сколько государству нужно занять, называется NFSP — в 2026 году он вырастет до 10% ВВП, максимума с пандемийного 2020 года.',
+          ],
+        },
+        {
+          heading: '2026 год — «гиперстагнация»',
+          paragraphs: [
+            'Так отраслевые экономисты называют то, что нас ждёт: рост есть, но еле заметный. Замедление, 2024 против прогноза на 2026: Потребление — +4,8% в 2024, до +1,9% (прогноз) в 2026. Инвестиции — +7,3% в 2024, до +2,1% (прогноз) в 2026.',
+            'Даже если Selic снизится с 14,5% до 12–13% в течение года — это не решает проблему для недвижимости. Ставка всё ещё слишком высокая для комфортной ипотеки. Объём ипотечного кредитования — на 19% ниже пика 2021 года. А долги домохозяйств выше 36% ВВП означают, что даже удешевление кредита не сразу вернёт массового покупателя на рынок.',
+          ],
+        },
+        {
+          heading: 'Стройка не сжимается — она перераспределяется',
+          paragraphs: [
+            'По национальной статистике ABRAINC-Fipe (отраслевая ассоциация застройщиков + исследовательский институт): запуски новых проектов выросли на 19,3% за год, реальный рост продаж в деньгах — 4,8%, рост в программе доступного жилья — 20,8%.',
+            'Звучит отлично — но почти весь этот рост дала государственная программа доступного жилья Minha Casa Minha Vida (+20,8%). Сегмент среднего и высокого ценового диапазона в это же время, наоборот, распродаёт накопленные запасы, а не растёт.',
+            'Застройщиков зажимает с двух сторон: издержки растут — дорогой доллар удорожает импортные материалы, рабочая сила дорожает. А переложить эти издержки на покупателя сложно — кредит дорогой и малодоступный. Ответ отрасли — не заморозка, а дисциплина: более избирательные запуски, более осторожная политика.',
+            'Это не история про бум и не история про спад. Это история про рынок, который перестал двигаться единым фронтом — а значит, средние цифры по стране или даже по городу всё хуже описывают то, что происходит с конкретным объектом. Флорианополис — отличный пример, чтобы увидеть это в деталях.',
+          ],
+        },
+        {
+          heading: 'Один город — три разных мира',
+          paragraphs: [
+            'Заголовочная цифра по Флорианополису звучит просто: около R$12,6 тыс./м², рост около 8% за год. Но за этой средней цифрой скрываются три совершенно разных рынка — от Журере Интернасьонал по R$33К/м² до входных цен Серра-Катариненсе около R$900/м². Разница между самым дорогим и самым доступным сегментом одного города — в 36 раз. Это подтверждают и независимые исследования Alphaplan (консалтинговая компания, специализирующаяся на исследованиях рынка недвижимости) в партнёрстве с Sinduscon Grande Florianópolis (объединение застройщиков региона).',
+            'Норте-да-Илья — рынок уже упёрся в потолок. За 12 лет население района выросло на 61% — с 92,5 до 149 тысяч человек. Это почти 28% всего населения Флорианополиса. Причины — не только туризм, но и технологический кластер Sapiens Parque и приток удалённых сотрудников. Но предложения не хватает: всего 42 проекта с 675 юнитами в остатке. Верхний ценовой ярус — Журере Интернасьонал (~R$33К/м²), Журере (R$28,6К/м²) — уже торгуется на уровне зрелых прайм-локаций. Дальнейший рост здесь будет упираться в дефицит конкретных участков, а не в спрос.',
+            'Методологическая сноска: наши предыдущие материалы по Флорианополису указывали цену Журере Интернасьонал на уровне R$22 тыс./м² (по данным FipeZap). Цифры Alphaplan/Sinduscon выше — они, судя по всему, разводят «Журере» и «Журере Интернасьонал» как два разных ценовых яруса, тогда как FipeZap даёт единую усреднённую оценку. Обе цифры верны — они измеряют разные вещи.',
+            'Континенте и Эстрейто — рынок догоняет сам себя. Более 16,5 тысяч активных компаний создают экономическую базу района. Рост цены за год — около 12,5%, выше среднего по городу. Это классический профиль догоняющей переоценки вслед за инфраструктурой (новая обходная трасса разгрузила логистику) — но потолок цены здесь ещё далеко не достигнут.',
+            'Серра-Катариненсе — рынок только формируется. 603 доступные единицы, 15 проектов, самая низкая цена в штате — R$889–930/м². Это ранняя стадия: люди покупают здесь не ради текущей доходности, а ставя на то, что зимнее туристическое направление превратится в место постоянного и второго проживания. Риск выше, горизонт длиннее — но и потенциал переоценки здесь есть такой, какого уже нет на острове.',
+          ],
+        },
+        {
+          heading: 'Стадии субрынков — коротко',
+          paragraphs: [
+            'Норте-да-Илья — упёрся в потолок: дефицитный прайм, ограниченный апсайд. Континенте-Эстрейто — догоняет: переоценка, средний риск. Серра-Катариненсе — формируется: высокий риск, длинный горизонт, высокий потенциал.',
+          ],
+        },
+        {
+          heading: 'Прежде чем инвестировать — проконсультируйтесь с профессионалами',
+          paragraphs: [
+            'Смешивать все три сегмента в одном решении под лозунгом «недвижимость в Флорианополисе» — методологическая ошибка. Раньше это было не так заметно, потому что растущий рынок маскировал разницу. При плоском макроцикле 2026–2027 годов эта разница становится решающей.',
+            'Наш совет — не полагайтесь только на нашу оценку. К похожему выводу — независимо от нас — приходит и Alphaplan, авторитетная консалтинговая компания, которая много лет готовит отраслевые исследования рынка недвижимости Санта-Катарины. Их аналитика адресована застройщикам, не инвесторам — и тем ценнее, что вывод совпадает с нашим. Прежде чем принимать решение о серьёзной инвестиции, стоит свериться с независимыми источниками данных — а не только с позицией продавца объекта. Мы можем помочь организовать такую консультацию.',
+          ],
+        },
+        {
+          heading: 'Что это значит для вас',
+          paragraphs: [
+            'Вопрос «стоит ли инвестировать в Бразилию» в 2026–2027 годах слишком грубый, чтобы быть полезным. Более точный вопрос — в какой стадии находится конкретный субрынок, соответствует ли эта стадия вашему горизонту и готовности рисковать, и подтверждён ли выбор независимыми данными.',
+            'Именно на этом уровне детализации — сопоставлении стадий рынка, а не общих трендов страны — и должна строиться инвестиционная стратегия на ближайший цикл.',
+          ],
+        },
+        {
+          heading: 'Источники и оговорка',
+          paragraphs: [
+            'Материал носит информационный характер и не является инвестиционной рекомендацией. Источники: MSc Tiago Jung (CEO Alphaplan), «Análise Econômica 2026», презентация для Construsul BC, май 2026; исследования Alphaplan (alphaplanpesquisas.com.br) в партнёрстве с Sinduscon Grande Florianópolis; ABRAINC-Fipe; Índice FipeZap; Banco Central do Brasil. Plan B Brazil выступает независимым советником и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
+
   // ПРИМЕР структуры (удалить и заменить реальными данными):
   //
   // 'jurere-investment-report': {
@@ -2435,6 +2578,347 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           ],
         },
       ],
+    },
+  },
+
+  'brazil-for-dummies-culture-guide': {
+    en: {
+        sections: [
+          {
+            heading: 'The Short Version',
+            paragraphs: [
+              'This isn\'t about investment or real estate — it\'s about the country itself. Mentality, language, money, safety, and everyday life, as it actually is, without the gloss or the fear-mongering.',
+              'Quick facts: Brazil ranks #81 of 116 countries for English proficiency. 93% of Brazilian adults use PIX. You can drive on a foreign license for 180 days. Plan B Brazil\'s founder has lived in Brazil since 2009.',
+            ],
+          },
+          {
+            heading: 'Language — a Nuance Worth Knowing Upfront',
+            paragraphs: [
+              'Brazil speaks Portuguese, not Spanish — the first thing that surprises many newcomers expecting Latin American Spanish. Brazilian Portuguese differs from European Portuguese in pronunciation and rhythm enough that it\'s worth learning Brazilian-specific materials from day one.',
+              'On the EF English Proficiency Index, Brazil ranks 81st out of 116 countries — the "low proficiency" category. About 5% of the population speaks English fluently, and about 1% speaks it well.',
+              'An honest detail for our region: the south of Brazil is an exception. Florianópolis consistently scores above the national average on English tests. Don\'t count on English as your primary language, but in Santa Catarina, your odds of meeting an English speaker are better than the Brazilian average.',
+            ],
+          },
+          {
+            heading: 'Mentality — "Jeitinho Brasileiro"',
+            paragraphs: [
+              'There\'s a concept that explains a lot of everyday life — jeitinho brasileiro, literally "the little Brazilian way." A flexible, informal approach to rules and obstacles — not deception, but resourcefulness and an ability to find a way through when the formal path looks like a dead end.',
+              'In practice: schedules are treated flexibly, personal space is smaller than in Northern Europe or North America, greetings often include a hug or a cheek kiss even on a short acquaintance. It\'s not chaos — it\'s a different coordinate system you adjust to quickly.',
+            ],
+          },
+          {
+            heading: 'Money and PIX — What You Can\'t Get By Without',
+            paragraphs: [
+              'Forget the idea that cash or cards are the primary way to pay. Brazil runs on PIX — the Central Bank\'s instant payment system, launched in 2020.',
+              'Payment methods in Brazil, 2026: PIX 46%, cash 22%, debit cards 17%, credit cards 12%.',
+              '93% of Brazilian adults use PIX, with transfers processing instantly, 24/7, including weekends and holidays. Practical takeaway: set up PIX as soon as possible after opening a Brazilian bank account — it\'s not optional, it\'s how people actually pay for everything here, from coffee to rent.',
+              'On tipping — restaurants often already include a 10% service charge on the bill (taxa de serviço); it\'s not mandatory but is socially expected if the service was decent.',
+            ],
+          },
+          {
+            heading: 'Driving — the 180-Day Rule',
+            paragraphs: [
+              'First 180 days: you can drive on your own license — carry your passport plus an International Driving Permit (IDP) or a certified Portuguese translation. After 180 days: your foreign license stops being valid — you need to convert to a Brazilian license (CNH), or face real fines.',
+              'A nuance that surprises many: Mercosur countries (Argentina, Paraguay, Uruguay) — contrary to expectation — get no special benefit for license conversion. They convert under the same general rules as anyone else. Brazil has separate mutual-recognition agreements with a number of countries (including Spain, Italy, Germany, France, Japan, South Korea, Portugal) — for those, the driving test can be skipped, only a medical exam is required.',
+            ],
+          },
+          {
+            heading: 'What Genuinely Surprises Foreigners',
+            paragraphs: [
+              'Physical closeness in conversation. Hugs, touching an arm mid-conversation — this is the norm, not flirtation.',
+              'Volume and emotion. Conversations on the street, in cafés — noticeably louder than in many other cultures. It\'s not an argument, just the normal manner of talking.',
+              '"Da próxima vez" and flexible time. An agreement for "tomorrow" can mean a substantially wider time window than formally stated.',
+              'Family at the center of everything. Sunday lunches with extended family, the importance of godparents — far more pronounced than the European or North American average.',
+            ],
+          },
+          {
+            heading: 'Common Misconceptions Foreigners Have',
+            paragraphs: [
+              '"They speak Spanish in Brazil" — No, only Portuguese.',
+              '"All of Brazil is Rio and Carnival" — a continent-sized country; the south differs sharply from the northeast or Rio, both culturally and economically.',
+              '"Bureaucracy can be worked around" — sometimes yes, but usually no; budgeting more time beats looking for shortcuts.',
+              '"English will help in most situations" — it won\'t, outside tourist zones and business districts.',
+            ],
+          },
+          {
+            heading: 'Bank Account and Everyday Finances',
+            paragraphs: [
+              'Opening a Brazilian account requires a CPF and, typically, proof of address. Major banks (Banco do Brasil, Itaú, Bradesco) accept foreigners with a CPF and passport; some digital banks (Nubank, Inter) also work with foreigners. Without a local account, you can\'t set up PIX — and without PIX, everyday life in Brazil gets noticeably harder.',
+            ],
+          },
+          {
+            heading: 'Safety — Level-Headed, Without Panic or Complacency',
+            paragraphs: [
+              'We covered safety statistics by region in detail in our separate article comparing Rio, São Paulo, and southern Brazil — in short: risk in Brazil depends heavily on the specific city and neighborhood, and the gap between Florianópolis and, say, Rio, is a multiple, not a percentage.',
+              'Practical habits that work everywhere: don\'t display expensive items openly on the street, stay alert in crowded places and public transport, use vetted taxis/apps at night. This is ordinary urban caution, not something uniquely "dangerous" about Brazil.',
+            ],
+          },
+          {
+            heading: 'Bureaucracy — Patience Pays Off',
+            paragraphs: [
+              'Brazil is famous for bureaucracy (burocracia) — that\'s not a myth. The first and most essential document you\'ll need for almost everything is a CPF, Brazil\'s individual tax ID. We covered how to get one in detail in our article on buying property. Budget more time for any official procedure than seems logical — that\'s not the exception, it\'s the norm.',
+            ],
+          },
+          {
+            heading: 'Everyday Details That Save You Grief',
+            paragraphs: [
+              'Business hours — many small shops and services close for lunch, especially outside major cities. Holidays — Brazil observes many official and regional holidays, when much is closed, including banks. Food — lunch (almoço) is often the main meal of the day, not dinner as in Europe.',
+            ],
+          },
+          {
+            heading: 'Check for Yourself — Two Free Tools',
+            paragraphs: [
+              'Brazil Fit Score — a 7-question, 2-minute test that scores how well Brazil fits you — for life, investment, work, nature.',
+              'Visa & Residency Path Calculator — 6 questions that determine the best residency or citizenship path for your specific situation. Both free, no registration.',
+            ],
+          },
+          {
+            heading: 'Bottom Line',
+            paragraphs: [
+              'Brazil isn\'t one country with one set of rules — it\'s a sum of very different regions. What\'s true for Rio isn\'t always true for Santa Catarina. Language, money, bureaucracy, and safety are the baseline you should arrive with, not something to discover through trial and error in your first week.',
+              'This material is for informational purposes only and is based on publicly available sources (EF EPI, Central Bank of Brazil) and personal experience living in Brazil since 2009.',
+            ],
+          },
+        ],
+    },
+    ru: {
+        sections: [
+          {
+            heading: 'Коротко о главном',
+            paragraphs: [
+              'Это не про инвестиции и не про недвижимость — это про саму страну. Менталитет, язык, деньги, безопасность и повседневная жизнь, как она есть, без глянца и без запугивания.',
+              'Быстрые факты: Бразилия занимает 81-е место из 116 стран по владению английским. 93% взрослых бразильцев пользуются PIX. По иностранным правам можно ездить 180 дней. Основатель Plan B Brazil живёт в Бразилии с 2009 года.',
+            ],
+          },
+          {
+            heading: 'Язык — и здесь есть нюанс, который стоит знать заранее',
+            paragraphs: [
+              'Бразилия говорит на португальском, не на испанском — это первое, что удивляет многих новичков, ожидающих латиноамериканский испанский. Бразильский португальский отличается от европейского произношением и ритмом настолько, что учить стоит именно бразильские, а не португальские материалы с самого начала.',
+              'По индексу владения английским (EF EPI) Бразилия занимает 81-е место из 116 стран — категория «низкий уровень». Свободно говорят по-английски около 5% населения, действительно хорошо — около 1%.',
+              'Честная деталь для нашего региона: юг Бразилии — исключение. Флорианополис стабильно показывает результаты на тестах английского выше среднего по стране. Не рассчитывайте на английский как на основной язык общения, но в Санта-Катарине шансы встретить говорящего по-английски выше, чем в среднем по Бразилии.',
+            ],
+          },
+          {
+            heading: 'Менталитет — «jeitinho brasileiro»',
+            paragraphs: [
+              'Есть понятие, которое объясняет многое в повседневной жизни — jeitinho brasileiro, буквально «маленький бразильский способ». Гибкий, неформальный подход к правилам и препятствиям — не обман, а скорее находчивость и способность договориться там, где формальный путь кажется тупиковым.',
+              'Практически это означает: расписания воспринимаются гибко, личное пространство меньше, чем в Северной Европе или Северной Америке, приветствие часто включает объятия или поцелуй в щёку даже при недолгом знакомстве. Это не хаос — это другая система координат, к которой быстро привыкаешь.',
+            ],
+          },
+          {
+            heading: 'Деньги и PIX — то, без чего не обойтись',
+            paragraphs: [
+              'Забудьте о том, что наличные или карты — основной способ платить. В Бразилии доминирует PIX — система мгновенных платежей от Центробанка, запущенная в 2020 году.',
+              'Способы оплаты в Бразилии, 2026: PIX 46%, наличные 22%, дебетовые карты 17%, кредитные карты 12%.',
+              '93% взрослого населения Бразилии пользуются PIX, переводы происходят мгновенно, 24/7, включая выходные и праздники. Практический вывод: оформите PIX как можно раньше после открытия бразильского счёта — это не опция, а то, как здесь реально платят за всё, от кофе до аренды квартиры.',
+              'Что касается чаевых — в ресторанах часто уже включена сервисная плата 10% в счёт (taxa de serviço), она необязательна к оплате, но социально ожидаема, если сервис был нормальным.',
+            ],
+          },
+          {
+            heading: 'Вождение — правило 180 дней',
+            paragraphs: [
+              'Первые 180 дней: можно ездить на своих правах — при себе паспорт + международное удостоверение (IDP) или заверенный перевод на португальский. После 180 дней: иностранные права перестают действовать — нужна конвертация в бразильские права (CNH), иначе реальные штрафы.',
+              'Нюанс, который многих удивляет: страны Меркосур (Аргентина, Парагвай, Уругвай) — вопреки ожиданиям — не имеют льготного упрощённого обмена прав. Конвертация идёт на общих основаниях. У Бразилии есть отдельные соглашения о взаимном признании с рядом стран (Испания, Италия, Германия, Франция, Япония, Южная Корея, Португалия) — с ними экзамен на вождение можно пропустить, нужна только медсправка.',
+            ],
+          },
+          {
+            heading: 'Что реально удивляет иностранцев',
+            paragraphs: [
+              'Физическая близость в общении. Объятия, прикосновения к руке во время разговора — это норма, не заигрывание.',
+              'Громкость и эмоциональность. Разговоры на улице, в кафе — заметно громче, чем во многих других культурах. Это не ссора, а обычная манера общения.',
+              '«Da próxima vez» и гибкое время. Договорённость на «завтра» может означать существенно более широкое окно времени, чем формально сказано.',
+              'Семья в центре всего. Воскресные обеды с большой семьёй, важность крёстных родителей — гораздо более выражены, чем в среднем по Европе.',
+            ],
+          },
+          {
+            heading: 'Частые заблуждения иностранцев',
+            paragraphs: [
+              '«В Бразилии говорят по-испански» — нет, только португальский.',
+              '«Вся Бразилия — это Рио и карнавал» — страна размером с континент; юг культурно и экономически сильно отличается от северо-востока или Рио.',
+              '«Бюрократию можно обойти» — иногда да, но чаще нет; закладывать больше времени надёжнее, чем искать короткие пути.',
+              '«Английский поможет в большинстве ситуаций» — не поможет за пределами туристических зон и бизнес-районов.',
+            ],
+          },
+          {
+            heading: 'Банковский счёт и повседневные финансы',
+            paragraphs: [
+              'Для открытия бразильского счёта потребуется CPF и, как правило, подтверждение адреса. Крупные банки (Banco do Brasil, Itaú, Bradesco) принимают иностранцев с CPF и паспортом; некоторые цифровые банки (Nubank, Inter) тоже работают с иностранцами. Без местного счёта не получится подключить PIX — а без PIX повседневная жизнь в Бразилии заметно сложнее.',
+            ],
+          },
+          {
+            heading: 'Безопасность — трезво, без паники и без беспечности',
+            paragraphs: [
+              'Мы подробно разбирали статистику безопасности по регионам в отдельной статье о сравнении Рио, Сан-Паулу и юга Бразилии — вкратце: уровень риска в Бразилии сильно зависит от конкретного города и района, разница между Флорианополисом и, например, Рио — кратная, не на проценты.',
+              'Практические привычки, которые работают везде: не демонстрировать дорогие вещи открыто на улице, быть внимательным в людных местах и общественном транспорте, пользоваться проверенными такси/приложениями вечером. Это обычная городская осторожность, не что-то специфически «опасное для Бразилии».',
+            ],
+          },
+          {
+            heading: 'Бюрократия — наберитесь терпения заранее',
+            paragraphs: [
+              'Бразилия славится бюрократией (burocracia) — это не миф. Первый и главный документ, который понадобится почти для всего — CPF, бразильский налоговый номер физлица. Мы подробно разбирали, как его получить, в статье про покупку недвижимости. Закладывайте больше времени на любую официальную процедуру, чем кажется логичным — это не исключение, а норма.',
+            ],
+          },
+          {
+            heading: 'Повседневные мелочи, которые экономят нервы',
+            paragraphs: [
+              'Рабочие часы — многие небольшие магазины и сервисы закрываются на обед, особенно вне крупных городов. Праздники — Бразилия отмечает много официальных и региональных праздников, в эти дни многое закрыто, включая банки. Еда — обед (almoço) часто главный приём пищи дня, а не ужин, как принято в Европе.',
+            ],
+          },
+          {
+            heading: 'Проверьте сами — два бесплатных инструмента',
+            paragraphs: [
+              'Brazil Fit Score — тест на 7 вопросов (2 минуты), который оценивает, насколько Бразилия подходит именно вам — для жизни, инвестиций, работы, природы.',
+              'Visa & Residency Path Calculator — 6 вопросов, определяющих оптимальный путь к резиденции или гражданству под вашу ситуацию. Оба бесплатны, без регистрации.',
+            ],
+          },
+          {
+            heading: 'Что в итоге',
+            paragraphs: [
+              'Бразилия — не одна страна с одним набором правил, а сумма очень разных регионов. То, что верно для Рио, не всегда верно для Санта-Катарины. Язык, деньги, бюрократия и безопасность — это база, с которой стоит въезжать в страну, а не открывать для себя методом проб и ошибок в первую неделю.',
+              'Материал носит информационный характер и основан на общедоступных источниках (EF EPI, Центральный банк Бразилии) и личном опыте жизни в Бразилии с 2009 года.',
+            ],
+          },
+        ],
+    },
+  },
+  'newcomers-guide-florianopolis': {
+    en: {
+        sections: [
+          {
+            heading: 'The Short Version',
+            paragraphs: [
+              'This isn\'t about investment — it\'s about your first months living on the island. Schools, healthcare, transport, shopping, and the practical details that save you time and stress.',
+              'Quick facts: city population 587K (metro area 1.1M). Two bridges connect the island to the mainland. HDI 0.847 — very high development index. Plan B Brazil\'s founder has lived in Florianópolis since 2021.',
+            ],
+          },
+          {
+            heading: 'Transport — What to Understand Right Away',
+            paragraphs: [
+              'Florianópolis is an island connected to the mainland by bridges, and this shapes daily logistics more than it might seem at first.',
+              'The actual vehicular link is the Colombo Salles Bridge (opened 1975) — not the famous Hercílio Luz Bridge, which is now open to pedestrians and cyclists only. Traffic jams entering/exiting the island at rush hour are a real, well-known issue, not a tourist legend; an alternative bridge has been under construction for a long time.',
+              'Practical takeaway: a car or scooter is practically a necessity for daily life, especially if you don\'t live downtown. Public transport (the TICEN bus system) is basic and not always intuitive without Portuguese. Uber works well in Florianópolis — unlike many Brazilian cities where the service is less developed.',
+              'Bike infrastructure is partially developed, especially along the Beira-Mar waterfront, but hilly terrain and traffic limit it as a primary mode of transport.',
+            ],
+          },
+          {
+            heading: 'Schools — International and Bilingual Options',
+            paragraphs: [
+              'Families with children in Florianópolis have a choice between two types of schools: international schools (IB accreditation or American curricula, focused on foreign university admission, higher cost) and bilingual schools (Brazilian curriculum + English immersion, prepare for ENEM/vestibular, more affordable).',
+              'International options: Dual International School — IB World School, English/Portuguese, Spanish from Grade 6, since 2014. Escola Internacional de Florianópolis (EIF) — American curriculum, Trindade district, since 2005.',
+              'Bilingual options: Maple Bear Canadian School — Canadian methodology. Escola Dinâmica Bilíngue, Escola St. Patrick — other popular options.',
+            ],
+          },
+          {
+            heading: 'Healthcare — Public and Private',
+            paragraphs: [
+              'Brazil offers free public healthcare (SUS) for everyone, including foreign residents, but most expats and affluent Brazilians use private care or health insurance (plano de saúde) for faster access and shorter waits.',
+              'Well-known private hospitals in Florianópolis: Hospital Baía Sul, Hospital Universitário (at UFSC), Imperial Hospital de Caridade. Private insurance is usually arranged through an employer or directly — cost depends on age and coverage level.',
+            ],
+          },
+          {
+            heading: 'Bank Account and First Documents',
+            paragraphs: [
+              'We covered opening an account and the role of the CPF in detail in our general "Brazil for Dummies" guide — the same logic applies here: without a CPF you can\'t open an account, without an account you can\'t set up PIX, and without PIX everyday life gets noticeably harder.',
+            ],
+          },
+          {
+            heading: 'Where to Shop — From Groceries to Everything Else',
+            paragraphs: [
+              'Supermarkets: Angeloni (a major chain originally from Santa Catarina), Giassi, and other regional chains.',
+              'Mercado Público — the historic public market downtown — fresh produce, restaurants, bars, local culture.',
+              'Big-ticket purchases — furniture and electronics — shopping centers are spread across the island and mainland; plan your route around the bridges and traffic.',
+            ],
+          },
+          {
+            heading: 'Neighborhoods — Where to Live, Not Where to Invest',
+            paragraphs: [
+              'We covered Florianópolis\'s neighborhoods from an investment angle in a separate, detailed report — here it\'s a different lens: where it\'s genuinely comfortable to live in your first months.',
+              'Families with children often find districts near international schools convenient (Trindade, home to EIF). Remote workers who value infrastructure tend toward Campeche and Lagoa, with their growing digital nomad community. Centro suits those who prefer urban rhythm without a beach focus.',
+            ],
+          },
+          {
+            heading: 'Check for Yourself — A Free Tool',
+            paragraphs: [
+              'Ideal Regions — a personalized report (after the short Brazil Fit Score test) that tells you which district of Florianópolis and Santa Catarina fits your specific situation.',
+            ],
+          },
+          {
+            heading: 'Bottom Line',
+            paragraphs: [
+              'Your first months in Florianópolis are easier once you understand the island\'s logistics (the bridges and traffic are real), choose the right school system for your kids, arrange health insurance, and know where everyday needs get met. It\'s no harder than moving to any other new city — just with its own local specifics.',
+              'This material is for informational purposes only and is based on publicly available sources and personal experience living in Florianópolis since 2021.',
+            ],
+          },
+        ],
+    },
+    ru: {
+        sections: [
+          {
+            heading: 'Коротко о главном',
+            paragraphs: [
+              'Не про инвестиции — про первые месяцы жизни на острове. Школы, врачи, транспорт, покупки и практические мелочи, которые экономят время и нервы.',
+              'Быстрые факты: население города 587 тыс. (агломерация 1,1 млн). Два моста связывают остров с материком. Индекс развития HDI 0,847 — очень высокий. Основатель Plan B Brazil живёт во Флорианополисе с 2021 года.',
+            ],
+          },
+          {
+            heading: 'Транспорт — главное, что нужно понять сразу',
+            paragraphs: [
+              'Флорианополис — остров, соединённый с материком мостами, и это определяет повседневную логистику сильнее, чем кажется на первый взгляд.',
+              'Реальная автомобильная связь идёт через мост Colombo Salles (открыт в 1975 году) — не через знаменитый мост Эрсилиу-Лус, который сейчас открыт только для пешеходов и велосипедистов. Пробки на въезде/выезде с острова в час пик — реальная, известная проблема, а не туристическая легенда; ещё один альтернативный мост находится в стройке уже долгое время.',
+              'Практический вывод: машина или скутер — практически необходимость для повседневной жизни, особенно если вы живёте не в центре. Общественный транспорт (система TICEN) базовый и не всегда интуитивно понятен без знания португальского. Uber работает хорошо во Флорианополисе — в отличие от многих городов Бразилии, где сервис менее развит.',
+              'Велосипедная инфраструктура частично развита, особенно вдоль набережной Beira-Mar, но холмистый рельеф и трафик ограничивают её как основной способ передвижения.',
+            ],
+          },
+          {
+            heading: 'Школы — международные и билингвальные варианты',
+            paragraphs: [
+              'Для семей с детьми в Флорианополисе есть выбор между двумя типами школ: международные школы (аккредитация IB или американские программы, ориентация на поступление в зарубежные вузы, выше стоимость) и билингвальные школы (бразильская программа + погружение в английский, готовят к ENEM/vestibular, более доступная цена).',
+              'Международные варианты: Dual International School — IB World School, англ/порт, испанский с 6 класса, с 2014. Escola Internacional de Florianópolis (EIF) — американская программа, район Trindade, с 2005.',
+              'Билингвальные варианты: Maple Bear Canadian School — канадская методология. Escola Dinâmica Bilíngue, Escola St. Patrick — другие популярные варианты.',
+            ],
+          },
+          {
+            heading: 'Здравоохранение — государственное и частное',
+            paragraphs: [
+              'Бразилия предлагает бесплатную государственную систему здравоохранения (SUS) для всех, включая иностранных резидентов, но большинство экспатов и состоятельных бразильцев используют частную медицину или медицинскую страховку (plano de saúde) для более быстрого доступа и меньших очередей.',
+              'Известные частные больницы во Флорианополисе: Hospital Baía Sul, Hospital Universitário при UFSC, Imperial Hospital de Caridade. Частная страховка обычно оформляется через работодателя или напрямую — стоимость зависит от возраста и объёма покрытия.',
+            ],
+          },
+          {
+            heading: 'Банковский счёт и первые документы',
+            paragraphs: [
+              'Мы подробно разбирали открытие счёта и роль CPF в общем гиде «Brazil for Dummies» — та же логика применима и здесь: без CPF не откроете счёт, без счёта не подключите PIX, без PIX повседневная жизнь заметно сложнее.',
+            ],
+          },
+          {
+            heading: 'Где покупать — от продуктов до всего остального',
+            paragraphs: [
+              'Супермаркеты: Angeloni (крупная сеть родом из Санта-Катарины), Giassi и другие региональные сети.',
+              'Mercado Público — исторический общественный рынок в центре — свежие продукты, рестораны, бары, локальный колорит.',
+              'Крупные покупки — мебель и техника — торговые центры на острове и на материковой части; планируйте маршрут с учётом мостов и пробок.',
+            ],
+          },
+          {
+            heading: 'Районы — где жить, а не куда инвестировать',
+            paragraphs: [
+              'Мы подробно разбирали районы Флорианополиса с инвестиционной точки зрения в отдельном большом отчёте — здесь другой угол: где реально комфортно жить в первые месяцы.',
+              'Для семей с детьми часто удобны районы ближе к международным школам (Trindade, где расположена EIF). Для тех, кто работает удалённо и ценит инфраструктуру — Кампече и Лагоа с их растущим сообществом цифровых кочевников. Центр — для тех, кто предпочитает городской ритм без пляжной ориентации.',
+            ],
+          },
+          {
+            heading: 'Проверьте сами — бесплатный инструмент',
+            paragraphs: [
+              'Ideal Regions — персональный отчёт (после короткого теста Brazil Fit Score), который подскажет, какой район Флорианополиса и Санта-Катарины подходит именно вашей ситуации.',
+            ],
+          },
+          {
+            heading: 'Что в итоге',
+            paragraphs: [
+              'Первые месяцы во Флорианополисе проще, если заранее понимать логистику острова (мосты и пробки реальны), выбрать подходящую школьную систему для детей, оформить медицинскую страховку и знать, где закрываются повседневные нужды. Это не сложнее, чем переезд в любой другой новый город — просто со своей местной спецификой.',
+              'Материал носит информационный характер и основан на общедоступных источниках и личном опыте жизни во Флорианополисе с 2021 года.',
+            ],
+          },
+        ],
     },
   },
 };

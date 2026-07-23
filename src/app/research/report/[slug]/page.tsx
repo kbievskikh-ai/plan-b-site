@@ -153,6 +153,36 @@ const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string;
       h1: 'Инвестиционный гид по Бразилии 2026 (гид доступен для скачивания на английском языке)',
     },
   },
+  'brazil-market-strategy-2026-2027': {
+    en: {
+      title: 'Brazil 2026-2027: The Market Has Stopped Moving as One Front',
+      h1: 'Brazil 2026–2027: The Market Has Stopped Moving as One Front',
+    },
+    ru: {
+      title: 'Стратегия инвестирования в недвижимость Бразилии 2026-2027 — выбор сегмента',
+      h1: 'Бразилия 2026–2027: рынок больше не движется единым фронтом',
+    },
+  },
+  'brazil-for-dummies-culture-guide': {
+    en: {
+      title: 'Brazil for Dummies: What You Need to Know Before You Move',
+      h1: 'Brazil for Dummies',
+    },
+    ru: {
+      title: 'Brazil for Dummies — что нужно знать перед переездом',
+      h1: 'Brazil for Dummies — что нужно знать перед переездом',
+    },
+  },
+  'newcomers-guide-florianopolis': {
+    en: {
+      title: 'Practical Guide for Newcomers to Florianópolis: Your First Months on the Island',
+      h1: 'Practical Guide for Newcomers to Florianópolis',
+    },
+    ru: {
+      title: 'Практический гид для новоприбывших в Флорианополисе — первые месяцы на острове',
+      h1: 'Practical Guide for Newcomers to Florianópolis',
+    },
+  },
 };
 
 export async function generateStaticParams() {
