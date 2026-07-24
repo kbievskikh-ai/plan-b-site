@@ -93,13 +93,16 @@ const SLUG_OVERRIDES: Record<string, string> = {
   'Brazil 2026-2027: The Market Has Stopped Moving as One Front': 'brazil-market-strategy-2026-2027',
   'Brazil for Dummies': 'brazil-for-dummies-culture-guide',
   'Practical Guide for Newcomers to Florianópolis': 'newcomers-guide-florianopolis',
+  "Starting a Business in Brazil Alone: Why It's Harder Than It Looks": 'starting-a-business-in-brazil-2026',
+  'STV Construções Developer Review 2026': 'stv-construcoes-developer-review-2026',
+  "Robson Nascimento — the Man Whose Name Adds 10% to a Home's Price": 'robson-nascimento-architect-jurere',
 };
 
 // Версия кэша: Vercel Data Cache (fetch-кэш) переживает между деплоями, поэтому одинаковый URL может отдавать
 // старый ответ даже после нового деплоя, если старый fetch с тем же URL уже был закэширован в
 // предыдущем деплое. Бумпнуть это число при следующем деплое, если опять видишь старые данные
 // после изменения в research API.
-const RESEARCH_CACHE_BUSTER = 7;
+const RESEARCH_CACHE_BUSTER = 8;
 
 async function fetchResearchRaw(lang: ResearchLang): Promise<any[]> {
   const res = await fetch(`${API_URL}/api/research?limit=50&lang=${lang}&_v=${RESEARCH_CACHE_BUSTER}`, {

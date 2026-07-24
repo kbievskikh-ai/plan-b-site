@@ -3940,4 +3940,350 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
       ],
     },
   },
+  'starting-a-business-in-brazil-2026': {
+    en: {
+      sections: [
+        {
+          heading: 'Numbers That Bring You Back to Reality',
+          paragraphs: [
+            'Brazil is open to foreign investment — that\'s true. But there\'s a huge gap between "possible" and "easy," and the numbers make that case more forcefully than words ever could.',
+            'On the World Bank\'s Ease of Doing Business index, Brazil ranks 126th out of 183 countries overall, and specifically in the "starting a business" category — 120th.',
+            'Opening a standard company in Brazil takes 13 steps. For a foreigner, it\'s already 22 steps, and the process can take up to 180 days. For comparison: in the US, a foreigner opens a business in at most 10 days, and a local resident in 6. This isn\'t a subjective sense of "Brazilian bureaucracy" — it\'s a measurable, documented gap specifically for those who aren\'t citizens of the country.',
+          ],
+        },
+        {
+          heading: 'Formal Requirements You Can\'t Skip',
+          paragraphs: [
+            'A foreigner can be the sole owner of a company through the Sociedade Limitada Unipessoal (SLU) structure — good news. But beyond that, mandatory steps requiring local presence begin: CPF (Brazil\'s individual tax ID — without it you can\'t open an account or sign a single document); Central Bank Registration via the RDE-IED system (Registro Declaratório Eletrônico – Investimento Estrangeiro Direto); and a mandatory Local Representative (procurador) — a Brazilian resident authorized to receive legal citations on your behalf. Without one, a non-resident physically cannot be part of a Brazilian company.',
+            'If you\'re planning an investor visa — minimum investment of R$150K, plus a formal investment plan demonstrating the social value of the investment (typically job creation).',
+          ],
+        },
+        {
+          heading: 'Why Hiring an Accountant Alone Won\'t Solve This',
+          paragraphs: [
+            'One consultant specializing in foreign capital localization in Brazil puts it plainly: "few professionals in the country combine both accounting and legal expertise" needed to properly support this process. Entity type, tax regime, CNAE code, licenses — these aren\'t formalities, they\'re strategic decisions with long-term consequences, and a mistake at any of these steps creates problems that surface months or years later.',
+          ],
+        },
+        {
+          heading: 'Bureaucracy Is Only Half the Story',
+          paragraphs: [
+            'Formal requirements are what you can find in guides and mostly resolve with paperwork. What\'s harder is what isn\'t written in any official checklist: how decisions actually get made here, who trusts whom and why, what informal rules govern the business environment. We covered this in detail in a separate piece, ["Brazil for Dummies"](/research/report/brazil-for-dummies-culture-guide) — including the jeitinho brasileiro phenomenon and why bureaucracy here can\'t just be "worked around" by knowing the right shortcuts.',
+            'In Brazil, personal relationships and business connections play a significantly larger role in business success than in many other countries. Knowing the right people, understanding who actually makes decisions at the local level, spending years building trust with local partners — this isn\'t a "workaround" for the system, it\'s part of how the system actually functions here.',
+          ],
+        },
+        {
+          heading: 'Bringing Your Business to the Brazilian Market',
+          paragraphs: [
+            'You could spend six months figuring out those 22 steps by trial and error — time a competitor with a local partner would spend actually launching their business. We help businesses from Russia and the CIS enter the Brazilian market and expand their presence here — acting as your outsourced BDM (Business Development Manager), without hiring local staff.',
+            'Who this is for: companies looking at Brazil as a new market — real estate, e-commerce, product businesses, B2B — who want a real person on the ground, not a theoretical agency.',
+            'What we take on: market reconnaissance and finding an entry point for your specific niche; suppliers, partners, and contractors (local sourcing and negotiation); deal support (registration, logistics, counterparties); sales and channel development in Brazil; reporting and integration into your team, remote or on-site.',
+            'Why us: 15+ years in Santa Catarina, our own real estate business here; corporate international experience (SLB) — projects and contracts across 5+ countries, budgets from $1M+; e-commerce and B2B background — bringing SKUs to market, growing revenue from $7K to $195K/month, scaling brands on Amazon; RU / EN / PT, physically based in Brazil.',
+          ],
+        },
+        {
+          heading: 'Before You Take the First Step',
+          paragraphs: [
+            'Before taking your first steps and making important decisions, consult with a specialist. Reach out, and I\'ll help you build the first steps for your business in Brazil — whether that\'s finding staff, expanding, or bringing your product to a new market.',
+            'This material is for informational purposes only and does not replace consultation with a qualified lawyer and accountant licensed in Brazil.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Цифры, которые отрезвляют',
+          paragraphs: [
+            'Бразилия открыта для иностранных инвестиций — это правда. Но между «можно» и «легко» — огромная дистанция, и цифры это подтверждают жёстче, чем любые слова.',
+            'По индексу Ease of Doing Business Всемирного банка Бразилия занимает 126-е место из 183 стран в целом, и конкретно по категории «открытие бизнеса» — 120-е место.',
+            'Открытие обычной компании в Бразилии — 13 шагов. Для иностранца — уже 22 шага, и процесс может занять до 180 дней. Для сравнения: в США иностранец открывает бизнес максимум за 10 дней, а местный резидент — за 6. Это не субъективное ощущение «бразильской бюрократии» — это измеримый, задокументированный разрыв именно для тех, кто не является гражданином страны.',
+          ],
+        },
+        {
+          heading: 'Формальные требования, которые нельзя обойти',
+          paragraphs: [
+            'Иностранец может быть единственным владельцем компании через структуру Sociedade Limitada Unipessoal (SLU) — хорошая новость. Но дальше начинаются обязательные шаги, требующие локального присутствия: CPF (бразильский налоговый номер — без него не откроете счёт и не подпишете ни один документ); регистрация в Центробанке через систему RDE-IED (Registro Declaratório Eletrônico – Investimento Estrangeiro Direto); и обязательный местный представитель (procurador) — резидент Бразилии с полномочиями получать судебные извещения от вашего имени. Без него нерезидент физически не может быть частью бразильской компании.',
+            'Если планируете инвесторскую визу — минимальная сумма инвестиций R$150 тыс., плюс формальный инвестиционный план, доказывающий социальную значимость вложений (обычно — создание рабочих мест).',
+          ],
+        },
+        {
+          heading: 'Почему это не решается просто наймом бухгалтера',
+          paragraphs: [
+            'Один из консультантов по локализации иностранного капитала в Бразилии прямо говорит: «мало профессионалов в стране владеют одновременно бухгалтерской и юридической экспертизой», необходимой для полноценного сопровождения этого процесса. Тип юрлица, налоговый режим, код CNAE, лицензии — это не формальности, а стратегические решения с долгосрочными последствиями, и ошибка на любом из этих шагов создаёт проблемы, которые вскрываются месяцами или годами позже.',
+          ],
+        },
+        {
+          heading: 'Бюрократия — только половина истории',
+          paragraphs: [
+            'Формальные требования — это то, что можно найти в гайдах и по большей части решить документами. Сложнее то, что не описано ни в одном официальном чек-листе: как здесь на самом деле принимаются решения, кому и как доверяют, какие неформальные правила работают в бизнес-среде. Мы подробно разбирали это в отдельном материале [«Brazil for Dummies»](/research/report/brazil-for-dummies-culture-guide) — включая феномен jeitinho brasileiro и то, почему бюрократию здесь нельзя просто «обойти», зная правильные лазейки.',
+            'В Бразилии личные отношения и деловые связи играют значительно большую роль в успехе бизнеса, чем во многих других странах. Знать нужных людей, понимать, кто реально принимает решения на местном уровне, годами выстраивать доверие с локальными партнёрами — это не «обходной путь» вокруг системы, а часть того, как система здесь на самом деле работает.',
+          ],
+        },
+        {
+          heading: 'Выводим ваш бизнес на рынок Бразилии',
+          paragraphs: [
+            'Можно потратить полгода, разбираясь с 22 шагами методом проб и ошибок — время, которое конкурент с локальным партнёром потратит на реальный запуск бизнеса. Мы помогаем бизнесу из России и СНГ заходить на рынок Бразилии и расширять здесь присутствие — работаем как ваш BDM (Business Development Manager) на аутсорсе, без найма локального штата.',
+            'Кому актуально: компаниям, которые смотрят на Бразилию как на новый рынок — недвижимость, e-commerce, товарный бизнес, B2B — и хотят понятного человека на месте, а не агентство «в теории».',
+            'Что берём на себя: разведка рынка, поиск точки входа под конкретную нишу; поставщики, партнёры, подрядчики — поиск и переговоры на месте; сопровождение сделок — регистрация, логистика, контрагенты; продажи и развитие канала в Бразилии; отчётность и включённость в вашу команду — удалённо или с выездами.',
+            'Почему мы: 15+ лет в Санта-Катарине, свой бизнес в недвижимости здесь; корпоративный международный опыт (SLB): проекты и контракты в 5+ странах, бюджеты от $1M+; e-commerce и B2B бэкграунд: вывод SKU на рынок, рост оборота с $7K до $195K/мес, масштабирование брендов на Amazon; RU / EN / PT, физически в Бразилии.',
+          ],
+        },
+        {
+          heading: 'Прежде чем делать первые шаги',
+          paragraphs: [
+            'Прежде чем делать первые шаги и принимать важные решения, проконсультируйтесь со специалистом. Напишите мне, и я помогу выстроить первые шаги для вашего бизнеса в Бразилии — будь то поиск персонала, расширение или вывод вашего товара на новый рынок.',
+            'Материал носит информационный характер и не заменяет консультацию с квалифицированным юристом и бухгалтером, лицензированным в Бразилии.',
+          ],
+        },
+      ],
+    },
+  },
+  'stv-construcoes-developer-review-2026': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            "Not every developer takes the leap of moving its head office from the state capital to a fast-emerging coastal town. STV did exactly that in 2025 — a bet on the same trend we've covered in detail in our own [Porto Belo guide](/research/report/porto-belo-investment-report-2026): the large-scale urban transformation of Balneário Perequê.",
+            'Founded 2009, registered capital R$100 million, 40+ projects delivered in Florianópolis over 16 years. Plan B Overall Score 8.4/10.',
+          ],
+        },
+        {
+          heading: 'Company Overview',
+          paragraphs: [
+            'STV Construções was founded in 2009, with registered capital of R$100 million. The company is run by Stevan Parmegiani and Ana Claudia Espindola Parmegiani. For 16 years the company built in Florianópolis — over 40 delivered projects.',
+            "In 2025, STV moved its headquarters from Florianópolis to Porto Belo, specifically Balneário Perequê — the heart of the urban transformation we've covered in a separate article (beach widening, Perequê river mouth jetties, a mobility and tourism master plan).",
+          ],
+        },
+        {
+          heading: 'Flagship Project — Nautik Class',
+          paragraphs: [
+            'The company\'s first Porto Belo project, delivered November 8, 2025: 19 floors, 12,000 m² of built area, 56 three-bedroom units, a few meters from the sea. Units sold in pre-launch in 2021 for R$400K, today valued at over R$2 million — a potential gain of up to 300%. All units are already sold.',
+            'Amenities: 568 m² of leisure space (delivered furnished and decorated), balconies with charcoal churrasqueiras, automated blinds, two private parking spots plus a hobby box per unit, individual water/electricity/gas meters, two custom next-generation elevators.',
+          ],
+        },
+        {
+          heading: 'Active Project Pipeline',
+          paragraphs: [
+            'Three major construction sites running simultaneously — Downtown Boulevard, The Level, Pier Monte Carlo (towers of 25-30 floors). For 2026, Summit is set to launch — 30 floors, 72 three-bedroom units, already 95% reserved before construction begins. In the planning stage: an ambitious 32,000 m² beachfront complex, described as one of the boldest projects on the "Costa Esmeralda," with 3, 4, and 5-bedroom units.',
+          ],
+        },
+        {
+          heading: 'Market Context',
+          paragraphs: [
+            "Porto Belo wasn't a random choice for the headquarters move. The city led Santa Catarina in real estate launches in 2024, its population grew from 16,000 to 27,000 over 12 years, and regional VGV exceeds R$10 billion. Mayor Joel Lucinda directly credits private construction investment with this growth.",
+          ],
+        },
+        {
+          heading: 'A First-Hand Story — Why Stevan Bet on Porto Belo',
+          paragraphs: [
+            'The company originally comes from Gramado (Rio Grande do Sul) — it built there and in Florianópolis before betting specifically on Porto Belo. Stevan Parmegiani personally walked me through the logic behind that decision.',
+            'About 10 years ago, he saw that Balneário Camboriú, Meia Praia, and Itapema had nowhere left to grow — either up (complex and expensive) or out. The market took the simple path and started expanding north, toward Porto Belo and Perequê. The timing coincided with the city\'s approval of a new master plan, permitting towers up to 30 floors, and land at the time cost a fraction of Florianópolis prices.',
+            'A 300-400 m² plot that could sell for R$7-8 million today was bought back then for R$200-300K. Stevan built up enough land reserves for the next 30-40 years — no need to think about buying land for decades to come.',
+          ],
+        },
+        {
+          heading: 'SPE vs Classic Incorporadora',
+          paragraphs: [
+            "Per Stevan's own observation, roughly 90% of the Florianópolis market today operates via SPE schemes (cooperative/shared construction). We've covered this structure in detail in a separate article on [SPE risks](/research/report/spe-struktura-nedvizhimost-braziliya) — the key point worth repeating here: sales in such a scheme can start before the architectural project is approved, before construction permits are issued, and even before the land itself is registered to the developer. The project's risks are legally shifted onto the buyers themselves as co-owners — this is confirmed by Article 58 of Lei 4.591/64, which specifically governs this format (\"regime de administração,\" \"preço de custo\").",
+            'STV works differently — a classic incorporadora. STV, like most Porto Belo and Perequê developers, operates as a classic incorporadora — building on its own capital or with bank financing, not on buyers\' money from day one. Under Lei 4.591/64, in this model liability falls on the developer itself as the "incorporador" — legal protection for the buyer is significantly stronger than under SPE schemes.',
+            "That's exactly why the Porto Belo and Perequê market builds fast and confidently, delivers on time — and gives clients a real, not just paper, potential for 300% growth in 4-5 years, as the Nautik Class case demonstrated.",
+            'When I asked whether he\'d want to go back to building on the island, Stevan smiled and said: "The game has changed, the balance of power has shifted — Porto Belo wins now." He sees big potential for the city over the next 50 years.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Delivery 8.0/10. Quality 8.4/10. Stability 9.0/10. Satisfaction 7.0/10. Reputation 9.0/10. Transparency 9.0/10. Overall 8.4/10.',
+            "The lower Satisfaction score isn't due to customer complaints — nearly all five of the company's current projects are over 90% sold, some before construction has even started. The figure reflects limited availability for new buyers, not dissatisfaction with service.",
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — STV Construções',
+          paragraphs: [
+            '✅ RECOMMENDED. A stable developer with unusually strong deal-structure transparency and a proven ROI case (Nautik Class, up to 300% in 4-5 years). A classic incorporadora, not an SPE — significantly stronger legal protection for the buyer under Brazilian law.',
+            "Of the company's five active projects, there's almost no availability left — the market has already voted. But I have insider information on STV's next project, currently in the approval process — and it's genuinely a strong one. Prices are still very appealing, and as always, there's room to negotiate — where, as usual, I'm on the buyer's side.",
+            'This material is for informational purposes only and does not constitute investment advice. Plan B Brazil acts as an independent advisor, is not affiliated with STV Construções, and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Не каждый застройщик решается перенести головной офис из столицы штата в развивающийся прибрежный город. STV сделала это в 2025 году — ставка на то, что мы уже подробно разбирали в собственном [гиде по Porto Belo](/research/report/porto-belo-investment-report-2026): масштабная городская трансформация Balneário Perequê.',
+            'Основана в 2009, зарегистрированный капитал R$100 млн, 40+ сданных проектов во Флорианополисе за 16 лет. Plan B Overall Score 8,4/10.',
+          ],
+        },
+        {
+          heading: 'Обзор компании',
+          paragraphs: [
+            'STV Construções основана в 2009 году, зарегистрированный капитал — R$100 млн. Управляют компанией Стевен Пармеджани и Ана Клаудиа Эспиндола Пармеджани. 16 лет компания строила во Флорианополисе — свыше 40 сданных проектов.',
+            'В 2025 году STV перенесла штаб-квартиру из Флорианополиса в Порту-Белу, конкретно в Balneário Perequê — сердце городской трансформации, которую мы уже описывали в отдельной статье (расширение пляжной полосы, дамбы устья реки Perequê, мастер-план по мобильности и туризму).',
+          ],
+        },
+        {
+          heading: 'Флагманский проект — Nautik Class',
+          paragraphs: [
+            'Первый проект компании в Порту-Белу, сдан 8 ноября 2025 года: 19 этажей, 12 тыс. м² построенной площади, 56 юнитов на три спальни, в нескольких метрах от моря. Юниты продавались на предпродаже в 2021 году по R$400 тыс., сегодня оцениваются свыше R$2 млн — потенциал роста до 300%. Все юниты уже проданы.',
+            'Удобства: зоны отдыха 568 м² (сданы меблированными и декорированными), балконы с угольной шураскейрой, автоматизированные жалюзи, два личных парковочных места + hobby box на юнит, индивидуальные счётчики воды/света/газа, два кастомных лифта последнего поколения.',
+          ],
+        },
+        {
+          heading: 'Активный пайплайн проектов',
+          paragraphs: [
+            'Три крупные стройки одновременно — Downtown Boulevard, The Level, Pier Monte Carlo (башни 25-30 этажей). На 2026 год запланирован старт Summit — 30 этажей, 72 юнита на три спальни, уже 95% забронировано до начала строительства. В стадии проекта — амбициозный прибрежный комплекс на 32 тыс. м², описываемый как один из самых дерзких проектов «Costa Esmeralda», с юнитами на 3, 4 и 5 спален.',
+          ],
+        },
+        {
+          heading: 'Контекст рынка',
+          paragraphs: [
+            'Порту-Белу — не случайный выбор для переноса штаб-квартиры. Город лидировал по числу запусков недвижимости в Санта-Катарине в 2024 году, население выросло с 16 до 27 тысяч за 12 лет, региональный VGV превышает R$10 млрд. Мэр города Жоэл Лусинда прямо связывает этот рост с частными инвестициями в строительство.',
+          ],
+        },
+        {
+          heading: 'История из первых рук — почему Стеван поставил на Порту-Белу',
+          paragraphs: [
+            'Компания родом из Грамаду (Риу-Гранди-ду-Сул) — строила там и во Флорианополисе, прежде чем сделать ставку именно на Порту-Белу. Стеван Пармеджани лично рассказал мне логику этого решения.',
+            'Около 10 лет назад он увидел, что Балнеариу-Камбориу, Меа-Прая и Итапеме уже некуда расти — либо вверх (сложно и дорого), либо вширь. Рынок пошёл по простому пути и стал расширяться на север, в сторону Порту-Белу и Perequê. Момент совпал с утверждением генплана города, разрешившего высотки до 30 этажей, а земля тогда стоила в разы дешевле, чем во Флорипе.',
+            'Участок в 3-4 сотки, который сегодня может стоить R$7-8 млн, тогда покупался за R$200-300 тыс. Стеван успел накопить земельный резерв на следующие 30-40 лет вперёд — не нужно думать о покупке земли ещё долгие десятилетия.',
+          ],
+        },
+        {
+          heading: 'SPE vs классическая инкорпорадора',
+          paragraphs: [
+            'По наблюдению Стевана, сегодня практически весь рынок Флорианополиса — порядка 90% — работает по схемам SPE (кооперативное/долевое строительство). Мы подробно разбирали эту структуру в отдельной статье о [рисках SPE](/research/report/spe-struktura-nedvizhimost-braziliya) — здесь важно повторить главное: продажи в такой схеме могут стартовать ещё до утверждения архитектурного проекта, до получения разрешений на строительство и даже до оформления земли в собственность застройщика. Риски проекта юридически возлагаются на самих покупателей как совладельцев — это подтверждается статьёй 58 Lei 4.591/64.',
+            'STV работает иначе — классическая инкорпорадора. STV, как и большинство застройщиков Порту-Белу и Perequê, работает по модели классической инкорпорадоры — строит на собственный капитал либо с привлечением банковского финансирования, не на деньги дольщиков с самого начала. Юридическая защита покупателя здесь значительно сильнее, чем в SPE-схемах.',
+            'Именно поэтому рынок Порту-Белу и Perequê строит быстро и уверенно, сдаёт объекты вовремя — и даёт клиентам реальный, а не бумажный потенциал роста в 300% за 4-5 лет, как показал кейс Nautik Class.',
+            'На вопрос, хотел бы он вернуться строить на остров, Стеван улыбнулся и ответил: «Игра изменилась, силы не равны — сейчас выигрывает Порту-Белу». Он видит для города большой потенциал на ближайшие 50 лет.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Delivery 8,0/10. Quality 8,4/10. Stability 9,0/10. Satisfaction 7,0/10. Reputation 9,0/10. Transparency 9,0/10. Overall 8,4/10.',
+            'Оценка Satisfaction ниже остальных не из-за жалоб клиентов — почти во всех пяти текущих проектах компании продано свыше 90% юнитов, некоторые ещё даже не вышли в стройку. Показатель отражает ограниченную доступность для новых покупателей, а не недовольство сервисом.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — STV Construções',
+          paragraphs: [
+            '✅ РЕКОМЕНДОВАНО. Устойчивый застройщик с редкой прозрачностью структуры сделки и подтверждённым кейсом доходности (Nautik Class, до 300% за 4-5 лет). Классическая инкорпорадора, не SPE — значительно более сильная юридическая защита покупателя по бразильскому закону.',
+            'Из пяти активных проектов компании свободных юнитов почти не осталось — рынок уже проголосовал. Но у меня есть инсайдерская информация о следующем проекте STV, который сейчас проходит согласование — и это действительно сильная заявка. Цены пока очень приятные, и, как всегда, предусмотрен торг — в котором я, как обычно, на стороне покупателя.',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией. Plan B Brazil выступает независимым советником, не аффилирован с STV Construções и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
+  'robson-nascimento-architect-jurere': {
+    en: {
+      sections: [
+        {
+          heading: 'Who Is Robson Nascimento',
+          paragraphs: [
+            "Some architects design houses. Others become architects whose name is itself part of the property's price. After years working this market in Santa Catarina, I've become convinced: Robson Nascimento is the latter.",
+            'Robson founded R. Nascimento Arquitetos in 1995, headquartered right in the heart of Jurerê Internacional. Today he runs the firm together with architect Caroline Dutra. Over 30 years — more than 400 completed projects, mostly in Jurerê and the island\'s north, but also across Brazil and abroad — Argentina, Paraguay, Uruguay, Greece, Germany.',
+            'They work across five areas: residential architecture, interiors, commercial, hospitality, and — importantly — urban planning. TOP100, one of Brazil\'s most prestigious architecture awards — ten wins, ten years running, the most recent just recently. There\'s recognition at the state level too.',
+          ],
+        },
+        {
+          heading: 'Influence That Extends Beyond a Single Firm',
+          paragraphs: [
+            "I've been in this market long enough to notice: nearly every major developer in Florianópolis is connected to Robson's name in one way or another. Sometimes he's the project's architect, sometimes a co-founder. And it's not just developers — city officials and the urban planning establishment take his opinion seriously too. That's a rare level of influence for a practicing architect.",
+            'Over the past few years his focus has shifted: previously predominantly elite private homes in Jurerê, now increasingly large residential complexes and direct work with private clients, not only through developers. He works extensively in Jurerê, Canajuê, and Cachoeira do Bom Jesus — and not just as a hired architect, but often as a project co-founder.',
+          ],
+        },
+        {
+          heading: 'A Signature Style, Instantly Recognizable',
+          paragraphs: [
+            'His projects share a recognizable spatial logic. You walk into the house, and from a single point you can see nearly everything, every angle. Minimal walls, maximum air and light. That feeling repeats every time — the house seems to breathe.',
+            'At a meeting once, I asked him directly: "Robson, honestly — what can\'t you imagine a Brazilian house without?" He didn\'t even pause: "A charcoal churrasqueira. And a pool." That was it. Those two things capture his whole philosophy — a home should work not just as architecture, but as a place to live that genuinely fits how people actually live here in Brazil.',
+          ],
+        },
+        {
+          heading: 'The Name Effect — a Real, Measurable Market Fact',
+          paragraphs: [
+            "Take two identical houses — one designed by Robson, one not. The one with his name will cost roughly 10% more. And that's not a developer markup — it's how the market itself, unprompted, values his work. In my own experience, units in complexes he's designed don't need advertising. They sell themselves while I'm still telling the client who the architect is.",
+          ],
+        },
+        {
+          heading: 'Landmark Projects',
+          paragraphs: [
+            'Among his work — Surfland (Garopaba), Flyville (a residential and aeronautical condominium — yes, you can literally keep a plane there), Residencial Jay and Maxxi View (both in Jurerê), Vistas Sambaqui with its 180° panorama of Sambaqui beach, and Trésor Résidence — luxury towers in European classical style.',
+          ],
+        },
+        {
+          heading: 'The Other Side of the Name Effect',
+          paragraphs: [
+            'And here\'s where I have to be honest, not just praise a man I personally consider a friend and genuinely respect. This is a general market pattern — not about any specific Robson Nascimento project.',
+            'A well-known architect\'s name is a genuine asset. But that same market property sometimes gets used in ways that don\'t serve the investor. It happens like this: a project is objectively missing something — a mediocre location, a young and unproven developer, weak nearby infrastructure. And then a famous name gets brought in specifically to lend the project weight it doesn\'t otherwise have. The buyer\'s logic becomes: "well, the location isn\'t ideal, but the architect is famous — so it must be reliable." That\'s far from always justified, especially when you\'re thinking about resale.',
+            "The problem doesn't surface at the moment of purchase. It surfaces later — when you try to sell that property, to an end buyer or another investor. And that's when you find out: a famous architect's name doesn't compensate for a weak location or an unreliable developer on the secondary market nearly as well as it worked during the developer's original sales push. Capital gets frozen. The property is hard to sell at the price you expected — precisely because the fundamentals, not the architecture, turned out weaker than they seemed at the start.",
+          ],
+        },
+        {
+          heading: 'What This Means for You as an Investor',
+          paragraphs: [
+            "An architect's name on a project is a real, measurable value factor. But not the only one, and definitely not one to rely on alone. Before buying a property where a famous name is the seller's main argument, always evaluate everything else separately and soberly: the location, the developer's reputation, real demand in that specific micro-neighborhood.",
+            "This material is based on publicly available information and the author's personal professional experience. Plan B Brazil acts as an independent advisor and is not a developer.",
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Кто такой Робсон Насименто',
+          paragraphs: [
+            'Есть архитекторы, которые проектируют дома. А есть те, чьё имя само по себе становится частью цены объекта. За годы работы в Санта-Катарине я убедился: Робсон Насименто — из вторых.',
+            'Бюро R. Nascimento Arquitetos Робсон основал в 1995 году, штаб-квартира — в самом сердце Журере Интернасьонал. Сегодня бюро он ведёт вместе с архитектором Каролиной Дутра. За 30 лет — больше 400 реализованных проектов, в основном в Журере и на севере острова, но также по всей Бразилии и за рубежом — в Аргентине, Парагвае, Уругвае, Греции, Германии.',
+            'Работают по пяти направлениям: жилая архитектура, интерьеры, коммерция, отели и — что важно — градостроительство. TOP100 — одна из самых престижных архитектурных наград Бразилии — десять побед, десять лет подряд, последнюю получил совсем недавно. Есть признание и на уровне штата.',
+          ],
+        },
+        {
+          heading: 'Влияние, которое выходит за рамки одного бюро',
+          paragraphs: [
+            'Я работаю на этом рынке достаточно давно, чтобы заметить: практически все крупные застройщики Флорианополиса так или иначе связаны с именем Робсона. Иногда он — архитектор проекта, иногда — соучредитель. И дело не только в застройщиках — с его мнением считается и городская власть, и градостроительная сфера в целом. Это редкий уровень влияния для практикующего архитектора.',
+            'За последние несколько лет его фокус сместился: раньше — преимущественно элитные частные дома в Журере, сейчас — всё больше крупных жилых комплексов и работа напрямую с частными клиентами, не только через застройщиков. Он плотно работает в Журере, Канажуре, Кашоэйра-ду-Бон-Жезус — и не просто как нанятый архитектор, а нередко как соучредитель проекта.',
+          ],
+        },
+        {
+          heading: 'Почерк, который узнаётся сразу',
+          paragraphs: [
+            'У его проектов узнаваемая логика пространства. Заходишь в дом — и с одной точки видно практически всё, все углы. Минимум перегородок, максимум воздуха и света. Это ощущение повторяется каждый раз — дом словно дышит.',
+            'Однажды на встрече я спросил его напрямую: «Робсон, вот честно — без чего ты вообще не можешь представить дом в Бразилии?» Он даже не задумался: «Без шураскейры на углях. И без бассейна». Всё. В этих двух словах — вся его философия: дом должен работать не только как архитектура, а как место жизни, действительно соответствующее тому, как здесь, в Бразилии, живут.',
+          ],
+        },
+        {
+          heading: 'Эффект имени — реальный, измеримый рыночный факт',
+          paragraphs: [
+            'Возьмите два одинаковых дома — один спроектирован Робсоном, другой нет. Тот, что с его именем, будет стоить примерно на 10% дороже. И это не наценка застройщика — это то, как рынок сам, без подсказок, оценивает его работу. По моему собственному опыту — квартиры в комплексах, которые он проектировал, вообще не нуждаются в рекламе. Они продают себя сами, пока я просто рассказываю клиенту, кто архитектор.',
+          ],
+        },
+        {
+          heading: 'Знаковые проекты',
+          paragraphs: [
+            'Среди его работ — Surfland (Гарожаба), Flyville (жилой и авиационный кондоминиум — да, там буквально можно держать самолёт), Residencial Jay и Maxxi View (оба в Журере), Vistas Sambaqui с панорамой на 180° на пляж Самбаки, и Trésor Résidence — люксовые башни в европейском классическом стиле.',
+          ],
+        },
+        {
+          heading: 'Обратная сторона эффекта известного имени',
+          paragraphs: [
+            'Здесь я должен быть честным, а не просто хвалить человека, с которым лично дружу и которого искренне уважаю. Это общий паттерн рынка — не про конкретный проект Робсона Насименто.',
+            'Известное имя архитектора — реальный актив. Но это же свойство рынка иногда используют не в интересах инвестора. Бывает так: у проекта объективно чего-то не хватает — так себе локация, молодой и непроверенный застройщик, слабая инфраструктура рядом. И тогда приглашают архитектора с именем именно для того, чтобы придать проекту вес, которого ему иначе не хватает. Логика покупателя становится: «ну, локация не идеальная, зато архитектор известный — значит, надёжно». Это далеко не всегда оправдано, особенно если думать о перепродаже.',
+            'Проблема всплывает не в момент покупки. Она всплывает позже — когда вы пытаетесь этот объект продать — конечному покупателю или другому инвестору. И тут выясняется: известное имя архитектора не компенсирует слабую локацию или ненадёжного застройщика на вторичном рынке так же хорошо, как это работало на этапе продаж от застройщика. Капитал замораживается. Объект сложно продать по той цене, на которую вы рассчитывали.',
+          ],
+        },
+        {
+          heading: 'Что это значит для вас как инвестора',
+          paragraphs: [
+            'Имя архитектора на проекте — реальный, измеримый фактор стоимости. Но не единственный, и точно не тот, на который стоит полагаться в одиночку. Прежде чем покупать объект, где громкое имя — главный аргумент продавца, всегда советую отдельно и трезво оценить остальное: локацию, репутацию застройщика, реальный спрос в конкретном микрорайоне.',
+            'Материал основан на общедоступной информации и личном профессиональном опыте автора. Plan B Brazil выступает независимым советником и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
 };
