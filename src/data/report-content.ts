@@ -3433,4 +3433,511 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         ],
     },
   },
+
+  'cfl-construtora-developer-review-2026': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'CFL Construtora is an established luxury developer that has been active in the Florianópolis market since 2006. The company specializes in projects at the state\'s most expensive and prestigious locations — Jurerê Internacional, Campeche, downtown — typically beachfront, with an exclusive view, or a strategic position.',
+            'Headline figures: in the Florianópolis market since 2006, R$1.3 billion in sales in 30 days (Oceana), 0% discount off list price per Plan B\'s experience, Plan B Overall Developer Score 7.8/10.',
+          ],
+        },
+        {
+          heading: 'Company Overview',
+          paragraphs: [
+            'CFL entered the Florianópolis market in 2006 with the Acqua project on Beira-Mar Norte. In 2011, the company delivered a landmark project — Square SC on the SC-401 highway, transforming it from a pass-through road into a genuine business and innovation corridor on the island; CFL\'s headquarters sit there today.',
+            'Since then, the company has consistently established itself in the luxury segment — not mid-premium, as some general market overviews mistakenly describe it.',
+            'Portfolio — prime locations, not mid-tier: in Jurerê Internacional — Al Mare, Quay Luxury Home Design, Jay Luxury Home Design, Vitra. Oceana (architecture by Arquitectonica of Miami and Obra Prima of Uruguay) sold out completely in 30 days, R$1.3 billion in sales over that same period. Terraço Cacupé — 26 exclusive houses on a peninsula (launched 2024). La Mare Campeche has been announced — a 12,000+ m² lot, 109 units up to 385 m², architect Guilherme Torres, in partnership with the Milano group — right in the district we covered in our separate [Campeche](/research/report/campeche-investment-guide) guide.',
+            'The company\'s clientele is affluent buyers, including politicians and businesspeople, seeking not just square meters but a specific location and status.',
+          ],
+        },
+        {
+          heading: 'Track Record & Quality',
+          paragraphs: [
+            'CFL has demonstrated consistent delivery reliability across multiple projects.',
+            'Plan B Developer Score: Delivery Reliability 8.0/10. Construction Quality 7.5/10. Financial Stability 7.5/10. Customer Satisfaction 7.0/10. Market Reputation 7.5/10. Transparency 7.0/10. Overall 7.8/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice. Overall is a calculated average of the six metrics.',
+          ],
+        },
+        {
+          heading: 'Strengths',
+          paragraphs: [
+            'Established presence in prime locations — Jurerê Internacional, Campeche, downtown — since 2006, multiple completed landmark projects. International architecture — Arquitectonica (Miami), Obra Prima (Uruguay), Guilherme Torres — internationally recognized firms. Consistent on-time delivery — multiple projects delivered on schedule, a real advantage in a market where 6–12 month delays are common.',
+            'Pricing discipline — per Plan B\'s experience, CFL essentially never discounts off list price, a signal of confidence in the property\'s value, though it also means less room to negotiate for the buyer. Active pipeline — the company is growing, not stagnating, with new announcements like La Mare Campeche.',
+          ],
+        },
+        {
+          heading: 'Areas to Consider',
+          paragraphs: [
+            'Financial stability — an active pipeline indicates healthy cash flow, with no bankruptcy events, but as a regional developer, it\'s more exposed to local downturns. Warranty response time — generally positive feedback on the sales process and post-delivery support, but response times on warranty claims can lag some premium-tier competitors. No room to negotiate — the same pricing discipline noted above as a strength, but for a buyer, it means budgeting for the full list price, with no discount expected.',
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — CFL Construtora',
+          paragraphs: [
+            '✅ RECOMMENDED — for luxury-segment buyers and prime-location investors. CFL Construtora isn\'t a "solid but average" developer, as broader market overviews sometimes describe it — it\'s one of Santa Catarina\'s leading luxury-segment players. An established presence in Jurerê Internacional and Campeche, international architecture, and proven sales velocity (Oceana — R$1.3 billion in 30 days) speak for themselves.',
+            'Consistent on-time delivery and clear pricing discipline (the company essentially never concedes on price) make it a reliable but demanding partner — budget for the full list price. Best suited to buyers focused on status, location, and long-term value preservation rather than seeking a discount at purchase.',
+            'This material is for informational purposes only and does not constitute investment advice. Assessment based on publicly available information, project visits, market data, and buyer feedback. Plan B Brazil acts as an independent advisor, is not affiliated with CFL Construtora, and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'CFL Construtora — устоявшийся люксовый застройщик, работающий на рынке Флорианополиса с 2006 года. Компания специализируется на проектах в самых дорогих и престижных локациях штата — Журере Интернасьонал, Кампече, центр города — как правило, на первой линии, с эксклюзивным видом или стратегическим позиционированием.',
+            'Ключевые цифры: на рынке Флорианополиса с 2006 года, R$1,3 млрд продаж за 30 дней (Oceana), 0% скидка от заявленной цены по опыту Plan B, Plan B Overall Developer Score 7,8/10.',
+          ],
+        },
+        {
+          heading: 'Обзор компании',
+          paragraphs: [
+            'CFL вышла на рынок Флорианополиса в 2006 году с проектом Acqua на Beira-Mar Norte. В 2011 году компания реализовала знаковый проект — Square SC на трассе SC-401, превративший её из проходной дороги в полноценный бизнес- и инновационный коридор острова; там же сегодня расположен головной офис CFL.',
+            'С тех пор компания последовательно закрепилась именно в люксовом сегменте, а не в mid-premium, как иногда ошибочно указывается в общих обзорах рынка.',
+            'Портфолио — прайм-локации, не средний сегмент: в Журере Интернасьонал — Al Mare, Quay Luxury Home Design, Jay Luxury Home Design, Vitra. Oceana (архитектура Arquitectonica из Майами и Obra Prima из Уругвая) — полностью распродан за 30 дней, R$1,3 млрд продаж за тот же срок. Terraço Cacupé — 26 эксклюзивных домов на полуострове (запуск 2024). Анонсирован La Mare Campeche — участок 12 000+ м², 109 юнитов до 385 м², архитектор Гильерме Торрес, партнёрство с группой Milano — прямо в районе, который мы уже разбирали в отдельном гиде по [Campeche](/research/report/campeche-investment-guide).',
+            'Клиентура компании — состоятельные покупатели, включая политиков и бизнесменов, ищущих не просто квадратные метры, а конкретную локацию и статус.',
+          ],
+        },
+        {
+          heading: 'Послужной список и качество',
+          paragraphs: [
+            'CFL демонстрирует последовательную надёжность поставки на протяжении множества проектов.',
+            'Plan B Developer Score: Delivery Reliability 8,0/10. Construction Quality 7,5/10. Financial Stability 7,5/10. Customer Satisfaction 7,0/10. Market Reputation 7,5/10. Transparency 7,0/10. Overall 7,8/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией. Overall — расчётное среднее по шести метрикам.',
+          ],
+        },
+        {
+          heading: 'Сильные стороны',
+          paragraphs: [
+            'Устоявшееся присутствие в прайм-локациях — Журере Интернасьонал, Кампече, центр — с 2006 года, множество завершённых знаковых проектов. Международная архитектура — Arquitectonica (Майами), Obra Prima (Уругвай), Гильерме Торрес — признанные на международном уровне бюро. Стабильная поставка в срок — множество проектов сдано вовремя, существенное преимущество на рынке, где задержки в 6-12 месяцев обычны.',
+            'Ценовая дисциплина — по опыту Plan B, CFL практически никогда не даёт скидку от заявленной цены, сигнал уверенности в ценности объекта, но и меньше пространства для переговоров покупателю. Активный пайплайн — компания растёт, не стагнирует, новые анонсы вроде La Mare Campeche.',
+          ],
+        },
+        {
+          heading: 'На что обратить внимание',
+          paragraphs: [
+            'Финансовая устойчивость — активный пайплайн говорит о здоровом денежном потоке, банкротств не зафиксировано, но как региональный застройщик компания более подвержена локальным спадам. Скорость реакции по гарантии — в целом позитивные отзывы о процессе продажи и постпродажной поддержке, но скорость ответа по гарантийным случаям иногда медленнее, чем у некоторых конкурентов премиум-сегмента. Отсутствие торга — та же ценовая дисциплина, что сильная сторона выше, но для покупателя означает: рассчитывайте на полную заявленную цену, скидок не будет.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — CFL Construtora',
+          paragraphs: [
+            '✅ РЕКОМЕНДОВАНО — для покупателей люкс-сегмента и инвесторов в прайм-локации. CFL Construtora — не «средний, но надёжный» застройщик, как иногда описывают рынок в целом, а один из ведущих игроков люксового сегмента Санта-Катарины. Устоявшееся присутствие в Журере Интернасьонал и Кампече, международная архитектура и подтверждённая скорость продаж (Oceana — R$1,3 млрд за 30 дней) говорят сами за себя.',
+            'Стабильная поставка в срок и очевидная ценовая дисциплина (компания практически не идёт на уступки по цене) делают её надёжным, но требовательным партнёром — рассчитывайте на полную заявленную стоимость. Лучше всего подходит покупателям, ориентированным на статус, локацию и долгосрочное сохранение стоимости, а не на поиск скидки при покупке.',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией. Оценка основана на общедоступной информации, посещении объектов, рыночных данных и обратной связи покупателей. Plan B Brazil выступает независимым советником, не аффилирован с CFL Construtora и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
+
+  'modulare-incorporadora-developer-review-2026': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'Modulare Empreendimentos is a developer with a 10-year history in Florianópolis, founded in 2015. The company\'s name often causes confusion with prefabricated construction technology — in reality, it refers to flexible, "modular" floor plans within units and a cooperative SPE ("preço de custo") model, not factory-built construction.',
+            'Headline figures: founded 2015, 10 years in the Florianópolis market, R$1.5 billion announced across Rancho Queimado projects (whole region), #1 first vertical project in Rancho Queimado\'s history, Plan B Overall Developer Score 6.8/10.',
+          ],
+        },
+        {
+          heading: 'Company Overview & Methodological Note',
+          paragraphs: [
+            'Some source material describes Modulare as an "innovative modular/prefabricated construction" developer. This isn\'t supported by the evidence — per the company\'s own website and independent sources, Modulare\'s actual specialty is flexible modular floor plans (reconfigurable studios, lofts, duplexes) combined with a cooperative SPE "preço de custo" model — the same structure we covered in detail in our separate article on [SPE risks and mechanics](/research/report/spe-struktura-nedvizhimost-braziliya).',
+            'Portfolio — specific projects, not generic claims: Maxxi Garden (Cachoeira do Bom Jesus) — a "Home Club" concept near Sapiens Parque, 80 units, from R$289K, delivery H2 2027. Maxxi View (Jurerê/Canajurê) — ocean view, architect Robson Nascimento (award-winning, published internationally), 1–4 bedroom units from 25 to 262 m², SPE model, delivery 2027–2028.',
+          ],
+        },
+        {
+          heading: 'A Major Catalyst: Maxxi Valley in Rancho Queimado',
+          paragraphs: [
+            'Modulare was among the first major companies to spot the potential of Rancho Queimado — and is now building the city\'s first-ever vertical residential project, Maxxi Valley Residence.',
+            'Precise positioning — not a coincidence: the project sits exactly at the city\'s new entrance point — where a viaduct is being built on the BR-282 highway (km 59, R$19M in federal investment, completing July 2026). The architecture follows a "mountain contemporary" style. CEO Jorge Falcão: "Modulare isn\'t just following the city\'s growth — we\'re here to be part of this new moment for Rancho Queimado." The company released an English-language video specifically targeting international investors — a deliberate global outreach strategy.',
+            'Maxxi Valley and the Alpes Catarina ski-resort project (R$1.5 billion), already covered in our separate [Rancho Queimado](/research/report/rancho-queimado-investment-report-2026) guide, are jointly cited as the key signals to watch for whether the region\'s investment cycle plays out.',
+          ],
+        },
+        {
+          heading: 'Track Record & Quality',
+          paragraphs: [
+            'Plan B Developer Score: Delivery 7.0/10. Quality 7.0/10. Stability 6.5/10. Satisfaction 7.0/10. Reputation 6.5/10. Transparency 6.5/10. Overall 6.8/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.',
+            'Modulare is a younger company with a developing track record compared to developers operating for 20–30 years. Early projects show promising construction speed and quality, but the company needs a few more years of completed deliveries to build a full statistical picture.',
+          ],
+        },
+        {
+          heading: 'Strengths',
+          paragraphs: [
+            'Flexible, modular floor plans — a concrete mechanism: after buying a unit with a base floor plan, the buyer can select one of 2-3 alternative layouts; the window to change stays open until the architectural project is finalized before construction. SPE "preço de custo" model — a transparent cost-price structure, the same model covered separately in our SPE guide; requires understanding the mechanics, but delivers real cost without an intermediary markup.',
+            'Early market vision — among the first major developers to see Rancho Queimado\'s potential, before it became obvious. Notable architecture — Robson Nascimento on Maxxi View, a recognized architect published in international outlets.',
+          ],
+        },
+        {
+          heading: 'Areas to Consider',
+          paragraphs: [
+            'Younger track record — 10 years in the market, less than established players like CFL (since 2006). Fewer completed properties for full statistics. SPE model requires understanding — "preço de custo" isn\'t a fixed price, the final cost depends on the cooperative\'s structure; important to understand the mechanics before buying. Rancho Queimado — an unproven cycle — the first vertical project in a new region for the company is both an opportunity and an uncertainty, the market hasn\'t completed a full cycle yet.',
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — Modulare Empreendimentos',
+          paragraphs: [
+            '⚠ CONSIDER — for innovative floor-plan design, monitor the track record. Modulare is a growing developer with flexible, "modular" floor plans and a transparent SPE "preço de custo" model (not to be confused with prefabricated building construction technology — this is about unit configuration, not factory production). A younger track record means more uncertainty, but also an opportunity for early buyers to secure competitive pricing.',
+            'Best suited to investors comfortable working with a newer developer and interested in flexible housing formats. Worth watching the track record over the next 2–3 years as more projects complete — especially Maxxi Valley, the first vertical project in Rancho Queimado: the early-positioning model is promising but not yet tested through a full cycle in this market.',
+            'This material is for informational purposes only and does not constitute investment advice. Assessment based on publicly available information, market data, and buyer feedback. Plan B Brazil acts as an independent advisor, is not affiliated with Modulare Empreendimentos, and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Modulare Empreendimentos — застройщик с 10-летней историей во Флорианополисе, основанный в 2015 году. Название компании часто вызывает путаницу с технологией сборного строительства — на деле речь о гибких, «модульных» планировках внутри квартир и кооперативной модели SPE («preço de custo»), а не о заводском производстве зданий.',
+            'Ключевые цифры: год основания 2015, 10 лет на рынке Флорианополиса, R$1,5 млрд заявлено в проектах Ранчо-Кеймаду (весь регион), #1 первый вертикальный проект в истории Ранчо-Кеймаду, Plan B Overall Developer Score 6,8/10.',
+          ],
+        },
+        {
+          heading: 'Обзор компании и методологическая сноска',
+          paragraphs: [
+            'В исходных материалах по рынку Modulare иногда описывают как «инновационное модульное/сборное строительство». Это не подтверждается — по данным официального сайта компании и независимых источников, реальная специализация Modulare это гибкие модульные планировки (перепланируемые студии, лофты, дуплексы) в сочетании с кооперативной моделью SPE «preço de custo» — той же структурой, которую мы подробно разбирали в отдельной статье про [риски и механику SPE](/research/report/spe-struktura-nedvizhimost-braziliya).',
+            'Портфолио — конкретные проекты, не общие формулировки: Maxxi Garden (Cachoeira do Bom Jesus) — концепция «Home Club», рядом с Sapiens Parque, 80 юнитов, от R$289 тыс., сдача 2-е полугодие 2027. Maxxi View (Jurerê/Canajurê) — вид на океан, архитектор Робсон Насименто (отмеченный наградами, публикуется в международных изданиях), юниты 1-4 спальни от 25 до 262 м², SPE-модель, сдача 2027-2028.',
+          ],
+        },
+        {
+          heading: 'Крупный катализатор: Maxxi Valley в Ранчо-Кеймаду',
+          paragraphs: [
+            'Modulare одной из первых крупных компаний обратила внимание на потенциал Ранчо-Кеймаду — и теперь строит там первый в истории города вертикальный жилой проект, Maxxi Valley Residence.',
+            'Точное позиционирование — не случайность: проект расположен именно на новом въезде в город — там, где строится виадук на трассе BR-282 (км 59, R$19 млн федеральных инвестиций, сдача июль 2026). Архитектура в стиле «mountain contemporary». CEO компании Жоржи Фалкан: «Modulare приходит не просто вслед за ростом города, а чтобы стать частью этого нового момента для Ранчо-Кеймаду». Компания выпустила англоязычное видео специально для международных инвесторов — сознательная стратегия выхода на глобальную аудиторию.',
+            'Maxxi Valley и уже описанный нами в отдельном гиде по [Ранчо-Кеймаду](/research/report/rancho-queimado-investment-report-2026) проект Alpes Catarina (горнолыжный курорт, R$1,5 млрд) вместе называются ключевыми сигналами того, состоится ли инвестиционный цикл в регионе.',
+          ],
+        },
+        {
+          heading: 'Послужной список и качество',
+          paragraphs: [
+            'Plan B Developer Score: Delivery 7,0/10. Quality 7,0/10. Stability 6,5/10. Satisfaction 7,0/10. Reputation 6,5/10. Transparency 6,5/10. Overall 6,8/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.',
+            'Modulare — более молодая компания с формирующимся послужным списком по сравнению с застройщиками, работающими 20-30 лет. Ранние проекты показывают хорошие результаты по скорости строительства и качеству, но компании потребуется ещё несколько лет завершённых поставок, чтобы сформировать полноценную историю.',
+          ],
+        },
+        {
+          heading: 'Сильные стороны',
+          paragraphs: [
+            'Гибкие, модульные планировки — конкретный механизм: купив юнит с базовой планировкой, покупатель может выбрать одну из 2-3 альтернативных планировок — окно для изменения открыто, пока архитектурный проект не утверждён окончательно перед стройкой. Модель SPE «preço de custo» — прозрачная структура цены по себестоимости, та же модель, что мы разбирали отдельно; требует понимания механики, но даёт реальную стоимость без наценки посредника.',
+            'Раннее рыночное видение — одни из первых крупных застройщиков, разглядевших потенциал Ранчо-Кеймаду до того, как это стало очевидным. Именитая архитектура — Робсон Насименто на Maxxi View, признанный, публикуемый в международных изданиях архитектор.',
+          ],
+        },
+        {
+          heading: 'На что обратить внимание',
+          paragraphs: [
+            'Более молодой послужной список — 10 лет на рынке, меньше, чем у устоявшихся игроков вроде CFL (с 2006). Меньше завершённых объектов для полной статистики. Модель SPE требует понимания — «preço de custo» не фиксированная цена, итоговая стоимость зависит от структуры кооператива; важно разобраться в механике перед покупкой. Ранчо-Кеймаду — неподтверждённый цикл — первый вертикальный проект в новом для компании регионе, одновременно возможность и неопределённость: рынок ещё не прошёл полный цикл.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — Modulare Empreendimentos',
+          paragraphs: [
+            '⚠ CONSIDER — для инновационного подхода к планировкам, следите за послужным списком. Modulare — растущий застройщик с гибкими, «модульными» планировками и прозрачной SPE-моделью «preço de custo» (не путать с технологией сборного строительства зданий — это про конфигурацию квартир, не про заводское производство). Более молодой послужной список означает больше неопределённости, но и возможность для ранних покупателей получить конкурентную цену.',
+            'Лучше всего подходит инвесторам, готовым работать с более новым застройщиком и заинтересованным в гибких форматах жилья. Стоит наблюдать за послужным списком в течение следующих 2-3 лет по мере завершения проектов — особенно за Maxxi Valley, первым вертикальным проектом в Ранчо-Кеймаду: модель раннего позиционирования многообещающая, но ещё не проверена полным циклом на этом рынке.',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией. Оценка основана на общедоступной информации, рыночных данных и обратной связи покупателей. Plan B Brazil выступает независимым советником, не аффилирован с Modulare Empreendimentos и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
+
+  'hantei-incorporadora-developer-review-2026': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'Hantei Incorporadora is one of Florianópolis\'s oldest luxury developers, in the market since 1997. By the company\'s own account, it has specialized in the city\'s luxury segment for over two decades — not a "growing mid-segment" player, as general market overviews sometimes describe it.',
+            'Headline figures: founding year 1997, 29 years in the market, 4,000+ units delivered, Plan B Overall Developer Score 7.5/10.',
+          ],
+        },
+        {
+          heading: 'Company Overview',
+          paragraphs: [
+            'Hantei was founded in January 1997 by Nelson João de Moraes Filho, who remains the company\'s administrator to this day. Headquartered in the Ratones district of Florianópolis, with a registered share capital of R$10 million. The company has built over 370,000–570,000 m² (sources vary slightly) and delivered more than 4,000 units.',
+            'A direct quote from the company\'s own website: "For over two decades we at Hantei have been operating in the high-end market, specializing in the luxury segment in Florianópolis. We relentlessly pursue perfection, delivering developments that combine modern design, impeccable quality, and a unique architectural vision."',
+            'Portfolio — specific projects: Felipe Moraes Residence Club (João Paulo) — 78 luxury units, 130–164 m², sea and sunset views, named after the founder\'s son. Águas do Santinho (Praia dos Ingleses) — integrated with a preserved natural landscape, in a district we\'ve covered in our separate [Ingleses](/research/report/ingleses-investment-guide) guide. Azzure Home Club (Praia Brava) — beachfront units up to 4 bedrooms, 326 m². BOSC Ecovillage (Saco Grande) — compact, nature-integrated units. Hantei Office Building — commercial real estate downtown.',
+          ],
+        },
+        {
+          heading: 'Track Record & Quality',
+          paragraphs: [
+            'Hantei demonstrates consistent delivery reliability — notable for a developer with nearly three decades of history, spanning several of Brazil\'s economic cycles, including the 2015–2016 recession.',
+            'Plan B Developer Score: Delivery 7.5/10. Quality 8.0/10. Stability 7.0/10. Satisfaction 8.0/10. Reputation 7.5/10. Transparency 7.0/10. Overall 7.5/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.',
+          ],
+        },
+        {
+          heading: 'Strengths',
+          paragraphs: [
+            'Nearly three decades in the market — since 1997, having weathered several of Brazil\'s economic cycles, including the 2015–2016 recession, a rare level of proven resilience. Genuine luxury segment — not just "quality finishes," the company\'s own direct positioning as a Florianópolis luxury specialist.',
+            'Diversified portfolio — from beachfront residential (Azzure, Águas do Santinho) to eco-integrated projects (BOSC) and commercial real estate (Hantei Office Building). Thoughtful design — modern facades, quality materials, layouts that maximize natural light and views.',
+          ],
+        },
+        {
+          heading: 'Areas to Consider',
+          paragraphs: [
+            'Family-led governance structure — the company is still administered by the founder and a related family entity, typical for the regional market, but worth factoring into due diligence. Less internationally branded — unlike some competitors who bring in architects at the Arquitectonica (Miami) tier, Hantei relies predominantly on local architectural expertise. Some discrepancy in built-area data — sources vary on the exact built-area figure (370K vs. 570K m²), we recommend confirming current data directly when evaluating a specific project.',
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — Hantei Incorporadora',
+          paragraphs: [
+            '✅ RECOMMENDED — for buyers who value architecture, quality, and a proven history. Hantei isn\'t a "growing mid-segment developer," as general market overviews sometimes describe it — it\'s one of Florianópolis\'s oldest luxury-segment players, with nearly three decades of history and a portfolio of thousands of delivered units. Modern architecture, thoughtful layouts, and attention to detail are a durable part of the company\'s identity, not a recent pivot.',
+            'Best suited to buyers who value architecture and finish quality combined with a time-tested track record — a rare combination even among established developers. A diversified portfolio (residential, commercial, eco-integrated) offers flexibility for different investment goals.',
+            'This material is for informational purposes only and does not constitute investment advice. Assessment based on publicly available information, market data, and buyer feedback. Plan B Brazil acts as an independent advisor, is not affiliated with Hantei Incorporadora, and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Hantei Incorporadora — один из старейших люксовых застройщиков Флорианополиса, на рынке с 1997 года. По собственному заявлению компании, более двух десятилетий она специализируется именно на люксовом сегменте города, а не на «растущем среднем сегменте», как иногда описывают её в общих обзорах рынка.',
+            'Ключевые цифры: год основания 1997, 29 лет на рынке, 4000+ сданных юнитов, Plan B Overall Developer Score 7,5/10.',
+          ],
+        },
+        {
+          heading: 'Обзор компании',
+          paragraphs: [
+            'Hantei основана в январе 1997 года Нелсоном Жоаном ди Мораес Фильо, который остаётся администратором компании по сей день. Штаб-квартира — в районе Ratones, Флорианополис, зарегистрированный уставной капитал — R$10 млн. Компания построила более 370-570 тыс. м² (данные разных источников незначительно расходятся) и сдала свыше 4000 юнитов.',
+            'Прямая цитата с официального сайта компании: «Более двух десятилетий мы в Hantei работаем в высоком сегменте рынка, специализируясь именно на люксовом сегменте Флорианополиса. Мы неустанно стремимся к совершенству, создавая проекты, сочетающие современный дизайн, безупрекорное качество и уникальное архитектурное видение».',
+            'Портфолио — конкретные проекты: Felipe Moraes Residence Club (João Paulo) — 78 люксовых юнитов, 130-164 м², вид на море и закат, назван в честь сына основателя. Águas do Santinho (Praia dos Ingleses) — интеграция с сохранённым природным ландшафтом, в районе, который мы уже разбирали в отдельном гиде по [Ingleses](/research/report/ingleses-investment-guide). Azzure Home Club (Praia Brava) — прибрежные юниты до 4 спалень, 326 м². BOSC Ecovillage (Saco Grande) — компактные эко-интегрированные юниты. Hantei Office Building — коммерческая недвижимость в центре города.',
+          ],
+        },
+        {
+          heading: 'Послужной список и качество',
+          paragraphs: [
+            'Hantei демонстрирует устойчивую надёжность поставки — редкость среди застройщиков с почти тридцатилетней историей, охватывающей несколько экономических циклов Бразилии, включая рецессию 2015-2016 годов.',
+            'Plan B Developer Score: Delivery 7,5/10. Quality 8,0/10. Stability 7,0/10. Satisfaction 8,0/10. Reputation 7,5/10. Transparency 7,0/10. Overall 7,5/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.',
+          ],
+        },
+        {
+          heading: 'Сильные стороны',
+          paragraphs: [
+            'Почти три десятилетия на рынке — с 1997 года, пережила несколько экономических циклов Бразилии, включая рецессию 2015-2016 — редкий уровень проверенной устойчивости. Подлинный люксовый сегмент — не просто «качественная отделка», а прямое позиционирование компании как специалиста по люксу Флорианополиса.',
+            'Диверсифицированный портфель — от прибрежного жилья (Azzure, Águas do Santinho) до эко-интегрированных проектов (BOSC) и коммерческой недвижимости (Hantei Office Building). Продуманный дизайн — современные фасады, качественные материалы, планировки, максимизирующие естественный свет и виды.',
+          ],
+        },
+        {
+          heading: 'На что обратить внимание',
+          paragraphs: [
+            'Семейная структура управления — компания по-прежнему администрируется основателем и связанной семейной структурой — типично для регионального рынка, но стоит учитывать при due diligence. Менее международный бренд — в отличие от некоторых конкурентов, привлекающих архитекторов уровня Arquitectonica (Майами), Hantei опирается в основном на локальную архитектурную экспертизу. Расхождение в данных по площади — источники расходятся в точной цифре построенной площади (370 против 570 тыс. м²), рекомендуем уточнять актуальные данные напрямую при рассмотрении конкретного проекта.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — Hantei Incorporadora',
+          paragraphs: [
+            '✅ РЕКОМЕНДОВАНО — для покупателей, ценящих архитектуру, качество и проверенную историю. Hantei — не «растущий застройщик среднего сегмента», как иногда описывает рынок в целом, а один из старейших люксовых игроков Флорианополиса, с почти тридцатилетней историей и портфелем в тысячи сданных юнитов. Современная архитектура, продуманные планировки и внимание к деталям — устойчивая часть идентичности компании, а не новое направление.',
+            'Лучше всего подходит покупателям, которые ценят архитектуру и качество отделки в сочетании с проверенным временем послужным списком — редкая комбинация даже среди устоявшихся застройщиков. Диверсифицированный портфель (жилой, коммерческий, эко-интегрированный) даёт гибкость выбора под разные инвестиционные цели.',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией. Оценка основана на общедоступной информации, рыночных данных и обратной связи покупателей. Plan B Brazil выступает независимым советником, не аффилирован с Hantei Incorporadora и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
+
+  'cba-incorporadora-developer-review-2026': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'CBA Incorporadora (Grupo CBA) isn\'t a "mid-range regional developer," as general market overviews sometimes describe it — it\'s a fast-growing luxury holding company with capital built in agribusiness and a project portfolio worth billions of reais, including properties in Jurerê Internacional.',
+            'Headline figures: founding year 2015, land bank R$4.5 billion+ (~30 plots in SC), project portfolio (VGV) R$3.5 billion+, Plan B Overall Developer Score 7.7/10.',
+          ],
+        },
+        {
+          heading: 'Company Overview',
+          paragraphs: [
+            'Grupo CBA was founded in 2015 in Cachoeira do Sul (Rio Grande do Sul) — capital was originally built in agribusiness before the company diversified into real estate. Headquarters have moved to Florianópolis, specifically Jurerê. The group\'s president is Cíntia Pereira — a family business led by a woman, a notable detail in a market where this is rare.',
+            'Financial strength from another sector — a real competitive advantage: unlike many developers overly dependent on bank leverage, Grupo CBA relies on its own liquidity, accumulated in agriculture. The land bank comprises roughly 30 owned plots in Santa Catarina, valued at over R$4.5 billion. The current project portfolio exceeds R$3.5 billion in total sales value (VGV).',
+            'The company operates under two brands: CBA Empreendimentos (luxury segment) and Viva Corp (elevated first-home standard). Over 400 employees, 16 simultaneous construction sites (12 in Santa Catarina — Florianópolis, São José, Biguaçu, Itajaí).',
+            'Portfolio & partnerships: specific projects — Meraki Sunset (João Paulo), Physis Place (Centro), Porto Madero and Meraki Allure, both in Jurerê Internacional. Strategic partnerships with ATrinca (Flávio Augusto, Joel Jota, Caio Carneiro) and wealth management firm Charlie — property is positioned as a high-performance financial asset, not just housing.',
+          ],
+        },
+        {
+          heading: 'Track Record & Quality',
+          paragraphs: [
+            'CBA demonstrates consistent delivery reliability across completed projects. No public data on significant delays or quality issues was found.',
+            'Plan B Developer Score: Delivery 8.0/10. Quality 7.5/10. Stability 8.0/10. Satisfaction 7.5/10. Reputation 8.0/10. Transparency 7.0/10. Overall 7.7/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.',
+          ],
+        },
+        {
+          heading: 'Strengths',
+          paragraphs: [
+            'Financial stability from agribusiness — own liquidity instead of excessive reliance on bank leverage, a rare structural advantage among developers. Genuine luxury segment — projects in Jurerê Internacional, not "affordable middle-class housing."',
+            'Notable strategic partnerships — ATrinca and Charlie position CBA properties as a financial instrument, not just a place to live. Operational scale — 400+ employees, 16 simultaneous construction sites, a rare level for a decade-old company.',
+          ],
+        },
+        {
+          heading: 'Areas to Consider',
+          paragraphs: [
+            'Relatively new specifically in Santa Catarina — the core historical track record is tied to RS; fewer completed properties in SC so far, though the pipeline is actively growing. Two-brand structure — CBA Empreendimentos (luxury) and Viva Corp (elevated standard), confirm which brand a specific property falls under. Financial positioning of property — partnerships with wealth managers are a plus for investors, but require understanding that a purchase here may be framed as part of a broader investment strategy, not just housing.',
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — CBA Incorporadora',
+          paragraphs: [
+            '✅ RECOMMENDED — for investors seeking luxury backed by an unusual financial base. CBA Incorporadora isn\'t a mid-range regional developer — it\'s a fast-growing luxury holding company whose financial stability is built on agribusiness capital, a rare and strong structural feature. Projects in Jurerê Internacional and partnerships with notable investors confirm genuine luxury positioning.',
+            'Best suited to investors who value a developer\'s financial stability as much as the property itself — CBA\'s own liquidity reduces the typical delay risks tied to bank financing. Worth confirming which brand (CBA Empreendimentos or Viva Corp) a specific project falls under.',
+            'This material is for informational purposes only and does not constitute investment advice. Assessment based on publicly available information, market data, and buyer feedback. Plan B Brazil acts as an independent advisor, is not affiliated with CBA Incorporadora, and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'CBA Incorporadora (Grupo CBA) — не «региональный застройщик среднего сегмента», как иногда описывают рынок в целом, а быстрорастущий люксовый холдинг с капиталом, построенным в агробизнесе, и портфелем проектов на миллиарды реалов, включая объекты в Журере Интернасьонал.',
+            'Ключевые цифры: год основания 2015, земельный банк R$4,5 млрд+ (~30 участков в СК), портфель проектов (VGV) R$3,5 млрд+, Plan B Overall Developer Score 7,7/10.',
+          ],
+        },
+        {
+          heading: 'Обзор компании',
+          paragraphs: [
+            'Группа CBA основана в 2015 году в Cachoeira do Sul (Риу-Гранди-ду-Сул) — капитал изначально построен в агробизнесе, прежде чем компания диверсифицировалась в недвижимость. Штаб-квартира перенесена в Флорианополис, конкретно в Журере. Президент группы — Синтия Перейра, семейный бизнес с женщиной во главе — заметная деталь на рынке, где это редкость.',
+            'Финансовая сила из другого сектора — реальное конкурентное преимущество: в отличие от многих застройщиков, чрезмерно зависящих от банковского плеча, Grupo CBA опирается на собственную ликвидность, накопленную в сельском хозяйстве. Земельный банк — около 30 собственных участков в Санта-Катарине, оценённых свыше R$4,5 млрд. Портфель текущих проектов превышает R$3,5 млрд в общем объёме продаж (VGV).',
+            'Компания работает через два бренда: CBA Empreendimentos (люксовый сегмент) и Viva Corp (первое жильё повышенного стандарта). Более 400 сотрудников, 16 строек одновременно (12 в Санта-Катарине — Флорианополис, Сан-Жозе, Бигуасу, Итажаи).',
+            'Портфолио и партнёрства: конкретные проекты — Meraki Sunset (João Paulo), Physis Place (центр), Porto Madero и Meraki Allure — оба в Журере Интернасьонал. Стратегические партнёрства с ATrinca (Флавио Аугусто, Жоэл Жота, Кайо Карнейро) и компанией по управлению капиталом Charlie — недвижимость позиционируется как высокодоходный финансовый актив, не просто жильё.',
+          ],
+        },
+        {
+          heading: 'Послужной список и качество',
+          paragraphs: [
+            'CBA демонстрирует последовательную надёжность поставки по завершённым проектам. Публичных данных о значительных задержках или проблемах с качеством не найдено.',
+            'Plan B Developer Score: Delivery 8,0/10. Quality 7,5/10. Stability 8,0/10. Satisfaction 7,5/10. Reputation 8,0/10. Transparency 7,0/10. Overall 7,7/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.',
+          ],
+        },
+        {
+          heading: 'Сильные стороны',
+          paragraphs: [
+            'Финансовая устойчивость из агробизнеса — собственная ликвидность вместо чрезмерной зависимости от банковского плеча — редкое структурное преимущество среди застройщиков. Реальный люксовый сегмент — проекты в Журере Интернасьонал, не «доступное жильё среднего класса».',
+            'Заметные стратегические партнёрства — ATrinca и Charlie позиционируют недвижимость CBA как финансовый инструмент, не только жильё. Масштаб операций — 400+ сотрудников, 16 одновременных строек — редкий уровень для компании десятилетнего возраста.',
+          ],
+        },
+        {
+          heading: 'На что обратить внимание',
+          paragraphs: [
+            'Относительно новая именно в Санта-Катарине — основной послужной список исторически связан с RS; в СК пока меньше завершённых объектов, хотя пайплайн активно растёт. Структура двух брендов — CBA Empreendimentos (люкс) и Viva Corp (повышенный стандарт), уточняйте, под каким именно брендом идёт конкретный объект. Финансовое позиционирование недвижимости — партнёрства с wealth-менеджерами — плюс для инвесторов, но требует понимания, что покупка здесь может рассматриваться как часть более широкой инвестиционной стратегии, не только жильё.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — CBA Incorporadora',
+          paragraphs: [
+            '✅ РЕКОМЕНДОВАНО — для инвесторов, ищущих люкс с необычной финансовой базой. CBA Incorporadora — не региональный застройщик среднего сегмента, а быстрорастущий люксовый холдинг, чья финансовая устойчивость построена на капитале из агробизнеса — редкая и сильная структурная особенность. Проекты в Журере Интернасьонал и партнёрства с известными инвесторами подтверждают реальное люксовое позиционирование.',
+            'Лучше всего подходит инвесторам, которые ценят финансовую устойчивость застройщика не меньше, чем сам объект — собственная ликвидность CBA снижает типичные риски задержек, связанные с банковским финансированием. Стоит уточнять, под каким брендом (CBA Empreendimentos или Viva Corp) идёт конкретный проект.',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией. Оценка основана на общедоступной информации, рыночных данных и обратной связи покупателей. Plan B Brazil выступает независимым советником, не аффилирован с CBA Incorporadora и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
+
+  'oad-construtora-developer-review-2026': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'Grupo OAD Incorporações is a Florianópolis-based developer focused on mid-to-high-end residential projects in the south of the island — primarily Campeche, Novo Campeche, and Porto da Lagoa. Founded in 2021, it has already delivered over 800 units and became the first Santa Catarina developer with "Lixo Zero" (Zero Waste) certification.',
+            'Headline figures: founding year 2021, 800+ units delivered, 90% of site waste recycled, Plan B Overall Developer Score 8.0/10.',
+          ],
+        },
+        {
+          heading: 'Company Overview',
+          paragraphs: [
+            'OAD is the first developer in Santa Catarina with "Compromisso Lixo Zero" certification: at least 90% of construction site waste is sent for recycling. The company\'s flagship project, Makai Beachfront, is Brazil\'s largest construction site with this certification.',
+            'A real prefabrication partnership — not just a name: OAD uses a hybrid construction model with off-site prefabrication, in partnership with Cassol Pré-Fabricados — the largest prefabricated concrete complex in Latin America (66+ years of history, 22,000 m³ of concrete monthly). In October 2024, the two companies jointly hosted a sustainable-construction conference where Makai Beachfront was presented as the case study. This model typically cuts construction time by 20–30% compared to traditional methods.',
+            'World-class portfolio & partnerships: Makai Beachfront (Novo Campeche) — R$1 billion VGV, 406 apartments (49 penthouses + 357 units), 63,000+ m², 5 blocks. Landscape design by the Burle Marx studio (founded by the legendary Roberto Burle Marx in 1955, creator of Copacabana\'s iconic wave-pattern sidewalk). Architecture by AO + Di Leone Arquitetura. In December 2025, the company partnered with Rio Bravo Investimentos, one of Brazil\'s leading independent financial firms.',
+            'The company also contributes to urban legacy: it donated land for a public square and funded drainage improvements on Av. Campeche as part of the Makai Beachfront project — a direct improvement to the exact single-access-road traffic issue we flagged in our separate [Campeche](/research/report/campeche-investment-guide) guide.',
+            'Project portfolio: Makai Beachfront (Novo Campeche) — beachfront luxury, eco-certified. Natura (Porto da Lagoa) — first Lixo Zero site in SC. Campeche Hills (Campeche Hillside) — mid-standard. Las Lunas Los Mares (South Island) — mid-standard. Mobby (South Island) — mid-standard.',
+          ],
+        },
+        {
+          heading: 'Track Record & Quality',
+          paragraphs: [
+            'OAD has delivered 800+ residential units since its 2021 founding — a strong execution indicator for a relatively young company. No public data on delays or customer complaints was found, but the company is young — a long-term track record is still being established.',
+            'Plan B Developer Score: Delivery 8.5/10. Quality 8.0/10. Stability 7.5/10. Satisfaction 8.0/10. Reputation 8.0/10. Transparency 7.5/10. Overall 8.0/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.',
+          ],
+        },
+        {
+          heading: 'Strengths',
+          paragraphs: [
+            'Genuine sustainability leadership — SC\'s first Lixo Zero certification, backed by a verified partnership with industrial giant Cassol. Prestigious partnerships — landscape by the Burle Marx studio, financial partnership with Rio Bravo Investimentos.',
+            'Fast execution — 800+ units in 5 years, a strong pace for a young company, supported by hybrid prefab technology. Contribution to city infrastructure — land donated for a public square, funding for Av. Campeche drainage, a real local infrastructure improvement, not just marketing.',
+          ],
+        },
+        {
+          heading: 'Areas to Consider',
+          paragraphs: [
+            'Young company — founded in 2021, a long-term track record spanning full economic cycles is still being built. South-island concentration — focus on Campeche/Novo Campeche/Porto da Lagoa, less geographic diversification than island-wide developers. Makai — the best quality indicator — the flagship project is still under construction, real execution quality will be clearer once delivered.',
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — Grupo OAD Incorporações',
+          paragraphs: [
+            '✅ RECOMMENDED — for eco-conscious buyers and south-island focus. OAD Construtora is a reliable mid-to-high-end developer with genuine sustainable-construction leadership and a growing reputation in southern Florianópolis. The "Lixo Zero" certification and hybrid prefab model aren\'t marketing — they\'re real differentiators, backed by a partnership with industrial giant Cassol.',
+            'With 800+ units delivered since 2021, the company has already demonstrated execution capability. Best suited to buyers who value environmental responsibility, modern construction methods, and south-island growth potential. The company is relatively young — worth monitoring delivery quality over the next 2–3 years as more projects complete. Makai Beachfront in Novo Campeche is OAD\'s flagship and best quality indicator.',
+            'This material is for informational purposes only and does not constitute investment advice. Assessment based on publicly available information, market data, and buyer feedback. Plan B Brazil acts as an independent advisor, is not affiliated with Grupo OAD Incorporações, and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Grupo OAD Incorporações — застройщик из Флорианополиса, специализирующийся на mid-to-high-end жилых проектах на юге острова, в первую очередь в Campeche, Novo Campeche и Porto da Lagoa. Основан в 2021 году, но уже сдал более 800 юнитов и стал первым застройщиком Санта-Катарины с сертификатом «Lixo Zero» (Ноль отходов).',
+            'Ключевые цифры: год основания 2021, 800+ сданных юнитов, 90% отходов стройтельства идёт на переработку, Plan B Overall Developer Score 8,0/10.',
+          ],
+        },
+        {
+          heading: 'Обзор компании',
+          paragraphs: [
+            'OAD — первый застройщик в Санта-Катарине с сертификацией «Compromisso Lixo Zero»: минимум 90% отходов со стройтельных площадок отправляется на переработку. Флагшанский проект компании, Makai Beachfront, — крупнейшая стройтельная площадка Бразилии с этим сертификатом.',
+            'Реальное партнёрство в сборном строительстве — не просто название: OAD использует гибридную модель строительства с внезаводской сборкой конструкций, в партнёрстве с Cassol Pré-Fabricados — крупнейшим комплексом сборного железобетона в Латинской Америке (66+ лет истории, 22 000 м³ бетона в месяц). В октябре 2024 компании совместно провели конференцию по устойчивому строительству, где именно Makai Beachfront был представлен как кейс. Данная модель обычно сокращает сроки строительства на 20-30% по сравнению с традиционными методами.',
+            'Портфолио и партнёрства мирового уровня: Makai Beachfront (Novo Campeche) — VGV R$1 млрд, 406 квартир (49 пентхаусов + 357 юнитов), 63 000+ м², 5 корпусов. Ландшафтный дизайн — студия Burle Marx (основана легендарным Роберто Бурле Марксом в 1955, автором знаменитого волнистого паттерна тротуара Копакабаны). Архитектура — AO + Di Leone Arquitetura. В декабре 2025 компания заключила партнёрство с Rio Bravo Investimentos, одной из ведущих независимых финансовых компаний Бразилии.',
+            'Компания также вносит вклад в городское наследие: пожертвовала землю под общественную площадь и профинансировала улучшение дренажа на Av. Campeche как часть проекта Makai Beachfront — прямое улучшение той самой транспортной проблемы единственной дороги доступа, которую мы отметили в отдельном гиде по [Campeche](/research/report/campeche-investment-guide).',
+            'Портфолио проектов: Makai Beachfront (Novo Campeche) — пляжный люкс, эко-сертификат. Natura (Porto da Lagoa) — первая площадка Lixo Zero в СК. Campeche Hills (Campeche Hillside) — средний стандарт. Las Lunas Los Mares (ёг острова) — средний стандарт. Mobby (ёг острова) — средний стандарт.',
+          ],
+        },
+        {
+          heading: 'Послужной список и качество',
+          paragraphs: [
+            'OAD сдал 800+ жилых юнитов с момента основания в 2021 году — сильный показатель исполнения для относительно молодой компании. Публичных данных о задержках или жалобах клиентов не найдено, но компания молодая — долгосрочный послужной список ещё формируется.',
+            'Plan B Developer Score: Delivery 8,5/10. Quality 8,0/10. Stability 7,5/10. Satisfaction 8,0/10. Reputation 8,0/10. Transparency 7,5/10. Overall 8,0/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.',
+          ],
+        },
+        {
+          heading: 'Сильные стороны',
+          paragraphs: [
+            'Подлинное лидерство в устойчивости — первый в СК сертификат Lixo Zero, подтверждённое партнёрство с промышленным гигантом Cassol. Престижные партнёрства — ландшафт от студии Burle Marx, финансовое партнёрство с Rio Bravo Investimentos.',
+            'Быстрое исполнение — 800+ юнитов за 5 лет, сильный темп для молодой компании, поддержанный гибридной сборной технологией. Вклад в городскую инфраструктуру — донорство земли под площадь, финансирование дренажа на Av. Campeche — реальное улучшение локальной инфраструктуры, не только маркетинг.',
+          ],
+        },
+        {
+          heading: 'На что обратить внимание',
+          paragraphs: [
+            'Молодая компания — основана в 2021, долгосрочный послужной список на полных экономических циклах ещё формируется. Концентрация на юге острова — фокус на Campeche/Novo Campeche/Porto da Lagoa, меньше географической диверсификации, чем у застройщиков, работающих по всему острову. Makai — лучший индикатор качества — флагманский проект пока в стройке, реальное качество исполнения будет виднее после сдачи.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — Grupo OAD Incorporações',
+          paragraphs: [
+            '✅ РЕКОМЕНДОВАНО — для эко-ориентированных покупателей и юга острова. OAD Construtora — надёжный застройщик mid-to-high-end сегмента с подлинным лидерством в устойчивом строительстве и растущей репутацией на юге Флорианополиса. Сертификат «Lixo Zero» и гибридная сборная модель — не маркетинг, а реально дифференцирующие компанию факторы, подтверждённые партнёрством с промышленным гигантом Cassol.',
+            'При 800+ сданных юнитах с 2021 года компания уже продемонстрировала способность исполнять обязательства. Лучше всего подходит покупателям, ценящим экологическую ответственность, современные методы строительства и потенциал роста юга острова. Компания относительно молода — стоит следить за качеством поставки в следующие 2-3 года по мере завершения новых проектов. Makai Beachfront в Novo Campeche — флагман и лучший индикатор качества компании.',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией. Оценка основана на общедоступной информации, рыночных данных и обратной связи покупателей. Plan B Brazil выступает независимым советником, не аффилирован с Grupo OAD Incorporações и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
 };
