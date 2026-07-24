@@ -31,6 +31,21 @@ const nextConfig = {
         destination: '/research/report/porto-belo-investment-report-2026',
         permanent: true,
       },
+      // Foreign Buyer's Guide To Brazil (Tax & Legal) дублирует уже живой "How to Buy Property in
+      // Brazil" (kak-kupit-nedvizhimost-braziliya) — исходная запись переведена в draft (не в листингах),
+      // 301 на актуальную статью. VNZH (vnzh-braziliya-nedvizhimost) занимает освободившееся место
+      // в категории Tax & Legal / Guides & Resources.
+      {
+        source: '/research/report/foreign-buyer-s-guide-to-brazil',
+        has: [{ type: 'query', key: 'lang', value: 'ru' }],
+        destination: '/research/report/kak-kupit-nedvizhimost-braziliya?lang=ru',
+        permanent: true,
+      },
+      {
+        source: '/research/report/foreign-buyer-s-guide-to-brazil',
+        destination: '/research/report/kak-kupit-nedvizhimost-braziliya',
+        permanent: true,
+      },
     ];
   },
 };

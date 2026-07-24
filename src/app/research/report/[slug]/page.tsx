@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getAllResearch, getResearchBySlug, SECTIONS } from '@/lib/research-server';
@@ -229,6 +230,43 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   };
 }
 
+/**
+ * Парсит markdown-ссылки вида [текст](url) внутри обычного текста параграфа и рендерит их
+ * как кликабельные ссылки (Link для внутренних /... путей, <a> для внешних). Остальной
+ * текст без скобок рендерится как обычно. Безопасно для любого существующего параграфа без скобок.
+ */
+function renderParagraphWithLinks(text: string): ReactNode {
+  const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+  while ((match = linkPattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const [, label, url] = match;
+    if (url.startsWith('/')) {
+      parts.push(
+        <Link key={key++} href={url} className="text-gold-400 hover:underline">
+          {label}
+        </Link>
+      );
+    } else {
+      parts.push(
+        <a key={key++} href={url} className="text-gold-400 hover:underline" target="_blank" rel="noopener noreferrer">
+          {label}
+        </a>
+      );
+    }
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts.length > 0 ? parts : text;
+}
+
 function sectionKeyFor(category: string): string {
   for (const [key, s] of Object.entries(SECTIONS)) {
     if (s.categories.includes(category)) return key;
@@ -447,7 +485,7 @@ export default async function ReportPage({ params, searchParams }: Props) {
                   <h2 className="text-2xl font-serif text-white mb-4">{s.heading}</h2>
                   {s.paragraphs.map((p, j) => (
                     <p key={j} className="text-white/70 leading-relaxed mb-4">
-                      {p}
+                      {renderParagraphWithLinks(p)}
                     </p>
                   ))}
                 </section>

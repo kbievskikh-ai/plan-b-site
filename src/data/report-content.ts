@@ -2649,14 +2649,14 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Safety — Level-Headed, Without Panic or Complacency',
             paragraphs: [
-              'We covered safety statistics by region in detail in our separate article comparing Rio, São Paulo, and southern Brazil — in short: risk in Brazil depends heavily on the specific city and neighborhood, and the gap between Florianópolis and, say, Rio, is a multiple, not a percentage.',
+              'We covered safety statistics by region in detail in our [separate article comparing Rio, São Paulo, and southern Brazil](/research/report/gde-kupit-nedvizhimost-braziliya) — in short: risk in Brazil depends heavily on the specific city and neighborhood, and the gap between Florianópolis and, say, Rio, is a multiple, not a percentage.',
               'Practical habits that work everywhere: don\'t display expensive items openly on the street, stay alert in crowded places and public transport, use vetted taxis/apps at night. This is ordinary urban caution, not something uniquely "dangerous" about Brazil.',
             ],
           },
           {
             heading: 'Bureaucracy — Patience Pays Off',
             paragraphs: [
-              'Brazil is famous for bureaucracy (burocracia) — that\'s not a myth. The first and most essential document you\'ll need for almost everything is a CPF, Brazil\'s individual tax ID. We covered how to get one in detail in our article on buying property. Budget more time for any official procedure than seems logical — that\'s not the exception, it\'s the norm.',
+              'Brazil is famous for bureaucracy (burocracia) — that\'s not a myth. The first and most essential document you\'ll need for almost everything is a CPF, Brazil\'s individual tax ID. We covered how to get one in detail in [our article on buying property](/research/report/kak-kupit-nedvizhimost-braziliya). Budget more time for any official procedure than seems logical — that\'s not the exception, it\'s the norm.',
             ],
           },
           {
@@ -2668,8 +2668,8 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Check for Yourself — Two Free Tools',
             paragraphs: [
-              'Brazil Fit Score — a 7-question, 2-minute test that scores how well Brazil fits you — for life, investment, work, nature.',
-              'Visa & Residency Path Calculator — 6 questions that determine the best residency or citizenship path for your specific situation. Both free, no registration.',
+              '[Brazil Fit Score](/brazil-fit-score) — a 7-question, 2-minute test that scores how well Brazil fits you — for life, investment, work, nature.',
+              '[Visa & Residency Path Calculator](/visa-path) — 6 questions that determine the best residency or citizenship path for your specific situation. Both free, no registration.',
             ],
           },
           {
@@ -2748,14 +2748,14 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Безопасность — трезво, без паники и без беспечности',
             paragraphs: [
-              'Мы подробно разбирали статистику безопасности по регионам в отдельной статье о сравнении Рио, Сан-Паулу и юга Бразилии — вкратце: уровень риска в Бразилии сильно зависит от конкретного города и района, разница между Флорианополисом и, например, Рио — кратная, не на проценты.',
+              'Мы подробно разбирали статистику безопасности по регионам в отдельной [статье о сравнении Рио, Сан-Паулу и юга Бразилии](/research/report/gde-kupit-nedvizhimost-braziliya) — вкратце: уровень риска в Бразилии сильно зависит от конкретного города и района, разница между Флорианополисом и, например, Рио — кратная, не на проценты.',
               'Практические привычки, которые работают везде: не демонстрировать дорогие вещи открыто на улице, быть внимательным в людных местах и общественном транспорте, пользоваться проверенными такси/приложениями вечером. Это обычная городская осторожность, не что-то специфически «опасное для Бразилии».',
             ],
           },
           {
             heading: 'Бюрократия — наберитесь терпения заранее',
             paragraphs: [
-              'Бразилия славится бюрократией (burocracia) — это не миф. Первый и главный документ, который понадобится почти для всего — CPF, бразильский налоговый номер физлица. Мы подробно разбирали, как его получить, в статье про покупку недвижимости. Закладывайте больше времени на любую официальную процедуру, чем кажется логичным — это не исключение, а норма.',
+              'Бразилия славится бюрократией (burocracia) — это не миф. Первый и главный документ, который понадобится почти для всего — CPF, бразильский налоговый номер физлица. Мы подробно разбирали, как его получить, в [статье про покупку недвижимости](/research/report/kak-kupit-nedvizhimost-braziliya). Закладывайте больше времени на любую официальную процедуру, чем кажется логичным — это не исключение, а норма.',
             ],
           },
           {
@@ -2767,8 +2767,8 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Проверьте сами — два бесплатных инструмента',
             paragraphs: [
-              'Brazil Fit Score — тест на 7 вопросов (2 минуты), который оценивает, насколько Бразилия подходит именно вам — для жизни, инвестиций, работы, природы.',
-              'Visa & Residency Path Calculator — 6 вопросов, определяющих оптимальный путь к резиденции или гражданству под вашу ситуацию. Оба бесплатны, без регистрации.',
+              '[Brazil Fit Score](/brazil-fit-score) — тест на 7 вопросов (2 минуты), который оценивает, насколько Бразилия подходит именно вам — для жизни, инвестиций, работы, природы.',
+              '[Visa & Residency Path Calculator](/visa-path) — 6 вопросов, определяющих оптимальный путь к резиденции или гражданству под вашу ситуацию. Оба бесплатны, без регистрации.',
             ],
           },
           {
@@ -2781,9 +2781,521 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         ],
     },
   },
+  'jurere-internacional-investment-guide': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'Jurerê Internacional is a planned luxury beachfront community on the north shore of Santa Catarina Island, widely regarded as the most prestigious real estate address in southern Brazil. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.',
+            'Headline figures: $4.1K avg. price/m² (~R$22K), 5.2% rental yield, 12% annual growth, ~3K permanent residents.',
+          ],
+        },
+        {
+          heading: 'Market Overview',
+          paragraphs: [
+            'Created over 30 years ago by the Habitasul Group as a tourism-oriented master-planned development, the neighborhood combines luxury single-family houses, upscale condominiums, and hospitality properties (resorts, beach clubs, hotels). Known for its high-society residents, designer architecture, beach clubs, and summer social scene.',
+            'Land is scarce and tightly regulated, making Jurerê Internacional one of the most exclusive and resilient luxury markets in Latin America.',
+            'North shore of Santa Catarina Island, approximately 20 km from downtown Florianópolis and 16 km from Hercílio Luz Airport. Occupies the eastern portion of the broader Jurerê neighborhood, with direct beachfront access and a master-planned grid of streets, parks, and commercial areas. Bordered by the Atlantic Ocean to the east and the natural dunes of Jurerê beach to the west.',
+            'A very small permanent resident population — estimated at approximately 3,000 or fewer — due to its low-density, single-family-home character. The seasonal population swells dramatically during summer, with thousands of second-home owners, tourists, and hospitality workers. The demographic is predominantly high-net-worth individuals, with median household incomes far above the national average.',
+          ],
+        },
+        {
+          heading: 'Real Estate Price Analysis',
+          paragraphs: [
+            'Luxury houses (beachfront): $5.7K+/m² (~R$30K+), entry (2BR) $1.9M+ (~R$10M+) — HNWIs, celebrities. Upscale condos: $3.8–5.7K/m² (~R$20–30K), entry $380K+ (~R$2M+) — upper-class investors. Standard condos (Jurerê proper): $2.8–3.8K/m² (~R$15–20K), entry $226K+ (~R$1.2M+) — upper-middle class. Long-term rental: from $1,900/month (~R$10K) — expats, executives.',
+            'Methodological note — cross-referencing our [2026-2027 market strategy report](/research/report/brazil-market-strategy-2026-2027): there, we cited Alphaplan/Sinduscon data where "Jurerê" (~R$28.6K/m²) and "Jurerê Internacional" (~R$33K/m²) appear as two separate districts. Here, we present three tiers within Jurerê Internacional itself, from "Jurerê proper" ($2.8–3.8K) to beachfront luxury ($5.7K+). These are different segmentation systems for the same territory, not a contradiction: our analysis and FipeZap group by property type within a single master plan, while Alphaplan/Sinduscon group by geographic sub-brand.',
+          ],
+        },
+        {
+          heading: 'Market Dynamics',
+          paragraphs: [
+            'Jurerê Internacional operates on a completely different dynamic from the rest of Florianópolis. Prices are driven by three factors: scarcity (limited beachfront land), brand value (the "Jurerê" name carries premium status), and lifestyle demand (beach clubs, safety, exclusivity).',
+            'The market is resilient to downturns — even during Brazil\'s 2015–2016 recession, Jurerê prices held steady. New supply is extremely limited due to environmental regulations and the Habitasul master plan. Most transactions are resales of existing properties rather than new construction. The neighborhood is experiencing a trend toward modernization — older houses are being demolished and rebuilt with contemporary architecture.',
+          ],
+        },
+        {
+          heading: 'Rental Market & Developers',
+          paragraphs: [
+            'Long-term (annual): $1,900–3,800/month (~R$10–20K), 75–80% occupancy, gross yield 3.5–4.0%. Short-term (luxury Airbnb): $3,800–7,500/month (~R$20–40K), 40–55% occupancy, gross yield 4.5–5.5%. Seasonal (Dec–Feb): $7,500–15,000/month (~R$40–80K), 90–100% occupancy.',
+            'The rental market here is less about yield and more about offsetting the carrying costs of a second home. During December–February, properties rent at 3–5x the off-season rate, often booked months in advance.',
+            'Active developers: Habitasul Group (master developer, 30+ years, original neighborhood planner), individual architects (custom houses, luxury, eco-sustainable projects), boutique developers (infill condos, small luxury projects, 10–20 units, ultra-premium).',
+          ],
+        },
+        {
+          heading: 'Infrastructure & Amenities',
+          paragraphs: [
+            'Jurerê Open (open-air shopping with restaurants and shops), multiple beach clubs (P12, Coco Bambu, and others), parks, playgrounds, and 24-hour security. The neighborhood has a supermarket, pharmacy, and medical clinic. Habitasul maintains the area\'s landscaping, signage, and public spaces to high standards.',
+            'The neighborhood is connected to Floripa\'s bus network, but most residents drive. The main limitation is distance from downtown (30–40 min) and the lack of urban amenities like large hospitals or universities nearby.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Investment 9.0/10. Rental Demand 6.5/10. Liquidity 9.0/10. Lifestyle 9.5/10. Growth 8.5/10. Overall 8.7/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.',
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — Jurerê Internacional',
+          paragraphs: [
+            '✅ BUY — for wealth preservation and prestige, 5+ year hold. Jurerê Internacional is Santa Catarina\'s most prestigious address and one of the most resilient luxury markets in Latin America. With constrained land supply, strong brand value, and consistent high-income demand, it offers wealth preservation and steady 12% annual appreciation.',
+            'Entry at $226K+ (~R$1.2M+) for condos or $1.9M+ (~R$10M+) for beachfront houses puts it out of reach for most investors, but for HNWIs, it offers the best combination of lifestyle, status, and long-term value protection in southern Brazil. Not a cash-flow play — this is a prestige and wealth preservation asset.',
+            'For a broader look at how Jurerê compares to other north-side beach districts on yield and entry price, see our [Canasvieiras](/research/report/canasvieiras-investment-guide) and [Ingleses](/research/report/ingleses-investment-guide) guides, or the full [Santa Catarina district comparison](/research/report/best-areas-to-invest-in-santa-catarina-2026).',
+            'This material is for informational purposes only and does not constitute investment advice.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Jurerê Internacional — спланированное люксовое прибрежное сообщество на северном берегу острова Санта-Катарина, повсеместно признанное самым престижным адресом недвижимости на юге Бразилии. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.',
+            'Ключевые цифры: $4,1K средняя цена/м² (~R$22K), 5,2% доходность от аренды, 12% рост в год, ~3К постоянных жителей.',
+          ],
+        },
+        {
+          heading: 'Обзор рынка',
+          paragraphs: [
+            'Создан более 30 лет назад группой Habitasul как туристически-ориентированная застройка по единому мастер-плану, район сочетает люксовые частные дома, престижные кондоминиумы и гостиничную недвижимость (резорты, пляжные клубы, отели). Известен своими состоятельными резидентами, архитектурой от именитых бюро, пляжными клубами и летней светской жизнью.',
+            'Земля дефицитна и строго регулируется — это делает Jurerê Internacional одним из самых эксклюзивных и устойчивых люксовых рынков Латинской Америки.',
+            'Северный берег острова Санта-Катарина, примерно 20 км от центра Флорианополиса и 16 км от аэропорта Эрсилиу-Лус. Занимает восточную часть более широкого района Журере, с прямым выходом к пляжу и спланированной сеткой улиц, парков и коммерческих зон. Ограничен Атлантическим океаном с востока и природными дюнами пляжа Журере с запада.',
+            'Очень малое постоянное население — около 3000 человек или менее, из-за низкой плотности застройки частными домами. Сезонное население резко растёт летом — тысячи владельцев второй недвижимости, туристов и работников гостиничной сферы. Демография преимущественно состоятельная, медианный доход домохозяйств значительно выше среднего по стране.',
+          ],
+        },
+        {
+          heading: 'Анализ цен на недвижимость',
+          paragraphs: [
+            'Люксовые дома (1-я линия): $5,7K+/м² (~R$30K+), вход (2BR) $1,9M+ (~R$10M+) — HNWI, знаменитости. Апскейл кондо: $3,8–5,7K/м² (~R$20–30K), вход $380K+ (~R$2M+) — инвесторы высшего класса. Стандартные кондо (Jurerê proper): $2,8–3,8K/м² (~R$15–20K), вход $226K+ (~R$1,2M+) — верхний средний класс. Долгосрочная аренда: от $1900/мес (~R$10K) — экспаты, руководители.',
+            'Методологическая сноска — сверка с нашей [статьёй про стратегию 2026-2027](/research/report/brazil-market-strategy-2026-2027): там мы приводили данные Alphaplan/Sinduscon, где «Журере» (~R$28,6K/м²) и «Журере Интернасьонал» (~R$33K/м²) фигурируют как два отдельных района. Здесь же — три яруса внутри самого Jurerê Internacional, от «Jurerê proper» ($2,8–3,8K) до пляжного люкса ($5,7K+). Это разные системы сегментации одной и той же территории, не противоречие: наш анализ и FipeZap группируют по типу недвижимости внутри единого мастер-плана, Alphaplan/Sinduscon — по географическим суббрендам.',
+          ],
+        },
+        {
+          heading: 'Рыночная динамика',
+          paragraphs: [
+            'Jurerê Internacional живёт по совершенно другой логике, чем остальной Флорианополис. Цены движимы тремя факторами: дефицитом (ограниченная прибрежная земля), ценностью бренда (само имя «Журере» несёт премиальный статус) и лайфстайл-спросом (пляжные клубы, безопасность, эксклюзивность).',
+            'Рынок устойчив к спадам — даже во время рецессии в Бразилии 2015–2016 годов цены в Журере держались стабильно. Новое предложение крайне ограничено из-за экологических регуляций и мастер-плана Habitasul. Большинство сделок — перепродажи существующих объектов, а не новое строительство. Район переживает тренд на модернизацию — старые дома сносят и отстраивают заново в современной архитектуре.',
+          ],
+        },
+        {
+          heading: 'Аренда и застройщики',
+          paragraphs: [
+            'Долгосрочная (годовая): $1 900–3 800/мес (~R$10–20K), загрузка 75–80%, валовая доходность 3,5–4,0%. Краткосрочная (люкс Airbnb): $3 800–7 500/мес (~R$20–40K), загрузка 40–55%, валовая доходность 4,5–5,5%. Сезонная (дек–фев): $7 500–15 000/мес (~R$40–80K), загрузка 90–100%.',
+            'Рынок аренды здесь не столько про доходность, сколько про покрытие расходов на содержание второго дома. В декабре-феврале объекты сдаются по ставке в 3-5 раз выше межсезонной, часто забронированы за месяцы вперёд.',
+            'Активные застройщики: Habitasul Group (мастер-девелопер, 30+ лет, оригинальный план района), индивидуальные архитекторы (кастомные дома, люкс, эко-устойчивые проекты), бутик-застройщики (инфилл-кондо, небольшие люксовые проекты на 10-20 юнитов, ультра-премиум).',
+          ],
+        },
+        {
+          heading: 'Инфраструктура и удобства',
+          paragraphs: [
+            'Jurerê Open (открытый торговый центр с ресторанами и магазинами), несколько пляжных клубов (P12, Coco Bambu и другие), парки, детские площадки, круглосуточная охрана. В районе есть супермаркет, аптека, медицинская клиника. Habitasul поддерживает ландшафт, навигацию и общественные пространства на высоком уровне.',
+            'Район подключён к автобусной сети Флорипы, но большинство жителей передвигаются на машине. Главное ограничение — удалённость от центра (30–40 минут) и отсутствие рядом крупных больниц или университетов.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Investment 9,0/10. Rental Demand 6,5/10. Liquidity 9,0/10. Lifestyle 9,5/10. Growth 8,5/10. Overall 8,7/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — Jurerê Internacional',
+          paragraphs: [
+            '✅ BUY — для сохранения капитала и престижа, горизонт 5+ лет. Jurerê Internacional — самый престижный адрес Санта-Катарины и один из самых устойчивых люксовых рынков Латинской Америки. При ограниченном предложении земли, сильной ценности бренда и стабильном спросе высокодоходной аудитории — это инструмент сохранения капитала со стабильным ростом 12% в год.',
+            'Вход от $226K (~R$1,2M+) за кондо или $1,9M+ (~R$10M+) за дом на первой линии делает район недоступным для большинства инвесторов, но для состоятельных покупателей это лучшее сочетание лайфстайла, статуса и долгосрочной защиты капитала на юге Бразилии. Это не инструмент для денежного потока — это актив престижа и сохранения капитала.',
+            'Для более широкого сравнения Журере с другими пляжными районами севера острова по доходности и порогу входа — см. наши гиды по [Canasvieiras](/research/report/canasvieiras-investment-guide) и [Ingleses](/research/report/ingleses-investment-guide), а также полное [сравнение районов Санта-Катарины](/research/report/best-areas-to-invest-in-santa-catarina-2026).',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией.',
+          ],
+        },
+      ],
+    },
+  },
+
+  'canasvieiras-investment-guide': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'Canasvieiras is one of the most established tourist neighborhoods in northern Florianópolis, with a resident population of approximately 9,800 that swells dramatically during summer. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.',
+            'Headline figures: $1.8K avg. price/m² (~R$9.5K), 7.5% rental yield, 8% annual growth, 9.8K permanent residents.',
+          ],
+        },
+        {
+          heading: 'Market Overview',
+          paragraphs: [
+            'The neighborhood is particularly popular with Argentine and Uruguayan tourists, who have been visiting for decades and maintain a strong presence through seasonal rentals and second-home ownership. Canasvieiras has a lively beachfront strip with restaurants, bars, and shops, creating a resort-town atmosphere.',
+            'The real estate market is mature — most buildings were constructed between 1990–2015, with newer infill projects focusing on modernized units.',
+            'Northern tip of Santa Catarina Island, approximately 23 km from downtown Florianópolis. Canasvieiras is the northernmost urbanized beach neighborhood on the island, bordered by Ingleses to the south (2 km) and the Atlantic Ocean to the north. The beach faces northeast with calm, warm waters. Access is via SC-401 highway, with the neighborhood\'s main commercial strip running parallel to the beach.',
+            'Approximately 9,814 permanent residents (52% female, 48% male) across 3.55 km². The effective population during summer reaches 30,000–40,000+ due to the strong influx of Argentine, Uruguayan, and Brazilian tourists. The neighborhood has a significant Argentine community — many families have owned second homes here for 20+ years. The seasonal demographic is heavily family-oriented.',
+          ],
+        },
+        {
+          heading: 'Price by Property Type — Older Stock vs New Construction',
+          paragraphs: [
+            'Older stock (discounted): from $58K per unit. Renovated units: up to $97K. New construction (premium): from $97K+.',
+            'Most buildings in Canasvieiras were constructed between 1990–2015 — creating a genuine price gap between discounted older stock and select new-construction projects. The key threshold is around $97K (~R$500K): above that, the premium for newness stops paying for itself through rental yield, and the classic value-add investor loses their edge.',
+          ],
+        },
+        {
+          heading: 'A Major Catalyst: Sapiens Parque',
+          paragraphs: [
+            'Headline figures: #1 innovation park in Brazil, 900+ resident tech companies, park expansion underway now (2026).',
+            'Sapiens Parque sits literally between Canasvieiras and the neighboring district of Cachoeira do Bom Jesus — this isn\'t an abstract "nearby driver," it\'s effectively part of the district\'s own infrastructure. The park\'s official address is registered under Canasvieiras.',
+            'Expansion works are in full swing, with direct support from the state governor, who requested new partnerships to further develop the area. Beyond growth in the number of resident tech companies, a new space recently opened — Passeio Sapiens — an urban gastronomy, culture, and coworking hub within the park, 5 minutes from the sea. The stated goal from local developers is honest: give the north of the island "something beyond its summer vocation" — a permanent space for living, business, and leisure year-round, not just during peak season.',
+            'For a real estate investor, this means Canasvieiras is no longer solely dependent on Argentine and Uruguayan summer tourism. A growing tech cluster creates demand from a completely different audience — resident-company employees, entrepreneurs, and people seeking year-round housing near work, not just seasonal rentals.',
+          ],
+        },
+        {
+          heading: 'Rental Market & Yields',
+          paragraphs: [
+            'Long-term (annual): $340–470/month (~R$1.8–2.5K), 80–85% occupancy, gross yield 4.5–5.0%. Short-term (Airbnb): $570–850/month (~R$3–4.5K), 50–70% occupancy, gross yield 7.5–8.5%. Seasonal (Dec–Feb): $1,500–2,500/month (~R$8–13K), 88–95% occupancy — peak-season income, not an annual yield.',
+            'Three demand drivers: Argentine and Uruguayan families on 2–4 week summer stays — the largest segment, consistent for 20+ years. Brazilian domestic tourists (São Paulo, Rio Grande do Sul) on weekend and holiday stays. Remote workers on 1–3 month stays during the off-season. The neighborhood has a well-developed seasonal rental ecosystem with local property managers, cleaning services, and booking platforms. Long-term rental demand is moderate — the neighborhood is primarily optimized for short-term yields.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Investment 7.8/10. Rental Demand 7.5/10. Liquidity 6.5/10. Lifestyle 7.0/10. Growth 6.5/10. Overall 7.1/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.',
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — Canasvieiras',
+          paragraphs: [
+            '✅ BUY — for yield, value-add strategy. Canasvieiras is the best yield play in northern Florianópolis. With 7.5%+ rental yields and entry prices starting at $58K (~R$300K) for older stock, it offers the best cash-flow-to-price ratio on the island. The mature market means lower appreciation potential (8% annually) but more predictable returns.',
+            'Best for conservative investors who prioritize rental income over capital gains. Key strategy: buy older units at a discount, renovate, and rent seasonally. Avoid new construction at premium pricing — the yield advantage disappears above $97K (~R$500K).',
+            'For a broader comparison of yield-focused north-side districts, see our [Jurerê Internacional](/research/report/jurere-internacional-investment-guide) and [Ingleses](/research/report/ingleses-investment-guide) guides.',
+            'This material is for informational purposes only and does not constitute investment advice.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Canasvieiras — один из самых устоявшихся туристических районов севера Флорианополиса, с постоянным населением около 9800 человек, которое резко растёт летом. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.',
+            'Ключевые цифры: $1,8K средняя цена/м² (~R$9,5K), 7,5% доходность от аренды, 8% рост в год, 9,8K постоянных жителей.',
+          ],
+        },
+        {
+          heading: 'Обзор рынка',
+          paragraphs: [
+            'Район особенно популярен у аргентинских и уругвайских туристов, приезжающих десятилетиями и сохраняющих сильное присутствие через сезонную аренду и владение второй недвижимостью. У Canasvieiras оживлённая набережная с ресторанами, барами и магазинами — атмосфера курортного городка.',
+            'Рынок недвижимости зрелый — большинство зданий построено в 1990–2015 годах, новые точечные проекты фокусируются на модернизированных юнитах.',
+            'Северная оконечность острова Санта-Катарина, примерно 23 км от центра Флорианополиса. Canasvieiras — самый северный урбанизированный пляжный район острова, граничит с Инглезес на юге (2 км) и Атлантическим океаном на севере. Пляж выходит на северо-восток, спокойные тёплые воды. Доступ по трассе SC-401, главная коммерческая улица идёт параллельно пляжу.',
+            'Около 9814 постоянных жителей (52% женщины, 48% мужчины) на 3,55 км². Эффективное население летом достигает 30–40 тысяч+ за счёт мощного притока аргентинских, уругвайских и бразильских туристов. Значительное аргентинское сообщество — многие семьи владеют второй недвижимостью здесь 20+ лет. Сезонная демография сильно ориентирована на семьи.',
+          ],
+        },
+        {
+          heading: 'Цена по типу объекта — старый фонд vs новостройка',
+          paragraphs: [
+            'Старый фонд (со скидкой): от $58K за юнит. Модернизированные юниты: до $97K. Новостройка (премиум): от $97K+.',
+            'Большинство зданий в Canasvieiras построено в 1990–2015 годах — это создаёт реальный ценовой разрыв между старым фондом со скидкой и точечными новостройками. Ключевой порог — около $97K (~R$500K): выше этой отметки премия за новизну перестаёт окупаться доходностью от аренды, и класический value-add инвестор теряет своё преимущество.',
+          ],
+        },
+        {
+          heading: 'Крупный катализатор: Sapiens Parque',
+          paragraphs: [
+            'Ключевые цифры: #1 инновационный парк Бразилии, 900+ резидентных технологических компаний, расширение парка идёт прямо сейчас (2026).',
+            'Sapiens Parque расположен буквально между Canasvieiras и соседним районом Cachoeira do Bom Jesus — это не абстрактный «драйвер поблизости», а фактически собственная инфраструктура района. Официальный адрес парка числится за Canasvieiras.',
+            'Работы по расширению парка идут полным ходом, с прямой поддержкой губернатора штата, который запросил новые партнёрства для дальнейшего развития территории. Помимо роста числа резидентных технологических компаний, недавно открылся Passeio Sapiens — новое городское пространство с гастрономией, культурой и коворкингом внутри парка, в 5 минутах от моря. Идея честно озвучена местными застройщиками: дать северу острова «нечто большее, чем летнее призвание» — постоянное пространство для жизни, бизнеса и досуга круглый год, а не только в высокий сезон.',
+            'Для инвестора в недвижимость Canasvieiras это означает: район больше не зависит исключительно от аргентинского и уругвайского турпотока летом. Растущий технологический кластер создаёт спрос от совершенно другой аудитории — сотрудников резидентных компаний, предпринимателей, тех, кто ищет жильё рядом с работой круглый год, а не только сезонную аренду.',
+          ],
+        },
+        {
+          heading: 'Аренда и доходность',
+          paragraphs: [
+            'Долгосрочная (годовая): $340–470/мес (~R$1,8–2,5K), загрузка 80–85%, валовая доходность 4,5–5,0%. Краткосрочная (Airbnb): $570–850/мес (~R$3–4,5K), загрузка 50–70%, валовая доходность 7,5–8,5%. Сезонная (дек–фев): $1 500–2 500/мес (~R$8–13K), загрузка 88–95% — пиковый доход в высокий сезон, не годовая доходность.',
+            'Три драйвера спроса: аргентинские и уругвайские семьи на летний отдых 2–4 недели — крупнейший сегмент, устойчивый уже 20+ лет. Бразильские внутренние туристы (Сан-Паулу, Риу-Гранди-ду-Сул) на выходные и праздники. Удалённые сотрудники на 1–3 месяца в межсезонье. Район обладает развитой экосистемой сезонной аренды — локальные управляющие компании, клининг, букинг-платформы. Спрос на долгосрочную аренду умеренный — район в первую очередь оптимизирован под краткосрочную доходность.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Investment 7,8/10. Rental Demand 7,5/10. Liquidity 6,5/10. Lifestyle 7,0/10. Growth 6,5/10. Overall 7,1/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — Canasvieiras',
+          paragraphs: [
+            '✅ BUY — для доходности, стратегия value-add. Canasvieiras — лучшая игра на доходность на севере Флорианополиса. При доходности от 7,5% и входе от $58K (~R$300K) за объекты старого фонда, район предлагает лучшее соотношение денежного потока к цене на острове. Зрелый рынок означает более низкий потенциал роста (8% в год), но более предсказуемую доходность.',
+            'Лучше всего подходит консервативным инвесторам, которые ставят доход от аренды выше прироста капитала. Ключевая стратегия: покупайте старые юниты со скидкой, ремонтируйте, сдавайте посезонно. Избегайте новостроек по премиальным ценам — преимущество в доходности исчезает выше $97K (~R$500K).',
+            'Для более широкого сравнения районов севера острова по доходности — см. наши гиды по [Jurerê Internacional](/research/report/jurere-internacional-investment-guide) и [Ingleses](/research/report/ingleses-investment-guide).',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией.',
+          ],
+        },
+      ],
+    },
+  },
+
+  'ingleses-investment-guide': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'Ingleses (officially "Ingleses do Rio Vermelho") is a beach neighborhood on the north shore of Santa Catarina Island, known for its 3.5 km sandy beach with calm, warm waters — ideal for families. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.',
+            'Headline figures: $2.0K avg. price/m² (~R$10.8K), 7.1% rental yield, 9% annual growth, 5.4K permanent residents.',
+          ],
+        },
+        {
+          heading: 'Market Overview',
+          paragraphs: [
+            'The area is subdivided into Ingleses Norte, Ingleses Centro, and Ingleses Sul. Unlike the party-focused Canasvieiras, Ingleses has a more family-oriented atmosphere — a mix of mid-rise apartment buildings, vacation homes, and local commerce. It has become one of Florianópolis\'s most stable rental markets, with consistent demand from both Brazilian tourists and long-term residents.',
+            'Northern tip of the island, approximately 22 km from downtown Florianópolis and 18 km from Hercílio Luz Airport. Accessed via SC-401 highway, which connects to Canasvieiras (2 km north) and Jurerê (4 km east). The beach faces north, meaning calmer waters and warmer temperatures — a key differentiator from the surf beaches on the island\'s east coast.',
+            'The broader Ingleses do Rio Vermelho district has approximately 5,442 residents across its sub-sectors: Centro (3,142), Sul (1,323), Norte (977). The effective population during summer (December–February) swells to 15,000–20,000+ due to seasonal tourism. The resident population is predominantly middle-class families, with a growing number of remote workers and retirees from other Brazilian states. Unlike pure tourist zones, Ingleses has schools, health clinics, and local commerce serving permanent residents year-round.',
+          ],
+        },
+        {
+          heading: 'Real Estate Price Analysis',
+          paragraphs: [
+            'Beachfront / first line: $2.0–2.3K/m² (~R$10.8–12K), entry (2BR) $104K+ (~R$550K+) — investors, second homes. Mid-rise (2–3 blocks): $1.7–1.9K/m² (~R$8.9–10K), entry $85K+ (~R$450K+) — families, long-term renters. Inland / Rio Vermelho side: $1.3–1.5K/m² (~R$7–8K), entry $66K+ (~R$350K+) — budget investors. Pre-construction: $1.5–1.9K/m² (~R$8–10K), entry $75K+ (~R$400K+) — value investors.',
+            'Ingleses has a mature but not saturated market. Most buildings are 3–6 floors, built between 2000–2020, with newer developments focusing on compact 1–2 BR units optimized for seasonal rental. The neighborhood benefits from its proximity to Jurerê Internacional (4 km) — buyers priced out of Jurerê often choose Ingleses as the next best north-side option.',
+            'Price growth has been steady at 9% annually — below the explosive rates of Itapema, but more predictable. Redevelopment of older houses into small condo projects is the primary supply driver.',
+          ],
+        },
+        {
+          heading: 'Infrastructure & Amenities',
+          paragraphs: [
+            'Unlike many beach neighborhoods on the island\'s north side, Ingleses functions essentially as a self-contained small city — with a full set of urban infrastructure, not just seasonal services.',
+            'Open Shopping Ingleses — the district\'s shopping center. Beach-widening was completed in May 2023 — already delivered, not a future promise. Proximity to UFSC and IFSC universities (about 20 minutes), with coworking spaces and study areas nearby. In 2025, a new municipal school, Red Park, opened in the adjacent Rio Vermelho area. Well-developed cycling infrastructure runs along the main SC-403 avenue.',
+            'This infrastructure directly supports the neighborhood\'s core thesis — not a one-off tourist wave, but a genuinely sustainable place to live year-round, which explains why the rental market stays stable across seasons.',
+          ],
+        },
+        {
+          heading: 'Rental Market & Yields',
+          paragraphs: [
+            'Long-term (annual): $380–570/month (~R$2–3K), 88–92% occupancy, gross yield 5.0–5.5%. Short-term (Airbnb): $660–950/month (~R$3.5–5K), 60–75% occupancy, gross yield 7.1–8.0%. Seasonal (Dec–Feb): $1,900–3,200/month (~R$10–17K), 92–97% occupancy.',
+            'Ingleses\'s rental market is one of the most stable on the island. Long-term tenants include local families, service workers, and remote workers. Short-term demand comes primarily from Brazilian families (São Paulo, Rio Grande do Sul, Paraná) who appreciate the calm beach and family-friendly atmosphere. The neighborhood is less dependent on Argentine tourism than Canasvieiras, making it more resilient to BRL currency fluctuations. Off-season occupancy remains solid at 60%+ thanks to the permanent resident base.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Investment 8.2/10. Rental Demand 7.5/10. Liquidity 7.0/10. Lifestyle 7.5/10. Growth 7.0/10. Overall 7.6/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.',
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — Ingleses',
+          paragraphs: [
+            '✅ BUY — for stable income, 3–7 year hold. Ingleses is the most stable and conservative play in northern Florianópolis. With 7.1% rental yields, 88%+ long-term occupancy, and steady 9% annual appreciation, it offers reliable returns without the volatility of emerging markets.',
+            'Best for first-time SC investors who want predictable cash flow and moderate growth. Entry at $85K–104K (~R$450–550K) for a 2BR in buildings 2–3 blocks from the beach offers the best value. Proximity to Jurerê (4 km) provides an upside catalyst — as Jurerê prices continue rising, Ingleses becomes the logical alternative.',
+            'For a broader comparison of north-side beach districts, see our [Jurerê Internacional](/research/report/jurere-internacional-investment-guide) and [Canasvieiras](/research/report/canasvieiras-investment-guide) guides.',
+            'This material is for informational purposes only and does not constitute investment advice.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Ingleses (официально «Ingleses do Rio Vermelho») — пляжный район на северном берегу острова Санта-Катарина, известный 3,5-километровым песчаным пляжем со спокойными тёплыми водами — идеально для семей. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.',
+            'Ключевые цифры: $2,0K средняя цена/м² (~R$10,8K), 7,1% доходность от аренды, 9% рост в год, 5,4K постоянных жителей.',
+          ],
+        },
+        {
+          heading: 'Обзор рынка',
+          paragraphs: [
+            'Район делится на три субрайона — Ingleses Norte, Ingleses Centro и Ingleses Sul. В отличие от «тусовочного» Canasvieiras, Ingleses отличается более семейной атмосферой — смесь среднеэтажных домов, дач и локальной торговли. Стал одним из самых стабильных рынков аренды Флорианополиса, с устойчивым спросом и от бразильских туристов, и от долгосрочных резидентов.',
+            'Северная оконечность острова, примерно 22 км от центра Флорианополиса и 18 км от аэропорта Эрсилиу-Лус. Доступ по трассе SC-401, которая связывает с Canasvieiras (2 км на север) и Журере (4 км на восток). Пляж выходит на север — спокойнее воды и теплее температура, ключевое отличие от сёрф-пляжей восточного побережья острова.',
+            'Более широкий район Ingleses do Rio Vermelho насчитывает около 5442 жителей по субрайонам: Centro (3142), Sul (1323), Norte (977). Эффективное население летом (декабрь–февраль) растёт до 15–20 тысяч+ за счёт сезонного туризма. Постоянное население — преимущественно семьи среднего класса, растёт число удалённых сотрудников и пенсионеров из других штатов Бразилии. В отличие от чисто туристических зон, здесь есть школы, клиники и локальная торговля, обслуживающая постоянных резидентов круглый год.',
+          ],
+        },
+        {
+          heading: 'Анализ цен на недвижимость',
+          paragraphs: [
+            'Пляж / 1-я линия: $2,0–2,3K/м² (~R$10,8–12K), вход (2BR) $104K+ (~R$550K+) — инвесторы, вторая недвижимость. Среднеэтажки (2–3 квартала): $1,7–1,9K/м² (~R$8,9–10K), вход $85K+ (~R$450K+) — семьи, долгосрочные арендаторы. Вглубь / сторона Rio Vermelho: $1,3–1,5K/м² (~R$7–8K), вход $66K+ (~R$350K+) — бюджетные инвесторы. Предпродажа: $1,5–1,9K/м² (~R$8–10K), вход $75K+ (~R$400K+) — инвесторы ценности.',
+            'Ingleses — зрелый, но не перенасыщенный рынок. Большинство зданий 3-6 этажей, построены в 2000–2020 годах, новые проекты фокусируются на компактных 1-2BR юнитах, оптимизированных под сезонную аренду. Район выигрывает от близости к Журере Интернасьонал (4 км) — покупатели, вытесненные ценами Журере, часто выбирают Ingleses как следующий лучший вариант на севере острова.',
+            'Рост цен стабилен на уровне 9% в год — ниже взрывных темпов Итапемы, но более предсказуем. Редевелопмент старых домов в небольшие кондо-проекты — основной драйвер нового предложения.',
+          ],
+        },
+        {
+          heading: 'Инфраструктура и удобства',
+          paragraphs: [
+            'В отличие от многих пляжных районов севера острова, Ingleses функционирует как самостоятельный небольшой город — с полным набором городской инфраструктуры, а не только сезонными сервисами.',
+            'Open Shopping Ingleses — торговый центр района. Расширение пляжной полосы завершено в мае 2023 года — уже готовый, а не планируемый проект. Близость к университетам UFSC и IFSC (около 20 минут), с коворкингами и учебными пространствами рядом. В 2025 году в примыкающем районе Rio Vermelho открылась новая муниципальная школа Red Park. Вдоль главной улицы SC-403 — развитая велоинфраструктура.',
+            'Этот набор инфраструктуры напрямую поддерживает главный тезис района — не разовый туристический всплеск, а действительно устойчивое место для постоянной жизни, что и объясняет стабильность рынка аренды круглый год.',
+          ],
+        },
+        {
+          heading: 'Аренда и доходность',
+          paragraphs: [
+            'Долгосрочная (годовая): $380–570/мес (~R$2–3K), загрузка 88–92%, валовая доходность 5,0–5,5%. Краткосрочная (Airbnb): $660–950/мес (~R$3,5–5K), загрузка 60–75%, валовая доходность 7,1–8,0%. Сезонная (дек–фев): $1 900–3 200/мес (~R$10–17K), загрузка 92–97%.',
+            'Рынок аренды Ingleses один из самых стабильных на острове. Долгосрочные арендаторы — местные семьи, работники сферы услуг, удалённые сотрудники. Краткосрочный спрос идёт в первую очередь от бразильских семей (Сан-Паулу, Риу-Гранди-ду-Сул, Парана), ценящих спокойный пляж и семейную атмосферу. Район меньше зависит от аргентинского туризма, чем Canasvieiras, что делает его более устойчивым к колебаниям курса реала. Загрузка в межсезонье остаётся солидной — 60%+ — благодаря постоянной резидентной базе.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Investment 8,2/10. Rental Demand 7,5/10. Liquidity 7,0/10. Lifestyle 7,5/10. Growth 7,0/10. Overall 7,6/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — Ingleses',
+          paragraphs: [
+            '✅ BUY — для стабильного дохода, горизонт 3–7 лет. Ingleses — самая стабильная и консервативная игра на севере Флорианополиса. При доходности 7,1%, загрузке долгосрочной аренды 88%+ и стабильном росте 9% в год, район предлагает надёжную доходность без волатильности развивающихся рынков.',
+            'Лучше всего подходит начинающим инвесторам в Санта-Катарине, которые хотят предсказуемый денежный поток и умеренный рост. Вход от $85K–104K (~R$450–550K) за 2BR в домах в 2-3 кварталах от пляжа предлагает лучшее соотношение цена/качество. Близость к Журере (4 км) даёт катализатор роста — по мере роста цен в Журере, Ingleses становится логичной альтернативой.',
+            'Для более широкого сравнения пляжных районов севера острова — см. наши гиды по [Jurerê Internacional](/research/report/jurere-internacional-investment-guide) и [Canasvieiras](/research/report/canasvieiras-investment-guide).',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией.',
+          ],
+        },
+      ],
+    },
+  },
+
+  'campeche-investment-guide': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            'Campeche is a fast-growing beach neighborhood in southern Florianópolis that has transformed from a quiet fishing village into one of the city\'s most dynamic real estate markets. Exchange rate: 1 USD = R$5.15, unified across all Plan B materials.',
+            'Headline figures: $1.7K avg. price/m² (~R$8.9K), 6.5% rental yield, 11% annual growth, 30K+ population (greater area).',
+          ],
+        },
+        {
+          heading: 'Market Overview',
+          paragraphs: [
+            'The area encompasses several sub-districts — Campeche Sul, Norte, Leste, Central, and the premium Novo Campeche development — each offering a different investment profile. Known for its 4 km sandy beach, surf culture, and a more "authentic" feel compared to the established north-side beaches.',
+            'South coast of Santa Catarina Island, approximately 18 km from downtown Florianópolis and 12 km from Hercílio Luz Airport (which is undergoing major expansion). The neighborhood sits between Lagoa da Conceição to the north and Ribeirão da Ilha to the south, with easy access via SC-406 highway.',
+            'The greater Campeche area is home to approximately 30,000+ residents across all sub-districts. Campeche Sul alone had ~6,240 residents in the most recent census, with 36.5% population growth from 2000–2015 and 189% growth from 1975–2015. The median age is approximately 32 — significantly younger than the city average — driven by young families, remote workers, and lifestyle migrants relocating from other Brazilian states. Seasonal population swells by 40–60% during summer (December–March).',
+          ],
+        },
+        {
+          heading: 'Real Estate Price Analysis',
+          paragraphs: [
+            'Beachfront (Novo Campeche): $1.7–1.9K/m² (~R$9–10K), entry (2BR) $94K+ (~R$500K+) — upper-middle, investors. Second line (Campeche Sul): $1.3–1.5K/m² (~R$7–8K), entry $66K+ (~R$350K+) — families, first-time buyers. Inland (Campeche Norte): $0.9–1.1K/m² (~R$5–6K), entry $47K+ (~R$250K+) — budget-conscious. Pre-construction: $1.1–1.5K/m² (~R$6–8K), entry $57K+ (~R$300K+) — growth investors.',
+          ],
+        },
+        {
+          heading: 'A Major Catalyst: Novo Campeche',
+          paragraphs: [
+            'Headline figures: #2 claimed price ranking in Floripa (needs verification), 24/7 security across the entire subdivision, 100% of properties with clean public deed.',
+            'Novo Campeche isn\'t an abstract label — it\'s a specific, planned subdivision (loteamento) within Campeche: wide, tree-lined streets, thoughtful urban planning, 24-hour security across the whole area. Several active developers are building here, including a consortium of Shore Urban + Placon Empreendimentos + Studio Methafora, as well as Grupo OAD with its Makai Beachfront project.',
+            'Methodological note — verifying a price claim: one source describes Campeche as "the second most expensive neighborhood in Florianópolis after Jurerê Internacional," per FipeZap. This claim is not supported by our detailed segment figures (Novo Campeche\'s top tier — $1.7–1.9K/m² — is several times lower than even Jurerê\'s average of $4.1K). The source may be using a different methodology (transaction volume rather than price per m², or outdated data). We do not include this claim as fact — the segment figures above remain our primary reference point.',
+            'The area is surrounded by an environmental protection zone (APA), and the city\'s new master plan reinforces these building restrictions — a structural supply constraint, a pattern familiar from other districts on the island. All properties come with a clean public deed, reducing legal risk compared to some less formalized plots.',
+          ],
+        },
+        {
+          heading: 'Market Dynamics',
+          paragraphs: [
+            'Campeche is experiencing strong verticalization — 4–6 floor buildings are replacing older single-family homes, particularly in Novo Campeche. The neighborhood is driven by lifestyle migration — remote workers and families from São Paulo, Rio Grande do Sul, and other states who value the beach lifestyle and lower cost of living compared to Jurerê or Lagoa da Conceição. New mixed-use developments are appearing along Av. Campeche.',
+            'Land availability is still good compared to saturated north-side beaches, giving Campeche a 5–7 year growth runway before prices converge with premium areas.',
+          ],
+        },
+        {
+          heading: 'Rental Market & Yields',
+          paragraphs: [
+            'Long-term (annual): $340–470/month (~R$1.8–2.5K), 85–90% occupancy, gross yield 4.5–5.0%. Short-term (Airbnb): $570–850/month (~R$3–4.5K), 55–70% occupancy, gross yield 6.5–7.5%. Seasonal (Dec–Feb): $1,500–2,800/month (~R$8–15K), 90–95% occupancy.',
+            'Three demand drivers: remote workers on 3–12 month stays, drawn by beach proximity and lower rents than central Floripa. Seasonal Brazilian tourists (families, surfers) in summer. Argentines and Uruguayans on 2–4 week summer stays. Long-term occupancy above 85% year-round makes the neighborhood stable even off-season. Short-term yields spike to 7.5%+ in peak season.',
+          ],
+        },
+        {
+          heading: 'Developers & Infrastructure',
+          paragraphs: [
+            'Active developers: Grupo OAD (Novo Campeche, Porto da Lagoa — Makai Beachfront and Natura projects, high-end and eco-certified), local builders (5+, Campeche Sul/Central, small condos, 20–50 units), SP/RJ developers (Novo Campeche beachfront, emerging luxury towers, premium).',
+            'Significant infrastructure investment: new supermarkets (Zeer, Kobrasol), pharmacies, gyms, surf schools, and cafés along the main avenue. There\'s a public school, a health clinic, and regular bus service to downtown Floripa (45 min). SC-406 highway provides fast access to the airport and southern beaches.',
+            'Honest about the risk — not just good news: the main concern is increasing traffic during peak season — the single access road (Av. Campeche) becomes congested. Environmental constraints near dunes and mangroves limit construction in some areas — on one hand, this protects property values by limiting oversupply; on the other, it\'s a real inconvenience for everyday logistics.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Investment 8.0/10. Rental Demand 7.0/10. Liquidity 6.5/10. Lifestyle 8.0/10. Growth 8.5/10. Overall 7.6/10. Plan B Expert Assessment — subjective evaluation based on market analysis. Not financial advice.',
+          ],
+        },
+        {
+          heading: 'Plan B Verdict — Campeche',
+          paragraphs: [
+            '✅ BUY — for growth, 5+ year hold. Campeche has the highest upside in Florianópolis for 2026–2028. The combination of lifestyle migration, airport expansion (12 km away), and an active developer pipeline (led by Grupo OAD\'s Makai Beachfront) creates a compelling growth story.',
+            'Entry at $66K–94K (~R$350–500K) for a 2BR in second-line positions offers the best risk-adjusted returns. Beachfront Novo Campeche commands premium pricing ($94K+ / ~R$500K+) but offers stronger appreciation. Key risk: oversupply from concurrent projects — verify the building pipeline before buying. Best for growth-focused investors willing to hold 5+ years.',
+            'For a broader comparison of Florianópolis beach districts, see our [best areas to invest in Santa Catarina](/research/report/best-areas-to-invest-in-santa-catarina-2026) guide.',
+            'This material is for informational purposes only and does not constitute investment advice.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Campeche — быстрорастущий пляжный район на юге Флорианополиса, превратившийся из тихой рыбацкой деревни в один из самых динамичных рынков недвижимости города. Курс: 1 USD = R$5,15, унифицировано по всем материалам Plan B.',
+            'Ключевые цифры: $1,7K средняя цена/м² (~R$8,9K), 6,5% доходность от аренды, 11% рост в год, 30K+ население большого района.',
+          ],
+        },
+        {
+          heading: 'Обзор рынка',
+          paragraphs: [
+            'Район включает несколько субрайонов — Campeche Sul, Norte, Leste, Central и премиальный Novo Campeche — каждый со своим инвестиционным профилем. Известен 4-километровым песчаным пляжем, сёрф-культурой и более «аутентичной» атмосферой по сравнению с устоявшимися пляжами севера острова.',
+            'Южное побережье острова Санта-Катарина, примерно 18 км от центра Флорианополиса и 12 км от аэропорта Эрсилиу-Лус (который проходит масштабное расширение). Район расположен между Лагоа-да-Консейсау на севере и Рибейран-да-Илья на юге, доступ по трассе SC-406.',
+            'Большой район Campeche насчитывает 30 000+ жителей по всем субрайонам. Только Campeche Sul — около 6240 жителей по последней переписи, с ростом населения на 36,5% за 2000–2015 и 189% за 1975–2015. Медианный возраст около 32 лет — заметно моложе среднего по городу, за счёт молодых семей, удалённых сотрудников и лайфстайл-мигрантов из других штатов Бразилии. Сезонное население растёт на 40–60% летом (декабрь–март).',
+          ],
+        },
+        {
+          heading: 'Анализ цен на недвижимость',
+          paragraphs: [
+            'Пляж (Novo Campeche): $1,7–1,9K/м² (~R$9–10K), вход (2BR) $94K+ (~R$500K+) — верхний средний класс, инвесторы. 2-я линия (Campeche Sul): $1,3–1,5K/м² (~R$7–8K), вход $66K+ (~R$350K+) — семьи, первая покупка. Вглубь (Campeche Norte): $0,9–1,1K/м² (~R$5–6K), вход $47K+ (~R$250K+) — бюджетные покупатели. Предпродажа: $1,1–1,5K/м² (~R$6–8K), вход $57K+ (~R$300K+) — инвесторы роста.',
+          ],
+        },
+        {
+          heading: 'Крупный катализатор: Novo Campeche',
+          paragraphs: [
+            'Ключевые цифры: #2 заявленное место по цене в Флорипе (нужна сверка), круглосуточная охрана по всему микрорайону, 100% объектов с чистой escritura pública.',
+            'Novo Campeche — не абстрактное название, а конкретный спланированный микрорайон (loteamento) внутри Campeche: широкие озеленённые улицы, продуманная урбанистика, круглосуточная охрана по всей территории. Несколько активных застройщиков ведут здесь проекты — включая консорциум Shore Urban + Placon Empreendimentos + Studio Methafora, а также Grupo OAD с проектом Makai Beachfront.',
+            'Методологическая сноска — сверка заявления о цене: один из источников описывает Campeche как «второй самый дорогой район Флорианополиса после Журере Интернасьонал» по данным FipeZap. Эта формулировка не подтверждается нашими детальными цифрами по сегментам (топ-сегмент Novo Campeche — $1,7–1,9K/м², в разы ниже даже среднего Журере в $4,1K). Возможно, источник использует другую методологию (объём сделок, не цену за м², или устаревшие данные). Мы не включаем это заявление как факт — цифры сегментации выше остаются нашим основным ориентиром.',
+            'Район окружён зоной экологической защиты (APA), а новый генплан города усиливает эти ограничения на застройку — структурный сдерживающий фактор предложения, знакомый паттерн из других районов острова. Все объекты — с чистой публичной escritura, что снижает юридические риски покупки по сравнению с некоторыми менее формализованными участками.',
+          ],
+        },
+        {
+          heading: 'Рыночная динамика',
+          paragraphs: [
+            'Campeche переживает сильную вертикализацию — здания на 4-6 этажей заменяют старые частные дома, особенно в Novo Campeche. Район движим лайфстайл-миграцией — удалённые сотрудники и семьи из Сан-Паулу, Риу-Гранди-ду-Сул и других штатов, ценящие пляжный образ жизни и более низкую стоимость жизни по сравнению с Журере или Лагоа. Новые смешанные (жильё+коммерция) проекты появляются вдоль Av. Campeche.',
+            'Доступность земли всё ещё хорошая по сравнению с перенасыщенными пляжами севера острова — это даёт Campeche «взлётную полосу» роста на 5–7 лет, прежде чем цены сойдутся с премиальными районами.',
+          ],
+        },
+        {
+          heading: 'Аренда и доходность',
+          paragraphs: [
+            'Долгосрочная (годовая): $340–470/мес (~R$1,8–2,5K), загрузка 85–90%, валовая доходность 4,5–5,0%. Краткосрочная (Airbnb): $570–850/мес (~R$3–4,5K), загрузка 55–70%, валовая доходность 6,5–7,5%. Сезонная (дек–фев): $1 500–2 800/мес (~R$8–15K), загрузка 90–95%.',
+            'Три драйвера спроса на аренду: удалённые сотрудники на 3–12 месяцев, привлечённые близостью к пляжу и более низкой арендой, чем в центре Флорипы. Сезонные бразильские туристы (семьи, сёрферы) летом. Аргентинцы и уругвайцы на 2–4 недели летом. Загрузка долгосрочной аренды свыше 85% круглый год делает район стабильным даже в межсезонье. Краткосрочная доходность подскакивает до 7,5%+ в высокий сезон.',
+          ],
+        },
+        {
+          heading: 'Застройщики и инфраструктура',
+          paragraphs: [
+            'Активные застройщики: Grupo OAD (Novo Campeche, Porto da Lagoa — проекты Makai Beachfront, Natura, высокий класс с эко-сертификацией), локальные застройщики (5+, Campeche Sul/Central, небольшие кондо на 20-50 юнитов), застройщики из SP/RJ (побережье Novo Campeche, растущие люксовые башни, премиум).',
+            'Значительные инвестиции в инфраструктуру: новые супермаркеты (Zeer, Kobrasol), аптеки, спортзалы, школы сёрфинга и кафе вдоль главной улицы. Есть государственная школа, медицинская клиника, регулярный автобус до центра Флорипы (45 мин). Трасса SC-406 даёт быстрый доступ к аэропорту и южным пляжам.',
+            'Честно про риск — не только хорошие новости: главная проблема — растущий трафик в высокий сезон: единственная дорога доступа (Av. Campeche) перегружается. Экологические ограничения у дюн и мангровых зарослей ограничивают застройку в некоторых зонах — с одной стороны, это защищает стоимость недвижимости за счёт ограничения переизбытка предложения, с другой — реальное неудобство для повседневной логистики.',
+          ],
+        },
+        {
+          heading: 'Plan B Investment Score',
+          paragraphs: [
+            'Investment 8,0/10. Rental Demand 7,0/10. Liquidity 6,5/10. Lifestyle 8,0/10. Growth 8,5/10. Overall 7,6/10. Экспертная оценка Plan B — субъективная оценка на основе анализа рынка. Не является финансовой консультацией.',
+          ],
+        },
+        {
+          heading: 'Вердикт Plan B — Campeche',
+          paragraphs: [
+            '✅ BUY — для роста, горизонт 5+ лет. Campeche обладает наибольшим потенциалом роста во Флорианополисе на 2026–2028 годы. Сочетание лайфстайл-миграции, расширения аэропорта (12 км) и активного пайплайна застройщиков (во главе с Makai Beachfront от Grupo OAD) создаёт убедительную историю роста.',
+            'Вход от $66K–94K (~R$350–500K) за 2BR на 2-й линии предлагает лучшее соотношение риск/доходность. Пляжный Novo Campeche стоит дороже ($94K+ / ~R$500K+), но даёт более сильный потенциал роста. Ключевой риск: переизбыток предложения от одновременных проектов — проверяйте пайплайн строительства перед покупкой. Лучше всего подходит инвесторам, ориентированным на рост, готовым держать от 5 лет.',
+            'Для более широкого сравнения пляжных районов Флорианополиса — см. наш гид по [лучшим районам для инвестиций в Санта-Катарине](/research/report/best-areas-to-invest-in-santa-catarina-2026).',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией.',
+          ],
+        },
+      ],
+    },
+  },
+
   'newcomers-guide-florianopolis': {
     en: {
-        sections: [
+      sections: [
           {
             heading: 'The Short Version',
             paragraphs: [
@@ -2849,10 +3361,10 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
               'This material is for informational purposes only and is based on publicly available sources and personal experience living in Florianópolis since 2021.',
             ],
           },
-        ],
+      ],
     },
     ru: {
-        sections: [
+      sections: [
           {
             heading: 'Коротко о главном',
             paragraphs: [
