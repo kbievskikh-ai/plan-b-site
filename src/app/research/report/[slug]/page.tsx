@@ -29,7 +29,7 @@ const RICH_BILINGUAL_SLUGS = new Set(['rental-yield-report-santa-catarina-2026']
  * отличается от титла в БД (r.title / rRu.title). URL/slug не затрагиваются — оверрайд только для
  * отображаемого текста. важно: ключ по языку — оверрайд для EN не должен просачиться на RU-страницу и наоборот.
  */
-const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string; h1: string }>>> = {
+const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string; h1: string; description?: string }>>> = {
   'rental-yield-report-santa-catarina-2026': {
     ru: {
       title: 'Доходность аренды недвижимости в Бразилии: реальные цифры 2026',
@@ -184,6 +184,14 @@ const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string;
       h1: 'Practical Guide for Newcomers to Florianópolis',
     },
   },
+  'robson-nascimento-architect-jurere': {
+    ru: {
+      title: 'Лучший архитектор Флорианополиса — как добавить 10% к цене дома',
+      h1: 'Робсон Насименто — человек, чьё имя добавляет 10% к цене дома',
+      description:
+        'Проект дома под ключ во Флорианополисе: сколько стоит строительство и почему имя архитектора добавляет до 10% к цене при перепродаже — разбор на примере Робсона Насименто и Журере.',
+    },
+  },
 };
 
 export async function generateStaticParams() {
@@ -202,7 +210,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 
   const seoOverride = SEO_OVERRIDES[params.slug]?.[requestedLang];
   const title = seoOverride ? seoOverride.title : `${(rLang || r).title} | Plan B Brazil`;
-  const description = (rLang || r).description;
+  const description = seoOverride?.description || (rLang || r).description;
   const url = isBilingual
     ? `${SITE}/research/report/${r.slug}${requestedLang === 'ru' ? '?lang=ru' : ''}`
     : `${SITE}/research/report/${r.slug}`;
