@@ -18,10 +18,10 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Plan B — Real Estate Investment in Brazil",
   description:
-    "Discover investment properties in Florianópolis, Balneário Camboriú, and coastal Brazil. Real estate for international investors.",
+    "Independent real estate investment advisor in Santa Catarina, Brazil — not tied to any developer. Honest yield and risk analysis for foreign investors in Florianópolis, Balneário Camboriú, and coastal Santa Catarina.",
   openGraph: {
     title: "Plan B — Real Estate Investment in Brazil",
-    description: "Discover investment properties in Florianópolis, Balneário Camboriú, and coastal Brazil. Real estate for international investors.",
+    description: "Independent real estate investment advisor in Santa Catarina, Brazil — not tied to any developer. Honest yield and risk analysis for foreign investors.",
     url: "https://planbbrazil.com",
     siteName: "Plan B Brazil",
     images: [
