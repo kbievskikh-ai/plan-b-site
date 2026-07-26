@@ -14,7 +14,6 @@ import FAQ from '@/components/FAQ';
 import AdditionalFreeTools from '@/components/AdditionalFreeTools';
 import ConsultationCTA from '@/components/ConsultationCTA';
 import { useSettings } from '@/lib/settings';
-import CountrySelector from '@/components/CountrySelector';
 
 function FloatingChat() {
   const [chatOpen, setChatOpen] = useState(false);
@@ -63,7 +62,6 @@ export default function SectionManager() {
   if (!loaded) {
     return (
       <>
-        <CountrySelector />
         <FloatingChat />
         <Hero />
         <AboutKonstantin />
@@ -83,7 +81,6 @@ export default function SectionManager() {
 
   return (
     <>
-      <CountrySelector />
       <FloatingChat />
       {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
       {show('section_about') && <AboutKonstantin />}
