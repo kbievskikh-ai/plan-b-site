@@ -74,11 +74,9 @@ export default function Hero({ videoUrl }: HeroProps) {
             </span>
           </motion.div>
 
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+          {/* Heading — no fade-in animation: this is the LCP element and must
+              paint immediately without waiting on JS hydration. */}
+          <h1
             className="font-heading text-3xl sm:text-5xl lg:text-7xl text-white leading-[1.1] mb-4 sm:mb-6 [text-wrap:balance]"
           >
             {t('hero.title1')}
@@ -86,7 +84,7 @@ export default function Hero({ videoUrl }: HeroProps) {
             <span className="text-gold-400">{t('hero.title2')}</span>
             <br />
             {t('hero.title3')}
-          </motion.h1>
+          </h1>
 
           {/* Subtitle */}
           <motion.p

@@ -50,6 +50,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://plan-b-admin-api-production.up.railway.app" />
+        <link rel="dns-prefetch" href="https://plan-b-admin-api-production.up.railway.app" />
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      </head>
       <body className={inter.className}>
         <GTMScript />
         <Providers>{children}</Providers>
