@@ -2365,10 +2365,10 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         {
           heading: "Plan B Verdict by District",
           paragraphs: [
-            "Our on-the-ground assessment based on direct experience with investors and developers. Jurerê Int.: SC's most resilient real estate, limited land, elite status, prices doubled since 2018. Best profile: HNWIs, from R$1.2M (~$233K)+. Key catalyst: limited supply.",
-            "Lagoa: best lifestyle-to-price ratio, strong remote worker demand, \"the Brooklyn of Floripa.\" Best profile: digital nomads, lifestyle. Key catalyst: remote work migration. Ingleses: most stable rental market in northern Floripa, safe conservative choice. Best profile: conservative rental investors. Key catalyst: airport proximity.",
-            "Canasvieiras: budget-friendly entry into Floripa's north, best for lowest entry with decent yields. Best profile: first-time SC investors. Key catalyst: lower prices attract development. Centro: urban core with commercial mix, growing tech office demand, not a beach play. Best profile: urban, commercial investors. Key catalyst: tech expansion.",
-            "Campeche: ⭐ highest upside in Floripa, new urban center near the airport, risk: oversupply. Best profile: growth-focused, 5+ yr. Key catalyst: airport, urban center.",
+            "Our on-the-ground assessment based on direct experience with investors and developers. [Jurerê Int.](/research/report/jurere-internacional-investment-guide): SC's most resilient real estate, limited land, elite status, prices doubled since 2018. Best profile: HNWIs, from R$1.2M (~$233K)+. Key catalyst: limited supply.",
+            "Lagoa: best lifestyle-to-price ratio, strong remote worker demand, \"the Brooklyn of Floripa.\" Best profile: digital nomads, lifestyle. Key catalyst: remote work migration. [Ingleses](/research/report/ingleses-investment-guide): most stable rental market in northern Floripa, safe conservative choice. Best profile: conservative rental investors. Key catalyst: airport proximity.",
+            "[Canasvieiras](/research/report/canasvieiras-investment-guide): budget-friendly entry into Floripa's north, best for lowest entry with decent yields. Best profile: first-time SC investors. Key catalyst: lower prices attract development. Centro: urban core with commercial mix, growing tech office demand, not a beach play. Best profile: urban, commercial investors. Key catalyst: tech expansion.",
+            "[Campeche](/research/report/campeche-investment-guide): ⭐ highest upside in Floripa, new urban center near the airport, risk: oversupply. Best profile: growth-focused, 5+ yr. Key catalyst: airport, urban center.",
           ],
         },
         {
@@ -2439,10 +2439,10 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         {
           heading: "Вердикт Plan B по районам",
           paragraphs: [
-            "Наша оценка на основе прямого опыта работы с инвесторами и застройщиками. Журере Инт.: самая устойчивая недвижимость СК, ограниченная земля, элитный статус, цены удвоились с 2018. Лучший профиль: HNWI, от R$1,2M (~$233K)+. Ключевой катализатор: ограниченное предложение.",
-            "Лагоа: лучшее соотношение лайфстайл/цена, сильный спрос от удалённых сотрудников, «Бруклин Флорипы». Лучший профиль: цифровые кочевники. Ключевой катализатор: миграция удалёнки. Инглезес: самый стабильный рынок аренды севера Флорипы, безопасный консервативный выбор. Лучший профиль: консервативные инвесторы. Ключевой катализатор: близость к аэропорту.",
-            "Канасвиэйрас: доступный вход на север Флорипы, лучшее для минимального входа с приличной доходностью. Лучший профиль: начинающие инвесторы в СК. Ключевой катализатор: низкие цены привлекают застройку. Центр: городское ядро с коммерческим миксом, растущий спрос на офисы, не пляжная игра. Лучший профиль: городские, коммерческие инвесторы. Ключевой катализатор: расширение техсектора.",
-            "Кампече: ⭐ наибольший потенциал во Флорипе, новый городской центр рядом с аэропортом, риск: избыток предложения. Лучший профиль: ориентир на рост, 5+ лет. Ключевой катализатор: аэропорт, городской центр.",
+            "Наша оценка на основе прямого опыта работы с инвесторами и застройщиками. [Журере Инт.](/research/report/jurere-internacional-investment-guide): самая устойчивая недвижимость СК, ограниченная земля, элитный статус, цены удвоились с 2018. Лучший профиль: HNWI, от R$1,2M (~$233K)+. Ключевой катализатор: ограниченное предложение.",
+            "Лагоа: лучшее соотношение лайфстайл/цена, сильный спрос от удалённых сотрудников, «Бруклин Флорипы». Лучший профиль: цифровые кочевники. Ключевой катализатор: миграция удалёнки. [Инглезес](/research/report/ingleses-investment-guide): самый стабильный рынок аренды севера Флорипы, безопасный консервативный выбор. Лучший профиль: консервативные инвесторы. Ключевой катализатор: близость к аэропорту.",
+            "[Канасвиэйрас](/research/report/canasvieiras-investment-guide): доступный вход на север Флорипы, лучшее для минимального входа с приличной доходностью. Лучший профиль: начинающие инвесторы в СК. Ключевой катализатор: низкие цены привлекают застройку. Центр: городское ядро с коммерческим миксом, растущий спрос на офисы, не пляжная игра. Лучший профиль: городские, коммерческие инвесторы. Ключевой катализатор: расширение техсектора.",
+            "[Кампече](/research/report/campeche-investment-guide): ⭐ наибольший потенциал во Флорипе, новый городской центр рядом с аэропортом, риск: избыток предложения. Лучший профиль: ориентир на рост, 5+ лет. Ключевой катализатор: аэропорт, городской центр.",
           ],
         },
         {
@@ -2796,7 +2796,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           paragraphs: [
             'Created over 30 years ago by the Habitasul Group as a tourism-oriented master-planned development, the neighborhood combines luxury single-family houses, upscale condominiums, and hospitality properties (resorts, beach clubs, hotels). Known for its high-society residents, designer architecture, beach clubs, and summer social scene.',
             'Land is scarce and tightly regulated, making Jurerê Internacional one of the most exclusive and resilient luxury markets in Latin America.',
-            'North shore of Santa Catarina Island, approximately 20 km from downtown Florianópolis and 16 km from Hercílio Luz Airport. Occupies the eastern portion of the broader Jurerê neighborhood, with direct beachfront access and a master-planned grid of streets, parks, and commercial areas. Bordered by the Atlantic Ocean to the east and the natural dunes of Jurerê beach to the west.',
+            'North shore of Santa Catarina Island, approximately 20 km from downtown Florianópolis and 16 km from Hercílio Luz Airport. Occupies the eastern portion of the broader Jurerê neighborhood, with direct beachfront access and a master-planned grid of streets, parks, and commercial areas. Bordered by the Atlantic Ocean to the east and the natural dunes of Jurerê beach to the west. For the full city-wide picture — infrastructure catalysts, price trends, and how Jurerê compares to the other districts — see our [Florianópolis investment report](/research/report/florianopolis-investment-report-2026).',
             'A very small permanent resident population — estimated at approximately 3,000 or fewer — due to its low-density, single-family-home character. The seasonal population swells dramatically during summer, with thousands of second-home owners, tourists, and hospitality workers. The demographic is predominantly high-net-worth individuals, with median household incomes far above the national average.',
           ],
         },
@@ -2860,7 +2860,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           paragraphs: [
             'Создан более 30 лет назад группой Habitasul как туристически-ориентированная застройка по единому мастер-плану, район сочетает люксовые частные дома, престижные кондоминиумы и гостиничную недвижимость (резорты, пляжные клубы, отели). Известен своими состоятельными резидентами, архитектурой от именитых бюро, пляжными клубами и летней светской жизнью.',
             'Земля дефицитна и строго регулируется — это делает Jurerê Internacional одним из самых эксклюзивных и устойчивых люксовых рынков Латинской Америки.',
-            'Северный берег острова Санта-Катарина, примерно 20 км от центра Флорианополиса и 16 км от аэропорта Эрсилиу-Лус. Занимает восточную часть более широкого района Журере, с прямым выходом к пляжу и спланированной сеткой улиц, парков и коммерческих зон. Ограничен Атлантическим океаном с востока и природными дюнами пляжа Журере с запада.',
+            'Северный берег острова Санта-Катарина, примерно 20 км от центра Флорианополиса и 16 км от аэропорта Эрсилиу-Лус. Занимает восточную часть более широкого района Журере, с прямым выходом к пляжу и спланированной сеткой улиц, парков и коммерческих зон. Ограничен Атлантическим океаном с востока и природными дюнами пляжа Журере с запада. Полную картину по городу — инфраструктурные катализаторы, динамику цен и сравнение с другими районами — см. в нашем [отчёте по Флорианополису](/research/report/florianopolis-investment-report-2026).',
             'Очень малое постоянное население — около 3000 человек или менее, из-за низкой плотности застройки частными домами. Сезонное население резко растёт летом — тысячи владельцев второй недвижимости, туристов и работников гостиничной сферы. Демография преимущественно состоятельная, медианный доход домохозяйств значительно выше среднего по стране.',
           ],
         },
@@ -2927,7 +2927,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           paragraphs: [
             'The neighborhood is particularly popular with Argentine and Uruguayan tourists, who have been visiting for decades and maintain a strong presence through seasonal rentals and second-home ownership. Canasvieiras has a lively beachfront strip with restaurants, bars, and shops, creating a resort-town atmosphere.',
             'The real estate market is mature — most buildings were constructed between 1990–2015, with newer infill projects focusing on modernized units.',
-            'Northern tip of Santa Catarina Island, approximately 23 km from downtown Florianópolis. Canasvieiras is the northernmost urbanized beach neighborhood on the island, bordered by Ingleses to the south (2 km) and the Atlantic Ocean to the north. The beach faces northeast with calm, warm waters. Access is via SC-401 highway, with the neighborhood\'s main commercial strip running parallel to the beach.',
+            'Northern tip of Santa Catarina Island, approximately 23 km from downtown Florianópolis. Canasvieiras is the northernmost urbanized beach neighborhood on the island, bordered by Ingleses to the south (2 km) and the Atlantic Ocean to the north. The beach faces northeast with calm, warm waters. Access is via SC-401 highway, with the neighborhood\'s main commercial strip running parallel to the beach. For the full city-wide picture and how Canasvieiras stacks up against the other districts, see our [Florianópolis investment report](/research/report/florianopolis-investment-report-2026).',
             'Approximately 9,814 permanent residents (52% female, 48% male) across 3.55 km². The effective population during summer reaches 30,000–40,000+ due to the strong influx of Argentine, Uruguayan, and Brazilian tourists. The neighborhood has a significant Argentine community — many families have owned second homes here for 20+ years. The seasonal demographic is heavily family-oriented.',
           ],
         },
@@ -2985,7 +2985,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           paragraphs: [
             'Район особенно популярен у аргентинских и уругвайских туристов, приезжающих десятилетиями и сохраняющих сильное присутствие через сезонную аренду и владение второй недвижимостью. У Canasvieiras оживлённая набережная с ресторанами, барами и магазинами — атмосфера курортного городка.',
             'Рынок недвижимости зрелый — большинство зданий построено в 1990–2015 годах, новые точечные проекты фокусируются на модернизированных юнитах.',
-            'Северная оконечность острова Санта-Катарина, примерно 23 км от центра Флорианополиса. Canasvieiras — самый северный урбанизированный пляжный район острова, граничит с Инглезес на юге (2 км) и Атлантическим океаном на севере. Пляж выходит на северо-восток, спокойные тёплые воды. Доступ по трассе SC-401, главная коммерческая улица идёт параллельно пляжу.',
+            'Северная оконечность острова Санта-Катарина, примерно 23 км от центра Флорианополиса. Canasvieiras — самый северный урбанизированный пляжный район острова, граничит с Инглезес на юге (2 км) и Атлантическим океаном на севере. Пляж выходит на северо-восток, спокойные тёплые воды. Доступ по трассе SC-401, главная коммерческая улица идёт параллельно пляжу. Полную картину по городу и сравнение Canasvieiras с другими районами см. в нашем [отчёте по Флорианополису](/research/report/florianopolis-investment-report-2026).',
             'Около 9814 постоянных жителей (52% женщины, 48% мужчины) на 3,55 км². Эффективное население летом достигает 30–40 тысяч+ за счёт мощного притока аргентинских, уругвайских и бразильских туристов. Значительное аргентинское сообщество — многие семьи владеют второй недвижимостью здесь 20+ лет. Сезонная демография сильно ориентирована на семьи.',
           ],
         },
@@ -3045,7 +3045,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Market Overview',
           paragraphs: [
             'The area is subdivided into Ingleses Norte, Ingleses Centro, and Ingleses Sul. Unlike the party-focused Canasvieiras, Ingleses has a more family-oriented atmosphere — a mix of mid-rise apartment buildings, vacation homes, and local commerce. It has become one of Florianópolis\'s most stable rental markets, with consistent demand from both Brazilian tourists and long-term residents.',
-            'Northern tip of the island, approximately 22 km from downtown Florianópolis and 18 km from Hercílio Luz Airport. Accessed via SC-401 highway, which connects to Canasvieiras (2 km north) and Jurerê (4 km east). The beach faces north, meaning calmer waters and warmer temperatures — a key differentiator from the surf beaches on the island\'s east coast.',
+            'Northern tip of the island, approximately 22 km from downtown Florianópolis and 18 km from Hercílio Luz Airport. Accessed via SC-401 highway, which connects to Canasvieiras (2 km north) and Jurerê (4 km east). The beach faces north, meaning calmer waters and warmer temperatures — a key differentiator from the surf beaches on the island\'s east coast. For the full city-wide picture and how Ingleses compares to the other districts, see our [Florianópolis investment report](/research/report/florianopolis-investment-report-2026).',
             'The broader Ingleses do Rio Vermelho district has approximately 5,442 residents across its sub-sectors: Centro (3,142), Sul (1,323), Norte (977). The effective population during summer (December–February) swells to 15,000–20,000+ due to seasonal tourism. The resident population is predominantly middle-class families, with a growing number of remote workers and retirees from other Brazilian states. Unlike pure tourist zones, Ingleses has schools, health clinics, and local commerce serving permanent residents year-round.',
           ],
         },
@@ -3102,7 +3102,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Обзор рынка',
           paragraphs: [
             'Район делится на три субрайона — Ingleses Norte, Ingleses Centro и Ingleses Sul. В отличие от «тусовочного» Canasvieiras, Ingleses отличается более семейной атмосферой — смесь среднеэтажных домов, дач и локальной торговли. Стал одним из самых стабильных рынков аренды Флорианополиса, с устойчивым спросом и от бразильских туристов, и от долгосрочных резидентов.',
-            'Северная оконечность острова, примерно 22 км от центра Флорианополиса и 18 км от аэропорта Эрсилиу-Лус. Доступ по трассе SC-401, которая связывает с Canasvieiras (2 км на север) и Журере (4 км на восток). Пляж выходит на север — спокойнее воды и теплее температура, ключевое отличие от сёрф-пляжей восточного побережья острова.',
+            'Северная оконечность острова, примерно 22 км от центра Флорианополиса и 18 км от аэропорта Эрсилиу-Лус. Доступ по трассе SC-401, которая связывает с Canasvieiras (2 км на север) и Журере (4 км на восток). Пляж выходит на север — спокойнее воды и теплее температура, ключевое отличие от сёрф-пляжей восточного побережья острова. Полную картину по городу и сравнение Ingleses с другими районами см. в нашем [отчёте по Флорианополису](/research/report/florianopolis-investment-report-2026).',
             'Более широкий район Ingleses do Rio Vermelho насчитывает около 5442 жителей по субрайонам: Centro (3142), Sul (1323), Norte (977). Эффективное население летом (декабрь–февраль) растёт до 15–20 тысяч+ за счёт сезонного туризма. Постоянное население — преимущественно семьи среднего класса, растёт число удалённых сотрудников и пенсионеров из других штатов Бразилии. В отличие от чисто туристических зон, здесь есть школы, клиники и локальная торговля, обслуживающая постоянных резидентов круглый год.',
           ],
         },
@@ -3162,7 +3162,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Market Overview',
           paragraphs: [
             'The area encompasses several sub-districts — Campeche Sul, Norte, Leste, Central, and the premium Novo Campeche development — each offering a different investment profile. Known for its 4 km sandy beach, surf culture, and a more "authentic" feel compared to the established north-side beaches.',
-            'South coast of Santa Catarina Island, approximately 18 km from downtown Florianópolis and 12 km from Hercílio Luz Airport (which is undergoing major expansion). The neighborhood sits between Lagoa da Conceição to the north and Ribeirão da Ilha to the south, with easy access via SC-406 highway.',
+            'South coast of Santa Catarina Island, approximately 18 km from downtown Florianópolis and 12 km from Hercílio Luz Airport (which is undergoing major expansion). The neighborhood sits between Lagoa da Conceição to the north and Ribeirão da Ilha to the south, with easy access via SC-406 highway. For the full city-wide picture and how Campeche compares to the other districts, see our [Florianópolis investment report](/research/report/florianopolis-investment-report-2026).',
             'The greater Campeche area is home to approximately 30,000+ residents across all sub-districts. Campeche Sul alone had ~6,240 residents in the most recent census, with 36.5% population growth from 2000–2015 and 189% growth from 1975–2015. The median age is approximately 32 — significantly younger than the city average — driven by young families, remote workers, and lifestyle migrants relocating from other Brazilian states. Seasonal population swells by 40–60% during summer (December–March).',
           ],
         },
@@ -3233,7 +3233,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Обзор рынка',
           paragraphs: [
             'Район включает несколько субрайонов — Campeche Sul, Norte, Leste, Central и премиальный Novo Campeche — каждый со своим инвестиционным профилем. Известен 4-километровым песчаным пляжем, сёрф-культурой и более «аутентичной» атмосферой по сравнению с устоявшимися пляжами севера острова.',
-            'Южное побережье острова Санта-Катарина, примерно 18 км от центра Флорианополиса и 12 км от аэропорта Эрсилиу-Лус (который проходит масштабное расширение). Район расположен между Лагоа-да-Консейсау на севере и Рибейран-да-Илья на юге, доступ по трассе SC-406.',
+            'Южное побережье острова Санта-Катарина, примерно 18 км от центра Флорианополиса и 12 км от аэропорта Эрсилиу-Лус (который проходит масштабное расширение). Район расположен между Лагоа-да-Консейсау на севере и Рибейран-да-Илья на юге, доступ по трассе SC-406. Полную картину по городу и сравнение Campeche с другими районами см. в нашем [отчёте по Флорианополису](/research/report/florianopolis-investment-report-2026).',
             'Большой район Campeche насчитывает 30 000+ жителей по всем субрайонам. Только Campeche Sul — около 6240 жителей по последней переписи, с ростом населения на 36,5% за 2000–2015 и 189% за 1975–2015. Медианный возраст около 32 лет — заметно моложе среднего по городу, за счёт молодых семей, удалённых сотрудников и лайфстайл-мигрантов из других штатов Бразилии. Сезонное население растёт на 40–60% летом (декабрь–март).',
           ],
         },
@@ -3449,7 +3449,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           paragraphs: [
             'CFL entered the Florianópolis market in 2006 with the Acqua project on Beira-Mar Norte. In 2011, the company delivered a landmark project — Square SC on the SC-401 highway, transforming it from a pass-through road into a genuine business and innovation corridor on the island; CFL\'s headquarters sit there today.',
             'Since then, the company has consistently established itself in the luxury segment — not mid-premium, as some general market overviews mistakenly describe it.',
-            'Portfolio — prime locations, not mid-tier: in Jurerê Internacional — Al Mare, Quay Luxury Home Design, Jay Luxury Home Design, Vitra. Oceana (architecture by Arquitectonica of Miami and Obra Prima of Uruguay) sold out completely in 30 days, R$1.3 billion in sales over that same period. Terraço Cacupé — 26 exclusive houses on a peninsula (launched 2024). La Mare Campeche has been announced — a 12,000+ m² lot, 109 units up to 385 m², architect Guilherme Torres, in partnership with the Milano group — right in the district we covered in our separate [Campeche](/research/report/campeche-investment-guide) guide.',
+            'Portfolio — prime locations, not mid-tier: in [Jurerê Internacional](/research/report/jurere-internacional-investment-guide) — Al Mare, Quay Luxury Home Design, Jay Luxury Home Design, Vitra. Oceana (architecture by Arquitectonica of Miami and Obra Prima of Uruguay) sold out completely in 30 days, R$1.3 billion in sales over that same period. Terraço Cacupé — 26 exclusive houses on a peninsula (launched 2024). La Mare Campeche has been announced — a 12,000+ m² lot, 109 units up to 385 m², architect Guilherme Torres, in partnership with the Milano group — right in the district we covered in our separate [Campeche](/research/report/campeche-investment-guide) guide.',
             'The company\'s clientele is affluent buyers, including politicians and businesspeople, seeking not just square meters but a specific location and status.',
           ],
         },
@@ -3497,7 +3497,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           paragraphs: [
             'CFL вышла на рынок Флорианополиса в 2006 году с проектом Acqua на Beira-Mar Norte. В 2011 году компания реализовала знаковый проект — Square SC на трассе SC-401, превративший её из проходной дороги в полноценный бизнес- и инновационный коридор острова; там же сегодня расположен головной офис CFL.',
             'С тех пор компания последовательно закрепилась именно в люксовом сегменте, а не в mid-premium, как иногда ошибочно указывается в общих обзорах рынка.',
-            'Портфолио — прайм-локации, не средний сегмент: в Журере Интернасьонал — Al Mare, Quay Luxury Home Design, Jay Luxury Home Design, Vitra. Oceana (архитектура Arquitectonica из Майами и Obra Prima из Уругвая) — полностью распродан за 30 дней, R$1,3 млрд продаж за тот же срок. Terraço Cacupé — 26 эксклюзивных домов на полуострове (запуск 2024). Анонсирован La Mare Campeche — участок 12 000+ м², 109 юнитов до 385 м², архитектор Гильерме Торрес, партнёрство с группой Milano — прямо в районе, который мы уже разбирали в отдельном гиде по [Campeche](/research/report/campeche-investment-guide).',
+            'Портфолио — прайм-локации, не средний сегмент: в [Журере Интернасьонал](/research/report/jurere-internacional-investment-guide) — Al Mare, Quay Luxury Home Design, Jay Luxury Home Design, Vitra. Oceana (архитектура Arquitectonica из Майами и Obra Prima из Уругвая) — полностью распродан за 30 дней, R$1,3 млрд продаж за тот же срок. Terraço Cacupé — 26 эксклюзивных домов на полуострове (запуск 2024). Анонсирован La Mare Campeche — участок 12 000+ м², 109 юнитов до 385 м², архитектор Гильерме Торрес, партнёрство с группой Milano — прямо в районе, который мы уже разбирали в отдельном гиде по [Campeche](/research/report/campeche-investment-guide).',
             'Клиентура компании — состоятельные покупатели, включая политиков и бизнесменов, ищущих не просто квадратные метры, а конкретную локацию и статус.',
           ],
         },
@@ -3547,7 +3547,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Company Overview & Methodological Note',
           paragraphs: [
             'Some source material describes Modulare as an "innovative modular/prefabricated construction" developer. This isn\'t supported by the evidence — per the company\'s own website and independent sources, Modulare\'s actual specialty is flexible modular floor plans (reconfigurable studios, lofts, duplexes) combined with a cooperative SPE "preço de custo" model — the same structure we covered in detail in our separate article on [SPE risks and mechanics](/research/report/spe-struktura-nedvizhimost-braziliya).',
-            'Portfolio — specific projects, not generic claims: Maxxi Garden (Cachoeira do Bom Jesus) — a "Home Club" concept near Sapiens Parque, 80 units, from R$289K, delivery H2 2027. Maxxi View (Jurerê/Canajurê) — ocean view, architect Robson Nascimento (award-winning, published internationally), 1–4 bedroom units from 25 to 262 m², SPE model, delivery 2027–2028.',
+            'Portfolio — specific projects, not generic claims: Maxxi Garden (Cachoeira do Bom Jesus) — a "Home Club" concept near Sapiens Parque, the same innovation-park catalyst we covered in our [Canasvieiras](/research/report/canasvieiras-investment-guide) guide, 80 units, from R$289K, delivery H2 2027. Maxxi View (Jurerê/Canajurê) — ocean view, architect [Robson Nascimento](/research/report/robson-nascimento-architect-jurere) (award-winning, published internationally), 1–4 bedroom units from 25 to 262 m², SPE model, delivery 2027–2028.',
           ],
         },
         {
@@ -3601,7 +3601,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Обзор компании и методологическая сноска',
           paragraphs: [
             'В исходных материалах по рынку Modulare иногда описывают как «инновационное модульное/сборное строительство». Это не подтверждается — по данным официального сайта компании и независимых источников, реальная специализация Modulare это гибкие модульные планировки (перепланируемые студии, лофты, дуплексы) в сочетании с кооперативной моделью SPE «preço de custo» — той же структурой, которую мы подробно разбирали в отдельной статье про [риски и механику SPE](/research/report/spe-struktura-nedvizhimost-braziliya).',
-            'Портфолио — конкретные проекты, не общие формулировки: Maxxi Garden (Cachoeira do Bom Jesus) — концепция «Home Club», рядом с Sapiens Parque, 80 юнитов, от R$289 тыс., сдача 2-е полугодие 2027. Maxxi View (Jurerê/Canajurê) — вид на океан, архитектор Робсон Насименто (отмеченный наградами, публикуется в международных изданиях), юниты 1-4 спальни от 25 до 262 м², SPE-модель, сдача 2027-2028.',
+            'Портфолио — конкретные проекты, не общие формулировки: Maxxi Garden (Cachoeira do Bom Jesus) — концепция «Home Club», рядом с Sapiens Parque — тем же катализатором-инновационным парком, который мы разбирали в гиде по [Canasvieiras](/research/report/canasvieiras-investment-guide), 80 юнитов, от R$289 тыс., сдача 2-е полугодие 2027. Maxxi View (Jurerê/Canajurê) — вид на океан, архитектор [Робсон Насименто](/research/report/robson-nascimento-architect-jurere) (отмеченный наградами, публикуется в международных изданиях), юниты 1-4 спальни от 25 до 262 м², SPE-модель, сдача 2027-2028.',
           ],
         },
         {
@@ -3672,7 +3672,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         {
           heading: 'Strengths',
           paragraphs: [
-            'Nearly three decades in the market — since 1997, having weathered several of Brazil\'s economic cycles, including the 2015–2016 recession, a rare level of proven resilience. Genuine luxury segment — not just "quality finishes," the company\'s own direct positioning as a Florianópolis luxury specialist.',
+            'Nearly three decades in the market — since 1997, having weathered several of Brazil\'s economic cycles, including the 2015–2016 recession, a rare level of proven resilience. Genuine luxury segment — not just "quality finishes," the company\'s own direct positioning as a Florianópolis luxury specialist, in the same tier as the branded luxury developments we cover in our [Jurerê Internacional](/research/report/jurere-internacional-investment-guide) guide.',
             'Diversified portfolio — from beachfront residential (Azzure, Águas do Santinho) to eco-integrated projects (BOSC) and commercial real estate (Hantei Office Building). Thoughtful design — modern facades, quality materials, layouts that maximize natural light and views.',
           ],
         },
@@ -3719,7 +3719,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         {
           heading: 'Сильные стороны',
           paragraphs: [
-            'Почти три десятилетия на рынке — с 1997 года, пережила несколько экономических циклов Бразилии, включая рецессию 2015-2016 — редкий уровень проверенной устойчивости. Подлинный люксовый сегмент — не просто «качественная отделка», а прямое позиционирование компании как специалиста по люксу Флорианополиса.',
+            'Почти три десятилетия на рынке — с 1997 года, пережила несколько экономических циклов Бразилии, включая рецессию 2015-2016 — редкий уровень проверенной устойчивости. Подлинный люксовый сегмент — не просто «качественная отделка», а прямое позиционирование компании как специалиста по люксу Флорианополиса, в том же классе, что и брендовые люксовые проекты, которые мы разбираем в гиде по [Журере Интернасьонал](/research/report/jurere-internacional-investment-guide).',
             'Диверсифицированный портфель — от прибрежного жилья (Azzure, Águas do Santinho) до эко-интегрированных проектов (BOSC) и коммерческой недвижимости (Hantei Office Building). Продуманный дизайн — современные фасады, качественные материалы, планировки, максимизирующие естественный свет и виды.',
           ],
         },
@@ -3747,7 +3747,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         {
           heading: 'The Short Version',
           paragraphs: [
-            'CBA Incorporadora (Grupo CBA) isn\'t a "mid-range regional developer," as general market overviews sometimes describe it — it\'s a fast-growing luxury holding company with capital built in agribusiness and a project portfolio worth billions of reais, including properties in Jurerê Internacional.',
+            'CBA Incorporadora (Grupo CBA) isn\'t a "mid-range regional developer," as general market overviews sometimes describe it — it\'s a fast-growing luxury holding company with capital built in agribusiness and a project portfolio worth billions of reais, including properties in [Jurerê Internacional](/research/report/jurere-internacional-investment-guide).',
             'Headline figures: founding year 2015, land bank R$4.5 billion+ (~30 plots in SC), project portfolio (VGV) R$3.5 billion+, Plan B Overall Developer Score 7.7/10.',
           ],
         },
@@ -3795,7 +3795,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         {
           heading: 'Коротко о главном',
           paragraphs: [
-            'CBA Incorporadora (Grupo CBA) — не «региональный застройщик среднего сегмента», как иногда описывают рынок в целом, а быстрорастущий люксовый холдинг с капиталом, построенным в агробизнесе, и портфелем проектов на миллиарды реалов, включая объекты в Журере Интернасьонал.',
+            'CBA Incorporadora (Grupo CBA) — не «региональный застройщик среднего сегмента», как иногда описывают рынок в целом, а быстрорастущий люксовый холдинг с капиталом, построенным в агробизнесе, и портфелем проектов на миллиарды реалов, включая объекты в [Журере Интернасьонал](/research/report/jurere-internacional-investment-guide).',
             'Ключевые цифры: год основания 2015, земельный банк R$4,5 млрд+ (~30 участков в СК), портфель проектов (VGV) R$3,5 млрд+, Plan B Overall Developer Score 7,7/10.',
           ],
         },
