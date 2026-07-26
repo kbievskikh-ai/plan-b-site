@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Plan B — Real Estate Investment in Brazil",
-    description: "Discover investment properties in Florianópolis, Balneário Camboriú, and coastal Brazil.",
+    description: "Independent real estate investment advisor in Santa Catarina, Brazil — not tied to any developer. Honest yield and risk analysis for foreign investors.",
     images: ["https://planbbrazil.com/opengraph-image.png"],
   },
 };
