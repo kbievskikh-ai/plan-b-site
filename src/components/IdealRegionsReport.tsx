@@ -421,7 +421,7 @@ export default function IdealRegionsReport() {
             <div key={r.id} className="bg-white rounded-xl overflow-hidden shadow-md mb-3">
               {/* Image placeholder */}
               <div className="h-36 bg-gradient-to-br from-[#1B2951] to-[#111D3A] relative overflow-hidden">
-                <img src={r.img} alt={name} className="w-full h-full object-cover" />
+                <img src={r.img} alt={name} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1B2951]/90 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 px-4 py-2 flex items-center justify-between">
                   <div className="flex items-center gap-2">

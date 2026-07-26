@@ -7,6 +7,7 @@ import { properties as fallbackProperties, Property } from '@/data/properties';
 import { fetchProperties } from '@/lib/api';
 import PropertyFilters, { FilterState } from './PropertyFilters';
 import { useLanguage } from '@/lib/i18n';
+import { cloudinaryResize } from '@/lib/cloudinary';
 
 type CategoryTab = 'all' | 'residential' | 'investment' | 'vacation';
 
@@ -113,7 +114,7 @@ export default function FeaturedProperties() {
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-navy-900 mb-4 [text-wrap:balance]">
             {t('properties.title')}
           </h2>
-          <p className="text-navy-900/50 max-w-2xl mx-auto text-lg">
+          <p className="text-navy-900/70 max-w-2xl mx-auto text-lg">
             {t('properties.subtitle')}
           </p>
         </div>
@@ -170,8 +171,10 @@ export default function FeaturedProperties() {
               <div className="relative aspect-[4/3] overflow-hidden mb-4 rounded-lg">
                 {property.images?.[0]?.startsWith('http') ? (
                   <img
-                    src={property.images[0]}
+                    src={cloudinaryResize(property.images[0], 700)}
                     alt={property.title}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 ) : (
@@ -206,7 +209,7 @@ export default function FeaturedProperties() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                   </svg>
-                  <span className="text-navy-900/40 text-xs tracking-wider uppercase">
+                  <span className="text-navy-900/70 text-xs tracking-wider uppercase">
                     {property.location}
                   </span>
                 </div>
@@ -215,7 +218,7 @@ export default function FeaturedProperties() {
                 </h3>
 
                 {/* Details */}
-                <div className="flex gap-4 text-navy-900/40 text-xs mb-3">
+                <div className="flex gap-4 text-navy-900/70 text-xs mb-3">
                   <span>{property.beds} {t('properties.beds')}</span>
                   <span>{property.baths} {t('properties.baths')}</span>
                   <span>{property.area}</span>
@@ -233,7 +236,7 @@ export default function FeaturedProperties() {
                 {/* Price */}
                 <div className="pt-3 border-t border-navy-900/10 flex items-baseline justify-between mt-auto">
                   <span className="text-navy-900 font-heading text-xl">{property.price}</span>
-                  <span className="text-navy-900/30 text-sm">{property.priceUsd}</span>
+                  <span className="text-navy-900/70 text-sm">{property.priceUsd}</span>
                 </div>
               </div>
             </motion.div>
@@ -246,7 +249,7 @@ export default function FeaturedProperties() {
             <h3 className="font-heading text-xl text-navy-900 mb-2">
               {t('properties.noResults')}
             </h3>
-            <p className="text-navy-900/50 mb-6">{t('properties.noResultsDesc')}</p>
+            <p className="text-navy-900/70 mb-6">{t('properties.noResultsDesc')}</p>
             <button 
               onClick={() => { setFilters({ priceRange: '', type: '', region: '' }); setActiveTab('all'); }}
               className="btn-outline"

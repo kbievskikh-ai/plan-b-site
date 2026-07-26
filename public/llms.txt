@@ -10,25 +10,54 @@ research on Santa Catarina real estate — district-level pricing, developer tra
 records, yield analysis, tax and residency implications — and advises foreign
 investors (typically $150K–$500K) purchasing remotely.
 
-## Coverage
-- Cities: Florianópolis, Balneário Camboriú, Itapema, Porto Belo, Bombinhas
-- Districts: Jurerê, Canasvieiras, Campeche, Lagoa da Conceição, Canto Grande, and others
-- Topics: off-plan (planta) purchases, cota / co-investment structures, CUB indexation,
-  rental yields, ITBI and capital gains, Brazilian investor visa (RN 36/2018)
+## City Reports
 
-## Research
-- Market reports: https://planbbrazil.com/research/market-reports
-- City reports: https://planbbrazil.com/research/city-reports
-- District guides: https://planbbrazil.com/research/district-guides
-- Developer reviews: https://planbbrazil.com/research/developer-reviews
-- Guides: https://planbbrazil.com/research/guides
-- All: https://planbbrazil.com/research/all
+- [Florianópolis Investment Report 2026](https://planbbrazil.com/research/report/florianopolis-investment-report-2026): Brazil's Silicon Island — population growth, infrastructure catalysts, price trends, rental market, outlook through 2030.
+- [Balneário Camboriú Investment Report 2026](https://planbbrazil.com/research/report/balneario-camboriu-investment-report-2026): Brazil's luxury coastal high-rise market — pricing, trends, developer landscape, investment outlook.
+- [Itapema Investment Report 2026](https://planbbrazil.com/research/report/itapema-investment-report-2026): Santa Catarina's fastest-growing coastal market — Meia Praia pricing, growth catalysts, recommendations.
+- [Porto Belo Investment Report 2026](https://planbbrazil.com/research/report/porto-belo-investment-report-2026): Eco-luxury coastal market — Beto Carrero World catalyst, nature-focused development.
+- [Rancho Queimado Investment Report 2026](https://planbbrazil.com/research/report/rancho-queimado-investment-report-2026): Santa Catarina's most affordable entry point — rural lifestyle, gated-community potential.
+
+## District Guides (Florianópolis)
+
+- [Jurerê Internacional Investment Guide](https://planbbrazil.com/research/report/jurere-internacional-investment-guide): Santa Catarina's most prestigious address — highest prices, highest liquidity, most resilient to downturns.
+- [Canasvieiras Investment Guide](https://planbbrazil.com/research/report/canasvieiras-investment-guide): Budget-friendly entry into Florianópolis north — best yield-to-price ratio in the region.
+- [Ingleses Investment Guide](https://planbbrazil.com/research/report/ingleses-investment-guide): Most stable rental market in northern Florianópolis — consistent tourist demand.
+- [Campeche Investment Guide](https://planbbrazil.com/research/report/campeche-investment-guide): Florianópolis district with the highest upside — new urban center, airport proximity.
+
+## Market Reports & Strategy
+
+- [Best Areas to Invest in Santa Catarina 2026](https://planbbrazil.com/research/report/best-areas-to-invest-in-santa-catarina-2026): Comparison of top investment destinations — Jurerê, Itapema, Balneário Camboriú, Porto Belo and more.
+- [Brazil 2026-2027 Market Strategy](https://planbbrazil.com/research/report/brazil-market-strategy-2026-2027): Why segment choice matters more than city choice as the market stops moving as one front.
+- [Santa Catarina Market Outlook 2027](https://planbbrazil.com/research/report/santa-catarina-market-outlook-2027): Forecasts, growth projections, infrastructure catalysts shaping the market.
+- [Rental Yield Report Santa Catarina 2026](https://planbbrazil.com/research/report/rental-yield-report-santa-catarina-2026): Short-term vs long-term yields, occupancy rates, rental income projections by area.
+
+## Buying, Tax & Residency
+
+- [Brazil Residency Through Real Estate 2026](https://planbbrazil.com/research/report/vnzh-braziliya-nedvizhimost): How the investor residency permit actually works — thresholds, timeline to citizenship, documents. Explained with an immigration lawyer.
+- [How to Buy Property in Brazil: Steps and Costs 2026](https://planbbrazil.com/research/report/kak-kupit-nedvizhimost-braziliya): CPF, bank account, transfer, contract, registration — exact costs at every stage plus a developer due-diligence checklist.
+- [Capital Gains Tax on Real Estate Sales in Brazil 2026](https://planbbrazil.com/research/report/nalog-prodazha-nedvizhimost-braziliya): The 15% rule, the progressive scale, and the legal reinvestment exemption.
+- [Buying Property Through an SPE in Brazil 2026](https://planbbrazil.com/research/report/spe-struktura-nedvizhimost-braziliya): How Sociedade de Propósito Específico structures work, the legal protection gap, and investor risk.
+- [Starting a Business in Brazil Alone](https://planbbrazil.com/research/report/starting-a-business-in-brazil-2026): 22 steps instead of 13, up to 180 days, a mandatory local representative — how foreigners actually register a company.
+
+## Guides
+
+- [Brazil Investment Guide 2026](https://planbbrazil.com/research/report/brazil-investment-guide-2026): The full 47-page master guide — market overview, legal framework, taxes, step-by-step buying process.
+- [Brazil for Dummies](https://planbbrazil.com/research/report/brazil-for-dummies-culture-guide): Mentality, language, money, safety, and everyday life in Brazil, without the gloss or the fear-mongering.
+- [Practical Guide for Newcomers to Florianópolis](https://planbbrazil.com/research/report/newcomers-guide-florianopolis): Transport, schools, healthcare, shopping — your first months on the island.
+
+## Developer Reviews
+
+- [CFL Construtora Developer Review 2026](https://planbbrazil.com/research/report/cfl-construtora-developer-review-2026): One of Santa Catarina's most established developers — track record, quality, reputation.
+- [STV Construções Developer Review 2026](https://planbbrazil.com/research/report/stv-construcoes-developer-review-2026): The developer that moved its HQ to Porto Belo — a proven 300% appreciation case and founder interview.
 
 ## Listings
-- Properties: https://planbbrazil.com/#properties
-- Individual projects: https://planbbrazil.com/projects/{slug}
+
+- [All Research](https://planbbrazil.com/research/all): Full index of every report, guide, and district analysis.
+- [Featured Properties](https://planbbrazil.com/#properties): Live property listings across Santa Catarina.
 
 ## Contact
+
 - Website: https://planbbrazil.com
 - Email: kbievskikh@planbbrazil.com
 - Telegram: @KBIEVSKIKH

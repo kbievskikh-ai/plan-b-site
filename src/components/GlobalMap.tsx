@@ -112,6 +112,8 @@ export default function GlobalMap() {
               alt="World map"
               className="w-full h-auto opacity-90"
               draggable={false}
+              loading="lazy"
+              decoding="async"
             />
             
             {/* Connection lines (SVG overlay) */}

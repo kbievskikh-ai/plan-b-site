@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
+import { cloudinaryResize } from '@/lib/cloudinary';
 
 type Lang = 'en' | 'ru' | 'pt' | 'es';
 
@@ -1089,7 +1090,7 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
       <div style={{
         position: 'relative',
         height: 420,
-        background: images.length > 0 ? `url(${images[0].url}) center/cover` : `linear-gradient(135deg, ${NAVY}, #2a3f75)`,
+        background: images.length > 0 ? `url(${cloudinaryResize(images[0].url, 1600)}) center/cover` : `linear-gradient(135deg, ${NAVY}, #2a3f75)`,
       }}>
         <div style={{
           position: 'absolute', inset: 0,
@@ -1238,7 +1239,7 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
                     overflow: 'hidden',
                     cursor: 'pointer',
                     aspectRatio: '4/3',
-                    background: `url(${img.url}) center/cover`,
+                    background: `url(${cloudinaryResize(img.url, 500)}) center/cover`,
                     border: '1px solid #e5e5e5',
                     transition: 'transform 0.2s',
                   }}
@@ -1314,6 +1315,8 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
                           <img
                             src={u.floorPlan}
                             alt={`${u.type} floor plan`}
+                            loading="lazy"
+                            decoding="async"
                             style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 8 }}
                           />
                         </div>
@@ -1422,6 +1425,8 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
                       <img
                         src={u.floorPlan}
                         alt={`${u.type} floor plan`}
+                        loading="lazy"
+                        decoding="async"
                         style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 8 }}
                       />
                     </div>
@@ -1664,7 +1669,7 @@ export default function ProjectPageClient({ property, slug }: { property: Proper
               ‹
             </button>
             <img
-              src={images[galleryIndex].url}
+              src={cloudinaryResize(images[galleryIndex].url, 1800)}
               alt={`${projectName} gallery`}
               style={{ maxWidth: '90vw', maxHeight: '85vh', objectFit: 'contain', borderRadius: 8 }}
               onClick={(e) => e.stopPropagation()}

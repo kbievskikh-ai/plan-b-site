@@ -49,10 +49,11 @@ export default function PropertyFilters({ filters, onFilterChange }: PropertyFil
       <div className="flex flex-wrap gap-4 sm:gap-6 items-end">
         {/* Price Range */}
         <div className="flex-1 min-w-[150px] sm:min-w-[200px]">
-          <label className="block text-navy-900 text-sm font-medium mb-2">
+          <label htmlFor="filter-price-range" className="block text-navy-900 text-sm font-medium mb-2">
             {t('properties.priceRange')}
           </label>
           <select
+            id="filter-price-range"
             value={filters.priceRange}
             onChange={(e) => handleFilterChange('priceRange', e.target.value)}
             className="w-full px-3 sm:px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 text-navy-900 text-sm h-12"
@@ -67,10 +68,11 @@ export default function PropertyFilters({ filters, onFilterChange }: PropertyFil
 
         {/* Property Type */}
         <div className="flex-1 min-w-[150px] sm:min-w-[200px]">
-          <label className="block text-navy-900 text-sm font-medium mb-2">
+          <label htmlFor="filter-property-type" className="block text-navy-900 text-sm font-medium mb-2">
             {t('properties.propertyType')}
           </label>
           <select
+            id="filter-property-type"
             value={filters.type}
             onChange={(e) => handleFilterChange('type', e.target.value)}
             className="w-full px-3 sm:px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 text-navy-900 text-sm h-12"
@@ -85,10 +87,11 @@ export default function PropertyFilters({ filters, onFilterChange }: PropertyFil
 
         {/* Region */}
         <div className="flex-1 min-w-[150px] sm:min-w-[200px]">
-          <label className="block text-navy-900 text-sm font-medium mb-2">
+          <label htmlFor="filter-region" className="block text-navy-900 text-sm font-medium mb-2">
             {t('properties.region')}
           </label>
           <select
+            id="filter-region"
             value={filters.region}
             onChange={(e) => handleFilterChange('region', e.target.value)}
             className="w-full px-3 sm:px-4 py-3 border border-navy-900/20 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-gold-500 text-navy-900 text-sm h-12"

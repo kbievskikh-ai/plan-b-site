@@ -177,6 +177,8 @@ export default function Header() {
             
             <button
               onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
               className="text-white/80 hover:text-gold-400 relative w-10 h-10 flex items-center justify-center"
             >
               <motion.div

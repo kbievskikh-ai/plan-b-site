@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Property } from '@/data/properties';
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { cloudinaryResize } from '@/lib/cloudinary';
 
 interface PropertyModalProps {
   property: Property | null;
@@ -41,8 +42,10 @@ export default function PropertyModal({ property, isOpen, onClose }: PropertyMod
           <div className="relative aspect-[16/9] bg-gray-100">
             {property.images?.[currentImageIndex]?.startsWith('http') ? (
               <img
-                src={property.images[currentImageIndex]}
+                src={cloudinaryResize(property.images[currentImageIndex], 1200)}
                 alt={`${property.title} - ${currentImageIndex + 1}`}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover"
               />
             ) : (

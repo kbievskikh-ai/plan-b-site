@@ -80,6 +80,7 @@ export default function CountrySelector() {
             {/* Close button */}
             <button
               onClick={handleDismiss}
+              aria-label="Close"
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-10"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

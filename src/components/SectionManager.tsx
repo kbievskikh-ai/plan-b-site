@@ -43,6 +43,8 @@ function FloatingChat() {
         </div>
       )}
       <button onClick={() => setChatOpen(!chatOpen)}
+        aria-label={chatOpen ? 'Close chat options' : 'Open chat options'}
+        aria-expanded={chatOpen}
         className={`w-16 h-16 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:shadow-xl hover:scale-110 ${chatOpen ? 'bg-navy-700 rotate-45' : 'bg-gold-500 animate-bounce'}`}
         style={{ animationDuration: '2s' }}>
         {chatOpen ? (

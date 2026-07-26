@@ -49,10 +49,10 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <p className="text-white/30 text-sm leading-relaxed mt-4">
+            <p className="text-white/60 text-sm leading-relaxed mt-4">
               {t('footer.description')}
             </p>
-            <p className="text-white/20 text-xs mt-3">
+            <p className="text-white/50 text-xs mt-3">
               Licensed Real Estate Professional — CRECI-SC 59616
             </p>
           </div>
@@ -65,7 +65,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {properties.map((item) => (
                 <li key={item}>
-                  <a href="#properties" className="text-white/30 hover:text-gold-400 text-sm transition-colors">
+                  <a href="#properties" className="text-white/60 hover:text-gold-400 text-sm transition-colors">
                     {item}
                   </a>
                 </li>
@@ -81,7 +81,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {regions.map((item) => (
                 <li key={item}>
-                  <a href="#regions" className="text-white/30 hover:text-gold-400 text-sm transition-colors">
+                  <a href="#regions" className="text-white/60 hover:text-gold-400 text-sm transition-colors">
                     {item}
                   </a>
                 </li>
@@ -97,7 +97,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {company.map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="text-white/30 hover:text-gold-400 text-sm transition-colors">
+                  <a href={item.href} className="text-white/60 hover:text-gold-400 text-sm transition-colors">
                     {item.label}
                   </a>
                 </li>
@@ -109,10 +109,10 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <p className="text-white/20 text-sm">
+            <p className="text-white/50 text-sm">
               © 2026 Plan B Brazil. {t('footer.allRightsReserved')}
             </p>
-            <p className="text-white/15 text-xs mt-1">
+            <p className="text-white/50 text-xs mt-1">
               Officially licensed in Santa Catarina, Brazil — CRECI-SC 59616
             </p>
           </div>

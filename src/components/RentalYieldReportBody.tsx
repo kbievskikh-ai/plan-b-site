@@ -82,7 +82,7 @@ export default function RentalYieldReportBody({ data }: { data: RentalYieldRepor
         <h2 className="text-2xl font-serif text-white mb-4">{data.thesis.title}</h2>
         <p className="text-white/70 leading-relaxed mb-4">{data.thesis.lede}</p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={data.thesis.chartImage} alt={data.thesis.title} className="w-full rounded-lg mb-2 not-prose" />
+        <img src={data.thesis.chartImage} alt={data.thesis.title} loading="lazy" decoding="async" className="w-full rounded-lg mb-2 not-prose" />
         <p className="text-xs text-white/40 italic mb-4">{data.thesis.chartCaption}</p>
         <div className="border-l-4 border-gold-400 bg-white/5 rounded p-4 text-sm text-white/80 leading-relaxed">
           <b className="text-gold-400">Plan B:</b> {data.thesis.execSummary}
@@ -151,7 +151,7 @@ export default function RentalYieldReportBody({ data }: { data: RentalYieldRepor
         <p className="text-white/70 leading-relaxed mb-4">{data.seasonality.intro}</p>
         <p className="text-center text-gold-400 italic text-sm mb-2">{data.seasonality.chartCaption}</p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={data.seasonality.chartImage} alt={data.seasonality.title} className="w-full rounded-lg mb-4 not-prose" />
+        <img src={data.seasonality.chartImage} alt={data.seasonality.title} loading="lazy" decoding="async" className="w-full rounded-lg mb-4 not-prose" />
         <div className="grid grid-cols-3 gap-3 mb-4 not-prose">
           {data.seasonality.stats.map((s, i) => (
             <div key={i} className="bg-white/5 rounded-lg p-3 text-center">
