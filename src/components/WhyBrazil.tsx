@@ -1,11 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import ScrollAnimation from "./ScrollAnimation";
 import { useLanguage } from "@/lib/i18n";
 
 export default function WhyBrazil() {
   const { t } = useLanguage();
+  const videoWrapRef = useRef<HTMLDivElement>(null);
+  const [videoInView, setVideoInView] = useState(false);
+
+  // Defer the network request for the background video until this section
+  // is actually about to enter the viewport, so it never competes with the
+  // critical hero text/CSS for bandwidth on page load.
+  useEffect(() => {
+    const el = videoWrapRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setVideoInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVideoInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '300px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const reasons = [
     {
@@ -90,16 +115,30 @@ export default function WhyBrazil() {
           <ScrollAnimation direction="right">
             <div className="relative">
               {/* Video background */}
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden relative">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/videos/hero-jurere.mp4" type="video/mp4" />
-                </video>
+              <div ref={videoWrapRef} className="aspect-[4/5] rounded-2xl overflow-hidden relative">
+                {videoInView ? (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="none"
+                    poster="/videos/hero-jurere-poster.jpg"
+                    // @ts-expect-error fetchPriority is a valid DOM attribute, not yet in React's video typings
+                    fetchpriority="low"
+                    className="w-full h-full object-cover"
+                  >
+                    <source src="/videos/hero-jurere.mp4" type="video/mp4" />
+                  </video>
+                ) : (
+                  <img
+                    src="/videos/hero-jurere-poster.jpg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                )}
                 {/* Gradient overlay for text readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
