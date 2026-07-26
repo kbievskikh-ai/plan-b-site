@@ -1124,6 +1124,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
             "3. Construction permit — has the alvará de construção been issued.",
             "4. Actual construction stage — not what you're told, check documents, and the site in person if possible.",
             "5. Project-stops scenario — what happens to your money if construction halts.",
+            "For the specific fraud warning signs that apply regardless of deal structure, see our separate guide on [recognizing a real estate fraud scheme in Brazil](/research/report/kak-raspoznat-moshennichestvo-nedvizhimost-braziliya), and on structuring the payment itself safely through an [escrow account](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya).",
           ],
         },
         {
@@ -1206,6 +1207,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
             "3. Разрешение на строительство — получен ли alvará de construção.",
             "4. Реальный этап стройки — не на словах, а по документам и, если возможно, лично на месте.",
             "5. Сценарий остановки проекта — что происходит с вашими деньгами, если стройка встанет.",
+            "Конкретные тревожные признаки мошенничества, актуальные независимо от структуры сделки, мы разбирали отдельно — в гиде о [распознавании мошеннических схем с недвижимостью в Бразилии](/research/report/kak-raspoznat-moshennichestvo-nedvizhimost-braziliya), а про безопасное структурирование самого платежа — в статье про [эскроу-счёт](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya).",
           ],
         },
         {
@@ -4088,7 +4090,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'SPE vs Classic Incorporadora',
           paragraphs: [
             "Per Stevan's own observation, roughly 90% of the Florianópolis market today operates via SPE schemes (cooperative/shared construction). We've covered this structure in detail in a separate article on [SPE risks](/research/report/spe-struktura-nedvizhimost-braziliya) — the key point worth repeating here: sales in such a scheme can start before the architectural project is approved, before construction permits are issued, and even before the land itself is registered to the developer. The project's risks are legally shifted onto the buyers themselves as co-owners — this is confirmed by Article 58 of Lei 4.591/64, which specifically governs this format (\"regime de administração,\" \"preço de custo\").",
-            'STV works differently — a classic incorporadora. STV, like most Porto Belo and Perequê developers, operates as a classic incorporadora — building on its own capital or with bank financing, not on buyers\' money from day one. Under Lei 4.591/64, in this model liability falls on the developer itself as the "incorporador" — legal protection for the buyer is significantly stronger than under SPE schemes.',
+            'STV works differently — a classic incorporadora. STV, like most Porto Belo and Perequê developers, operates as a classic incorporadora — building on its own capital or with bank financing, not on buyers\' money from day one. Under Lei 4.591/64, in this model liability falls on the developer itself as the "incorporador" — legal protection for the buyer is significantly stronger than under SPE schemes. Whichever structure a deal ends up using, structuring the payment itself through an [escrow account](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya) adds a further layer of protection on top of the developer\'s own legal form.',
             "That's exactly why the Porto Belo and Perequê market builds fast and confidently, delivers on time — and gives clients a real, not just paper, potential for 300% growth in 4-5 years, as the Nautik Class case demonstrated.",
             'When I asked whether he\'d want to go back to building on the island, Stevan smiled and said: "The game has changed, the balance of power has shifted — Porto Belo wins now." He sees big potential for the city over the next 50 years.',
           ],
@@ -4157,7 +4159,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'SPE vs классическая инкорпорадора',
           paragraphs: [
             'По наблюдению Стевана, сегодня практически весь рынок Флорианополиса — порядка 90% — работает по схемам SPE (кооперативное/долевое строительство). Мы подробно разбирали эту структуру в отдельной статье о [рисках SPE](/research/report/spe-struktura-nedvizhimost-braziliya) — здесь важно повторить главное: продажи в такой схеме могут стартовать ещё до утверждения архитектурного проекта, до получения разрешений на строительство и даже до оформления земли в собственность застройщика. Риски проекта юридически возлагаются на самих покупателей как совладельцев — это подтверждается статьёй 58 Lei 4.591/64.',
-            'STV работает иначе — классическая инкорпорадора. STV, как и большинство застройщиков Порту-Белу и Perequê, работает по модели классической инкорпорадоры — строит на собственный капитал либо с привлечением банковского финансирования, не на деньги дольщиков с самого начала. Юридическая защита покупателя здесь значительно сильнее, чем в SPE-схемах.',
+            'STV работает иначе — классическая инкорпорадора. STV, как и большинство застройщиков Порту-Белу и Perequê, работает по модели классической инкорпорадоры — строит на собственный капитал либо с привлечением банковского финансирования, не на деньги дольщиков с самого начала. Юридическая защита покупателя здесь значительно сильнее, чем в SPE-схемах. Какая бы структура ни использовалась в конкретной сделке, оформление самого платежа через [эскроу-счёт](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya) добавляет дополнительный уровень защиты поверх юридической формы самого застройщика.',
             'Именно поэтому рынок Порту-Белу и Perequê строит быстро и уверенно, сдаёт объекты вовремя — и даёт клиентам реальный, а не бумажный потенциал роста в 300% за 4-5 лет, как показал кейс Nautik Class.',
             'На вопрос, хотел бы он вернуться строить на остров, Стеван улыбнулся и ответил: «Игра изменилась, силы не равны — сейчас выигрывает Порту-Белу». Он видит для города большой потенциал на ближайшие 50 лет.',
           ],
@@ -4180,11 +4182,307 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
       ],
     },
   },
+  'eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            "A classic real estate deal is, at its core, a matter of trust — who pays first. The buyer risks paying before the paperwork is settled; the seller risks handing over documents before payment. That's exactly the problem a new instrument for Brazil — the escrow account — solves, having received an official legal foundation since 2023.",
+          ],
+        },
+        {
+          heading: 'The Scale of the Problem Escrow Solves',
+          paragraphs: [
+            'Per the Anuário Brasileiro de Segurança Pública 2025, Brazil records roughly 2.2 million fraud (estelionato) cases per year — about 4 cases per minute nationwide. A significant share involves real estate: forged documents, one property sold to multiple buyers, hidden debts and liens. Fraud cases have grown sharply by state since 2018: São Paulo +553%, Paraná +430%, Rio de Janeiro +317%, Minas Gerais +286%. For the specific warning signs to watch for in a deal, see our separate breakdown of [how to recognize a real estate fraud scheme in Brazil](/research/report/kak-raspoznat-moshennichestvo-nedvizhimost-braziliya).',
+            'This isn\'t abstract data from somewhere far away. In June 2026, a court blocked R$490 million from parties involved in an illegal property sales scheme on the coast of Santa Catarina — the exact region where we work. Two months earlier, "Operação Real State" uncovered a scheme in the same state with roughly R$12 million in losses.',
+          ],
+        },
+        {
+          heading: 'What an Escrow Account Is and How It Works',
+          paragraphs: [
+            'An escrow account (conta escrow) is an account into which the buyer deposits funds not directly to the seller, but under the management of an independent third party — in the Brazilian version, a notary (tabelião de notas). The money is held and transferred to the seller only once the agreed conditions of the deal are confirmed.',
+            '1. Buyer deposits funds — money goes not directly to the seller, but into an escrow account managed by a notary. 2. Deal conditions are verified — the notary confirms the conditions are met, typically registration of title at the Cartório de Registro de Imóveis. 3. Funds are released to the seller — only after confirmation. If conditions aren\'t met, the money is returned to the buyer.',
+          ],
+        },
+        {
+          heading: 'The Legal Basis — Not an Experimental Scheme, But Law',
+          paragraphs: [
+            'The instrument is formalized by Lei 14.711/2023 (known as the "Marco Legal das Garantias") — this law introduced Article 7º-A into Lei 8.935/1994 (the notary law), explicitly authorizing notaries to open and manage escrow accounts. The mechanism is further regulated by CNJ Provimento No. 197/25. At the end of 2024, the Brazilian Notary College (Colégio Notarial do Brasil) partnered with Banco Safra specifically to formalize opening such accounts through notary offices — meaning this is no longer an ad-hoc practice of individual lawyers, but an institutionalized system.',
+            'Funds are held in a segregated account, protected from judicial and tax liens against either party. The maximum holding period is up to 180 days, extendable. The model is inspired by the notary systems of Germany, Italy, and France, and is especially valuable for deals without bank financing, where the full amount is typically handed to the seller before registration completes — the same no-financing structure common in [SPE deals](/research/report/spe-struktura-nedvizhimost-braziliya), where escrow can meaningfully reduce the buyer\'s exposure.',
+          ],
+        },
+        {
+          heading: 'Why This Matters Especially for Foreign Buyers',
+          paragraphs: [
+            "A foreign buyer — especially one who isn't physically present in Brazil at all times and can't personally oversee every step of the deal — is structurally more vulnerable to real estate fraud than a local resident. An escrow account removes part of that risk: money doesn't reach the seller until clean title registration is confirmed, regardless of whether you're physically in the country at that moment.",
+          ],
+        },
+        {
+          heading: 'Be Wary of Unverified Intermediaries',
+          paragraphs: [
+            "The arrival of a new protective instrument doesn't remove the need for basic caution. Only work with verified notaries, lawyers, and consultants — those with real, verifiable practice in Brazil, not just a nice website. This is exactly the kind of due diligence we cover in our separate guide on [choosing a real estate consultant in Brazil](/research/report/kak-vybrat-investicionnogo-konsultanta-florianopolis). We work with verified professionals — for example, immigration lawyer Dr. Wilian Campos (OAB/SC 50.897, WK International Services), whom we partner with on visa and tax matters — and we select a notary with real experience specifically in escrow structures for each individual deal. For a transparent, classic-incorporadora example of the same verified-partner approach, see our review of [STV Construções](/research/report/stv-construcoes-developer-review-2026).",
+          ],
+        },
+        {
+          heading: 'Bottom Line',
+          paragraphs: [
+            "An escrow account isn't a marketing novelty — it's a real, legally established instrument, institutionally backed by Brazil's banking sector and notary system. It doesn't eliminate the need for due diligence before a purchase, but it substantially reduces one specific risk: losing money before title registration is complete.",
+            'This material is for informational purposes only and does not constitute legal advice. Sources: Lei 14.711/2023, Lei 8.935/1994 (Art. 7º-A), CNJ Provimento No. 197/25, Anuário Brasileiro de Segurança Pública 2025. Plan B Brazil acts as an independent advisor and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Классическая сделка с недвижимостью — это, по сути, вопрос доверия: кто платит первым. Покупатель рискует, платя до оформления документов; продавец рискует, передавая документы до оплаты. Именно эту проблему и решает новый для Бразилии инструмент — эскроу-счёт, который с 2023 года получил официальную законодательную основу.',
+          ],
+        },
+        {
+          heading: 'Масштаб проблемы, которую решает эскроу',
+          paragraphs: [
+            'По данным Anuário Brasileiro de Segurança Pública 2025, в Бразилии фиксируется около 2,2 млн случаев мошенничества (estelionato) в год — это порядка 4 случая в минуту по всей стране. Значительная часть — сделки с недвижимостью: поддельные документы, продажа одного объекта нескольким покупателям, сокрытие долгов и обременений. Рост случаев мошенничества по штатам с 2018 года: Сан-Паулу +553%, Парана +430%, Рио-де-Жанейро +317%, Минас-Жерайс +286%. Конкретные тревожные признаки при сделке мы разбирали отдельно — в статье [как распознать мошенничество с недвижимостью в Бразилии](/research/report/kak-raspoznat-moshennichestvo-nedvizhimost-braziliya).',
+            'Это не абстрактная статистика откуда-то издалека. В июне 2026 года суд заблокировал R$490 млн у фигурантов схемы незаконной продажи недвижимости на побережье именно Санта-Катарины — региона, где мы работаем. Двумя месяцами ранее операция «Real State» вскрыла в том же штате схему с ущербом около R$12 млн.',
+          ],
+        },
+        {
+          heading: 'Что такое эскроу-счёт и как он работает',
+          paragraphs: [
+            'Эскроу-счёт (conta escrow) — это счёт, на который покупатель вносит средства не напрямую продавцу, а под управление независимой третьей стороны — в бразильском варианте это нотариус (tabelião de notas). Деньги хранятся на счету и переводятся продавцу только после подтверждения выполнения оговорённых условий сделки.',
+            '1. Покупатель вносит средства — деньги идут не продавцу напрямую, а на эскроу-счёт под управлением нотариуса. 2. Проверка условий сделки — нотариус подтверждает выполнение условий, как правило, регистрацию права собственности в Cartório de Registro de Imóveis. 3. Средства переводятся продавцу — только после подтверждения. Если условия не выполнены, деньги возвращаются покупателю.',
+          ],
+        },
+        {
+          heading: 'Юридическая основа — не экспериментальная схема, а закон',
+          paragraphs: [
+            'Инструмент формализован Lei 14.711/2023 (известным как «Marco Legal das Garantias») — этот закон ввёл статью 7º-A в Lei 8.935/1994 (закон о нотариате), прямо разрешив нотариусам открывать и вести эскроу-счета. Дополнительно механизм регулируется провизией CNJ № 197/25. В конце 2024 года Коллегия нотариусов Бразилии (Colégio Notarial do Brasil) заключила партнёрство с Banco Safra специально для формализации открытия таких счетов через нотариальные конторы — то есть это уже не разовая практика отдельных юристов, а институционализированная система.',
+            'Средства хранятся на сегрегированном счёте — защищены от судебных и налоговых арестов в отношении любой из сторон сделки. Максимальный срок удержания — до 180 дней, с возможностью продления. Модель вдохновлена нотариальными системами Германии, Италии и Франции и особенно ценна для сделок без банковского финансирования, где обычно вся сумма передаётся продавцу до завершения регистрации — той же структуры без финансирования, что часто встречается в [сделках через SPE](/research/report/spe-struktura-nedvizhimost-braziliya), где эскроу может ощутимо снизить риск покупателя.',
+          ],
+        },
+        {
+          heading: 'Почему это особенно важно для иностранного покупателя',
+          paragraphs: [
+            'Иностранный покупатель — особенно тот, кто физически не находится в Бразилии постоянно и не может лично контролировать каждый этап сделки, — структурно более уязвим перед мошенничеством с недвижимостью, чем местный резидент. Эскроу-счёт снимает часть этого риска: деньги не переходят продавцу, пока не подтверждён факт чистой регистрации права собственности, независимо от того, находитесь ли вы физически в стране в этот момент.',
+          ],
+        },
+        {
+          heading: 'Остерегайтесь непроверенных посредников',
+          paragraphs: [
+            'Появление нового инструмента защиты не отменяет базовой осторожности. Работайте только с проверенными нотариусами, юристами и консультантами — теми, у кого есть реальная, подтверждаемая практика в Бразилии, а не только красивый сайт. Именно этому подходу к due diligence посвящён наш отдельный гид о [выборе инвестиционного консультанта в Бразилии](/research/report/kak-vybrat-investicionnogo-konsultanta-florianopolis). Мы работаем с проверенными профессионалами — например, с иммиграционным юристом Dr. Wilian Campos (OAB/SC 50.897, WK International Services), с которым сотрудничаем по визовым и налоговым вопросам, — и подбираем нотариуса с реальным опытом именно эскроу-структур под каждую конкретную сделку. Пример такого же принципа проверенного партнёрства — в прозрачной, классической модели инкорпорадоры — см. наш обзор [STV Construções](/research/report/stv-construcoes-developer-review-2026).',
+          ],
+        },
+        {
+          heading: 'Что в итоге',
+          paragraphs: [
+            'Эскроу-счёт — не маркетинговая новинка, а реальный, законодательно закреплённый инструмент, институционально поддержанный банковским сектором и нотариатом Бразилии. Он не устраняет необходимость due diligence перед покупкой, но существенно снижает конкретный риск — потерю денег до завершения регистрации права собственности.',
+            'Материал носит информационный характер и не является юридической консультацией. Источники: Lei 14.711/2023, Lei 8.935/1994 (ст. 7º-A), Provimento CNJ № 197/25, Anuário Brasileiro de Segurança Pública 2025. Plan B Brazil выступает независимым советником и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
+  'kak-raspoznat-moshennichestvo-nedvizhimost-braziliya': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            "Most real estate fraud schemes in Brazil aren't particularly inventive — they rely on urgency and buyer inattention. Below are concrete signs to watch for before you hand over a single real. On the resale market, the decisive check is an updated matrícula. On new construction, it's incorporation registration and transparency in the developer's cash flows.",
+          ],
+        },
+        {
+          heading: 'The Most Common Schemes',
+          paragraphs: [
+            'Per legal sources, the most common are: fake ownership (selling someone else\'s property with forged documents), double sale (one property sold to multiple buyers), fake agencies, hidden debts (selling a property with undisclosed liens), and financing fraud. Brazil records roughly 42,000+ defrauded buyers from the Encol collapse alone (1999) — for the broader fraud statistics behind these numbers, see our separate piece on [escrow accounts as a new layer of protection](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya).',
+          ],
+        },
+        {
+          heading: 'Seven Warning Signs — Secondary Market',
+          paragraphs: [
+            'Price significantly below market — a classic lure; if it looks too good to be true, it probably is. Pressure to decide quickly — "there are other buyers," "offer today only" — a tactic to deny you time to verify. Payment requested before viewing or signing — no legitimate deal requires money before you\'ve seen the property and signed a vetted contract. Seller avoids written communication, insists on cash — the absence of a paper trail is a red flag. Seller is hard to find in person, or gives contradictory details. Refuses to provide an updated matrícula — the one document confirming the real owner and any liens. Broker without CRECI registration — checkable officially and free; a legitimate broker won\'t refuse to confirm it.',
+            'The one check that matters more than all the others: order a fresh matrícula atualizada for the property at the Cartório de Registro de Imóveis before signing anything. This document shows the real owner and any liens — it legally outweighs any verbal assurance from the seller. Structuring the payment itself through an [escrow account](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya) adds another layer of protection on top of this check, since funds only release after the notary confirms clean title.',
+          ],
+        },
+        {
+          heading: "A Legal Protection Most Buyers Don't Know About",
+          paragraphs: [
+            'Brazil\'s Supreme Court (STJ) established Súmula 375 — it protects a good-faith buyer from being accused of "fraud against creditors" (fraude à execução). A deal can only be annulled if a lien (penhora) was registered before the purchase, or if the buyer knowingly knew of pending lawsuits against the seller.',
+          ],
+        },
+        {
+          heading: 'The Primary Market — a Different Risk Category: Defrauded Co-Investors',
+          paragraphs: [
+            "Everything above concerns resale property. But with new construction, the risk works fundamentally differently — it's not about individual units, but money invested in a project that may never be completed. Scale of real cases: Encol (1999, largest historical case) — 42K+ buyers. Pyramid scheme (SPE/SCP) — R$200M, 1000+ victims. \"Black Flow,\" Itapema, 2025 — R$90M in losses.",
+            "Brazil's largest construction scandal: over 42,000 buyers paid for apartments and received nothing, hundreds of abandoned construction sites across 23 states, 23,000 workers suddenly unemployed. The Encol collapse is what drove the introduction of the patrimônio de afetação protection mechanism, which we covered in detail in our separate article on [SPE risks and mechanics](/research/report/spe-struktura-nedvizhimost-braziliya).",
+            'In September 2025, Operation "Black Flow" uncovered a scheme causing R$90 million in losses right in Itapema — the region next to us. The scheme involved illegal fund transfers between different SPEs and developers within the same group, selling units without incorporation registration, and multiple liens on the same property to different creditors.',
+          ],
+        },
+        {
+          heading: 'Warning Signs Specific to New Construction',
+          paragraphs: [
+            'Units sold before incorporation registration (registro de incorporação) — a direct violation of Lei 4.591/64. The developer promises "dividends" or guaranteed returns from itself — a classic pyramid-scheme signal. Overly rapid geographic expansion without a matching capital base. Lack of transparent, verifiable financial statements. Fund flows between different legal entities within the group with no clear logic.',
+            'If construction does halt, you have legal recourse: Brazilian courts treat halted construction as an objective breach by the developer — this grants the right to rescind the contract and get a refund, typically around 90% of the amount paid.',
+          ],
+        },
+        {
+          heading: "It's Not Always Malicious Intent — the Risk of Incompetence",
+          paragraphs: [
+            "A separate, less obvious risk category isn't fraud in the legal sense, but ordinary incompetence or simply wanting to close a deal at any cost. A realtor more interested in selling something than understanding your strategy may not lie outright — but won't warn you about real risks either. The outcome for the buyer often looks like fraud's aftermath — just without malicious intent on the other side.",
+            "That's exactly why choosing the professional who supports your deal deserves the same diligence as checking the property itself — independence from the developer, willingness to explain the logic behind a recommendation with numbers, honesty about risks, not just upside. We cover exactly this evaluation process in a separate guide on [how to choose a real estate consultant in Brazil](/research/report/kak-vybrat-investicionnogo-konsultanta-florianopolis).",
+          ],
+        },
+        {
+          heading: 'Bottom Line',
+          paragraphs: [
+            'Most fraud schemes can be spotted in advance — no legal training required, just attention to the signs above. This material is for informational purposes only and does not constitute legal advice. Plan B Brazil acts as an independent advisor and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Большинство мошеннических схем с недвижимостью в Бразилии не отличаются изобретательностью — они полагаются на спешку и невнимательность покупателя. Ниже — конкретные признаки, на которые стоит обращать внимание, прежде чем передать хоть один реал. На вторичке решающая проверка — актуальная matrícula. На первичке — регистрация инкорпорации и прозрачность денежных потоков застройщика.',
+          ],
+        },
+        {
+          heading: 'Самые частые схемы',
+          paragraphs: [
+            'По данным юридических источников, наиболее распространены: фальшивый собственник (продажа чужой недвижимости по поддельным документам), двойная продажа (один объект — нескольким покупателям), фиктивные агентства, скрытые долги (продажа объекта с необъявленными обременениями) и мошенничество с финансированием. Только крах застройщика Encol в 1999 году затронул свыше 42 000 обманутых покупателей — подробнее о статистике мошенничества и о том, как эскроу-счёт помогает от него защититься, читайте в отдельной статье про [эскроу-счёт как новый уровень защиты](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya).',
+          ],
+        },
+        {
+          heading: 'Семь тревожных признаков — вторичный рынок',
+          paragraphs: [
+            'Цена значительно ниже рынка — классическая приманка: если предложение выглядит слишком хорошим, чтобы быть правдой, — вероятно, так и есть. Давление на скорость решения — «есть ещё покупатели», «предложение только сегодня» — приём, чтобы не дать вам времени на проверку. Оплата до просмотра или подписания договора — ни одна легитимная сделка не требует денег до того, как вы увидели объект и подписали проверенный контракт. Продавец избегает письменной коммуникации, настаивает на наличных — отсутствие бумажного следа — красный флаг. Продавца сложно найти лично, или он даёт противоречивые детали. Отказ предоставить актуальную matrícula — единственный документ, подтверждающий реального собственника и обременения. Брокер без регистрации в CRECI — проверяется официально и бесплатно, легитимный брокер не откажется подтвердить.',
+            'Единственная проверка, которая важнее всех остальных: закажите свежую matrícula atualizada объекта в Cartório de Registro de Imóveis до подписания чего-либо. Именно этот документ показывает, кто реальный собственник и есть ли обременения — юридически он имеет решающее значение, не устные заверения продавца. Дополнительный уровень защиты добавляет структурирование самого платежа через [эскроу-счёт](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya) — средства переводятся только после подтверждения нотариусом чистой регистрации права собственности.',
+          ],
+        },
+        {
+          heading: 'Правовая защита, о которой мало кто знает',
+          paragraphs: [
+            'Верховный суд Бразилии (STJ) закрепил Súmula 375 — она защищает добросовестного покупателя от обвинения в «мошенничестве против кредиторов» (fraude à execução). Сделка может быть аннулирована только если арест на имущество был зарегистрирован до покупки, или если покупатель заведомо знал о судебных процессах против продавца.',
+          ],
+        },
+        {
+          heading: 'Первичный рынок — другая категория риска: обманутые дольщики',
+          paragraphs: [
+            'Всё выше — про вторичное жильё. Но с новостройками риск устроен принципиально иначе — здесь он касается не отдельных квартир, а денег, вложенных в проект, который может никогда не быть достроен. Масштаб реальных кейсов: Encol (1999, крупнейший исторический) — 42K+ покупателей. Схема-пирамида (SPE/SCP) — R$200M, 1000+ пострадавших. «Black Flow», Итапема, 2025 — R$90M ущерба.',
+            'Крупнейший строительный скандал в истории Бразилии: свыше 42 000 покупателей заплатили за квартиры и не получили ничего, сотни заброшенных строек в 23 штатах, 23 000 рабочих потеряли работу в одночасье. Именно крах Encol стал причиной введения защитного механизма patrimônio de afetação, о котором мы подробно писали в отдельной статье про [риски и механику SPE](/research/report/spe-struktura-nedvizhimost-braziliya).',
+            'В сентябре 2025 года операция «Black Flow» вскрыла схему на R$90 млн ущерба именно в Итапеме — соседнем с нами регионе. Схема включала незаконные переводы средств между разными SPE и застройщиками внутри одной группы, продажу юнитов без регистрации инкорпорации, и множественные залоги одной и той же недвижимости разным кредиторам.',
+          ],
+        },
+        {
+          heading: 'Тревожные признаки именно для новостроек',
+          paragraphs: [
+            'Продажа юнитов до регистрации инкорпорации (registro de incorporação) — прямое нарушение Lei 4.591/64. Застройщик обещает «дивиденды» или гарантированную доходность от себя — характерный признак пирамиды. Слишком быстрая географическая экспансия без сопоставимого роста капитала. Отсутствие прозрачной, проверяемой финансовой отчётности. Денежные потоки между разными юрлицами группы без ясной логики.',
+            'Если стройка всё же остановилась — у вас есть правовая защита: бразильские суды признают остановку строительства объективным нарушением обязательств застройщика — это даёт право на расторжение договора и возврат порядка 90% внесённой суммы.',
+          ],
+        },
+        {
+          heading: 'Не только преступный умысел — риск некомпетентности',
+          paragraphs: [
+            'Отдельная, менее очевидная категория риска — не мошенничество в юридическом смысле, а обычная некомпетентность или простое желание закрыть сделку любой ценой. Риелтор, которому важнее продать хоть что-то, чем разобраться в вашей стратегии, может не соврать напрямую — но и не предупредит о реальных рисках объекта. Результат для покупателя часто похож на последствия настоящего мошенничества — просто без злого умысла с другой стороны.',
+            'Именно поэтому к выбору профессионала, который сопровождает сделку, стоит подходить так же ответственно, как к проверке самого объекта — независимость от застройщика, готовность объяснять логику рекомендации цифрами, честность про риски, а не только про плюсы. Именно этому критерию мы посвятили отдельный гид о том, [как выбрать инвестиционного консультанта в Бразилии](/research/report/kak-vybrat-investicionnogo-konsultanta-florianopolis).',
+          ],
+        },
+        {
+          heading: 'Что в итоге',
+          paragraphs: [
+            'Большинство мошеннических схем распознаются заранее — без юридического образования, просто вниманием к перечисленным признакам. Материал носит информационный характер и не является юридической консультацией. Plan B Brazil выступает независимым советником и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
+  'kak-vybrat-investicionnogo-konsultanta-florianopolis': {
+    en: {
+      sections: [
+        {
+          heading: 'The Short Version',
+          paragraphs: [
+            "The right consultant for real estate investment in Florianópolis isn't the one with the prettiest presentation — it's the one who's independent from specific developers, explains the logic behind their recommendations with numbers rather than nice pictures, and understands the tax specifics for non-residents. Below are concrete criteria for evaluating any consultant, including us.",
+          ],
+        },
+        {
+          heading: "Independent Consultant vs. a Developer's Realtor — What's the Difference",
+          paragraphs: [
+            "A realtor working with a single developer earns money by selling that developer's specific properties — their job is to sell what's in the portfolio, even if it isn't ideal for your strategy. An independent consultant earns money by matching a strategy to your goals, not a property to their portfolio — if the optimal option doesn't exist with any developer, an independent consultant will tell you so directly.",
+          ],
+        },
+        {
+          heading: 'Six Criteria for Evaluating a Consultant',
+          paragraphs: [
+            '1. Independence from a specific developer — ask directly whether the consultant works with just one developer, or selects from properties across different companies market-wide. 2. Can explain the logic behind a recommendation, not just show a presentation — a good consultant will explain why they recommend a specific district or property, not just send you a developer\'s brochure. 3. Provides yield, liquidity, and district analysis — concrete numbers, not generic phrases like "great investment." 4. Works with foreigners and knows non-resident tax nuances — buying property as a foreigner in Brazil has its own specifics, from deal structure to taxation on sale. 5. Talks honestly about risks, not just upside — for example, the difference between an SPE and a classic incorporadora, which we\'ve covered in detail in a [separate article on SPE risks](/research/report/spe-struktura-nedvizhimost-braziliya). 6. Speaks your language — literally — on deals involving serious money, misunderstanding due to a language barrier can be costly.',
+            'This same independence and risk-transparency standard is exactly what we look for when reviewing developers ourselves — see, for example, our review of [STV Construções](/research/report/stv-construcoes-developer-review-2026), a classic incorporadora with unusually strong deal-structure transparency.',
+          ],
+        },
+        {
+          heading: 'Frequently Asked Questions',
+          paragraphs: [
+            "Do I even need an investment consultant if I've already found a property through a developer? It's worth getting an independent assessment before signing anything — a consultant with no stake in that specific deal can tell you honestly whether the price is fair and whether the deal structure fits your goals.",
+            'How is an investment consultant different from a regular realtor? A realtor helps you find and buy a specific property. An investment consultant first determines a strategy (rental, resale, land, commercial) and then selects a property to match — a broader task than closing one transaction.',
+            'How much do independent consultant services cost? Models vary — from a one-time consultation to full deal support. Clarify the payment format upfront and make sure you understand exactly what you\'re paying for. And before signing anything, it\'s worth structuring the payment itself safely — see our separate piece on [escrow accounts](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya) as a legal protection layer, and on [recognizing fraud schemes](/research/report/kak-raspoznat-moshennichestvo-nedvizhimost-braziliya) before you get that far.',
+          ],
+        },
+        {
+          heading: 'Our Approach at Plan B Brazil',
+          paragraphs: [
+            "We're an independent real estate investment consultant in Santa Catarina: not tied to any developer, working with foreign investors, providing an honest yield and risk calculation for every property, speaking Russian, English, and Portuguese. Our district and developer reports are built on this same logic — open data, named sources, honest risk warnings where they exist.",
+            'This material is for informational purposes only and does not constitute investment advice. Plan B Brazil acts as an independent advisor and is not a developer.',
+          ],
+        },
+      ],
+    },
+    ru: {
+      sections: [
+        {
+          heading: 'Коротко о главном',
+          paragraphs: [
+            'Правильный консультант для инвестиций в недвижимость Флорианополиса — не тот, у кого самая красивая презентация, а тот, кто независим от конкретных застройщиков, объясняет логику своих рекомендаций цифрами, а не только красивыми картинками, и понимает налоговые особенности именно для нерезидентов. Ниже — конкретные критерии, по которым стоит проверять любого консультанта, включая нас.',
+          ],
+        },
+        {
+          heading: 'Независимый консультант или риелтор при застройщике — в чём разница',
+          paragraphs: [
+            'Риелтор, работающий с одним застройщиком, зарабатывает на продаже конкретных объектов этого застройщика — его задача продать то, что есть в портфеле, даже если объект не идеален под вашу стратегию. Независимый консультант зарабатывает на том, чтобы подобрать стратегию под ваши цели, а не объект под свой портфель — если оптимального варианта нет ни у одного застройщика, независимый консультант скажет вам об этом прямо.',
+          ],
+        },
+        {
+          heading: 'Шесть критериев, по которым стоит оценивать консультанта',
+          paragraphs: [
+            '1. Независимость от конкретного застройщика — уточните прямо, с одним ли застройщиком работает консультант, или подбирает из объектов разных компаний по всему рынку. 2. Может объяснить логику рекомендации, а не только показать презентацию — хороший консультант расскажет, почему рекомендует конкретный район или объект, а не просто пришлёт брошюру застройщика. 3. Даёт расчёт доходности, ликвидности и анализ района — конкретные цифры, а не общие фразы «отличная инвестиция». 4. Работает с иностранцами и знает налоговые нюансы для нерезидентов — покупка недвижимости иностранцем в Бразилии имеет свою специфику, от структуры сделки до налогообложения при продаже. 5. Честно говорит о рисках, а не только о плюсах — например, о разнице между SPE и классической инкорпорадорой, которую мы подробно разбирали в [отдельной статье про риски SPE](/research/report/spe-struktura-nedvizhimost-braziliya). 6. Говорит с вами на одном языке — в буквальном смысле: при сделках на серьёзные суммы недопонимание из-за языкового барьера может стоить дорого.',
+            'Тот же стандарт независимости и прозрачности рисков мы применяем и при разборе самих застройщиков — см., например, наш обзор [STV Construções](/research/report/stv-construcoes-developer-review-2026), классической инкорпорадоры с редкой прозрачностью структуры сделки.',
+          ],
+        },
+        {
+          heading: 'Часто задаваемые вопросы',
+          paragraphs: [
+            'Нужен ли вообще инвестиционный консультант, если я уже нашёл объект через застройщика? Стоит получить независимую оценку прежде, чем подписывать что-либо — консультант без интереса в конкретной сделке может честно сказать, справедлива ли цена и подходит ли структура сделки под ваши цели.',
+            'Чем инвестиционный консультант отличается от обычного риелтора? Риелтор помогает найти и купить конкретный объект. Инвестиционный консультант сначала определяет стратегию (аренда, перепродажа, земля, коммерция) и уже под неё подбирает объект — задача шире, чем закрыть одну сделку.',
+            'Сколько стоят услуги независимого консультанта? Модели различаются — от разовой консультации до полного сопровождения сделки. Уточняйте формат оплаты заранее и убедитесь, что понимаете, за что именно платите. И прежде, чем подписывать что-либо, стоит безопасно структурировать сам платёж — см. наш отдельный материал про [эскроу-счёта](/research/report/eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya) как дополнительный уровень юридической защиты, и про [распознавание мошеннических схем](/research/report/kak-raspoznat-moshennichestvo-nedvizhimost-braziliya) до того, как вы до этого дошли.',
+          ],
+        },
+        {
+          heading: 'Наш подход в Plan B Brazil',
+          paragraphs: [
+            'Мы — независимый инвестиционный консультант по недвижимости Санта-Катарины: не привязаны к застройщикам, работаем с иностранными инвесторами, даём честный расчёт доходности и рисков по каждому объекту, говорим на русском, английском и португальском. Наши отчёты по районам и застройщикам построены на этой же логике — открытые данные, названные источники, честные предупреждения о рисках там, где они есть.',
+            'Материал носит информационный характер и не является инвестиционной рекомендацией. Plan B Brazil выступает независимым советником и не является девелопером.',
+          ],
+        },
+      ],
+    },
+  },
   'robson-nascimento-architect-jurere': {
     en: {
       sections: [
         {
-          heading: 'Who Is Robson Nascimento',
+          heading: "Who Is Robson Nascimento",
           paragraphs: [
             "Some architects design houses. Others become architects whose name is itself part of the property's price. After years working this market in Santa Catarina, I've become convinced: Robson Nascimento is the latter.",
             'Robson founded R. Nascimento Arquitetos in 1995, headquartered right in the heart of [Jurerê Internacional](/research/report/jurere-internacional-investment-guide). Today he runs the firm together with architect Caroline Dutra. Over 30 years — more than 400 completed projects, mostly in Jurerê and the island\'s north, but also across Brazil and abroad — Argentina, Paraguay, Uruguay, Greece, Germany.',

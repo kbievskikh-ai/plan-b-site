@@ -44,7 +44,7 @@ export const SECTIONS: Record<
     pt: 'Guias por Bairro',
     categories: ['Investment Guide', 'District Guide'],
     seoDescription:
-      'District-level guides for Florianópolis and coastal Santa Catarina: Jurerê, Campeche, Canasvieiras, Ingleses — pricing, demand, and yield analysis.',
+      'District-level guides for Florianópolis and coastal Santa Catarina: Jurerê, Campeche, Canasvieiras, Ingleses - pricing, demand, and yield analysis.',
   },
   'developer-reviews': {
     iconKey: 'DeveloperReviews',
@@ -79,8 +79,8 @@ export type ResearchLang = 'en' | 'ru' | 'pt';
 
 /**
  * Ручные переопределения slug по EN title, когда авто-slugify даёт не тот URL, какой нужен
- * (например, когда требуется транслитерация в slug вместо английского текста). Ключ — точный
- * EN title в базе. Не влияет на сам title — только на URL.
+ * (например, когда требуется транслитерация в slug вместо английского текста). Ключ - точный
+ * EN title в базе. Не влияет на сам title - только на URL.
  */
 const SLUG_OVERRIDES: Record<string, string> = {
   'Brazil Residency Through Real Estate 2026': 'vnzh-braziliya-nedvizhimost',
@@ -94,8 +94,11 @@ const SLUG_OVERRIDES: Record<string, string> = {
   'Brazil for Dummies': 'brazil-for-dummies-culture-guide',
   'Practical Guide for Newcomers to Florianópolis': 'newcomers-guide-florianopolis',
   "Starting a Business in Brazil Alone: Why It's Harder Than It Looks": 'starting-a-business-in-brazil-2026',
-  'STV Construções Developer Review 2026': 'stv-construcoes-developer-review-2026',
+  'STV Construções Developer Review 2026': 'stv-construcoes-developer-review-2026',
   "Robson Nascimento — the Man Whose Name Adds 10% to a Home's Price": 'robson-nascimento-architect-jurere',
+  'Escrow Accounts in Brazilian Real Estate Deals 2026': 'eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya',
+  'How to Recognize Real Estate Fraud in Brazil 2026': 'kak-raspoznat-moshennichestvo-nedvizhimost-braziliya',
+  'How to Choose a Real Estate Investment Consultant in Florianópolis 2026': 'kak-vybrat-investicionnogo-konsultanta-florianopolis',
 };
 
 // Версия кэша: Vercel Data Cache (fetch-кэш) переживает между деплоями, поэтому одинаковый URL может отдавать
@@ -117,7 +120,7 @@ async function fetchResearchRaw(lang: ResearchLang): Promise<any[]> {
  * Все опубликованные отчёты, локализованные под `lang`. Кеш 1 час → страницы можно пре-рендерить.
  *
  * Slug ВСЕГДА считается от английского title (стабильный идентификатор для URL/sitemap),
- * даже когда контент запрошен на русском — иначе slugify() от кириллицы даёт пустую строку.
+ * даже когда контент запрошен на русском - иначе slugify() от кириллицы даёт пустую строку.
  */
 export async function getAllResearch(lang: ResearchLang = 'en'): Promise<ResearchItem[]> {
   try {

@@ -30,6 +30,48 @@ const RICH_BILINGUAL_SLUGS = new Set(['rental-yield-report-santa-catarina-2026']
  * отображаемого текста. важно: ключ по языку — оверрайд для EN не должен просачиться на RU-страницу и наоборот.
  */
 const SEO_OVERRIDES: Record<string, Partial<Record<'en' | 'ru', { title: string; h1: string; description?: string }>>> = {
+  'eskrou-schet-nedvizhimost-braziliya-zashchita-pokupatelya': {
+    en: {
+      title: 'Escrow Accounts in Brazilian Real Estate Deals 2026: New Buyer Protection',
+      h1: 'Escrow Accounts in Brazil: A New Legal Protection for Property Buyers',
+      description:
+        "A new legally recognized instrument for Brazilian real estate deals since 2023 — how an escrow account protects buyers, especially foreigners, from fraud. Mechanism, law, real statistics.",
+    },
+    ru: {
+      title: 'Эскроу-счёт в сделках с недвижимостью Бразилии — новая защита покупателя',
+      h1: 'Эскроу-счёт в сделках с недвижимостью Бразилии — новая защита покупателя',
+      description:
+        'Эскроу-счёт при покупке недвижимости в Бразилии — новый законодательно закреплённый инструмент защиты покупателя, особенно для иностранцев. Механизм, закон, реальная статистика.',
+    },
+  },
+  'kak-raspoznat-moshennichestvo-nedvizhimost-braziliya': {
+    en: {
+      title: 'How to Recognize Real Estate Fraud in Brazil 2026',
+      h1: 'How to Recognize a Real Estate Fraud Scheme in Brazil',
+      description:
+        'How to recognize a fraud scheme and avoid scammers when buying property in Brazil — resale and new construction, real warning signs and cases.',
+    },
+    ru: {
+      title: 'Схема, скам, мошенники — как не попасть при покупке недвижимости в Бразилии',
+      h1: 'Схема, скам, мошенники — как не попасть при покупке недвижимости в Бразилии',
+      description:
+        'Как распознать мошенническую схему и не попасться на скам мошенников при покупке недвижимости в Бразилии — вторичка и новостройки, реальные признаки и кейсы.',
+    },
+  },
+  'kak-vybrat-investicionnogo-konsultanta-florianopolis': {
+    en: {
+      title: 'How to Choose a Real Estate Investment Consultant in Florianópolis 2026',
+      h1: 'How to Choose a Real Estate Investment Consultant in Brazil',
+      description:
+        'Six criteria for choosing a real estate investment consultant in Brazil — independence from developers, honest yield and risk analysis, language fluency.',
+    },
+    ru: {
+      title: 'Как выбрать консультанта по недвижимости в Бразилии',
+      h1: 'Как выбрать консультанта по недвижимости в Бразилии',
+      description:
+        'Шесть критериев выбора инвестиционного консультанта по недвижимости в Бразилии — независимость от застройщиков, честный расчёт доходности и рисков, знание языка.',
+    },
+  },
   'rental-yield-report-santa-catarina-2026': {
     ru: {
       title: 'Доходность аренды недвижимости в Бразилии: реальные цифры 2026',
