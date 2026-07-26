@@ -128,7 +128,13 @@ export default function WhyBrazil() {
                     fetchpriority="low"
                     className="w-full h-full object-cover"
                   >
-                    <source src="/videos/hero-jurere.mp4" type="video/mp4" />
+                    {/* Adaptive delivery: the browser evaluates <source media>
+                        queries itself (no JS/UA-sniffing) and only fetches the
+                        matching file — mobile/throttled connections get the
+                        480p/CRF32 ~1.17MB cut, desktop gets the 720p/CRF27
+                        ~4.2MB higher-quality cut. Order matters: first match wins. */}
+                    <source media="(max-width: 767px)" src="/videos/hero-jurere-mobile.mp4" type="video/mp4" />
+                    <source src="/videos/hero-jurere-desktop.mp4" type="video/mp4" />
                   </video>
                 ) : (
                   <img
