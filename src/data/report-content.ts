@@ -705,7 +705,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: "Bottom line",
           paragraphs: [
             "Brazil residency through real estate is a real, legal mechanism — but not a fast or automatic one. The threshold for Santa Catarina is from R$1,000,000. The path to residency is 4 years of temporary status. The path to citizenship is another +4 years after PR, roughly 8 years total. Presence requirements are formally flexible, but citizenship requires a genuine connection to the country.",
-            "If any of this sounds more complicated than what other sites promise, it's because we're not trying to sell you a visa in one click. We're explaining how it actually works, with a lawyer who runs these cases every day.",
+            "If any of this sounds more complicated than what other sites promise, it's because we're not trying to sell you a visa in one click. We're explaining how it actually works, with a lawyer who runs these cases every day. Once the paperwork is filed and you're actually moving, our [practical guide for newcomers to Florianópolis](/research/report/newcomers-guide-florianopolis) covers the everyday side — schools, healthcare, transport, where to live.",
             "This material is for informational purposes only and does not constitute legal advice. Immigration law and its application can change; for guidance on your specific case, consult a licensed attorney. Facts provided by Dr. Wilian Campos (OAB/SC 50.897), WK International Services, July 2026.",
           ],
         },
@@ -786,7 +786,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: "Что в итоге",
           paragraphs: [
             "ВНЖ Бразилии через недвижимость — реальный и легальный механизм, но не быстрый и не автоматический. Порог для Санта-Катарины — от R$1 000 000. Путь к резиденции — 4 года временного статуса. Путь к гражданству — ещё +4 года после ПМЖ, итого ориентировочно 8 лет. Присутствие формально гибкое, но для гражданства важна реальная связь со страной.",
-            "Если что-то из написанного звучит сложнее, чем обещают другие сайты, — это потому, что мы не пытаемся продать вам визу за один клик. Мы объясняем, как это работает на самом деле, с адвокатом, который проводит эти процессы каждый день.",
+            "Если что-то из написанного звучит сложнее, чем обещают другие сайты, — это потому, что мы не пытаемся продать вам визу за один клик. Мы объясняем, как это работает на самом деле, с адвокатом, который проводит эти процессы каждый день. Когда документы поданы и переезд уже реален, наш [практический гид для новоприбывших в Флорианополисе](/research/report/newcomers-guide-florianopolis) разбирает повседневную сторону — школы, врачи, транспорт, где жить.",
             "Материал носит информационный характер и не является юридической консультацией. Иммиграционное законодательство и его правоприменение могут меняться; для актуальной консультации по вашему случаю обращайтесь к лицензированному адвокату. Данные предоставлены Dr. Wilian Campos (OAB/SC 50.897), WK International Services, июль 2026.",
           ],
         },
@@ -1065,7 +1065,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: "What an SPE Is",
           paragraphs: [
             "An SPE (Sociedade de Propósito Específico) is a legal entity created for a specific investment project. The idea is simple: the developer sets up a separate entity for one project, and investors buy in through shares (cotas) in that entity, rather than purchasing a finished unit directly.",
-            "It's worth understanding: this structure was specifically designed to prevent the \"defrauded buyers\" history from repeating. It has two genuine legal advantages: first, liability is segregated strictly project-by-project — problems on one project don't carry over to another. Second, for the developer, it's a way to scale using borrowed funds without mixing capital across different developments. That's exactly why large, experienced developers use SPEs routinely — the structure works when it's managed in good faith.",
+            "It's worth understanding: this structure was specifically designed to prevent the \"defrauded buyers\" history from repeating. It has two genuine legal advantages: first, liability is segregated strictly project-by-project — problems on one project don't carry over to another. Second, for the developer, it's a way to scale using borrowed funds without mixing capital across different developments. That's exactly why large, experienced developers use SPEs routinely — the structure works when it's managed in good faith. For real-world examples of this model in practice today, see our developer reviews of [Modulare](/research/report/modulare-incorporadora-developer-review-2026), which builds under a cooperative SPE \"preço de custo\" model, and [STV Construções](/research/report/stv-construcoes-developer-review-2026), where roughly 90% of the Florianópolis market runs on this structure per the developer's own founder.",
             "Don't panic at the word \"SPE\". The structure itself isn't a reason to run. The danger appears when an SPE ends up in the hands of a dishonest developer or construction administrator — then it turns into a ticking time bomb, and sooner or later it goes off. The issue isn't the tool, it's who's using it.",
           ],
         },
@@ -1147,7 +1147,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: "Что такое SPE",
           paragraphs: [
             "SPE (Sociedade de Propósito Específico) — юридическое лицо, создаваемое под конкретный инвестиционный проект. Идея простая: застройщик открывает отдельную структуру под один объект, инвесторы входят через доли (котас) в этой структуре, а не покупают готовую квартиру напрямую.",
-            "Важно понимать: эта структура была придумана как раз для того, чтобы не повторялась история с обманутыми дольщиками. У неё два реальных законных преимущества: во-первых, ответственность разграничена строго по каждому проекту отдельно — проблемы одного проекта застройщика не переходят на другой. Во-вторых, для застройщика это возможность масштабироваться на заёмных средствах, не смешивая капитал разных строек. Именно поэтому крупные, опытные застройщики используют SPE на регулярной основе — структура работает, когда ей управляют добросовестно.",
+            "Важно понимать: эта структура была придумана как раз для того, чтобы не повторялась история с обманутыми дольщиками. У неё два реальных законных преимущества: во-первых, ответственность разграничена строго по каждому проекту отдельно — проблемы одного проекта застройщика не переходят на другой. Во-вторых, для застройщика это возможность масштабироваться на заёмных средствах, не смешивая капитал разных строек. Именно поэтому крупные, опытные застройщики используют SPE на регулярной основе — структура работает, когда ей управляют добросовестно. Реальные примеры этой модели на практике сегодня — см. наши обзоры застройщиков [Modulare](/research/report/modulare-incorporadora-developer-review-2026), которая строит по кооперативной модели SPE «preço de custo», и [STV Construções](/research/report/stv-construcoes-developer-review-2026), где, по словам самого основателя, порядка 90% рынка Флорианополиса работает именно по этой схеме.",
             "Не паникуйте при слове «SPE». Сама по себе структура — не повод бежать. Опасность возникает, когда SPE попадает в руки недобросовестного застройщика или администратора стройки — тогда это превращается в бомбу замедленного действия, и рано или поздно она рванёт. Дело не в инструменте, а в том, кто его использует.",
           ],
         },
@@ -2675,7 +2675,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Bottom Line',
             paragraphs: [
-              'Brazil isn\'t one country with one set of rules — it\'s a sum of very different regions. What\'s true for Rio isn\'t always true for Santa Catarina. Language, money, bureaucracy, and safety are the baseline you should arrive with, not something to discover through trial and error in your first week.',
+              'Brazil isn\'t one country with one set of rules — it\'s a sum of very different regions. What\'s true for Rio isn\'t always true for Santa Catarina. Language, money, bureaucracy, and safety are the baseline you should arrive with, not something to discover through trial and error in your first week. Once you\'ve got the country-level basics down, our [practical guide for newcomers to Florianópolis](/research/report/newcomers-guide-florianopolis) covers the city-specific first months — schools, healthcare, transport, and where to live.',
               'This material is for informational purposes only and is based on publicly available sources (EF EPI, Central Bank of Brazil) and personal experience living in Brazil since 2009.',
             ],
           },
@@ -2774,7 +2774,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Что в итоге',
             paragraphs: [
-              'Бразилия — не одна страна с одним набором правил, а сумма очень разных регионов. То, что верно для Рио, не всегда верно для Санта-Катарины. Язык, деньги, бюрократия и безопасность — это база, с которой стоит въезжать в страну, а не открывать для себя методом проб и ошибок в первую неделю.',
+              'Бразилия — не одна страна с одним набором правил, а сумма очень разных регионов. То, что верно для Рио, не всегда верно для Санта-Катарины. Язык, деньги, бюрократия и безопасность — это база, с которой стоит въезжать в страну, а не открывать для себя методом проб и ошибок в первую неделю. Когда база по стране уже понятна, наш [практический гид для новоприбывших в Флорианополисе](/research/report/newcomers-guide-florianopolis) разбирает первые месяцы уже на уровне города — школы, врачи, транспорт и где жить.',
               'Материал носит информационный характер и основан на общедоступных источниках (EF EPI, Центральный банк Бразилии) и личном опыте жизни в Бразилии с 2009 года.',
             ],
           },
@@ -3330,7 +3330,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Bank Account and First Documents',
             paragraphs: [
-              'We covered opening an account and the role of the CPF in detail in our general "Brazil for Dummies" guide — the same logic applies here: without a CPF you can\'t open an account, without an account you can\'t set up PIX, and without PIX everyday life gets noticeably harder.',
+              'We covered opening an account and the role of the CPF in detail in our general ["Brazil for Dummies"](/research/report/brazil-for-dummies-culture-guide) guide — the same logic applies here: without a CPF you can\'t open an account, without an account you can\'t set up PIX, and without PIX everyday life gets noticeably harder.',
             ],
           },
           {
@@ -3357,7 +3357,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Bottom Line',
             paragraphs: [
-              'Your first months in Florianópolis are easier once you understand the island\'s logistics (the bridges and traffic are real), choose the right school system for your kids, arrange health insurance, and know where everyday needs get met. It\'s no harder than moving to any other new city — just with its own local specifics.',
+              'Your first months in Florianópolis are easier once you understand the island\'s logistics (the bridges and traffic are real), choose the right school system for your kids, arrange health insurance, and know where everyday needs get met. It\'s no harder than moving to any other new city — just with its own local specifics. If you\'re still working out the legal side of moving here, see our guide to [Brazil residency through real estate](/research/report/vnzh-braziliya-nedvizhimost) for the visa mechanics and timeline.',
               'This material is for informational purposes only and is based on publicly available sources and personal experience living in Florianópolis since 2021.',
             ],
           },
@@ -3399,7 +3399,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Банковский счёт и первые документы',
             paragraphs: [
-              'Мы подробно разбирали открытие счёта и роль CPF в общем гиде «Brazil for Dummies» — та же логика применима и здесь: без CPF не откроете счёт, без счёта не подключите PIX, без PIX повседневная жизнь заметно сложнее.',
+              'Мы подробно разбирали открытие счёта и роль CPF в общем гиде [«Brazil for Dummies»](/research/report/brazil-for-dummies-culture-guide) — та же логика применима и здесь: без CPF не откроете счёт, без счёта не подключите PIX, без PIX повседневная жизнь заметно сложнее.',
             ],
           },
           {
@@ -3426,7 +3426,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           {
             heading: 'Что в итоге',
             paragraphs: [
-              'Первые месяцы во Флорианополисе проще, если заранее понимать логистику острова (мосты и пробки реальны), выбрать подходящую школьную систему для детей, оформить медицинскую страховку и знать, где закрываются повседневные нужды. Это не сложнее, чем переезд в любой другой новый город — просто со своей местной спецификой.',
+              'Первые месяцы во Флорианополисе проще, если заранее понимать логистику острова (мосты и пробки реальны), выбрать подходящую школьную систему для детей, оформить медицинскую страховку и знать, где закрываются повседневные нужды. Это не сложнее, чем переезд в любой другой новый город — просто со своей местной спецификой. Если юридическая сторона переезда ещё не закрыта — см. наш гид по [ВНЖ Бразилии через недвижимость](/research/report/vnzh-braziliya-nedvizhimost), там разобраны механика визы и сроки.',
               'Материал носит информационный характер и основан на общедоступных источниках и личном опыте жизни во Флорианополисе с 2021 года.',
             ],
           },
@@ -4185,14 +4185,14 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Who Is Robson Nascimento',
           paragraphs: [
             "Some architects design houses. Others become architects whose name is itself part of the property's price. After years working this market in Santa Catarina, I've become convinced: Robson Nascimento is the latter.",
-            'Robson founded R. Nascimento Arquitetos in 1995, headquartered right in the heart of Jurerê Internacional. Today he runs the firm together with architect Caroline Dutra. Over 30 years — more than 400 completed projects, mostly in Jurerê and the island\'s north, but also across Brazil and abroad — Argentina, Paraguay, Uruguay, Greece, Germany.',
+            'Robson founded R. Nascimento Arquitetos in 1995, headquartered right in the heart of [Jurerê Internacional](/research/report/jurere-internacional-investment-guide). Today he runs the firm together with architect Caroline Dutra. Over 30 years — more than 400 completed projects, mostly in Jurerê and the island\'s north, but also across Brazil and abroad — Argentina, Paraguay, Uruguay, Greece, Germany.',
             'They work across five areas: residential architecture, interiors, commercial, hospitality, and — importantly — urban planning. TOP100, one of Brazil\'s most prestigious architecture awards — ten wins, ten years running, the most recent just recently. There\'s recognition at the state level too.',
           ],
         },
         {
           heading: 'Influence That Extends Beyond a Single Firm',
           paragraphs: [
-            "I've been in this market long enough to notice: nearly every major developer in Florianópolis is connected to Robson's name in one way or another. Sometimes he's the project's architect, sometimes a co-founder. And it's not just developers — city officials and the urban planning establishment take his opinion seriously too. That's a rare level of influence for a practicing architect.",
+            "I've been in this market long enough to notice: nearly every major developer in Florianópolis is connected to Robson's name in one way or another — from [CFL Construtora](/research/report/cfl-construtora-developer-review-2026)'s Jurerê-focused luxury portfolio to newer players like [Modulare](/research/report/modulare-incorporadora-developer-review-2026), whose Maxxi View project he designed. Sometimes he's the project's architect, sometimes a co-founder. And it's not just developers — city officials and the urban planning establishment take his opinion seriously too. That's a rare level of influence for a practicing architect.",
             'Over the past few years his focus has shifted: previously predominantly elite private homes in Jurerê, now increasingly large residential complexes and direct work with private clients, not only through developers. He works extensively in Jurerê, Canajuê, and Cachoeira do Bom Jesus — and not just as a hired architect, but often as a project co-founder.',
           ],
         },
@@ -4238,14 +4238,14 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Кто такой Робсон Насименто',
           paragraphs: [
             'Есть архитекторы, которые проектируют дома. А есть те, чьё имя само по себе становится частью цены объекта. За годы работы в Санта-Катарине я убедился: Робсон Насименто — из вторых.',
-            'Бюро R. Nascimento Arquitetos Робсон основал в 1995 году, штаб-квартира — в самом сердце Журере Интернасьонал. Сегодня бюро он ведёт вместе с архитектором Каролиной Дутра. За 30 лет — больше 400 реализованных проектов, в основном в Журере и на севере острова, но также по всей Бразилии и за рубежом — в Аргентине, Парагвае, Уругвае, Греции, Германии.',
+            'Бюро R. Nascimento Arquitetos Робсон основал в 1995 году, штаб-квартира — в самом сердце [Журере Интернасьонал](/research/report/jurere-internacional-investment-guide). Сегодня бюро он ведёт вместе с архитектором Каролиной Дутра. За 30 лет — больше 400 реализованных проектов, в основном в Журере и на севере острова, но также по всей Бразилии и за рубежом — в Аргентине, Парагвае, Уругвае, Греции, Германии.',
             'Работают по пяти направлениям: жилая архитектура, интерьеры, коммерция, отели и — что важно — градостроительство. TOP100 — одна из самых престижных архитектурных наград Бразилии — десять побед, десять лет подряд, последнюю получил совсем недавно. Есть признание и на уровне штата.',
           ],
         },
         {
           heading: 'Влияние, которое выходит за рамки одного бюро',
           paragraphs: [
-            'Я работаю на этом рынке достаточно давно, чтобы заметить: практически все крупные застройщики Флорианополиса так или иначе связаны с именем Робсона. Иногда он — архитектор проекта, иногда — соучредитель. И дело не только в застройщиках — с его мнением считается и городская власть, и градостроительная сфера в целом. Это редкий уровень влияния для практикующего архитектора.',
+            'Я работаю на этом рынке достаточно давно, чтобы заметить: практически все крупные застройщики Флорианополиса так или иначе связаны с именем Робсона — от люксового портфеля [CFL Construtora](/research/report/cfl-construtora-developer-review-2026), сфокусированного на Журере, до более новых игроков вроде [Modulare](/research/report/modulare-incorporadora-developer-review-2026), для которых он спроектировал Maxxi View. Иногда он — архитектор проекта, иногда — соучредитель. И дело не только в застройщиках — с его мнением считается и городская власть, и градостроительная сфера в целом. Это редкий уровень влияния для практикующего архитектора.',
             'За последние несколько лет его фокус сместился: раньше — преимущественно элитные частные дома в Журере, сейчас — всё больше крупных жилых комплексов и работа напрямую с частными клиентами, не только через застройщиков. Он плотно работает в Журере, Канажуре, Кашоэйра-ду-Бон-Жезус — и не просто как нанятый архитектор, а нередко как соучредитель проекта.',
           ],
         },
