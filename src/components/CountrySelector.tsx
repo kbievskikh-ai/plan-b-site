@@ -7,7 +7,7 @@ const countries = [
   {
     name: 'Brazil',
     flag: '🇧🇷',
-    image: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70',
     active: true,
     url: null,
     label: 'Santa Catarina &\nFlorianópolis',
@@ -15,7 +15,7 @@ const countries = [
   {
     name: 'Chile',
     flag: '🇨🇱',
-    image: 'https://images.unsplash.com/photo-1555993539-1732b0258235?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1100&q=80',
+    image: 'https://images.unsplash.com/photo-1555993539-1732b0258235?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=550&q=70',
     active: false,
     url: null,
     label: 'Santiago &\nCentral Valley',
@@ -23,7 +23,7 @@ const countries = [
   {
     name: 'Argentina',
     flag: '🇦🇷',
-    image: 'https://images.unsplash.com/photo-1589909202802-8f4aadce1849?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1589909202802-8f4aadce1849?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70',
     active: false,
     url: null,
     label: 'Buenos Aires &\nPatagonia',
@@ -31,7 +31,7 @@ const countries = [
   {
     name: 'Uruguay',
     flag: '🇺🇾',
-    image: 'https://images.unsplash.com/photo-1584646098378-0874589d76b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1584646098378-0874589d76b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=70',
     active: false,
     url: null,
     label: 'Punta del Este &\nMontevideo',
@@ -43,9 +43,16 @@ export default function CountrySelector() {
 
   useEffect(() => {
     const dismissed = sessionStorage.getItem('country_selected');
-    if (!dismissed) {
-      setShow(true);
-    }
+    if (dismissed) return;
+    // Defer mounting past the initial paint window. This modal previously
+    // mounted immediately on hydration and eagerly loaded 4 external
+    // Unsplash background-images at browser-forced "High" fetch priority
+    // (CSS background-image always loads eager/high-priority regardless of
+    // visibility), starving the critical hero H1/fonts/CSS of bandwidth and
+    // becoming an unpredictable competing LCP candidate itself. A short
+    // delay lets the real above-the-fold content paint first.
+    const timer = window.setTimeout(() => setShow(true), 600);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const handleSelect = (country: typeof countries[0]) => {
@@ -115,12 +122,22 @@ export default function CountrySelector() {
                       : 'cursor-default'
                   }`}
                 >
-                  {/* Background Image */}
-                  <div
-                    className={`absolute inset-0 bg-cover bg-center transition-all duration-500 ${
+                  {/* Background Image — plain <img> (not CSS background-image) so
+                      the browser can apply loading="lazy" + fetchpriority="low";
+                      CSS background-images are always fetched eagerly at high
+                      priority regardless of visibility, which made this modal's
+                      4 external Unsplash requests compete with the critical
+                      hero content for bandwidth. */}
+                  <img
+                    src={country.image}
+                    alt={country.name}
+                    loading="lazy"
+                    decoding="async"
+                    // @ts-expect-error fetchPriority is a valid DOM attribute, not yet in React's img typings
+                    fetchpriority="low"
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${
                       country.active ? 'group-hover:scale-110' : 'blur-[3px] grayscale-[40%]'
                     }`}
-                    style={{ backgroundImage: `url("${country.image}")` }}
                   />
 
                   {/* Overlay — darker at bottom for text readability */}
