@@ -62,7 +62,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
             'Per national ABRAINC-Fipe data (the industry association plus a research institute): project launches grew 19.3% over 12 months, real sales value grew 4.8%, and the affordable housing program grew 20.8%.',
             'Sounds great — but almost all of that growth came from the government\'s affordable housing program, Minha Casa Minha Vida (+20.8%). The mid-to-high price segment, meanwhile, is selling down accumulated inventory, not growing.',
             'Developers squeezed from both sides: costs are rising — an expensive dollar makes imported materials pricier, and labor costs keep climbing. And passing those costs on to the buyer is hard — credit is expensive and scarce. The industry\'s answer isn\'t a freeze, it\'s discipline: more selective launches, a more cautious approach.',
-            'This isn\'t a boom story, and it isn\'t a bust story. It\'s the story of a market that has stopped moving as one whole — which is exactly why national or even city-level averages describe what\'s happening with a specific asset worse and worse. Florianópolis is a great example to see this in detail.',
+            'This isn\'t a boom story, and it isn\'t a bust story. It\'s the story of a market that has stopped moving as one whole — which is exactly why national or even city-level averages describe what\'s happening with a specific asset worse and worse. Florianópolis is a great example to see this in detail — see our full [Florianópolis city report](/research/report/florianopolis-investment-report-2026) and the state-wide [best areas to invest in Santa Catarina](/research/report/best-areas-to-invest-in-santa-catarina-2026) comparison for the district-by-district numbers.',
           ],
         },
         {
@@ -132,7 +132,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
             'По национальной статистике ABRAINC-Fipe (отраслевая ассоциация застройщиков + исследовательский институт): запуски новых проектов выросли на 19,3% за год, реальный рост продаж в деньгах — 4,8%, рост в программе доступного жилья — 20,8%.',
             'Звучит отлично — но почти весь этот рост дала государственная программа доступного жилья Minha Casa Minha Vida (+20,8%). Сегмент среднего и высокого ценового диапазона в это же время, наоборот, распродаёт накопленные запасы, а не растёт.',
             'Застройщиков зажимает с двух сторон: издержки растут — дорогой доллар удорожает импортные материалы, рабочая сила дорожает. А переложить эти издержки на покупателя сложно — кредит дорогой и малодоступный. Ответ отрасли — не заморозка, а дисциплина: более избирательные запуски, более осторожная политика.',
-            'Это не история про бум и не история про спад. Это история про рынок, который перестал двигаться единым фронтом — а значит, средние цифры по стране или даже по городу всё хуже описывают то, что происходит с конкретным объектом. Флорианополис — отличный пример, чтобы увидеть это в деталях.',
+            'Это не история про бум и не история про спад. Это история про рынок, который перестал двигаться единым фронтом — а значит, средние цифры по стране или даже по городу всё хуже описывают то, что происходит с конкретным объектом. Флорианополис — отличный пример, чтобы увидеть это в деталях — см. наш полный [отчёт по Флорианополису](/research/report/florianopolis-investment-report-2026) и общештатное сравнение [лучших районов Санта-Катарины для инвестиций](/research/report/best-areas-to-invest-in-santa-catarina-2026) с разбивкой по районам.',
           ],
         },
         {
@@ -705,7 +705,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: "Bottom line",
           paragraphs: [
             "Brazil residency through real estate is a real, legal mechanism — but not a fast or automatic one. The threshold for Santa Catarina is from R$1,000,000. The path to residency is 4 years of temporary status. The path to citizenship is another +4 years after PR, roughly 8 years total. Presence requirements are formally flexible, but citizenship requires a genuine connection to the country.",
-            "If any of this sounds more complicated than what other sites promise, it's because we're not trying to sell you a visa in one click. We're explaining how it actually works, with a lawyer who runs these cases every day. Once the paperwork is filed and you're actually moving, our [practical guide for newcomers to Florianópolis](/research/report/newcomers-guide-florianopolis) covers the everyday side — schools, healthcare, transport, where to live.",
+            "If any of this sounds more complicated than what other sites promise, it's because we're not trying to sell you a visa in one click. We're explaining how it actually works, with a lawyer who runs these cases every day. Once the paperwork is filed and you're actually moving, our [practical guide for newcomers to Florianópolis](/research/report/newcomers-guide-florianopolis) covers the everyday side — schools, healthcare, transport, where to live. If you're also planning to run a business here rather than just hold property, see our guide to [starting a business in Brazil](/research/report/starting-a-business-in-brazil-2026) — it covers the separate investor-visa track and the bureaucracy specific to company formation.",
             "This material is for informational purposes only and does not constitute legal advice. Immigration law and its application can change; for guidance on your specific case, consult a licensed attorney. Facts provided by Dr. Wilian Campos (OAB/SC 50.897), WK International Services, July 2026.",
           ],
         },
@@ -786,7 +786,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: "Что в итоге",
           paragraphs: [
             "ВНЖ Бразилии через недвижимость — реальный и легальный механизм, но не быстрый и не автоматический. Порог для Санта-Катарины — от R$1 000 000. Путь к резиденции — 4 года временного статуса. Путь к гражданству — ещё +4 года после ПМЖ, итого ориентировочно 8 лет. Присутствие формально гибкое, но для гражданства важна реальная связь со страной.",
-            "Если что-то из написанного звучит сложнее, чем обещают другие сайты, — это потому, что мы не пытаемся продать вам визу за один клик. Мы объясняем, как это работает на самом деле, с адвокатом, который проводит эти процессы каждый день. Когда документы поданы и переезд уже реален, наш [практический гид для новоприбывших в Флорианополисе](/research/report/newcomers-guide-florianopolis) разбирает повседневную сторону — школы, врачи, транспорт, где жить.",
+            "Если что-то из написанного звучит сложнее, чем обещают другие сайты, — это потому, что мы не пытаемся продать вам визу за один клик. Мы объясняем, как это работает на самом деле, с адвокатом, который проводит эти процессы каждый день. Когда документы поданы и переезд уже реален, наш [практический гид для новоприбывших в Флорианополисе](/research/report/newcomers-guide-florianopolis) разбирает повседневную сторону — школы, врачи, транспорт, где жить. Если помимо владения недвижимостью вы планируете ещё и вести здесь бизнес — см. наш гид по [открытию бизнеса в Бразилии](/research/report/starting-a-business-in-brazil-2026): там разобран отдельный трек инвесторской визы и бюрократия, специфичная именно для регистрации компании.",
             "Материал носит информационный характер и не является юридической консультацией. Иммиграционное законодательство и его правоприменение могут меняться; для актуальной консультации по вашему случаю обращайтесь к лицензированному адвокату. Данные предоставлены Dr. Wilian Campos (OAB/SC 50.897), WK International Services, июль 2026.",
           ],
         },
@@ -1649,7 +1649,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           paragraphs: [
             "Florianópolis is the economic and cultural center of Santa Catarina, with a metropolitan population of over 1 million. The city combines a thriving tech sector (\"Silicon Island\"), world-class beaches, and a growing international community. Hercílio Luz International Airport handles 4M+ passengers annually.",
             "By district: Jurerê Internacional R$22K/m², 5.2% yield, 12%/yr growth — premium investment. Lagoa da Conceição R$12.5K/m², 6.8% yield, 10%/yr — lifestyle + rental. Ingleses R$10.8K/m², 7.1% yield, 9%/yr — mid-range rental. Canasvieiras R$9.5K/m², 7.5% yield, 8%/yr — budget-friendly. Centro R$7.2K/m², 6.2% yield, 7%/yr — urban living. Campeche R$8.9K/m², 6.5% yield, 11%/yr — highest upside.",
-            "Plan B commentary: Florianópolis offers the best combination of infrastructure, lifestyle, and investment returns in Brazil. Jurerê remains the blue-chip choice, while Campeche presents the highest upside potential for 2026–2028.",
+            "Plan B commentary: Florianópolis offers the best combination of infrastructure, lifestyle, and investment returns in Brazil. Jurerê remains the blue-chip choice, while Campeche presents the highest upside potential for 2026–2028. For the full city-level breakdown — infrastructure catalysts, price trend since 2018, district-by-district verdicts — see our dedicated [Florianópolis investment report](/research/report/florianopolis-investment-report-2026).",
           ],
         },
         {
@@ -1679,7 +1679,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         {
           heading: "Risk Factors",
           paragraphs: [
-            "Currency risk — BRL volatility, 10–20% annually vs USD/EUR. Liquidity risk — selling typically takes 6–18 months. Construction delays — 6–12 month delays are common. Regulatory changes — Brazilian property laws may evolve.",
+            "Currency risk — BRL volatility, 10–20% annually vs USD/EUR. Liquidity risk — selling typically takes 6–18 months. Construction delays — 6–12 month delays are common. Regulatory changes — Brazilian property laws may evolve. For the macro backdrop behind these numbers — the 2026 rate environment, credit conditions, and why national/city averages increasingly mask submarket-level differences — see our [2026-2027 market strategy report](/research/report/brazil-market-strategy-2026-2027).",
           ],
         },
         {
@@ -1723,7 +1723,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           paragraphs: [
             "Флорианополис — экономический и культурный центр Санта-Катарины, население агломерации превышает 1 миллион человек. Город сочетает растущий технологический сектор («Silicon Island»), пляжи мирового уровня и растущее международное сообщество. Международный аэропорт Эрсилиу-Лус обслуживает более 4 миллионов пассажиров в год.",
             "По районам: Журере Интернасьонал R$22K/м², доходность 5,2%, рост 12%/год — премиальные инвестиции. Лагоа-да-Консейсау R$12,5K/м², доходность 6,8%, рост 10%/год — лайфстайл + аренда. Инглезес R$10,8K/м², доходность 7,1%, рост 9%/год — аренда среднего сегмента. Канасвиэйрас R$9,5K/м², доходность 7,5%, рост 8%/год — бюджетный вход. Центр R$7,2K/м², доходность 6,2%, рост 7%/год — городская жизнь. Кампече R$8,9K/м², доходность 6,5%, рост 11%/год — наибольший потенциал роста.",
-            "Комментарий Plan B: Флорианополис предлагает лучшее сочетание инфраструктуры, лайфстайла и доходности инвестиций в Бразилии. Журере остаётся выбором blue-chip, тогда как Кампече демонстрирует наибольший потенциал роста на 2026–2028 годы.",
+            "Комментарий Plan B: Флорианополис предлагает лучшее сочетание инфраструктуры, лайфстайла и доходности инвестиций в Бразилии. Журере остаётся выбором blue-chip, тогда как Кампече демонстрирует наибольший потенциал роста на 2026–2028 годы. Полную разбивку по городу — инфраструктурные катализаторы, динамику цен с 2018 года, вердикты по районам — см. в нашем отдельном [отчёте по Флорианополису](/research/report/florianopolis-investment-report-2026).",
           ],
         },
         {
@@ -1753,7 +1753,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
         {
           heading: "Факторы риска",
           paragraphs: [
-            "Валютный риск — волатильность реала, 10–20% в год к USD/EUR. Риск ликвидности — продажа обычно занимает 6–18 месяцев. Задержки строительства — отклонения на 6–12 месяцев обычное явление. Регуляторные изменения — законы о недвижимости в Бразилии могут меняться.",
+            "Валютный риск — волатильность реала, 10–20% в год к USD/EUR. Риск ликвидности — продажа обычно занимает 6–18 месяцев. Задержки строительства — отклонения на 6–12 месяцев обычное явление. Регуляторные изменения — законы о недвижимости в Бразилии могут меняться. Макроконтекст за этими цифрами — ставки 2026 года, условия кредитования и почему средние по стране/городу всё хуже описывают разницу между субрынками — см. в нашем [отчёте о стратегии рынка 2026-2027](/research/report/brazil-market-strategy-2026-2027).",
           ],
         },
         {
@@ -2486,7 +2486,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Key Numbers at a Glance',
           paragraphs: [
             '#1 Quality of Life in Brazil. R$4,200+ avg. price/m² (Florianópolis premium). 5–7% short-term rental yield. ~100–180% price growth in Jurerê (2018–2025).',
-            'Estimates vary by property segment and data source methodology. See our full Florianópolis Investment Report for a detailed breakdown by district.',
+            'Estimates vary by property segment and data source methodology. See our full [Florianópolis Investment Report](/research/report/florianopolis-investment-report-2026) for a detailed breakdown by district.',
           ],
         },
         {
@@ -2510,6 +2510,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Want the Full Picture?',
           paragraphs: [
             'The full 47-page guide is available for download below. Talk to Konstantin for a personal walkthrough of any section.',
+            'For the full standalone reports behind each city mentioned above: [Florianópolis](/research/report/florianopolis-investment-report-2026), [Balneário Camboriú](/research/report/balneario-camboriu-investment-report-2026), [Itapema](/research/report/itapema-investment-report-2026), [Porto Belo](/research/report/porto-belo-investment-report-2026), and [Rancho Queimado](/research/report/rancho-queimado-investment-report-2026).',
             'Konstantin Bievskikh · Plan B Brazil · CRECI-SC 59616-F · planbbrazil.com · WhatsApp +55 (48) 98811-7424',
           ],
         },
@@ -2550,7 +2551,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Ключевые цифры',
           paragraphs: [
             '#1 по качеству жизни в Бразилии. R$4 200+ средняя цена/м² (премиум-сегмент Флорианополиса). 5–7% доходность краткосрочной аренды. ~100–180% рост цен в Журере (2018–2025).',
-            'Оценки различаются в зависимости от сегмента недвижимости и методологии источника. Подробная разбивка по районам — в нашем полном отчёте по Флорианополису.',
+            'Оценки различаются в зависимости от сегмента недвижимости и методологии источника. Подробная разбивка по районам — в нашем полном [отчёте по Флорианополису](/research/report/florianopolis-investment-report-2026).',
           ],
         },
         {
@@ -2574,6 +2575,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Хотите обсудить детали?',
           paragraphs: [
             'Полный гид на 47 страниц (PDF, на английском языке) доступен для скачивания ниже. Пишите Константину, чтобы разобрать любой раздел лично.',
+            'Полные отдельные отчёты по каждому упомянутому выше городу: [Флорианополис](/research/report/florianopolis-investment-report-2026), [Балнеариу-Камбориу](/research/report/balneario-camboriu-investment-report-2026), [Итапема](/research/report/itapema-investment-report-2026), [Порту-Белу](/research/report/porto-belo-investment-report-2026) и [Ранчо-Кеймаду](/research/report/rancho-queimado-investment-report-2026).',
             'Konstantin Bievskikh · Plan B Brazil · CRECI-SC 59616-F · planbbrazil.com · WhatsApp +55 (48) 98811-7424',
           ],
         },
@@ -3955,7 +3957,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Formal Requirements You Can\'t Skip',
           paragraphs: [
             'A foreigner can be the sole owner of a company through the Sociedade Limitada Unipessoal (SLU) structure — good news. But beyond that, mandatory steps requiring local presence begin: CPF (Brazil\'s individual tax ID — without it you can\'t open an account or sign a single document); Central Bank Registration via the RDE-IED system (Registro Declaratório Eletrônico – Investimento Estrangeiro Direto); and a mandatory Local Representative (procurador) — a Brazilian resident authorized to receive legal citations on your behalf. Without one, a non-resident physically cannot be part of a Brazilian company.',
-            'If you\'re planning an investor visa — minimum investment of R$150K, plus a formal investment plan demonstrating the social value of the investment (typically job creation).',
+            'If you\'re planning an investor visa — minimum investment of R$150K, plus a formal investment plan demonstrating the social value of the investment (typically job creation). This is a separate, lower-threshold path from residency through real estate (from R$1M in Santa Catarina) — see our detailed breakdown of [Brazil residency through real estate](/research/report/vnzh-braziliya-nedvizhimost) for how that path compares on cost, timeline, and requirements.',
           ],
         },
         {
@@ -4003,7 +4005,7 @@ export const REPORT_CONTENT: Record<string, ReportContentByLang> = {
           heading: 'Формальные требования, которые нельзя обойти',
           paragraphs: [
             'Иностранец может быть единственным владельцем компании через структуру Sociedade Limitada Unipessoal (SLU) — хорошая новость. Но дальше начинаются обязательные шаги, требующие локального присутствия: CPF (бразильский налоговый номер — без него не откроете счёт и не подпишете ни один документ); регистрация в Центробанке через систему RDE-IED (Registro Declaratório Eletrônico – Investimento Estrangeiro Direto); и обязательный местный представитель (procurador) — резидент Бразилии с полномочиями получать судебные извещения от вашего имени. Без него нерезидент физически не может быть частью бразильской компании.',
-            'Если планируете инвесторскую визу — минимальная сумма инвестиций R$150 тыс., плюс формальный инвестиционный план, доказывающий социальную значимость вложений (обычно — создание рабочих мест).',
+            'Если планируете инвесторскую визу — минимальная сумма инвестиций R$150 тыс., плюс формальный инвестиционный план, доказывающий социальную значимость вложений (обычно — создание рабочих мест). Это отдельный путь с более низким порогом входа, чем ВНЖ через недвижимость (от R$1М в Санта-Катарине) — подробное сравнение по стоимости, срокам и требованиям см. в нашем гиде по [ВНЖ Бразилии через недвижимость](/research/report/vnzh-braziliya-nedvizhimost).',
           ],
         },
         {
