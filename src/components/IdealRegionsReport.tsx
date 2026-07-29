@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import StickyWhatsApp from '@/components/StickyWhatsApp';
 
 // ─── Translations ───
 const t: Record<string, Record<string, any>> = {
@@ -301,6 +302,7 @@ export default function IdealRegionsReport() {
   if (loading) {
     return (
       <div className="min-h-screen bg-[#FAF8F5] flex items-center justify-center">
+        <StickyWhatsApp />
         <div className="text-center">
           <div className="text-4xl mb-3">🏖️</div>
           <p className="text-sm text-gray-500">Loading your report...</p>
@@ -312,6 +314,7 @@ export default function IdealRegionsReport() {
   if (!fitData) {
     return (
       <div className="min-h-screen bg-[#FAF8F5]">
+        <StickyWhatsApp />
         <div className="bg-gradient-to-r from-[#009739] via-[#1B2951] to-[#D4AF37] text-white py-3 text-center">
           <div className="font-heading text-sm tracking-[0.2em] text-[#E8C84A]">✦ PLAN B ✦</div>
           <h1 className="font-heading text-xl mt-1">Ideal <span className="text-[#E8C84A]">Regions Report</span>™</h1>
@@ -343,6 +346,7 @@ export default function IdealRegionsReport() {
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
+      <StickyWhatsApp />
       {/* Header */}
       <div className="bg-gradient-to-r from-[#009739] via-[#1B2951] to-[#D4AF37] text-white py-3 text-center">
         <div className="font-heading text-xs tracking-[0.2em] text-[#E8C84A]">✦ PLAN B ✦</div>
@@ -351,6 +355,9 @@ export default function IdealRegionsReport() {
         <div className="flex gap-1 justify-center mt-1.5">
           <button onClick={() => setLang('ru')} className={`px-2 py-0.5 text-[9px] rounded font-semibold ${lang === 'ru' ? 'bg-white/15 text-white border border-[#D4AF37]' : 'text-white/50 border border-white/20'}`}>RU</button>
           <button onClick={() => setLang('en')} className={`px-2 py-0.5 text-[9px] rounded font-semibold ${lang === 'en' ? 'bg-white/15 text-white border border-[#D4AF37]' : 'text-white/50 border border-white/20'}`}>EN</button>
+          <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex items-center px-1.5 py-0.5 rounded bg-[#25D366]/90 text-white">
+            <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-white"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.53 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44zM12.05 21.4h-.01a9.6 9.6 0 01-4.9-1.34l-.35-.21-3.65.96.98-3.56-.23-.36a9.53 9.53 0 01-1.47-5.07c0-5.28 4.3-9.58 9.6-9.58 2.56 0 4.97 1 6.78 2.81a9.5 9.5 0 012.8 6.78c0 5.28-4.3 9.57-9.55 9.57zm5.24-7.17c-.29-.14-1.7-.84-1.96-.93-.26-.1-.46-.14-.65.14-.19.29-.75.93-.92 1.12-.17.19-.34.22-.63.07-.29-.14-1.21-.45-2.31-1.44-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.58-.9-2.16-.24-.57-.48-.5-.65-.5-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.4 1.02 2.76 1.16 2.95.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33z" /></svg>
+          </a>
         </div>
       </div>
 
