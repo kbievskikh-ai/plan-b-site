@@ -74,6 +74,7 @@ select:focus{border-color:var(--gold);outline:none;}
 .rc.good{border-left-color:var(--gold);background:#FFFDF5;} .rc.good .v{color:#1B2951;}
 .rc.warn{border-left-color:var(--navy);background:#F0EDE4;} .rc.warn .v{color:var(--navy);}
 .rc.gold{border-left-color:var(--gold);background:#FFFDF5;} .rc.gold .v{color:#B8960F;}
+.rc .est{font-size:8px;color:var(--muted);opacity:.75;margin-top:3px;font-style:italic;line-height:1.3;}
 
 /* Property result */
 .prop-box{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:#fff;border-radius:12px;padding:16px;margin:12px 0;}
@@ -474,8 +475,8 @@ function calculate(){
     botHTML = `
       <div class="rc good"><div class="v">${fmt(exitValue)}</div><div class="l">${t('propValueExit')}</div></div>
       <div class="rc good"><div class="v">${fmt(profit)}</div><div class="l">${t('grossProfit')}</div></div>
-      <div class="rc good"><div class="v">${fmtP(roiOnCash)}</div><div class="l">${t('roiCash')}</div></div>
-      <div class="rc good"><div class="v">${fmtP(annualRoiOnCash)}</div><div class="l">${t('annualizedRoi')}</div></div>
+      <div class="rc good"><div class="v">${fmtP(roiOnCash)}</div><div class="l">${t('roiCash')}</div><div class="est">${t('estNote')}</div></div>
+      <div class="rc good"><div class="v">${fmtP(annualRoiOnCash)}</div><div class="l">${t('annualizedRoi')}</div><div class="est">${t('estNote')}</div></div>
     `;
 
   } else if (currentMode === 'full_rental') {
@@ -505,8 +506,8 @@ function calculate(){
     botHTML = `
       <div class="rc good"><div class="v">${fmt(pv)}</div><div class="l">${t('propValue')}</div></div>
       <div class="rc good"><div class="v">${fmt(totalRent)}</div><div class="l">${t('totalRentEarned')}</div></div>
-      <div class="rc good"><div class="v">${fmtP(totalRet)}</div><div class="l">${t('totalReturn')}</div></div>
-      <div class="rc good"><div class="v">${fmtP(annRet)}</div><div class="l">${t('annReturn')}</div></div>
+      <div class="rc good"><div class="v">${fmtP(totalRet)}</div><div class="l">${t('totalReturn')}</div><div class="est">${t('estNote')}</div></div>
+      <div class="rc good"><div class="v">${fmtP(annRet)}</div><div class="l">${t('annReturn')}</div><div class="est">${t('estNote')}</div></div>
     `;
 
   } else {
@@ -532,8 +533,8 @@ function calculate(){
     botHTML = `
       <div class="rc good"><div class="v">${fmt(pv)}</div><div class="l">${t('estValue')}</div></div>
       <div class="rc good"><div class="v">${fmt(profit)}</div><div class="l">${t('capitalGain')}</div></div>
-      <div class="rc good"><div class="v">${fmtP(totalRet)}</div><div class="l">${t('totalReturn')}</div></div>
-      <div class="rc good"><div class="v">${fmtP(annRet)}</div><div class="l">${t('annReturn')}</div></div>
+      <div class="rc good"><div class="v">${fmtP(totalRet)}</div><div class="l">${t('totalReturn')}</div><div class="est">${t('estNote')}</div></div>
+      <div class="rc good"><div class="v">${fmtP(annRet)}</div><div class="l">${t('annReturn')}</div><div class="est">${t('estNote')}</div></div>
     `;
   }
 
@@ -644,6 +645,7 @@ en: {
   grossYield:'Gross Rental Yield', netYield:'Net Rental Yield', monthlyGross:'Monthly Rent (Gross)', monthlyNet:'Monthly Rent (Net)',
   propValue:'Property Value', totalRentEarned:'Total Rent Earned (Net)', totalReturn:'Total Return', annReturn:'Annualized Return',
   growthRate:'Annual Growth Rate', holdPeriod:'Hold Period', entryPrice:'Entry Price', market:'Market',
+  estNote:'Estimate based on your inputs — not guaranteed',
   estValue:'Estimated Value', capitalGain:'Capital Gain',
   chartPropValue:'Property Value', chartRent:'Cumulative Rent', chartPaid:'Total Paid',
   size:'Size', price:'Total Price', priceSqm:'Price/m²', bestArea:'Best Area', toBeach:'To Beach',
@@ -695,6 +697,7 @@ ru: {
   propValue:'Стоимость объекта', totalRentEarned:'Общий доход от аренды', totalReturn:'Общая доходность', annReturn:'Годовая доходность',
   growthRate:'Годовой рост', holdPeriod:'Срок владения', entryPrice:'Цена входа', market:'Рынок',
   estValue:'Оценочная стоимость', capitalGain:'Прирост капитала',
+  estNote:'Оценка на основе введённых параметров — не гарантия',
   chartPropValue:'Стоимость объекта', chartRent:'Совокупная аренда', chartPaid:'Всего оплачено',
   size:'Площадь', price:'Полная цена', priceSqm:'Цена/м²', bestArea:'Лучший район', toBeach:'До пляжа',
   yr:'год', yrs:'лет', mo:'мес',
@@ -745,6 +748,7 @@ pt: {
   propValue:'Valor do Imóvel', totalRentEarned:'Renda Total de Aluguel', totalReturn:'Retorno Total', annReturn:'Retorno Anualizado',
   growthRate:'Taxa de Crescimento Anual', holdPeriod:'Período', entryPrice:'Preço de Entrada', market:'Mercado',
   estValue:'Valor Estimado', capitalGain:'Ganho de Capital',
+  estNote:'Estimativa baseada nos parâmetros informados — não é garantia',
   chartPropValue:'Valor do Imóvel', chartRent:'Aluguel Acumulado', chartPaid:'Total Pago',
   size:'Área', price:'Preço Total', priceSqm:'Preço/m²', bestArea:'Melhor Bairro', toBeach:'Até a Praia',
   yr:'ano', yrs:'anos', mo:'meses',
