@@ -1,11 +1,23 @@
 'use client';
 
 const WHATSAPP_URL = 'https://wa.me/5548988117424';
-const CONVERSION_ID = ''; // TODO: paste Google Ads "Contact" conversion snippet id here once received
 
 function gtagSendEvent() {
-  if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function' && CONVERSION_ID) {
-    (window as any).gtag('event', 'conversion', { send_to: CONVERSION_ID });
+  if (typeof window === 'undefined') return;
+  const w = window as any;
+  // Google Ads "Contact" conversion (fires directly if gtag is present,
+  // and pushes to dataLayer so a GTM Custom Event trigger can also pick it up)
+  if (typeof w.gtag === 'function') {
+    w.gtag('event', 'conversion_event_contact', {
+      event_callback: function () {},
+      event_timeout: 2000,
+    });
+  }
+  if (Array.isArray(w.dataLayer)) {
+    w.dataLayer.push({ event: 'conversion_event_contact' });
+  }
+  if (typeof w.fbq === 'function') {
+    w.fbq('track', 'Contact');
   }
 }
 

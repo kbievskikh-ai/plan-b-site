@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import GTMScript from "@/components/GTMScript";
+import MetaPixel from "@/components/MetaPixel";
 import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
@@ -58,6 +59,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <GTMScript />
+        <MetaPixel />
         <Providers>{children}</Providers>
         <Analytics />
       </body>
