@@ -342,6 +342,21 @@ function gtagSendEvent() {
   }
   if (typeof fbq === 'function') { fbq('track', 'Contact'); }
 }
+
+// Global delegated tracker: catches ANY wa.me/t.me link click on this page,
+// including ones without an explicit onclick (e.g. the CTA button below),
+// so no future WhatsApp/Telegram link on this page is ever missed.
+(function() {
+  var CONTACT_HOST_RE = /(^|\.)(wa\.me|api\.whatsapp\.com|t\.me)$/i;
+  document.addEventListener('click', function(e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    try {
+      var url = new URL(a.getAttribute('href'), window.location.href);
+      if (CONTACT_HOST_RE.test(url.hostname)) { gtagSendEvent(); }
+    } catch (err) {}
+  }, true);
+})();
 const FX = 5.16;
 let currentMode = 'installment';
 let chartGrowth, chartCompare;

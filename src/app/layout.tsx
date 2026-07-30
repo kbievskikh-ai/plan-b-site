@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 import GTMScript from "@/components/GTMScript";
 import MetaPixel from "@/components/MetaPixel";
+import ContactLinkTracker from "@/components/ContactLinkTracker";
 import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
@@ -60,6 +61,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <GTMScript />
         <MetaPixel />
+        <ContactLinkTracker />
         <Providers>{children}</Providers>
         <Analytics />
       </body>
