@@ -329,8 +329,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="footer">© 2026 Plan B Brazil. All projections are estimates. Not financial advice.</div>
 
 <script>
+var userChoseLang = false; // becomes true once user clicks EN/RU/PT explicitly
+
 function waText() {
-  var isRu = (navigator.language || '').toLowerCase().indexOf('ru') === 0;
+  // Priority: explicit language toggle chosen by the user on the page.
+  // Before any explicit choice, fall back to the browser's language.
+  var isRu;
+  if (userChoseLang && typeof currentLang !== 'undefined') {
+    isRu = (currentLang === 'ru');
+  } else {
+    isRu = (navigator.language || '').toLowerCase().indexOf('ru') === 0;
+  }
   var ru = 'Здравствуйте! Хочу узнать больше об инвестициях в недвижимость в Бразилии';
   var en = "Hello! I'd like to learn more about real estate investment in Brazil";
   return encodeURIComponent(isRu ? ru : en);
@@ -342,7 +351,6 @@ function setWaLinksText() {
     a.setAttribute('href', base + '?text=' + waText());
   });
 }
-setWaLinksText();
 
 function gtagSendEvent() {
   // Google Ads "Contact" conversion (fires directly if gtag is present,
@@ -772,11 +780,14 @@ pt: {
 };
 
 let currentLang = 'en';
+setWaLinksText();
 
 function t(key) { return T[currentLang][key] || T['en'][key] || key; }
 
 function setLang(lang) {
   currentLang = lang;
+  userChoseLang = true;
+  setWaLinksText();
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.includes(lang.toUpperCase()) || (lang==='pt' && b.textContent.includes('PT')) || (lang==='en' && b.textContent.includes('EN')) || (lang==='ru' && b.textContent.includes('RU'))));
 
   // Update static texts
