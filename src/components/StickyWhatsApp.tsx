@@ -1,6 +1,15 @@
 'use client';
 
-const WHATSAPP_URL = 'https://wa.me/5548988117424';
+const WHATSAPP_BASE = 'https://wa.me/5548988117424';
+
+const WA_TEXT_RU = 'Здравствуйте! Хочу узнать больше об инвестициях в недвижимость в Бразилии';
+const WA_TEXT_EN = "Hello! I'd like to learn more about real estate investment in Brazil";
+
+function getWhatsappUrl() {
+  if (typeof navigator === 'undefined') return WHATSAPP_BASE;
+  const isRu = (navigator.language || '').toLowerCase().startsWith('ru');
+  return `${WHATSAPP_BASE}?text=${encodeURIComponent(isRu ? WA_TEXT_RU : WA_TEXT_EN)}`;
+}
 
 function gtagSendEvent() {
   if (typeof window === 'undefined') return;
@@ -24,10 +33,14 @@ function gtagSendEvent() {
 export default function StickyWhatsApp() {
   return (
     <a
-      href={WHATSAPP_URL}
+      href={WHATSAPP_BASE}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={gtagSendEvent}
+      onClick={(e) => {
+        e.preventDefault();
+        gtagSendEvent();
+        window.open(getWhatsappUrl(), '_blank', 'noopener,noreferrer');
+      }}
       aria-label="WhatsApp"
       className="fixed bottom-5 right-5 z-[60] w-14 h-14 rounded-full bg-[#25D366] shadow-lg flex items-center justify-center hover:scale-105 transition-transform"
       style={{ boxShadow: '0 4px 16px rgba(0,0,0,.25)' }}

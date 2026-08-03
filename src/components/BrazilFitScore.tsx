@@ -4,6 +4,12 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import StickyWhatsApp from '@/components/StickyWhatsApp';
 
+const WA_TEXT_RU = 'Здравствуйте! Хочу узнать больше об инвестициях в недвижимость в Бразилии';
+const WA_TEXT_EN = "Hello! I'd like to learn more about real estate investment in Brazil";
+function waUrl(lang: string) {
+  return `https://wa.me/5548988117424?text=${encodeURIComponent(lang === 'ru' ? WA_TEXT_RU : WA_TEXT_EN)}`;
+}
+
 // ─── Translations ───
 const t: Record<string, Record<string, any>> = {
   ru: {
@@ -463,7 +469,7 @@ export default function BrazilFitScore() {
           <div className="flex gap-1 justify-center mt-2">
             <button onClick={() => setLang('ru')} className={`px-3 py-0.5 text-[10px] rounded font-semibold ${lang === 'ru' ? 'bg-white/15 text-white border border-[#D4AF37]' : 'text-white/50 border border-white/20'}`}>RU</button>
             <button onClick={() => setLang('en')} className={`px-3 py-0.5 text-[10px] rounded font-semibold ${lang === 'en' ? 'bg-white/15 text-white border border-[#D4AF37]' : 'text-white/50 border border-white/20'}`}>EN</button>
-            <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex items-center px-2 py-0.5 rounded bg-[#25D366]/90 text-white">
+            <a href={waUrl(lang)} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex items-center px-2 py-0.5 rounded bg-[#25D366]/90 text-white">
               <svg viewBox="0 0 24 24" className="w-3 h-3 fill-white"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.53 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44zM12.05 21.4h-.01a9.6 9.6 0 01-4.9-1.34l-.35-.21-3.65.96.98-3.56-.23-.36a9.53 9.53 0 01-1.47-5.07c0-5.28 4.3-9.58 9.6-9.58 2.56 0 4.97 1 6.78 2.81a9.5 9.5 0 012.8 6.78c0 5.28-4.3 9.57-9.55 9.57zm5.24-7.17c-.29-.14-1.7-.84-1.96-.93-.26-.1-.46-.14-.65.14-.19.29-.75.93-.92 1.12-.17.19-.34.22-.63.07-.29-.14-1.21-.45-2.31-1.44-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.58-.9-2.16-.24-.57-.48-.5-.65-.5-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.4 1.02 2.76 1.16 2.95.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33z" /></svg>
             </a>
           </div>
@@ -578,7 +584,7 @@ export default function BrazilFitScore() {
                 {L.finalPrimary}
               </button>
               <br />
-              <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" className="bg-transparent text-[#D4AF37] border border-[#D4AF37] px-5 py-1.5 rounded-lg text-[10px] font-semibold hover:bg-[#D4AF37]/10 inline-block">
+              <a href={waUrl(lang)} target="_blank" rel="noopener noreferrer" className="bg-transparent text-[#D4AF37] border border-[#D4AF37] px-5 py-1.5 rounded-lg text-[10px] font-semibold hover:bg-[#D4AF37]/10 inline-block">
                 {L.finalSecondary}
               </a>
               <p className="text-[9px] text-white/35 mt-3 italic">{L.ctaSite}</p>
@@ -603,7 +609,7 @@ export default function BrazilFitScore() {
         <div className="flex gap-1 justify-center mt-2">
           <button onClick={() => setLang('ru')} className={`px-3 py-0.5 text-[10px] rounded font-semibold ${lang === 'ru' ? 'bg-white/15 text-white border border-[#D4AF37]' : 'text-white/50 border border-white/20'}`}>RU</button>
           <button onClick={() => setLang('en')} className={`px-3 py-0.5 text-[10px] rounded font-semibold ${lang === 'en' ? 'bg-white/15 text-white border border-[#D4AF37]' : 'text-white/50 border border-white/20'}`}>EN</button>
-          <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex items-center px-2 py-0.5 rounded bg-[#25D366]/90 text-white">
+          <a href={waUrl(lang)} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex items-center px-2 py-0.5 rounded bg-[#25D366]/90 text-white">
             <svg viewBox="0 0 24 24" className="w-3 h-3 fill-white"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.53 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44zM12.05 21.4h-.01a9.6 9.6 0 01-4.9-1.34l-.35-.21-3.65.96.98-3.56-.23-.36a9.53 9.53 0 01-1.47-5.07c0-5.28 4.3-9.58 9.6-9.58 2.56 0 4.97 1 6.78 2.81a9.5 9.5 0 012.8 6.78c0 5.28-4.3 9.57-9.55 9.57zm5.24-7.17c-.29-.14-1.7-.84-1.96-.93-.26-.1-.46-.14-.65.14-.19.29-.75.93-.92 1.12-.17.19-.34.22-.63.07-.29-.14-1.21-.45-2.31-1.44-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.58-.9-2.16-.24-.57-.48-.5-.65-.5-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.4 1.02 2.76 1.16 2.95.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33z" /></svg>
           </a>
         </div>
