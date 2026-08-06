@@ -35,6 +35,27 @@ export default function ContactLinkTracker() {
       }
     }
 
+    // Fire the conversion only if the click actually made the page lose
+    // visibility (i.e. the OS/browser genuinely tried to switch to WhatsApp).
+    // Some in-app browsers (Gmail, YouTube, Google app webviews — common
+    // sources for Performance Max traffic, especially on iOS) intercept the
+    // click but silently fail to open wa.me. Gating on visibilitychange stops
+    // those from being counted as fake conversions.
+    function trackClick(source: string) {
+      let fired = false;
+      function fire() {
+        if (fired) return;
+        fired = true;
+        document.removeEventListener('visibilitychange', onVisible);
+        fireContactConversion(source);
+      }
+      function onVisible() {
+        if (document.hidden) fire();
+      }
+      document.addEventListener('visibilitychange', onVisible);
+      setTimeout(() => document.removeEventListener('visibilitychange', onVisible), 2500);
+    }
+
     function handleClick(e: MouseEvent) {
       const target = e.target as HTMLElement | null;
       if (!target) return;
@@ -42,7 +63,7 @@ export default function ContactLinkTracker() {
       if (!anchor) return;
       const href = anchor.getAttribute('href');
       if (!href || !isContactLink(href)) return;
-      fireContactConversion(window.location.pathname);
+      trackClick(window.location.pathname);
     }
 
     // Capture phase so it fires even if a child element stops propagation.

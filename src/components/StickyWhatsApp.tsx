@@ -11,24 +11,12 @@ function getWhatsappUrl() {
   return `${WHATSAPP_BASE}?text=${encodeURIComponent(isRu ? WA_TEXT_RU : WA_TEXT_EN)}`;
 }
 
-function gtagSendEvent() {
-  if (typeof window === 'undefined') return;
-  const w = window as any;
-  // Google Ads "Contact" conversion (fires directly if gtag is present,
-  // and pushes to dataLayer so a GTM Custom Event trigger can also pick it up)
-  if (typeof w.gtag === 'function') {
-    w.gtag('event', 'conversion_event_contact', {
-      event_callback: function () {},
-      event_timeout: 2000,
-    });
-  }
-  if (Array.isArray(w.dataLayer)) {
-    w.dataLayer.push({ event: 'conversion_event_contact' });
-  }
-  if (typeof w.fbq === 'function') {
-    w.fbq('track', 'Contact');
-  }
-}
+// NOTE: conversion tracking for this link is handled globally by
+// <ContactLinkTracker /> (mounted once in layout.tsx), which delegates a
+// single document-level click listener for any wa.me/t.me link on the
+// site. Do NOT also fire gtagSendEvent()/dataLayer.push here — doing so
+// double-counts the conversion (one click = two events), which is exactly
+// the bug that inflated GA4 numbers on calculator.html.
 
 export default function StickyWhatsApp() {
   return (
@@ -38,7 +26,6 @@ export default function StickyWhatsApp() {
       rel="noopener noreferrer"
       onClick={(e) => {
         e.preventDefault();
-        gtagSendEvent();
         window.open(getWhatsappUrl(), '_blank', 'noopener,noreferrer');
       }}
       aria-label="WhatsApp"
