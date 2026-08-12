@@ -36,10 +36,16 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .header .logo{font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:700;letter-spacing:2px;display:flex;align-items:center;justify-content:center;gap:10px;}
 .header .logo .logo-mark{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#D4AF37,#b8862d);border-radius:8px;font-size:20px;font-weight:700;color:#fff;}
 .lang-switch{display:flex;gap:4px;justify-content:center;margin-top:10px;align-items:center;}
+.tg-header-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#229ED9;margin-left:4px;}
+.tg-header-btn svg{width:17px;height:17px;fill:#fff;}
 .wa-header-btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#25D366;margin-left:4px;}
 .wa-header-btn svg{width:14px;height:14px;fill:#fff;}
-.wa-sticky{position:fixed;bottom:20px;right:20px;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:999;}
-.wa-sticky svg{width:28px;height:28px;fill:#fff;}
+.contact-stack{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.tg-sticky{width:60px;height:60px;border-radius:50%;background:#229ED9;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25);transition:.2s;}
+.tg-sticky svg{width:30px;height:30px;fill:#fff;}
+.tg-sticky:hover{transform:scale(1.05);}
+.wa-sticky{width:48px;height:48px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25);transition:.2s;}
+.wa-sticky svg{width:24px;height:24px;fill:#fff;}
 .wa-sticky:hover{transform:scale(1.05);}
 .lang-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 12px;border-radius:16px;font-size:11px;font-weight:600;cursor:pointer;transition:.2s;}
 .lang-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
@@ -146,19 +152,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
     <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
     <button class="lang-btn" onclick="setLang('pt')">🇧🇷 PT</button>
+    <a href="https://t.me/kbievskikh" target="_blank" rel="noopener noreferrer" class="tg-header-btn" aria-label="Telegram">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
     <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" class="wa-header-btn" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.53 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44zM12.05 21.4h-.01a9.6 9.6 0 01-4.9-1.34l-.35-.21-3.65.96.98-3.56-.23-.36a9.53 9.53 0 01-1.47-5.07c0-5.28 4.3-9.58 9.6-9.58 2.56 0 4.97 1 6.78 2.81a9.5 9.5 0 012.8 6.78c0 5.28-4.3 9.57-9.55 9.57zm5.24-7.17c-.29-.14-1.7-.84-1.96-.93-.26-.1-.46-.14-.65.14-.19.29-.75.93-.92 1.12-.17.19-.34.22-.63.07-.29-.14-1.21-.45-2.31-1.44-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.58-.9-2.16-.24-.57-.48-.5-.65-.5-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.4 1.02 2.76 1.16 2.95.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33z"/></svg>
     </a>
   </div>
 </div>
 
-<a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" class="wa-sticky" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.53 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44zM12.05 21.4h-.01a9.6 9.6 0 01-4.9-1.34l-.35-.21-3.65.96.98-3.56-.23-.36a9.53 9.53 0 01-1.47-5.07c0-5.28 4.3-9.58 9.6-9.58 2.56 0 4.97 1 6.78 2.81a9.5 9.5 0 012.8 6.78c0 5.28-4.3 9.57-9.55 9.57zm5.24-7.17c-.29-.14-1.7-.84-1.96-.93-.26-.1-.46-.14-.65.14-.19.29-.75.93-.92 1.12-.17.19-.34.22-.63.07-.29-.14-1.21-.45-2.31-1.44-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.58-.9-2.16-.24-.57-.48-.5-.65-.5-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.4 1.02 2.76 1.16 2.95.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33z"/></svg>
-</a>
+<div class="contact-stack">
+  <a href="https://t.me/kbievskikh" target="_blank" rel="noopener noreferrer" class="tg-sticky" aria-label="Telegram">
+    <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+  </a>
+  <a href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer" class="wa-sticky" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.53 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44zM12.05 21.4h-.01a9.6 9.6 0 01-4.9-1.34l-.35-.21-3.65.96.98-3.56-.23-.36a9.53 9.53 0 01-1.47-5.07c0-5.28 4.3-9.58 9.6-9.58 2.56 0 4.97 1 6.78 2.81a9.5 9.5 0 012.8 6.78c0 5.28-4.3 9.57-9.55 9.57zm5.24-7.17c-.29-.14-1.7-.84-1.96-.93-.26-.1-.46-.14-.65.14-.19.29-.75.93-.92 1.12-.17.19-.34.22-.63.07-.29-.14-1.21-.45-2.31-1.44-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.58-.9-2.16-.24-.57-.48-.5-.65-.5-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.4 1.02 2.76 1.16 2.95.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.63.6.68.22 1.3.19 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33z"/></svg>
+  </a>
+</div>
 
-<div id="waFallbackBanner" style="display:none;position:fixed;left:12px;right:12px;bottom:88px;z-index:1000;background:#1B2951;color:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 4px 16px rgba(0,0,0,.3);align-items:center;justify-content:space-between;gap:10px;font-size:12px;">
-  <span>WhatsApp didn't open? Call/text us directly:</span>
-  <a href="tel:+5548988117424" style="background:#D4AF37;color:#1B2951;padding:6px 12px;border-radius:6px;font-weight:700;white-space:nowrap;text-decoration:none;">+55 48 98811-7424</a>
+<div id="waFallbackBanner" style="display:none;position:fixed;left:12px;right:12px;bottom:88px;z-index:1000;background:#1B2951;color:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 4px 16px rgba(0,0,0,.3);flex-direction:column;gap:8px;font-size:12px;">
+  <span>Didn't open? Try another way to reach us:</span>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <a href="https://t.me/kbievskikh" target="_blank" rel="noopener noreferrer" style="background:#229ED9;color:#fff;padding:6px 12px;border-radius:6px;font-weight:700;white-space:nowrap;text-decoration:none;">Telegram @kbievskikh</a>
+    <a href="tel:+5548988117424" style="background:#D4AF37;color:#1B2951;padding:6px 12px;border-radius:6px;font-weight:700;white-space:nowrap;text-decoration:none;">+55 48 98811-7424</a>
+  </div>
 </div>
 
 <div class="container">
@@ -323,9 +340,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="cta">
   <h2>Want Higher Returns?</h2>
   <p>A Plan B broker can find you projects with better yields, developer discounts, and payment plans that maximize your ROI.</p>
-  <a href="https://wa.me/5548988117424?text=Hi%20Plan%20B!%20I%20used%20your%20calculator%20and%20want%20a%20personalized%20strategy." class="btn">📱 Get Personalized Strategy</a>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+    <a href="https://t.me/kbievskikh?text=Hi%20Plan%20B!%20I%20used%20your%20calculator%20and%20want%20a%20personalized%20strategy." class="btn" style="background:#229ED9;color:#fff;">✈️ Message on Telegram</a>
+    <a href="https://wa.me/5548988117424?text=Hi%20Plan%20B!%20I%20used%20your%20calculator%20and%20want%20a%20personalized%20strategy." class="btn">📱 Message on WhatsApp</a>
+  </div>
   <div class="contacts">
-    WhatsApp: +55 (48) 98811-7424 · Telegram: @kbievskikh · planbbrazil.com<br>
+    Telegram: @kbievskikh · WhatsApp: +55 (48) 98811-7424 · planbbrazil.com<br>
     CRECI-SC 59616-F · Santa Catarina, Brazil
   </div>
 </div>
@@ -357,9 +377,14 @@ function setWaLinksText() {
   });
 }
 
-function gtagSendEvent() {
+function gtagSendEvent(channel) {
   // Google Ads "Contact" conversion (fires directly if gtag is present,
-  // and pushes to dataLayer so a GTM Custom Event trigger can also pick it up)
+  // and pushes to dataLayer so a GTM Custom Event trigger can also pick it up).
+  // Fires BOTH the original combined event (kept for the existing GTM/Ads
+  // trigger, which only listens for conversion_event_contact) AND a new
+  // channel-specific event, so channel performance can be split later
+  // without touching the GTM trigger config.
+  var channelEvent = channel === 'telegram' ? 'conversion_event_contact_telegram' : 'conversion_event_contact_whatsapp';
   if (typeof gtag === 'function') {
     gtag('event', 'conversion_event_contact', {
       'event_callback': function(){},
@@ -367,9 +392,10 @@ function gtagSendEvent() {
     });
   }
   if (typeof dataLayer !== 'undefined') {
-    dataLayer.push({'event': 'conversion_event_contact'});
+    dataLayer.push({'event': 'conversion_event_contact', 'contact_channel': channel});
+    dataLayer.push({'event': channelEvent});
   }
-  if (typeof fbq === 'function') { fbq('track', 'Contact'); }
+  if (typeof fbq === 'function') { fbq('track', 'Contact', {contact_channel: channel}); }
 }
 
 function showWaFallback() {
@@ -378,19 +404,21 @@ function showWaFallback() {
 }
 
 // Fire the conversion ONLY if the click actually made the page lose
-// visibility (i.e. the OS/browser genuinely tried to switch to WhatsApp).
+// visibility (i.e. the OS/browser genuinely tried to switch to WhatsApp/Telegram).
 // Some in-app browsers (Gmail, YouTube, Google app webviews — common
 // sources for Performance Max traffic, especially on iOS) intercept the
-// click but silently fail to open wa.me. Gating on visibilitychange stops
+// click but silently fail to open the app. Gating on visibilitychange stops
 // those from being counted as fake conversions, and surfaces a manual
-// fallback (phone number) instead.
-function trackContactClick() {
+// fallback (phone/Telegram) instead. Desktop wa.me clicks that never leave
+// the tab (no WhatsApp Desktop installed, ignored QR prompt) also correctly
+// fall through to the fallback banner instead of being counted.
+function trackContactClick(channel) {
   var fired = false;
   function fire() {
     if (fired) return;
     fired = true;
     document.removeEventListener('visibilitychange', onVisible);
-    gtagSendEvent();
+    gtagSendEvent(channel);
   }
   function onVisible() {
     if (document.hidden) fire();
@@ -406,13 +434,15 @@ function trackContactClick() {
 // including ones without an explicit onclick (e.g. the CTA button below),
 // so no future WhatsApp/Telegram link on this page is ever missed.
 (function() {
-  var CONTACT_HOST_RE = /(^|\.)(wa\.me|api\.whatsapp\.com|t\.me)$/i;
+  var WA_HOST_RE = /(^|\.)(wa\.me|api\.whatsapp\.com)$/i;
+  var TG_HOST_RE = /(^|\.)(t\.me)$/i;
   document.addEventListener('click', function(e) {
     var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
     if (!a) return;
     try {
       var url = new URL(a.getAttribute('href'), window.location.href);
-      if (CONTACT_HOST_RE.test(url.hostname)) { trackContactClick(); }
+      if (WA_HOST_RE.test(url.hostname)) { trackContactClick('whatsapp'); }
+      else if (TG_HOST_RE.test(url.hostname)) { trackContactClick('telegram'); }
     } catch (err) {}
   }, true);
 })();

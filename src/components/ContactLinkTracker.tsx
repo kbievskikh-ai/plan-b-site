@@ -14,24 +14,32 @@ import { useEffect } from 'react';
  */
 export default function ContactLinkTracker() {
   useEffect(() => {
-    const CONTACT_HOST_RE = /(^|\.)(wa\.me|api\.whatsapp\.com|t\.me)$/i;
+    const WA_HOST_RE = /(^|\.)(wa\.me|api\.whatsapp\.com)$/i;
+    const TG_HOST_RE = /(^|\.)(t\.me)$/i;
 
-    function isContactLink(href: string): boolean {
+    function getChannel(href: string): 'whatsapp' | 'telegram' | null {
       try {
         const url = new URL(href, window.location.href);
-        return CONTACT_HOST_RE.test(url.hostname);
+        if (WA_HOST_RE.test(url.hostname)) return 'whatsapp';
+        if (TG_HOST_RE.test(url.hostname)) return 'telegram';
+        return null;
       } catch {
-        return false;
+        return null;
       }
     }
 
-    function fireContactConversion(source: string) {
+    // Fires BOTH the original combined event (kept for the existing GTM
+    // Custom Event trigger, which only listens for conversion_event_contact)
+    // AND a channel-specific event, so WhatsApp vs Telegram performance can
+    // be split later without touching the GTM trigger config.
+    function fireContactConversion(source: string, channel: 'whatsapp' | 'telegram') {
       const w = window as any;
       if (Array.isArray(w.dataLayer)) {
-        w.dataLayer.push({ event: 'conversion_event_contact', contact_source: source });
+        w.dataLayer.push({ event: 'conversion_event_contact', contact_source: source, contact_channel: channel });
+        w.dataLayer.push({ event: `conversion_event_contact_${channel}`, contact_source: source });
       }
       if (typeof w.fbq === 'function') {
-        w.fbq('track', 'Contact');
+        w.fbq('track', 'Contact', { contact_channel: channel });
       }
     }
 
@@ -41,13 +49,13 @@ export default function ContactLinkTracker() {
     // sources for Performance Max traffic, especially on iOS) intercept the
     // click but silently fail to open wa.me. Gating on visibilitychange stops
     // those from being counted as fake conversions.
-    function trackClick(source: string) {
+    function trackClick(source: string, channel: 'whatsapp' | 'telegram') {
       let fired = false;
       function fire() {
         if (fired) return;
         fired = true;
         document.removeEventListener('visibilitychange', onVisible);
-        fireContactConversion(source);
+        fireContactConversion(source, channel);
       }
       function onVisible() {
         if (document.hidden) fire();
@@ -62,8 +70,10 @@ export default function ContactLinkTracker() {
       const anchor = target.closest('a[href]') as HTMLAnchorElement | null;
       if (!anchor) return;
       const href = anchor.getAttribute('href');
-      if (!href || !isContactLink(href)) return;
-      trackClick(window.location.pathname);
+      if (!href) return;
+      const channel = getChannel(href);
+      if (!channel) return;
+      trackClick(window.location.pathname, channel);
     }
 
     // Capture phase so it fires even if a child element stops propagation.

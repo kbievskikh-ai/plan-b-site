@@ -134,14 +134,25 @@ export default function Header() {
               </a>
             </div>
 
-            <motion.a
-              href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
-              className="btn-gold ml-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {t('nav.getConsultation')}
-            </motion.a>
+            <div className="flex items-center gap-2 ml-2">
+              <motion.a
+                href="https://t.me/kbievskikh" target="_blank" rel="noopener noreferrer"
+                className="btn-gold"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t('nav.getConsultation')}
+              </motion.a>
+              <motion.a
+                href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
+                className="px-3 py-1.5 border border-white/20 rounded text-white/70 hover:text-gold-400 hover:border-gold-400/50 text-sm tracking-wider uppercase transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="WhatsApp"
+              >
+                WhatsApp
+              </motion.a>
+            </div>
           </nav>
 
           {/* Mobile menu button */}
@@ -223,16 +234,29 @@ export default function Header() {
                     {item.label}
                   </motion.a>
                 ))}
-                <motion.a
-                  href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
-                  onClick={() => setMenuOpen(false)}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navItems.length * 0.1 }}
-                  className="btn-gold inline-block mt-4"
-                >
-                  {t('nav.getConsultation')}
-                </motion.a>
+                <div className="flex items-center gap-3 mt-4">
+                  <motion.a
+                    href="https://t.me/kbievskikh" target="_blank" rel="noopener noreferrer"
+                    onClick={() => setMenuOpen(false)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: navItems.length * 0.1 }}
+                    className="btn-gold inline-block"
+                  >
+                    {t('nav.getConsultation')}
+                  </motion.a>
+                  <motion.a
+                    href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
+                    onClick={() => setMenuOpen(false)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: (navItems.length + 1) * 0.1 }}
+                    className="px-4 py-2 border border-white/20 rounded text-white/70 text-sm inline-block"
+                    aria-label="WhatsApp"
+                  >
+                    WhatsApp
+                  </motion.a>
+                </div>
               </div>
             </motion.nav>
           )}
