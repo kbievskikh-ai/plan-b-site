@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/i18n";
 import { useSettings } from "@/lib/settings";
+import FlagIcon from "@/components/FlagIcon";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,10 +33,10 @@ export default function Header() {
   }, []);
 
   const [langOpen, setLangOpen] = useState(false);
-  const languages: { code: 'en' | 'ru' | 'pt'; flag: string; label: string }[] = [
-    { code: 'en', flag: '🇬🇧', label: 'EN' },
-    { code: 'ru', flag: '🇷🇺', label: 'RU' },
-    { code: 'pt', flag: '🇧🇷', label: 'PT' },
+  const languages: { code: 'en' | 'ru' | 'pt'; label: string }[] = [
+    { code: 'en', label: 'EN' },
+    { code: 'ru', label: 'RU' },
+    { code: 'pt', label: 'PT' },
   ];
   const currentLang = languages.find(l => l.code === language) || languages[0];
 
@@ -89,7 +90,7 @@ export default function Header() {
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-1 px-3 py-1.5 border border-white/20 rounded text-white/70 hover:text-gold-400 hover:border-gold-400/50 text-sm tracking-wider uppercase transition-all duration-300"
               >
-                <span className="text-base">{currentLang.flag}</span>
+                <FlagIcon code={currentLang.code} className="w-4 h-3 rounded-sm" />
                 <span>{currentLang.label}</span>
                 <svg className={`w-3 h-3 ml-1 transition-transform ${langOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -107,7 +108,7 @@ export default function Header() {
                           : 'text-white/70 hover:bg-white/10 hover:text-white'
                       }`}
                     >
-                      <span>{lang.flag}</span>
+                      <FlagIcon code={lang.code} className="w-4 h-3 rounded-sm" />
                       <span>{lang.label}</span>
                     </button>
                   ))}
@@ -161,9 +162,9 @@ export default function Header() {
             <div className="relative">
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1 px-2 py-1 border border-white/20 rounded text-white/70 hover:text-gold-400 text-xs tracking-wider uppercase transition-colors"
+                className="flex items-center gap-1.5 px-2 py-1 border border-white/20 rounded text-white/70 hover:text-gold-400 text-xs tracking-wider uppercase transition-colors"
               >
-                <span>{currentLang.flag}</span>
+                <FlagIcon code={currentLang.code} className="w-4 h-3 rounded-sm" />
                 <span>{currentLang.label}</span>
               </button>
               {langOpen && (
@@ -178,7 +179,7 @@ export default function Header() {
                           : 'text-white/70 hover:bg-white/10'
                       }`}
                     >
-                      <span>{lang.flag}</span>
+                      <FlagIcon code={lang.code} className="w-4 h-3 rounded-sm" />
                       <span>{lang.label}</span>
                     </button>
                   ))}
