@@ -15,13 +15,13 @@ export default function Header() {
     { label: t('nav.properties'), href: "#properties", section: 'section_featured_properties' },
     { label: t('nav.regions'), href: "#regions", section: 'section_map' },
     { label: t('nav.whyBrazil'), href: "#investment", section: 'section_why_brazil' },
-    { label: t('nav.research'), href: "#research", section: 'section_research' },
+    { label: t('nav.research'), href: "#research", section: null },
     { label: t('nav.about'), href: "#about", section: 'section_about' },
     { label: t('nav.caseStudies'), href: "#case-studies", section: 'section_case_studies' },
     { label: t('nav.faq'), href: "#faq", section: 'section_faq' },
   ];
 
-  const navItems = allNavItems.filter(item => show(item.section));
+  const navItems = allNavItems.filter(item => !item.section || show(item.section));
 
   useEffect(() => {
     const handleScroll = () => {

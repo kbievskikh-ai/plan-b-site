@@ -4,11 +4,11 @@ import { useState } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedProperties from '@/components/FeaturedProperties';
 import AboutKonstantin from '@/components/AboutKonstantin';
+import BricsAwardSection from '@/components/BricsAwardSection';
 import WhyBrazil from '@/components/WhyBrazil';
 import PropertyFinder from '@/components/PropertyFinder';
 import PlanBTools from '@/components/PlanBTools';
 import HowItWorks from '@/components/HowItWorks';
-import ResearchSection from '@/components/ResearchSection';
 import ResearchInsights from '@/components/ResearchInsights';
 import FAQ from '@/components/FAQ';
 import AdditionalFreeTools from '@/components/AdditionalFreeTools';
@@ -65,12 +65,12 @@ export default function SectionManager() {
         <FloatingChat />
         <Hero />
         <AboutKonstantin />
+        <BricsAwardSection />
         <PlanBTools />
         <PropertyFinder />
         <FeaturedProperties />
         <WhyBrazil />
         <ResearchInsights />
-        <ResearchSection />
         <HowItWorks />
         <FAQ />
         <AdditionalFreeTools />
@@ -84,12 +84,12 @@ export default function SectionManager() {
       <FloatingChat />
       {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
       {show('section_about') && <AboutKonstantin />}
+      {show('section_about') && <BricsAwardSection />}
       <PlanBTools />
       <PropertyFinder />
       {show('section_featured_properties') && <FeaturedProperties />}
       {show('section_why_brazil') && <WhyBrazil />}
       <ResearchInsights />
-      {show('section_research') && <ResearchSection />}
       <HowItWorks />
       {show('section_faq') && <FAQ />}
       <AdditionalFreeTools />

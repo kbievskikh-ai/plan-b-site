@@ -1,115 +1,52 @@
-// SVG Icons for Research Sections - Plan B Style
-// Navy/gold theme, flat minimalist design
+// Icons for Research Sections - Plan B Style
+// Reused from the retired "Market Intelligence" section cards to match
+// the site-wide gold stroke-icon aesthetic (single color, currentColor).
 
 export function MarketReportsIcon({ className = "w-10 h-10" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="28" width="8" height="14" rx="2" fill="#F472B6" />
-      <rect x="20" y="16" width="8" height="26" rx="2" fill="#60A5FA" />
-      <rect x="34" y="6" width="8" height="36" rx="2" fill="#34D399" />
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125Z" />
     </svg>
   );
 }
 
 export function CityReportsIcon({ className = "w-10 h-10" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="8" y="12" width="14" height="30" rx="2" fill="#60A5FA" opacity="0.9" />
-      <rect x="12" y="16" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="17" y="16" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="12" y="22" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="17" y="22" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="12" y="28" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="17" y="28" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="26" y="6" width="14" height="36" rx="2" fill="#3B82F6" />
-      <rect x="30" y="10" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="35" y="10" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="30" y="16" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="35" y="16" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="30" y="22" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="35" y="22" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="30" y="28" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="35" y="28" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="30" y="34" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="35" y="34" width="3" height="3" rx="0.5" fill="#1E3A5F" />
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
     </svg>
   );
 }
 
 export function DistrictGuidesIcon({ className = "w-10 h-10" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* House 1 */}
-      <path d="M6 20L14 12L22 20" stroke="#F97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <rect x="8" y="20" width="12" height="16" rx="1" fill="#F97316" opacity="0.8" />
-      <rect x="12" y="24" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="16" y="24" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="13" y="30" width="4" height="6" rx="1" fill="#1E3A5F" />
-      {/* House 2 */}
-      <path d="M26 22L34 14L42 22" stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <rect x="28" y="22" width="12" height="16" rx="1" fill="#22C55E" opacity="0.8" />
-      <rect x="32" y="26" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="36" y="26" width="3" height="3" rx="0.5" fill="#1E3A5F" />
-      <rect x="33" y="32" width="4" height="6" rx="1" fill="#1E3A5F" />
-      {/* Trees */}
-      <circle cx="4" cy="18" r="3" fill="#22C55E" opacity="0.5" />
-      <rect x="3" y="20" width="2" height="4" rx="0.5" fill="#92400E" opacity="0.5" />
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
     </svg>
   );
 }
 
 export function DeveloperReviewsIcon({ className = "w-10 h-10" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Scales base */}
-      <rect x="20" y="38" width="8" height="4" rx="1" fill="#D4AF37" />
-      <rect x="23" y="10" width="2" height="30" fill="#D4AF37" />
-      <rect x="12" y="10" width="24" height="2" fill="#D4AF37" />
-      {/* Left scale */}
-      <line x1="14" y1="12" x2="14" y2="22" stroke="#D4AF37" strokeWidth="1.5" />
-      <path d="M8 22L14 18L20 22" stroke="#D4AF37" strokeWidth="1.5" />
-      <rect x="9" y="22" width="10" height="2" rx="1" fill="#EF4444" opacity="0.8" />
-      {/* Right scale */}
-      <line x1="34" y1="12" x2="34" y2="28" stroke="#D4AF37" strokeWidth="1.5" />
-      <path d="M28 28L34 24L40 28" stroke="#D4AF37" strokeWidth="1.5" />
-      <rect x="29" y="28" width="10" height="2" rx="1" fill="#D4AF37" opacity="0.8" />
-      {/* Triangle top */}
-      <path d="M24 6L20 10L28 10Z" fill="#D4AF37" />
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
     </svg>
   );
 }
 
 export function GuidesResourcesIcon({ className = "w-10 h-10" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="10" y="6" width="20" height="36" rx="2" fill="#FDE68A" opacity="0.9" />
-      <rect x="14" y="10" width="12" height="2" rx="0.5" fill="#92400E" opacity="0.4" />
-      <rect x="14" y="15" width="12" height="2" rx="0.5" fill="#92400E" opacity="0.4" />
-      <rect x="14" y="20" width="8" height="2" rx="0.5" fill="#92400E" opacity="0.4" />
-      <rect x="14" y="25" width="10" height="2" rx="0.5" fill="#92400E" opacity="0.4" />
-      <rect x="14" y="30" width="6" height="2" rx="0.5" fill="#92400E" opacity="0.4" />
-      {/* Clip */}
-      <rect x="16" y="4" width="8" height="4" rx="1" fill="#D4AF37" />
-      {/* Corner fold */}
-      <path d="M30 6L30 10L26 6Z" fill="#F59E0B" opacity="0.5" />
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
     </svg>
   );
 }
 
 export function AllReportsIcon({ className = "w-10 h-10" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Back document */}
-      <rect x="14" y="6" width="20" height="30" rx="2" fill="#60A5FA" opacity="0.7" />
-      {/* Middle document */}
-      <rect x="10" y="10" width="20" height="30" rx="2" fill="#34D399" opacity="0.8" />
-      {/* Front document */}
-      <rect x="6" y="14" width="20" height="30" rx="2" fill="#F472B6" opacity="0.9" />
-      {/* Lines on front */}
-      <rect x="10" y="18" width="12" height="2" rx="0.5" fill="#1E3A5F" opacity="0.3" />
-      <rect x="10" y="23" width="12" height="2" rx="0.5" fill="#1E3A5F" opacity="0.3" />
-      <rect x="10" y="28" width="8" height="2" rx="0.5" fill="#1E3A5F" opacity="0.3" />
-      <rect x="10" y="33" width="10" height="2" rx="0.5" fill="#1E3A5F" opacity="0.3" />
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" />
     </svg>
   );
 }

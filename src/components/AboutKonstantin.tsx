@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n';
+import BricsAwardBadge from '@/components/BricsAwardBadge';
 
 export default function AboutKonstantin() {
   const { t } = useLanguage();
@@ -44,6 +45,8 @@ export default function AboutKonstantin() {
               {t('about.konstantin.title1')}{' '}
               <span className="text-gold-500">{t('about.konstantin.titleHighlight')}</span>
             </h2>
+
+            <BricsAwardBadge className="mt-3 block text-gold-600 text-sm font-semibold" />
 
             <div className="mt-6 space-y-4 text-navy-900/70 text-base leading-relaxed">
               <p>{t('about.konstantin.p1')}</p>

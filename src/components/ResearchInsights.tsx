@@ -78,9 +78,14 @@ export default function ResearchInsights() {
     title1: { en: 'Independent', ru: 'Независимая', pt: 'Pesquisas' },
     highlight: { en: 'Research', ru: 'аналитика', pt: 'Independentes' },
     subtitle: {
-      en: 'Market reports, investment guides, and analysis for Brazil real estate.',
-      ru: 'Отчёты о рынке, инвестиционные гиды и аналитика по недвижимости в Бразилии.',
-      pt: 'Relatórios de mercado, guias de investimento e análises imobiliárias no Brasil.',
+      en: "We don't just list properties. We analyze markets, evaluate developers, and give you the research to make informed investment decisions.",
+      ru: 'Мы не просто публикуем объекты. Мы анализируем рынки, оцениваем застройщиков и предоставляем исследования для взвешенных инвестиционных решений.',
+      pt: 'Não apenas listamos imóveis. Analisamos mercados, avaliamos incorporadoras e fornecemos pesquisas para decisões de investimento informadas.',
+    },
+    cta: {
+      en: 'Get Consultation',
+      ru: 'Получить консультацию',
+      pt: 'Solicitar Consultoria',
     },
   };
 
@@ -130,7 +135,7 @@ export default function ResearchInsights() {
                   href={`/research/${section.key}`}
                   className="group block rounded-xl bg-navy-900/80 border border-white/10 hover:border-gold-400/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold-400/5 p-6 text-center"
                 >
-                  <div className="mb-3 flex justify-center">
+                  <div className="mb-3 flex justify-center text-gold-400">
                     {IconComponent && <IconComponent className="w-10 h-10 group-hover:scale-110 transition-transform duration-300" />}
                   </div>
                   <h3 className="font-heading text-sm text-white mb-3 group-hover:text-gold-400 transition-colors duration-300 leading-snug min-h-[2.5rem] flex items-center justify-center">
@@ -158,7 +163,7 @@ export default function ResearchInsights() {
               href="/research/all"
               className="group block rounded-xl bg-gradient-to-br from-gold-500/10 to-amber-500/5 border border-gold-400/20 hover:border-gold-400/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold-400/10 p-6 text-center"
             >
-              <div className="mb-3 flex justify-center">
+              <div className="mb-3 flex justify-center text-gold-400">
                 {SECTION_ICONS.all && <SECTION_ICONS.all className="w-10 h-10 group-hover:scale-110 transition-transform duration-300" />}
               </div>
               <h3 className="font-heading text-sm text-gold-400 mb-3 leading-snug min-h-[2.5rem] flex items-center justify-center">
@@ -173,6 +178,23 @@ export default function ResearchInsights() {
             </Link>
           </motion.div>
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-14"
+        >
+          <a
+            href="https://wa.me/5548988117424"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gold inline-block"
+          >
+            {getTrans('cta')}
+          </a>
+        </motion.div>
       </div>
     </section>
   );
