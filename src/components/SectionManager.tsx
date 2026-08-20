@@ -87,7 +87,7 @@ export default function SectionManager() {
   return (
     <>
       <FloatingChat />
-      {show('section_hero') && <Hero videoUrl={settings.video_url || undefined} />}
+      {show('section_hero') && <Hero mediaUrl={settings.hero_media_url || undefined} mediaType={settings.hero_media_type || undefined} />}
       {show('section_about') && <AboutKonstantin />}
       {show('section_about') && <BricsAwardSection />}
       <PlanBTools />

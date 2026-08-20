@@ -4,29 +4,40 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n";
 
 interface HeroProps {
-  videoUrl?: string;
+  mediaUrl?: string;
+  mediaType?: 'gradient' | 'image' | 'video' | string;
 }
 
-export default function Hero({ videoUrl }: HeroProps) {
+export default function Hero({ mediaUrl, mediaType }: HeroProps) {
   const { t } = useLanguage();
-  
+  const hasVideo = mediaType === 'video' && !!mediaUrl;
+  const hasImage = mediaType === 'image' && !!mediaUrl;
+
   return (
     <section className="relative h-screen min-h-[700px] flex items-center pt-24 sm:pt-32 bg-navy-900 overflow-hidden">
-      {/* Video/placeholder background */}
+      {/* Video/image/gradient background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-navy-900/60 via-navy-900/40 to-navy-900 z-10" />
-        
-        {videoUrl ? (
+
+        {hasVideo ? (
           /* Actual video background */
           <video
             autoPlay
             muted
             loop
             playsInline
+            preload="auto"
             className="w-full h-full object-cover"
           >
-            <source src={videoUrl} type="video/mp4" />
+            <source src={mediaUrl} type="video/mp4" />
           </video>
+        ) : hasImage ? (
+          /* Static hero image background */
+          <img
+            src={mediaUrl}
+            alt=""
+            className="w-full h-full object-cover"
+          />
         ) : (
           /* Placeholder with gradient simulating aerial beach video */
           <motion.div
@@ -45,9 +56,9 @@ export default function Hero({ videoUrl }: HeroProps) {
             }}
           />
         )}
-        
-        {/* Play button overlay (only show when no video) */}
-        {!videoUrl && (
+
+        {/* Play button overlay (only show for gradient placeholder, no real media) */}
+        {!hasVideo && !hasImage && (
           <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-500">
             <button aria-label="Play video" className="w-20 h-20 rounded-full border-2 border-white/40 flex items-center justify-center backdrop-blur-sm bg-white/10 hover:bg-white/20 transition-colors">
               <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
