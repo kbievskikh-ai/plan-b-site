@@ -15,6 +15,48 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        // Static assets served from /public (images, floor plans, videos) get
+        // no long-term caching by default on Vercel, unlike /_next/static
+        // (which is content-hashed and already immutable-cached). These paths
+        // are effectively immutable in practice — filenames don't get
+        // overwritten in place — so a 1-year immutable cache is safe and
+        // removes the repeat-visit re-download PageSpeed flags.
+        source: '/images/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        source: '/floor-plans/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        source: '/videos/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        source: '/frameworks/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        // PDFs (reports/guides) at the /public root — shorter cache since these
+        // do get replaced in place with updated content under the same filename.
+        source: '/:path*.pdf',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=604800, must-revalidate' },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       // Porto Belo Area Investment Guide (District Guide) дублирует уже живой Porto Belo

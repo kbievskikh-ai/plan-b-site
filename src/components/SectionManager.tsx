@@ -1,19 +1,24 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
-import FeaturedProperties from '@/components/FeaturedProperties';
 import AboutKonstantin from '@/components/AboutKonstantin';
 import BricsAwardSection from '@/components/BricsAwardSection';
-import WhyBrazil from '@/components/WhyBrazil';
-import PropertyFinder from '@/components/PropertyFinder';
-import PlanBTools from '@/components/PlanBTools';
-import HowItWorks from '@/components/HowItWorks';
-import ResearchInsights from '@/components/ResearchInsights';
-import FAQ from '@/components/FAQ';
-import AdditionalFreeTools from '@/components/AdditionalFreeTools';
-import ConsultationCTA from '@/components/ConsultationCTA';
 import { useSettings } from '@/lib/settings';
+
+// Below-the-fold sections: code-split so their JS (incl. framer-motion usage)
+// isn't parsed/executed as part of the initial page load. ssr:true keeps the
+// HTML/SEO content server-rendered — only the client bundle is split.
+const FeaturedProperties = dynamic(() => import('@/components/FeaturedProperties'), { ssr: true });
+const WhyBrazil = dynamic(() => import('@/components/WhyBrazil'), { ssr: true });
+const PropertyFinder = dynamic(() => import('@/components/PropertyFinder'), { ssr: true });
+const PlanBTools = dynamic(() => import('@/components/PlanBTools'), { ssr: true });
+const HowItWorks = dynamic(() => import('@/components/HowItWorks'), { ssr: true });
+const ResearchInsights = dynamic(() => import('@/components/ResearchInsights'), { ssr: true });
+const FAQ = dynamic(() => import('@/components/FAQ'), { ssr: true });
+const AdditionalFreeTools = dynamic(() => import('@/components/AdditionalFreeTools'), { ssr: true });
+const ConsultationCTA = dynamic(() => import('@/components/ConsultationCTA'), { ssr: true });
 
 function FloatingChat() {
   const [chatOpen, setChatOpen] = useState(false);
