@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n";
 
 interface HeroProps {
@@ -40,19 +39,12 @@ export default function Hero({ mediaUrl, mediaType }: HeroProps) {
           />
         ) : (
           /* Placeholder with gradient simulating aerial beach video */
-          <motion.div
-            className="w-full h-full"
+          <div
+            className="w-full h-full bg-[length:200%_200%] animate-hero-gradient"
             style={{
               background:
                 "linear-gradient(135deg, #0a1628 0%, #0d2137 25%, #0f2d4a 45%, #1a4a5e 60%, #2a7a7a 75%, #1a5a5a 100%)",
-            }}
-            animate={{
-              backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-            }}
-            transition={{
-              duration: 20,
-              ease: "linear",
-              repeat: Infinity,
+              backgroundSize: "200% 200%",
             }}
           />
         )}
@@ -73,17 +65,12 @@ export default function Hero({ mediaUrl, mediaType }: HeroProps) {
       <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl">
           {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex items-center gap-3 mb-6"
-          >
+          <div className="hero-anim-eyebrow flex items-center gap-3 mb-6">
             <div className="w-12 h-[1px] bg-gold-400" />
             <span className="text-gold-400 text-sm tracking-[0.3em] uppercase font-medium">
               {t('hero.location')}
             </span>
-          </motion.div>
+          </div>
 
           {/* Heading — no fade-in animation: this is the LCP element and must
               paint immediately without waiting on JS hydration. */}
@@ -98,56 +85,33 @@ export default function Hero({ mediaUrl, mediaType }: HeroProps) {
           </h1>
 
           {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-white/60 text-sm sm:text-xl max-w-xl mb-6 sm:mb-10 leading-relaxed"
-          >
+          <p className="hero-anim-subtitle text-white/60 text-sm sm:text-xl max-w-xl mb-6 sm:mb-10 leading-relaxed">
             {t('hero.subtitle')}
-          </motion.p>
+          </p>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <motion.a
+          <div className="hero-anim-cta flex flex-col sm:flex-row gap-4">
+            <a
               href="#calculator"
-              className="btn-gold text-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="btn-gold text-center transition-transform duration-200 hover:scale-105 active:scale-95"
             >
               {t('hero.calculateInvestment')}
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
-              className="btn-outline text-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="btn-outline text-center transition-transform duration-200 hover:scale-105 active:scale-95"
             >
               {t('hero.requestConsultation')}
-            </motion.a>
-          </motion.div>
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 hidden sm:flex flex-col items-center gap-2"
-      >
+      <div className="hero-anim-scroll absolute bottom-8 left-1/2 -translate-x-1/2 z-30 hidden sm:flex flex-col items-center gap-2">
         <span className="text-white/50 text-xs tracking-widest uppercase">{t('hero.scroll')}</span>
-        <motion.div
-          className="w-[1px] h-8 bg-gradient-to-b from-gold-400/60 to-transparent"
-          animate={{ scaleY: [1, 1.5, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-      </motion.div>
+        <div className="hero-anim-scroll-bar w-[1px] h-8 bg-gradient-to-b from-gold-400/60 to-transparent" />
+      </div>
     </section>
   );
 }

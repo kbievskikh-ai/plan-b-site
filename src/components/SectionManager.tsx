@@ -3,13 +3,15 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
-import AboutKonstantin from '@/components/AboutKonstantin';
-import BricsAwardSection from '@/components/BricsAwardSection';
 import { useSettings } from '@/lib/settings';
 
 // Below-the-fold sections: code-split so their JS (incl. framer-motion usage)
 // isn't parsed/executed as part of the initial page load. ssr:true keeps the
 // HTML/SEO content server-rendered — only the client bundle is split.
+// Hero is h-screen (full viewport height), so everything below it — including
+// AboutKonstantin/BricsAwardSection — is below-the-fold and safe to defer.
+const AboutKonstantin = dynamic(() => import('@/components/AboutKonstantin'), { ssr: true });
+const BricsAwardSection = dynamic(() => import('@/components/BricsAwardSection'), { ssr: true });
 const FeaturedProperties = dynamic(() => import('@/components/FeaturedProperties'), { ssr: true });
 const WhyBrazil = dynamic(() => import('@/components/WhyBrazil'), { ssr: true });
 const PropertyFinder = dynamic(() => import('@/components/PropertyFinder'), { ssr: true });

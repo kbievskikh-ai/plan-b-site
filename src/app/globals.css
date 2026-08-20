@@ -97,6 +97,48 @@ section[id] {
   animation: float 6s ease-in-out infinite;
 }
 
+/* Hero entrance animations (plain CSS — keeps framer-motion out of the
+   above-the-fold critical path; Hero.tsx uses these instead of motion.*) */
+@keyframes hero-fade-in-x {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes hero-fade-in-y {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes hero-scroll-pulse {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.5); }
+}
+@keyframes hero-gradient-pan {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+.animate-hero-gradient {
+  animation: hero-gradient-pan 20s linear infinite;
+}
+.hero-anim-eyebrow {
+  animation: hero-fade-in-x 0.6s ease-out 0.2s both;
+}
+.hero-anim-subtitle {
+  animation: hero-fade-in-y 0.8s ease-out 0.6s both;
+}
+.hero-anim-cta {
+  animation: hero-fade-in-y 0.8s ease-out 0.9s both;
+}
+.hero-anim-scroll {
+  animation: hero-fade-in 1s ease-out 1.5s both;
+}
+.hero-anim-scroll-bar {
+  animation: hero-scroll-pulse 2s ease-in-out infinite;
+  transform-origin: top;
+}
+
 /* Glass effect */
 .glass {
   background: rgba(255, 255, 255, 0.05);
