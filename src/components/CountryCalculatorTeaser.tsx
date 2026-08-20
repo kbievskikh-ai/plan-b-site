@@ -62,7 +62,7 @@ export default function CountryCalculatorTeaser() {
               ].map((s, i) => (
                 <div key={i} className="text-center">
                   <div className="text-2xl font-bold" style={{ color: '#C9A94E', fontFamily: "'Playfair Display', serif" }}>{s.num}</div>
-                  <div className="text-xs text-white/40 uppercase tracking-wide">{s.label}</div>
+                  <div className="text-xs text-white/60 uppercase tracking-wide">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -108,12 +108,12 @@ export default function CountryCalculatorTeaser() {
                 </div>
                 <div className="text-right">
                   <div className="text-2xl font-bold" style={{ color: '#C9A94E', fontFamily: "'Playfair Display', serif" }}>{country.score}%</div>
-                  <div className="text-xs text-white/30">match</div>
+                  <div className="text-xs text-white/55">match</div>
                 </div>
               </motion.div>
             ))}
             
-            <div className="text-center text-white/20 text-sm mt-4">
+            <div className="text-center text-white/50 text-sm mt-4">
               {language === 'ru' ? '↑ Пример результата калькулятора' : language === 'pt' ? '↑ Exemplo de resultado' : '↑ Sample calculator result'}
             </div>
           </motion.div>

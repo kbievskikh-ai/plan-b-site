@@ -189,7 +189,7 @@ export default function PlanBTools() {
                           </div>
                         )}
                         <div className="mt-4 pt-4 border-t border-white/[0.06]">
-                          <p className="text-white/25 text-[11px] leading-relaxed">{t(tool.nextKey)}</p>
+                          <p className="text-white/45 text-[11px] leading-relaxed">{t(tool.nextKey)}</p>
                         </div>
                       </div>
                     </motion.a>
@@ -209,7 +209,7 @@ export default function PlanBTools() {
           viewport={{ once: true }}
           className="mt-14 text-center"
         >
-          <p className="text-white/20 text-xs">
+          <p className="text-white/40 text-xs">
             {t('tools.footer')}
           </p>
         </motion.div>

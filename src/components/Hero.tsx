@@ -130,7 +130,7 @@ export default function Hero({ videoUrl }: HeroProps) {
         transition={{ duration: 1, delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 hidden sm:flex flex-col items-center gap-2"
       >
-        <span className="text-white/30 text-xs tracking-widest uppercase">{t('hero.scroll')}</span>
+        <span className="text-white/50 text-xs tracking-widest uppercase">{t('hero.scroll')}</span>
         <motion.div
           className="w-[1px] h-8 bg-gradient-to-b from-gold-400/60 to-transparent"
           animate={{ scaleY: [1, 1.5, 1] }}

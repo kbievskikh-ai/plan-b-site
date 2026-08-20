@@ -489,12 +489,12 @@ export default function BrazilFitScore() {
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className="font-heading text-2xl font-bold text-[#1B2951]">{score}</span>
-                  <span className="text-[9px] text-gray-400">/100</span>
+                  <span className="text-[9px] text-gray-500">/100</span>
                 </div>
               </div>
               <span className={`inline-block px-3 py-0.5 rounded-full text-[10px] font-bold ${badgeClass === 'badge-exc' ? 'bg-[#009739]/10 text-[#009739]' : badgeClass === 'badge-str' ? 'bg-[#009739]/8 text-[#009739]' : badgeClass === 'badge-good' ? 'bg-[#D4AF37]/12 text-[#b8862d]' : badgeClass === 'badge-mod' ? 'bg-[#e8a317]/10 text-[#b8862d]' : 'bg-[#d44]/10 text-[#d44]'}`}>{label}</span>
               <p className="text-[11px] text-gray-600 mt-2 max-w-md mx-auto">{scoreExplain}</p>
-              <p className="text-[9px] text-gray-400 italic mt-1">{L.scoreNote}</p>
+              <p className="text-[9px] text-gray-500 italic mt-1">{L.scoreNote}</p>
             </div>
 
             {/* Archetype */}
@@ -515,7 +515,7 @@ export default function BrazilFitScore() {
                 <div key={pc.key} className="bg-[#f9f9f7] rounded-lg p-2 flex items-center gap-2">
                   <span className="text-base">{pc.key === 'climate' ? '🌴' : pc.key === 'coastal' ? '🏖️' : pc.key === 'investment' ? '📈' : pc.key === 'family' ? '👨‍👩‍👦' : '🌍'}</span>
                   <div className="flex-1">
-                    <div className="text-[8px] text-gray-400 uppercase">{(L as any)[pc.labelKey]}</div>
+                    <div className="text-[8px] text-gray-500 uppercase">{(L as any)[pc.labelKey]}</div>
                     <div className="flex items-center gap-2">
                       <span className="font-heading text-sm font-bold text-[#1B2951]">{pc.pct}%</span>
                       <div className="flex-1 h-[3px] bg-gray-200 rounded overflow-hidden">
@@ -546,17 +546,17 @@ export default function BrazilFitScore() {
                 <span className="text-xl">{r.emoji}</span>
                 <div className="flex-1">
                   <div className="font-heading text-sm font-bold text-[#1B2951]">{r.name}</div>
-                  <div className="text-[8px] text-gray-400">{r.city}</div>
+                  <div className="text-[8px] text-gray-500">{r.city}</div>
                   <div className="text-[9px] text-gray-500 mt-1">
                     {r.reasons.map((reason: string, ri: number) => (
                       <div key={ri} className="before:content-['✓'] before:text-[#2a9d5c] before:font-bold before:mr-1">{reason}</div>
                     ))}
                   </div>
                 </div>
-                <div className="font-heading text-lg font-bold text-[#D4AF37]">{r.match}<span className="text-[10px] font-normal text-gray-400">%</span></div>
+                <div className="font-heading text-lg font-bold text-[#D4AF37]">{r.match}<span className="text-[10px] font-normal text-gray-500">%</span></div>
               </div>
             ))}
-            <div className="px-5 py-2 text-center text-[8px] text-gray-400">{L.regionNote}</div>
+            <div className="px-5 py-2 text-center text-[8px] text-gray-500">{L.regionNote}</div>
 
             {/* Roadmap */}
             <div className="px-5 py-3 border-t border-[#f0ede4]">
@@ -564,10 +564,10 @@ export default function BrazilFitScore() {
               {L.roadmapSteps.map((s: any, i: number) => (
                 <div key={i}>
                   <div className="flex items-center gap-2 py-0.5">
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${s.cls === 'd' ? 'bg-[#D4AF37] text-[#1B2951]' : s.cls === 'n' ? 'bg-gradient-to-r from-[#D4AF37] to-[#b8862d] text-[#1B2951] animate-pulse' : 'bg-[#e8e4dc] text-gray-400'}`}>
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${s.cls === 'd' ? 'bg-[#D4AF37] text-[#1B2951]' : s.cls === 'n' ? 'bg-gradient-to-r from-[#D4AF37] to-[#b8862d] text-[#1B2951] animate-pulse' : 'bg-[#e8e4dc] text-gray-500'}`}>
                       {s.cls === 'd' ? '✓' : i + 1}
                     </div>
-                    <span className="text-[11px] text-[#1B2951] font-medium">{s.name} <span className="text-gray-400 font-normal text-[9px]">{s.desc}</span></span>
+                    <span className="text-[11px] text-[#1B2951] font-medium">{s.name} <span className="text-gray-500 font-normal text-[9px]">{s.desc}</span></span>
                   </div>
                   {i < L.roadmapSteps.length - 1 && <div className="text-[#D4AF37] text-sm pl-2">↓</div>}
                 </div>
@@ -591,7 +591,7 @@ export default function BrazilFitScore() {
             </div>
 
             {/* Disclaimer */}
-            <div className="px-5 py-3 text-center text-[8px] text-gray-400">{L.disclaimer}</div>
+            <div className="px-5 py-3 text-center text-[8px] text-gray-500">{L.disclaimer}</div>
           </div>
         </div>
       </div>
@@ -620,12 +620,12 @@ export default function BrazilFitScore() {
         <div className="bg-gray-200 rounded-full h-[6px] mb-4 overflow-hidden">
           <div className="bg-gradient-to-r from-[#009739] to-[#D4AF37] h-full rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
         </div>
-        <div className="text-center text-[10px] text-gray-400 mb-3">{L.question} {currentQ + 1} {L.of} {qs.length}</div>
+        <div className="text-center text-[10px] text-gray-500 mb-3">{L.question} {currentQ + 1} {L.of} {qs.length}</div>
 
         {/* Question Card */}
         <div className="bg-white rounded-xl p-5 shadow-md mb-4">
           <h2 className="font-heading text-lg text-[#1B2951] mb-1">{q.title}</h2>
-          {q.hint && <p className="text-[10px] text-gray-400 mb-3">{q.hint}</p>}
+          {q.hint && <p className="text-[10px] text-gray-500 mb-3">{q.hint}</p>}
 
           {q.type === 'multi' ? (
             <div className="grid grid-cols-3 gap-2">
@@ -651,7 +651,7 @@ export default function BrazilFitScore() {
                   <span className="text-lg flex-shrink-0">{opt.icon}</span>
                   <div className="flex-1">
                     <div className="text-[12px] font-semibold">{opt.label}</div>
-                    {opt.desc && <div className="text-[9px] text-gray-400">{opt.desc}</div>}
+                    {opt.desc && <div className="text-[9px] text-gray-500">{opt.desc}</div>}
                   </div>
                   <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isOptionSelected(opt.value) ? 'bg-[#1B2951] border-[#1B2951]' : 'border-gray-300'}`}>
                     {isOptionSelected(opt.value) && <span className="text-white text-[8px] font-bold">✓</span>}
