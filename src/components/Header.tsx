@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/i18n";
 import { useSettings } from "@/lib/settings";
 import FlagIcon from "@/components/FlagIcon";
@@ -41,11 +40,8 @@ export default function Header() {
   const currentLang = languages.find(l => l.code === language) || languages[0];
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header
+      className={`header-anim-slide fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-navy-900 backdrop-blur-md border-b border-white/5 shadow-lg"
           : "bg-navy-900/90 backdrop-blur-sm"
@@ -54,10 +50,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <motion.a
+          <a
             href="#"
-            className="flex items-center gap-3"
-            whileHover={{ scale: 1.02 }}
+            className="flex items-center gap-3 transition-transform duration-200 hover:scale-[1.02]"
           >
             <div className="w-10 h-10 gold-gradient rounded-lg flex items-center justify-center">
               <span className="text-white font-heading font-bold text-lg">B</span>
@@ -68,20 +63,19 @@ export default function Header() {
                 Investment Advisory
               </span>
             </div>
-          </motion.a>
+          </a>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
-              <motion.a
+              <a
                 key={item.href}
                 href={item.href}
-                className="text-white/70 hover:text-gold-400 text-sm tracking-wider uppercase transition-colors duration-300 relative group"
-                whileHover={{ y: -2 }}
+                className="text-white/70 hover:text-gold-400 hover:-translate-y-0.5 text-sm tracking-wider uppercase transition-all duration-300 relative group"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold-400 group-hover:w-full transition-all duration-300" />
-              </motion.a>
+              </a>
             ))}
             
             {/* Language Switcher */}
@@ -136,23 +130,19 @@ export default function Header() {
             </div>
 
             <div className="flex items-center gap-2 ml-2">
-              <motion.a
+              <a
                 href="https://t.me/kbievskikh" target="_blank" rel="noopener noreferrer"
-                className="btn-gold"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="btn-gold transition-transform duration-200 hover:scale-105 active:scale-95"
               >
                 {t('nav.getConsultation')}
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
-                className="px-3 py-1.5 border border-white/20 rounded text-white/70 hover:text-gold-400 hover:border-gold-400/50 text-sm tracking-wider uppercase transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="px-3 py-1.5 border border-white/20 rounded text-white/70 hover:text-gold-400 hover:border-gold-400/50 text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 active:scale-95"
                 aria-label="WhatsApp"
               >
                 WhatsApp
-              </motion.a>
+              </a>
             </div>
           </nav>
 
@@ -193,9 +183,9 @@ export default function Header() {
               aria-expanded={menuOpen}
               className="text-white/80 hover:text-gold-400 relative w-10 h-10 flex items-center justify-center"
             >
-              <motion.div
-                animate={menuOpen ? { rotate: 180 } : { rotate: 0 }}
-                transition={{ duration: 0.3 }}
+              <div
+                className="transition-transform duration-300"
+                style={{ transform: menuOpen ? "rotate(180deg)" : "rotate(0deg)" }}
               >
                 {menuOpen ? (
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -206,63 +196,49 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
                 )}
-              </motion.div>
+              </div>
             </button>
           </div>
         </div>
 
         {/* Mobile Nav */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.nav
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden"
-            >
-              <div className="pb-6 border-t border-white/5 pt-4">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMenuOpen(false)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="block py-3 text-white/70 hover:text-gold-400 text-sm tracking-wider uppercase"
-                  >
-                    {item.label}
-                  </motion.a>
-                ))}
-                <div className="flex items-center gap-3 mt-4">
-                  <motion.a
-                    href="https://t.me/kbievskikh" target="_blank" rel="noopener noreferrer"
-                    onClick={() => setMenuOpen(false)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: navItems.length * 0.1 }}
-                    className="btn-gold inline-block"
-                  >
-                    {t('nav.getConsultation')}
-                  </motion.a>
-                  <motion.a
-                    href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
-                    onClick={() => setMenuOpen(false)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: (navItems.length + 1) * 0.1 }}
-                    className="px-4 py-2 border border-white/20 rounded text-white/70 text-sm inline-block"
-                    aria-label="WhatsApp"
-                  >
-                    WhatsApp
-                  </motion.a>
-                </div>
+        <div className={`lg:hidden ${menuOpen ? "mobile-nav-enter" : "mobile-nav-exit"}`}>
+          <div className="mobile-nav-inner">
+            <div className="pb-6 border-t border-white/5 pt-4">
+              {navItems.map((item, index) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  style={menuOpen ? { animationDelay: `${index * 0.1}s` } : undefined}
+                  className={`block py-3 text-white/70 hover:text-gold-400 text-sm tracking-wider uppercase ${menuOpen ? "header-anim-item" : ""}`}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <div className="flex items-center gap-3 mt-4">
+                <a
+                  href="https://t.me/kbievskikh" target="_blank" rel="noopener noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                  style={menuOpen ? { animationDelay: `${navItems.length * 0.1}s` } : undefined}
+                  className={`btn-gold inline-block ${menuOpen ? "header-anim-item" : ""}`}
+                >
+                  {t('nav.getConsultation')}
+                </a>
+                <a
+                  href="https://wa.me/5548988117424" target="_blank" rel="noopener noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                  style={menuOpen ? { animationDelay: `${(navItems.length + 1) * 0.1}s` } : undefined}
+                  className={`px-4 py-2 border border-white/20 rounded text-white/70 text-sm inline-block ${menuOpen ? "header-anim-item" : ""}`}
+                  aria-label="WhatsApp"
+                >
+                  WhatsApp
+                </a>
               </div>
-            </motion.nav>
-          )}
-        </AnimatePresence>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

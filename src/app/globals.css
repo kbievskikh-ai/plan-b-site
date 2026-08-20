@@ -132,6 +132,40 @@ section[id] {
   transform-origin: top;
 }
 
+/* Header entrance + mobile menu animations (plain CSS — Header.tsx used
+   motion.header/AnimatePresence, which pulled framer-motion into the
+   above-the-fold critical path just like Hero used to). */
+@keyframes header-slide-down {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+.header-anim-slide {
+  animation: header-slide-down 0.5s ease-out both;
+}
+@keyframes header-fade-in-x {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.header-anim-item {
+  animation: header-fade-in-x 0.3s ease-out both;
+}
+.mobile-nav-enter {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition: grid-template-rows 0.3s ease-out, opacity 0.3s ease-out;
+}
+.mobile-nav-exit {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.3s ease-out, opacity 0.3s ease-out;
+}
+.mobile-nav-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
 /* Glass effect */
 .glass {
   background: rgba(255, 255, 255, 0.05);
