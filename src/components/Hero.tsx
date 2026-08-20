@@ -40,11 +40,10 @@ export default function Hero({ mediaUrl, mediaType }: HeroProps) {
         ) : (
           /* Placeholder with gradient simulating aerial beach video */
           <div
-            className="w-full h-full bg-[length:200%_200%] animate-hero-gradient"
+            className="w-full h-full"
             style={{
               background:
                 "linear-gradient(135deg, #0a1628 0%, #0d2137 25%, #0f2d4a 45%, #1a4a5e 60%, #2a7a7a 75%, #1a5a5a 100%)",
-              backgroundSize: "200% 200%",
             }}
           />
         )}
