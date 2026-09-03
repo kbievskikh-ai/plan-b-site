@@ -1,6 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionManager from "@/components/SectionManager";
+import { getAllProperties } from "@/lib/properties-server";
+
+// Revalidate the catalog data every 5 minutes (ISR) so prices/status stay
+// fresh while the property grid still ships pre-rendered in the initial
+// server HTML — visible to crawlers that don't execute JS (AI bots, etc.)
+// and to Googlebot without waiting for the second-pass JS render.
+export const revalidate = 300;
 
 const SITE = "https://planbbrazil.com";
 
@@ -40,7 +47,9 @@ const organizationJsonLd = {
   ],
 };
 
-export default function Home() {
+export default async function Home() {
+  const properties = await getAllProperties();
+
   return (
     <main className="min-h-screen">
       <script
@@ -48,7 +57,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
       <Header />
-      <SectionManager />
+      <SectionManager initialProperties={properties} />
       <Footer />
     </main>
   );

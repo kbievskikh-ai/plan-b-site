@@ -13,11 +13,12 @@ type CategoryTab = 'all' | 'residential' | 'investment' | 'vacation';
 
 const PROPERTIES_PER_TAB = 8;
 
-export default function FeaturedProperties() {
+export default function FeaturedProperties({ initialProperties }: { initialProperties?: Property[] } = {}) {
   const { t, language } = useLanguage();
   const router = useRouter();
-  const [allProperties, setAllProperties] = useState<Property[]>([])
-  const [loaded, setLoaded] = useState(false);
+  const hasInitial = !!initialProperties && initialProperties.length > 0;
+  const [allProperties, setAllProperties] = useState<Property[]>(initialProperties ?? [])
+  const [loaded, setLoaded] = useState(hasInitial);
   const [filters, setFilters] = useState<FilterState>({
     priceRange: '',
     type: '',
@@ -39,8 +40,12 @@ export default function FeaturedProperties() {
     { id: 'vacation',    label: 'For Rent',       labelRu: 'Аренда' },
   ];
 
-  // Fetch properties from API on mount
+  // Server already rendered the catalog (see app/page.tsx -> getAllProperties,
+  // ISR revalidate: 300s) so crawlers without JS see real data in the initial
+  // HTML. Only fetch client-side as a fallback when no server data was passed
+  // in (e.g. component reused elsewhere without props).
   useEffect(() => {
+    if (hasInitial) return;
     fetchProperties().then(props => {
       console.log('[FeaturedProperties] API returned:', props.length, 'properties');
       setAllProperties(props);
@@ -50,7 +55,7 @@ export default function FeaturedProperties() {
       setAllProperties(fallbackProperties);
       setLoaded(true);
     });
-  }, []);
+  }, [hasInitial]);
 
   // Filter properties based on selected filters + active tab
   const filteredProperties = useMemo(() => {

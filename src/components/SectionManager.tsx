@@ -4,6 +4,7 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import { useSettings } from '@/lib/settings';
+import type { Property } from '@/data/properties';
 
 // Below-the-fold sections: code-split so their JS (incl. framer-motion usage)
 // isn't parsed/executed as part of the initial page load. ssr:true keeps the
@@ -12,11 +13,11 @@ import { useSettings } from '@/lib/settings';
 // AboutKonstantin/BricsAwardSection — is below-the-fold and safe to defer.
 const AboutKonstantin = dynamic(() => import('@/components/AboutKonstantin'), { ssr: true });
 const BricsAwardSection = dynamic(() => import('@/components/BricsAwardSection'), { ssr: true });
+const TrustNetwork = dynamic(() => import('@/components/TrustNetwork'), { ssr: true });
 const FeaturedProperties = dynamic(() => import('@/components/FeaturedProperties'), { ssr: true });
 const WhyBrazil = dynamic(() => import('@/components/WhyBrazil'), { ssr: true });
 const PropertyFinder = dynamic(() => import('@/components/PropertyFinder'), { ssr: true });
 const PlanBTools = dynamic(() => import('@/components/PlanBTools'), { ssr: true });
-const HowItWorks = dynamic(() => import('@/components/HowItWorks'), { ssr: true });
 const ResearchInsights = dynamic(() => import('@/components/ResearchInsights'), { ssr: true });
 const FAQ = dynamic(() => import('@/components/FAQ'), { ssr: true });
 const AdditionalFreeTools = dynamic(() => import('@/components/AdditionalFreeTools'), { ssr: true });
@@ -63,7 +64,7 @@ function FloatingChat() {
   );
 }
 
-export default function SectionManager() {
+export default function SectionManager({ initialProperties }: { initialProperties?: Property[] }) {
   const { settings, show, loaded } = useSettings();
 
   if (!loaded) {
@@ -73,12 +74,12 @@ export default function SectionManager() {
         <Hero />
         <AboutKonstantin />
         <BricsAwardSection />
+        <TrustNetwork />
         <PlanBTools />
         <PropertyFinder />
-        <FeaturedProperties />
+        <FeaturedProperties initialProperties={initialProperties} />
         <WhyBrazil />
         <ResearchInsights />
-        <HowItWorks />
         <FAQ />
         <AdditionalFreeTools />
         <ConsultationCTA />
@@ -92,12 +93,12 @@ export default function SectionManager() {
       {show('section_hero') && <Hero mediaUrl={settings.hero_media_url || undefined} mediaType={settings.hero_media_type || undefined} />}
       {show('section_about') && <AboutKonstantin />}
       {show('section_about') && <BricsAwardSection />}
+      {show('section_about') && <TrustNetwork />}
       <PlanBTools />
       <PropertyFinder />
-      {show('section_featured_properties') && <FeaturedProperties />}
+      {show('section_featured_properties') && <FeaturedProperties initialProperties={initialProperties} />}
       {show('section_why_brazil') && <WhyBrazil />}
       <ResearchInsights />
-      <HowItWorks />
       {show('section_faq') && <FAQ />}
       <AdditionalFreeTools />
       <ConsultationCTA />

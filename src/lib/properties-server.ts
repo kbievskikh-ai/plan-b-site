@@ -19,12 +19,39 @@ interface RawProperty {
   region?: string;
   images?: Array<{ url: string }>;
   status?: string;
+  type?: string;
   beds?: number;
   baths?: number;
   area?: string;
   expected_roi?: string;
   tag?: string;
   features?: Array<{ name: string }>;
+}
+
+const gradients = [
+  'from-[#1a3a4a] to-[#0d2030]',
+  'from-[#2a4a3a] to-[#0d2018]',
+  'from-[#3a2a4a] to-[#1a0d30]',
+  'from-[#4a3a1a] to-[#302010]',
+  'from-[#1a2a4a] to-[#0d1530]',
+  'from-[#2a3a4a] to-[#151530]',
+  'from-[#3a4a2a] to-[#203015]',
+  'from-[#4a2a3a] to-[#301520]',
+];
+
+// Map raw API type strings to the landing page's three tab categories.
+// Mirrors src/lib/api.ts mapType() so server-fetched and client-fetched
+// data stay consistent (tab filters rely on this).
+function mapType(type: string | undefined): 'residential' | 'investment' | 'vacation' {
+  const typeMap: Record<string, 'residential' | 'investment' | 'vacation'> = {
+    apartment: 'residential',
+    house: 'residential',
+    villa: 'vacation',
+    penthouse: 'investment',
+    land: 'investment',
+    commercial: 'investment',
+  };
+  return typeMap[type || ''] || 'residential';
 }
 
 function slugify(s: string): string {
@@ -43,10 +70,17 @@ function parseNum(v: string | number | null | undefined): number {
   return m ? Number(m) : 0;
 }
 
-function mapRaw(p: RawProperty): Property {
+function mapRaw(p: RawProperty, index: number): Property {
   const priceBrl = parseNum(p.price) || parseNum(p.list_price);
   let priceUsdNum = parseNum(p.price_usd);
   if (!priceUsdNum && priceBrl > 0) priceUsdNum = Math.round(priceBrl / 5.5);
+
+  // Same tag-based override as src/lib/api.ts so tab filters match client fetch.
+  const tag = (p.tag || '').toLowerCase();
+  const isInvestment = tag.includes('pre-sale') || tag.includes('pre-launch') ||
+                       tag.includes('investment') || tag.includes('sold out') ||
+                       tag.includes('roi') || !!(p.expected_roi && p.expected_roi.length > 0);
+  const mappedType = isInvestment ? 'investment' : mapType(p.type);
 
   const priceUsdDisplay = p.price_usd
     ? p.price_usd.startsWith('$')
@@ -70,9 +104,9 @@ function mapRaw(p: RawProperty): Property {
     baths: p.baths || 0,
     area: p.area ? `${String(p.area).replace(/\s*m[²2]?\s*$/i, '')} m²` : '',
     areaNum: parseInt(String(p.area || '0')) || 0,
-    type: 'investment',
+    type: mappedType,
     tag: p.tag || 'New',
-    gradient: 'from-[#1a3a4a] to-[#0d2030]',
+    gradient: gradients[index % gradients.length],
     description: p.description || '',
     expectedROI: p.expected_roi || '',
     images: (p.images || []).map((i) => i.url),
@@ -114,7 +148,7 @@ export async function getAllProperties(): Promise<Property[]> {
         if (blocklist.some((b) => slug.includes(b) || title.includes(b))) return false;
         return true;
       })
-      .map(mapRaw);
+      .map((p, i) => mapRaw(p, i));
   } catch (err) {
     console.warn('[properties-server] fetch failed, falling back:', err);
     // Фолбэк на существующую логику (клиентский api.ts со своим fallback)
