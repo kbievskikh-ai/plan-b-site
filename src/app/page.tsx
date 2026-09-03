@@ -18,7 +18,7 @@ const organizationJsonLd = {
   name: "Plan B Brazil",
   alternateName: "Konstantin Bievskikh — Plan B Brazil",
   description:
-    "Independent real estate investment advisor in Santa Catarina, Brazil — not tied to any developer, works with foreign investors, provides honest yield and risk analysis for every property.",
+    "Independent real estate investment advisor in Santa Catarina, Brazil, works with foreign investors, provides honest yield and risk analysis for every property.",
   url: SITE,
   image: `${SITE}/opengraph-image.png`,
   telephone: "+5548988117424",

@@ -20,10 +20,10 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Plan B — Real Estate Investment in Brazil",
   description:
-    "Independent real estate investment advisor in Santa Catarina, Brazil — not tied to any developer. Honest yield and risk analysis for foreign investors in Florianópolis, Balneário Camboriú, and coastal Santa Catarina.",
+    "Independent real estate investment advisor in Santa Catarina, Brazil. Honest yield and risk analysis for foreign investors in Florianópolis, Balneário Camboriú, and coastal Santa Catarina.",
   openGraph: {
     title: "Plan B — Real Estate Investment in Brazil",
-    description: "Independent real estate investment advisor in Santa Catarina, Brazil — not tied to any developer. Honest yield and risk analysis for foreign investors.",
+    description: "Independent real estate investment advisor in Santa Catarina, Brazil. Honest yield and risk analysis for foreign investors.",
     url: "https://planbbrazil.com",
     siteName: "Plan B Brazil",
     images: [
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Plan B — Real Estate Investment in Brazil",
-    description: "Independent real estate investment advisor in Santa Catarina, Brazil — not tied to any developer. Honest yield and risk analysis for foreign investors.",
+    description: "Independent real estate investment advisor in Santa Catarina, Brazil. Honest yield and risk analysis for foreign investors.",
     images: ["https://planbbrazil.com/opengraph-image.png"],
   },
 };

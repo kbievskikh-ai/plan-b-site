@@ -51,15 +51,26 @@ export default function AboutKonstantin() {
             <div className="mt-6 space-y-4 text-navy-900/70 text-base leading-relaxed">
               <p>{t('about.konstantin.p1')}</p>
               <p>{t('about.konstantin.p2')}</p>
-              <p>{t('about.konstantin.p3')}</p>
             </div>
 
             {/* Trust badges */}
             <div className="mt-8 flex flex-wrap gap-4">
-              <div className="bg-gold-50 px-4 py-3 rounded-lg border border-gold-200">
-                <div className="text-gold-700 text-sm font-semibold">CRECI-SC 59616</div>
-                <div className="text-gold-600/70 text-xs">Licensed in Santa Catarina</div>
-              </div>
+              <a
+                href="https://www.crecisc.conselho.net.br/form_pesquisa_cadastro_geral_site.php"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gold-50 px-4 py-3 rounded-lg border border-gold-200 hover:border-gold-400 transition-colors group"
+              >
+                <div className="flex items-center gap-1.5">
+                  <div className="text-gold-700 text-sm font-semibold">CRECI-SC 59616-F</div>
+                  <svg className="w-3.5 h-3.5 text-gold-500 group-hover:text-gold-700 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="text-gold-600/70 text-xs group-hover:text-gold-700/80 transition-colors">
+                  {t('about.creciVerify')} ↗
+                </div>
+              </a>
               <div className="bg-navy-50 px-4 py-3 rounded-lg border border-navy-100">
                 <div className="text-navy-700 text-sm font-semibold">Florianópolis, SC</div>
                 <div className="text-navy-600/70 text-xs">Based on the ground</div>
