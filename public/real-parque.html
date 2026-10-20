@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Real Parque · Plan B Brazil</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WCST866F');</script>
+<!-- End Google Tag Manager -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1451471586788112');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1451471586788112&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Onest:wght@400;500;600;700&display=swap">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCST866F"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<style>
+/* Layout: editorial investor page — photo hero, interactive masterplan with a quadra dossier, project catalogue,
+   configurator, and a three-scenario investment ledger. Plan B brand: navy, gold, cream; Lora + Onest. */
+:root{
+  --bg:#F7F5F0; --paper:#FFFFFF; --tint:#EFEBE1; --line:#E3DED2;
+  --ink:#14213D; --muted:#59627A; --faint:#8B90A0;
+  --navy:#14213D; --navy-2:#1E2F55; --gold:#C9A227; --gold-ink:#8A6A10; --gold-soft:#E8D58E;
+  --ok:#2E6B4E; --warn:#9A6A12; --bad:#9A3A2C;
+  --serif:"Lora",Georgia,serif;
+  --sans:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0C1426; --paper:#121D36; --tint:#18264A; --line:#25355C;
+  --ink:#F1EDE3; --muted:#B3BACB; --faint:#7F879C;
+  --navy:#0A1122; --navy-2:#1A2A50; --gold:#D6B44A; --gold-ink:#E2C45E; --gold-soft:#8C7428;
+  --ok:#6DC096; --warn:#E0B65A; --bad:#E58A7A;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0C1426; --paper:#121D36; --tint:#18264A; --line:#25355C;
+  --ink:#F1EDE3; --muted:#B3BACB; --faint:#7F879C;
+  --navy:#0A1122; --navy-2:#1A2A50; --gold:#D6B44A; --gold-ink:#E2C45E; --gold-soft:#8C7428;
+  --ok:#6DC096; --warn:#E0B65A; --bad:#E58A7A;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.58;
+  -webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.kick{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink)}
+.num{font-variant-numeric:tabular-nums}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.logo .mk{width:34px;height:34px;border-radius:7px;background:var(--navy);display:grid;place-items:center;
+  color:var(--gold);font-family:var(--serif);font-weight:700;font-size:17px;border:1px solid var(--gold)}
+.logo b{font-family:var(--serif);font-size:18px;font-weight:600;display:block;line-height:1.1}
+.logo span{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#14213D;text-decoration:none;
+  font-weight:600;font-size:14px;border-radius:999px;padding:10px 18px;border:none;cursor:pointer;font-family:inherit}
+.btn:hover{filter:brightness(1.05)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* hero */
+.hero{position:relative;border-radius:16px;overflow:hidden;background:#14213D;color:#F7F5F0}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,22,42,.92) 0%,rgba(14,22,42,.72) 45%,rgba(14,22,42,.18) 100%)}
+.heroIn{position:relative;padding:58px 44px 40px;max-width:640px}
+@media (max-width:700px){.heroIn{padding:34px 20px 26px}.hero .shade{background:linear-gradient(180deg,rgba(14,22,42,.55),rgba(14,22,42,.92))}}
+.hero .kick{color:var(--gold-soft)}
+:root:not([data-theme="dark"]) .hero .kick{color:#E8D58E}
+.hero h1{font-size:clamp(28px,4.6vw,46px);line-height:1.12;margin-top:12px;color:#FBF9F4}
+.hero p{font-size:16px;color:#D5D9E3;margin:16px 0 0;max-width:46ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.hero .ctas .ghost{color:#F7F5F0;border-color:rgba(247,245,240,.35)}
+.kpis{position:relative;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(247,245,240,.16)}
+.kpis div{padding:18px 22px;border-right:1px solid rgba(247,245,240,.12)}
+.kpis div:last-child{border-right:none}
+.kpis b{font-family:var(--serif);font-size:26px;font-weight:600;color:#E8D58E;display:block;line-height:1.1}
+.kpis span{font-size:12.5px;color:#C2C8D6}
+@media (max-width:700px){.kpis{grid-template-columns:1fr 1fr}.kpis div:nth-child(2){border-right:none}
+  .kpis div:nth-child(-n+2){border-bottom:1px solid rgba(247,245,240,.12)}}
+
+.sec{padding-block:64px 8px}
+.sechead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:end;margin-bottom:26px}
+@media (max-width:820px){.sechead{grid-template-columns:1fr;gap:10px}}
+.sechead h2{font-size:clamp(25px,3.4vw,34px);line-height:1.15;margin-top:8px}
+.sechead p{margin:0;color:var(--muted);font-size:15px;max-width:52ch}
+
+.note{font-size:12.5px;color:var(--faint);margin-top:10px}
+
+/* masterplan */
+.mp{display:block}
+.mpbox{border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}
+.mpscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.plan{position:relative;min-width:900px}
+.plan img{width:100%;display:block}
+.q{position:absolute;border:1.5px solid transparent;border-radius:4px;background:transparent;cursor:pointer;padding:0;
+  transition:background .15s,border-color .15s}
+.q:hover,.q:focus-visible{background:rgba(201,162,39,.16);border-color:rgba(201,162,39,.9);outline:none}
+.q.direct{border-color:#C9A227;background:rgba(201,162,39,.22)}
+.q.resale{border-color:rgba(20,33,61,.75);background:rgba(20,33,61,.10)}
+.q.multi{border-color:rgba(255,255,255,.55);border-style:dashed}
+.q.club{border-color:rgba(46,107,78,.9);background:rgba(46,107,78,.18)}
+.q.sel{border-color:#C9A227;border-width:2.5px;background:rgba(201,162,39,.32);box-shadow:0 0 0 3px rgba(201,162,39,.25)}
+.q .lb{position:absolute;left:4px;top:3px;font-size:10px;font-weight:700;color:#fff;
+  text-shadow:0 1px 2px rgba(0,0,0,.7);letter-spacing:.02em}
+.pin{position:absolute;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:#C9A227;
+  border:2px solid #fff;box-shadow:0 0 0 0 rgba(201,162,39,.6);animation:pulse 2s infinite;pointer-events:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,162,39,.65)}70%{box-shadow:0 0 0 14px rgba(201,162,39,0)}100%{box-shadow:0 0 0 0 rgba(201,162,39,0)}}
+@media (prefers-reduced-motion:reduce){.pin{animation:none}*{transition:none!important}}
+.legend{display:flex;flex-wrap:wrap;gap:16px;padding:12px 16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.mpstats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.mpstats div{padding:14px 16px;border-right:1px solid var(--line)}
+.mpstats div:last-child{border-right:none}
+.mpstats b{font-family:var(--serif);font-size:24px;font-weight:600;display:block;line-height:1.1}
+.mpstats span{font-size:12px;color:var(--muted)}
+@media (max-width:620px){.mpstats{grid-template-columns:1fr 1fr}.mpstats div:nth-child(2){border-right:none}
+  .mpstats div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+.dossier{border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:22px 24px 24px;margin-top:16px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr) minmax(0,1fr);gap:30px;align-items:start}
+@media (max-width:900px){.dossier{grid-template-columns:1fr;gap:16px}}
+.dossier .d3 .dnote:first-child{margin-top:0}
+.dossier h3{font-size:24px;margin-top:6px}
+.dossier .type{font-size:13px;color:var(--muted);margin-top:2px}
+.prog{margin-top:16px}
+.prog .hd{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.prog .tr{height:6px;border-radius:3px;background:var(--tint);margin-top:6px;overflow:hidden}
+.prog .tr i{display:block;height:100%;background:var(--gold);border-radius:3px}
+.cnt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.cnt div{background:var(--tint);border-radius:8px;padding:9px 10px}
+.cnt b{font-family:var(--serif);font-size:20px;font-weight:600;display:block;line-height:1.1}
+.cnt span{font-size:11.5px;color:var(--muted)}
+.lots{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+.lots th{text-align:left;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);
+  font-weight:600;padding:0 0 6px;border-bottom:1px solid var(--line)}
+.lots td{padding:8px 0;border-bottom:1px solid var(--line)}
+.lots td.r,.lots th.r{text-align:right}
+.dnote{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+.dossier .btn{margin-top:14px;width:100%;justify-content:center}
+.d2 .kick{margin-bottom:2px}
+.d2 .lots{margin-top:8px}
+
+/* projects */
+.proj{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:980px){.proj{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.proj{grid-template-columns:1fr}}
+.pc{border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden;cursor:pointer;
+  text-align:left;padding:0;font:inherit;color:inherit;display:flex;flex-direction:column}
+.pc img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.pc .bd{padding:14px 16px 16px}
+.pc .nm{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.04em}
+.pc .sp{font-size:13px;color:var(--muted);margin-top:2px}
+.pc .pr{font-size:12px;margin-top:12px;color:var(--muted);letter-spacing:.04em}
+.pc .pr b{display:block;font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ink);letter-spacing:0;margin-top:2px}
+.pc.sel{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold)}
+.pc:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.cmpwrap{overflow-x:auto;margin-top:18px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.cmp{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+.cmp th,.cmp td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left}
+.cmp thead th{font-family:var(--serif);font-size:15px;font-weight:700;letter-spacing:.04em}
+.cmp tbody th{font-weight:500;color:var(--muted);font-size:13px}
+.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:none}
+.cmp td.on{background:rgba(201,162,39,.09)}
+.dots{display:inline-flex;gap:4px;vertical-align:middle}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.dots i.f{background:var(--gold)}
+
+/* configurator */
+.cfg{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:900px){.cfg{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:20px 20px 22px}
+.card h3{font-size:19px}
+.card .sub{font-size:13px;color:var(--muted);margin-top:2px}
+.selhero{border-radius:12px;overflow:hidden;position:relative;margin-top:14px}
+.selhero img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.selhero .tag{position:absolute;left:12px;bottom:12px;background:rgba(14,22,42,.82);color:#F7F5F0;border-radius:8px;
+  padding:7px 12px;font-family:var(--serif);font-weight:700;letter-spacing:.05em}
+.specs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.specs div{background:var(--tint);border-radius:9px;padding:10px 11px}
+.specs b{font-family:var(--serif);font-size:19px;font-weight:600;display:block;line-height:1.1}
+.specs span{font-size:11.5px;color:var(--muted)}
+@media (max-width:520px){.specs{grid-template-columns:1fr 1fr}}
+.prof{margin-top:16px}
+.prof .r{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+.prof .r:last-child{border-bottom:none}
+.prof .r span{color:var(--muted)}
+.who{margin-top:14px;padding:12px 14px;border-left:3px solid var(--gold);background:var(--tint);border-radius:0 8px 8px 0;
+  font-size:14px;color:var(--ink)}
+
+.field{margin-top:16px}
+.field label.t{display:block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:8px 14px;
+  font:inherit;font-size:13.5px;cursor:pointer}
+.seg button.on{background:var(--navy);color:#F7F5F0;border-color:var(--navy)}
+:root[data-theme="dark"] .seg button.on{background:var(--gold);color:#14213D;border-color:var(--gold)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .seg button.on{background:var(--gold);color:#14213D;border-color:var(--gold)}}
+.seg button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.opt:last-child{border-bottom:none}
+.opt input{width:17px;height:17px;margin:2px 0 0;accent-color:#C9A227;flex:0 0 17px}
+.opt .tx{flex:1;min-width:0}
+.opt .tx b{display:block;font-size:14.5px;font-weight:600}
+.opt .tx small{font-size:12.5px;color:var(--muted)}
+.opt .pr{font-size:13.5px;font-weight:600;white-space:nowrap;color:var(--gold-ink)}
+.opt .pr.neg{color:var(--ok)}
+.opt.dis{opacity:.5;cursor:default}
+
+/* ledger */
+.ledger{background:var(--navy);color:#EEF0F5;border-radius:16px;padding:26px 26px 28px;margin-top:22px}
+.ledger .kick{color:#E8D58E}
+.lg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:30px;margin-top:14px}
+@media (max-width:820px){.lg{grid-template-columns:1fr;gap:18px}}
+.ledger .tabs{display:flex;flex-wrap:wrap;gap:6px}
+.ledger .tabs button{border:1px solid rgba(238,240,245,.25);background:transparent;color:#EEF0F5;border-radius:999px;
+  padding:8px 15px;font:inherit;font-size:13.5px;cursor:pointer}
+.ledger .tabs button.on{background:#C9A227;border-color:#C9A227;color:#14213D;font-weight:600}
+.ledger .tabs button:focus-visible{outline:2px solid #E8D58E;outline-offset:2px}
+.headline{font-family:var(--serif);font-size:44px;font-weight:600;color:#E8D58E;line-height:1.05;margin-top:18px}
+.hlab{font-size:14px;color:#BFC5D3;margin-top:6px}
+.verdict{margin-top:18px;padding:13px 15px;border-radius:10px;background:rgba(238,240,245,.07);font-size:13.5px;line-height:1.5;color:#D3D8E3}
+.verdict b{display:block;font-size:14px;margin-bottom:3px}
+.v-ok b{color:#8ED3AE}.v-warn b{color:#EBC870}.v-bad b{color:#F0A394}
+.rows{border-top:1px solid rgba(232,213,142,.3)}
+.row{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid rgba(238,240,245,.08);font-size:14px}
+.row span:first-child{color:#BFC5D3}
+.row span:last-child{font-variant-numeric:tabular-nums;text-align:right}
+.row.tot{border-bottom:none;font-weight:600}
+.row.tot span:first-child{color:#F7F5F0}
+.row.tot span:last-child{color:#E8D58E;font-size:15.5px}
+.mk{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.ledger details{margin-top:18px;border-top:1px solid rgba(238,240,245,.12);padding-top:12px}
+.ledger summary{cursor:pointer;font-size:13.5px;color:#D3D8E3}
+.ins{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:12px}
+.ins label{display:block;font-size:12px;color:#BFC5D3;margin-bottom:4px}
+.ins input{width:100%;font:inherit;font-size:14px;padding:8px 10px;border-radius:8px;border:1px solid rgba(238,240,245,.2);
+  background:rgba(238,240,245,.06);color:#F7F5F0;font-variant-numeric:tabular-nums}
+.fine{font-size:12px;color:#9AA2B5;margin-top:12px;line-height:1.5}
+.ledger .btn{margin-top:22px}
+.wa{font-size:13px;color:#BFC5D3;margin-top:10px}
+.wa b{color:#F7F5F0;font-weight:600}
+
+/* infra + location */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gal figure{margin:0;border-radius:12px;overflow:hidden;background:var(--paper);border:1px solid var(--line)}
+.gal img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.gal figcaption{padding:11px 14px;font-size:13.5px}
+.gal figcaption b{display:block;font-family:var(--serif);font-size:16px;font-weight:600}
+.gal figcaption span{color:var(--muted);font-size:12.5px}
+@media (max-width:700px){.gal{grid-template-columns:1fr}.gal img{aspect-ratio:16/10}}
+.amen{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+@media (max-width:700px){.amen{grid-template-columns:1fr}}
+.amen .card ul{list-style:none;margin:10px 0 0;padding:0}
+.amen .card li{padding:7px 0;border-bottom:1px solid var(--line);font-size:14px;display:flex;justify-content:space-between;gap:10px}
+.amen .card li:last-child{border-bottom:none}
+.amen .card li span{color:var(--muted);font-size:12.5px}
+.loc{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px;align-items:center}
+@media (max-width:820px){.loc{grid-template-columns:1fr}}
+.loc img{border-radius:14px;border:1px solid var(--line)}
+.dist{list-style:none;margin:0;padding:0}
+.dist li{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+.dist li b{font-family:var(--serif);font-size:22px;font-weight:600}
+.dist li b small{font-size:13px;color:var(--gold-ink);font-family:var(--sans);margin-left:3px}
+
+.cta{margin-block:64px 26px;background:var(--navy);border-radius:16px;padding:36px 34px;color:#F7F5F0;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+@media (max-width:720px){.cta{grid-template-columns:1fr;padding:28px 22px}}
+.cta h2{font-size:clamp(24px,3vw,32px);color:#FBF9F4;line-height:1.2;margin-top:8px}
+.cta p{color:#C2C8D6;margin:8px 0 0;max-width:52ch}
+.cta .kick{color:#E8D58E}
+footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px;color:var(--faint);
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+.proto{font-size:12px;color:var(--faint);text-align:center;padding-bottom:20px}
+
+/* print report sheet */
+#printSheet{display:none}
+@media print{
+  body *{visibility:hidden}
+  #printSheet,#printSheet *{visibility:visible}
+  #printSheet{display:block;position:absolute;left:0;top:0;width:100%;margin:0;padding:0}
+  @page{size:A4;margin:14mm 14mm}
+}
+.ps-page{font-family:var(--sans);color:#14213D;background:#fff;padding:14mm 14mm 16mm;box-sizing:border-box}
+.ps-head{display:flex;align-items:center;gap:10px;border-bottom:2px solid #C9A227;padding-bottom:10px;margin-bottom:18px}
+.ps-badge{width:28px;height:28px;border-radius:6px;background:#14213D;border:1px solid #C9A227;color:#C9A227;
+  font-family:var(--serif);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;flex:0 0 28px}
+.ps-brandwrap{flex:1}
+.ps-brand{font-family:var(--serif);font-weight:700;font-size:16px;color:#14213D;line-height:1.1}
+.ps-brand small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8B90A0;font-weight:500;margin-top:2px}
+.ps-meta{font-size:10.5px;color:#8B90A0;text-align:right}
+.ps-h1{font-family:var(--serif);font-size:25px;font-weight:700;color:#14213D;margin:0 0 2px}
+.ps-sub{font-size:12.5px;color:#59627A;margin-bottom:14px}
+.ps-hero{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin-bottom:6px}
+.ps-note{font-size:9.5px;font-style:italic;color:#8B90A0;margin-bottom:16px}
+.ps-specs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+.ps-specs div{background:#F7F5F0;border-radius:8px;padding:10px;text-align:center}
+.ps-specs b{display:block;font-family:var(--serif);font-size:19px;font-weight:600;color:#14213D}
+.ps-specs span{font-size:10.5px;color:#59627A}
+.ps-kick{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A6A10;margin-bottom:6px}
+.ps-box{background:#F7F5F0;border-left:3px solid #C9A227;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:16px;font-size:12.5px;line-height:1.6}
+.ps-opts{list-style:none;margin:0 0 16px;padding:0;font-size:12.5px}
+.ps-opts li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E3DED2}
+.ps-ledger{background:#14213D;color:#EEF0F5;border-radius:12px;padding:18px 20px;margin-bottom:16px}
+.ps-ledger .psl-kick{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E8D58E;margin-bottom:4px}
+.ps-ledger .psl-big{font-family:var(--serif);font-size:30px;font-weight:700;color:#E8D58E;line-height:1.1}
+.ps-ledger .psl-lab{font-size:11.5px;color:#BFC5D3;margin-bottom:10px}
+.ps-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(238,240,245,.14);font-size:12.5px}
+.ps-row span:first-child{color:#BFC5D3}
+.ps-row.tot{border-bottom:none;font-weight:700}
+.ps-row.tot span:last-child{color:#E8D58E}
+.ps-contact{display:flex;justify-content:space-between;align-items:flex-start;border-top:1px solid #E3DED2;padding-top:14px;margin-top:4px}
+.ps-contact .nm{font-family:var(--serif);font-weight:700;font-size:15px;color:#14213D}
+.ps-contact .cr{font-size:10.5px;color:#8B90A0;margin-top:2px}
+.ps-contact .ct{font-size:11.5px;color:#59627A;text-align:right;line-height:1.7}
+.ps-disc{font-size:8.5px;color:#8B90A0;font-style:italic;line-height:1.6;margin-top:14px;padding-top:10px;border-top:1px solid #E3DED2}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top" aria-label="Plan B Brazil">
+      <span class="mk">B</span>
+      <span><b>Plan B Brazil</b><span>Real Estate Investment Advisory</span></span>
+    </a>
+    <a class="btn" id="topCta" href="https://wa.me/5548988117424" target="_blank" rel="noopener">Связаться</a>
+  </header>
+
+  <section class="hero" id="top">
+    <img src="/real-parque/img/hero.jpg" alt="Главный бульвар Real Parque с высоты">
+    <div class="shade"></div>
+    <div class="heroIn">
+      <div class="kick">Real Parque · Флорианополис</div>
+      <h1>Дом на севере острова — для жизни или как вложение</h1>
+      <p>Выберите участок на генплане и проект дома. Покажем полную стоимость под ключ и что даёт каждый из трёх сценариев инвестиции, с налогами и комиссиями.</p>
+      <div class="ctas">
+        <a class="btn" href="#plan">Открыть генплан</a>
+        <a class="btn ghost" href="#calc">Сразу к расчёту</a>
+      </div>
+    </div>
+    <div class="kpis">
+      <div><b class="num">280</b><span>участков в посёлке</span></div>
+      <div><b class="num">300 тыс. м²</b><span>общая площадь</span></div>
+      <div><b class="num">4 км</b><span>до пляжа Канасвиейрас</span></div>
+      <div><b class="num">2,5 км</b><span>до трассы SC-401</span></div>
+    </div>
+  </section>
+
+  <!-- ГЕНПЛАН -->
+  <section class="sec" id="plan">
+    <div class="sechead">
+      <div><div class="kick">Генплан</div><h2>24 квартала. Нажмите на любой, чтобы увидеть его состояние</h2></div>
+      <p>Статус стройки по каждому кварталу и свободные участки — по данным застройщика на второе полугодие 2026 года.</p>
+    </div>
+    <div class="mp">
+      <div class="mpbox">
+        <div class="mpstats">
+          <div><b class="num">17</b><span>домов достроено</span></div>
+          <div><b class="num">53</b><span>в стройке</span></div>
+          <div><b class="num">7</b><span>участков у застройщика</span></div>
+          <div><b class="num">52</b><span>объекта на вторичке</span></div>
+        </div>
+        <div class="mpscroll"><div class="plan" id="planEl">
+          <img src="/real-parque/img/plan.jpg" alt="Генплан Real Parque — 24 квартала">
+        </div></div>
+        <div class="legend">
+          <span><i style="background:rgba(201,162,39,.5);border:1.5px solid #C9A227"></i>прямая продажа от застройщика</span>
+          <span><i style="background:rgba(20,33,61,.2);border:1.5px solid #14213D"></i>есть предложения на вторичке</span>
+          <span><i style="border:1.5px dashed #8B90A0"></i>под многоквартирные дома</span>
+          <span><i style="background:rgba(46,107,78,.3);border:1.5px solid #2E6B4E"></i>клубный дом</span>
+        </div>
+      </div>
+      <aside class="dossier" id="dossier" aria-live="polite"></aside>
+    </div>
+    <p class="note">На телефоне генплан прокручивается вбок.</p>
+  </section>
+
+  <!-- ПРОЕКТЫ -->
+  <section class="sec" id="projects">
+    <div class="sechead">
+      <div><div class="kick">Проекты</div><h2>Четыре формата под разные задачи</h2></div>
+      <p>Два таунхауса — под сдачу и быструю перепродажу. Два отдельных дома — для семьи и для статуса. Выберите один, и он перейдёт в расчёт.</p>
+    </div>
+    <div class="proj" id="proj"></div>
+    <div class="cmpwrap"><table class="cmp" id="cmp"></table></div>
+    <p class="note">Изображения — примерный вид проекта. За точной информацией по планировкам и визуализации обращайтесь к нам.</p>
+  </section>
+
+  <!-- КОНФИГУРАТОР -->
+  <section class="sec" id="calc">
+    <div class="sechead">
+      <div><div class="kick">Ваш дом</div><h2>Соберите комплектацию и посмотрите цифры</h2></div>
+      <p>Каждая опция меняет и стоимость стройки, и цену, за которую дом потом продаётся. Расчёт ниже обновляется сразу.</p>
+    </div>
+    <div class="cfg">
+      <div class="card">
+        <h3 id="cName">—</h3>
+        <div class="sub" id="cSub">—</div>
+        <div class="selhero"><img id="cImg" src="/real-parque/img/p_comfort.jpg" alt=""><div class="tag" id="cTag">—</div></div>
+        <div class="note" style="margin-top:-4px">Иллюстративный рендер проекта — за точными планировками обращайтесь к нам.</div>
+        <div class="specs" id="cSpecs"></div>
+        <div class="prof" id="cProf"></div>
+        <div class="who" id="cWho"></div>
+      </div>
+      <div class="card">
+        <h3>Участок и опции</h3>
+        <div class="sub">Откуда берём землю и что добавляем к базовой комплектации</div>
+        <div class="field">
+          <label class="t">Участок</label>
+          <div class="seg" id="lotSeg"></div>
+          <div class="note" id="lotNote"></div>
+        </div>
+        <div class="field">
+          <label class="t">Опции</label>
+          <div id="opts"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ledger" id="ledger">
+      <div class="kick">Расчёт</div>
+      <div class="lg">
+        <div>
+          <div class="tabs" id="tabs"></div>
+          <div class="headline num" id="lBig">—</div>
+          <div class="hlab" id="lLab"></div>
+          <div class="mk" id="mkt"></div>
+          <div class="verdict" id="lVer"></div>
+        </div>
+        <div>
+          <div class="rows" id="lRows"></div>
+          <details>
+            <summary>Допущения расчёта — можно менять</summary>
+            <div class="ins">
+              <div><label for="iCost">Стройка, R$/м²</label><input type="number" id="iCost" value="3650" step="50"></div>
+              <div><label for="iMonths">Срок, месяцев</label><input type="number" id="iMonths" value="24" step="1"></div>
+              <div><label for="iComm">Комиссия при продаже, %</label><input type="number" id="iComm" value="6" step="0.5"></div>
+              <div><label for="iItbi">ITBI, %</label><input type="number" id="iItbi" value="2" step="0.1"></div>
+              <div><label for="iUsd">Курс, R$ за US$</label><input type="number" id="iUsd" value="5.20" step="0.05"></div>
+            </div>
+            <p class="fine">Налог с продажи — 15% с прибыли. В пермуте база стоимости переходит с участка (COSIT 166/2019), поэтому облагается весь спред между ценой дома и ценой земли. Не учтены IPTU за время стройки, взносы ассоциации, курсовой риск и срок экспозиции при продаже.</p>
+          </details>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
+            <a class="btn" id="lCta" href="https://wa.me/5548988117424" target="_blank" rel="noopener" style="margin-top:0">Обсудить этот расчёт в WhatsApp</a>
+            <button class="btn ghost" type="button" id="printBtn" style="margin-top:0;color:#F7F5F0;border-color:rgba(247,245,240,.35)">Распечатать проект</button>
+          </div>
+          <div class="wa">или напишите напрямую: <b>+55 48 98811-7424</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ИНФРАСТРУКТУРА -->
+  <section class="sec" id="infra">
+    <div class="sechead">
+      <div><div class="kick">Инфраструктура</div><h2>Дороги и сети уже работают</h2></div>
+      <p>Это не план на бумаге: бульвар, велодорожки и прогулочная тропа сданы. Клубный дом получил лицензию, стройка начинается.</p>
+    </div>
+    <div class="gal">
+      <figure><img src="/real-parque/img/d1.jpg" alt="Главный бульвар"><figcaption><b>Главный бульвар</b><span>асфальт, разметка, освещение</span></figcaption></figure>
+      <figure><img src="/real-parque/img/d2.jpg" alt="Аллея с велодорожкой"><figcaption><b>Аллея с велодорожкой</b><span>озеленение и сети подведены</span></figcaption></figure>
+      <figure><img src="/real-parque/img/d3.jpg" alt="Caminho Real"><figcaption><b>Caminho Real</b><span>7 км прогулочной тропы вокруг посёлка</span></figcaption></figure>
+    </div>
+    <div class="amen">
+      <div class="card"><h3>Сдано</h3><ul>
+        <li>Асфальт, освещение, вода и канализация<span>все 24 квартала</span></li>
+        <li>Велодорожка по главной аллее<span>готово</span></li>
+        <li>Caminho Real<span>7 км</span></li>
+        <li>Улицы шириной<span>8 м</span></li>
+        <li>Сохранённая зелёная зона<span>22 тыс. м²</span></li>
+      </ul></div>
+      <div class="card"><h3>Строится и в проекте</h3><ul>
+        <li>Клубный дом с залом и лаунжем<span>лицензия получена</span></li>
+        <li>Пост охраны 24 часа<span>в проекте</span></li>
+        <li>Пляжный теннис, фитнес на воздухе<span>в проекте</span></li>
+        <li>Детская площадка и площадка для собак<span>в проекте</span></li>
+        <li>Перголы и гамаки<span>в проекте</span></li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ЛОКАЦИЯ -->
+  <section class="sec" id="loc">
+    <div class="sechead">
+      <div><div class="kick">Локация</div><h2>Между пляжами севера и технопарком Sapiens</h2></div>
+      <p>Rod. Armando Calil Bulos, SC-403. Журере, Праия-Брава и Сантиньо — в нескольких минутах.</p>
+    </div>
+    <div class="loc">
+      <img src="/real-parque/img/sat.jpg" alt="Спутниковый снимок Real Parque и окрестностей">
+      <ul class="dist">
+        <li>Технопарк Sapiens Parque <b>рядом</b></li>
+        <li>Трасса SC-401 <b class="num">2,5<small>км</small></b></li>
+        <li>Пляж Канасвиейрас <b class="num">4<small>км</small></b></li>
+        <li>Пляж Инглезес <b class="num">5<small>км</small></b></li>
+        <li>Центр Флорианополиса <b class="num">24<small>км</small></b></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <div class="kick">Один контакт на весь путь</div>
+      <h2>Участок, проект, стройка, документы — ведём под ключ</h2>
+      <p>CPF, перевод денег, ITBI, регистрация, контроль стройки и, если нужно, продажа или сдача готового дома. На русском, португальском и английском.</p>
+    </div>
+    <a class="btn" id="bCta" href="https://wa.me/5548988117424" target="_blank" rel="noopener">Написать в WhatsApp</a>
+  </section>
+
+  <footer>
+    <span>Plan B Brazil · Константин Биевских · CRECI-SC 59616-F · planbbrazil.com</span>
+    <span>Расчёты предварительные и не являются офертой</span>
+  </footer>
+  <div class="proto">Прототип для обсуждения. Данные по кварталам и прайсу — из открытой презентации застройщика, 2-е полугодие 2026.</div>
+</div>
+
+<!-- PRINT REPORT SHEET (filled by JS from current selection, shown only on print) -->
+<div id="printSheet">
+  <div class="ps-page">
+    <div class="ps-head">
+      <div class="ps-badge">B</div>
+      <div class="ps-brandwrap"><div class="ps-brand">Plan B Brazil<small>Real Estate Investment Advisory</small></div></div>
+      <div class="ps-meta" id="psDate"></div>
+    </div>
+    <div class="ps-h1" id="psTitle">—</div>
+    <div class="ps-sub" id="psSub">Real Parque · Florianópolis</div>
+    <img class="ps-hero" id="psImg" src="" alt="">
+    <div class="ps-note">Иллюстративный рендер проекта. Окончательные планировки и визуализация — по запросу.</div>
+    <div class="ps-specs" id="psSpecs"></div>
+    <div class="ps-kick">Участок</div>
+    <div class="ps-box" id="psLot">—</div>
+    <div class="ps-kick">Выбранные опции</div>
+    <ul class="ps-opts" id="psOpts"></ul>
+    <div class="ps-ledger">
+      <div class="psl-kick" id="psModeLabel">Расчёт</div>
+      <div class="psl-big" id="psBig">—</div>
+      <div class="psl-lab" id="psLab"></div>
+      <div id="psRows"></div>
+    </div>
+    <div class="ps-contact">
+      <div>
+        <div class="nm">Константин Биевских</div>
+        <div class="cr">CRECI SC 59616-F · planbbrazil.com</div>
+      </div>
+      <div class="ct">WhatsApp / Telegram<br><b>+55 (48) 98811-7424</b></div>
+    </div>
+    <div class="ps-disc">Данный документ носит информационный характер и не является офертой. Расчёты предварительные и основаны на вводных, указанных пользователем. Цены, наличие и курс валюты могут измениться без предварительного уведомления. Plan B Brazil — независимый консультант и не является застройщиком объекта.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id);};
+var R=function(v){return "R$ "+Math.round(v).toLocaleString("ru-RU").replace(/ /g," ");};
+var K=function(v){return "R$ "+(v/1e6>=1?(v/1e6).toFixed(2).replace(".",",")+" млн":Math.round(v/1000)+" тыс.");};
+var pct=function(v){return (v>=0?"+":"")+(v*100).toFixed(0)+"%";};
+var n=function(id,d){var v=parseFloat($(id).value);return isFinite(v)?v:d;};
+
+/* ---- генплан ---- */
+var QR={"Q23":[5.47,28.32,5.6,36.83],"Q21":[12.14,28.32,5.54,36.83],"Q19":[18.93,28.32,5.49,36.83],
+ "Q17":[25.54,28.32,5.69,36.83],"Q15":[32.45,28.32,5.69,36.83],"Q13":[39.33,28.32,5.63,36.83],
+ "Q11":[46.06,28.32,5.7,36.83],"Q9":[60.44,33.98,4.89,31.16],"Q8":[65.72,28.32,5.54,36.83],
+ "Q7":[72.45,28.32,5.63,36.83],"Q5":[79.12,28.32,5.63,36.83],"Q3":[85.79,28.32,5.63,36.83],
+ "Q1":[92.44,29.17,3.41,36.83],"Q24":[5.14,73.64,5.99,18.88],"Q22":[12.29,73.64,5.54,18.88],
+ "Q20":[18.96,73.64,5.49,18.88],"Q18":[25.6,73.64,5.54,18.88],"Q16":[32.57,73.64,5.43,18.88],
+ "Q14":[39.42,73.64,5.43,18.88],"Q12":[46.12,73.64,5.57,18.88],"Q10":[60.0,73.64,4.45,18.88],
+ "Q6":[65.69,73.64,5.43,18.88],"Q4":[72.45,73.64,5.25,18.88],"Q2":[79.3,73.64,14.41,18.88]};
+var PIN=[27.17,45.5];
+var QD={
+ Q1:{t:"house",p:31,note:"Квартал Home Villas"},
+ Q2:{t:"multi"},
+ Q3:{t:"house",p:94,ob:6,pl:2},
+ Q4:{t:"multi",direct:[["PB-4A",476],["PB-4B",729],["PB-4C",618]]},
+ Q5:{t:"house",p:72,pr:3,ob:3},
+ Q6:{t:"multi",note:"Начало стройки"},
+ Q7:{t:"house",p:70,ob:3,pl:9},
+ Q8:{t:"house",pr:2,pl:4},
+ Q9:{t:"house",p:13,ob:1},
+ Q10:{t:"club",note:"Клубный дом: зал, лаунж, игровая. Лицензия получена, стройка начинается."},
+ Q11:{t:"house",pr:2},
+ Q12:{t:"nego",note:"Квартал в переговорах у застройщика"},
+ Q13:{t:"house",p:10,ob:3,pl:3},
+ Q14:{t:"multi",p:32,ob:3},
+ Q15:{t:"house",p:52,pr:1,ob:3},
+ Q16:{t:"nego",note:"Квартал в переговорах у застройщика"},
+ Q17:{t:"house",p:15,pr:4,ob:8,direct:[["PB-17A",450]]},
+ Q18:{t:"multi"},
+ Q19:{t:"house",p:15,ob:12},
+ Q20:{t:"multi",pl:1},
+ Q21:{t:"house",p:20,pr:3,ob:6},
+ Q22:{t:"multi"},
+ Q23:{t:"house",p:73,pr:2,ob:1},
+ Q24:{t:"multi",p:22,ob:4,direct:[["PB-24A",459],["PB-24B",527],["PB-24C",630]]}
+};
+var TYPE={house:"Одноквартирные дома",multi:"Под многоквартирные дома",club:"Клубный дом",nego:"В переговорах"};
+var selQ="Q17";
+
+function drawPlan(){
+  var el=$("planEl");
+  Object.keys(QR).forEach(function(k){
+    var r=QR[k],d=QD[k];
+    var b=document.createElement("button");
+    b.type="button";
+    var cls="q";
+    if(d.direct) cls+=" direct"; else if(d.pl) cls+=" resale";
+    if(d.t==="multi"&&!d.direct) cls+=" multi";
+    if(d.t==="club") cls+=" club";
+    b.className=cls; b.dataset.q=k;
+    b.style.cssText="left:"+r[0]+"%;top:"+r[1]+"%;width:"+r[2]+"%;height:"+r[3]+"%";
+    b.setAttribute("aria-label","Квартал "+k);
+    b.innerHTML="<span class='lb'>"+k+"</span>";
+    b.addEventListener("click",function(){ selQ=k; markQ(); drawDossier(); });
+    el.appendChild(b);
+  });
+  var p=document.createElement("span"); p.className="pin";
+  p.style.left=PIN[0]+"%"; p.style.top=PIN[1]+"%"; el.appendChild(p);
+  markQ();
+}
+function markQ(){
+  document.querySelectorAll(".q").forEach(function(b){ b.classList.toggle("sel",b.dataset.q===selQ); });
+}
+function drawDossier(){
+  var d=QD[selQ],a="",b="",c="";
+  a+="<div class='kick'>Квартал</div><h3>"+selQ+"</h3><div class='type'>"+TYPE[d.t]+"</div>";
+  if(d.p!=null){
+    a+="<div class='prog'><div class='hd'><span>Застроено</span><span class='num'>"+d.p+"%</span></div>"+
+       "<div class='tr'><i style='width:"+d.p+"%'></i></div></div>";
+  }
+  if(d.pr!=null||d.ob!=null||d.pl!=null){
+    a+="<div class='cnt'>"+
+      "<div><b class='num'>"+(d.pr||0)+"</b><span>готово</span></div>"+
+      "<div><b class='num'>"+(d.ob||0)+"</b><span>в стройке</span></div>"+
+      "<div><b class='num'>"+(d.pl||0)+"</b><span>на продаже</span></div></div>";
+  }
+  if(d.direct){
+    b+="<div class='kick'>Прямая продажа от застройщика</div>";
+    b+="<table class='lots'><thead><tr><th>Лот</th><th class='r'>Площадь</th><th class='r'>Цена</th></tr></thead><tbody>";
+    d.direct.forEach(function(l){
+      b+="<tr><td>"+selQ+" · "+l[0]+"</td><td class='r num'>"+l[1]+" м²</td><td class='r'>по запросу</td></tr>";
+    });
+    b+="</tbody></table><div class='note'>Цены — по консультации, зависят от условий оплаты.</div>";
+  } else if(d.note){
+    b+="<div class='kick'>Что здесь</div><div class='dnote'>"+d.note+"</div>";
+  } else if(d.pl){
+    b+="<div class='kick'>Вторичный рынок</div><div class='dnote'>В квартале "+d.pl+" "+(d.pl===1?"объект":d.pl<5?"объекта":"объектов")+
+       " на продаже у частных владельцев. Цены на участки 450–476 м² — от R$ 540 до 820 тыс.</div>";
+  } else {
+    b+="<div class='kick'>Наличие</div><div class='dnote'>Свободных участков у застройщика здесь нет. Предложения частных владельцев появляются регулярно.</div>";
+  }
+  if(selQ==="Q17"){
+    c+="<div class='dnote'>Участок PB-17A — единственный одноквартирный участок, который застройщик продаёт напрямую. Он отмечен точкой на генплане.</div>"+
+       "<button class='btn' type='button' id='useLot'>Посчитать дом на этом участке</button>";
+  } else if(d.direct){
+    c+="<div class='dnote'>Эти участки рассчитаны под многоквартирную застройку — это разговор об инвестиции в здание, а не в один дом.</div>"+
+       "<a class='btn' target='_blank' rel='noopener' href='https://wa.me/5548988117424?text="+
+       encodeURIComponent("Здравствуйте! Интересуют многоквартирные участки в Real Parque, квартал "+selQ+".")+"'>Обсудить квартал "+selQ+"</a>";
+  } else if(d.pl){
+    c+="<div class='dnote'>Подберём участок или готовый дом под вашу задачу и проверим документы.</div>"+
+       "<button class='btn' type='button' id='useResale'>Посчитать с участком со вторички</button>";
+  } else if(d.t==="house"){
+    c+="<div class='dnote'>Оставьте запрос — сообщим, когда здесь появится предложение.</div>"+
+       "<a class='btn ghost' target='_blank' rel='noopener' href='https://wa.me/5548988117424?text="+
+       encodeURIComponent("Здравствуйте! Интересует участок в квартале "+selQ+" в Real Parque.")+"'>Оставить запрос</a>";
+  }
+  $("dossier").innerHTML="<div class='d1'>"+a+"</div><div class='d2'>"+b+"</div><div class='d3'>"+c+"</div>";
+  var u=$("useLot"); if(u) u.addEventListener("click",function(){ S.lot="direct"; render(); $("calc").scrollIntoView({behavior:"smooth"}); });
+  var r=$("useResale"); if(r) r.addEventListener("click",function(){ S.lot="resale"; render(); $("calc").scrollIntoView({behavior:"smooth"}); });
+}
+
+/* ---- проекты ---- */
+var P=[
+ {id:"comfort",nm:"КОМФОРТ",img:"/real-parque/img/p_comfort.jpg",area:105,beds:"3",bedsTxt:"3 спальни",baths:2,per:3,sale:11400,
+  liq:5,yld:4,prv:2,tag:"таунхаус, три секции в ряду",
+  who:"Первая покупка и сдача в аренду. Самый ходовой формат в районе — уходит быстрее остальных."},
+ {id:"expert",nm:"ЭКСПЕРТ",img:"/real-parque/img/p_expert.jpg",area:115,beds:"3 + каб.",bedsTxt:"3 спальни и кабинет",baths:3,per:3,sale:10900,
+  liq:4,yld:5,prv:2,tag:"таунхаус с кабинетом",
+  who:"Инвестору под аренду. Кабинет на втором этаже работает как отдельная комната на сдачу."},
+ {id:"family",nm:"СЕМЬЯНИН",img:"/real-parque/img/p_family.jpg",area:150,beds:"4",bedsTxt:"4 спальни",baths:3,per:2,sale:9300,
+  liq:4,yld:3,prv:4,tag:"отдельный дом со своим двором",
+  who:"Семья с детьми и переезд насовсем. Свой двор, соседи только с одной стороны."},
+ {id:"premium",nm:"ПРЕМИУМ",img:"/real-parque/img/p_premium.jpg",area:200,beds:"4",bedsTxt:"4 спальни",baths:4,per:2,sale:8000,
+  liq:3,yld:3,prv:5,tag:"200 м², бассейн во дворе",
+  who:"Статус и жизнь у моря. Узкая аудитория и дольше экспозиция, зато самая высокая цена при перепродаже."}
+];
+var OPTS=[
+ {id:"furn",n:"Мебель и техника под ключ",s:"Заезжай и живи или сразу сдавай",c:145000,v:100000,l:1},
+ {id:"prem",n:"Премиум-материалы",s:"Фасад, окна и инженерия на класс выше",cPct:0.12,vPct:0.08,l:0},
+ {id:"terr",n:"Терраса на крыше с барбекю и спа",s:"Главный аргумент при продаже в этом районе",c:68000,v:55000,l:1},
+ {id:"pool",n:"Бассейн во дворе",s:"В «Премиуме» уже входит",c:95000,v:70000,l:0},
+ {id:"eco",n:"Эконом-отделка",s:"Дешевле на входе, дольше на продаже",cPct:-0.08,vPct:-0.05,l:-1}
+];
+var LOTSRC={
+ direct:{lb:"PB-17A, от застройщика",price:489040,hide:1,note:"450 м², прямая продажа. Цена — по запросу, есть рассрочка."},
+ resale:{lb:"Вторичка, нижний диапазон",price:540000,note:"450–476 м², предложения частных владельцев от R$ 540 тыс."},
+ resaleMid:{lb:"Вторичка, середина рынка",price:680000,note:"Участки в лучших позициях, до R$ 820 тыс."}
+};
+var MK=[{id:"m20",n:"Пессимистичный −20%",k:.8},{id:"m10",n:"Рабочий −10%",k:.9},{id:"m00",n:"По прайсу",k:1}];
+var MODES=[{id:"self",n:"Для себя"},{id:"sell",n:"Построить и продать"},{id:"perm",n:"Пермута"}];
+var S={p:P[0],lot:"direct",o:{terr:true},mk:"m10",mode:"perm"};
+
+function dots(v){var s="<span class='dots' aria-label='"+v+" из 5'>";for(var i=1;i<=5;i++)s+="<i class='"+(i<=v?"f":"")+"'></i>";return s+"</span>";}
+function drawProj(){
+  var c=$("proj"); c.textContent="";
+  P.forEach(function(p){
+    var b=document.createElement("button"); b.type="button";
+    b.className="pc"+(S.p.id===p.id?" sel":"");
+    b.innerHTML="<img src='"+p.img+"' alt='Проект "+p.nm+"'><div class='bd'><div class='nm'>"+p.nm+"</div>"+
+      "<div class='sp'>"+p.area+" м² · "+p.bedsTxt+" · "+p.per+" на участке</div>"+
+      "<div class='pr'>Готовый дом на рынке<b class='num'>"+K(p.area*p.sale)+"</b></div></div>";
+    b.addEventListener("click",function(){ S.p=p; render(); });
+    c.appendChild(b);
+  });
+  var rows=[
+    ["Площадь",function(p){return p.area+" м²";}],
+    ["Спальни",function(p){return p.beds;}],
+    ["Домов на участке",function(p){return p.per;}],
+    ["Готовый дом на рынке",function(p){return K(p.area*p.sale);}],
+    ["Цена метра на рынке",function(p){return R(p.sale);}],
+    ["Ликвидность",function(p){return dots(p.liq);}],
+    ["Доходность",function(p){return dots(p.yld);}],
+    ["Приватность",function(p){return dots(p.prv);}]
+  ];
+  var h="<thead><tr><th></th>"+P.map(function(p){return "<th"+(p.id===S.p.id?" class='on'":"")+">"+p.nm+"</th>";}).join("")+"</tr></thead><tbody>";
+  rows.forEach(function(r){
+    h+="<tr><th>"+r[0]+"</th>"+P.map(function(p){return "<td class='num"+(p.id===S.p.id?" on":"")+"'>"+r[1](p)+"</td>";}).join("")+"</tr>";
+  });
+  $("cmp").innerHTML=h+"</tbody>";
+}
+function drawCfg(){
+  var p=S.p;
+  $("cName").textContent=p.nm; $("cSub").textContent=p.tag;
+  $("cImg").src=p.img; $("cImg").alt="Проект "+p.nm; $("cTag").textContent=p.nm+" · "+p.area+" м²";
+  $("cSpecs").innerHTML=
+    "<div><b class='num'>"+p.area+"</b><span>м²</span></div>"+
+    "<div><b>"+p.beds+"</b><span>спальни</span></div>"+
+    "<div><b class='num'>"+p.baths+"</b><span>санузла</span></div>"+
+    "<div><b class='num'>2</b><span>этажа + терраса</span></div>";
+  var l=Math.max(1,Math.min(5,p.liq+OPTS.reduce(function(a,o){return a+(S.o[o.id]&&!(o.id==="pool"&&p.id==="premium")?o.l:0);},0)));
+  $("cProf").innerHTML=
+    "<div class='r'><span>Ликвидность с вашими опциями</span>"+dots(l)+"</div>"+
+    "<div class='r'><span>Доходность от сдачи</span>"+dots(p.yld)+"</div>"+
+    "<div class='r'><span>Приватность</span>"+dots(p.prv)+"</div>";
+  $("cWho").textContent=p.who;
+
+  var s=$("lotSeg"); s.textContent="";
+  Object.keys(LOTSRC).forEach(function(k){
+    var b=document.createElement("button"); b.type="button"; b.className=S.lot===k?"on":"";
+    b.textContent=LOTSRC[k].lb+(LOTSRC[k].hide?"":" · "+K(LOTSRC[k].price));
+    b.addEventListener("click",function(){ S.lot=k; render(); });
+    s.appendChild(b);
+  });
+  $("lotNote").textContent=LOTSRC[S.lot].note;
+
+  var c=$("opts"); c.textContent="";
+  OPTS.forEach(function(o){
+    var incl=(o.id==="pool"&&p.id==="premium");
+    var lb=document.createElement("label"); lb.className="opt"+(incl?" dis":"");
+    var cb=document.createElement("input"); cb.type="checkbox"; cb.id="o_"+o.id;
+    cb.checked=!!S.o[o.id]&&!incl; cb.disabled=incl;
+    cb.addEventListener("change",function(){
+      S.o[o.id]=cb.checked;
+      if(o.id==="eco"&&cb.checked) S.o.prem=false;
+      if(o.id==="prem"&&cb.checked) S.o.eco=false;
+      render();
+    });
+    var cost=o.cPct!=null?Math.round(p.area*n("iCost",3650)*o.cPct):o.c;
+    var tx=document.createElement("div"); tx.className="tx";
+    tx.innerHTML="<b>"+o.n+"</b><small>"+(incl?"уже входит в проект":o.s)+"</small>";
+    var pr=document.createElement("div"); pr.className="pr num"+(cost<0?" neg":"");
+    pr.textContent=incl?"входит":(cost<0?"−":"+")+K(Math.abs(cost));
+    lb.appendChild(cb); lb.appendChild(tx); lb.appendChild(pr); c.appendChild(lb);
+  });
+}
+
+/* ---- расчёт ---- */
+function calc(){
+  var p=S.p, lot=LOTSRC[S.lot].price, m=MK.filter(function(x){return x.id===S.mk;})[0].k;
+  var cost=n("iCost",3650), months=n("iMonths",24), comm=n("iComm",6)/100, itbi=n("iItbi",2)/100, usd=n("iUsd",5.2);
+  var build1=p.area*cost, oc=0, ov=0;
+  OPTS.forEach(function(o){
+    if(!S.o[o.id]) return;
+    if(o.id==="pool"&&p.id==="premium") return;
+    oc+=o.cPct!=null?build1*o.cPct:o.c;
+    ov+=o.vPct!=null?p.area*p.sale*o.vPct:o.v;
+  });
+  var unit=(p.area*p.sale+ov)*m;
+  var acq=lot*(1+itbi+0.012)+8000;
+  var r={p:p,lot:lot,acq:acq,unit:unit,months:months,comm:comm,usd:usd,oc:oc};
+  if(S.mode==="self"){
+    var soft=145000*0.55+build1*0.07;
+    r.total=acq+build1+soft+oc; r.build=build1; r.soft=soft;
+    r.delta=unit-r.total;
+  } else if(S.mode==="sell"){
+    var bAll=build1*p.per, sAll=145000+bAll*0.07, oAll=oc*p.per;
+    r.inv=acq+bAll+sAll+oAll; r.build=bAll; r.soft=sAll; r.oAll=oAll;
+    r.vgv=unit*p.per;
+    r.tax=Math.max(0,r.vgv-r.inv)*0.15;
+    r.net=r.vgv*(1-comm)-r.tax;
+    r.profit=r.net-r.inv; r.roi=r.profit/r.inv; r.apy=Math.pow(1+r.roi,12/months)-1;
+  } else {
+    r.inv=acq;
+    r.tax=Math.max(0,unit-lot)*0.15;
+    r.net=unit*(1-comm)-r.tax;
+    r.profit=r.net-acq; r.roi=r.profit/acq; r.apy=Math.pow(1+r.roi,12/months)-1;
+    var bAll2=build1*p.per, sAll2=145000+bAll2*0.07, rev=unit*(p.per-1);
+    r.slack=rev>0?(rev-(bAll2+sAll2+oc*p.per+rev*comm+rev*0.04))/rev:-1;
+  }
+  return r;
+}
+function row(a,b,c){return "<div class='row"+(c?" "+c:"")+"'><span>"+a+"</span><span>"+b+"</span></div>";}
+function lotHidden(){return !!LOTSRC[S.lot].hide;}
+function lotRow(r){return lotHidden()?row("Участок","по запросу"):row("Участок",R(r.lot));}
+function itbiRow(r){return lotHidden()?"":row("ITBI, регистрация, нотариус",R(r.acq-r.lot));}
+function drawLedger(){
+  var t=$("tabs"); t.textContent="";
+  MODES.forEach(function(m){
+    var b=document.createElement("button"); b.type="button"; b.className=S.mode===m.id?"on":""; b.textContent=m.n;
+    b.addEventListener("click",function(){ S.mode=m.id; render(); }); t.appendChild(b);
+  });
+  var mk=$("mkt"); mk.textContent="";
+  if(S.mode!=="self"){
+    MK.forEach(function(x){
+      var b=document.createElement("button"); b.type="button"; b.className=S.mk===x.id?"on":""; b.textContent=x.n;
+      b.addEventListener("click",function(){ S.mk=x.id; render(); });
+      mk.appendChild(b);
+    });
+    mk.className="tabs mk";
+  } else mk.className="mk";
+  var r=calc(), h="", v=$("lVer");
+  if(S.mode==="self"){
+    $("lBig").textContent=K(r.total);
+    $("lLab").textContent="под ключ · "+R(r.total/r.p.area)+" за м² · ≈ US$ "+Math.round(r.total/r.usd/1000)+" тыс.";
+    h+=lotRow(r);
+    h+=itbiRow(r);
+    h+=row("Стройка, "+r.p.area+" м²",R(r.build));
+    h+=row("Проект и согласования",R(r.soft));
+    if(r.oc) h+=row("Опции",(r.oc>0?"+":"−")+R(Math.abs(r.oc)));
+    h+=row("Всего под ключ",R(r.total),"tot");
+    h+=row("Такой же готовый дом на рынке",R(r.unit));
+    v.className="verdict "+(r.delta>0?"v-ok":"v-warn");
+    v.innerHTML=r.delta>0?"<b>Строить выгоднее, чем покупать готовое</b>Разница "+R(r.delta)+" — плата за то, что вы ждёте "+r.months+" месяцев.":
+      "<b>Готовое сейчас дешевле стройки</b>При таких вводных разумнее смотреть готовые дома на вторичке.";
+  } else if(S.mode==="sell"){
+    $("lBig").textContent=pct(r.roi);
+    $("lLab").textContent="на вложенный капитал · "+pct(r.apy)+" годовых · "+r.months+" мес.";
+    h+=row("Участок и оформление",R(r.acq));
+    h+=row("Стройка, "+r.p.per+" × "+r.p.area+" м²",R(r.build));
+    h+=row("Проект и согласования",R(r.soft));
+    if(r.oAll) h+=row("Опции на все дома",(r.oAll>0?"+":"−")+R(Math.abs(r.oAll)));
+    h+=row("Нужен капитал",R(r.inv),"tot");
+    h+=row("Продажа "+r.p.per+" домов",R(r.vgv));
+    h+=row("Комиссия и налог","−"+R(r.vgv*r.comm+r.tax));
+    h+=row("Чистая прибыль",R(r.profit),"tot");
+    v.className="verdict v-warn";
+    v.innerHTML="<b>Больше денег в абсолюте — и весь риск на вас</b>Нужен весь капитал на старте. Пермута даёт выше процент на вложенное при меньшем входе.";
+  } else {
+    $("lBig").textContent=pct(r.roi);
+    $("lLab").textContent="на вложенный капитал · "+pct(r.apy)+" годовых · "+r.months+" мес.";
+    h+=lotRow(r);
+    h+=itbiRow(r);
+    h+=row("Вы вкладываете",R(r.inv),"tot");
+    h+=row("Получаете готовый дом, 1 из "+r.p.per,R(r.unit));
+    h+=row("Комиссия при продаже","−"+R(r.unit*r.comm));
+    h+=row("Налог 15% со спреда","−"+R(r.tax));
+    h+=row("Чистая прибыль",R(r.profit),"tot");
+    if(r.slack>=0.18){ v.className="verdict v-ok"; v.innerHTML="<b>Модель держится уверенно</b>Остальные дома на участке полностью закрывают стройку. На таких условиях проект берём."; }
+    else if(r.slack>=0.10){ v.className="verdict v-warn"; v.innerHTML="<b>Модель проходит впритык</b>Запаса почти нет: при удорожании материалов придётся упрощать отделку или формат."; }
+    else { v.className="verdict v-bad"; v.innerHTML="<b>Так не сходится</b>Оставшиеся дома не окупают стройку. Нужен участок дешевле или более компактный проект."; }
+  }
+  $("lRows").innerHTML=h;
+  var on=OPTS.filter(function(o){return S.o[o.id]&&!(o.id==="pool"&&S.p.id==="premium");}).map(function(o){return o.n.toLowerCase();});
+  var msg="Здравствуйте! Посчитал на сайте: проект «"+S.p.nm+"» "+S.p.area+" м², участок — "+LOTSRC[S.lot].lb+
+    (on.length?", опции: "+on.join(", "):"")+", сценарий — "+MODES.filter(function(m){return m.id===S.mode;})[0].n.toLowerCase()+". Хочу обсудить.";
+  var href="https://wa.me/5548988117424?text="+encodeURIComponent(msg);
+  $("lCta").href=href; $("bCta").href=href;
+}
+function render(){ drawProj(); drawCfg(); drawLedger(); }
+
+function psRow(a,b,c){return "<div class='ps-row"+(c?" "+c:"")+"'><span>"+a+"</span><span>"+b+"</span></div>";}
+function fillPrintSheet(){
+  var p=S.p, r=calc();
+  $("psTitle").textContent="Проект «"+p.nm+"» · "+p.area+" м²";
+  $("psDate").textContent="Real Parque · "+new Date().toLocaleDateString("ru-RU",{day:"numeric",month:"long",year:"numeric"});
+  $("psImg").src=p.img; $("psImg").alt="Проект "+p.nm;
+  $("psSpecs").innerHTML=
+    "<div><b class='num'>"+p.area+"</b><span>м²</span></div>"+
+    "<div><b>"+p.beds+"</b><span>спальни</span></div>"+
+    "<div><b class='num'>"+p.baths+"</b><span>санузла</span></div>"+
+    "<div><b class='num'>2</b><span>этажа + терраса</span></div>";
+  var lot=LOTSRC[S.lot];
+  $("psLot").innerHTML="<b>"+lot.lb+"</b><br>"+lot.note+(lot.hide?" Точная цена — по запросу.":"");
+  var on=OPTS.filter(function(o){return S.o[o.id]&&!(o.id==="pool"&&p.id==="premium");});
+  $("psOpts").innerHTML=on.length?on.map(function(o){return "<li><span>"+o.n+"</span><span>включено</span></li>";}).join(""):"<li><span>Базовая комплектация, без доп. опций</span><span></span></li>";
+  var modeName=MODES.filter(function(m){return m.id===S.mode;})[0].n;
+  $("psModeLabel").textContent="Расчёт · "+modeName;
+  var h="";
+  if(S.mode==="self"){
+    $("psBig").textContent=K(r.total);
+    $("psLab").textContent="под ключ · "+R(r.total/p.area)+" за м²";
+    h+=lotHidden()?psRow("Участок","по запросу"):psRow("Участок",R(r.lot));
+    if(!lotHidden()) h+=psRow("ITBI, регистрация, нотариус",R(r.acq-r.lot));
+    h+=psRow("Стройка, "+p.area+" м²",R(r.build));
+    h+=psRow("Проект и согласования",R(r.soft));
+    h+=psRow("Всего под ключ",R(r.total),"tot");
+  } else if(S.mode==="sell"){
+    $("psBig").textContent=pct(r.roi);
+    $("psLab").textContent="на вложенный капитал · "+pct(r.apy)+" годовых · "+r.months+" мес.";
+    h+=psRow("Нужен капитал",R(r.inv),"tot");
+    h+=psRow("Продажа "+p.per+" домов",R(r.vgv));
+    h+=psRow("Комиссия и налог","−"+R(r.vgv*r.comm+r.tax));
+    h+=psRow("Чистая прибыль",R(r.profit),"tot");
+  } else {
+    $("psBig").textContent=pct(r.roi);
+    $("psLab").textContent="на вложенный капитал · "+pct(r.apy)+" годовых · "+r.months+" мес.";
+    h+=lotHidden()?psRow("Участок","по запросу"):psRow("Участок",R(r.lot));
+    if(!lotHidden()) h+=psRow("ITBI, регистрация, нотариус",R(r.acq-r.lot));
+    h+=psRow("Вы вкладываете",R(r.inv),"tot");
+    h+=psRow("Получаете готовый дом, 1 из "+p.per,R(r.unit));
+    h+=psRow("Комиссия и налог","−"+R(r.unit*r.comm+r.tax));
+    h+=psRow("Чистая прибыль",R(r.profit),"tot");
+  }
+  $("psRows").innerHTML=h;
+}
+var pb=$("printBtn");
+if(pb) pb.addEventListener("click",function(){ fillPrintSheet(); window.print(); });
+
+["iCost","iMonths","iComm","iItbi","iUsd"].forEach(function(id){ $(id).addEventListener("input",render); });
+drawPlan(); drawDossier(); render();
+})();
+</script>
+</body></html>
