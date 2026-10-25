@@ -338,6 +338,107 @@ footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px
 .ps-contact .cr{font-size:10.5px;color:#8B90A0;margin-top:2px}
 .ps-contact .ct{font-size:11.5px;color:#59627A;text-align:right;line-height:1.7}
 .ps-disc{font-size:8.5px;color:#8B90A0;font-style:italic;line-height:1.6;margin-top:14px;padding-top:10px;border-top:1px solid #E3DED2}
+
+/* partner */
+.tright{display:flex;align-items:center;gap:14px}
+.ptag{display:flex;align-items:center;gap:9px;padding:6px 12px 6px 10px;border-radius:999px;background:var(--navy);
+  color:#C2C8D6;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.ptag img{height:15px;width:auto}
+@media (max-width:560px){.ptag span{display:none}}
+.pstrip{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:26px;padding-top:18px;border-top:1px solid rgba(247,245,240,.16)}
+.pstrip .lg{display:flex;align-items:center;gap:16px}
+.pstrip .lg img{position:static;inset:auto}
+.pstrip .lg img.rp{height:40px;width:auto}
+.pstrip .lg img.bw{height:24px;width:auto}
+.pstrip .lg i{width:1px;height:28px;background:rgba(247,245,240,.25)}
+.pstrip p{margin:0;font-size:13px;color:#C2C8D6;max-width:32ch;line-height:1.45}
+.pstrip p b{color:#F7F5F0;font-weight:600}
+
+/* chooser */
+.choose{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.choose{grid-template-columns:1fr}}
+.ch{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:var(--paper);
+  padding:20px 20px 18px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.ch:hover{border-color:var(--gold);transform:translateY(-2px)}
+.ch:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.ch .kick{font-size:10.5px}
+.ch h3{font-size:21px;margin-top:6px}
+.ch p{margin:8px 0 0;font-size:14px;color:var(--muted);flex:1}
+.ch .facts{display:flex;gap:18px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.ch .facts b{font-family:var(--serif);font-size:20px;font-weight:600;display:block;line-height:1.1}
+.ch .facts span{font-size:11.5px;color:var(--muted)}
+.ch .go{margin-top:14px;font-size:13.5px;font-weight:600;color:var(--gold-ink)}
+
+/* product sections (Villas / Pocket) */
+.prodbadge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-ink)}
+.prodbadge em{font-style:normal;background:var(--gold);color:#14213D;border-radius:999px;padding:3px 9px;letter-spacing:.08em;font-size:10px}
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#1E2F55,#14213D 60%,#0E182F);border-radius:12px}
+.ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.ph .cap{position:absolute;left:12px;bottom:10px;right:12px;font-size:12.5px;color:#F7F5F0;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.ph.miss::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 78% 22%,rgba(201,162,39,.25),transparent 42%),
+  repeating-linear-gradient(135deg,rgba(247,245,240,.04) 0 2px,transparent 2px 14px)}
+.ph.miss .cap{text-shadow:none;color:#C2C8D6}
+.ph.miss .cap b{display:block;color:#E8D58E;font-family:var(--serif);font-size:15px;font-weight:600}
+.vgal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:10px}
+.vgal .ph:first-child{grid-row:span 2}
+@media (max-width:760px){.vgal{grid-template-columns:1fr 1fr;grid-template-rows:220px 140px 140px}.vgal .ph:first-child{grid-column:span 2;grid-row:auto}}
+.pspecs{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:12px;background:var(--paper);margin-top:14px}
+.pspecs div{padding:14px 16px;border-right:1px solid var(--line)}
+.pspecs div:last-child{border-right:none}
+.pspecs b{font-family:var(--serif);font-size:23px;font-weight:600;display:block;line-height:1.1}
+.pspecs span{font-size:12px;color:var(--muted)}
+@media (max-width:620px){.pspecs{grid-template-columns:1fr 1fr}.pspecs div:nth-child(2){border-right:none}
+  .pspecs div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.pgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;margin-top:18px;align-items:start}
+@media (max-width:880px){.pgrid{grid-template-columns:1fr}}
+.pgrid .ph{aspect-ratio:4/3}
+.floors{list-style:none;margin:12px 0 0;padding:0}
+.floors li{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.floors li:last-child{border-bottom:none}
+.floors li b{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:600;padding-top:2px}
+.aud{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.aud div{background:var(--tint);border-radius:9px;padding:10px 12px;font-size:13px}
+.aud div b{display:block;font-size:14px}
+@media (max-width:520px){.aud{grid-template-columns:1fr}}
+.price{margin-top:16px;padding:16px 18px;border-radius:12px;background:var(--navy);color:#D3D8E3;font-size:13.5px;line-height:1.5}
+.price b{display:block;color:#E8D58E;font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:4px}
+.price .btn{margin-top:12px}
+.ul{list-style:none;margin:10px 0 0;padding:0}
+.ul li{position:relative;padding:6px 0 6px 18px;font-size:14px;border-bottom:1px solid var(--line)}
+.ul li:last-child{border-bottom:none}
+.amen .card .ul li{display:block;padding:7px 0 7px 18px}
+.amen .card .ul li::before{top:15px}
+.ul li::before{content:"";position:absolute;left:2px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.ut{width:100%;border-collapse:collapse;font-size:14px}
+.ut th{text-align:left;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:600;
+  padding:0 10px 8px;border-bottom:1px solid var(--line)}
+.ut td{padding:0;border-bottom:1px solid var(--line)}
+.ut tr:last-child td{border-bottom:none}
+.ut button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.4fr) 112px 64px;gap:10px;width:100%;
+  padding:11px 10px;cursor:pointer;border-radius:8px}
+.ut button:hover{background:var(--tint)}
+.ut button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.ut button.on{background:rgba(201,162,39,.14)}
+.ut button b{font-weight:600}
+.ut button small{display:block;font-size:12px;color:var(--muted)}
+.ut .r{text-align:right;font-variant-numeric:tabular-nums}
+.uhead{display:grid;grid-template-columns:minmax(0,1.4fr) 112px 64px;gap:10px;padding:0 10px 8px;border-bottom:1px solid var(--line);
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.uhead span:not(:first-child){text-align:right}
+.udet h3{font-size:22px;margin-top:4px}
+.udet .nums{font-size:13px;color:var(--muted);margin-top:6px}
+.udet .ph{aspect-ratio:16/10;margin-top:14px}
+.honest{margin-top:16px;padding:12px 14px;border-left:3px solid var(--gold);background:var(--tint);border-radius:0 8px 8px 0;font-size:13px;color:var(--muted);line-height:1.5}
+.honest b{color:var(--ink)}
+.bridge{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;border:1px solid var(--gold);
+  border-radius:16px;padding:30px 32px;background:linear-gradient(135deg,rgba(201,162,39,.10),rgba(201,162,39,.02) 60%),var(--paper)}
+.bridge h2{font-size:clamp(23px,3vw,30px);line-height:1.2;margin-top:8px}
+.bridge p{margin:10px 0 0;color:var(--muted);max-width:62ch;font-size:15px}
+.bctas{display:flex;flex-direction:column;gap:10px}
+.bctas .btn{justify-content:center}
+@media (max-width:760px){.bridge{grid-template-columns:1fr;padding:24px 20px}.bctas{flex-direction:row;flex-wrap:wrap}}
 </style>
 
 <div class="wrap">
@@ -346,19 +447,26 @@ footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px
       <span class="mk">B</span>
       <span><b>Plan B Brazil</b><span>Real Estate Investment Advisory</span></span>
     </a>
-    <a class="btn" id="topCta" href="https://wa.me/5548988117424" target="_blank" rel="noopener">Связаться</a>
+    <div class="tright">
+      <a class="ptag" href="#top" aria-label="Партнёр BeWiki"><span>Партнёр</span><img src="/real-parque/bewiki/bewiki-home-white.svg" alt="BeWiki"></a>
+      <a class="btn" id="topCta" href="https://wa.me/5548988117424" target="_blank" rel="noopener">Связаться</a>
+    </div>
   </header>
 
   <section class="hero" id="top">
     <img src="/real-parque/img/hero.jpg" alt="Главный бульвар Real Parque с высоты">
     <div class="shade"></div>
     <div class="heroIn">
-      <div class="kick">Real Parque · Флорианополис</div>
-      <h1>Дом на севере острова — для жизни или как вложение</h1>
-      <p>Выберите участок на генплане и проект дома. Покажем полную стоимость под ключ и что даёт каждый из трёх сценариев инвестиции, с налогами и комиссиями.</p>
+      <div class="kick">Real Parque · BeWiki · Флорианополис</div>
+      <h1>Real Parque: таунхаусы, студии и участки под свой дом</h1>
+      <p>BeWiki Villas, BeWiki Pocket или дом по вашему проекту на собственном участке. Подберём вариант под задачу — для жизни или как вложение — и покажем цифры на русском.</p>
       <div class="ctas">
-        <a class="btn" href="#plan">Открыть генплан</a>
-        <a class="btn ghost" href="#calc">Сразу к расчёту</a>
+        <a class="btn" href="#choose">Что можно купить</a>
+        <a class="btn ghost" href="#villas">Смотреть Villas</a>
+      </div>
+      <div class="pstrip">
+        <div class="lg"><img class="rp" src="/real-parque/bewiki/realparque_logo_w.png" alt="Real Parque — Novo Norte"><i></i><img class="bw" src="/real-parque/bewiki/bewiki-home-white.svg" alt="BeWiki Real Estate"></div>
+        <p><b>Plan B Brazil — партнёр BeWiki</b> по продажам для русскоязычных клиентов</p>
       </div>
     </div>
     <div class="kpis">
@@ -369,10 +477,144 @@ footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px
     </div>
   </section>
 
+  <!-- ВЫБОР -->
+  <section class="sec" id="choose">
+    <div class="sechead">
+      <div><div class="kick">Что можно купить</div><h2>Три пути в Real Parque — под разный бюджет и задачу</h2></div>
+      <p>Таунхаус с садом, компактная студия под сдачу или свой дом на собственном участке. По каждому варианту — планировки, условия и расчёт на русском.</p>
+    </div>
+    <div class="choose">
+      <a class="ch" href="#villas">
+        <div class="kick">BeWiki Villas · пре-ланч</div>
+        <h3>Таунхаус с собственным садом</h3>
+        <p>Двухэтажные дома в закрытом посёлке у въезда в Real Parque: сад, терраса, парковка у дома, без соседей сверху.</p>
+        <div class="facts"><div><b class="num">144,9 м²</b><span>+ свой сад</span></div><div><b class="num">2</b><span>планировки</span></div></div>
+        <div class="go">Смотреть Villas →</div>
+      </a>
+      <a class="ch" href="#pocket">
+        <div class="kick">BeWiki Pocket · пре-ланч</div>
+        <h3>Студия внутри посёлка</h3>
+        <p>Небольшой дом на 36 квартир с бассейном и фитнесом на крыше. Самый доступный вход в Real Parque — для себя или под сдачу.</p>
+        <div class="facts"><div><b class="num">36</b><span>квартир</span></div><div><b class="num">от 26,5 м²</b><span>площадь</span></div></div>
+        <div class="go">Смотреть Pocket →</div>
+      </a>
+      <a class="ch" href="#plan">
+        <div class="kick">Участок + свой дом</div>
+        <h3>Строим по вашему проекту</h3>
+        <p>Выбираете участок на генплане и один из четырёх проектов. Ведём стройку под ключ — для жизни, продажи или пермуты.</p>
+        <div class="facts"><div><b class="num">450 м²</b><span>типичный участок</span></div><div><b class="num">4</b><span>проекта домов</span></div></div>
+        <div class="go">К генплану →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- VILLAS -->
+  <section class="sec" id="villas">
+    <div class="sechead">
+      <div><div class="prodbadge">BeWiki Villas <em>пре-ланч</em></div><h2>Таунхаусы с собственным садом на въезде в Real Parque</h2></div>
+      <p>Не квартира и не обычный кондоминиум — свой дом с садом. Двухэтажные таунхаусы в закрытом посёлке на SC-403: каменные фасады, деревянные рейки, зелёная кровля и вечерняя подсветка.</p>
+    </div>
+    <div class="vgal">
+      <div class="ph" data-img="/real-parque/bewiki/villas-bg.jpg" data-cap="Посёлок вечером"></div>
+      <div class="ph" data-img="/real-parque/bewiki/villas-entrada.jpg" data-cap="Фасад"></div>
+      <div class="ph" data-img="/real-parque/bewiki/villas-sala.jpg" data-cap="Гостиная со вторым светом"></div>
+      <div class="ph" data-img="/real-parque/bewiki/villas-terraco.jpg" data-cap="Терраса"></div>
+      <div class="ph" data-img="/real-parque/bewiki/villas-master.jpg" data-cap="Мастер-спальня"></div>
+    </div>
+    <div class="pspecs">
+      <div><b class="num">144,88 м²</b><span>жилая площадь + сад</span></div>
+      <div><b class="num">2 этажа</b><span>и терраса на крыше</span></div>
+      <div><b class="num">2</b><span>планировки на выбор</span></div>
+      <div><b class="num">1</b><span>парковка у дома</span></div>
+    </div>
+    <div class="pgrid">
+      <div class="card">
+        <h3>Планировки</h3>
+        <div class="field"><div class="seg" id="vSeg" role="tablist" aria-label="Планировка Villas"></div></div>
+        <p class="sub" id="vDesc" style="margin:12px 0 0;font-size:14px;color:var(--muted)"></p>
+        <ul class="floors" id="vFloors"></ul>
+        <div class="aud">
+          <div><b>Жить</b>свой дом с садом без соседей сверху и снизу</div>
+          <div><b>Сдавать надолго</b>семьям и специалистам Sapiens Parque</div>
+          <div><b>Сдавать посуточно</b>север острова, до пляжей несколько минут</div>
+        </div>
+      </div>
+      <div>
+        <div class="ph" id="vPlan" data-cap="План первого этажа"></div>
+        <div class="price">
+          <b>Цены и условия пре-ланча — по запросу</b>
+          BeWiki не публикует прайс на сайте. Пришлём цены, свободные дома, планировки и условия оплаты в WhatsApp — на русском, с нашим расчётом аренды.
+          <br><a class="btn" id="vCta" target="_blank" rel="noopener" href="https://wa.me/5548988117424">Получить прайс Villas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POCKET -->
+  <section class="sec" id="pocket">
+    <div class="sechead">
+      <div><div class="prodbadge">BeWiki Pocket <em>пре-ланч</em></div><h2>Студии внутри Real Parque — компактный вход в посёлок</h2></div>
+      <p>Небольшой дом на 36 квартир и три магазина на первом этаже. На крыше — бассейн с настилом, фитнес и гурмэ-зона, на втором этаже — общий сад-патио.</p>
+    </div>
+    <div class="vgal">
+      <div class="ph" data-img="/real-parque/bewiki/pocket-fachada-ci53.webp" data-cap="Фасад"></div>
+      <div class="ph" data-img="/real-parque/bewiki/pocket-piscina.webp" data-cap="Бассейн на крыше"></div>
+      <div class="ph" data-img="/real-parque/bewiki/pocket-academia.webp" data-cap="Фитнес"></div>
+      <div class="ph" data-img="/real-parque/bewiki/pocket-gourmet.webp" data-cap="Гурмэ-зона"></div>
+      <div class="ph" data-img="/real-parque/bewiki/pocket-entrada-residencial.webp" data-cap="Жилой вход"></div>
+    </div>
+    <div class="pspecs">
+      <div><b class="num">36</b><span>квартир</span></div>
+      <div><b class="num">26,5–63 м²</b><span>от студии до пентхауса</span></div>
+      <div><b class="num">7</b><span>типов планировок</span></div>
+      <div><b class="num">3</b><span>магазина на первом этаже</span></div>
+    </div>
+    <div class="pgrid">
+      <div class="card">
+        <h3>Выберите планировку</h3>
+        <p class="sub">Нажмите на строку — справа откроется описание.</p>
+        <div style="margin-top:14px">
+          <div class="uhead"><span>Тип</span><span>Площадь</span><span>Квартир</span></div>
+          <table class="ut"><tbody id="uBody"></tbody></table>
+        </div>
+      </div>
+      <div class="card udet" id="uDet" aria-live="polite"></div>
+    </div>
+    <div class="amen">
+      <div class="card"><h3>Что в доме</h3><ul class="ul">
+        <li>Бассейн с настилом, фитнес и гурмэ-зона на крыше</li>
+        <li>Общий сад-патио на втором этаже</li>
+        <li>Отдельный жилой вход с въездом для машин — с Rua E</li>
+        <li>Вход в магазины — отдельно, с Rua CI53</li>
+      </ul></div>
+      <div class="card"><h3>Что важно знать</h3><ul class="ul">
+        <li>Регистрация инкорпорации в процессе — до неё бронь только предварительная</li>
+        <li>Мебель и декор не входят, отделка — по описанию проекта</li>
+        <li>Управление арендой — отдельным договором</li>
+        <li>Доходность застройщик не гарантирует — мы покажем свой расчёт</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ПЕРЕХОД -->
+  <section class="sec" id="own">
+    <div class="bridge">
+      <div>
+        <div class="kick">Свой дом в Real Parque</div>
+        <h2>Нужно больше места или хотите вложиться через пермуту?</h2>
+        <p>Постройте дом по своему проекту на собственном участке: выберите лот на генплане, один из четырёх проектов и опции — и сразу увидите полную стоимость и три сценария: для себя, на продажу или пермута.</p>
+      </div>
+      <div class="bctas">
+        <a class="btn" href="#plan">Выбрать участок</a>
+        <a class="btn ghost" href="#calc">Сразу к расчёту</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ГЕНПЛАН -->
   <section class="sec" id="plan">
     <div class="sechead">
-      <div><div class="kick">Генплан</div><h2>24 квартала. Нажмите на любой, чтобы увидеть его состояние</h2></div>
+      <div><div class="kick">Свой дом · шаг 1 — участок</div><h2>24 квартала. Нажмите на любой, чтобы увидеть его состояние</h2></div>
       <p>Статус стройки по каждому кварталу и свободные участки — по данным застройщика на второе полугодие 2026 года.</p>
     </div>
     <div class="mp">
@@ -401,7 +643,7 @@ footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px
   <!-- ПРОЕКТЫ -->
   <section class="sec" id="projects">
     <div class="sechead">
-      <div><div class="kick">Проекты</div><h2>Четыре формата под разные задачи</h2></div>
+      <div><div class="kick">Свой дом · шаг 2 — проект</div><h2>Четыре формата под разные задачи</h2></div>
       <p>Два таунхауса — под сдачу и быструю перепродажу. Два отдельных дома — для семьи и для статуса. Выберите один, и он перейдёт в расчёт.</p>
     </div>
     <div class="proj" id="proj"></div>
@@ -412,7 +654,7 @@ footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px
   <!-- КОНФИГУРАТОР -->
   <section class="sec" id="calc">
     <div class="sechead">
-      <div><div class="kick">Ваш дом</div><h2>Соберите комплектацию и посмотрите цифры</h2></div>
+      <div><div class="kick">Свой дом · шаг 3 — расчёт</div><h2>Соберите комплектацию и посмотрите цифры</h2></div>
       <p>Каждая опция меняет и стоимость стройки, и цену, за которую дом потом продаётся. Расчёт ниже обновляется сразу.</p>
     </div>
     <div class="cfg">
@@ -530,8 +772,8 @@ footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px
   </section>
 
   <footer>
-    <span>Plan B Brazil · Константин Биевских · CRECI-SC 59616-F · planbbrazil.com</span>
-    <span>Расчёты предварительные и не являются офертой</span>
+    <span>Plan B Brazil · Константин Биевских · CRECI-SC 59616-F · planbbrazil.com · <a href="https://t.me/KBIEVSKIKH" target="_blank" rel="noopener" style="color:inherit">Telegram</a></span>
+    <span>Plan B Brazil — независимая компания и партнёр BeWiki по продажам. Villas и Pocket — проекты BeWiki. Расчёты предварительные и не являются офертой</span>
   </footer>
   <div class="proto">Прототип для обсуждения. Данные по кварталам и прайсу — из открытой презентации застройщика, 2-е полугодие 2026.</div>
 </div>
@@ -949,6 +1191,84 @@ if(pb) pb.addEventListener("click",function(){ fillPrintSheet(); window.print();
 
 ["iCost","iMonths","iComm","iItbi","iUsd"].forEach(function(id){ $(id).addEventListener("input",render); });
 drawPlan(); drawDossier(); render();
+})();
+</script>
+<script>
+/* BeWiki Villas + Pocket. Фото хранятся локально; если файл не загрузился — аккуратная заглушка с подписью. */
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id);};
+var WA="https://wa.me/5548988117424?text=";
+function photo(el,src,cap){
+  el.textContent=""; el.classList.remove("miss");
+  var c=document.createElement("div"); c.className="cap"; c.textContent=cap||"";
+  if(!src){ el.classList.add("miss"); el.appendChild(c); return; }
+  var im=new Image(); im.alt=cap||""; im.loading="lazy";
+  im.onerror=function(){ im.remove(); el.classList.add("miss"); c.innerHTML="<b>"+(cap||"")+"</b>фото BeWiki"; };
+  im.src=src; el.appendChild(im); el.appendChild(c);
+}
+document.querySelectorAll(".ph[data-img]").forEach(function(el){ photo(el,el.getAttribute("data-img"),el.getAttribute("data-cap")); });
+
+/* Villas */
+var V=[
+ {id:"A",n:"Вариант A · для семьи",d:"Три спальни, общая гостиная-кухня, свой сад и терраса.",
+  f:[["Первый этаж","кухня-гостиная со вторым светом, прачечная, выход в сад, парковка перед домом"],
+     ["Второй этаж","мастер-сьют и две спальни, общая ванная"],
+     ["Терраса","деревянный настил, место под джакузи (опция)"]],
+  img:"/real-parque/bewiki/villas-2andar-opcao1.jpg",cap:"Второй этаж · вариант A"},
+ {id:"B",n:"Вариант B · для пары или работы из дома",d:"Две спальни-сьюта, гардеробная и кабинет, свой сад и терраса.",
+  f:[["Первый этаж","кухня-гостиная со вторым светом, прачечная, выход в сад, парковка перед домом"],
+     ["Второй этаж","два сьюта, гардеробная, кабинет"],
+     ["Терраса","деревянный настил, место под джакузи (опция)"]],
+  img:"/real-parque/bewiki/villas-terreo.jpg",cap:"Первый этаж · общий для обоих вариантов"}
+];
+var vSel="A";
+function drawV(){
+  var seg=$("vSeg"); if(!seg) return; seg.textContent="";
+  V.forEach(function(v){
+    var b=document.createElement("button"); b.type="button"; b.setAttribute("role","tab");
+    b.className=v.id===vSel?"on":""; b.setAttribute("aria-selected",v.id===vSel?"true":"false");
+    b.textContent=v.n; b.addEventListener("click",function(){ vSel=v.id; drawV(); }); seg.appendChild(b);
+  });
+  var v=V.filter(function(x){return x.id===vSel;})[0];
+  $("vDesc").textContent=v.d;
+  $("vFloors").innerHTML=v.f.map(function(r){return "<li><b>"+r[0]+"</b><span>"+r[1]+"</span></li>";}).join("");
+  photo($("vPlan"),v.img,v.cap);
+  $("vCta").href=WA+encodeURIComponent("Здравствуйте! Интересует BeWiki Villas, "+v.n.toLowerCase()+". Пришлите, пожалуйста, цены и условия пре-ланча.");
+}
+drawV();
+
+/* Pocket */
+var U=[
+ {id:"a",n:"Studio A",t:"Студия",a:"28,83",q:8,u:"201, 207, 209, 215, 301, 307, 309, 315",fl:"2–3 этажи",img:"interior-a"},
+ {id:"b",n:"Studio B",t:"Студия — самый доступный вход",a:"26,50",q:8,u:"202, 206, 210, 214, 302, 306, 310, 314",fl:"2–3 этажи",img:"interior-b"},
+ {id:"c",n:"Studio C",t:"Самая просторная студия",a:"31,62",q:4,u:"203, 211, 303, 311",fl:"2–3 этажи",img:"interior-c"},
+ {id:"d",n:"Studio D",t:"Студия",a:"27,90",q:8,u:"204, 205, 212, 213, 304, 305, 312, 313",fl:"2–3 этажи",img:"interior-d"},
+ {id:"apto",n:"Apartamento A",t:"Квартира с двумя спальнями",a:"53,30",q:4,u:"208, 216, 308, 316",fl:"2–3 этажи",img:"interior-apto-a"},
+ {id:"g",n:"Studio G",t:"Пентхаус с Г-образной террасой 33 м²",a:"30,20 + 33,00",tot:"63,20",q:2,u:"401, 404",fl:"верхний этаж",img:"interior-g"},
+ {id:"h",n:"Studio H",t:"Пентхаус с террасой на фасад",a:"27,80 + 13,90–18,50",tot:"41,70–46,30",q:2,u:"402, 403",fl:"верхний этаж",img:"interior-h"}
+];
+var uSel="b";
+function drawU(){
+  var tb=$("uBody"); if(!tb) return; tb.textContent="";
+  U.forEach(function(x){
+    var tr=document.createElement("tr"), td=document.createElement("td"), b=document.createElement("button");
+    b.type="button"; b.className=x.id===uSel?"on":""; b.setAttribute("aria-pressed",x.id===uSel?"true":"false");
+    b.innerHTML="<span><b>"+x.n+"</b><small>"+x.t+"</small></span><span class='r'>"+(x.tot||x.a)+" м²</span><span class='r'>"+x.q+"</span>";
+    b.addEventListener("click",function(){ uSel=x.id; drawU(); });
+    td.appendChild(b); tr.appendChild(td); tb.appendChild(tr);
+  });
+  var x=U.filter(function(y){return y.id===uSel;})[0];
+  var d=$("uDet");
+  d.innerHTML="<div class='kick'>BeWiki Pocket · "+x.fl+"</div><h3>"+x.n+" · "+(x.tot||x.a)+" м²</h3>"+
+    "<div class='sub' style='font-size:14px;color:var(--muted);margin-top:4px'>"+x.t+(x.tot?" · "+x.a+" м²":"")+"</div>"+
+    "<div class='ph' id='uPh'></div>"+
+    "<div class='nums'>Квартиры этого типа: "+x.u+"</div>"+
+    "<div class='price'><b>Цена — по запросу</b>Пришлём стоимость, свободные номера и условия оплаты, а также расчёт сдачи этой планировки в аренду."+
+    "<br><a class='btn' target='_blank' rel='noopener' href='"+WA+encodeURIComponent("Здравствуйте! Интересует BeWiki Pocket, "+x.n+" ("+(x.tot||x.a)+" м²). Пришлите, пожалуйста, цену и свободные квартиры.")+"'>Узнать цену "+x.n+"</a></div>";
+  photo($("uPh"),"/real-parque/bewiki/pocket-"+x.img+".webp",x.n+" · интерьер");
+}
+drawU();
 })();
 </script>
 </body></html>
