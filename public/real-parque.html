@@ -384,6 +384,9 @@ footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px
 .vgal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:10px}
 .vgal .ph:first-child{grid-row:span 2}
 @media (max-width:760px){.vgal{grid-template-columns:1fr 1fr;grid-template-rows:220px 140px 140px}.vgal .ph:first-child{grid-column:span 2;grid-row:auto}}
+.vgal.g4{grid-template-columns:repeat(2,1fr);grid-template-rows:220px 220px}
+.vgal.g4 .ph:first-child{grid-row:auto}
+@media (max-width:760px){.vgal.g4{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px}.vgal.g4 .ph:first-child{grid-column:auto}}
 .pspecs{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:12px;background:var(--paper);margin-top:14px}
 .pspecs div{padding:14px 16px;border-right:1px solid var(--line)}
 .pspecs div:last-child{border-right:none}
@@ -514,12 +517,11 @@ footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px
       <div><div class="prodbadge">BeWiki Villas <em>пре-ланч</em></div><h2>Таунхаусы с собственным садом на въезде в Real Parque</h2></div>
       <p>Не квартира и не обычный кондоминиум — свой дом с садом. Двухэтажные таунхаусы в закрытом посёлке на SC-403: каменные фасады, деревянные рейки, зелёная кровля и вечерняя подсветка.</p>
     </div>
-    <div class="vgal">
+    <div class="vgal g4">
       <div class="ph" data-img="/real-parque/bewiki/villas-bg.jpg" data-cap="Посёлок вечером"></div>
       <div class="ph" data-img="/real-parque/bewiki/villas-entrada.jpg" data-cap="Фасад"></div>
       <div class="ph" data-img="/real-parque/bewiki/villas-sala.jpg" data-cap="Гостиная со вторым светом"></div>
       <div class="ph" data-img="/real-parque/bewiki/villas-terraco.jpg" data-cap="Терраса"></div>
-      <div class="ph" data-img="/real-parque/bewiki/villas-master.jpg" data-cap="Мастер-спальня"></div>
     </div>
     <div class="pspecs">
       <div><b class="num">144,88 м²</b><span>жилая площадь + сад</span></div>
