@@ -85,6 +85,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;letter-spacing:-.01em
 /* hero */
 .hero{position:relative;border-radius:16px;overflow:hidden;background:#14213D;color:#F7F5F0}
 .hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .heroStill{display:none}
+@media (prefers-reduced-motion: reduce){.hero video{display:none}.hero .heroStill{display:block}}
 .hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,22,42,.92) 0%,rgba(14,22,42,.72) 45%,rgba(14,22,42,.18) 100%)}
 .heroIn{position:relative;padding:58px 44px 40px;max-width:640px}
 @media (max-width:700px){.heroIn{padding:34px 20px 26px}.hero .shade{background:linear-gradient(180deg,rgba(14,22,42,.55),rgba(14,22,42,.92))}}
@@ -457,9 +459,10 @@ footer{border-top:1px solid var(--line);padding-block:18px 34px;font-size:12.5px
   </header>
 
   <section class="hero" id="top">
-    <video autoplay muted loop playsinline preload="auto" poster="/real-parque/img/hero.jpg" aria-hidden="true">
-      <source media="(max-width: 767px)" src="/videos/hero-jurere-mobile.mp4" type="video/mp4">
-      <source src="/videos/hero-jurere-desktop.mp4" type="video/mp4">
+    <img class="heroStill" src="/real-parque/video/poster.jpg" alt="Real Parque">
+    <video autoplay muted loop playsinline preload="metadata" poster="/real-parque/video/poster.jpg" aria-hidden="true">
+      <source src="/real-parque/video/video-720.mp4" type="video/mp4" media="(max-width: 760px)">
+      <source src="/real-parque/video/video-1080.mp4" type="video/mp4">
     </video>
     <div class="shade"></div>
     <div class="heroIn">
