@@ -19,6 +19,8 @@ const PEOPLE = [
 ] as const;
 
 const LOGOS = [
+  { img: '/images/trust/bewiki-home.svg', alt: 'BeWiki', darkIcon: true },
+  { img: '/images/trust/logo-real-parque.png', alt: 'Real Parque — Novo Norte' },
   { img: '/images/trust/logo-etazhi.jpg', alt: 'ЭТАЖИ (Etazhi)' },
   { img: '/images/trust/logo-sinduscon-fpolis.jpg', alt: 'SINDUSCON Grande Florianópolis' },
   { img: '/images/trust/logo-wk.jpg', alt: 'WK International Services' },
@@ -105,6 +107,7 @@ export default function TrustNetwork() {
                   src={logo.img}
                   alt={logo.alt}
                   className="max-w-full max-h-full object-contain"
+                  style={'darkIcon' in logo && logo.darkIcon ? { color: '#14213D' } : undefined}
                 />
               </div>
             ))}

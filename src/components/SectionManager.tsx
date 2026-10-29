@@ -16,7 +16,7 @@ const BricsAwardSection = dynamic(() => import('@/components/BricsAwardSection')
 const TrustNetwork = dynamic(() => import('@/components/TrustNetwork'), { ssr: true });
 const FeaturedProperties = dynamic(() => import('@/components/FeaturedProperties'), { ssr: true });
 const WhyBrazil = dynamic(() => import('@/components/WhyBrazil'), { ssr: true });
-const PropertyFinder = dynamic(() => import('@/components/PropertyFinder'), { ssr: true });
+const RealParquePromo = dynamic(() => import('@/components/RealParquePromo'), { ssr: true });
 const PlanBTools = dynamic(() => import('@/components/PlanBTools'), { ssr: true });
 const ResearchInsights = dynamic(() => import('@/components/ResearchInsights'), { ssr: true });
 const FAQ = dynamic(() => import('@/components/FAQ'), { ssr: true });
@@ -76,7 +76,7 @@ export default function SectionManager({ initialProperties }: { initialPropertie
         <BricsAwardSection />
         <TrustNetwork />
         <PlanBTools />
-        <PropertyFinder />
+        <RealParquePromo />
         <FeaturedProperties initialProperties={initialProperties} />
         <WhyBrazil />
         <ResearchInsights />
@@ -95,7 +95,7 @@ export default function SectionManager({ initialProperties }: { initialPropertie
       {show('section_about') && <BricsAwardSection />}
       {show('section_about') && <TrustNetwork />}
       <PlanBTools />
-      <PropertyFinder />
+      <RealParquePromo />
       {show('section_featured_properties') && <FeaturedProperties initialProperties={initialProperties} />}
       {show('section_why_brazil') && <WhyBrazil />}
       <ResearchInsights />
